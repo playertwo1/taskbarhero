@@ -17,6 +17,10 @@ Criar um jogo mobile com combate automático, progressão, loot, heróis, inimig
 - Pixelorama para revisão/acabamento
 - Android como plataforma principal
 
+## Roadmap
+
+- `ROADMAP.md` — roteiro detalhado desde a preparação do Windows e instalação das ferramentas até o MVP Android e a fase pós-MVP de overlay.
+
 ## Documentação
 
 - `docs/PIPELINE_IA_SPRITES.md` — arquitetura de agentes e pipeline de criação de sprites por IA.
