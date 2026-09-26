@@ -19,8 +19,10 @@ Criar um jogo mobile com combate automático, progressão, loot, heróis, inimig
 
 ## Documentação
 
-- `docs/Pocket_Hero_Pipeline_IA_Sprites_Hermes.docx` — arquitetura de agentes e pipeline de criação de sprites por IA.
-- `docs/TBH_Referencias_e_Banco_de_Ideias_Pocket_Hero.docx` — referências de gameplay, fases, inimigos, aliados, pets e ideias originais para o projeto.
+- `docs/PIPELINE_IA_SPRITES.md` — arquitetura de agentes e pipeline de criação de sprites por IA.
+- `docs/REFERENCIAS_TBH.md` — referências de gameplay, fases, inimigos, aliados, pets e ideias originais para o projeto.
+
+As versões DOCX completas permanecem arquivadas na pasta Taskbar do Google Drive.
 
 ## Referências externas estudadas
 
