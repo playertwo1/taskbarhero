@@ -1,6 +1,6 @@
 # Pocket Hero — Incremental Design Guide
 
-> Minimum Sufficient Context para Hermes, Theia, Ergane, Têmis, Research, Daedalus e modelos executores.
+> Resumo operacional (Minimum Sufficient Context) para Hermes e agentes. O guia temático completo está em [`documents/GUIA_DESIGN_INCREMENTAL_POCKET_HERO.md`](../../documents/GUIA_DESIGN_INCREMENTAL_POCKET_HERO.md); o roadmap define os gates, não este resumo.
 
 ## Definição do gênero
 
@@ -340,4 +340,4 @@ Regras:
 - Rusty's Retirement
 - discussões qualitativas em r/incremental_games
 
-O DOCX completo com referências e explicações detalhadas está arquivado em Google Drive → Taskbar.
+O [guia completo em Markdown](../../documents/GUIA_DESIGN_INCREMENTAL_POCKET_HERO.md) e seu [DOCX original](../../documents/GUIA_DESIGN_INCREMENTAL_POCKET_HERO.docx) estão versionados em `documents/`; o índice da pasta orienta a leitura.

@@ -10,7 +10,7 @@
 > Fechar a base conceitual do Pocket Hero antes do vertical slice. Este guia define como o jogo deve ensinar, responder ao toque, comunicar eventos, respeitar bateria e acessibilidade e, principalmente, como a equipe de IA deve testar e balancear o jogo sem depender de dezenas de horas de jogo manual.
 
 > DECISÃO DE FASE
-> Depois deste documento, pausar a criação de novos guias conceituais. O próximo grande aprendizado deve vir do vertical slice real: Bastião + Slime + uma fase + loot + APK no S25 Ultra.
+> Depois deste documento, pausar a criação de novos guias conceituais. O próximo grande aprendizado deve vir do smoke Android mínimo de R10: Bastião + Slime + uma fase + loot + APK no S25 Ultra.
 
 # 1. Papel deste guia na base do projeto
 
@@ -346,7 +346,9 @@ Toda nova feature tem custo em código, arte, UI, balanceamento, QA e manutenç�
 | Melhora core loop? | Prioridade maior. |
 | Pode esperar pós-MVP? | Se sim, adiar. |
 
-# 20. Critérios de aceite do vertical slice
+# 20. Critérios de aceite do slice Android ampliado (após R15–R16)
+
+Este é o aceite de UX e sistemas integrados após save/offline e tracker. Não substitui a prova do loop e o smoke Android mínimo do gate R10 no [`ROADMAP.md`](../ROADMAP.md), nem declara o MVP concluído: R18 prepara a build candidata, R19 decide o fechamento.
 
 | Área | PASS |
 | --- | --- |
@@ -464,4 +466,4 @@ Se qualquer resposta crítica for NÃO, não marque a feature como DONE.
 Com este guia, a base conceitual do Pocket Hero cobre referência de produto, incremental design, economia/pacing e experiência/testabilidade. A próxima pergunta importante não é 'que outro sistema podemos imaginar?', e sim 'o primeiro minuto do jogo é divertido no aparelho real?'.
 
 > PRÓXIMO PASSO
-> Construir o vertical slice: Bastião + Slime + Bosque de Lúmen mínimo + primeiro drop + level up + save + APK Android. Só depois voltar aos documentos para atualizar o que o jogo real nos ensinou.
+> Construir primeiro o smoke Android mínimo de R10: Bastião + Slime + uma fase do Bosque + primeiro drop + level up + save mínimo + APK debug. Só depois voltar aos documentos para atualizar o que o jogo real nos ensinou; o slice Android ampliado desta seção vem após R15–R16.

@@ -345,7 +345,7 @@ PASS quando:
 
 ---
 
-# FASE R4 — Instalar Aseprite e Pixelorama
+# FASE R4 — Validar Aseprite (Pixelorama opcional)
 
 ## Objetivo
 
@@ -372,16 +372,15 @@ Uso:
 - edição de paleta;
 - fallback quando a geração automática precisar de acabamento.
 
-Instalar uma versão estável.
-
-O Pixelorama atual é desenvolvido sobre Godot 4.7.2.
+Se disponível, usar uma versão estável. Pixelorama é ferramenta opcional de revisão, não bloqueia o gate.
 
 ## Gate R4
 
 PASS quando:
 - Aseprite abre;
-- é possível criar e salvar um PNG transparente;
-- Pixelorama abre o mesmo PNG.
+- é possível criar e salvar um PNG transparente.
+
+Se Pixelorama estiver instalado, conferir nele o mesmo PNG como verificação adicional.
 
 ---
 
@@ -656,7 +655,7 @@ ProgressionManager
 PASS quando:
 - projeto abre sem erros;
 - cena principal roda;
-- Git está limpo após commit;
+- alterações da etapa foram revisadas em diff, preservando mudanças pré-existentes; commit somente com autorização de Rafael;
 - APK vazio/placeholder ainda exporta.
 
 ---
@@ -719,7 +718,7 @@ Se R9 falhar, corrigir pipeline antes de gerar o restante dos assets.
 
 ---
 
-# FASE R10 — Vertical slice de combate
+# FASE R10 — Prova do loop + smoke Android mínimo
 
 ## Objetivo
 
@@ -764,7 +763,7 @@ UI:
 
 ## Gate R10
 
-PASS quando é possível deixar o jogo rodando por alguns minutos sem interação e o loop continua corretamente.
+**PASS de R10 exige as duas provas:** (1) ao menos cinco ciclos `spawn → ataque → morte → XP/ouro → próximo inimigo` sem intervenção nem travamento, com resultado e duração registrados; (2) um **smoke Android mínimo** com Bastião, Slime, uma fase e um item: primeiro drop/equipamento e level-up verificáveis, save mínimo que persiste após fechar/reabrir e APK debug que abre no aparelho. R11 só começa após ambas; preparar placeholders para o smoke pertence a R10, não à produção de R11. O smoke não fecha R13 (loot completo), R15 (save resiliente/offline), R16 (tracker) nem o slice Android ampliado do guia de UX.
 
 ---
 
@@ -772,7 +771,7 @@ PASS quando é possível deixar o jogo rodando por alguns minutos sem interaçã
 
 ## Objetivo
 
-Transformar o vertical slice em conteúdo mínimo real.
+Expandir o Bosque de Lúmen depois da prova do loop e do smoke Android mínimo de R10. Para essa prova, usar a arte já validada do Slime e placeholders originais mínimos para Bastião, cenário e item. Ampliar o restante em lotes pequenos; o slice Android ampliado depende de R15–R16.
 
 ## Heróis
 
@@ -808,15 +807,13 @@ Guardião-Cervo de Pedra.
 Não gerar tudo simultaneamente.
 
 Ordem:
-1. Bastião.
-2. Slime.
-3. Teste conjunto.
-4. Congelar ART_DIRECTION v1.
-5. Flecha.
-6. Íris.
-7. demais mobs.
-8. elite.
-9. boss.
+1. Revisar Bastião e Slime usados em R10.
+2. Teste conjunto e congelar ART_DIRECTION v1.
+3. Flecha.
+4. Íris.
+5. Demais mobs.
+6. Elite.
+7. Boss.
 
 ## Gate R11
 
@@ -906,7 +903,7 @@ Implementar:
 
 ## Gate R13
 
-PASS quando matar inimigos pode melhorar a força da party de forma perceptível.
+PASS quando os 15 itens, três slots e quatro raridades estão representados na drop table e no inventário; comparar, equipar e auto-equipar o melhor por slot funcionam. Em um cenário controlado, registrar item/drop, atributos antes/depois e efeito de combate coerente com o item (por exemplo, TTK, dano recebido ou sobrevivência); mudança numérica sem efeito demonstrado não basta. Vender/desmontar permanece opcional. Não chamar os números de balanceados sem playtest.
 
 ---
 
@@ -1007,7 +1004,7 @@ Tela simples:
 
 ## Gate R16
 
-PASS quando as métricas podem ser usadas para balancear o Bosque de Lúmen.
+PASS quando eventos de teste conhecidos permitem conferir manualmente **todas** as métricas listadas (XP/h, ouro/h, kills/h, TTK médio, mortes, drops/h e % raro+) e **todas** as visões previstas (sessão atual, últimas 2 horas, melhor fase por XP e por ouro). Registrar amostra, janela, valores esperados e observados; cobertura parcial não fecha R16. Usar os dados para formular hipóteses, não declarar o Bosque balanceado.
 
 ---
 
@@ -1049,7 +1046,7 @@ Testar:
 
 ## Gate R17
 
-PASS no S25 Ultra em uso real.
+PASS após teste no S25 Ultra em uso real: registrar aparelho/versão Android, build, duração e evidência de legibilidade da faixa de combate, controles, recortes da tela, estabilidade e consumo observado. Se o aparelho não estiver disponível, manter o gate pendente.
 
 ---
 
@@ -1073,9 +1070,9 @@ Gerar:
 
 AAB fica para publicação futura.
 
-## Gate R18 — MVP
+## Gate R18 — Candidato a MVP para auditoria
 
-O MVP está concluído somente quando:
+R18 entrega uma build candidata para a auditoria R19, não conclui o MVP. Antes de solicitar auditoria, confirmar com evidência:
 
 - instala no Android;
 - abre sem PC;
@@ -1095,7 +1092,9 @@ O MVP está concluído somente quando:
 - arte própria;
 - sprites gerados pelo pipeline Daedalus;
 - nenhuma dependência do editor para jogar;
-- pelo menos uma sessão prolongada sem crash.
+- pelo menos uma sessão prolongada sem crash (registrar duração, aparelho, build e logs).
+
+Somente `PASS` em R19 fecha o MVP.
 
 ---
 
@@ -1186,7 +1185,7 @@ R2 Godot
  ↓
 R3 Android
  ↓
-R4 Aseprite/Pixelorama
+R4 Aseprite (Pixelorama opcional)
  ↓
 R5 pixel-mcp
  ↓
@@ -1198,7 +1197,7 @@ R8 estrutura Godot
  ↓
 R9 PRIMEIRO SPRITE IA
  ↓
-R10 loop de combate
+R10 loop de combate + smoke Android mínimo
  ↓
 R11 Bosque de Lúmen
  ↓
@@ -1214,7 +1213,7 @@ R16 tracker
  ↓
 R17 UX mobile
  ↓
-R18 APK MVP
+R18 build candidata a MVP
  ↓
 R19 auditoria
  ↓
@@ -1245,6 +1244,8 @@ Especialmente:
 
 Objetivo: preparar a estação de desenvolvimento.
 
+Checklist de verificação, não declaração de que tudo está pendente: anotar por item a evidência, data e versão observadas antes de marcar PASS. Health check do MCP não substitui teste de sprite nem exportação Android. Pixelorama é opcional e não bloqueia o marco.
+
 Checklist:
 
 - [ ] Git instalado.
@@ -1257,7 +1258,7 @@ Checklist:
 - [ ] Android SDK/NDK/CMake exigidos.
 - [ ] adb reconhece S25 Ultra.
 - [ ] Aseprite 1.3.10+.
-- [ ] Pixelorama.
+- [ ] Pixelorama (opcional, não bloqueia SETUP-01).
 - [ ] pixel-mcp compilado.
 - [ ] pixel-mcp --health PASS.
 - [ ] Hermes enxerga MCP.

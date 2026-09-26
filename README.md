@@ -23,10 +23,11 @@ Criar um jogo mobile com combate automático, progressão, loot, heróis, inimig
 
 ## Design incremental
 
-- `docs/design/INCREMENTAL_DESIGN_GUIDE.md` — doutrina de incremental/idle, unfolding, automação, paredes, prestige, offline, builds, métricas e anti-padrões para orientar os agentes.
+- `docs/design/INCREMENTAL_DESIGN_GUIDE.md` — resumo operacional da doutrina incremental; o guia temático completo e o DOCX original estão em `documents/`.
 
 ## Documentação
 
+- `documents/INDEX.md` — ponto de entrada e rotas de leitura por tarefa para guias completos e DOCX originais.
 - `docs/POCKET_HERO_PROJECT_BRIEF.md` — consolidação atual de escopo, MVP, direção de arte, pipeline e próximos gates, derivada dos DOCX arquivados.
 - `docs/PIPELINE_IA_SPRITES.md` — arquitetura de agentes e pipeline de criação de sprites por IA.
 - `docs/REFERENCIAS_TBH.md` — referências de gameplay, fases, inimigos, aliados, pets e ideias originais para o projeto.

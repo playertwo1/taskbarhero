@@ -277,9 +277,11 @@ Este documento não define monetização alternativa. Se algum modelo sugerir an
 
 1. Têmis deve auditar originalidade visual/naming e coerência com a doutrina free-progression.
 
-# 19. Tradução concreta para o nosso MVP
+# 19. Tradução proposta para o Pocket Hero
 
-| Elemento | Decisão Pocket Hero |
+Esta tabela é referência de design, não lista de critérios aprovados. Para escopo e aceite do MVP, prevalece o [`ROADMAP.md`](../ROADMAP.md), especialmente R18 (build candidata) e R19 (auditoria). O roadmap já fixa 15 itens, três slots e quatro raridades em R13 e o limite offline inicial de 8h em R15; esses parâmetros devem ser testados, mas não são opcionais neste plano. A distribuição 5/5/5, crafting e meta-progressão são propostas a validar, não gates automáticos do MVP.
+
+| Elemento | Proposta para Pocket Hero (sujeita ao roadmap) |
 | --- | --- |
 | Formato | Mobile portrait; faixa de batalha visível na parte inferior. |
 | Bioma | Bosque de Lúmen. |
@@ -291,8 +293,8 @@ Este documento não define monetização alternativa. Se algum modelo sugerir an
 | Itens | 15 (5 armas, 5 armaduras, 5 amuletos). |
 | Raridades | Comum, Raro, Épico, Lendário. |
 | Party | Até 3 heróis. |
-| Progressão | XP, level, ouro, equipamento, pequena meta-progressão. |
-| Crafting | Reciclagem + crafting simples, sem moeda paga. |
+| Progressão | XP, level, ouro, equipamento; meta-progressão pequena é candidata futura. |
+| Crafting | Reciclagem + crafting são propostas; não são gate do MVP. |
 | Offline | Até 8h inicialmente, com recompensa balanceada. |
 | Tracker | XP/h, ouro/h, kills/h, TTK, drops/h. |
 | Monetização | Nenhuma no MVP; 100% do conteúdo conquistável dentro do jogo. |
@@ -307,7 +309,7 @@ Este documento não define monetização alternativa. Se algum modelo sugerir an
 | Seis arquétipos/classes | TBH Index/Mobalytics [S4][S6] | Criar heróis próprios com funções equivalentes, nomes/sprites originais. |
 | 10 raridades | Steam/TBH Index [S1][S4] | MVP com 4 raridades; expansão posterior. |
 | Cube/crafting | TBH Index/Mobalytics [S4][S6] | Forja/reciclagem própria; sem dinheiro real. |
-| Runas permanentes | TBH Index/Mobalytics [S4][S6] | Meta-progressão pequena no MVP. |
+| Runas permanentes | TBH Index/Mobalytics [S4][S6] | Meta-progressão original como hipótese futura, não requisito do MVP. |
 | Pets por kills | Mobalytics [S6] | Ecos por milestones; todos gratuitos. |
 | Soul Stone consumida só no sucesso | Wiki/Mobalytics [S5][S6] | Inspiração para chaves de boss sem punição por tentativa. |
 | Plaguelands | Mobalytics/TBH Index [S6][S4] | Eco Corrompido pós-MVP. |

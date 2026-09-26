@@ -48,7 +48,7 @@ Não marque etapa como concluída por inferência, plano, mock, teste parcial ou
 - A mesma consolidação registra Aseprite 1.3.7, abaixo do alvo de instalação 1.3.10+ do roadmap, e Godot 4.7.2 presente mas não validado. A presença de um executável não prova que Godot, Android export ou aparelho estejam prontos.
 - Ainda não há evidência registrada de um vertical slice jogável, APK do jogo, save/offline testados ou sessão de jogo validada em aparelho real. Não invente assets, cenas ou testes que ainda não existem.
 
-**Ordem de alto nível prevista:** concluir `SETUP-01` → provar o pipeline artístico com um único Slime (R9/ART-01) → fazer o menor vertical slice de combate (R10) → expandir conteúdo somente após validação → fechar os critérios Android do MVP (R18) → auditoria técnica, visual e de gameplay (R19; só `PASS` fecha o MVP). Veja os gates exatos em `ROADMAP.md`.
+**Ordem de alto nível prevista:** concluir `SETUP-01` → provar o pipeline artístico com um único Slime (R9/ART-01) → provar o loop e um smoke Android mínimo (R10) → expandir conteúdo após essa prova → validar o slice Android ampliado após R15–R16 → preparar a build candidata ao MVP (R18) → auditoria técnica, visual e de gameplay (R19; só `PASS` fecha o MVP). Veja os gates exatos em `ROADMAP.md`.
 
 **EM ABERTO:** os documentos recomendam testar primeiro um sprite Slime de ponta a ponta, enquanto outro material sugere iniciar o pacote maior `ART-C0-LUMEN`. Não comece produção em lote até Rafael escolher. O guia de UX também recomenda pausar novos guias conceituais e obter aprendizado de um vertical slice real.
 
@@ -113,8 +113,8 @@ Antes de criar recurso, custo, drop, curva, boss ou meta-progressão:
 - Medir performance, memória, bateria e temperatura em vez de assumir otimizações. Em background, não manter simulação contínua; usar cálculo offline.
 - Dev Mode, HUD e aceleradores são ferramentas de teste, determinísticas e isoladas da release; nunca dependem de editar save manualmente.
 - Separar smoke, teste funcional, balanceamento, UX, dispositivo, sessão longa e teste de primeira experiência (*fresh eyes*).
-- O vertical slice de UX indicado nos guias é Bastião + Slime + uma fase do Bosque + primeiro drop + level-up + save + APK Android. Só expandir quando esse loop for legível e divertido em aparelho.
-- O gate final R18 exige o MVP jogável, save/offline/tracker e estabilidade; R19 verifica técnica, visual e gameplay. Critérios completos estão no roadmap, não neste resumo.
+- R10 prova o loop e um smoke Android mínimo: Bastião + Slime + uma fase do Bosque + primeiro drop + level-up + save mínimo + APK debug. Depois de R15–R16, o guia de UX descreve um **slice Android ampliado** com offline, Dev Mode e telemetria; não confundir seus critérios com R10.
+- R18 prepara uma build candidata com MVP jogável, save/offline/tracker e estabilidade; só `PASS` em R19 fecha o MVP. Critérios completos estão no roadmap, não neste resumo.
 
 ## 8. Identidade original e uso de referências
 
