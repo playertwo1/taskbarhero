@@ -27,6 +27,7 @@ Criar um jogo mobile com combate automático, progressão, loot, heróis, inimig
 
 ## Documentação
 
+- `docs/POCKET_HERO_PROJECT_BRIEF.md` — consolidação atual de escopo, MVP, direção de arte, pipeline e próximos gates, derivada dos DOCX arquivados.
 - `docs/PIPELINE_IA_SPRITES.md` — arquitetura de agentes e pipeline de criação de sprites por IA.
 - `docs/REFERENCIAS_TBH.md` — referências de gameplay, fases, inimigos, aliados, pets e ideias originais para o projeto.
 
