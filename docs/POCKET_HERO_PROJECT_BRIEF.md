@@ -65,7 +65,7 @@ O roadmap chama o primeiro marco de **SETUP-01**: verificar ferramentas e fluxo 
 
 - O MCP `pixel-art` v0.5.0 foi instalado e registrado no perfil Hermes `default`; health check do servidor/Aseprite e `hermes mcp test` passaram. A allowlist expõe 29 ferramentas, com `trust: untrusted` e sampling desativado.
 - Nenhum sprite foi criado, nenhum código do jogo foi alterado e Godot/Android não foram testados nesta tarefa. O Aseprite local é 1.3.7; o health check passou, mas a geração de arte ainda não foi validada.
-- Na conferência local, `main` estava em `67c226f` e alinhada com `origin/main`; `Aseprite/` e `Godot_v4.7.2-stable_win64.exe/` estavam não rastreadas e foram preservadas sem alteração. A presença da pasta Godot não comprova setup funcional.
+- **Snapshot histórico (2026-09-26, antes da publicação dos guias):** `main` estava em `67c226f` e alinhada com `origin/main`; `Aseprite/` e `Godot_v4.7.2-stable_win64.exe/` estavam não rastreadas e foram preservadas sem alteração. A presença da pasta Godot não comprova setup funcional.
 - Próxima ação recomendada: abrir uma nova sessão Hermes para carregar as ferramentas, fazer um teste isolado de sprite e resolver se o primeiro gate de arte será um slime de prova ou ART-C0-LUMEN.
 
 ## Fontes do repositório
