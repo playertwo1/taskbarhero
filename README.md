@@ -21,6 +21,10 @@ Criar um jogo mobile com combate automático, progressão, loot, heróis, inimig
 
 - `ROADMAP.md` — roteiro detalhado desde a preparação do Windows e instalação das ferramentas até o MVP Android e a fase pós-MVP de overlay.
 
+## Design incremental
+
+- `docs/design/INCREMENTAL_DESIGN_GUIDE.md` — doutrina de incremental/idle, unfolding, automação, paredes, prestige, offline, builds, métricas e anti-padrões para orientar os agentes.
+
 ## Documentação
 
 - `docs/PIPELINE_IA_SPRITES.md` — arquitetura de agentes e pipeline de criação de sprites por IA.
