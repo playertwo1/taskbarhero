@@ -68,23 +68,49 @@ func flash_loot() -> void:
 
 func _draw() -> void:
 	var s := size
-	# Background AMOLED
-	draw_rect(Rect2(Vector2.ZERO, s), Color("0d0e12"), true)
-	draw_line(Vector2(0, 1), Vector2(s.x, 1), Color("22252c"), 2.0)
+	# Background AMOLED do Bosque de Lúmen
+	draw_rect(Rect2(Vector2.ZERO, s), Color("060807"), true)
+	draw_line(Vector2(0, 1), Vector2(s.x, 1), Color("17231c"), 2.0)
 
-	# Ground / Faixa de batalha
+	# Silhuetas de árvores distantes (Bosque de Lúmen)
+	var bg_tree_color := Color("0b1612")
+	var mid_tree_color := Color("11221b")
+	for tx in [20, 80, 140, 210, 280, 350, 410]:
+		# Tronco
+		draw_rect(Rect2(tx, 40, 8, s.y - 82), bg_tree_color, true)
+		# Copa estilizada
+		var pts := PackedVector2Array([
+			Vector2(tx + 4, 18),
+			Vector2(tx - 18, 75),
+			Vector2(tx + 26, 75)
+		])
+		draw_colored_polygon(pts, mid_tree_color)
+
+	# Orbes flutuantes de Lúmen cintilante
+	var lumen_orb_color := Color("38d9a9", 0.40)
+	draw_circle(Vector2(s.x * 0.18, 55), 3.5, lumen_orb_color)
+	draw_circle(Vector2(s.x * 0.52, 38), 2.5, lumen_orb_color)
+	draw_circle(Vector2(s.x * 0.82, 65), 4.0, lumen_orb_color)
+
+	# Ground / Solo musgoso
 	var ground_y := s.y - 42.0
-	draw_rect(Rect2(0, ground_y, s.x, 42), Color("141816"), true)
-	for x in range(0, int(s.x), 36):
-		draw_line(Vector2(x, ground_y + 10), Vector2(x + 14, ground_y + 6), Color("202a24"), 2.0)
+	draw_rect(Rect2(0, ground_y, s.x, 42), Color("101814"), true)
+	draw_line(Vector2(0, ground_y), Vector2(s.x, ground_y), Color("2b4235"), 2.0)
+	for x in range(0, int(s.x), 28):
+		draw_line(Vector2(x, ground_y + 8), Vector2(x + 12, ground_y + 4), Color("1e3025"), 2.0)
 
-	# Hero placeholder (substituído por sprites reais nos marcos seguintes)
+	# Hero: Bastião (Guardião com espada e escudo)
 	var hero_x := s.x * 0.25
 	var hero_y := ground_y - 42.0
-	var hero_color := Color("4db8ff").lerp(Color.WHITE, hero_attack_flash * 0.70)
-	draw_circle(Vector2(hero_x, hero_y - 30), 18, hero_color)
-	draw_rect(Rect2(hero_x - 16, hero_y - 12, 32, 42), hero_color, true)
-	draw_line(Vector2(hero_x + 14, hero_y - 3), Vector2(hero_x + 38, hero_y - 24), Color("e0e4ec"), 5.0)
+	var hero_color := Color("4dabf7").lerp(Color.WHITE, hero_attack_flash * 0.70)
+	var shield_color := Color("339af0").lerp(Color.WHITE, hero_attack_flash * 0.50)
+	# Corpo e Elmo
+	draw_circle(Vector2(hero_x, hero_y - 30), 16, hero_color)
+	draw_rect(Rect2(hero_x - 14, hero_y - 14, 28, 42), hero_color, true)
+	# Escudo frontal de Bastião
+	draw_rect(Rect2(hero_x + 8, hero_y - 8, 12, 32), shield_color, true)
+	# Espada
+	draw_line(Vector2(hero_x + 16, hero_y - 2), Vector2(hero_x + 36, hero_y - 22), Color("e9ecef"), 4.0)
 
 	# Inimigo
 	var enemy_x := s.x * 0.73

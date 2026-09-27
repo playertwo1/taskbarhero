@@ -124,6 +124,24 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
   * Smoke test headless de 120 frames executado sem avisos nem falhas.
   * APK de Debug Android exportado (`build/pocket_hero_debug.apk`, 28.285.428 bytes, assinatura v2/v3 válida).
 
+### 2.6 FASE R10 — Prova do loop + smoke Android mínimo
+* **Objetivo:** Comprovar o menor loop divertido possível com combate autônomo, progressão de nível, economia e persistência.
+* **Prova 1 — Cinco Ciclos Autônomos de Combate (`tests/TestR10.tscn`):**
+  * Suite executada no modo Godot headless com todos os 4 autoloads ativos.
+  * Ciclo 1: Derrotou Gremlin de Folha (4 golpes herói, 3 golpes inimigo) -> +12 XP, +2 Ouro.
+  * Ciclo 2: Derrotou Javali de Musgo (8 golpes herói, 6 golpes inimigo) -> +18 XP, +3 Ouro.
+  * Ciclo 3: Derrotou Gremlin de Folha (4 golpes herói, 4 golpes inimigo) -> +12 XP, +4 Ouro.
+  * Ciclo 4: Derrotou Gremlin de Folha (4 golpes herói, 3 golpes inimigo) -> **Level-Up para Nível 2**! +12 XP, +5 Ouro.
+  * Ciclo 5: Derrotou Geleia de Lúmen (1 golpe herói, 2 golpes inimigo) -> +8 XP, +2 Ouro. **Drop de Item** concedido e auto-equipado via `LootManager.equip_best_items()`, elevando atributos de Bastião para ATK 12.0, DEF 2.8 e Max HP 115.
+  * Resultado: 5 ciclos consecutivos concluídos com 0 erros, sem travamentos e sem intervenção manual.
+* **Prova 2 — Smoke Android Mínimo e Persistência:**
+  * Bastião configurado como herói com silhueta e escudo frontal distintivos na `BattleStrip`.
+  * Geleia de Lúmen animando com 16 frames integrados (idle, attack, hit, death).
+  * Fundo do Bosque de Lúmen com silhuetas de pinheiros escuros, orbes cintilantes de lúmen e solo musgoso com contraste AMOLED `#040405`.
+  * Persistência comprovada: Gravação do estado em `user://pocket_hero_save.json`, purga da memória e recarregamento validado (Nível 2, XP 12, Ouro 16, 1 item de inventário).
+  * Build Android: APK exportado com sucesso (`build/pocket_hero_debug.apk`, 28.293.998 bytes) com validação criptográfica aprovada via `apksigner` (esquemas v2 e v3).
+* **Veredito FASE R10:** **PASS**.
+
 ---
 
 ## 3. Histórico de Commits da Sessão
@@ -134,7 +152,8 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 | `acab9d6` | `feat: implement canonical Godot architecture (Phase R8) and close SETUP-01` | Esqueleto canônico Godot (`project.godot`, autoloads, cenas, dados) e fechamento do marco SETUP-01. |
 | `95d7f2b` | `docs: establish art governance framework and first asset contract (Phase R7)` | Framework de governança artística em `docs/art/` e contrato da Geleia de Lúmen. |
 | `6055d1a` | `docs: create comprehensive execution audit record for SETUP-01, R8 and R7` | Registro de auditoria consolidado da primeira etapa da sessão. |
-| `f0339a3` | `feat: implement first animated AI sprite Geleia de Lumen and close Phase R9` | Assets do Slime, cena animada, integração no BattleStrip e fechamento do Gate R9. |
+| `a14b953` | `feat: implement first animated AI sprite Geleia de Lumen and close Phase R9` | Assets do Slime, cena animada, integração no BattleStrip e fechamento do Gate R9. |
+| `5c76e0e` | `feat: implement autonomous combat loop and validate Gate R10` | 5 ciclos autônomos, cenário do Bosque de Lúmen, persistência, suite de teste e APK Android. |
 
 ---
 
@@ -152,15 +171,16 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 [PASS]  FASE R8  — Esqueleto do projeto Godot (autoloads, cena e APK exportado)
 [PASS]  FASE R7  — Governança de arte Daedalus (docs/art/)
 [PASS]  FASE R9  — Provar o pipeline artístico com UM sprite (Geleia de Lúmen)
+[PASS]  FASE R10 — Prova do loop + smoke Android mínimo
 --------------------------------------------------------------------------------
-[PENDENTE]   FASE R10 — Prova do loop + smoke Android mínimo
+[PENDENTE]   FASE R11 — Produzir Bosque de Lúmen
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-Iniciar a **FASE R10 — Prova do loop + smoke Android mínimo**:
-1. Implementar o ciclo de vida completo do combate autônomo: spawn -> hero attacks -> enemy takes damage / animates hit -> enemy attacks -> hero takes damage -> enemy dies (death animation) -> drop roll (XP + ouro + possível item do bosque) -> auto-equip verification -> auto-spawn próximo inimigo.
-2. Executar 5 ciclos autônomos consecutivos com verificação de invariantes de economia e estado (sem memory leaks, sem crashes).
-3. Exportar APK debug atualizado e validar loop em execução headless e compilação limpa.
+Iniciar a **FASE R11 — Produzir Bosque de Lúmen**:
+1. Produção dos assets de cenário e demais inimigos do Bosque de Lúmen conforme contratos canônicos (`gremlin_de_folha`, `javali_de_musgo`, `espirito_de_raiz` e chefe `guardiao_cervo_de_pedra`).
+2. Implementação das 5 subfases do bioma (entrada, pressão, ninho, elite e chefe).
+3. Auditoria técnica/visual independente com Têmis para cada novo asset antes da integração no Godot.

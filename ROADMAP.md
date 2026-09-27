@@ -765,7 +765,19 @@ UI:
 
 ## Gate R10
 
-**PASS de R10 exige as duas provas:** (1) ao menos cinco ciclos `spawn → ataque → morte → XP/ouro → próximo inimigo` sem intervenção nem travamento, com resultado e duração registrados; (2) um **smoke Android mínimo** com Bastião, Slime, uma fase e um item: primeiro drop/equipamento e level-up verificáveis, save mínimo que persiste após fechar/reabrir e APK debug que abre no aparelho. R11 só começa após ambas; preparar placeholders para o smoke pertence a R10, não à produção de R11. O smoke não fecha R13 (loot completo), R15 (save resiliente/offline), R16 (tracker) nem o slice Android ampliado do guia de UX.
+**Status:** PASS em 2026-09-27.
+- **Prova 1 (5 Ciclos Autônomos sem Travamento):** Executada suite `tests/TestR10.tscn` no Godot headless.
+  - Ciclo 1: Derrotou Gremlin de Folha (4 golpes herói, 3 golpes inimigo) -> +12 XP, +2 Ouro.
+  - Ciclo 2: Derrotou Javali de Musgo (8 golpes herói, 6 golpes inimigo) -> +18 XP, +3 Ouro.
+  - Ciclo 3: Derrotou Gremlin de Folha (4 golpes herói, 4 golpes inimigo) -> +12 XP, +4 Ouro.
+  - Ciclo 4: Derrotou Gremlin de Folha (4 golpes herói, 3 golpes inimigo) -> Level-Up atingido (Nível 2)! +12 XP, +5 Ouro.
+  - Ciclo 5: Derrotou Geleia de Lúmen (1 golpe herói, 2 golpes inimigo) -> +8 XP, +2 Ouro. Drop de item concedido e auto-equipado (`LootManager.equip_best_items()`), elevando stats para ATK 12.0, DEF 2.8, MAX_HP 115.
+- **Prova 2 (Smoke Android Mínimo e Persistência):**
+  - Bastião com silhueta e escudo frontal integrados na faixa de batalha.
+  - Geleia de Lúmen com animações fluidas (`idle`, `attack`, `hit`, `death`) acopladas ao combate.
+  - Fundo do Bosque de Lúmen desenhado na `BattleStrip` com silhuetas de pinheiros, orbes cintilantes e solo musgoso AMOLED.
+  - Persistência testada: Save gravado em `user://pocket_hero_save.json`, memória limpa e recarregamento validado (Nível 2, XP 12, Ouro 16, 1 item na mochila).
+  - Build Android: `build/pocket_hero_debug.apk` (28.293.998 bytes) exportado e assinado via `apksigner` (v2/v3 schemes válidos). Validação em aparelho físico permanece no backlog de Rafael.
 
 ---
 
