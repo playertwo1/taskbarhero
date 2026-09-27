@@ -340,18 +340,24 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
       - Arma (Cajado de Lúmen): +27.0 ATK party, TTK/golpes reduzidos em 63.6%
       - Armadura (Armadura do Guardião): +6.0 DEF, +30 Max HP, dano recebido reduzido em 75.0%
       - Amuleto (Coração da Floresta): Lifesteal ativo com cura durante o ataque
+[PASS]  FASE R14 — Progressão de fases (HOMOLOGADO)
+  [x] 5 fases canônicas do Bosque de Lúmen modeladas em `data/stages/stages.json`
+  [x] Progressão normal da Fase 1 até a Fase 5 e invocação do Boss comprovadas (`tests/TestR14.tscn`)
+  [x] Elite Lobo Alfa de Lúmen no Covil do Alfa (Fase 4)
+  [x] Chefe Guardião-Cervo de Pedra no Santuário do Guardião (Fase 5)
+  [x] Mecânica de recuo gracioso e não punitivo após derrota da party
 --------------------------------------------------------------------------------
-[PRÓXIMA] FASE R14 — Progressão de fases
+[PRÓXIMA] FASE R15 — Save e progresso offline
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-Avançar para a **FASE R14 — Progressão de fases**:
-1. Implementar a progressão em 5 fases do Bosque de Lúmen: (1. Entrada, 2. Pressão, 3. Ninho/Farm, 4. Elite Lobo Alfa, 5. Chefe Guardião-Cervo de Pedra).
-2. Definir regras de transição de fase, critérios de avanço e recuo ao sofrer derrota da party.
-3. Testar loop de progressão de campanha contínua do bioma e validar o Gate R14.
+Avançar para a **FASE R15 — Save e progresso offline**:
+1. Implementar cálculo de período ausente (offline progress) com limite configurável inicial de 8h.
+2. Calcular rendimento simulado de XP e ouro acumulados sem inflacionar inventário.
+3. Projetar popup de boas-vindas com o resumo de recompensas ao retornar ao jogo.
 
 
 

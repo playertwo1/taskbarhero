@@ -1006,9 +1006,18 @@ Cada fase define:
 - boss;
 - background config.
 
-## Gate R14
+## Gate R14 — [PASS]
 
-PASS quando o jogador começa na fase 1 e chega ao boss seguindo progressão normal.
+PASS:
+- [x] Campanha em 5 fases do Bosque de Lúmen modelada e ativa (`data/stages/stages.json`);
+- [x] Jogador começa na Fase 1 (Entrada do Bosque) e avança progressivamente por vitórias normais:
+  - Fase 1 (Entrada do Bosque, 4 kills) -> avança para Fase 2;
+  - Fase 2 (Clareira da Pressão, 5 kills) -> avança para Fase 3;
+  - Fase 3 (Ninho Silvestre, 5 kills) -> avança para Fase 4;
+  - Fase 4 (Covil do Alfa, 4 kills) -> engatilha e derrota o Elite Lobo Alfa de Lúmen -> avança para Fase 5;
+  - Fase 5 (Santuário do Guardião, 3 kills) -> engatilha e combate o Chefe Supremo Guardião-Cervo de Pedra!
+- [x] Mecânica de recuo não punitiva validada: derrota da party recua 1 fase com regeneração de campo;
+- [x] Suíte automatizada `tests/TestR14.tscn` executada com 100% PASS.
 
 ---
 

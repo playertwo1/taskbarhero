@@ -102,11 +102,17 @@ var enemy_spawn_time_msec: int = 0
 
 var is_paused: bool = false
 var rng := RandomNumberGenerator.new()
+var queued_boss_id: String = ""
 
 func _ready() -> void:
 	rng.randomize()
 	load_enemies_database()
 	_init_party_stats()
+	ProgressionManager.boss_spawn_ready.connect(_on_boss_spawn_ready)
+
+func _on_boss_spawn_ready(boss_id: String) -> void:
+	queued_boss_id = boss_id
+	battle_log.emit("O líder do território se aproxima!")
 
 func _init_party_stats() -> void:
 	for hid in party.keys():
@@ -165,20 +171,55 @@ func _process(delta: float) -> void:
 func spawn_next_enemy() -> void:
 	if enemies_database.is_empty():
 		return
-	var total_w := 0
-	for e in enemies_database:
-		total_w += int(e.get("weight", 10))
-	var roll := rng.randi_range(1, total_w)
-	var curr := 0
-	for e in enemies_database:
-		curr += int(e.get("weight", 10))
-		if roll <= curr:
-			active_enemy = e.duplicate(true)
-			active_enemy_hp = float(active_enemy.get("max_hp", 30))
-			enemy_spawn_time_msec = Time.get_ticks_msec()
-			battle_started.emit(active_enemy)
-			battle_log.emit("Um %s apareceu!" % active_enemy.get("name", "Inimigo"))
-			break
+
+	var chosen_enemy: Dictionary = {}
+
+	if queued_boss_id != "":
+		for e in enemies_database:
+			if e.get("id", "") == queued_boss_id:
+				chosen_enemy = e.duplicate(true)
+				break
+		queued_boss_id = ""
+
+	if chosen_enemy.is_empty():
+		var st := ProgressionManager.get_current_stage_data()
+		var pool: Array = st.get("enemy_pool", [])
+		if not pool.is_empty():
+			var total_pool_w := 0
+			for entry in pool:
+				total_pool_w += int(entry.get("weight", 10))
+			var roll := rng.randi_range(1, total_pool_w)
+			var cur := 0
+			var target_id := ""
+			for entry in pool:
+				cur += int(entry.get("weight", 10))
+				if roll <= cur:
+					target_id = entry.get("id", "")
+					break
+			for e in enemies_database:
+				if e.get("id", "") == target_id:
+					chosen_enemy = e.duplicate(true)
+					break
+
+	# Fallback para roll global caso nada tenha sido selecionado
+	if chosen_enemy.is_empty():
+		var total_w := 0
+		for e in enemies_database:
+			total_w += int(e.get("weight", 10))
+		var roll := rng.randi_range(1, total_w)
+		var curr := 0
+		for e in enemies_database:
+			curr += int(e.get("weight", 10))
+			if roll <= curr:
+				chosen_enemy = e.duplicate(true)
+				break
+
+	if not chosen_enemy.is_empty():
+		active_enemy = chosen_enemy
+		active_enemy_hp = float(active_enemy.get("max_hp", 30))
+		enemy_spawn_time_msec = Time.get_ticks_msec()
+		battle_started.emit(active_enemy)
+		battle_log.emit("Um %s apareceu!" % active_enemy.get("name", "Inimigo"))
 
 func _hero_attack_from(hero_id: String) -> void:
 	if active_enemy.is_empty():
@@ -280,6 +321,9 @@ func _on_enemy_defeated() -> void:
 	var ttk := float(Time.get_ticks_msec() - enemy_spawn_time_msec) / 1000.0
 	Telemetry.record_kill(defeated_enemy.get("id", ""), ttk, xp_reward, gold_reward)
 
+	var is_boss: bool = defeated_enemy.get("boss", false) or defeated_enemy.get("elite", false)
+	ProgressionManager.record_kill(is_boss)
+
 	battle_ended.emit(true, defeated_enemy)
 	var msg := "%s derrotado! +%d XP, +%d Ouro" % [defeated_enemy.get("name", "Inimigo"), xp_reward, gold_reward]
 	if dropped_item != null:
@@ -290,6 +334,8 @@ func _on_hero_defeated() -> void:
 	var enemy_that_killed := active_enemy
 	active_enemy = {}
 	respawn_cd = 2.0
+	queued_boss_id = ""
+	ProgressionManager.retreat_stage()
 
 	# Restaura a party a 50% de HP para recuo
 	for hid in party.keys():

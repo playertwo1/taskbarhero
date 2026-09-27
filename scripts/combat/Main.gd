@@ -28,6 +28,8 @@ func _ready() -> void:
 	
 	ProgressionManager.level_up.connect(_on_level_up)
 	ProgressionManager.gold_changed.connect(_on_gold_changed)
+	ProgressionManager.stage_changed.connect(_on_stage_changed)
+	ProgressionManager.stage_progress_updated.connect(_on_stage_progress_updated)
 	
 	LootManager.item_dropped.connect(_on_item_dropped)
 	LootManager.inventory_updated.connect(_on_inventory_updated)
@@ -68,10 +70,17 @@ func _update_ui() -> void:
 		flecha_hp
 	]
 	gold_label.text = "Ouro: %d" % ProgressionManager.gold
-	progress_label.text = "XP: %d/%d  •  Fase %d (Bosque de Lúmen)" % [
+	
+	var st := ProgressionManager.get_current_stage_data()
+	var stage_name: String = st.get("name", "Bosque de Lúmen")
+	var target_k: int = int(st.get("kills_to_advance", 5))
+	progress_label.text = "XP: %d/%d • Fase %d: %s [%d/%d]" % [
 		ProgressionManager.xp,
 		ProgressionManager.xp_next,
-		ProgressionManager.current_stage
+		ProgressionManager.current_stage,
+		stage_name,
+		ProgressionManager.stage_kills,
+		target_k
 	]
 	
 	var eq := LootManager.equipment
@@ -145,4 +154,11 @@ func _on_equip_pressed() -> void:
 		status_label.text = "Equipados %d item(s) de maior poder!" % count
 	else:
 		status_label.text = "Nenhum equipamento melhor disponível."
+	_update_ui()
+
+func _on_stage_changed(stage_index: int, stage_name: String) -> void:
+	status_label.text = "Avançou para Fase %d: %s!" % [stage_index, stage_name]
+	_update_ui()
+
+func _on_stage_progress_updated(_kills: int, _target: int) -> void:
 	_update_ui()
