@@ -12,8 +12,10 @@
 
 # Godot e builds locais
 .godot/
+build/
 *.apk
 *.aab
+*.idsig
 
 # Logs e arquivos de sistema
 *.log

@@ -1,0 +1,32 @@
+; Engine configuration file.
+; Pocket Hero — Godot 4.7 Standard (MVP Android)
+config_version=5
+
+[application]
+
+config/name="Pocket Hero"
+run/main_scene="res://scenes/main/Main.tscn"
+config/features=PackedStringArray("4.7", "GL Compatibility")
+
+[autoload]
+
+SaveManager="*res://scripts/save/SaveManager.gd"
+ProgressionManager="*res://scripts/progression/ProgressionManager.gd"
+LootManager="*res://scripts/loot/LootManager.gd"
+GameManager="*res://scripts/combat/GameManager.gd"
+
+[display]
+
+window/size/viewport_width=432
+window/size/viewport_height=960
+window/size/window_width_override=432
+window/size/window_height_override=960
+window/stretch/mode="canvas_items"
+window/handheld/orientation=1
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.015, 0.015, 0.02, 1)

@@ -1248,21 +1248,21 @@ Checklist de verificação, não declaração de que tudo está pendente: anotar
 
 Checklist:
 
-- [ ] Git instalado.
-- [ ] Node/npm/npx instalados.
-- [ ] Go >= 1.23.
-- [ ] JDK 17.
-- [ ] Godot 4.7.2 Standard.
-- [ ] export templates.
-- [ ] Android Studio.
-- [ ] Android SDK/NDK/CMake exigidos.
+- [x] Git instalado — v2.55.0.
+- [x] Node/npm/npx instalados — Node v22.23.2, npm/npx 10.9.8.
+- [x] Go >= 1.23 — go1.27.1 windows/amd64.
+- [x] JDK 17 — Temurin-17.0.20.1+1.
+- [x] Godot 4.7.2 Standard — v4.7.2.stable.official.ed1daf0bf.
+- [x] export templates — Godot 4.7.2.stable Android/Windows/Linux/Web.
+- [x] Android Studio — instalado.
+- [x] Android SDK/NDK/CMake exigidos — SDK platform 36, CMake 3.10.2, NDK 28.1.13356709.
 - [ ] adb reconhece S25 Ultra (adiado por Rafael em 2026-09-27).
-- [ ] Aseprite 1.3.10+.
+- [ ] Aseprite 1.3.10+ (Aseprite 1.3.7 presente e operacional via MCP; alvo 1.3.10+ registrado como divergência).
 - [x] Pixelorama (opcional, não bloqueia SETUP-01) — v1.2.3 (64-bit portátil) baixado e verificado em 2026-09-27.
-- [ ] pixel-mcp compilado.
-- [ ] pixel-mcp --health PASS.
-- [ ] Hermes enxerga MCP.
-- [ ] PNG de teste criado pela IA.
-- [ ] projeto Godot exporta APK vazio.
+- [x] pixel-mcp compilado — binário operacional em hermes/mcp/pixel-mcp.
+- [x] pixel-mcp --health PASS — aprovado em 2026-09-27.
+- [x] Hermes enxerga MCP — integrado e verificado.
+- [x] PNG de teste criado pela IA — validado via MCP/Aseprite (canvas 32x32, 14 pixels desenhados e exportados).
+- [x] projeto Godot exporta APK vazio — build/pocket_hero_debug.apk (28.2 MB) exportado e verificado com apksigner (v2/v3) em 2026-09-27.
 
 Quando SETUP-01 estiver PASS, iniciar ART-01: Slime de Lúmen.
