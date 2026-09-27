@@ -29,6 +29,9 @@ extends Control
 var current_tracker_view: String = "session"
 
 func _ready() -> void:
+	_adjust_safe_area()
+	get_tree().root.size_changed.connect(_adjust_safe_area)
+	
 	var offline_data := GameManager.load_full_state()
 	
 	offline_button.pressed.connect(_on_offline_collect_pressed)
@@ -245,3 +248,14 @@ func _update_tracker_display() -> void:
 		drops_h, int(data.get("drops", 0)),
 		pct_rare, int(data.get("rare_plus_drops", 0))
 	]
+
+func _adjust_safe_area() -> void:
+	if OS.has_feature("mobile") or OS.has_feature("android"):
+		var safe_rect := DisplayServer.get_display_safe_area()
+		var screen_size := DisplayServer.screen_get_size()
+		if screen_size.y > 0 and safe_rect.size.y > 0:
+			var top_margin := maxi(24, int(safe_rect.position.y))
+			var bottom_margin := maxi(18, int(screen_size.y - (safe_rect.position.y + safe_rect.size.y)))
+			var root_box: VBoxContainer = $Root
+			root_box.offset_top = top_margin
+			root_box.offset_bottom = -bottom_margin

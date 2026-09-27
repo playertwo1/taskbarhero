@@ -6,6 +6,8 @@ config_version=5
 
 config/name="Pocket Hero"
 run/main_scene="res://scenes/main/Main.tscn"
+run/max_fps=60
+config/icon="res://icon.png"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
@@ -27,6 +29,7 @@ window/size/viewport_height=960
 window/size/window_width_override=432
 window/size/window_height_override=960
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/handheld/orientation=1
 
 [rendering]

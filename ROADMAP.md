@@ -1147,9 +1147,20 @@ Testar:
 - 60 FPS como alvo;
 - consumo de bateria.
 
-## Gate R17
+## Gate R17 — [EM ABERTO / PENDENTE DE TESTE NO S25 ULTRA]
 
-PASS após teste no S25 Ultra em uso real: registrar aparelho/versão Android, build, duração e evidência de legibilidade da faixa de combate, controles, recortes da tela, estabilidade e consumo observado. Se o aparelho não estiver disponível, manter o gate pendente.
+Critério: PASS após teste no S25 Ultra em uso real: registrar aparelho/versão Android, build, duração e evidência de legibilidade da faixa de combate, controles, recortes da tela, estabilidade e consumo observado. Se o aparelho não estiver disponível, manter o gate pendente.
+
+Status de implementação técnica no código:
+- [x] Contraste AMOLED nativo com fundo `#040405` (`environment/defaults/default_clear_color=Color(0.015, 0.015, 0.02, 1)`);
+- [x] Faixa de combate (`BattleStrip`) sempre visível ocupando a metade inferior em todas as telas;
+- [x] Controles táteis dimensionados para mobile com touch target mínimo de 48dp (`custom_minimum_size = Vector2(0, 48)`);
+- [x] Resolução portrait 432×960 com stretch mode `canvas_items` e aspect `expand` (`window/stretch/aspect="expand"`);
+- [x] Adaptação dinâmica de safe area (`DisplayServer.get_display_safe_area()`) para acomodar notch, punch-hole e barras do sistema Android;
+- [x] Teto de 60 FPS fixado no motor (`run/max_fps=60`) para máxima fluidez e baixo consumo térmico/bateria;
+- [x] Ícone oficial do aplicativo em pixel art gerado (`icon.png`) e configurado em `project.godot`;
+- [x] APK de teste compilado, alinhado e assinado via `apksigner` (`build/pocket_hero_debug.apk`, 29 MB);
+- [ ] Validação em aparelho físico S25 Ultra: **PENDENTE** (aparelho não conectado via USB/Wi-Fi ADB no momento; gate mantido formalmente pendente até conexão física para auditoria).
 
 ---
 

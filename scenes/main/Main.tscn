@@ -156,12 +156,14 @@ layout_mode = 2
 theme_override_constants/separation = 8
 
 [node name="EquipButton" type="Button" parent="Root/Content/ActionRow"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleButton")
 text = "Equipar Melhores"
 
 [node name="TrackerButton" type="Button" parent="Root/Content/ActionRow"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleButton")
@@ -216,6 +218,7 @@ text = "+ XP\n+ Ouro\n+ Itens\n+ Inimigos derrotados"
 horizontal_alignment = 1
 
 [node name="CollectButton" type="Button" parent="OfflineModal/Center/Card/VBox"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleButton")
 text = "Coletar Recompensas"
@@ -254,24 +257,28 @@ layout_mode = 2
 theme_override_constants/separation = 4
 
 [node name="BtnSession" type="Button" parent="TrackerModal/Center/Card/VBox/Tabs"]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 11
 text = "Sessão"
 
 [node name="Btn2Hours" type="Button" parent="TrackerModal/Center/Card/VBox/Tabs"]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 11
 text = "Últimas 2h"
 
 [node name="BtnBestXp" type="Button" parent="TrackerModal/Center/Card/VBox/Tabs"]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 11
 text = "Melhor XP"
 
 [node name="BtnBestGold" type="Button" parent="TrackerModal/Center/Card/VBox/Tabs"]
+custom_minimum_size = Vector2(0, 38)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 11
@@ -295,6 +302,7 @@ theme_override_font_sizes/font_size = 13
 text = "• XP/h: 0.0\n• Ouro/h: 0.0\n• Kills/h: 0.0\n• TTK Médio: 0.0s\n• Mortes: 0\n• Drops/h: 0.0\n• % Raro+: 0.0%"
 
 [node name="CloseButton" type="Button" parent="TrackerModal/Center/Card/VBox"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleButton")
 text = "Fechar"

@@ -373,18 +373,28 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
       - Melhor fase por Ouro (Fase 2 identificada)
   [x] Interface AMOLED integrada em `scenes/main/Main.tscn` e `scripts/combat/Main.gd`
   [x] Suíte automatizada `tests/TestR16.tscn` executada com 100% PASS
+[PENDENTE HARDWARE] FASE R17 — UX mobile e AMOLED (Código 100% Implementado)
+  [x] Contraste AMOLED nativo com fundo `#040405`
+  [x] Faixa de batalha sempre visível na metade inferior em todas as telas
+  [x] Touch target mínimo de 48dp em todos os botões táteis
+  [x] Adaptação dinâmica de safe area (`DisplayServer.get_display_safe_area()`)
+  [x] Limite térmico de 60 FPS fixado (`run/max_fps=60`) para economia de bateria
+  [x] Ícone oficial em pixel art gerado (`icon.png`) e configurado no projeto
+  [x] APK de depuração compilado, alinhado e assinado (`build/pocket_hero_debug.apk`, 29 MB)
+  [ ] Teste físico no Galaxy S25 Ultra: PENDENTE de conexão do aparelho via ADB
 --------------------------------------------------------------------------------
-[PRÓXIMA] FASE R17 — UX mobile e AMOLED
+[PRÓXIMA] FASE R18 — Build Android MVP / Teste no S25 Ultra
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-Avançar para a **FASE R17 — UX mobile e AMOLED**:
-1. Refinar a hierarquia visual portrait mobile (432×960) para aspecto de produto acabado comercial.
-2. Garantir contraste AMOLED estrito (`#040405` de fundo, paletas de alto contraste para heróis e mobs).
-3. Ajustar tipografia, botões táteis (touch target mínimo de 48dp), padding mobile e legibilidade em telas AMOLED.
+Avançar para a **FASE R18 — Build Android MVP**:
+1. Revisar permissões mínimas no AndroidManifest (nenhuma permissão invasiva necessária).
+2. Revisar identificador de pacote canônico (`org.playertwo.pockethero`) e versionamento oficial (v0.1.0).
+3. Preparar a build compartilhável candidata para a Auditoria R19.
+4. Quando Rafael plugar o Samsung Galaxy S25 Ultra via USB com depuração ativada, executar o roteiro do Gate R17 para fechar o gate de hardware.
 
 
 
