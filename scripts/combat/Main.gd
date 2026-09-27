@@ -76,9 +76,12 @@ func _on_battle_started(enemy: Dictionary) -> void:
 		int(enemy.get("attack", 4)),
 		int(enemy.get("defense", 0))
 	]
+	battle_strip.set_enemy(enemy)
 	_update_ui()
 
-func _on_battle_ended(_victory: bool, _enemy: Dictionary) -> void:
+func _on_battle_ended(victory: bool, _enemy: Dictionary) -> void:
+	if victory:
+		battle_strip.play_enemy_death()
 	_update_ui()
 
 func _on_hero_damaged(_dmg: float, _curr: float, _max: float) -> void:

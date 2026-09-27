@@ -22,7 +22,10 @@ func load_game() -> Dictionary:
 	if file == null:
 		push_warning("SaveManager: Não foi possível abrir o arquivo de save para leitura: %s" % error_string(FileAccess.get_open_error()))
 		return {}
-	var parsed = JSON.parse_string(file.get_as_text())
+	var text := file.get_as_text().strip_edges()
+	if text.is_empty():
+		return {}
+	var parsed = JSON.parse_string(text)
 	if parsed is Dictionary:
 		game_loaded.emit(parsed)
 		return parsed

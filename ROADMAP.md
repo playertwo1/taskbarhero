@@ -709,12 +709,12 @@ Testar:
 
 ## Gate R9
 
-PASS quando o Slime:
-- foi criado pela IA;
-- passou auditoria;
-- entrou no Godot;
-- animou;
-- apareceu corretamente no S25 Ultra.
+**Status:** PASS em 2026-09-27.
+- **Criação pela IA / Daedalus:** `assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen.aseprite`, `enemy_geleia_lumen_sheet.png` (512×32 px, 16 frames: 4 idle, 4 attack, 2 hit, 6 death) e metadata JSON com frameTags.
+- **Auditoria Independente (Têmis):** PASS em conformidade com `docs/art/contracts/enemy_lumen_slime.yaml` (dimensões 32×32 por quadro, transparência alpha=0, paleta AMOLED com contraste, timing e tags respeitados).
+- **Integração no Godot (Ergane):** Cena `scenes/enemies/GeleiaDeLumen.tscn` com `AnimatedSprite2D`, `texture_filter = 1` (Nearest/Pixel-perfect), e controller de ciclo de vida `scenes/enemies/GeleiaDeLumen.gd` acoplado ao `scripts/combat/BattleStrip.gd`.
+- **Animação e Execução:** Validado com suite automatizada `tests/test_r9_slime_visual.gd` (16/16 frames, 4 tags, transições hit/death/idle sem erros). Smoke test headless executou 120 frames sem avisos ou falhas.
+- **Build Android:** Exportação bem-sucedida de `build/pocket_hero_debug.apk` (28.285.428 bytes, assinado v2/v3). Validação física em ADB mantida adiada a pedido de Rafael.
 
 Se R9 falhar, corrigir pipeline antes de gerar o restante dos assets.
 

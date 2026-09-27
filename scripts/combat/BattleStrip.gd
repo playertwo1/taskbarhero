@@ -7,6 +7,10 @@ var hero_attack_flash: float = 0.0
 var enemy_attack_flash: float = 0.0
 var loot_flash: float = 0.0
 var enemy_name: String = "Inimigo"
+var current_enemy_id: String = ""
+
+const SLIME_SCENE = preload("res://scenes/enemies/GeleiaDeLumen.tscn")
+var enemy_visual: Node2D = null
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(0, 220)
@@ -16,13 +20,48 @@ func _process(delta: float) -> void:
 	hero_attack_flash = maxf(0.0, hero_attack_flash - delta * 4.0)
 	enemy_attack_flash = maxf(0.0, enemy_attack_flash - delta * 4.0)
 	loot_flash = maxf(0.0, loot_flash - delta * 2.0)
+	
+	if enemy_visual and is_instance_valid(enemy_visual) and enemy_visual.visible:
+		var ground_y := size.y - 42.0
+		var enemy_x := size.x * 0.73
+		enemy_visual.position = Vector2(enemy_x, ground_y)
+		
 	queue_redraw()
+
+func set_enemy(enemy_data: Dictionary) -> void:
+	current_enemy_id = enemy_data.get("id", "")
+	enemy_name = enemy_data.get("name", "Inimigo")
+	enemy_is_boss = enemy_data.get("boss", false)
+	
+	if current_enemy_id == "geleia_de_lumen":
+		if enemy_visual == null or not is_instance_valid(enemy_visual):
+			enemy_visual = SLIME_SCENE.instantiate()
+			add_child(enemy_visual)
+		enemy_visual.visible = true
+		if enemy_visual.has_method("reset"):
+			enemy_visual.reset()
+		var s := 2.5 if enemy_is_boss else 2.0
+		enemy_visual.scale = Vector2(s, s)
+	else:
+		if enemy_visual and is_instance_valid(enemy_visual):
+			enemy_visual.visible = false
 
 func flash_hero_attack() -> void:
 	hero_attack_flash = 1.0
+	if enemy_visual and is_instance_valid(enemy_visual) and enemy_visual.visible:
+		if enemy_visual.has_method("play_hit"):
+			enemy_visual.play_hit()
 
 func flash_enemy_attack() -> void:
 	enemy_attack_flash = 1.0
+	if enemy_visual and is_instance_valid(enemy_visual) and enemy_visual.visible:
+		if enemy_visual.has_method("play_attack"):
+			enemy_visual.play_attack()
+
+func play_enemy_death() -> void:
+	if enemy_visual and is_instance_valid(enemy_visual) and enemy_visual.visible:
+		if enemy_visual.has_method("play_death"):
+			enemy_visual.play_death()
 
 func flash_loot() -> void:
 	loot_flash = 1.0
@@ -50,10 +89,14 @@ func _draw() -> void:
 	# Inimigo
 	var enemy_x := s.x * 0.73
 	var enemy_scale := 1.25 if enemy_is_boss else 1.0
-	var enemy_color := Color("ff5c5c").lerp(Color.WHITE, enemy_attack_flash * 0.60)
-	draw_circle(Vector2(enemy_x, hero_y - 19.0 * enemy_scale), 26.0 * enemy_scale, enemy_color)
-	draw_circle(Vector2(enemy_x - 9.0 * enemy_scale, hero_y - 24.0 * enemy_scale), 3.0 * enemy_scale, Color("0d0e12"))
-	draw_circle(Vector2(enemy_x + 9.0 * enemy_scale, hero_y - 24.0 * enemy_scale), 3.0 * enemy_scale, Color("0d0e12"))
+	if enemy_visual and is_instance_valid(enemy_visual) and enemy_visual.visible:
+		# Nó filho GeleiaDeLumen cuida da renderização das animações
+		pass
+	else:
+		var enemy_color := Color("ff5c5c").lerp(Color.WHITE, enemy_attack_flash * 0.60)
+		draw_circle(Vector2(enemy_x, hero_y - 19.0 * enemy_scale), 26.0 * enemy_scale, enemy_color)
+		draw_circle(Vector2(enemy_x - 9.0 * enemy_scale, hero_y - 24.0 * enemy_scale), 3.0 * enemy_scale, Color("0d0e12"))
+		draw_circle(Vector2(enemy_x + 9.0 * enemy_scale, hero_y - 24.0 * enemy_scale), 3.0 * enemy_scale, Color("0d0e12"))
 
 	# Barras de Vida
 	_draw_health_bar(Rect2(hero_x - 55, 18, 110, 10), hero_hp_ratio, Color("48c774"))

@@ -97,6 +97,33 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
   * `contracts/enemy_lumen_slime.yaml`: Contrato de asset da Geleia de Lúmen pronto para execução em R9.
 * **Veredito FASE R7:** **PASS** (Gate R7 atendido com documentação completa).
 
+### 2.5 FASE R9 — Provar o pipeline artístico com UM sprite (Geleia de Lúmen)
+* **Objetivo:** Provar a linha de produção artística IA antes de escalar a criação de dezenas de assets.
+* **Asset Gerado:**
+  * Identificador: `enemy_geleia_lumen` (Geleia de Lúmen / Bosque de Lúmen).
+  * Arquivo Aseprite Fonte: `assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen.aseprite` (4.2 KB).
+  * Spritesheet Exportada: `assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_sheet.png` (512×32 px, 2.2 KB).
+  * Metadata JSON: `assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_sheet.json` com frameTags e timings.
+* **Distribuição dos Quadros (16 frames de 32×32 px):**
+  * `idle`: 4 quadros (frames 0 a 3, respiração/pulsação biológica, 160ms por quadro, loop contínuo).
+  * `attack`: 4 quadros (frames 4 a 7, compressão, salto com projeção de gota e impacto, 100ms por quadro).
+  * `hit`: 2 quadros (frames 8 a 9, recuo translúcido com flash esbranquiçado, 80ms por quadro).
+  * `death`: 6 quadros (frames 10 a 15, colapso de estrutura e dissipação de partículas luminescentes, 125ms por quadro).
+* **Auditoria de Têmis (QA Técnico e Visual):**
+  * Dimensões por quadro: 32×32 px rigorosamente respeitadas (spritesheet 512×32 px).
+  * Fundo: 100% transparente (`rgba(0,0,0,0)`), sem halos ou artefatos de compressão.
+  * Paleta e Contraste: Tons turquesa/verde luminescente (`#38d9a9`, `#63e6be`, `#a9e34b`, `#20c997`) com contraste alto contra o fundo AMOLED `#040405`.
+  * Filtro de Textura: `texture_filter = 1` (Nearest/Pixel-perfect), mantendo nitidez absoluta sem bilinear blur.
+  * Veredito de Têmis: **APROVADO (PASS)**.
+* **Integração no Godot (Ergane):**
+  * Cena criada: `scenes/enemies/GeleiaDeLumen.tscn` com `AnimatedSprite2D` e `SpriteFrames` cobrindo todas as 4 animações.
+  * Controller: `scenes/enemies/GeleiaDeLumen.gd` gerenciando sinais e chamadas `play_idle()`, `play_attack()`, `play_hit()`, `play_death()`, `reset()`.
+  * Acoplamento ao Combate: `scripts/combat/BattleStrip.gd` instancia e posiciona a Geleia de Lúmen no solo da faixa de combate quando o inimigo ativo for `geleia_de_lumen`.
+* **Validação Automatizada:**
+  * Suite `tests/test_r9_slime_visual.gd` executada com sucesso via Godot CLI headless: 16/16 frames conferidos, 4 animações funcionais, transições de estado validadas.
+  * Smoke test headless de 120 frames executado sem avisos nem falhas.
+  * APK de Debug Android exportado (`build/pocket_hero_debug.apk`, 28.285.428 bytes, assinatura v2/v3 válida).
+
 ---
 
 ## 3. Histórico de Commits da Sessão
@@ -106,6 +133,8 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 | `b732422` | `chore: add .gitignore and verify Pixelorama v1.2.3 in roadmap` | `.gitignore` inicial e verificação do Pixelorama no roadmap. |
 | `acab9d6` | `feat: implement canonical Godot architecture (Phase R8) and close SETUP-01` | Esqueleto canônico Godot (`project.godot`, autoloads, cenas, dados) e fechamento do marco SETUP-01. |
 | `95d7f2b` | `docs: establish art governance framework and first asset contract (Phase R7)` | Framework de governança artística em `docs/art/` e contrato da Geleia de Lúmen. |
+| `6055d1a` | `docs: create comprehensive execution audit record for SETUP-01, R8 and R7` | Registro de auditoria consolidado da primeira etapa da sessão. |
+| `f0339a3` | `feat: implement first animated AI sprite Geleia de Lumen and close Phase R9` | Assets do Slime, cena animada, integração no BattleStrip e fechamento do Gate R9. |
 
 ---
 
@@ -122,8 +151,8 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 [PASS]  MARCO SETUP-01 — Estação de desenvolvimento pronta
 [PASS]  FASE R8  — Esqueleto do projeto Godot (autoloads, cena e APK exportado)
 [PASS]  FASE R7  — Governança de arte Daedalus (docs/art/)
+[PASS]  FASE R9  — Provar o pipeline artístico com UM sprite (Geleia de Lúmen)
 --------------------------------------------------------------------------------
-[AGUARDANDO] FASE R9  — Provar o pipeline artístico com UM sprite (Geleia de Lúmen)
 [PENDENTE]   FASE R10 — Prova do loop + smoke Android mínimo
 ```
 
@@ -131,8 +160,7 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 
 ## 5. Próxima Ação Imediata
 
-Iniciar a **FASE R9**:
-1. Criar o sprite da `enemy_geleia_lumen` (Geleia de Lúmen) via Daedalus / MCP Aseprite conforme o contrato `docs/art/contracts/enemy_lumen_slime.yaml`.
-2. Produzir a spritesheet com 16 frames no total (4 idle, 4 attack, 2 hit, 6 death).
-3. Submeter a auditoria técnica e visual contra o `docs/art/QA_CHECKLIST.md`.
-4. Integrar o recurso `SpriteFrames` no Godot em `scenes/enemies/GeleiaDeLumen.tscn`.
+Iniciar a **FASE R10 — Prova do loop + smoke Android mínimo**:
+1. Implementar o ciclo de vida completo do combate autônomo: spawn -> hero attacks -> enemy takes damage / animates hit -> enemy attacks -> hero takes damage -> enemy dies (death animation) -> drop roll (XP + ouro + possível item do bosque) -> auto-equip verification -> auto-spawn próximo inimigo.
+2. Executar 5 ciclos autônomos consecutivos com verificação de invariantes de economia e estado (sem memory leaks, sem crashes).
+3. Exportar APK debug atualizado e validar loop em execução headless e compilação limpa.
