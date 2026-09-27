@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8y1v2k3pocket"]
+[gd_scene load_steps=7 format=3 uid="uid://b8y1v2k3pocket"]
 
 [ext_resource type="Script" path="res://scripts/combat/Main.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/combat/BattleStrip.gd" id="2"]
@@ -29,6 +29,25 @@ content_margin_left = 16.0
 content_margin_top = 12.0
 content_margin_right = 16.0
 content_margin_bottom = 12.0
+
+[sub_resource type="StyleBoxFlat" id="StyleOverlay"]
+bg_color = Color(0.02, 0.03, 0.04, 0.85)
+
+[sub_resource type="StyleBoxFlat" id="StyleOfflineCard"]
+bg_color = Color(0.08, 0.1, 0.13, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.35, 0.45, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -141,3 +160,51 @@ text = "Equipar Melhores Itens"
 layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2")
+
+[node name="OfflineModal" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleOverlay")
+
+[node name="Center" type="CenterContainer" parent="OfflineModal"]
+layout_mode = 2
+
+[node name="Card" type="PanelContainer" parent="OfflineModal/Center"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleOfflineCard")
+
+[node name="VBox" type="VBoxContainer" parent="OfflineModal/Center/Card"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="OfflineModal/Center/Card/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.8, 0.28, 1)
+theme_override_font_sizes/font_size = 20
+text = "Retorno da Party"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="OfflineModal/Center/Card/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.95, 1)
+theme_override_font_sizes/font_size = 15
+text = "Você ficou fora 0m"
+horizontal_alignment = 1
+
+[node name="Rewards" type="Label" parent="OfflineModal/Center/Card/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.78, 0.86, 1)
+theme_override_font_sizes/font_size = 14
+text = "+ XP\n+ Ouro\n+ Itens\n+ Inimigos derrotados"
+horizontal_alignment = 1
+
+[node name="CollectButton" type="Button" parent="OfflineModal/Center/Card/VBox"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleButton")
+text = "Coletar Recompensas"

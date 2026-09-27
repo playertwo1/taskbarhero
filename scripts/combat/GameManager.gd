@@ -424,12 +424,14 @@ func save_full_state() -> void:
 		"loot": LootManager.get_state(),
 		"hero_current_hp": hero_current_hp,
 		"party_hps": party_hps,
-		"formation_slots": formation_slots
+		"formation_slots": formation_slots,
+		"saved_at_unix": int(Time.get_unix_time_from_system())
 	}
 	SaveManager.save_game(full_state)
 
-func load_full_state() -> void:
+func load_full_state() -> Dictionary:
 	var loaded := SaveManager.load_game()
+	var offline_data := {}
 	if not loaded.is_empty():
 		if loaded.has("progression"):
 			ProgressionManager.load_state(loaded["progression"])
@@ -444,4 +446,11 @@ func load_full_state() -> void:
 					party[hid]["current_hp"] = float(hps[hid])
 					party[hid]["is_alive"] = (party[hid]["current_hp"] > 0.0)
 		elif loaded.has("hero_current_hp"):
-			party["bastiao"]["current_hp"] = loaded["hero_current_hp"]
+			self.hero_current_hp = loaded["hero_current_hp"]
+
+		if loaded.has("saved_at_unix"):
+			var last_unix: int = int(loaded["saved_at_unix"])
+			offline_data = ProgressionManager.calculate_offline_progress(last_unix)
+			if not offline_data.is_empty():
+				ProgressionManager.apply_offline_progress(offline_data)
+	return offline_data

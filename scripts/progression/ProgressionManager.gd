@@ -6,6 +6,7 @@ signal gold_changed(new_gold: int, delta: int)
 signal stage_changed(stage_index: int, stage_name: String)
 signal stage_progress_updated(current_kills: int, target_kills: int)
 signal boss_spawn_ready(boss_id: String)
+signal offline_progress_calculated(data: Dictionary)
 
 const STAGES_DATA_PATH := "res://data/stages/stages.json"
 
@@ -17,6 +18,7 @@ var current_stage: int = 1
 var max_stage_reached: int = 1
 var stage_kills: int = 0
 var stages_database: Array = []
+var pending_offline_data: Dictionary = {}
 
 func _ready() -> void:
 	xp_next = get_xp_for_level(level)
@@ -109,6 +111,53 @@ func retreat_stage() -> void:
 	current_stage = maxi(1, current_stage - 1)
 	var st := get_current_stage_data()
 	stage_changed.emit(current_stage, st.get("name", "Fase %d" % current_stage))
+
+func calculate_offline_progress(last_unix: int) -> Dictionary:
+	var now_unix := int(Time.get_unix_time_from_system())
+	var elapsed := now_unix - last_unix
+	if elapsed < 15:
+		return {}
+
+	# Limite estrito de 8 horas conforme Roadmap
+	var clamped: int = mini(8 * 3600, elapsed)
+	
+	var h: int = clamped / 3600
+	var m: int = (clamped % 3600) / 60
+	var time_str := "%dh%02dm" % [h, m] if h > 0 else "%dm" % m
+
+	var kills: int = int(float(clamped) / 4.0)
+	var st := get_current_stage_data()
+	var stage_lvl: int = int(st.get("stage", 1))
+
+	var xp_per_kill: int = 8 + stage_lvl * 4
+	var total_xp: int = kills * xp_per_kill
+
+	var gold_per_kill: int = 2 + stage_lvl * 2
+	var total_gold: int = kills * gold_per_kill
+
+	var items: Array = []
+	var max_items: int = mini(5, maxi(1, int(kills * 0.05)))
+	for i in range(max_items):
+		var dropped = LootManager.roll_drop(false)
+		if dropped != null:
+			items.append(dropped)
+
+	return {
+		"elapsed_seconds": clamped,
+		"time_formatted": time_str,
+		"kills": kills,
+		"xp": total_xp,
+		"gold": total_gold,
+		"items": items
+	}
+
+func apply_offline_progress(data: Dictionary) -> void:
+	if data.is_empty():
+		return
+	add_xp(int(data.get("xp", 0)))
+	add_gold(int(data.get("gold", 0)))
+	pending_offline_data = data
+	offline_progress_calculated.emit(data)
 
 func get_state() -> Dictionary:
 	return {

@@ -11,9 +11,18 @@ extends Control
 @onready var inventory_label: Label = $Root/Content/Inventory
 @onready var status_label: Label = $Root/Content/Status
 @onready var equip_button: Button = $Root/Content/EquipButton
+@onready var offline_modal: Control = $OfflineModal
+@onready var offline_time_label: Label = $OfflineModal/Center/Card/VBox/Time
+@onready var offline_rewards_label: Label = $OfflineModal/Center/Card/VBox/Rewards
+@onready var offline_button: Button = $OfflineModal/Center/Card/VBox/CollectButton
 
 func _ready() -> void:
-	GameManager.load_full_state()
+	var offline_data := GameManager.load_full_state()
+	
+	offline_button.pressed.connect(_on_offline_collect_pressed)
+	ProgressionManager.offline_progress_calculated.connect(_on_offline_progress_calculated)
+	if not offline_data.is_empty():
+		_show_offline_modal(offline_data)
 	
 	GameManager.battle_started.connect(_on_battle_started)
 	GameManager.battle_ended.connect(_on_battle_ended)
@@ -161,4 +170,22 @@ func _on_stage_changed(stage_index: int, stage_name: String) -> void:
 	_update_ui()
 
 func _on_stage_progress_updated(_kills: int, _target: int) -> void:
+	_update_ui()
+
+func _on_offline_progress_calculated(data: Dictionary) -> void:
+	_show_offline_modal(data)
+
+func _show_offline_modal(data: Dictionary) -> void:
+	offline_time_label.text = "Você ficou fora %s" % data.get("time_formatted", "0m")
+	var items_count: int = data.get("items", []).size()
+	offline_rewards_label.text = "+ %d XP\n+ %d Ouro\n+ %d Itens\n+ %d Inimigos derrotados" % [
+		int(data.get("xp", 0)),
+		int(data.get("gold", 0)),
+		items_count,
+		int(data.get("kills", 0))
+	]
+	offline_modal.visible = true
+
+func _on_offline_collect_pressed() -> void:
+	offline_modal.visible = false
 	_update_ui()

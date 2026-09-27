@@ -1056,14 +1056,15 @@ Você ficou fora 2h14m
 + Inimigos derrotados
 ```
 
-## Gate R15
+## Gate R15 — [PASS]
 
-PASS quando:
-- fechar totalmente o app;
-- esperar;
-- reabrir;
-- estado anterior volta corretamente;
-- progresso offline é aplicado uma única vez.
+PASS:
+- [x] Persistência completa do estado do jogador no `SaveManager` (`user://pocket_hero_save.json`): heróis, level, XP, ouro, itens, equipamentos, fase atual, kills e `saved_at_unix`;
+- [x] Cálculo determinístico de progresso offline baseado em desempenho recente/fase atual com teto estrito de 8 horas (`MAX_OFFLINE_SECONDS = 28800`);
+- [x] Rendimento de XP e ouro calculados de forma balanceada sem explosão de inventário (teto máximo de 5 itens por ausência);
+- [x] Modal de retorno ("Você ficou fora XhYm", +XP, +Ouro, +Itens, +Inimigos derrotados) renderizado na cena principal com botão de coleta;
+- [x] Garantia estrita de aplicação única (idempotência): recompensas aplicadas exatamente uma vez ao reabrir;
+- [x] Suíte automatizada `tests/TestR15.tscn` executada com 100% PASS comprovando restauração de estado, ausência de 2h14m, teto de 8h e aplicação única.
 
 ---
 

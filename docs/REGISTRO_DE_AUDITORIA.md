@@ -346,18 +346,27 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
   [x] Elite Lobo Alfa de Lúmen no Covil do Alfa (Fase 4)
   [x] Chefe Guardião-Cervo de Pedra no Santuário do Guardião (Fase 5)
   [x] Mecânica de recuo gracioso e não punitivo após derrota da party
+[PASS]  FASE R15 — Save e progresso offline (HOMOLOGADO)
+  [x] Persistência completa do estado do jogador no `SaveManager` (`user://pocket_hero_save.json`)
+  [x] Timestamp Unix `saved_at_unix` registrado em cada salvamento
+  [x] Cálculo de período ausente com teto estrito de 8 horas (`MAX_OFFLINE_SECONDS = 28800`)
+  [x] Geração determinística de XP e Ouro sem explosão de inventário (teto máximo de 5 itens)
+  [x] Formatação de tempo textual canônica (`2h14m`)
+  [x] Modal de retorno ("Você ficou fora XhYm") com lista de recompensas e botão de coleta
+  [x] Garantia de aplicação única (idempotência confirmada ao reabrir sem acúmulo duplicado)
+  [x] Suíte `tests/TestR15.tscn` executada com 100% PASS
 --------------------------------------------------------------------------------
-[PRÓXIMA] FASE R15 — Save e progresso offline
+[PRÓXIMA] FASE R16 — Tracker Lite
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-Avançar para a **FASE R15 — Save e progresso offline**:
-1. Implementar cálculo de período ausente (offline progress) com limite configurável inicial de 8h.
-2. Calcular rendimento simulado de XP e ouro acumulados sem inflacionar inventário.
-3. Projetar popup de boas-vindas com o resumo de recompensas ao retornar ao jogo.
+Avançar para a **FASE R16 — Tracker Lite**:
+1. Implementar coleta e cálculo de métricas essenciais de sessão: XP/h, ouro/h, kills/h, TTK médio, mortes, drops/h e % de itens raros+.
+2. Implementar quatro visões analíticas: sessão atual, últimas 2 horas, melhor fase por XP e melhor fase por ouro.
+3. Criar interface/painel para visualização e suíte de testes `tests/TestR16.tscn` para validação matemática estrita com eventos conhecidos.
 
 
 
