@@ -6,6 +6,7 @@ extends Control
 @onready var gold_label: Label = $Root/Header/Gold
 @onready var enemy_label: Label = $Root/Content/EnemyCard/VBox/Enemy
 @onready var detail_label: Label = $Root/Content/EnemyCard/VBox/Details
+@onready var subtitle_label: Label = $Root/Content/Subtitle
 @onready var progress_label: Label = $Root/Content/Progress
 @onready var loot_label: Label = $Root/Content/Loot
 @onready var inventory_label: Label = $Root/Content/Inventory
@@ -91,15 +92,13 @@ func _update_ui() -> void:
 	var iris_hp: float = float(GameManager.party.get("iris", {}).get("current_hp", 0.0))
 	var flecha_hp: float = float(GameManager.party.get("flecha", {}).get("current_hp", 0.0))
 	
-	stats_label.text = "⚔ %.0f  🛡 %.1f  ❤ %.0f/%.0f  [B:%.0f I:%.0f F:%.0f]" % [
+	stats_label.text = "⚔ %.0f  🛡 %.1f  ❤ %.0f/%.0f" % [
 		GameManager.get_total_hero_attack(),
 		GameManager.get_total_hero_defense(),
 		GameManager.hero_current_hp,
-		GameManager.get_total_hero_max_hp(),
-		bastiao_hp,
-		iris_hp,
-		flecha_hp
+		GameManager.get_total_hero_max_hp()
 	]
+	subtitle_label.text = "Bosque de Lúmen • B:%.0f I:%.0f F:%.0f" % [bastiao_hp, iris_hp, flecha_hp]
 	gold_label.text = "Ouro: %d" % ProgressionManager.gold
 	
 	var st := ProgressionManager.get_current_stage_data()
@@ -118,7 +117,7 @@ func _update_ui() -> void:
 	var w_name: String = eq["weapon"].get("name", "Nenhuma") if eq["weapon"] else "Nenhuma"
 	var a_name: String = eq["armor"].get("name", "Nenhuma") if eq["armor"] else "Nenhuma"
 	var am_name: String = eq["amulet"].get("name", "Nenhum") if eq["amulet"] else "Nenhum"
-	loot_label.text = "Equip: [Arma: %s] [Armadura: %s] [Amuleto: %s]" % [w_name, a_name, am_name]
+	loot_label.text = "Equip: %s | %s | %s" % [w_name, a_name, am_name]
 	
 	inventory_label.text = "Mochila: %d item(s)" % LootManager.inventory.size()
 	if tracker_modal != null and tracker_modal.visible:
@@ -253,9 +252,16 @@ func _adjust_safe_area() -> void:
 	if OS.has_feature("mobile") or OS.has_feature("android"):
 		var safe_rect := DisplayServer.get_display_safe_area()
 		var screen_size := DisplayServer.screen_get_size()
-		if screen_size.y > 0 and safe_rect.size.y > 0:
-			var top_margin := maxi(24, int(safe_rect.position.y))
-			var bottom_margin := maxi(18, int(screen_size.y - (safe_rect.position.y + safe_rect.size.y)))
+		var vp_size := get_viewport_rect().size
+		if screen_size.y > 0 and safe_rect.size.y > 0 and vp_size.y > 0:
+			var scale_y := vp_size.y / float(screen_size.y)
+			var scale_x := vp_size.x / float(screen_size.x)
+			var top_margin := maxi(18, int(safe_rect.position.y * scale_y) + 4)
+			var bottom_margin := maxi(16, int((screen_size.y - (safe_rect.position.y + safe_rect.size.y)) * scale_y) + 4)
+			var left_margin := maxi(16, int(safe_rect.position.x * scale_x) + 4)
+			var right_margin := maxi(16, int((screen_size.x - (safe_rect.position.x + safe_rect.size.x)) * scale_x) + 4)
 			var root_box: VBoxContainer = $Root
 			root_box.offset_top = top_margin
 			root_box.offset_bottom = -bottom_margin
+			root_box.offset_left = left_margin
+			root_box.offset_right = -right_margin

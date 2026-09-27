@@ -71,43 +71,45 @@ theme_override_constants/separation = 14
 
 [node name="Header" type="HBoxContainer" parent="Root"]
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 
 [node name="Level" type="Label" parent="Root/Header"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 22
+theme_override_font_sizes/font_size = 20
 text = "LV 1"
 
 [node name="Stats" type="Label" parent="Root/Header"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.82, 0.85, 0.9, 1)
-theme_override_font_sizes/font_size = 15
+theme_override_font_sizes/font_size = 13
 text = "⚔ 10  🛡 2.0  ❤ 100/100"
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Gold" type="Label" parent="Root/Header"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.96, 0.8, 0.28, 1)
-theme_override_font_sizes/font_size = 16
+theme_override_font_sizes/font_size = 15
 text = "Ouro: 0"
 vertical_alignment = 1
 
 [node name="Content" type="VBoxContainer" parent="Root"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/separation = 12
+theme_override_constants/separation = 10
 
 [node name="Title" type="Label" parent="Root/Content"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 26
 text = "Pocket Hero"
 
 [node name="Subtitle" type="Label" parent="Root/Content"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.55, 0.6, 0.68, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 text = "Bosque de Lúmen • combate automático"
+autowrap_mode = 2
 
 [node name="EnemyCard" type="PanelContainer" parent="Root/Content"]
 layout_mode = 2
@@ -118,38 +120,44 @@ layout_mode = 2
 
 [node name="Enemy" type="Label" parent="Root/Content/EnemyCard/VBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 18
 text = "Procurando inimigos..."
+autowrap_mode = 2
 
 [node name="Details" type="Label" parent="Root/Content/EnemyCard/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.75, 0.78, 0.84, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 text = "Aguardando início do combate"
+autowrap_mode = 2
 
 [node name="Progress" type="Label" parent="Root/Content"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.84, 0.9, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_font_sizes/font_size = 13
 text = "XP: 0/30 • Fase 1 (Bosque de Lúmen)"
+autowrap_mode = 2
 
 [node name="Loot" type="Label" parent="Root/Content"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.72, 0.76, 0.82, 1)
 theme_override_font_sizes/font_size = 13
 text = "Equip: [Arma: Nenhuma] [Armadura: Nenhuma] [Amuleto: Nenhum]"
+autowrap_mode = 2
 
 [node name="Inventory" type="Label" parent="Root/Content"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.68, 0.72, 0.78, 1)
 theme_override_font_sizes/font_size = 13
 text = "Mochila: 0 item(s)"
+autowrap_mode = 2
 
 [node name="Status" type="Label" parent="Root/Content"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.75, 0.85, 1)
 theme_override_font_sizes/font_size = 13
 text = "Adentrando o Bosque de Lúmen..."
+autowrap_mode = 2
 
 [node name="ActionRow" type="HBoxContainer" parent="Root/Content"]
 layout_mode = 2
