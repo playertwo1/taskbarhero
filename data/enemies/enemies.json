@@ -44,6 +44,18 @@
     "weight": 10
   },
   {
+    "id": "lobo_alfa_de_lumen",
+    "name": "Lobo Alfa de Lúmen",
+    "max_hp": 130,
+    "attack": 15,
+    "defense": 4,
+    "xp": 45,
+    "gold_min": 10,
+    "gold_max": 20,
+    "weight": 6,
+    "elite": true
+  },
+  {
     "id": "guardiao_cervo_de_pedra",
     "name": "Guardião-Cervo de Pedra",
     "max_hp": 280,

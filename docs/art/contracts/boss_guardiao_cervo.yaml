@@ -1,0 +1,51 @@
+id: boss_guardiao_cervo
+name: "Guardião-Cervo de Pedra"
+category: boss
+description: "Colosso ancestral e chefe supremo do Bosque de Lúmen. Uma entidade quadrupedal esculpida em granito musgoso com chifres monolíticos de pedra e raízes petrificadas, olhos esmeralda ancestrais e fissuras rúnicas brilhantes por onde mana a energia pura de Lúmen."
+facing: left
+
+canvas:
+  width: 64
+  height: 64
+  baseline_y: 60
+  pivot: [32, 60]
+
+palette:
+  rampas:
+    - pedra       # Corpo monolítico de granito (#141824, #262d3d, #3d475c, #596680, #8392ab)
+    - chifres     # Madeira petrificada e galhos de pedra (#3d312a, #695244, #9c7c65, #cfb199)
+    - lumen       # Fissuras rúnicas, olhos e essência vital (#092e1a, #145932, #269e54, #4ee085, #a8ffcc)
+  max_colors: 14
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+    description: "Respiração tectônica cadenciada com oscilação dos chifres monolíticos e pulsação suave das fissuras de lúmen."
+  attack:
+    frames: 4
+    fps: 8
+    duration_ms: 125
+    loop: false
+    description: "Ergue os cascos dianteiros maciços e esmaga o solo com uma cabeçada de chifres envolta em erupção de lúmen."
+  hit:
+    frames: 2
+    fps: 10
+    duration_ms: 100
+    loop: false
+    description: "Estremecimento do monolito de pedra sob impacto com estilhaços sutis de cascalho e recuo de peso."
+  death:
+    frames: 6
+    fps: 6
+    duration_ms: 160
+    loop: false
+    description: "Rachaduras profundas fendem a couraça de pedra; os cascos cedem e o colosso desaba no solo, evaporando sua luz em poeira espectral."
+
+output:
+  source_file: "assets/sprites/bosses/guardiao_cervo/boss_guardiao_cervo.aseprite"
+  sheet_file: "assets/sprites/bosses/guardiao_cervo/boss_guardiao_cervo_sheet.png"
+  json_file: "assets/sprites/bosses/guardiao_cervo/boss_guardiao_cervo_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [1024, 64]

@@ -884,6 +884,11 @@ PASS quando todos compartilham:
 - outline;
 - leitura visual.
 
+**Resultado do Gate R11:** [PASS] HOMOLOGADO em 2026-09-27.
+- 3 Heróis (Bastião, Flecha, Íris), 4 Mobs (Geleia, Gremlin, Javali, Espírito), 1 Elite (Lobo Alfa de Lúmen) e 1 Chefe Supremo (Guardião-Cervo de Pedra) construídos, animados (16 frames canônicos cada) e validados no Godot 4.7.2 com `texture_filter = 1` (Nearest) e escala uniforme 2.0x (zero mixels).
+- Cenário completo do Bosque de Lúmen integrado em 5 camadas (fundo distante, intermediário com ruínas, orbes flutuantes de lúmen, solo musgoso e elementos frontais).
+- Testes unitários visuais e loop autônomo validados com 100% de sucesso. Showcase congelado em `docs/art/preview_bosque_lumen_complete.png`.
+
 ---
 
 # FASE R12 — Party de três personagens

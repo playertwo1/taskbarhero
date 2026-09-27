@@ -255,6 +255,26 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
   * **Integração no BattleStrip:** `scripts/combat/BattleStrip.gd` atualizado com carregamento dinâmico de cenas visuais para cada mob (`geleia_de_lumen`, `gremlin_de_folha`, `javali_de_musgo`, `espirito_de_raiz`).
   * **Validação:** `tests/unit/test_mobs_visual.gd` e `tests/TestR10.tscn` executados com 100% PASS em Godot headless, confirmando animações, frames, filtros `Nearest` e ciclos de combate autônomo.
 
+- **Conclusão dos Passos 6, 7 e 8 da FASE R11 — Fechamento e Homologação do Gate R11:**
+  * **Elite do Bioma: Lobo Alfa de Lúmen (`lobo_alfa_de_lumen`):**
+    * Contrato: `docs/art/contracts/mob_lobo_alfa.yaml` (48×48 px, 16 frames, baseline $Y=44$, rampa Ardósia e Lúmen, 10 cores).
+    * Workflow e Driver: `tools/daedalus/comfyui/workflows/lobo_concept_api.json` e `generate_lobo.py`.
+    * Spritesheet e Cena: `assets/sprites/enemies/lobo_alfa_de_lumen/mob_lobo_alfa_sheet.png` (768×48 px), `scenes/enemies/LoboAlfaDeLumen.tscn` e `.gd`.
+    * Validação: `tests/unit/test_elite_visual.gd` (100% PASS).
+  * **Chefe Supremo do Bioma: Guardião-Cervo de Pedra (`guardiao_cervo_de_pedra`):**
+    * Contrato: `docs/art/contracts/boss_guardiao_cervo.yaml` (64×64 px, 16 frames, baseline $Y=60$, rampa Pedra e Lúmen, 12 cores).
+    * Workflow e Driver: `tools/daedalus/comfyui/workflows/boss_cervo_concept_api.json` e `generate_boss_cervo.py`.
+    * Spritesheet e Cena: `assets/sprites/bosses/guardiao_cervo/boss_guardiao_cervo_sheet.png` (1024×64 px), `scenes/enemies/GuardiaoCervoDePedra.tscn` e `.gd`.
+    * Validação: `tests/unit/test_boss_visual.gd` (100% PASS).
+  * **Cenário em 5 Camadas (Zero Mixels & AMOLED):**
+    * Fundo Distante: `assets/sprites/environment/bosque_lumen/bg_distant.png` (216×110 px).
+    * Camada Intermediária: `assets/sprites/environment/bosque_lumen/mid_trees.png` (216×110 px, ruínas e árvores).
+    * Solo / Ground Strip: `assets/sprites/environment/bosque_lumen/ground_strip.png` (216×42 px).
+    * Elementos Frontais: `assets/sprites/environment/bosque_lumen/fg_elements.png` (216×24 px, samambaias e cogumelos luminosos).
+    * Partículas: Orbes bioluminescentes com animação flutuante contínua senoidal integrados ao script `scripts/combat/BattleStrip.gd`.
+  * **Evidência Visual Consolidada:** `docs/art/preview_bosque_lumen_complete.png` (1000×340 px) e artefato interativo `bosque_lumen_roster.html`.
+  * **Homologação:** Todas as 9 entidades compartilham proporção, iluminação top-left 45°, selective outline escuro, alpha estrito [0, 255] e escala uniforme 2.0x (zero mixels).
+
 ---
 
 ## 3. Histórico de Commits da Sessão
@@ -273,6 +293,7 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 | `2165e67` | `feat: implement Bastiao animated hero, integrate into BattleStrip, and freeze ART_DIRECTION v1 (Phase R11 steps 1-2)` | Bastião animado, integração BattleStrip, ART_DIRECTION v1 congelado e evidências visuais. |
 | `cc2da1f` | `feat: implement Flecha (Archer) and Iris (Mage) heroes, complete MVP hero trio (Phase R11 steps 3-4)` | Assets, contratos, animações 16 frames e cenas dos heróis Flecha e Íris. |
 | `7c0da69` | `chore: add party HTML preview generator` | Ferramenta e artefato de visualização integrada do trio de heróis. |
+| `f5b3744` | `feat: implement common mobs of Bosque de Lumen and integrate into BattleStrip (Phase R11 step 5)` | Mobs comuns (Gremlin, Javali, Espírito), contratos, 16 frames e integração dinâmica no BattleStrip. |
 
 ---
 
@@ -293,27 +314,27 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 [PASS]  FASE R10 — Prova do loop + smoke Android mínimo
 [PASS]  ARGOS v0.0 — Hooks internos de debug, telemetria e estado (scripts/debug/)
 [PASS]  FASE COMFY-00 — Fundação do ComfyUI como Motor Generativo do Daedalus (HOMOLOGADO)
---------------------------------------------------------------------------------
-[EM ANDAMENTO] FASE R11 — Produzir Bosque de Lúmen
+[PASS]  FASE R11 — Produzir Bosque de Lúmen (HOMOLOGADO)
   [x] Passo 1: Revisar Bastião e Slime usados em R10 (CONCLUÍDO)
   [x] Passo 2: Teste conjunto e congelar ART_DIRECTION v1 (CONCLUÍDO E CONGELADO)
   [x] Passo 3: Produzir o segundo herói: Flecha (Arqueiro DPS) (CONCLUÍDO)
   [x] Passo 4: Produzir a terceira heroína: Íris (Maga de Lúmen) (CONCLUÍDO)
   [x] Passo 5: Produzir os demais mobs (Gremlin de Folha, Javali de Musgo, Espírito de Raiz) (CONCLUÍDO)
-  [ ] Passo 6: Produzir Elite do Bioma
-  [ ] Passo 7: Produzir Chefe: Guardião-Cervo de Pedra
-  [ ] Passo 8: Cenário em camadas (fundo distante, intermediário, solo, partículas)
+  [x] Passo 6: Produzir Elite do Bioma (Lobo Alfa de Lúmen) (CONCLUÍDO)
+  [x] Passo 7: Produzir Chefe: Guardião-Cervo de Pedra (CONCLUÍDO)
+  [x] Passo 8: Cenário em camadas (fundo distante, intermediário, solo, partículas) (CONCLUÍDO)
+--------------------------------------------------------------------------------
+[PRÓXIMA] FASE R12 — Party de três personagens
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-Avançar para o **Passo 6 da FASE R11**:
-1. Criar contrato e asset do **Elite do Bioma Bosque de Lúmen**:
-   - `Guardião Ancião / Guardião Musgoso` (48×48 px, iluminação de lúmen pulsante, ataques com telegrafia visual reforçada).
-2. Gerar conceito e poses via ComfyUI + Aseprite CLI (16 frames canônicos).
-3. Criar cena Godot, script e teste automatizado.
+Avançar para a **FASE R12 — Party de três personagens**:
+1. Implementar slots da party no combate (`front`, `mid`, `back`).
+2. Configurar posicionamento canônico: Bastião (`front`), Flecha (`back`), Íris (`mid`).
+3. Desenvolver mecânica de targeting, distância de ataque, ordem de formação e animações coordenadas na faixa de batalha.
 
 
 

@@ -15,8 +15,17 @@ const SLIME_SCENE = preload("res://scenes/enemies/GeleiaDeLumen.tscn")
 const GREMLIN_SCENE = preload("res://scenes/enemies/GremlinDeFolha.tscn")
 const JAVALI_SCENE = preload("res://scenes/enemies/JavaliDeMusgo.tscn")
 const ESPIRITO_SCENE = preload("res://scenes/enemies/EspiritoDeRaiz.tscn")
+const LOBO_SCENE = preload("res://scenes/enemies/LoboAlfaDeLumen.tscn")
+const CERVO_SCENE = preload("res://scenes/enemies/GuardiaoCervoDePedra.tscn")
+
+const TEX_BG_DISTANT = preload("res://assets/sprites/environment/bosque_lumen/bg_distant.png")
+const TEX_MID_TREES = preload("res://assets/sprites/environment/bosque_lumen/mid_trees.png")
+const TEX_GROUND_STRIP = preload("res://assets/sprites/environment/bosque_lumen/ground_strip.png")
+const TEX_FG_ELEMENTS = preload("res://assets/sprites/environment/bosque_lumen/fg_elements.png")
+
 var enemy_visual: Node2D = null
 var hero_visual: Node2D = null
+var anim_time: float = 0.0
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(0, 220)
@@ -33,6 +42,7 @@ func _setup_hero() -> void:
 		hero_visual.reset()
 
 func _process(delta: float) -> void:
+	anim_time += delta
 	hero_attack_flash = maxf(0.0, hero_attack_flash - delta * 4.0)
 	enemy_attack_flash = maxf(0.0, enemy_attack_flash - delta * 4.0)
 	loot_flash = maxf(0.0, loot_flash - delta * 2.0)
@@ -64,6 +74,10 @@ func set_enemy(enemy_data: Dictionary) -> void:
 			target_scene = JAVALI_SCENE
 		"espirito_de_raiz":
 			target_scene = ESPIRITO_SCENE
+		"lobo_alfa_de_lumen":
+			target_scene = LOBO_SCENE
+		"guardiao_cervo_de_pedra":
+			target_scene = CERVO_SCENE
 	
 	if target_scene != null:
 		if enemy_visual == null or not is_instance_valid(enemy_visual) or current_enemy_scene_id != current_enemy_id:
@@ -76,8 +90,7 @@ func set_enemy(enemy_data: Dictionary) -> void:
 		enemy_visual.visible = true
 		if enemy_visual.has_method("reset"):
 			enemy_visual.reset()
-		var s := 2.5 if enemy_is_boss else 2.0
-		enemy_visual.scale = Vector2(s, s)
+		enemy_visual.scale = Vector2(2.0, 2.0)
 	else:
 		if enemy_visual and is_instance_valid(enemy_visual):
 			enemy_visual.visible = false
@@ -120,65 +133,31 @@ func flash_loot() -> void:
 
 func _draw() -> void:
 	var s := size
-	# Background AMOLED do Bosque de Lúmen
-	draw_rect(Rect2(Vector2.ZERO, s), Color("060807"), true)
-	draw_line(Vector2(0, 1), Vector2(s.x, 1), Color("17231c"), 2.0)
-
-	# Silhuetas de árvores distantes (Bosque de Lúmen)
-	var bg_tree_color := Color("0b1612")
-	var mid_tree_color := Color("11221b")
-	for tx in [20, 80, 140, 210, 280, 350, 410]:
-		# Tronco
-		draw_rect(Rect2(tx, 40, 8, s.y - 82), bg_tree_color, true)
-		# Copa estilizada
-		var pts := PackedVector2Array([
-			Vector2(tx + 4, 18),
-			Vector2(tx - 18, 75),
-			Vector2(tx + 26, 75)
-		])
-		draw_colored_polygon(pts, mid_tree_color)
-
-	# Orbes flutuantes de Lúmen cintilante
-	var lumen_orb_color := Color("38d9a9", 0.40)
-	draw_circle(Vector2(s.x * 0.18, 55), 3.5, lumen_orb_color)
-	draw_circle(Vector2(s.x * 0.52, 38), 2.5, lumen_orb_color)
-	draw_circle(Vector2(s.x * 0.82, 65), 4.0, lumen_orb_color)
-
-	# Ground / Solo musgoso
 	var ground_y := s.y - 42.0
-	draw_rect(Rect2(0, ground_y, s.x, 42), Color("101814"), true)
-	draw_line(Vector2(0, ground_y), Vector2(s.x, ground_y), Color("2b4235"), 2.0)
-	for x in range(0, int(s.x), 28):
-		draw_line(Vector2(x, ground_y + 8), Vector2(x + 12, ground_y + 4), Color("1e3025"), 2.0)
 
-	# Hero: Bastião (Guardião com espada e escudo)
+	# 1. Fundo Distante (Camada 1: Céu AMOLED, montanhas e bruma esmeralda)
+	draw_texture_rect(TEX_BG_DISTANT, Rect2(Vector2.ZERO, s), false)
+
+	# 2. Camada Intermediária (Camada 2: Troncos ancestrais, ruínas de pedra e galhos)
+	draw_texture_rect(TEX_MID_TREES, Rect2(Vector2.ZERO, s), false)
+
+	# 3. Partículas flutuantes de Lúmen cintilante (orbes bioluminescentes vivos)
+	for i in range(6):
+		var seed_offset := float(i) * 1.618
+		var px := fmod(s.x * (0.12 + float(i) * 0.15) + sin(anim_time * 1.5 + seed_offset) * 10.0, s.x)
+		var py := 45.0 + sin(anim_time * 2.0 + seed_offset * 2.0) * 18.0
+		var radius := 2.5 + sin(anim_time * 3.0 + seed_offset) * 1.0
+		var col := Color("56d364", 0.45 + sin(anim_time * 2.5 + seed_offset) * 0.25)
+		draw_circle(Vector2(px, py), radius, col)
+
+	# 4. Solo / Ground Strip musgoso (Camada 3: terra batida, raízes e musgo iluminado)
+	draw_texture_rect(TEX_GROUND_STRIP, Rect2(0, ground_y, s.x, 42), false)
+
+	# 5. Elementos Frontais Recortados (Camada 4: samambaias e cogumelos luminosos na borda)
+	draw_texture_rect(TEX_FG_ELEMENTS, Rect2(0, s.y - 24, s.x, 24), false)
+
 	var hero_x := s.x * 0.25
-	var hero_y := ground_y - 42.0
-	if hero_visual and is_instance_valid(hero_visual) and hero_visual.visible:
-		# Nó filho Bastiao cuida da renderização das animações
-		pass
-	else:
-		var hero_color := Color("4dabf7").lerp(Color.WHITE, hero_attack_flash * 0.70)
-		var shield_color := Color("339af0").lerp(Color.WHITE, hero_attack_flash * 0.50)
-		# Corpo e Elmo
-		draw_circle(Vector2(hero_x, hero_y - 30), 16, hero_color)
-		draw_rect(Rect2(hero_x - 14, hero_y - 14, 28, 42), hero_color, true)
-		# Escudo frontal de Bastião
-		draw_rect(Rect2(hero_x + 8, hero_y - 8, 12, 32), shield_color, true)
-		# Espada
-		draw_line(Vector2(hero_x + 16, hero_y - 2), Vector2(hero_x + 36, hero_y - 22), Color("e9ecef"), 4.0)
-
-	# Inimigo
 	var enemy_x := s.x * 0.73
-	var enemy_scale := 1.25 if enemy_is_boss else 1.0
-	if enemy_visual and is_instance_valid(enemy_visual) and enemy_visual.visible:
-		# Nó filho GeleiaDeLumen cuida da renderização das animações
-		pass
-	else:
-		var enemy_color := Color("ff5c5c").lerp(Color.WHITE, enemy_attack_flash * 0.60)
-		draw_circle(Vector2(enemy_x, hero_y - 19.0 * enemy_scale), 26.0 * enemy_scale, enemy_color)
-		draw_circle(Vector2(enemy_x - 9.0 * enemy_scale, hero_y - 24.0 * enemy_scale), 3.0 * enemy_scale, Color("0d0e12"))
-		draw_circle(Vector2(enemy_x + 9.0 * enemy_scale, hero_y - 24.0 * enemy_scale), 3.0 * enemy_scale, Color("0d0e12"))
 
 	# Barras de Vida
 	_draw_health_bar(Rect2(hero_x - 55, 18, 110, 10), hero_hp_ratio, Color("48c774"))
