@@ -598,6 +598,8 @@ Visual:
 
 PASS quando Daedalus consegue receber um contrato de asset sem precisar inventar regras ausentes.
 
+**Status:** PASS em 2026-09-27. Governança completa criada em `docs/art/` (`ART_DIRECTION.md`, `SPRITE_STANDARD.md`, `PALETTE.md`, `ASSET_MANIFEST.yaml`, `QA_CHECKLIST.md`, `PROMPT_RECIPES.md`, `DAEDALUS_SOUL.md` e contrato `contracts/enemy_lumen_slime.yaml`). Daedalus e Têmis possuem todos os critérios para executar a FASE R9.
+
 ---
 
 # FASE R8 — Criar esqueleto do projeto Godot

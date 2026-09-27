@@ -1,0 +1,121 @@
+# Pocket Hero — Manifesto Geral de Assets (MVP Bosque de Lúmen)
+# Status: Ativo
+# Versão: 1.0.0
+
+project: pocket-hero
+region: bosque_de_lumen
+engine: godot_4.7.2
+
+assets:
+  # ========================================================
+  # INIMIGOS COMUNS (MVP)
+  # ========================================================
+  - asset_id: enemy_geleia_lumen
+    name: "Geleia de Lúmen"
+    category: enemy
+    status: ready_for_production # Alvo da FASE R9
+    canvas:
+      width: 32
+      height: 32
+    contract: "docs/art/contracts/enemy_lumen_slime.yaml"
+    output_dir: "assets/sprites/enemies/geleia_de_lumen"
+    godot_scene: "scenes/enemies/GeleiaDeLumen.tscn"
+
+  - asset_id: enemy_gremlin_folha
+    name: "Gremlin de Folha"
+    category: enemy
+    status: planned
+    canvas:
+      width: 32
+      height: 32
+    contract: "docs/art/contracts/enemy_gremlin_folha.yaml"
+    output_dir: "assets/sprites/enemies/gremlin_de_folha"
+    godot_scene: "scenes/enemies/GremlinDeFolha.tscn"
+
+  - asset_id: enemy_javali_musgo
+    name: "Javali de Musgo"
+    category: enemy
+    status: planned
+    canvas:
+      width: 48
+      height: 48
+    contract: "docs/art/contracts/enemy_javali_musgo.yaml"
+    output_dir: "assets/sprites/enemies/javali_de_musgo"
+    godot_scene: "scenes/enemies/JavaliDeMusgo.tscn"
+
+  - asset_id: enemy_espirito_raiz
+    name: "Espírito de Raiz"
+    category: enemy
+    status: planned
+    canvas:
+      width: 48
+      height: 48
+    contract: "docs/art/contracts/enemy_espirito_raiz.yaml"
+    output_dir: "assets/sprites/enemies/espirito_de_raiz"
+    godot_scene: "scenes/enemies/EspiritoDeRaiz.tscn"
+
+  # ========================================================
+  # CHEFE DE REGIÃO (BOSS)
+  # ========================================================
+  - asset_id: boss_guardiao_cervo
+    name: "Guardião-Cervo de Pedra"
+    category: boss
+    status: planned
+    canvas:
+      width: 64
+      height: 64
+    contract: "docs/art/contracts/boss_guardiao_cervo.yaml"
+    output_dir: "assets/sprites/bosses/guardiao_cervo"
+    godot_scene: "scenes/enemies/GuardiaoCervoDePedra.tscn"
+
+  # ========================================================
+  # HERÓIS DA PARTY (MVP)
+  # ========================================================
+  - asset_id: hero_bastiao
+    name: "Bastião"
+    role: "frontline_tank"
+    category: hero
+    status: planned
+    canvas:
+      width: 48
+      height: 48
+    contract: "docs/art/contracts/hero_bastiao.yaml"
+    output_dir: "assets/sprites/heroes/bastiao"
+    godot_scene: "scenes/heroes/Bastiao.tscn"
+
+  - asset_id: hero_flecha
+    name: "Flecha"
+    role: "ranged_dps"
+    category: hero
+    status: planned
+    canvas:
+      width: 48
+      height: 48
+    contract: "docs/art/contracts/hero_flecha.yaml"
+    output_dir: "assets/sprites/heroes/flecha"
+    godot_scene: "scenes/heroes/Flecha.tscn"
+
+  - asset_id: hero_iris
+    name: "Íris"
+    role: "aoe_magic"
+    category: hero
+    status: planned
+    canvas:
+      width: 48
+      height: 48
+    contract: "docs/art/contracts/hero_iris.yaml"
+    output_dir: "assets/sprites/heroes/iris"
+    godot_scene: "scenes/heroes/Iris.tscn"
+
+  # ========================================================
+  # CENÁRIO & AMBIENTE
+  # ========================================================
+  - asset_id: env_bosque_lumen_strip
+    name: "Faixa de Combate e Chão do Bosque"
+    category: environment
+    status: planned
+    canvas:
+      width: 432
+      height: 220
+    output_dir: "assets/environments/bosque_lumen"
+    godot_scene: "scenes/battle/BattleStrip.tscn"
