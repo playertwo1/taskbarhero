@@ -1144,7 +1144,7 @@ Testar:
 - rotação bloqueada inicialmente;
 - recortes/notch;
 - tamanhos diferentes;
-- 60 FPS como alvo;
+- 120 FPS como alvo (aproveitamento pleno do painel AMOLED 120Hz do S25 Ultra);
 - consumo de bateria.
 
 ## Gate R17 — [EM ABERTO / PENDENTE DE TESTE NO S25 ULTRA]
@@ -1157,7 +1157,7 @@ Status de implementação técnica no código:
 - [x] Controles táteis dimensionados para mobile com touch target mínimo de 48dp (`custom_minimum_size = Vector2(0, 48)`);
 - [x] Resolução portrait 432×960 com stretch mode `canvas_items` e aspect `expand` (`window/stretch/aspect="expand"`);
 - [x] Adaptação dinâmica de safe area (`DisplayServer.get_display_safe_area()`) para acomodar notch, punch-hole e barras do sistema Android;
-- [x] Teto de 60 FPS fixado no motor (`run/max_fps=60`) para máxima fluidez e baixo consumo térmico/bateria;
+- [x] Teto de 120 FPS fixado no motor (`run/max_fps=120`) para ultra-fluidez nativa em telas AMOLED 120Hz;
 - [x] Ícone oficial do aplicativo em pixel art gerado (`icon.png`) e configurado em `project.godot`;
 - [x] APK de teste compilado, alinhado e assinado via `apksigner` (`build/pocket_hero_debug.apk`, 29 MB);
 - [ ] Validação em aparelho físico S25 Ultra: **PENDENTE** (aparelho não conectado via USB/Wi-Fi ADB no momento; gate mantido formalmente pendente até conexão física para auditoria).

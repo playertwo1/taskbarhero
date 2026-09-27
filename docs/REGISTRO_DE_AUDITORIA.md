@@ -378,7 +378,7 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
   [x] Faixa de batalha sempre visível na metade inferior em todas as telas
   [x] Touch target mínimo de 48dp em todos os botões táteis
   [x] Adaptação dinâmica de safe area (`DisplayServer.get_display_safe_area()`)
-  [x] Limite térmico de 60 FPS fixado (`run/max_fps=60`) para economia de bateria
+  [x] Taxa de quadros de 120 FPS fixada (`run/max_fps=120`) para ultra-fluidez no display AMOLED 120Hz
   [x] Ícone oficial em pixel art gerado (`icon.png`) e configurado no projeto
   [x] APK de depuração compilado, alinhado e assinado (`build/pocket_hero_debug.apk`, 29 MB)
   [ ] Teste físico no Galaxy S25 Ultra: PENDENTE de conexão do aparelho via ADB
@@ -402,7 +402,7 @@ Avançar para a **Validação Física e FASE R19 — Auditoria do MVP**:
 1. Quando Rafael conectar o aparelho Samsung Galaxy S25 Ultra via USB com depuração ativada:
    - Instalar o APK compilado: `adb install -r build/pocket_hero_debug.apk`.
    - Executar standalone e registrar logs do logcat.
-   - Avaliar legibilidade, fluidez (60 FPS), entalhe/safe area e estabilidade térmica/bateria para homologar formalmente os Gates R17 e R18.
+   - Avaliar legibilidade, ultra-fluidez nativa (120 FPS), entalhe/safe area e estabilidade térmica/bateria para homologar formalmente os Gates R17 e R18.
 2. Solicitar/executar a **FASE R19 — Auditoria do MVP** com Têmis para atestar a conformidade final de todos os sistemas antes de fechar o MVP do Pocket Hero.
 
 
