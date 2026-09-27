@@ -1,0 +1,51 @@
+id: hero_iris
+name: "Íris"
+category: hero
+description: "Maga canalizadora de Lúmen do bosque ancestral. Empunha um cajado entalhado com aro dourado e orbe bioluminescente flutuante, veste túnica mística púrpura bordada com runas esmeralda. Atacante mágica primária de dano arcano e controle."
+facing: right
+
+canvas:
+  width: 48
+  height: 48
+  baseline_y: 44
+  pivot: [24, 44]
+
+palette:
+  rampas:
+    - nobre       # Vestes místicas e capuz talares (#190d26, #321453, #5a1db9, #915eed, #dcc4ff)
+    - lumen       # Orbe mágica, emanações e feitiços (#0b2920, #14533d, #1db97a, #5eedaa, #c4ffea)
+    - ouro        # Detalhes do cajado, fivelas e broche focal (#241b08, #5c430a, #a87b13, #e6b422, #ffe875)
+  max_colors: 15
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+    description: "Postura altiva segurando cajado místico com orbe de lúmen pulsando e flutuando suavemente."
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+    description: "Eleva o cajado, acumula energia no orbe com clarão radiante, dispara feixe arcano de lúmen e recolhe."
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+    description: "Recuo brusco protegendo o rosto com a manga da túnica e inclinando o cajado."
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 120
+    loop: false
+    description: "Cai de joelhos, o orbe de lúmen dissipa-se e o corpo dissolve-se em dither espectral até o repouso."
+
+output:
+  source_file: "assets/sprites/heroes/iris/hero_iris.aseprite"
+  sheet_file: "assets/sprites/heroes/iris/hero_iris_sheet.png"
+  json_file: "assets/sprites/heroes/iris/hero_iris_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [768, 48]

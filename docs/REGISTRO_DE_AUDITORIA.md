@@ -223,6 +223,22 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
     * **Leitura Visual (PASS):** Silhuetas e massas perfeitamente discerníveis à distância móvel.
   * **Documento Oficial Atualizado:** `docs/art/ART_DIRECTION.md` congelado formalmente na Seção 7 como **ART_DIRECTION v1**.
 
+* **Passo 3 — Construção do Herói Flecha (Arqueiro DPS):**
+  * **Contrato:** `docs/art/contracts/hero_flecha.yaml` (canvas 48×48 px, baseline Y=44, facing right, 16 frames: idle 4, attack 4, hit 2, death 6).
+  * **ComfyUI Workflow & Driver:** `tools/daedalus/comfyui/workflows/flecha_concept_api.json` e `tools/daedalus/comfyui/drivers/generate_flecha.py`.
+  * **Assets Compilados:** `assets/sprites/heroes/flecha/hero_flecha.aseprite`, `hero_flecha_sheet.png` (768×48 px, 13 cores únicas das Rampas Silvestre, Madeira e Ferro, alpha binário [0, 255]), `hero_flecha_sheet.json`.
+  * **Cena Godot & Teste:** `scenes/heroes/Flecha.tscn` e `scenes/heroes/Flecha.gd` validados via `tests/unit/test_flecha_visual.gd` (PASS).
+
+* **Passo 4 — Construção da Heroína Íris (Maga de Lúmen):**
+  * **Contrato:** `docs/art/contracts/hero_iris.yaml` (canvas 48×48 px, baseline Y=44, facing right, 16 frames: idle 4, attack 4, hit 2, death 6).
+  * **ComfyUI Workflow & Driver:** `tools/daedalus/comfyui/workflows/iris_concept_api.json` e `tools/daedalus/comfyui/drivers/generate_iris.py`.
+  * **Assets Compilados:** `assets/sprites/heroes/iris/hero_iris.aseprite`, `hero_iris_sheet.png` (768×48 px, 12 cores únicas das Rampas Nobre, Lúmen e Ouro, alpha binário [0, 255]), `hero_iris_sheet.json`.
+  * **Cena Godot & Teste:** `scenes/heroes/Iris.tscn` e `scenes/heroes/Iris.gd` validados via `tests/unit/test_iris_visual.gd` (PASS).
+
+* **Showcase de Alinhamento da Party (Bosque de Lúmen):**
+  * **Evidência Visual:** `docs/art/preview_party_heroes.png` (864×440 px).
+  * **Formação Canônica da FASE R12:** Flecha (Back, $X=50$), Íris (Mid, $X=130$), Bastião (Front, $X=210$). Todas as três entidades compartilham a mesma baseline $Y=44$, proporção rigorosa (zero mixels), iluminação top-left 45° e contraste AMOLED.
+
 ---
 
 ## 3. Histórico de Commits da Sessão
@@ -238,6 +254,7 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 | `a97a681` | `feat: integrate ComfyUI generative pipeline and Argos QA architecture into roadmap and repository` | Especificação ComfyUI, Argos QA framework, autoloads de debug, perfis de teste e reordenação do roadmap. |
 | `f2de300` | `feat: setup ComfyUI generative foundation and validate pipeline smoke test` | Instalação ComfyUI Desktop, API, Custom Nodes, driver Hermes e smoke test inicial. |
 | `455e59a` | `feat: complete Phase COMFY-00 homologation with multi-pose consistency and animated Godot test` | Homologação final COMFY-00 (poses, spritesheet, engine tests e modelos). |
+| `2165e67` | `feat: implement Bastiao animated hero, integrate into BattleStrip, and freeze ART_DIRECTION v1 (Phase R11 steps 1-2)` | Bastião animado, integração BattleStrip, ART_DIRECTION v1 congelado e evidências visuais. |
 
 ---
 
@@ -262,8 +279,8 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 [EM ANDAMENTO] FASE R11 — Produzir Bosque de Lúmen
   [x] Passo 1: Revisar Bastião e Slime usados em R10 (CONCLUÍDO)
   [x] Passo 2: Teste conjunto e congelar ART_DIRECTION v1 (CONCLUÍDO E CONGELADO)
-  [ ] Passo 3: Produzir o segundo herói: Flecha (Arqueiro DPS)
-  [ ] Passo 4: Produzir a terceira heroína: Íris (Maga de Lúmen)
+  [x] Passo 3: Produzir o segundo herói: Flecha (Arqueiro DPS) (CONCLUÍDO)
+  [x] Passo 4: Produzir a terceira heroína: Íris (Maga de Lúmen) (CONCLUÍDO)
   [ ] Passo 5: Produzir os demais mobs (Gremlin de Folha, Javali de Musgo, Espírito de Raiz)
   [ ] Passo 6: Produzir Elite do Bioma
   [ ] Passo 7: Produzir Chefe: Guardião-Cervo de Pedra
@@ -274,9 +291,11 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 
 ## 5. Próxima Ação Imediata
 
-Avançar para o **Passo 3 da FASE R11**:
-1. Criar contrato de asset `docs/art/contracts/hero_flecha.yaml` (canvas 48×48 px, paletas Silvestre e Ferro, arco longo e aljava).
-2. Gerar conceito mestre via ComfyUI API (`character_concept_api.json`).
-3. Construir as 4 animações canônicas (16 frames) e compilar spritesheet via Aseprite CLI.
-4. Integrar cena `scenes/heroes/Flecha.tscn` no Godot.
+Avançar para o **Passo 5 da FASE R11**:
+1. Produzir os três monstros comuns restantes do bioma Bosque de Lúmen:
+   - **Gremlin de Folha** (`gremlin_de_folha`, 32×32 px, baseline Y=29, Rampa Silvestre e Terra).
+   - **Javali de Musgo** (`javali_de_musgo`, 48×48 px, baseline Y=44, Rampa Terra e Musgo).
+   - **Espírito de Raiz** (`espirito_de_raiz`, 48×48 px, baseline Y=44, Rampa Madeira e Lúmen).
+2. Construir contratos, workflows, drivers de animação (16 frames) e cenas Godot.
+
 

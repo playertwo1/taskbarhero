@@ -1,0 +1,119 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 482910,
+      "steps": 4,
+      "cfg": 1.5,
+      "sampler_name": "euler",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0,
+      "model": [
+        "4",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "KSampler"
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "sdxl_lightning_4step.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "5": {
+    "inputs": {
+      "width": 512,
+      "height": 512,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage"
+  },
+  "6": {
+    "inputs": {
+      "text": "dark fantasy character concept, swift hooded archer ranger Flecha, holding wooden longbow with drawn arrow, quiver on back, wearing green leather hood and cloak, pure side-view facing right, solid black background, high contrast, clean silhouette, 16-bit pixel art style",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "7": {
+    "inputs": {
+      "text": "3d render, realistic, photographic, blurry, gradients, smooth shading, cropped, frame, watermark, signature",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode"
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "concept_flecha_512",
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage"
+  },
+  "10": {
+    "inputs": {
+      "image": [
+        "8",
+        0
+      ],
+      "hex_palette": "#0d2615, #184725, #2b7a3e, #52b769, #98e2a3, #2e1f14, #543820, #8a5e35, #bf8c56, #e3ba88, #131921, #3a4e63, #a8c5e6, #000000, #ffffff"
+    },
+    "class_type": "PixelGrid_ApplyPalette"
+  },
+  "11": {
+    "inputs": {
+      "image": [
+        "10",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 48,
+      "height": 48,
+      "crop": "disabled"
+    },
+    "class_type": "ImageScale"
+  },
+  "12": {
+    "inputs": {
+      "filename_prefix": "concept_flecha_48",
+      "images": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "SaveImage"
+  }
+}
