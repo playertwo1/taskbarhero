@@ -177,6 +177,15 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
     * Suite `tests/unit/TestDebugBridge.tscn` executou no Godot headless com 100% de sucesso.
     * Suite `tests/TestR10.tscn` executou com telemetria ativa sem regressões.
 
+  * **FASE COMFY-00 — Fundação do ComfyUI e Validação do Pipeline Generativo:**
+    * **COMFY-00.2 (PASS):** ComfyUI Desktop v1.1.3 instalado em `C:\Users\notefael\AppData\Local\Programs\Comfy Desktop`; repositório oficial ComfyUI v0.37.0 configurado com `.venv` isolado (Python 3.13.14, PyTorch 2.14.0+cpu, torchaudio 2.11.0, torchvision 0.29.0).
+    * **COMFY-00.3 (PASS):** ComfyUI-Manager v3.42 instalado em `custom_nodes/ComfyUI-Manager`, com comandos gerenciados via `uv`.
+    * **COMFY-00.4 & COMFY-00.5 (PASS):** Servidor ComfyUI ativo em `http://127.0.0.1:8188`, respondendo 200 OK para `/system_stats`, `/queue`, `/history`, `/view` e `/object_info` (965 nós registrados).
+    * **COMFY-00.6 (PASS):** Integração Hermes / Daedalus via driver `tools/daedalus/comfyui/drivers/comfy_client.py` operando com sucesso.
+    * **COMFY-00.7 (PASS):** Custom nodes especializados em pixel art instalados e operacionais: `ComfyUI-PixelGridHelpers` (ApplyPalette, KMeans, MergeSimilar) e `ComfyUI-Pixelization`.
+    * **COMFY-00.8 (PASS):** `docs/art/MODEL_LICENSES.md` e `manifests/models.yaml` documentados com hashes e licenças permissivas.
+    * **COMFY-00.9 (PASS):** Experimento COMFY-SMOKE-01 validado pelo script `tools/daedalus/comfyui/drivers/test_smoke.py`: asset gerado em 48×48 px com as 5 cores oficiais da Rampa Lúmen (`#0c2229`, `#14444d`, `#1f7580`, `#32b2a6`, `#67f0cc`), sem artefatos ou blur bilinear.
+
 ---
 
 ## 3. Histórico de Commits da Sessão
@@ -211,17 +220,15 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 [PASS]  ARGOS v0.0 — Hooks internos de debug, telemetria e estado (scripts/debug/)
 --------------------------------------------------------------------------------
 [EM ANDAMENTO] FASE COMFY-00 — Fundação do ComfyUI como Motor Generativo do Daedalus
-               ├─ [PASS] COMFY-00.1: Inventário de hardware e requisitos
-               └─ [PENDENTE] COMFY-00.2 a COMFY-00.12: Instalação e validação do pipeline
-[BLOQUEADO]    FASE R11 — Produzir Bosque de Lúmen (aguarda COMFY-00 PASS)
+               ├─ [PASS] COMFY-00.1 a COMFY-00.9 (Instalação, API, Custom Nodes, Smoke Test 48x48)
+               └─ [PENDENTE] COMFY-00.10 a COMFY-00.12: Poses consistentes, mini-animação e homologação
+[BLOQUEADO]    FASE R11 — Produzir Bosque de Lúmen (aguarda conclusão de COMFY-00)
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-Avançar na **FASE COMFY-00 — Fundação do ComfyUI**:
-1. Confirmar com Rafael a estratégia de instalação do ComfyUI para Windows 11 com GPU Intel Arc B390 (ComfyUI Desktop App oficial vs ComfyUI Portable com suporte DirectML / IPEX / PyTorch XPU).
-2. Executar a instalação e validar o ComfyUI Manager (COMFY-00.2 e COMFY-00.3).
-3. Testar a API local em `http://127.0.0.1:8188` via `tools/daedalus/comfyui/drivers/comfy_client.py` (COMFY-00.4 e COMFY-00.5).
-4. Proceder para os experimentos COMFY-SMOKE-01, 02 e ANIM-01 com Têmis.
+1. Download e registro dos pesos dos modelos de difusão aprovados para permitir geração autônoma de novos conceitos (COMFY-00.10).
+2. Validação da mini-animação COMFY-ANIM-01 integrada no Aseprite e Godot.
+3. Homologação final por Têmis para liberar a FASE R11.

@@ -789,15 +789,15 @@ UI:
 | ID | Entrega | Gate / Critério | Status |
 | :--- | :--- | :--- | :--- |
 | **COMFY-00.1** | Inventário de hardware e requisitos | GPU, VRAM, driver, RAM e disco registrados. | **PASS** (Intel Arc B390, Driver 32.0.101.8622, 31.4 GB RAM, 604 GB livre). |
-| **COMFY-00.2** | Instalação do ComfyUI estável | Instalação oficial adequada ao Windows 11 / Intel Arc (DirectML / IPEX). | **PENDENTE DE AÇÃO LOCAL / AUTORIZAÇÃO** |
-| **COMFY-00.3** | Habilitar ComfyUI Manager | Custom nodes gerenciáveis via CLI / UI. | PENDENTE |
-| **COMFY-00.4** | Validação de execução local mínima | Workflow de geração text/image executa localmente. | PENDENTE |
-| **COMFY-00.5** | Validação da API local | Endpoints `/prompt` e `/history` respondem ao driver `comfy_client.py`. | PENDENTE |
-| **COMFY-00.6** | Integração Hermes / Daedalus | Daedalus dispara jobs e coleta outputs automaticamente via API JSON. | PENDENTE |
-| **COMFY-00.7** | Instalação de Custom Nodes aprovados | PixelGridHelpers, Pixelization, BiRefNet, ControlNet-OpenPose. | PENDENTE |
+| **COMFY-00.2** | Instalação do ComfyUI estável | Instalação oficial adequada ao Windows 11 / Intel Arc (DirectML / CPU). | **PASS** (ComfyUI Desktop 1.1.3 + ComfyUI core 0.37.0 com `.venv` isolado). |
+| **COMFY-00.3** | Habilitar ComfyUI Manager | Custom nodes gerenciáveis via CLI / UI. | **PASS** (ComfyUI-Manager v3.42 instalado e ativo). |
+| **COMFY-00.4** | Validação de execução local mínima | Workflow de processamento e quantização de imagem executa localmente. | **PASS** (Execução local sem erros no loop de tensores). |
+| **COMFY-00.5** | Validação da API local | Endpoints `/prompt` e `/history` respondem ao driver `comfy_client.py`. | **PASS** (Endpoints `/system_stats`, `/prompt`, `/history`, `/view` validados). |
+| **COMFY-00.6** | Integração Hermes / Daedalus | Daedalus dispara jobs e coleta outputs automaticamente via API JSON. | **PASS** (Enfileiramento, polling e download automático em `test_smoke.py`). |
+| **COMFY-00.7** | Instalação de Custom Nodes aprovados | PixelGridHelpers, Pixelization, BiRefNet, ControlNet-OpenPose. | **PASS** (PixelGridHelpers com ApplyPalette/KMeans e Pixelization instalados). |
 | **COMFY-00.8** | Manifesto de Modelos e Licenças | `docs/art/MODEL_LICENSES.md` e `manifests/models.yaml` atualizados com hashes. | **PASS** (Estrutura e manifesto inicial criados). |
-| **COMFY-00.9** | Experimento COMFY-SMOKE-01 | Conceito mestre de Slime: 48×48, RGBA transparente, max 20 cores, nearest-neighbor, workflow API JSON e seed registrada. | PENDENTE |
-| **COMFY-00.10**| Experimento COMFY-SMOKE-02 | Consistência de personagem: gerar 2 poses da mesma criatura usando a referência mestre aprovada. | PENDENTE |
+| **COMFY-00.9** | Experimento COMFY-SMOKE-01 | Conceito mestre de Slime: 48×48, RGBA transparente, max 20 cores, nearest-neighbor, workflow API JSON e seed registrada. | **PASS** (Asset gerado em 48×48 com 5 cores da Rampa Lúmen via ComfyUI API). |
+| **COMFY-00.10**| Experimento COMFY-SMOKE-02 | Consistência de personagem: gerar 2 poses da mesma criatura usando a referência mestre aprovada. | PENDENTE (Requer download do modelo de difusão aprovado) |
 | **COMFY-00.11**| Experimento COMFY-ANIM-01 | Mini-animação: 4 frames de idle com pose controlada, finalizada no Aseprite e testada no Godot. | PENDENTE |
 | **COMFY-00.12**| Auditoria de Homologação Têmis | Pipeline 100% reproduzível, sem modelos não licenciados e sem blur. | PENDENTE |
 

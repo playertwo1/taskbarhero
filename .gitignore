@@ -21,3 +21,19 @@ build/
 *.log
 .DS_Store
 Thumbs.db
+
+# Python e caches
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+
+# ComfyUI e modelos pesados
+tools/daedalus/comfyui/models/
+tools/daedalus/comfyui/output/
+tools/daedalus/comfyui/input/
+tools/daedalus/comfyui/custom_nodes/
+*.safetensors
+*.ckpt
+*.pth
+*.bin
