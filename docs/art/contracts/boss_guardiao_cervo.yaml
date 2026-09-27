@@ -11,10 +11,8 @@ canvas:
   pivot: [32, 60]
 
 palette:
-  rampas:
-    - pedra       # Corpo monolítico de granito (#141824, #262d3d, #3d475c, #596680, #8392ab)
-    - chifres     # Madeira petrificada e galhos de pedra (#3d312a, #695244, #9c7c65, #cfb199)
-    - lumen       # Fissuras rúnicas, olhos e essência vital (#092e1a, #145932, #269e54, #4ee085, #a8ffcc)
+  master: TY_HIGH_FANTASY_40
+  subsets: [neutral_stone, wood, lumen, forest]
   max_colors: 14
 
 animations:

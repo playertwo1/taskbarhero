@@ -15,8 +15,8 @@ style:
   genre: dark_fantasy
   technique: pixel_art
   palette:
-    primary_ramp: iron_noble_metal
-    accent_ramp: gold_divine_light
+    master: TY_HIGH_FANTASY_40
+    subsets: [iron, gold]
     max_colors: 14
   outline: selective
   light_direction: top_left_45

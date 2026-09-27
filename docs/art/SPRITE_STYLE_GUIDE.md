@@ -13,6 +13,18 @@ Este documento define como todos os sprites do Pocket Hero devem ser concebidos,
 
 Nenhum agente deve inventar um estilo ou pipeline novo sem alterar este documento explicitamente.
 
+### Autoridade e precedência
+
+Em conflito sobre um asset, aplique esta ordem (da maior para a menor autoridade):
+
+**ASSET CONTRACT > GOLDEN REFERENCES > SPRITE STYLE GUIDE > PALETTE > ANIMATION STANDARD > REFERENCE LIBRARY > EXTERNAL REFERENCES > PROMPT.**
+
+Um prompt não pode substituir um contrato, uma referência aprovada ou uma regra do projeto. Registre a divergência e encaminhe-a ao responsável de arte. Use o [manifesto](./manifests/README.md) para rastreabilidade, a [biblioteca de referências](./REFERENCE_LIBRARY.md) para proveniência e o [guia de QA](./QA_SPRITES.md) para critérios técnicos.
+
+### ART-0 — gate para produção em massa
+
+Antes de iniciar ou retomar produção em massa, devem existir e estar aprovados: **1 GOLDEN HERO + 1 GOLDEN ENEMY + 1 GOLDEN BOSS + 1 GOLDEN ANIMATION**. Registre cada aprovação em [`golden/README.md`](./golden/README.md). Até os quatro itens passarem, produza apenas trabalho necessário para fechar o gate; não trate assets existentes como aprovados automaticamente.
+
 ---
 
 ## 2. Inspiração visual
@@ -283,11 +295,13 @@ A ordem pode mudar se a evidência visual justificar.
 
 ## 16. Paleta
 
-Target inicial:
+Use [`PALETTE.md`](./PALETTE.md): master `TY_HIGH_FANTASY_40`, limitado aos subconjuntos e `max_colors` do contrato do asset. O número 40 descreve a paleta-mestre, não a quantidade autorizada por sprite.
 
 ```text
-16–24 cores
+limite por asset = contrato
 ```
+
+Valores de 16/20/24 cores e rampas antigos neste guia registram experimentos históricos; não substituem a TY40 nem o limite do contrato.
 
 Testar 16, 20 e 24.
 
@@ -729,6 +743,8 @@ Rejeitar:
 ## 39. Teste oficial antes da produção em volume
 
 ### COMFY-SPRITE-QUALITY-01
+
+> Experimento documentado historicamente. A receita abaixo não é um preset vigente: tamanho, limite de cores e subconjuntos devem seguir o contrato atual e `PALETTE.md`.
 
 Asset:
 

@@ -30,6 +30,8 @@ Criar um jogo mobile com combate automático, progressão, loot, heróis, inimig
 - `documents/INDEX.md` — ponto de entrada e rotas de leitura por tarefa para guias completos e DOCX originais.
 - `docs/POCKET_HERO_PROJECT_BRIEF.md` — consolidação atual de escopo, MVP, direção de arte, pipeline e próximos gates, derivada dos DOCX arquivados.
 - `docs/PIPELINE_IA_SPRITES.md` — arquitetura de agentes e pipeline de criação de sprites por IA.
+- `docs/art/SPRITE_STYLE_GUIDE.md` — fonte oficial da arte e precedência das regras; [`PALETTE.md`](docs/art/PALETTE.md) define TY High Fantasy 40, e [`golden/README.md`](docs/art/golden/README.md) registra o ART-0 antes de novos lotes de produção.
+- [`REFERENCE_LIBRARY.md`](docs/art/REFERENCE_LIBRARY.md) — referências aprovadas, proveniência e limites de licença; [`WORKFLOW_COMFY.md`](docs/art/WORKFLOW_COMFY.md), [`ANIMATION_STANDARD.md`](docs/art/ANIMATION_STANDARD.md), [`QA_SPRITES.md`](docs/art/QA_SPRITES.md) e [`REJECT_CATALOG.md`](docs/art/REJECT_CATALOG.md) detalham produção e aceite. Contratos, manifestos e lint técnico ficam em `docs/art/contracts/`, `docs/art/manifests/` e `tools/sprite_lint.py`.
 - `docs/REFERENCIAS_TBH.md` — referências de gameplay, fases, inimigos, aliados, pets e ideias originais para o projeto.
 
 As versões DOCX completas permanecem arquivadas na pasta Taskbar do Google Drive e também estão versionadas em `docs/archive/`:

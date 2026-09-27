@@ -56,6 +56,12 @@ O MVP não é o overlay Android. O objetivo inicial é provar o jogo completo de
 - cenário em camadas.
 - efeitos básicos.
 
+Governança operacional: [`docs/art/SPRITE_STYLE_GUIDE.md`](docs/art/SPRITE_STYLE_GUIDE.md), [TY High Fantasy 40](docs/art/PALETTE.md), [contratos](docs/art/contracts/), [manifestos](docs/art/manifests/README.md), [QA](docs/art/QA_SPRITES.md) e [referências licenciadas](docs/art/REFERENCE_LIBRARY.md).
+
+### ART-0 — Golden References antes da produção em massa
+
+**Estado atual: PENDENTE; novos lotes em massa não liberados até fechar este gate.** Para liberar um lote, aprovar e registrar **1 GOLDEN HERO + 1 GOLDEN ENEMY + 1 GOLDEN BOSS + 1 GOLDEN ANIMATION**, com contrato, hash, proveniência e QA independente em [`docs/art/golden/README.md`](docs/art/golden/README.md). Os gates históricos R9/R11 permanecem como registrados; este gate define o critério de liberação daqui em diante e não presume que assets existentes sejam Goldens. Produza apenas o necessário para completar e revisar os quatro itens.
+
 **Android**
 - APK debug instalável.
 - jogo funcional em aparelho real.

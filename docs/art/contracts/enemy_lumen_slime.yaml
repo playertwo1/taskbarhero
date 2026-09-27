@@ -15,8 +15,8 @@ style:
   genre: dark_fantasy
   technique: pixel_art
   palette:
-    primary_ramp: lumen
-    accent_ramp: blood_warning
+    master: TY_HIGH_FANTASY_40
+    subsets: [lumen, crimson]
     max_colors: 12
   outline: selective
   light_direction: top_left_45

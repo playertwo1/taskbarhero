@@ -1,76 +1,53 @@
-# Pocket Hero — Paleta Canônica e Harmonias de Cor
+# Pocket Hero — TY High Fantasy 40 e subconjuntos
 
-**Status:** DECIDIDO (FASE R7)  
-**Versão:** 1.0.0  
-**Data:** 2026-09-27  
-**Alvo:** Bosque de Lúmen & Entidades do MVP  
+**Status:** paleta-mestre adotada para produção (2026-09-27). **Master ID:** `TY_HIGH_FANTASY_40`. **Fonte:** Toby_Yasha, [TY - High Fantasy 40 (Lospec)](https://lospec.com/palette-list/ty-high-fantasy-40).
+**Escopo:** cores RGB opacas para pixel art; alpha é transparência, não uma cor da paleta.
 
----
+**Nota de licença:** a página-fonte identifica Toby_Yasha e fornece os 40 valores, mas não apresenta uma licença explícita para a paleta. Este registro não inventa permissão. A atribuição fica preservada; confirmar os termos com o autor antes de distribuir material em que essa licença seja requisito.
 
-## 1. Princípios de Cor e Economia de Paleta
+## Regra de uso
 
-1. **Economia Estrita:** Cada personagem ou criatura deve usar entre **8 e 16 cores distintas no total**, organizadas em rampas claras de 3 a 5 tons por material.
-2. **Unificação de Sombras:** Sombras profundas de diferentes materiais compartilham matizes azulados/escuros comuns (`#10141d` ou `#121815`), simulando a iluminação atmosférica do Bosque e amarrando todos os elementos no mesmo espaço cênico.
-3. **Alto Contraste para AMOLED:** Os pontos focais (olhos de monstros, fio de lâminas, cristais de Lúmen) utilizam o tom de *highlight* máximo da rampa, destacando-se fortemente do fundo escuro da faixa de batalha.
+Use somente cores da paleta-mestre e dos subconjuntos abaixo. Cada contrato declara seus subconjuntos autorizados e o limite total de cores. Não misture tons próximos de rampas antigas com TY40. Exceções exigem alteração aprovada do contrato e deste documento, com justificativa registrada no manifesto.
 
----
+Os nomes dos subconjuntos são papéis práticos do Pocket Hero; não são rampas oficiais publicadas pelo criador da TY40. Podem compartilhar cores. Não force o uso de todas as cores de um subconjunto num asset.
 
-## 2. Rampas de Cores do Bosque de Lúmen
+## Paleta-mestre — exatamente 40 cores
 
-### 2.1 Rampa Lúmen (Bioluminescência Mágica & Geleia)
-Usada no corpo translúcido da Geleia de Lúmen, feitiços de Íris, auras e relíquias mágicas:
-* `#0c2229` — Sombra profunda (contorno interno escuro)
-* `#14444d` — Sombra média
-* `#1f7580` — Tom base / meio-tom
-* `#32b2a6` — Luz principal
-* `#67f0cc` — Brilho de bioluminescência
-* `#d4fffa` — Ponto especular / núcleo de energia
+| # | HEX | # | HEX | # | HEX | # | HEX |
+|---:|---|---:|---|---:|---|---:|---|
+| 1 | `#e6dac5` | 11 | `#bdd2de` | 21 | `#7a393d` | 31 | `#af8e2c` |
+| 2 | `#a49983` | 12 | `#81b5a2` | 22 | `#562f36` | 32 | `#8a5c0a` |
+| 3 | `#7b7d6a` | 13 | `#627c80` | 23 | `#402736` | 33 | `#af5722` |
+| 4 | `#6a6548` | 14 | `#607a53` | 24 | `#bf5437` | 34 | `#703a1a` |
+| 5 | `#4a484a` | 15 | `#545f28` | 25 | `#842d17` | 35 | `#3b1c16` |
+| 6 | `#353235` | 16 | `#484c2a` | 26 | `#5a231d` | 36 | `#2a1810` |
+| 7 | `#425a58` | 17 | `#223925` | 27 | `#caaa6c` | 37 | `#80592e` |
+| 8 | `#314646` | 18 | `#000000` | 28 | `#b5835a` | 38 | `#554323` |
+| 9 | `#2f3140` | 19 | `#8f5c66` | 29 | `#855139` | 39 | `#353021` |
+| 10 | `#182029` | 20 | `#5a4256` | 30 | `#60342c` | 40 | `#1c200f` |
 
-### 2.2 Rampa Silvestre (Musgo, Folhas & Cipós)
-Usada no Gremlin de Folha, pelagem musgosa do Javali, solo do bosque e armaduras de couro/folhas:
-* `#111c14` — Sombra profunda de folhagem
-* `#1c3622` — Sombra de casca e musgo
-* `#2e5733` — Tom base vegetal
-* `#4e8749` — Luz solar filtrada
-* `#80c26b` — Broto jovem / realce
+Os hexadecimais acima reproduzem a lista publicada em Lospec. `tools/sprite_lint.py` também mantém uma cópia dessa lista para detectar cores fora da paleta; ao atualizar, mantenha ambas sincronizadas.
 
-### 2.3 Rampa Rocha & Terra Antiga (Pedra, Chifres & Ruínas)
-Usada no Guardião-Cervo de Pedra, rochas do cenário, cascos e solo batido:
-* `#14151a` — Fenda / sombra de pedra
-* `#242730` — Rocha úmida na sombra
-* `#3d4252` — Tom base de pedra antiga
-* `#626a80` — Rocha iluminada
-* `#929cb5` — Crista de rocha / desgaste áspero
+## Subconjuntos do projeto
 
-### 2.4 Rampa Ferro & Metal Nobre (Armaduras & Armas)
-Usada nas proteções de Bastião, pontas de flecha e lâminas:
-* `#131921` — Sombra de aço frio
-* `#222f3d` — Metal na penumbra
-* `#3a4e63` — Tom base de ferro forjado
-* `#5e7a99` — Reflexo de luz na lâmina
-* `#a8c5e6` — Brilho especular do corte
+Cada contrato pode unir mais de um subconjunto, respeitando `max_colors`.
 
-### 2.5 Rampa Sangue & Alerta (Dano, Olhos Agressivos & Críticos)
-Usada em olhos de predadores, efeitos de corte, golpes críticos e números de dano:
-* `#290a12` — Sombra de sangue seco
-* `#521320` — Vermelho profundo
-* `#8c1f30` — Tom base escarlate
-* `#d43545` — Alerta vivo / sangue fresco
-* `#ff6e75` — Ponto de impacto crítico
+| ID | Uso recomendado | Cores permitidas |
+|---|---|---|
+| `neutral_stone` | pedra, sombras e contornos minerais | `#000000 #182029 #2f3140 #353235 #4a484a #627c80 #a49983 #e6dac5` |
+| `iron` | aço, armas e armadura | `#000000 #182029 #2f3140 #353235 #4a484a #627c80 #bdd2de #e6dac5` |
+| `lumen` | slime, magia verde-azulada e energia | `#000000 #182029 #314646 #425a58 #627c80 #81b5a2 #bdd2de #e6dac5` |
+| `forest` | musgo, folhas e vegetação | `#1c200f #223925 #353021 #484c2a #545f28 #607a53 #7b7d6a #81b5a2` |
+| `wood` | madeira, chifres e couro | `#2a1810 #3b1c16 #60342c #703a1a #80592e #855139 #b5835a #e6dac5` |
+| `gold` | ouro e detalhes de raridade | `#3b1c16 #8a5c0a #af8e2c #caaa6c #e6dac5` |
+| `crimson` | olhos, alertas e acentos de dano | `#2a1810 #402736 #562f36 #5a4256 #7a393d #8f5c66 #bf5437` |
 
-### 2.6 Rampa Ouro & Âmbar (Moedas, Tesouros & Lendários)
-Usada em moedas de ouro, ícones de raridade lendária e gemas preciosas:
-* `#261a0b` — Sombra de metal oxidado
-* `#543813` — Ouro envelhecido
-* `#9c6d1a` — Tom base de ouro
-* `#e0a328` — Ouro polido
-* `#ffea78` — Brilho puro do tesouro
+Subconjuntos são seleções da TY40, não licenças para combinar arbitrariamente todos os tons. A direção de luz continua top-left; contraste e legibilidade a 1× continuam obrigatórios.
 
----
+## Migração e compatibilidade
 
-## 3. Diretriz para Criação de Sprites no Aseprite / MCP
+As rampas nomeadas e os códigos hex antigos presentes em contratos, scripts ou notas são **LEGADO**, não autorizados para novos assets. Atualize um asset por vez pelo contrato e faça revisão visual; não quantize sprites aprovados em massa sem revalidação. Os três contratos principais apontam para os subconjuntos TY40 correspondentes.
 
-Ao invocar o `pixel-mcp` para pintar ou gerar paletas:
-1. Carregar previamente a paleta correspondente.
-2. Ativar a flag `use_palette: true` nas operações de desenho de pixels para encaixar automaticamente as cores nos tons canônicos acima definidos.
-3. Não introduzir novas cores arbitrárias sem atualizar formalmente este documento.
+## Uso no Aseprite / pixel-mcp
+
+Carregue a paleta/subconjunto declarado no contrato, preserve transparência binária e valide o PNG final com [`sprite_lint.py`](../../tools/sprite_lint.py). A paleta não aprova sozinha a qualidade visual nem o contraste no jogo.

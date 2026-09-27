@@ -1,0 +1,131 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+$id: pocket-hero-asset-manifest-v1
+title: Pocket Hero Asset Manifest
+type: object
+additionalProperties: false
+required:
+  - asset_id
+  - status
+  - version
+  - contract
+  - generation
+  - palette
+  - output
+  - qa
+properties:
+  asset_id:
+    type: string
+    pattern: '^[a-z][a-z0-9_]+$'
+  status:
+    enum: [DRAFT, CONCEPT_APPROVED, REFERENCE_LOCKED, PIXELIZED, CLEANUP, TECHNICAL_QA, ARTISTIC_QA, APPROVED, INTEGRATED, REJECTED]
+  version:
+    type: integer
+    minimum: 1
+  contract:
+    type: string
+    description: Caminho relativo para o contrato aprovado.
+  golden_reference:
+    type: [string, 'null']
+  references:
+    type: array
+    items: {type: string}
+  generation:
+    type: object
+    additionalProperties: false
+    required: [workflow, workflow_version, model, model_license_record, seed, sampler, steps, cfg, generation_resolution, input_hashes]
+    properties:
+      workflow: {type: string}
+      workflow_version: {type: string}
+      comfyui_version: {type: [string, 'null']}
+      custom_nodes: {type: array, items: {type: string}}
+      model: {type: string}
+      model_license_record: {type: string}
+      lora: {type: [string, 'null']}
+      adapters: {type: array, items: {type: string}}
+      seed: {type: [integer, 'null']}
+      sampler: {type: [string, 'null']}
+      steps: {type: [integer, 'null'], minimum: 1}
+      cfg: {type: [number, 'null'], minimum: 0}
+      generation_resolution: {type: [string, 'null']}
+      controlnet: {type: [string, 'null']}
+      controlnet_weight: {type: [number, 'null'], minimum: 0}
+      ip_adapter_weight: {type: [number, 'null'], minimum: 0}
+      prompt_file: {type: [string, 'null']}
+      input_hashes: {type: array, items: {type: string, pattern: '^[a-fA-F0-9]{64}$'}}
+  palette:
+    type: object
+    additionalProperties: false
+    required: [master, subsets, colors_used]
+    properties:
+      master: {const: TY_HIGH_FANTASY_40}
+      subsets: {type: array, minItems: 1, uniqueItems: true, items: {enum: [neutral_stone, iron, lumen, forest, wood, gold, crimson]}}
+      colors_used: {type: integer, minimum: 1, maximum: 40}
+      exceptional_colors:
+        type: array
+        items: {type: string, pattern: '^#[0-9A-Fa-f]{6}$'}
+        description: Só permitido com exceção aprovada registrada no contrato.
+  output:
+    type: object
+    additionalProperties: false
+    required: [files, frame_size, frame_count, layout, facing, alpha, hashes]
+    properties:
+      files: {type: array, minItems: 1, items: {type: string}}
+      frame_size:
+        type: object
+        required: [width, height]
+        properties:
+          width: {type: integer, minimum: 1}
+          height: {type: integer, minimum: 1}
+      frame_count: {type: integer, minimum: 1}
+      layout: {enum: [horizontal_strip, vertical_strip, atlas, single]}
+      facing: {enum: [left, right, front, back, not_applicable]}
+      alpha: {const: true}
+      hashes: {type: array, minItems: 1, items: {type: string, pattern: '^[a-fA-F0-9]{64}$'}}
+  qa:
+    type: object
+    additionalProperties: false
+    required: [technical, artistic, reviewer, reviewed_at]
+    properties:
+      technical: {enum: [PENDING, PASS, FAIL]}
+      artistic: {enum: [PENDING, PASS, FAIL]}
+      mobile: {enum: [PENDING, PASS, FAIL]}
+      reviewer: {type: [string, 'null']}
+      reviewed_at: {type: [string, 'null'], format: date}
+      report: {type: [string, 'null']}
+
+# Modelo preenchido (copiar e salvar como <asset_id>.manifest.yaml):
+# asset_id: hero_bastiao
+# status: DRAFT
+# version: 1
+# contract: docs/art/contracts/hero_bastiao.yaml
+# golden_reference: null
+# references: []
+# generation:
+#   workflow: tools/daedalus/comfyui/workflows/bastiao_concept_api.json
+#   workflow_version: '1'
+#   comfyui_version: null
+#   custom_nodes: []
+#   model: pending
+#   model_license_record: docs/art/MODEL_LICENSES.md
+#   lora: null
+#   adapters: []
+#   seed: null
+#   sampler: null
+#   steps: null
+#   cfg: null
+#   generation_resolution: null
+#   controlnet: null
+#   controlnet_weight: null
+#   ip_adapter_weight: null
+#   prompt_file: null
+#   input_hashes: []
+# palette: {master: TY_HIGH_FANTASY_40, subsets: [iron, gold], colors_used: 0, exceptional_colors: []}
+# output:
+#   files: []
+#   frame_size: {width: 48, height: 48}
+#   frame_count: 1
+#   layout: single
+#   facing: right
+#   alpha: true
+#   hashes: []
+# qa: {technical: PENDING, artistic: PENDING, mobile: PENDING, reviewer: null, reviewed_at: null, report: null}
