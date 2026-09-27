@@ -3,7 +3,7 @@
 **Status:** paleta-mestre adotada para produção (2026-09-27). **Master ID:** `TY_HIGH_FANTASY_40`. **Fonte:** Toby_Yasha, [TY - High Fantasy 40 (Lospec)](https://lospec.com/palette-list/ty-high-fantasy-40).
 **Escopo:** cores RGB opacas para pixel art; alpha é transparência, não uma cor da paleta.
 
-**Nota de licença:** a página-fonte identifica Toby_Yasha e fornece os 40 valores, mas não apresenta uma licença explícita para a paleta. Este registro não inventa permissão. A atribuição fica preservada; confirmar os termos com o autor antes de distribuir material em que essa licença seja requisito.
+**Aprovação de escopo:** Rafael aprovou o uso pessoal/privado da TY40 no Pocket Hero em 2026-09-27. A página-fonte identifica Toby_Yasha, mas não apresenta uma licença explícita; esta aprovação interna não é uma licença do autor e não autoriza redistribuição, publicação ou uso comercial da paleta. Revalidar com o titular antes de qualquer uso fora do escopo pessoal.
 
 ## Regra de uso
 
