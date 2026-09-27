@@ -1256,9 +1256,9 @@ Checklist:
 - [ ] export templates.
 - [ ] Android Studio.
 - [ ] Android SDK/NDK/CMake exigidos.
-- [ ] adb reconhece S25 Ultra.
+- [ ] adb reconhece S25 Ultra (adiado por Rafael em 2026-09-27).
 - [ ] Aseprite 1.3.10+.
-- [ ] Pixelorama (opcional, não bloqueia SETUP-01).
+- [x] Pixelorama (opcional, não bloqueia SETUP-01) — v1.2.3 (64-bit portátil) baixado e verificado em 2026-09-27.
 - [ ] pixel-mcp compilado.
 - [ ] pixel-mcp --health PASS.
 - [ ] Hermes enxerga MCP.

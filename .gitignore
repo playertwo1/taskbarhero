@@ -1,0 +1,21 @@
+# Ferramentas locais e binários portáteis (não versionados no repositório)
+/Aseprite/
+/Godot*/
+/Pixelorama/
+
+# Binários e arquivos compactados
+*.exe
+*.zip
+*.7z
+*.tar.gz
+*.pck
+
+# Godot e builds locais
+.godot/
+*.apk
+*.aab
+
+# Logs e arquivos de sistema
+*.log
+.DS_Store
+Thumbs.db
