@@ -921,12 +921,14 @@ Implementar:
 - vitória/derrota da equipe;
 - cooldowns simples.
 
-## Gate R12
+## Gate R12 — [PASS]
 
-PASS quando:
-- três heróis lutam simultaneamente;
-- sprites permanecem legíveis na faixa;
-- nenhuma unidade se sobrepõe de forma problemática.
+PASS:
+- [x] Três heróis (Bastião, Íris, Flecha) lutam simultaneamente em slots de formação (`front`, `mid`, `back`);
+- [x] Sprites permanecem perfeitamente legíveis na faixa (escala 2.0x uniforme, zero mixels);
+- [x] Nenhuma unidade se sobrepõe de forma problemática (espaçamentos: Flecha-Íris 56.2 px, Íris-Bastião 60.5 px, Bastião-Inimigo 155.5 px);
+- [x] Targeting de formação validado: inimigos priorizam front -> mid -> back;
+- [x] Morte individual, derrota da equipe e regeneração de campo homologados via `tests/TestR12.tscn`.
 
 ---
 

@@ -21,6 +21,11 @@ func _ready() -> void:
 	GameManager.enemy_damaged.connect(_on_enemy_damaged)
 	GameManager.battle_log.connect(_on_battle_log)
 	
+	GameManager.party_hero_attacked.connect(_on_party_hero_attacked)
+	GameManager.party_hero_damaged.connect(_on_party_hero_damaged)
+	GameManager.party_hero_died.connect(_on_party_hero_died)
+	GameManager.party_hero_revived.connect(_on_party_hero_revived)
+	
 	ProgressionManager.level_up.connect(_on_level_up)
 	ProgressionManager.gold_changed.connect(_on_gold_changed)
 	
@@ -48,11 +53,19 @@ func _update_battle_strip_ratios() -> void:
 
 func _update_ui() -> void:
 	level_label.text = "LV %d" % ProgressionManager.level
-	stats_label.text = "⚔ %.0f  🛡 %.1f  ❤ %.0f/%.0f" % [
+	
+	var bastiao_hp: float = float(GameManager.party.get("bastiao", {}).get("current_hp", 0.0))
+	var iris_hp: float = float(GameManager.party.get("iris", {}).get("current_hp", 0.0))
+	var flecha_hp: float = float(GameManager.party.get("flecha", {}).get("current_hp", 0.0))
+	
+	stats_label.text = "⚔ %.0f  🛡 %.1f  ❤ %.0f/%.0f  [B:%.0f I:%.0f F:%.0f]" % [
 		GameManager.get_total_hero_attack(),
 		GameManager.get_total_hero_defense(),
 		GameManager.hero_current_hp,
-		GameManager.get_total_hero_max_hp()
+		GameManager.get_total_hero_max_hp(),
+		bastiao_hp,
+		iris_hp,
+		flecha_hp
 	]
 	gold_label.text = "Ouro: %d" % ProgressionManager.gold
 	progress_label.text = "XP: %d/%d  •  Fase %d (Bosque de Lúmen)" % [
@@ -92,7 +105,22 @@ func _on_hero_damaged(_dmg: float, _curr: float, _max: float) -> void:
 	_update_ui()
 
 func _on_enemy_damaged(_dmg: float, _curr: float, _max: float, _is_crit: bool) -> void:
-	battle_strip.flash_hero_attack()
+	_update_ui()
+
+func _on_party_hero_attacked(hero_id: String) -> void:
+	battle_strip.play_hero_attack(hero_id)
+	_update_ui()
+
+func _on_party_hero_damaged(hero_id: String, _amount: float, _curr: float, _max: float) -> void:
+	battle_strip.play_hero_hit(hero_id)
+	_update_ui()
+
+func _on_party_hero_died(hero_id: String) -> void:
+	battle_strip.play_hero_death_single(hero_id)
+	_update_ui()
+
+func _on_party_hero_revived(hero_id: String) -> void:
+	battle_strip.reset_hero_single(hero_id)
 	_update_ui()
 
 func _on_battle_log(msg: String) -> void:

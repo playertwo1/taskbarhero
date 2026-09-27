@@ -323,18 +323,26 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
   [x] Passo 6: Produzir Elite do Bioma (Lobo Alfa de Lúmen) (CONCLUÍDO)
   [x] Passo 7: Produzir Chefe: Guardião-Cervo de Pedra (CONCLUÍDO)
   [x] Passo 8: Cenário em camadas (fundo distante, intermediário, solo, partículas) (CONCLUÍDO)
+[PASS]  FASE R12 — Party de três personagens (HOMOLOGADO)
+  [x] Slots de formação: `front` (Bastião), `mid` (Íris), `back` (Flecha)
+  [x] Targeting de formação: inimigos priorizam front -> mid -> back
+  [x] Distâncias de ataque: Flecha 400px, Íris 300px, Bastião 200px
+  [x] Morte individual, derrota da equipe e regeneração de campo
+  [x] BattleStrip com renderização simultânea dos 3 heróis e barras de vida individuais
+  [x] Escala 2.0x uniforme, zero mixels, sem sobreposição de sprites
+  [x] Suíte de testes: `tests/TestR12.tscn` (PASS) e `tests/TestR10.tscn` (PASS)
 --------------------------------------------------------------------------------
-[PRÓXIMA] FASE R12 — Party de três personagens
+[PRÓXIMA] FASE R13 — Loot e equipamento
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-Avançar para a **FASE R12 — Party de três personagens**:
-1. Implementar slots da party no combate (`front`, `mid`, `back`).
-2. Configurar posicionamento canônico: Bastião (`front`), Flecha (`back`), Íris (`mid`).
-3. Desenvolver mecânica de targeting, distância de ataque, ordem de formação e animações coordenadas na faixa de batalha.
+Avançar para a **FASE R13 — Loot e equipamento**:
+1. Expandir a tabela de drops com os 15 itens temáticos do Bosque de Lúmen (3 slots: arma, armadura, amuleto × 4 raridades: comum, raro, épico, lendário).
+2. Refinar a lógica de inventário, comparação de poder, equipar manual e auto-equipar melhor.
+3. Conduzir teste controlado mensurando o impacto de atributos (ATK, DEF, HP, crit, lifesteal) na sobrevivência e no TTK dos heróis.
 
 
 
