@@ -1,0 +1,21 @@
+profile: beginner
+description: "Simula um jogador novato sem conhecimento prévio do design ou documentação."
+knowledge:
+  game_docs: false
+  optimal_builds: false
+goals:
+  - understand_core_loop
+  - reach_first_item
+  - equip_item
+  - reach_first_level_up
+  - advance_to_stage_2
+behavior:
+  exploration: high
+  patience: medium
+  use_external_guide: never
+report:
+  - unclear_labels
+  - dead_ends
+  - tutorial_gaps
+  - touch_failures
+  - confusing_ui_elements

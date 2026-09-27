@@ -1,0 +1,29 @@
+manifest_version: "1.0"
+updated: "2026-09-27"
+maintainer: "Daedalus / Antigravity"
+
+approved_models:
+  - id: "sd_xl_base_1.0"
+    type: "checkpoint"
+    filename: "sd_xl_base_1.0.safetensors"
+    license: "CreativeML OpenRAIL++-M"
+    approved: true
+
+pending_approval_models:
+  - id: "pixel_art_xl_lora"
+    type: "lora"
+    filename: "pixel-art-xl.safetensors"
+    license: "Permissive AI Generative"
+    approved: false
+
+  - id: "controlnet_openpose_xl"
+    type: "controlnet"
+    filename: "control-lora-openposeXL2-rank256.safetensors"
+    license: "Apache-2.0"
+    approved: false
+
+  - id: "birefnet_general"
+    type: "segmentation"
+    filename: "BiRefNet-general-epoch_244.pth"
+    license: "MIT"
+    approved: false

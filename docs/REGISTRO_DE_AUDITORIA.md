@@ -147,13 +147,49 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 ## 3. Histórico de Commits da Sessão
 
 | Commit | Mensagem | Escopo |
+### 2.7 Incorporação do ComfyUI (FASE COMFY-00) e do Framework Argos (TRILHA ARGOS)
+* **Decisão Estratégica (Rafael Pedrosa em 2026-09-27):**
+  * O **ComfyUI** torna-se o motor generativo principal do Daedalus para conceitos, referências, variantes e poses frame a frame com ControlNet/IP-Adapter.
+  * O **Aseprite + pixel-mcp** permanecem obrigatórios como bancada técnica de acabamento de clusters, paleta, timing e spritesheet final.
+  * A **FASE COMFY-00 (Fundação ComfyUI)** torna-se o próximo item imediato do roadmap, precedendo obrigatoriamente a expansão em volume do Bosque de Lúmen (FASE R11).
+  * O agente **Argos** é incorporado como camada de playtest autônomo sobre GdUnit4, Maestro MCP, telemetria interna e simuladores headless.
+* **Estrutura Criada no Repositório:**
+  * **ComfyUI / Daedalus:**
+    * `docs/art/COMFY_PIPELINE.md`: Especificação técnica de 17 etapas do pipeline, regras de referência mestre e nós customizados aprovados.
+    * `docs/art/MODEL_LICENSES.md`: Manifesto estrito de modelos, LoRAs, ControlNets e licenças de uso comercial.
+    * `tools/daedalus/comfyui/README.md`: Documentação operacional da API local.
+    * `tools/daedalus/comfyui/drivers/comfy_client.py`: Driver Python cliente para `/prompt`, `/history` e download de imagens.
+    * `tools/daedalus/comfyui/workflows/character_concept_api.json`: Grafo JSON nativo de API para geração de conceitos.
+    * `tools/daedalus/comfyui/manifests/models.yaml`: Manifesto de modelos e pesos de IA.
+  * **Argos (Autonomous Playtester):**
+    * `scripts/debug/`: `DevMode.gd`, `Telemetry.gd`, `StateExporter.gd`, `TestHooks.gd` e `DebugBridge.gd` implementados e conectados como autoloads em `project.godot`.
+    * `tools/argos/README.md` & `tools/argos/ARGOS_SOUL.md`: Princípios e contratos de execução do playtester.
+    * `tools/argos/profiles/`: 6 perfis sintéticos configurados (`beginner.yaml`, `optimizer.yaml`, `idle.yaml`, `hoarder.yaml`, `chaos.yaml`, `exploit_hunter.yaml`).
+    * `docs/qa/`: `ARGOS_ARCHITECTURE.md`, `TEST_STRATEGY.md`, `BUG_REPORT_SCHEMA.md` e `BALANCE_FINDINGS.md`.
+    * Reorganização de `tests/` em `unit/`, `integration/`, `regression/`, `scenes/`.
+* **Validação de Hardware e Testes:**
+  * **COMFY-00.1 (Inventário de Hardware):** **PASS**
+    * GPU: `Intel(R) Arc(TM) B390 GPU` (Driver `32.0.101.8622`).
+    * RAM: `31.4 GB` disponível.
+    * Disco C: `604.9 GB` livres.
+    * OS: Windows 11 64-bit.
+  * **Argos v0.0 (Hooks e Telemetria):** **PASS**
+    * Suite `tests/unit/TestDebugBridge.tscn` executou no Godot headless com 100% de sucesso.
+    * Suite `tests/TestR10.tscn` executou com telemetria ativa sem regressões.
+
+---
+
+## 3. Histórico de Commits da Sessão
+
+| Commit | Mensagem | Escopo |
 | :--- | :--- | :--- |
 | `b732422` | `chore: add .gitignore and verify Pixelorama v1.2.3 in roadmap` | `.gitignore` inicial e verificação do Pixelorama no roadmap. |
 | `acab9d6` | `feat: implement canonical Godot architecture (Phase R8) and close SETUP-01` | Esqueleto canônico Godot (`project.godot`, autoloads, cenas, dados) e fechamento do marco SETUP-01. |
 | `95d7f2b` | `docs: establish art governance framework and first asset contract (Phase R7)` | Framework de governança artística em `docs/art/` e contrato da Geleia de Lúmen. |
 | `6055d1a` | `docs: create comprehensive execution audit record for SETUP-01, R8 and R7` | Registro de auditoria consolidado da primeira etapa da sessão. |
 | `a14b953` | `feat: implement first animated AI sprite Geleia de Lumen and close Phase R9` | Assets do Slime, cena animada, integração no BattleStrip e fechamento do Gate R9. |
-| `5c76e0e` | `feat: implement autonomous combat loop and validate Gate R10` | 5 ciclos autônomos, cenário do Bosque de Lúmen, persistência, suite de teste e APK Android. |
+| `a20f0ae` | `feat: implement autonomous combat loop and validate Gate R10` | 5 ciclos autônomos, cenário do Bosque de Lúmen, persistência, suite de teste e APK Android. |
+| `a97a681` | `feat: integrate ComfyUI generative pipeline and Argos QA architecture into roadmap and repository` | Especificação ComfyUI, Argos QA framework, autoloads de debug, perfis de teste e reordenação do roadmap. |
 
 ---
 
@@ -172,15 +208,20 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 [PASS]  FASE R7  — Governança de arte Daedalus (docs/art/)
 [PASS]  FASE R9  — Provar o pipeline artístico com UM sprite (Geleia de Lúmen)
 [PASS]  FASE R10 — Prova do loop + smoke Android mínimo
+[PASS]  ARGOS v0.0 — Hooks internos de debug, telemetria e estado (scripts/debug/)
 --------------------------------------------------------------------------------
-[PENDENTE]   FASE R11 — Produzir Bosque de Lúmen
+[EM ANDAMENTO] FASE COMFY-00 — Fundação do ComfyUI como Motor Generativo do Daedalus
+               ├─ [PASS] COMFY-00.1: Inventário de hardware e requisitos
+               └─ [PENDENTE] COMFY-00.2 a COMFY-00.12: Instalação e validação do pipeline
+[BLOQUEADO]    FASE R11 — Produzir Bosque de Lúmen (aguarda COMFY-00 PASS)
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-Iniciar a **FASE R11 — Produzir Bosque de Lúmen**:
-1. Produção dos assets de cenário e demais inimigos do Bosque de Lúmen conforme contratos canônicos (`gremlin_de_folha`, `javali_de_musgo`, `espirito_de_raiz` e chefe `guardiao_cervo_de_pedra`).
-2. Implementação das 5 subfases do bioma (entrada, pressão, ninho, elite e chefe).
-3. Auditoria técnica/visual independente com Têmis para cada novo asset antes da integração no Godot.
+Avançar na **FASE COMFY-00 — Fundação do ComfyUI**:
+1. Confirmar com Rafael a estratégia de instalação do ComfyUI para Windows 11 com GPU Intel Arc B390 (ComfyUI Desktop App oficial vs ComfyUI Portable com suporte DirectML / IPEX / PyTorch XPU).
+2. Executar a instalação e validar o ComfyUI Manager (COMFY-00.2 e COMFY-00.3).
+3. Testar a API local em `http://127.0.0.1:8188` via `tools/daedalus/comfyui/drivers/comfy_client.py` (COMFY-00.4 e COMFY-00.5).
+4. Proceder para os experimentos COMFY-SMOKE-01, 02 e ANIM-01 com Têmis.

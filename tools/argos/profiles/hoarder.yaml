@@ -1,0 +1,16 @@
+profile: hoarder
+description: "Simula um jogador que coleta todos os itens sem nunca vender ou descartar."
+knowledge:
+  game_docs: false
+  optimal_builds: false
+goals:
+  - test_inventory_capacity_limits
+  - test_ui_scroll_and_rendering_performance_with_many_items
+  - test_auto_equip_with_crowded_inventory
+behavior:
+  keep_all_drops: true
+  auto_equip: selective
+report:
+  - ui_lag_on_large_inventory
+  - overflow_item_loss
+  - unhandled_capacity_error

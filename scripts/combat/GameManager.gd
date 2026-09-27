@@ -21,6 +21,7 @@ var hero_attack_cd: float = 0.0
 var enemy_attack_cd: float = 0.0
 var respawn_cd: float = 0.0
 var autosave_timer: float = 0.0
+var enemy_spawn_time_msec: int = 0
 
 var is_paused: bool = false
 var rng := RandomNumberGenerator.new()
@@ -83,6 +84,7 @@ func spawn_next_enemy() -> void:
 		if roll <= curr:
 			active_enemy = e.duplicate(true)
 			active_enemy_hp = float(active_enemy.get("max_hp", 30))
+			enemy_spawn_time_msec = Time.get_ticks_msec()
 			battle_started.emit(active_enemy)
 			battle_log.emit("Um %s apareceu!" % active_enemy.get("name", "Inimigo"))
 			break
@@ -132,6 +134,9 @@ func _on_enemy_defeated() -> void:
 
 	var dropped_item = LootManager.roll_drop(defeated_enemy.get("boss", false))
 
+	var ttk := float(Time.get_ticks_msec() - enemy_spawn_time_msec) / 1000.0
+	Telemetry.record_kill(defeated_enemy.get("id", ""), ttk, xp_reward, gold_reward)
+
 	battle_ended.emit(true, defeated_enemy)
 	var msg := "%s derrotado! +%d XP, +%d Ouro" % [defeated_enemy.get("name", "Inimigo"), xp_reward, gold_reward]
 	if dropped_item != null:
@@ -143,6 +148,7 @@ func _on_hero_defeated() -> void:
 	active_enemy = {}
 	respawn_cd = 2.0
 	hero_current_hp = get_total_hero_max_hp() * 0.50
+	Telemetry.record_hero_death(enemy_that_killed.get("id", ""))
 	battle_ended.emit(false, enemy_that_killed)
 	battle_log.emit("O grupo recuou para recuperar forças...")
 

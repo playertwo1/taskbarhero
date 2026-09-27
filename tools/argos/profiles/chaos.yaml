@@ -1,0 +1,17 @@
+profile: chaos
+description: "Simula comportamento anômalo, inputs rápidos, trocas de tela frenéticas e suspensões súbitas de app."
+knowledge:
+  game_docs: false
+  optimal_builds: false
+goals:
+  - trigger_state_race_conditions
+  - rapid_app_lifecycle_switches (background/foreground)
+  - rapid_button_mashing
+behavior:
+  input_frequency: very_high
+  random_background_interval: [2, 5, 10]
+report:
+  - state_deadlocks
+  - signal_disconnections
+  - unhandled_exceptions
+  - memory_spikes

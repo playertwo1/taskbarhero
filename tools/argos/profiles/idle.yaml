@@ -1,0 +1,16 @@
+profile: idle
+description: "Simula um jogador casual que joga poucos minutos, fecha o app e retorna horas depois."
+knowledge:
+  game_docs: false
+  optimal_builds: false
+goals:
+  - test_offline_progression_cap
+  - verify_offline_rewards_restoration
+  - evaluate_burst_sessions
+behavior:
+  session_duration_minutes: 5
+  offline_interval_hours: [1, 4, 8, 12]
+report:
+  - reward_duplication_on_resume
+  - lost_offline_progress
+  - state_desync

@@ -777,7 +777,51 @@ UI:
   - Geleia de Lúmen com animações fluidas (`idle`, `attack`, `hit`, `death`) acopladas ao combate.
   - Fundo do Bosque de Lúmen desenhado na `BattleStrip` com silhuetas de pinheiros, orbes cintilantes e solo musgoso AMOLED.
   - Persistência testada: Save gravado em `user://pocket_hero_save.json`, memória limpa e recarregamento validado (Nível 2, XP 12, Ouro 16, 1 item na mochila).
-  - Build Android: `build/pocket_hero_debug.apk` (28.293.998 bytes) exportado e assinado via `apksigner` (v2/v3 schemes válidos). Validação em aparelho físico permanece no backlog de Rafael.
+---
+
+# FASE COMFY-00 — Fundação do ComfyUI como Motor Generativo do Daedalus
+
+> **Decisão Principal (2026-09-27):** ComfyUI torna-se o motor generativo principal do Daedalus para conceitos, variações, referências, poses e frames. Aseprite + pixel-mcp continuam como bancada de acabamento técnico (limpeza de clusters, paleta, timing, tags e spritesheet final).  
+> **Prioridade Máxima:** Esta fase precede obrigatoriamente a expansão artística em lote do Bosque de Lúmen (FASE R11) para evitar retrabalho na linha de produção de assets.
+
+## Sub-Roadmap COMFY-00
+
+| ID | Entrega | Gate / Critério | Status |
+| :--- | :--- | :--- | :--- |
+| **COMFY-00.1** | Inventário de hardware e requisitos | GPU, VRAM, driver, RAM e disco registrados. | **PASS** (Intel Arc B390, Driver 32.0.101.8622, 31.4 GB RAM, 604 GB livre). |
+| **COMFY-00.2** | Instalação do ComfyUI estável | Instalação oficial adequada ao Windows 11 / Intel Arc (DirectML / IPEX). | **PENDENTE DE AÇÃO LOCAL / AUTORIZAÇÃO** |
+| **COMFY-00.3** | Habilitar ComfyUI Manager | Custom nodes gerenciáveis via CLI / UI. | PENDENTE |
+| **COMFY-00.4** | Validação de execução local mínima | Workflow de geração text/image executa localmente. | PENDENTE |
+| **COMFY-00.5** | Validação da API local | Endpoints `/prompt` e `/history` respondem ao driver `comfy_client.py`. | PENDENTE |
+| **COMFY-00.6** | Integração Hermes / Daedalus | Daedalus dispara jobs e coleta outputs automaticamente via API JSON. | PENDENTE |
+| **COMFY-00.7** | Instalação de Custom Nodes aprovados | PixelGridHelpers, Pixelization, BiRefNet, ControlNet-OpenPose. | PENDENTE |
+| **COMFY-00.8** | Manifesto de Modelos e Licenças | `docs/art/MODEL_LICENSES.md` e `manifests/models.yaml` atualizados com hashes. | **PASS** (Estrutura e manifesto inicial criados). |
+| **COMFY-00.9** | Experimento COMFY-SMOKE-01 | Conceito mestre de Slime: 48×48, RGBA transparente, max 20 cores, nearest-neighbor, workflow API JSON e seed registrada. | PENDENTE |
+| **COMFY-00.10**| Experimento COMFY-SMOKE-02 | Consistência de personagem: gerar 2 poses da mesma criatura usando a referência mestre aprovada. | PENDENTE |
+| **COMFY-00.11**| Experimento COMFY-ANIM-01 | Mini-animação: 4 frames de idle com pose controlada, finalizada no Aseprite e testada no Godot. | PENDENTE |
+| **COMFY-00.12**| Auditoria de Homologação Têmis | Pipeline 100% reproduzível, sem modelos não licenciados e sem blur. | PENDENTE |
+
+## Gate COMFY-00
+PASS quando:
+- ComfyUI estável estiver instalado e inicializando com driver e API funcional;
+- Pelo menos um workflow API JSON versionado executar com sucesso via `comfy_client.py`;
+- Experimentos COMFY-SMOKE-01, 02 e ANIM-01 passarem com veredito de Têmis;
+- Aseprite e Godot receberem e renderizarem o asset final sem blur.
+
+---
+
+# TRILHA ARGOS — Autonomous Playtester
+
+> **Missão:** Camada autônoma de playtest do Pocket Hero operando sobre testes determinísticos (GdUnit4), automação Android externa (Maestro MCP), telemetria interna, simuladores massivos e relatórios de anomalias (Argos Analyst).
+
+| Versão | Escopo | Gate / Entregas | Status |
+| :--- | :--- | :--- | :--- |
+| **v0.0 — Hooks** | DevMode, Telemetry, StateExporter, TestHooks, DebugBridge. | Estado observável e controlável em compilações de desenvolvimento (`scripts/debug/`). | **PASS** (Implementado e integrado ao projeto). |
+| **v0.1 — Foundation**| GdUnit4 + Maestro MCP + perfis Beginner e Chaos. | APK testado automaticamente via journeys no Android. Pelo menos 10 testes de regressão críticos. | PENDENTE |
+| **v0.2 — Visual** | Android CLI fallback, screenshots, regressão visual de layout. | Detecção automática de botões inacessíveis e HUD quebrado. | PENDENTE |
+| **v0.3 — Scale** | Simulador headless (10k a 100k runs) + Argos Analyst. | Relatórios estatísticos de inflação de ouro, drop rates e TTK. | PENDENTE |
+| **v0.4 — Learning** | Godot RL Agents (experimental). | Treinamento de agente por reforço em busca de estratégias emergentes/exploits. | EXPERIMENTAL |
+| **v1.0 — Autonomous QA**| Pipeline integrado: build → test → report → fix → retest. | Ciclo completo validado em CI para releases confiáveis. | PENDENTE |
 
 ---
 
@@ -785,7 +829,7 @@ UI:
 
 ## Objetivo
 
-Expandir o Bosque de Lúmen depois da prova do loop e do smoke Android mínimo de R10. Para essa prova, usar a arte já validada do Slime e placeholders originais mínimos para Bastião, cenário e item. Ampliar o restante em lotes pequenos; o slice Android ampliado depende de R15–R16.
+Expandir o Bosque de Lúmen após a conclusão e homologação da FASE COMFY-00. A produção em volume dos novos heróis, inimigos e cenários será executada pelo pipeline ComfyUI (conceito e poses) + Aseprite/pixel-mcp (acabamento e spritesheet).
 
 ## Heróis
 

@@ -1,0 +1,17 @@
+profile: optimizer
+description: "Simula um jogador min-maxer que busca a taxa mais alta de XP/h e ouro/h."
+knowledge:
+  game_docs: true
+  optimal_builds: true
+goals:
+  - maximize_xp_per_hour
+  - maximize_gold_per_hour
+  - find_dominant_equipment_combinations
+  - benchmark_boss_ttk
+behavior:
+  exploration: low
+  patience: low
+  focus: efficiency
+flag_when:
+  dominant_build_threshold: 0.85
+  pacing_stall_hours: 1.5
