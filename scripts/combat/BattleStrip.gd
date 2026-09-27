@@ -10,19 +10,36 @@ var enemy_name: String = "Inimigo"
 var current_enemy_id: String = ""
 
 const SLIME_SCENE = preload("res://scenes/enemies/GeleiaDeLumen.tscn")
+const BASTIAO_SCENE = preload("res://scenes/heroes/Bastiao.tscn")
 var enemy_visual: Node2D = null
+var hero_visual: Node2D = null
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(0, 220)
 	set_process(true)
+	_setup_hero()
+
+func _setup_hero() -> void:
+	if hero_visual == null or not is_instance_valid(hero_visual):
+		hero_visual = BASTIAO_SCENE.instantiate()
+		add_child(hero_visual)
+	hero_visual.scale = Vector2(2.0, 2.0)
+	hero_visual.visible = true
+	if hero_visual.has_method("reset"):
+		hero_visual.reset()
 
 func _process(delta: float) -> void:
 	hero_attack_flash = maxf(0.0, hero_attack_flash - delta * 4.0)
 	enemy_attack_flash = maxf(0.0, enemy_attack_flash - delta * 4.0)
 	loot_flash = maxf(0.0, loot_flash - delta * 2.0)
 	
+	var ground_y := size.y - 42.0
+	
+	if hero_visual and is_instance_valid(hero_visual) and hero_visual.visible:
+		var hero_x := size.x * 0.25
+		hero_visual.position = Vector2(hero_x, ground_y)
+		
 	if enemy_visual and is_instance_valid(enemy_visual) and enemy_visual.visible:
-		var ground_y := size.y - 42.0
 		var enemy_x := size.x * 0.73
 		enemy_visual.position = Vector2(enemy_x, ground_y)
 		
@@ -48,6 +65,9 @@ func set_enemy(enemy_data: Dictionary) -> void:
 
 func flash_hero_attack() -> void:
 	hero_attack_flash = 1.0
+	if hero_visual and is_instance_valid(hero_visual) and hero_visual.visible:
+		if hero_visual.has_method("play_attack"):
+			hero_visual.play_attack()
 	if enemy_visual and is_instance_valid(enemy_visual) and enemy_visual.visible:
 		if enemy_visual.has_method("play_hit"):
 			enemy_visual.play_hit()
@@ -57,11 +77,24 @@ func flash_enemy_attack() -> void:
 	if enemy_visual and is_instance_valid(enemy_visual) and enemy_visual.visible:
 		if enemy_visual.has_method("play_attack"):
 			enemy_visual.play_attack()
+	if hero_visual and is_instance_valid(hero_visual) and hero_visual.visible:
+		if hero_visual.has_method("play_hit"):
+			hero_visual.play_hit()
 
 func play_enemy_death() -> void:
 	if enemy_visual and is_instance_valid(enemy_visual) and enemy_visual.visible:
 		if enemy_visual.has_method("play_death"):
 			enemy_visual.play_death()
+
+func play_hero_death() -> void:
+	if hero_visual and is_instance_valid(hero_visual) and hero_visual.visible:
+		if hero_visual.has_method("play_death"):
+			hero_visual.play_death()
+
+func reset_hero() -> void:
+	if hero_visual and is_instance_valid(hero_visual):
+		if hero_visual.has_method("reset"):
+			hero_visual.reset()
 
 func flash_loot() -> void:
 	loot_flash = 1.0
@@ -102,15 +135,19 @@ func _draw() -> void:
 	# Hero: Bastião (Guardião com espada e escudo)
 	var hero_x := s.x * 0.25
 	var hero_y := ground_y - 42.0
-	var hero_color := Color("4dabf7").lerp(Color.WHITE, hero_attack_flash * 0.70)
-	var shield_color := Color("339af0").lerp(Color.WHITE, hero_attack_flash * 0.50)
-	# Corpo e Elmo
-	draw_circle(Vector2(hero_x, hero_y - 30), 16, hero_color)
-	draw_rect(Rect2(hero_x - 14, hero_y - 14, 28, 42), hero_color, true)
-	# Escudo frontal de Bastião
-	draw_rect(Rect2(hero_x + 8, hero_y - 8, 12, 32), shield_color, true)
-	# Espada
-	draw_line(Vector2(hero_x + 16, hero_y - 2), Vector2(hero_x + 36, hero_y - 22), Color("e9ecef"), 4.0)
+	if hero_visual and is_instance_valid(hero_visual) and hero_visual.visible:
+		# Nó filho Bastiao cuida da renderização das animações
+		pass
+	else:
+		var hero_color := Color("4dabf7").lerp(Color.WHITE, hero_attack_flash * 0.70)
+		var shield_color := Color("339af0").lerp(Color.WHITE, hero_attack_flash * 0.50)
+		# Corpo e Elmo
+		draw_circle(Vector2(hero_x, hero_y - 30), 16, hero_color)
+		draw_rect(Rect2(hero_x - 14, hero_y - 14, 28, 42), hero_color, true)
+		# Escudo frontal de Bastião
+		draw_rect(Rect2(hero_x + 8, hero_y - 8, 12, 32), shield_color, true)
+		# Espada
+		draw_line(Vector2(hero_x + 16, hero_y - 2), Vector2(hero_x + 36, hero_y - 22), Color("e9ecef"), 4.0)
 
 	# Inimigo
 	var enemy_x := s.x * 0.73

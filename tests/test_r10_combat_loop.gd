@@ -158,6 +158,13 @@ func _ready() -> void:
 			pass_all = false
 		else:
 			print("[PASS] BattleStrip encontrado e operacional na árvore de nós")
+			# Validar visual animado do Herói Bastião
+			if bs.hero_visual == null or not bs.hero_visual.visible:
+				print("ERRO: Visual animado de Bastião não foi ativado no BattleStrip")
+				pass_all = false
+			else:
+				print("[PASS] Visual animado de Bastião ativado e visível no BattleStrip")
+
 			# Simula forçar a Geleia de Lúmen no strip
 			bs.set_enemy({"id": "geleia_de_lumen", "name": "Geleia de Lúmen", "boss": false})
 			if bs.enemy_visual == null or not bs.enemy_visual.visible:
@@ -168,7 +175,9 @@ func _ready() -> void:
 				bs.flash_hero_attack()
 				bs.flash_enemy_attack()
 				bs.play_enemy_death()
-				print("[PASS] Disparadores de animação (hit, attack, death) acionados sem erros")
+				bs.play_hero_death()
+				bs.reset_hero()
+				print("[PASS] Disparadores de animação (hit, attack, death, reset) para herói e inimigo acionados sem erros")
 				
 		main_node.free()
 	

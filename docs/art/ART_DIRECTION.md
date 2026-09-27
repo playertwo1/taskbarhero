@@ -71,3 +71,35 @@ Para garantir consistência e legibilidade visual:
 2. **Exagero Estratégico:** Como a tela do smartphone possui alta densidade de pixels (PPI), olhos, armas, chifres e núcleos de energia devem ter massas de pixels ligeiramente maiores para não virarem ruído invisível a 1×.
 3. **Contraste com Preto Puro:** A interface e o cenário usam bases quase pretas para eficiência em telas AMOLED; nenhum sprite deve sumir ou se misturar totalmente com a cor `#000000` / `#0d0e12`.
 4. **Filtro Nearest Neighbor:** No Godot e em qualquer pré-visualização, a textura deve usar estritamente `Filter: Nearest` (sem interpolação bilinear ou borramento).
+
+---
+
+## 7. Congelamento da Versão 1 (ART_DIRECTION v1) — Gate R11
+
+**Status:** CONGELADO E HOMOLOGADO (FASE R11 - Passo 2)  
+**Data:** 2026-09-27  
+**Assets de Referência Canônica:**
+- **Herói de Referência:** Bastião (`assets/sprites/heroes/bastiao/hero_bastiao_sheet.png`, 48×48 px, 16 frames, 9 cores, Rampa Ferro & Ouro).
+- **Inimigo de Referência:** Geleia de Lúmen (`assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_sheet.png`, 32×32 px, 16 frames, 5 cores, Rampa Lúmen).
+- **Cenário de Teste:** Faixa de Combate AMOLED (`docs/art/preview_bosque_lumen_r11.png` e `docs/art/combat_loop_bosque_lumen.gif`).
+
+### 7.1 Regras Congeladas para Próximos Assets (Flecha, Íris, Mobs, Boss)
+1. **Grid e Escala Universal:**
+   - 1 pixel de arte = 2 pixels de tela (escala 2.0× uniforme no container `BattleStrip`).
+   - Sem mixels: nenhuma entidade ou elemento cênico pode usar fator de escala fracionário ou inconsistente.
+   - Ponto de apoio (Baseline):
+     - Canvas 32×32 (mobs comuns): `Y = 29` (offset `Vector2(0, -13)` no Godot).
+     - Canvas 48×48 (heróis e elites): `Y = 44` (offset `Vector2(0, -20)` no Godot).
+     - Canvas 64×64 (chefes de área): `Y = 60` (offset `Vector2(0, -28)` no Godot).
+2. **Paletas-Base e Contraste AMOLED:**
+   - Todo asset deve mapear estritamente suas cores para as rampas canônicas de `docs/art/PALETTE.md`.
+   - Contraste mínimo contra fundo `#060807` assegurado sem necessitar de contorno branco ou halos artificiais.
+   - Canal Alpha binário estrito `[0, 255]`; halos semitransparentes são causa imediata de reprovação (FAIL).
+3. **Direção da Luz (Lighting):**
+   - Top-left 45° estrito para todos os combatentes e props.
+   - Realces na face superior-esquerda; sombras projetadas na base inferior-direita.
+4. **Conjunto Mínimo de 4 Animações Canônicas:**
+   - `idle`: 4 frames (loop, ~6 FPS).
+   - `attack`: 4 frames (one-shot, ~10 FPS).
+   - `hit`: 2 frames (one-shot, ~12 FPS).
+   - `death`: 6 frames (one-shot, ~8 FPS, dissipação/dither dissolve).

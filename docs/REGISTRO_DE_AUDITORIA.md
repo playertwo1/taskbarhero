@@ -197,6 +197,32 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
   * **COMFY-00.12 (PASS):** Auditoria Têmis: pipeline 100% reproduzível, sem modelos não licenciados, com hard alpha (0/255) e zero blur bilinear.
 * **Veredito Gate COMFY-00:** **HOMOLOGADO (PASS)** em 2026-09-27.
 
+### 2.9 FASE R11 — Produzir Bosque de Lúmen (Passos 1 e 2 Concluídos)
+
+* **Passo 1 — Construção do Herói Bastião e Revisão:**
+  * **Contrato:** `docs/art/contracts/hero_bastiao.yaml` (canvas 48×48 px, baseline Y=44, facing right, 16 frames canônicos: idle 4, attack 4, hit 2, death 6).
+  * **ComfyUI API Workflow:** `tools/daedalus/comfyui/workflows/bastiao_concept_api.json`.
+  * **Driver de Construção:** `tools/daedalus/comfyui/drivers/generate_bastiao.py` — gerou 16 quadros com dither dissolve na morte e consolidou via Aseprite CLI:
+    * `assets/sprites/heroes/bastiao/hero_bastiao.aseprite` (fonte multicamada).
+    * `assets/sprites/heroes/bastiao/hero_bastiao_sheet.png` (spritesheet 768×48 px, 9 cores únicas das Rampas Ferro/Aço e Ouro/Nobre, alpha binário [0, 255]).
+    * `assets/sprites/heroes/bastiao/hero_bastiao_sheet.json` (metadata canônico).
+  * **Cena Godot:** `scenes/heroes/Bastiao.tscn` e `scenes/heroes/Bastiao.gd` (`AnimatedSprite2D`, `texture_filter = 1`).
+  * **Integração no BattleStrip:** `scripts/combat/BattleStrip.gd` instanciou Bastião e conectou todos os disparadores de combate (`play_attack`, `play_hit`, `play_death`, `reset`).
+  * **Validação Técnica:** `tests/unit/test_bastiao_visual.gd` e `tests/TestR10.tscn` executados com sucesso (5 ciclos autônomos com Bastião e Geleia de Lúmen operando em simultâneo).
+
+* **Passo 2 — Teste Conjunto e Congelamento de ART_DIRECTION v1:**
+  * **Evidências Visuais Geradas:**
+    * Estático: `docs/art/preview_bosque_lumen_r11.png` (864×440 px).
+    * Animado: `docs/art/combat_loop_bosque_lumen.gif` (ciclo completo de idle, ataque de Bastião, contra-ataque da Geleia e colapso).
+    * Widget Interativo: `battle_preview.html` via `generative_ui`.
+  * **Auditoria de Critérios de Gate R11:**
+    * **Proporção (PASS):** Bastião (48×48) e Geleia (32×32) operam com escala 2.0× uniforme no `BattleStrip`. Altura relativa fiel à anatomia (Slime atinge altura da cintura/escudo de Bastião). 0 mixels.
+    * **Paleta-base (PASS):** Bastião (Ferro e Ouro), Geleia (Lúmen), Fundo AMOLED (`#060807`). Contraste de alto impacto e legibilidade 1×.
+    * **Lighting (PASS):** Top-left 45° unificado em todas as entidades.
+    * **Outline (PASS):** Contorno seletivo (*sel-out*) sem preto artificial duro e canal alpha estritamente binário [0, 255].
+    * **Leitura Visual (PASS):** Silhuetas e massas perfeitamente discerníveis à distância móvel.
+  * **Documento Oficial Atualizado:** `docs/art/ART_DIRECTION.md` congelado formalmente na Seção 7 como **ART_DIRECTION v1**.
+
 ---
 
 ## 3. Histórico de Commits da Sessão
@@ -211,6 +237,7 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 | `a20f0ae` | `feat: implement autonomous combat loop and validate Gate R10` | 5 ciclos autônomos, cenário do Bosque de Lúmen, persistência, suite de teste e APK Android. |
 | `a97a681` | `feat: integrate ComfyUI generative pipeline and Argos QA architecture into roadmap and repository` | Especificação ComfyUI, Argos QA framework, autoloads de debug, perfis de teste e reordenação do roadmap. |
 | `f2de300` | `feat: setup ComfyUI generative foundation and validate pipeline smoke test` | Instalação ComfyUI Desktop, API, Custom Nodes, driver Hermes e smoke test inicial. |
+| `455e59a` | `feat: complete Phase COMFY-00 homologation with multi-pose consistency and animated Godot test` | Homologação final COMFY-00 (poses, spritesheet, engine tests e modelos). |
 
 ---
 
@@ -232,16 +259,24 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 [PASS]  ARGOS v0.0 — Hooks internos de debug, telemetria e estado (scripts/debug/)
 [PASS]  FASE COMFY-00 — Fundação do ComfyUI como Motor Generativo do Daedalus (HOMOLOGADO)
 --------------------------------------------------------------------------------
-[DESBLOQUEADO] FASE R11 — Produzir Bosque de Lúmen (linha de produção ComfyUI + Aseprite liberada)
+[EM ANDAMENTO] FASE R11 — Produzir Bosque de Lúmen
+  [x] Passo 1: Revisar Bastião e Slime usados em R10 (CONCLUÍDO)
+  [x] Passo 2: Teste conjunto e congelar ART_DIRECTION v1 (CONCLUÍDO E CONGELADO)
+  [ ] Passo 3: Produzir o segundo herói: Flecha (Arqueiro DPS)
+  [ ] Passo 4: Produzir a terceira heroína: Íris (Maga de Lúmen)
+  [ ] Passo 5: Produzir os demais mobs (Gremlin de Folha, Javali de Musgo, Espírito de Raiz)
+  [ ] Passo 6: Produzir Elite do Bioma
+  [ ] Passo 7: Produzir Chefe: Guardião-Cervo de Pedra
+  [ ] Passo 8: Cenário em camadas (fundo distante, intermediário, solo, partículas)
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-Iniciar a **FASE R11 — Produzir Bosque de Lúmen**:
-1. Revisar proporções e silhuetas de Bastião e Slime para congelar `ART_DIRECTION v1`.
-2. Produzir o segundo herói: **Flecha** (canvas 48×48 px, paletas Silvestre e Ferro, 4 animações).
-3. Produzir a terceira heroína: **Íris** (canvas 48×48 px, paletas Lúmen e Nobre, 4 animações).
-4. Produzir os demais inimigos: Gremlin de Folha, Javali de Musgo, Espírito de Raiz e Elite/Boss.
+Avançar para o **Passo 3 da FASE R11**:
+1. Criar contrato de asset `docs/art/contracts/hero_flecha.yaml` (canvas 48×48 px, paletas Silvestre e Ferro, arco longo e aljava).
+2. Gerar conceito mestre via ComfyUI API (`character_concept_api.json`).
+3. Construir as 4 animações canônicas (16 frames) e compilar spritesheet via Aseprite CLI.
+4. Integrar cena `scenes/heroes/Flecha.tscn` no Godot.
 

@@ -1,73 +1,73 @@
 [gd_scene load_steps=21 format=3]
 
-[ext_resource type="Texture2D" path="res://assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_sheet.png" id="1_sheet"]
-[ext_resource type="Script" path="res://scenes/enemies/GeleiaDeLumen.gd" id="2_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/heroes/bastiao/hero_bastiao_sheet.png" id="1_sheet"]
+[ext_resource type="Script" path="res://scenes/heroes/Bastiao.gd" id="2_script"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idle_0"]
 atlas = ExtResource("1_sheet")
-region = Rect2(0, 0, 32, 32)
+region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idle_1"]
 atlas = ExtResource("1_sheet")
-region = Rect2(32, 0, 32, 32)
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idle_2"]
 atlas = ExtResource("1_sheet")
-region = Rect2(64, 0, 32, 32)
+region = Rect2(96, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idle_3"]
 atlas = ExtResource("1_sheet")
-region = Rect2(96, 0, 32, 32)
+region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_attack_0"]
 atlas = ExtResource("1_sheet")
-region = Rect2(128, 0, 32, 32)
+region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_attack_1"]
 atlas = ExtResource("1_sheet")
-region = Rect2(160, 0, 32, 32)
+region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_attack_2"]
 atlas = ExtResource("1_sheet")
-region = Rect2(192, 0, 32, 32)
+region = Rect2(288, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_attack_3"]
 atlas = ExtResource("1_sheet")
-region = Rect2(224, 0, 32, 32)
+region = Rect2(336, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hit_0"]
 atlas = ExtResource("1_sheet")
-region = Rect2(256, 0, 32, 32)
+region = Rect2(384, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hit_1"]
 atlas = ExtResource("1_sheet")
-region = Rect2(288, 0, 32, 32)
+region = Rect2(432, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_death_0"]
 atlas = ExtResource("1_sheet")
-region = Rect2(320, 0, 32, 32)
+region = Rect2(480, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_death_1"]
 atlas = ExtResource("1_sheet")
-region = Rect2(352, 0, 32, 32)
+region = Rect2(528, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_death_2"]
 atlas = ExtResource("1_sheet")
-region = Rect2(384, 0, 32, 32)
+region = Rect2(576, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_death_3"]
 atlas = ExtResource("1_sheet")
-region = Rect2(416, 0, 32, 32)
+region = Rect2(624, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_death_4"]
 atlas = ExtResource("1_sheet")
-region = Rect2(448, 0, 32, 32)
+region = Rect2(672, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_death_5"]
 atlas = ExtResource("1_sheet")
-region = Rect2(480, 0, 32, 32)
+region = Rect2(720, 0, 48, 48)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_slime"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_bastiao"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -84,7 +84,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 6.25
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -112,7 +112,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 12.5
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -138,12 +138,12 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="GeleiaDeLumen" type="Node2D"]
+[node name="Bastiao" type="Node2D"]
 script = ExtResource("2_script")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_slime")
+sprite_frames = SubResource("SpriteFrames_bastiao")
 animation = &"idle"
-autoplay = "idle"
-offset = Vector2(0, -13)
+centered = true
+offset = Vector2(0, -20)

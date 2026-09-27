@@ -1,0 +1,66 @@
+contract_version: "1.0.0"
+asset_id: hero_bastiao
+name: "Bastião"
+category: hero
+type: hero_guardian
+region: bosque_de_lumen
+
+canvas:
+  width: 48
+  height: 48
+  baseline_y: 44
+  pivot: [24, 44]
+
+style:
+  genre: dark_fantasy
+  technique: pixel_art
+  palette:
+    primary_ramp: iron_noble_metal
+    accent_ramp: gold_divine_light
+    max_colors: 14
+  outline: selective
+  light_direction: top_left_45
+  facing: right
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 125
+    loop: false
+
+export:
+  format: png
+  color_depth: rgba_32
+  transparent_background: true
+  layout: horizontal_strip
+  generate_json_metadata: true
+  destination_dir: "assets/sprites/heroes/bastiao"
+  godot_scene: "scenes/heroes/Bastiao.tscn"
+
+acceptance_criteria:
+  technical:
+    - canvas_size_exact: "48x48"
+    - background_transparent: true
+    - total_frames_exact: 16
+    - no_interpolation_blur: true
+    - max_colors_respected: 14
+  visual:
+    - distinct_silhouette: "armored guardian with heavy shield and straight sword"
+    - amoeld_contrast_adequate: true
+    - readable_at_1x_scale: true
