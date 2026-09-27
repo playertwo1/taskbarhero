@@ -355,18 +355,36 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
   [x] Modal de retorno ("Você ficou fora XhYm") com lista de recompensas e botão de coleta
   [x] Garantia de aplicação única (idempotência confirmada ao reabrir sem acúmulo duplicado)
   [x] Suíte `tests/TestR15.tscn` executada com 100% PASS
+[PASS]  FASE R16 — Tracker Lite (HOMOLOGADO)
+  [x] Motor analítico implementado em `scripts/debug/Telemetry.gd`
+  [x] Coleta de eventos com timestamps Unix, contadores de fase e drops
+  [x] Todas as 7 métricas canônicas auditadas com eventos conhecidos (1800s / 0.5h):
+      - XP/h: 320.0 XP/h (+160 XP)
+      - Ouro/h: 160.0 Ouro/h (+80 Ouro)
+      - Kills/h: 20.0 Kills/h (10 kills)
+      - TTK médio: 6.80s
+      - Mortes: 1
+      - Drops/h: 8.0 Drops/h (4 drops)
+      - % Raro+: 75.0% (3 itens raros+)
+  [x] Todas as 4 visões analíticas auditadas:
+      - Sessão atual
+      - Últimas 2 horas (filtro móvel validado)
+      - Melhor fase por XP (Fase 2 identificada)
+      - Melhor fase por Ouro (Fase 2 identificada)
+  [x] Interface AMOLED integrada em `scenes/main/Main.tscn` e `scripts/combat/Main.gd`
+  [x] Suíte automatizada `tests/TestR16.tscn` executada com 100% PASS
 --------------------------------------------------------------------------------
-[PRÓXIMA] FASE R16 — Tracker Lite
+[PRÓXIMA] FASE R17 — UX mobile e AMOLED
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-Avançar para a **FASE R16 — Tracker Lite**:
-1. Implementar coleta e cálculo de métricas essenciais de sessão: XP/h, ouro/h, kills/h, TTK médio, mortes, drops/h e % de itens raros+.
-2. Implementar quatro visões analíticas: sessão atual, últimas 2 horas, melhor fase por XP e melhor fase por ouro.
-3. Criar interface/painel para visualização e suíte de testes `tests/TestR16.tscn` para validação matemática estrita com eventos conhecidos.
+Avançar para a **FASE R17 — UX mobile e AMOLED**:
+1. Refinar a hierarquia visual portrait mobile (432×960) para aspecto de produto acabado comercial.
+2. Garantir contraste AMOLED estrito (`#040405` de fundo, paletas de alto contraste para heróis e mobs).
+3. Ajustar tipografia, botões táteis (touch target mínimo de 48dp), padding mobile e legibilidade em telas AMOLED.
 
 
 

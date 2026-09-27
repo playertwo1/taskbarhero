@@ -10,11 +10,23 @@ extends Control
 @onready var loot_label: Label = $Root/Content/Loot
 @onready var inventory_label: Label = $Root/Content/Inventory
 @onready var status_label: Label = $Root/Content/Status
-@onready var equip_button: Button = $Root/Content/EquipButton
+@onready var equip_button: Button = $Root/Content/ActionRow/EquipButton
+@onready var tracker_button: Button = $Root/Content/ActionRow/TrackerButton
 @onready var offline_modal: Control = $OfflineModal
 @onready var offline_time_label: Label = $OfflineModal/Center/Card/VBox/Time
 @onready var offline_rewards_label: Label = $OfflineModal/Center/Card/VBox/Rewards
 @onready var offline_button: Button = $OfflineModal/Center/Card/VBox/CollectButton
+
+@onready var tracker_modal: Control = $TrackerModal
+@onready var tracker_view_header: Label = $TrackerModal/Center/Card/VBox/ViewHeader
+@onready var tracker_metrics_label: Label = $TrackerModal/Center/Card/VBox/MetricsContainer/MetricsLabel
+@onready var tracker_close_button: Button = $TrackerModal/Center/Card/VBox/CloseButton
+@onready var btn_session: Button = $TrackerModal/Center/Card/VBox/Tabs/BtnSession
+@onready var btn_2hours: Button = $TrackerModal/Center/Card/VBox/Tabs/Btn2Hours
+@onready var btn_best_xp: Button = $TrackerModal/Center/Card/VBox/Tabs/BtnBestXp
+@onready var btn_best_gold: Button = $TrackerModal/Center/Card/VBox/Tabs/BtnBestGold
+
+var current_tracker_view: String = "session"
 
 func _ready() -> void:
 	var offline_data := GameManager.load_full_state()
@@ -23,6 +35,13 @@ func _ready() -> void:
 	ProgressionManager.offline_progress_calculated.connect(_on_offline_progress_calculated)
 	if not offline_data.is_empty():
 		_show_offline_modal(offline_data)
+	
+	tracker_button.pressed.connect(_on_tracker_button_pressed)
+	tracker_close_button.pressed.connect(_on_tracker_close_pressed)
+	btn_session.pressed.connect(func(): _switch_tracker_view("session"))
+	btn_2hours.pressed.connect(func(): _switch_tracker_view("last_2_hours"))
+	btn_best_xp.pressed.connect(func(): _switch_tracker_view("best_stage_xp"))
+	btn_best_gold.pressed.connect(func(): _switch_tracker_view("best_stage_gold"))
 	
 	GameManager.battle_started.connect(_on_battle_started)
 	GameManager.battle_ended.connect(_on_battle_ended)
@@ -99,6 +118,8 @@ func _update_ui() -> void:
 	loot_label.text = "Equip: [Arma: %s] [Armadura: %s] [Amuleto: %s]" % [w_name, a_name, am_name]
 	
 	inventory_label.text = "Mochila: %d item(s)" % LootManager.inventory.size()
+	if tracker_modal != null and tracker_modal.visible:
+		_update_tracker_display()
 
 func _on_battle_started(enemy: Dictionary) -> void:
 	enemy_label.text = enemy.get("name", "Inimigo") + (" [CHEFE]" if enemy.get("boss", false) else "")
@@ -189,3 +210,38 @@ func _show_offline_modal(data: Dictionary) -> void:
 func _on_offline_collect_pressed() -> void:
 	offline_modal.visible = false
 	_update_ui()
+
+func _on_tracker_button_pressed() -> void:
+	_switch_tracker_view("session")
+	tracker_modal.visible = true
+
+func _on_tracker_close_pressed() -> void:
+	tracker_modal.visible = false
+
+func _switch_tracker_view(view_name: String) -> void:
+	current_tracker_view = view_name
+	_update_tracker_display()
+
+func _update_tracker_display() -> void:
+	if not tracker_modal.visible:
+		return
+	var data := Telemetry.get_tracker_view(current_tracker_view)
+	tracker_view_header.text = data.get("view_label", "Visualização")
+	
+	var xp_h: float = data.get("xp_per_hour", 0.0)
+	var gold_h: float = data.get("gold_per_hour", 0.0)
+	var kills_h: float = data.get("kills_per_hour", 0.0)
+	var avg_ttk: float = data.get("avg_ttk", 0.0)
+	var deaths: int = data.get("deaths", 0)
+	var drops_h: float = data.get("drops_per_hour", 0.0)
+	var pct_rare: float = data.get("pct_rare_plus", 0.0)
+	
+	tracker_metrics_label.text = "• XP/h: %.1f (+%d XP)\n• Ouro/h: %.1f (+%d Ouro)\n• Kills/h: %.1f (%d kills)\n• TTK Médio: %.2fs\n• Mortes: %d\n• Drops/h: %.1f (%d drops)\n• %% Raro+: %.1f%% (%d raros+)" % [
+		xp_h, int(data.get("total_xp", 0)),
+		gold_h, int(data.get("total_gold", 0)),
+		kills_h, int(data.get("kills", 0)),
+		avg_ttk,
+		deaths,
+		drops_h, int(data.get("drops", 0)),
+		pct_rare, int(data.get("rare_plus_drops", 0))
+	]

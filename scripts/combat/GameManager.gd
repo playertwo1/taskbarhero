@@ -317,9 +317,11 @@ func _on_enemy_defeated() -> void:
 	ProgressionManager.add_gold(gold_reward)
 
 	var dropped_item = LootManager.roll_drop(defeated_enemy.get("boss", false))
+	if dropped_item != null:
+		Telemetry.record_drop(dropped_item, ProgressionManager.current_stage)
 
 	var ttk := float(Time.get_ticks_msec() - enemy_spawn_time_msec) / 1000.0
-	Telemetry.record_kill(defeated_enemy.get("id", ""), ttk, xp_reward, gold_reward)
+	Telemetry.record_kill(defeated_enemy.get("id", ""), ttk, xp_reward, gold_reward, ProgressionManager.current_stage)
 
 	var is_boss: bool = defeated_enemy.get("boss", false) or defeated_enemy.get("elite", false)
 	ProgressionManager.record_kill(is_boss)
@@ -343,7 +345,7 @@ func _on_hero_defeated() -> void:
 		party[hid]["current_hp"] = get_hero_max_hp(hid) * 0.50
 		party_hero_revived.emit(hid)
 
-	Telemetry.record_hero_death(enemy_that_killed.get("id", ""))
+	Telemetry.record_hero_death(enemy_that_killed.get("id", ""), ProgressionManager.current_stage)
 	battle_ended.emit(false, enemy_that_killed)
 	battle_log.emit("A equipe recuou para recuperar forças...")
 

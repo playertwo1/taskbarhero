@@ -151,10 +151,21 @@ theme_override_colors/font_color = Color(0.5, 0.75, 0.85, 1)
 theme_override_font_sizes/font_size = 13
 text = "Adentrando o Bosque de Lúmen..."
 
-[node name="EquipButton" type="Button" parent="Root/Content"]
+[node name="ActionRow" type="HBoxContainer" parent="Root/Content"]
 layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="EquipButton" type="Button" parent="Root/Content/ActionRow"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleButton")
-text = "Equipar Melhores Itens"
+text = "Equipar Melhores"
+
+[node name="TrackerButton" type="Button" parent="Root/Content/ActionRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleButton")
+text = "Tracker Lite"
 
 [node name="BattleStrip" type="Control" parent="Root/Content"]
 layout_mode = 2
@@ -208,3 +219,82 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleButton")
 text = "Coletar Recompensas"
+
+[node name="TrackerModal" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleOverlay")
+
+[node name="Center" type="CenterContainer" parent="TrackerModal"]
+layout_mode = 2
+
+[node name="Card" type="PanelContainer" parent="TrackerModal/Center"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleOfflineCard")
+
+[node name="VBox" type="VBoxContainer" parent="TrackerModal/Center/Card"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="TrackerModal/Center/Card/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.96, 0.8, 0.28, 1)
+theme_override_font_sizes/font_size = 18
+text = "Tracker Lite (Métricas)"
+horizontal_alignment = 1
+
+[node name="Tabs" type="HBoxContainer" parent="TrackerModal/Center/Card/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="BtnSession" type="Button" parent="TrackerModal/Center/Card/VBox/Tabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+text = "Sessão"
+
+[node name="Btn2Hours" type="Button" parent="TrackerModal/Center/Card/VBox/Tabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+text = "Últimas 2h"
+
+[node name="BtnBestXp" type="Button" parent="TrackerModal/Center/Card/VBox/Tabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+text = "Melhor XP"
+
+[node name="BtnBestGold" type="Button" parent="TrackerModal/Center/Card/VBox/Tabs"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 11
+text = "Melhor Ouro"
+
+[node name="ViewHeader" type="Label" parent="TrackerModal/Center/Card/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.75, 0.95, 1)
+theme_override_font_sizes/font_size = 13
+text = "Visualização: Sessão Atual"
+horizontal_alignment = 1
+
+[node name="MetricsContainer" type="PanelContainer" parent="TrackerModal/Center/Card/VBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleCard")
+
+[node name="MetricsLabel" type="Label" parent="TrackerModal/Center/Card/VBox/MetricsContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.92, 0.96, 1)
+theme_override_font_sizes/font_size = 13
+text = "• XP/h: 0.0\n• Ouro/h: 0.0\n• Kills/h: 0.0\n• TTK Médio: 0.0s\n• Mortes: 0\n• Drops/h: 0.0\n• % Raro+: 0.0%"
+
+[node name="CloseButton" type="Button" parent="TrackerModal/Center/Card/VBox"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleButton")
+text = "Fechar"

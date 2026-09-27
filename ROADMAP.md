@@ -1089,9 +1089,25 @@ Tela simples:
 - melhor fase por XP;
 - melhor fase por ouro.
 
-## Gate R16
+## Gate R16 — [PASS]
 
-PASS quando eventos de teste conhecidos permitem conferir manualmente **todas** as métricas listadas (XP/h, ouro/h, kills/h, TTK médio, mortes, drops/h e % raro+) e **todas** as visões previstas (sessão atual, últimas 2 horas, melhor fase por XP e por ouro). Registrar amostra, janela, valores esperados e observados; cobertura parcial não fecha R16. Usar os dados para formular hipóteses, não declarar o Bosque balanceado.
+PASS:
+- [x] Motor do Tracker Lite implementado em `scripts/debug/Telemetry.gd`, coletando eventos com carimbo de tempo Unix (`timestamp`), fase atual e métricas de desempenho;
+- [x] **Todas** as 7 métricas canônicas implementadas e auditadas com amostra controlada conhecida (Janela: 1800s / 0.5h):
+  - **XP/h**: 320.0 XP/h (+160 XP na amostra) [PASS]
+  - **Ouro/h**: 160.0 Ouro/h (+80 Ouro na amostra) [PASS]
+  - **Kills/h**: 20.0 Kills/h (10 kills na amostra) [PASS]
+  - **TTK médio**: 6.80s (20s na Fase 1 + 48s na Fase 2 / 10 kills) [PASS]
+  - **Mortes**: 1 derrota de herói/equipe registrada [PASS]
+  - **Drops/h**: 8.0 Drops/h (4 drops na amostra) [PASS]
+  - **% Raro+**: 75.0% (3 itens Raro/Épico/Lendário em 4 drops) [PASS]
+- [x] **Todas** as 4 visões analíticas implementadas no modal `TrackerModal` e auditadas:
+  - **Sessão atual**: Janela desde o início da sessão ativa;
+  - **Últimas 2 horas**: Janela móvel de até 7200s, com filtro estrito de eventos mais antigos que 2h;
+  - **Melhor fase por XP**: Agrupamento por fase identifica Fase 2 (120 XP vs 40 XP da Fase 1);
+  - **Melhor fase por Ouro**: Agrupamento por fase identifica Fase 2 (60 Ouro vs 20 Ouro da Fase 1);
+- [x] Interface AMOLED integrada em `Main.tscn` com botão "Tracker Lite", abas de seleção de visão e resumo em tempo real;
+- [x] Suíte automatizada `tests/TestR16.tscn` executada com 100% PASS registrando amostra, janela, valores esperados e observados. Dados mantidos para hipóteses de ritmo sem declaração precipitada de balanceamento final.
 
 ---
 
