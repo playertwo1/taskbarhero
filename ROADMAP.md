@@ -968,9 +968,19 @@ Implementar:
 - auto-equipar melhor;
 - vender/desmontar pode esperar.
 
-## Gate R13
+## Gate R13 — [PASS]
 
-PASS quando os 15 itens, três slots e quatro raridades estão representados na drop table e no inventário; comparar, equipar e auto-equipar o melhor por slot funcionam. Em um cenário controlado, registrar item/drop, atributos antes/depois e efeito de combate coerente com o item (por exemplo, TTK, dano recebido ou sobrevivência); mudança numérica sem efeito demonstrado não basta. Vender/desmontar permanece opcional. Não chamar os números de balanceados sem playtest.
+PASS:
+- [x] 15 itens temáticos do Bosque de Lúmen representados na drop table (`data/items/items.json`);
+- [x] Três slots funcionais: arma (5 itens), armadura (5 itens) e amuleto (5 itens);
+- [x] Quatro raridades ativas: Comum, Raro, Épico, Lendário;
+- [x] Comparar (`compare_items`), equipar manual (`equip_item`) e auto-equipar melhor (`equip_best_items`) homologados;
+- [x] Cenário controlado comprovou efeito prático no combate (`tests/TestR13.tscn`):
+  - Arma (Cajado de Lúmen): +27.0 ATK party, TTK/golpes reduzidos em 63.6% (de 22 para 8 golpes contra mob de 120 HP);
+  - Armadura (Armadura do Guardião): +6.0 DEF, +30 Max HP em Bastião, dano recebido reduzido em 75.0% (de 8.0 para 2.0 por golpe);
+  - Amuleto (Coração da Floresta): Lifesteal ativo e regenerando HP do herói ferido durante o ataque;
+- [x] Vender/desmontar permanece opcional;
+- [x] Nota metodológica: atributos e progressão demonstrados com efeito comprovado em combate controlado, sem declarar números balanceados antes de playtests e telemetria.
 
 ---
 

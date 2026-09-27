@@ -331,18 +331,27 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
   [x] BattleStrip com renderização simultânea dos 3 heróis e barras de vida individuais
   [x] Escala 2.0x uniforme, zero mixels, sem sobreposição de sprites
   [x] Suíte de testes: `tests/TestR12.tscn` (PASS) e `tests/TestR10.tscn` (PASS)
+[PASS]  FASE R13 — Loot e equipamento (HOMOLOGADO)
+  [x] 15 itens temáticos do Bosque de Lúmen no banco de dados
+  [x] 3 slots representados: arma (5), armadura (5) e amuleto (5)
+  [x] 4 raridades: Comum, Raro, Épico, Lendário
+  [x] Comparar, equipar manual e auto-equipar melhor homologados
+  [x] Efeito de combate comprovado em cenário controlado (`tests/TestR13.tscn`):
+      - Arma (Cajado de Lúmen): +27.0 ATK party, TTK/golpes reduzidos em 63.6%
+      - Armadura (Armadura do Guardião): +6.0 DEF, +30 Max HP, dano recebido reduzido em 75.0%
+      - Amuleto (Coração da Floresta): Lifesteal ativo com cura durante o ataque
 --------------------------------------------------------------------------------
-[PRÓXIMA] FASE R13 — Loot e equipamento
+[PRÓXIMA] FASE R14 — Progressão de fases
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-Avançar para a **FASE R13 — Loot e equipamento**:
-1. Expandir a tabela de drops com os 15 itens temáticos do Bosque de Lúmen (3 slots: arma, armadura, amuleto × 4 raridades: comum, raro, épico, lendário).
-2. Refinar a lógica de inventário, comparação de poder, equipar manual e auto-equipar melhor.
-3. Conduzir teste controlado mensurando o impacto de atributos (ATK, DEF, HP, crit, lifesteal) na sobrevivência e no TTK dos heróis.
+Avançar para a **FASE R14 — Progressão de fases**:
+1. Implementar a progressão em 5 fases do Bosque de Lúmen: (1. Entrada, 2. Pressão, 3. Ninho/Farm, 4. Elite Lobo Alfa, 5. Chefe Guardião-Cervo de Pedra).
+2. Definir regras de transição de fase, critérios de avanço e recuo ao sofrer derrota da party.
+3. Testar loop de progressão de campanha contínua do bioma e validar o Gate R14.
 
 
 

@@ -77,6 +77,35 @@ func equip_best_items() -> int:
 			item_equipped.emit(slot, best_item)
 	return equipped_count
 
+func compare_items(item_a: Variant, item_b: Variant) -> int:
+	var score_a := _get_item_score(item_a)
+	var score_b := _get_item_score(item_b)
+	if score_a > score_b:
+		return 1
+	elif score_a < score_b:
+		return -1
+	return 0
+
+func get_item_by_id(item_id: String) -> Variant:
+	for item in items_database:
+		if item.get("id", "") == item_id:
+			return item.duplicate(true)
+	return null
+
+func get_items_by_slot(slot: String) -> Array:
+	var result: Array = []
+	for item in items_database:
+		if item.get("slot", "") == slot:
+			result.append(item.duplicate(true))
+	return result
+
+func get_items_by_rarity(rarity: String) -> Array:
+	var result: Array = []
+	for item in items_database:
+		if item.get("rarity", "") == rarity:
+			result.append(item.duplicate(true))
+	return result
+
 func _get_item_score(item: Variant) -> float:
 	if item == null or not (item is Dictionary):
 		return -1.0
