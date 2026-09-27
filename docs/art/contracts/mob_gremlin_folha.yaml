@@ -1,0 +1,52 @@
+id: mob_gremlin_folha
+name: "Gremlin de Folha"
+category: common_enemy
+description: "Pequeno ser feérico travesso e traiçoeiro que se esconde na folhagem do Bosque de Lúmen. Empunha uma pequena adaga de sílex lascado, possui orelhas longas pontiagudas e olhos amarelados cintilantes."
+facing: left
+
+canvas:
+  width: 32
+  height: 32
+  baseline_y: 29
+  pivot: [16, 29]
+
+palette:
+  rampas:
+    - silvestre   # Corpo, máscara de folhas e pele musgosa (#0d2615, #184725, #2b7a3e, #52b769, #98e2a3)
+    - madeira     # Tanga de couro, cabo da adaga e galhos (#2e1f14, #543820, #8a5e35, #bf8c56)
+    - ouro        # Olhos amarelados brilhantes (#ffe875)
+    - ferro       # Lâmina de sílex/pedra cinza (#3a4e63, #a8c5e6)
+  max_colors: 13
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+    description: "Agachado em postura inquieta, mexendo as orelhas pontudas e segurando a adaga na mão esquerda."
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+    description: "Salto rápido para a frente desferindo uma estocada com a adaga de sílex e recuo ágil."
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+    description: "Impacto seco empurrando o corpo para trás com as orelhas baixas."
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 120
+    loop: false
+    description: "Queda desarticulada no solo, desmanchando-se em folhas secas e dither de sombras."
+
+output:
+  source_file: "assets/sprites/enemies/gremlin_de_folha/mob_gremlin_folha.aseprite"
+  sheet_file: "assets/sprites/enemies/gremlin_de_folha/mob_gremlin_folha_sheet.png"
+  json_file: "assets/sprites/enemies/gremlin_de_folha/mob_gremlin_folha_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [512, 32]

@@ -1,0 +1,50 @@
+id: mob_espirito_raiz
+name: "Espírito de Raiz"
+category: common_enemy
+description: "Entidade elemental ancestral do Bosque de Lúmen. Formada por tentáculos de raízes retorcidas e casca viva entrelaçada, com um núcleo pulsante de pura seiva de Lúmen bioluminescente em seu interior."
+facing: left
+
+canvas:
+  width: 48
+  height: 48
+  baseline_y: 44
+  pivot: [24, 44]
+
+palette:
+  rampas:
+    - madeira     # Casca de árvore ancestral e raízes retorcidas (#2e1f14, #543820, #8a5e35, #bf8c56)
+    - lumen       # Núcleo de seiva bioluminescente e runas (#0b2920, #14533d, #1db97a, #5eedaa, #c4ffea)
+  max_colors: 11
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+    description: "Flutuação ondulante sobre o solo, raízes rastejantes contorcendo-se e núcleo de Lúmen pulsando suavemente."
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+    description: "Contrai as raízes acumulando energia, chicoteia para a esquerda disparando espinhos de seiva de Lúmen e recolhe."
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+    description: "Fragmentação repentina da casca exterior revelando o núcleo antes de recompor-se."
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 120
+    loop: false
+    description: "O núcleo de Lúmen se extingue, as raízes perdem coesão desmoronando no solo em dither de casca seca."
+
+output:
+  source_file: "assets/sprites/enemies/espirito_de_raiz/mob_espirito_raiz.aseprite"
+  sheet_file: "assets/sprites/enemies/espirito_de_raiz/mob_espirito_raiz_sheet.png"
+  json_file: "assets/sprites/enemies/espirito_de_raiz/mob_espirito_raiz_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [768, 48]

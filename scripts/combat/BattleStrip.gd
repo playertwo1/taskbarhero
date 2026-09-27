@@ -8,9 +8,13 @@ var enemy_attack_flash: float = 0.0
 var loot_flash: float = 0.0
 var enemy_name: String = "Inimigo"
 var current_enemy_id: String = ""
+var current_enemy_scene_id: String = ""
 
-const SLIME_SCENE = preload("res://scenes/enemies/GeleiaDeLumen.tscn")
 const BASTIAO_SCENE = preload("res://scenes/heroes/Bastiao.tscn")
+const SLIME_SCENE = preload("res://scenes/enemies/GeleiaDeLumen.tscn")
+const GREMLIN_SCENE = preload("res://scenes/enemies/GremlinDeFolha.tscn")
+const JAVALI_SCENE = preload("res://scenes/enemies/JavaliDeMusgo.tscn")
+const ESPIRITO_SCENE = preload("res://scenes/enemies/EspiritoDeRaiz.tscn")
 var enemy_visual: Node2D = null
 var hero_visual: Node2D = null
 
@@ -50,10 +54,25 @@ func set_enemy(enemy_data: Dictionary) -> void:
 	enemy_name = enemy_data.get("name", "Inimigo")
 	enemy_is_boss = enemy_data.get("boss", false)
 	
-	if current_enemy_id == "geleia_de_lumen":
-		if enemy_visual == null or not is_instance_valid(enemy_visual):
-			enemy_visual = SLIME_SCENE.instantiate()
+	var target_scene: PackedScene = null
+	match current_enemy_id:
+		"geleia_de_lumen":
+			target_scene = SLIME_SCENE
+		"gremlin_de_folha":
+			target_scene = GREMLIN_SCENE
+		"javali_de_musgo":
+			target_scene = JAVALI_SCENE
+		"espirito_de_raiz":
+			target_scene = ESPIRITO_SCENE
+	
+	if target_scene != null:
+		if enemy_visual == null or not is_instance_valid(enemy_visual) or current_enemy_scene_id != current_enemy_id:
+			if enemy_visual and is_instance_valid(enemy_visual):
+				enemy_visual.queue_free()
+			enemy_visual = target_scene.instantiate()
 			add_child(enemy_visual)
+			current_enemy_scene_id = current_enemy_id
+		
 		enemy_visual.visible = true
 		if enemy_visual.has_method("reset"):
 			enemy_visual.reset()

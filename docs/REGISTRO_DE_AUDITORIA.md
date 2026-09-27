@@ -239,6 +239,22 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
   * **Evidência Visual:** `docs/art/preview_party_heroes.png` (864×440 px).
   * **Formação Canônica da FASE R12:** Flecha (Back, $X=50$), Íris (Mid, $X=130$), Bastião (Front, $X=210$). Todas as três entidades compartilham a mesma baseline $Y=44$, proporção rigorosa (zero mixels), iluminação top-left 45° e contraste AMOLED.
 
+- **Conclusão do Passo 5 da FASE R11 — Mobs Comuns do Bosque de Lúmen:**
+  * **Gremlin de Folha (`gremlin_de_folha`):**
+    * Contrato: `docs/art/contracts/mob_gremlin_folha.yaml` (32×32 px, 16 frames, baseline $Y=29$, rampa Folha e Terra, 13 cores).
+    * Workflow e Driver: `tools/daedalus/comfyui/workflows/gremlin_concept_api.json` e `generate_gremlin.py`.
+    * Spritesheet e Cena: `assets/sprites/enemies/gremlin_de_folha/mob_gremlin_folha_sheet.png` (512×32 px), `scenes/enemies/GremlinDeFolha.tscn` e `.gd`.
+  * **Javali de Musgo (`javali_de_musgo`):**
+    * Contrato: `docs/art/contracts/mob_javali_musgo.yaml` (48×48 px, 16 frames, baseline $Y=44$, rampa Terra e Musgo, 11 cores).
+    * Workflow e Driver: `tools/daedalus/comfyui/workflows/javali_concept_api.json` e `generate_javali.py`.
+    * Spritesheet e Cena: `assets/sprites/enemies/javali_de_musgo/mob_javali_musgo_sheet.png` (768×48 px), `scenes/enemies/JavaliDeMusgo.tscn` e `.gd`.
+  * **Espírito de Raiz (`espirito_de_raiz`):**
+    * Contrato: `docs/art/contracts/mob_espirito_raiz.yaml` (48×48 px, 16 frames, baseline $Y=44$, rampa Madeira e Lúmen, 8 cores).
+    * Workflow e Driver: `tools/daedalus/comfyui/workflows/espirito_concept_api.json` e `generate_espirito.py`.
+    * Spritesheet e Cena: `assets/sprites/enemies/espirito_de_raiz/mob_espirito_raiz_sheet.png` (768×48 px), `scenes/enemies/EspiritoDeRaiz.tscn` e `.gd`.
+  * **Integração no BattleStrip:** `scripts/combat/BattleStrip.gd` atualizado com carregamento dinâmico de cenas visuais para cada mob (`geleia_de_lumen`, `gremlin_de_folha`, `javali_de_musgo`, `espirito_de_raiz`).
+  * **Validação:** `tests/unit/test_mobs_visual.gd` e `tests/TestR10.tscn` executados com 100% PASS em Godot headless, confirmando animações, frames, filtros `Nearest` e ciclos de combate autônomo.
+
 ---
 
 ## 3. Histórico de Commits da Sessão
@@ -255,6 +271,8 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 | `f2de300` | `feat: setup ComfyUI generative foundation and validate pipeline smoke test` | Instalação ComfyUI Desktop, API, Custom Nodes, driver Hermes e smoke test inicial. |
 | `455e59a` | `feat: complete Phase COMFY-00 homologation with multi-pose consistency and animated Godot test` | Homologação final COMFY-00 (poses, spritesheet, engine tests e modelos). |
 | `2165e67` | `feat: implement Bastiao animated hero, integrate into BattleStrip, and freeze ART_DIRECTION v1 (Phase R11 steps 1-2)` | Bastião animado, integração BattleStrip, ART_DIRECTION v1 congelado e evidências visuais. |
+| `cc2da1f` | `feat: implement Flecha (Archer) and Iris (Mage) heroes, complete MVP hero trio (Phase R11 steps 3-4)` | Assets, contratos, animações 16 frames e cenas dos heróis Flecha e Íris. |
+| `7c0da69` | `chore: add party HTML preview generator` | Ferramenta e artefato de visualização integrada do trio de heróis. |
 
 ---
 
@@ -281,7 +299,7 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
   [x] Passo 2: Teste conjunto e congelar ART_DIRECTION v1 (CONCLUÍDO E CONGELADO)
   [x] Passo 3: Produzir o segundo herói: Flecha (Arqueiro DPS) (CONCLUÍDO)
   [x] Passo 4: Produzir a terceira heroína: Íris (Maga de Lúmen) (CONCLUÍDO)
-  [ ] Passo 5: Produzir os demais mobs (Gremlin de Folha, Javali de Musgo, Espírito de Raiz)
+  [x] Passo 5: Produzir os demais mobs (Gremlin de Folha, Javali de Musgo, Espírito de Raiz) (CONCLUÍDO)
   [ ] Passo 6: Produzir Elite do Bioma
   [ ] Passo 7: Produzir Chefe: Guardião-Cervo de Pedra
   [ ] Passo 8: Cenário em camadas (fundo distante, intermediário, solo, partículas)
@@ -291,11 +309,11 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 
 ## 5. Próxima Ação Imediata
 
-Avançar para o **Passo 5 da FASE R11**:
-1. Produzir os três monstros comuns restantes do bioma Bosque de Lúmen:
-   - **Gremlin de Folha** (`gremlin_de_folha`, 32×32 px, baseline Y=29, Rampa Silvestre e Terra).
-   - **Javali de Musgo** (`javali_de_musgo`, 48×48 px, baseline Y=44, Rampa Terra e Musgo).
-   - **Espírito de Raiz** (`espirito_de_raiz`, 48×48 px, baseline Y=44, Rampa Madeira e Lúmen).
-2. Construir contratos, workflows, drivers de animação (16 frames) e cenas Godot.
+Avançar para o **Passo 6 da FASE R11**:
+1. Criar contrato e asset do **Elite do Bioma Bosque de Lúmen**:
+   - `Guardião Ancião / Guardião Musgoso` (48×48 px, iluminação de lúmen pulsante, ataques com telegrafia visual reforçada).
+2. Gerar conceito e poses via ComfyUI + Aseprite CLI (16 frames canônicos).
+3. Criar cena Godot, script e teste automatizado.
+
 
 
