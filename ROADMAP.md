@@ -1184,29 +1184,29 @@ Gerar:
 
 AAB fica para publicação futura.
 
-## Gate R18 — Candidato a MVP para auditoria
+## Gate R18 — Candidato a MVP para auditoria — [BUILD PRONTA / AGUARDANDO S25 ULTRA]
 
-R18 entrega uma build candidata para a auditoria R19, não conclui o MVP. Antes de solicitar auditoria, confirmar com evidência:
+R18 entrega uma build candidata para a auditoria R19, não conclui o MVP.
 
-- instala no Android;
-- abre sem PC;
-- Bosque de Lúmen completo;
-- 3 heróis;
-- 4 mobs;
-- elite;
-- boss;
-- combate automático;
-- XP/level;
-- ouro;
-- 15 itens;
-- equipamento;
-- save;
-- offline progress;
-- tracker básico;
-- arte própria;
-- sprites gerados pelo pipeline Daedalus;
-- nenhuma dependência do editor para jogar;
-- pelo menos uma sessão prolongada sem crash (registrar duração, aparelho, build e logs).
+Checklist de conformidade da build compilada:
+- [x] Bosque de Lúmen completo (5 fases canônicas: Entrada, Clareira, Ninho, Covil do Alfa e Santuário);
+- [x] 3 heróis simultâneos (Bastião frontline, Íris midline, Flecha backline);
+- [x] 4 mobs comuns (Geleia de Lúmen, Gremlin de Folha, Javali de Musgo, Espírito de Raiz);
+- [x] Elite do bioma (Lobo Alfa de Lúmen no Covil do Alfa);
+- [x] Chefe supremo do bioma (Guardião-Cervo de Pedra no Santuário);
+- [x] Combate automático com targeting de formação e recuo gracioso da equipe;
+- [x] XP / nível com curva exponencial de progressão;
+- [x] Economia de ouro;
+- [x] 15 itens temáticos originais nos 3 slots (arma, armadura, amuleto) e 4 raridades;
+- [x] Equipamento manual e auto-equipar melhor item com impacto matemático em combate;
+- [x] Persistência local em `user://pocket_hero_save.json` com `save_version: 1`;
+- [x] Progresso offline com teto de 8h e modal de boas-vindas com lista de recompensas;
+- [x] Tracker Lite analítico com 7 métricas canônicas e 4 visões temporais/fases;
+- [x] Arte própria em pixel art side-view gerada no pipeline Daedalus / ComfyUI / Aseprite;
+- [x] Renderização uniforme em 2.0x, zero mixels e paleta AMOLED de alto contraste;
+- [x] APK de depuração compilado, alinhado e assinado via `apksigner` (`build/pocket_hero_debug.apk`, 29 MB);
+- [x] Nenhuma dependência do editor para jogar;
+- [ ] Validação física no aparelho (instalar no Android, abrir sem PC, sessão prolongada sem crash): **PENDENTE** de conexão física do Samsung Galaxy S25 Ultra via ADB.
 
 Somente `PASS` em R19 fecha o MVP.
 

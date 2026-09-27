@@ -382,19 +382,28 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
   [x] Ícone oficial em pixel art gerado (`icon.png`) e configurado no projeto
   [x] APK de depuração compilado, alinhado e assinado (`build/pocket_hero_debug.apk`, 29 MB)
   [ ] Teste físico no Galaxy S25 Ultra: PENDENTE de conexão do aparelho via ADB
+[BUILD CANDIDATA PRONTA] FASE R18 — Build Android MVP
+  [x] Logs limpos e canalizados para sinais de interface e telemetria
+  [x] Permissões revisadas (0 permissões invasivas ativadas)
+  [x] Identificador de pacote canônico (`com.playertwo.pockethero`) e versão `0.1.0` (código 1)
+  [x] Launcher icon vinculado (`launcher_icons/main_192="res://icon.png"`)
+  [x] Esquema de save versionado (`save_version: 1`) para migrações futuras
+  [x] APK Android MVP compilado, alinhado e assinado (`build/pocket_hero_debug.apk`, 29 MB)
+  [ ] Validação física no aparelho (instalar, abrir sem PC, sessão prolongada): PENDENTE de conexão do S25 Ultra via ADB
 --------------------------------------------------------------------------------
-[PRÓXIMA] FASE R18 — Build Android MVP / Teste no S25 Ultra
+[PRÓXIMA] FASE R19 — Auditoria do MVP / Teste no Aparelho Físico
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-Avançar para a **FASE R18 — Build Android MVP**:
-1. Revisar permissões mínimas no AndroidManifest (nenhuma permissão invasiva necessária).
-2. Revisar identificador de pacote canônico (`org.playertwo.pockethero`) e versionamento oficial (v0.1.0).
-3. Preparar a build compartilhável candidata para a Auditoria R19.
-4. Quando Rafael plugar o Samsung Galaxy S25 Ultra via USB com depuração ativada, executar o roteiro do Gate R17 para fechar o gate de hardware.
+Avançar para a **Validação Física e FASE R19 — Auditoria do MVP**:
+1. Quando Rafael conectar o aparelho Samsung Galaxy S25 Ultra via USB com depuração ativada:
+   - Instalar o APK compilado: `adb install -r build/pocket_hero_debug.apk`.
+   - Executar standalone e registrar logs do logcat.
+   - Avaliar legibilidade, fluidez (60 FPS), entalhe/safe area e estabilidade térmica/bateria para homologar formalmente os Gates R17 e R18.
+2. Solicitar/executar a **FASE R19 — Auditoria do MVP** com Têmis para atestar a conformidade final de todos os sistemas antes de fechar o MVP do Pocket Hero.
 
 
 

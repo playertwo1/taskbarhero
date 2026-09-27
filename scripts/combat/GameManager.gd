@@ -422,6 +422,7 @@ func save_full_state() -> void:
 		party_hps[hid] = party[hid]["current_hp"]
 
 	var full_state := {
+		"save_version": 1,
 		"progression": ProgressionManager.get_state(),
 		"loot": LootManager.get_state(),
 		"hero_current_hp": hero_current_hp,
