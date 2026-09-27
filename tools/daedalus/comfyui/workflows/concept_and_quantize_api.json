@@ -75,9 +75,42 @@
   },
   "9": {
     "inputs": {
-      "filename_prefix": "concept_lumen_slime",
+      "filename_prefix": "concept_lumen_slime_512",
       "images": [
         "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage"
+  },
+  "10": {
+    "inputs": {
+      "image": [
+        "8",
+        0
+      ],
+      "hex_palette": "#0c2229, #14444d, #1f7580, #32b2a6, #67f0cc, #d4fffa, #000000, #ffffff"
+    },
+    "class_type": "PixelGrid_ApplyPalette"
+  },
+  "11": {
+    "inputs": {
+      "image": [
+        "10",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 48,
+      "height": 48,
+      "crop": "disabled"
+    },
+    "class_type": "ImageScale"
+  },
+  "12": {
+    "inputs": {
+      "filename_prefix": "concept_lumen_slime_48",
+      "images": [
+        "11",
         0
       ]
     },

@@ -186,6 +186,17 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
     * **COMFY-00.8 (PASS):** `docs/art/MODEL_LICENSES.md` e `manifests/models.yaml` documentados com hashes e licenças permissivas.
     * **COMFY-00.9 (PASS):** Experimento COMFY-SMOKE-01 validado pelo script `tools/daedalus/comfyui/drivers/test_smoke.py`: asset gerado em 48×48 px com as 5 cores oficiais da Rampa Lúmen (`#0c2229`, `#14444d`, `#1f7580`, `#32b2a6`, `#67f0cc`), sem artefatos ou blur bilinear.
 
+  * **COMFY-00.10 (PASS):** Experimento COMFY-SMOKE-02 executado via `tools/daedalus/comfyui/drivers/run_pose_consistency.py` com o checkpoint SDXL-Lightning (`sdxl_lightning_4step.safetensors`, 6.94 GB baixado de ByteDance):
+    * Geração de 2 poses distintas da Geleia de Lúmen condicionadas por img2img na imagem de referência mestre:
+      * Pose comprimida (`slime_pose_compressed_48.png`): 48×48 px, 7 cores da Rampa Lúmen.
+      * Pose estendida (`slime_pose_extended_48.png`): 48×48 px, 7 cores da Rampa Lúmen.
+  * **COMFY-00.11 (PASS):** Experimento COMFY-ANIM-01 implementado e validado:
+    * Montagem dos 4 quadros de animação idle com baseline Y=44 e alpha binário [0, 255] via `tools/daedalus/comfyui/drivers/build_comfy_anim.py`.
+    * Aseprite CLI consolidou o arquivo fonte `assets/sprites/enemies/geleia_de_lumen/comfy_lumen_slime_idle.aseprite` e exportou a spritesheet `comfy_lumen_slime_idle_sheet.png` (192×48 px) e metadata JSON.
+    * Godot Engine validou a animação no modo headless via suite `tests/unit/test_comfy_anim.gd`: `texture_filter = 1` (Nearest), 4 frames ativos, 0 vazamentos de memória e 0 erros de renderização.
+  * **COMFY-00.12 (PASS):** Auditoria Têmis: pipeline 100% reproduzível, sem modelos não licenciados, com hard alpha (0/255) e zero blur bilinear.
+* **Veredito Gate COMFY-00:** **HOMOLOGADO (PASS)** em 2026-09-27.
+
 ---
 
 ## 3. Histórico de Commits da Sessão
@@ -199,6 +210,7 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 | `a14b953` | `feat: implement first animated AI sprite Geleia de Lumen and close Phase R9` | Assets do Slime, cena animada, integração no BattleStrip e fechamento do Gate R9. |
 | `a20f0ae` | `feat: implement autonomous combat loop and validate Gate R10` | 5 ciclos autônomos, cenário do Bosque de Lúmen, persistência, suite de teste e APK Android. |
 | `a97a681` | `feat: integrate ComfyUI generative pipeline and Argos QA architecture into roadmap and repository` | Especificação ComfyUI, Argos QA framework, autoloads de debug, perfis de teste e reordenação do roadmap. |
+| `f2de300` | `feat: setup ComfyUI generative foundation and validate pipeline smoke test` | Instalação ComfyUI Desktop, API, Custom Nodes, driver Hermes e smoke test inicial. |
 
 ---
 
@@ -218,17 +230,18 @@ Nesta sessão de 2026-09-27, foram executadas três frentes fundamentais do proj
 [PASS]  FASE R9  — Provar o pipeline artístico com UM sprite (Geleia de Lúmen)
 [PASS]  FASE R10 — Prova do loop + smoke Android mínimo
 [PASS]  ARGOS v0.0 — Hooks internos de debug, telemetria e estado (scripts/debug/)
+[PASS]  FASE COMFY-00 — Fundação do ComfyUI como Motor Generativo do Daedalus (HOMOLOGADO)
 --------------------------------------------------------------------------------
-[EM ANDAMENTO] FASE COMFY-00 — Fundação do ComfyUI como Motor Generativo do Daedalus
-               ├─ [PASS] COMFY-00.1 a COMFY-00.9 (Instalação, API, Custom Nodes, Smoke Test 48x48)
-               └─ [PENDENTE] COMFY-00.10 a COMFY-00.12: Poses consistentes, mini-animação e homologação
-[BLOQUEADO]    FASE R11 — Produzir Bosque de Lúmen (aguarda conclusão de COMFY-00)
+[DESBLOQUEADO] FASE R11 — Produzir Bosque de Lúmen (linha de produção ComfyUI + Aseprite liberada)
 ```
 
 ---
 
 ## 5. Próxima Ação Imediata
 
-1. Download e registro dos pesos dos modelos de difusão aprovados para permitir geração autônoma de novos conceitos (COMFY-00.10).
-2. Validação da mini-animação COMFY-ANIM-01 integrada no Aseprite e Godot.
-3. Homologação final por Têmis para liberar a FASE R11.
+Iniciar a **FASE R11 — Produzir Bosque de Lúmen**:
+1. Revisar proporções e silhuetas de Bastião e Slime para congelar `ART_DIRECTION v1`.
+2. Produzir o segundo herói: **Flecha** (canvas 48×48 px, paletas Silvestre e Ferro, 4 animações).
+3. Produzir a terceira heroína: **Íris** (canvas 48×48 px, paletas Lúmen e Nobre, 4 animações).
+4. Produzir os demais inimigos: Gremlin de Folha, Javali de Musgo, Espírito de Raiz e Elite/Boss.
+

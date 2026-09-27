@@ -3,6 +3,12 @@ updated: "2026-09-27"
 maintainer: "Daedalus / Antigravity"
 
 approved_models:
+  - id: "sdxl_lightning_4step"
+    type: "checkpoint"
+    filename: "sdxl_lightning_4step.safetensors"
+    license: "CreativeML OpenRAIL++-M"
+    approved: true
+
   - id: "sd_xl_base_1.0"
     type: "checkpoint"
     filename: "sd_xl_base_1.0.safetensors"

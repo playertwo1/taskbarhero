@@ -797,16 +797,18 @@ UI:
 | **COMFY-00.7** | Instalação de Custom Nodes aprovados | PixelGridHelpers, Pixelization, BiRefNet, ControlNet-OpenPose. | **PASS** (PixelGridHelpers com ApplyPalette/KMeans e Pixelization instalados). |
 | **COMFY-00.8** | Manifesto de Modelos e Licenças | `docs/art/MODEL_LICENSES.md` e `manifests/models.yaml` atualizados com hashes. | **PASS** (Estrutura e manifesto inicial criados). |
 | **COMFY-00.9** | Experimento COMFY-SMOKE-01 | Conceito mestre de Slime: 48×48, RGBA transparente, max 20 cores, nearest-neighbor, workflow API JSON e seed registrada. | **PASS** (Asset gerado em 48×48 com 5 cores da Rampa Lúmen via ComfyUI API). |
-| **COMFY-00.10**| Experimento COMFY-SMOKE-02 | Consistência de personagem: gerar 2 poses da mesma criatura usando a referência mestre aprovada. | PENDENTE (Requer download do modelo de difusão aprovado) |
-| **COMFY-00.11**| Experimento COMFY-ANIM-01 | Mini-animação: 4 frames de idle com pose controlada, finalizada no Aseprite e testada no Godot. | PENDENTE |
-| **COMFY-00.12**| Auditoria de Homologação Têmis | Pipeline 100% reproduzível, sem modelos não licenciados e sem blur. | PENDENTE |
+| **COMFY-00.10**| Experimento COMFY-SMOKE-02 | Consistência de personagem: gerar 2 poses da mesma criatura usando a referência mestre aprovada. | **PASS** (2 poses geradas via img2img com SDXL-Lightning condicionadas na referência mestre, 48×48 px, 7 cores). |
+| **COMFY-00.11**| Experimento COMFY-ANIM-01 | Mini-animação: 4 frames de idle com pose controlada, finalizada no Aseprite e testada no Godot. | **PASS** (Mini-animação montada no Aseprite CLI, spritesheet 192×48 px, testada no Godot com 0 erros). |
+| **COMFY-00.12**| Auditoria de Homologação Têmis | Pipeline 100% reproduzível, sem modelos não licenciados e sem blur. | **PASS** (Modelos catalogados, alpha binário [0, 255], textura nearest-neighbor sem blur). |
 
 ## Gate COMFY-00
-PASS quando:
-- ComfyUI estável estiver instalado e inicializando com driver e API funcional;
-- Pelo menos um workflow API JSON versionado executar com sucesso via `comfy_client.py`;
-- Experimentos COMFY-SMOKE-01, 02 e ANIM-01 passarem com veredito de Têmis;
-- Aseprite e Godot receberem e renderizarem o asset final sem blur.
+
+**Status:** PASS em 2026-09-27.
+- **ComfyUI estável:** ComfyUI Desktop v1.1.3 e core v0.37.0 com `.venv` rodando em `http://127.0.0.1:8188`.
+- **Workflows API JSON:** 4 workflows versionados (`character_concept_api.json`, `concept_and_quantize_api.json`, `character_pose_consistency_api.json`, `pixel_quantize_api.json`) executando via driver `comfy_client.py`.
+- **Experimentos COMFY-SMOKE-01, 02 e ANIM-01:** Todos validados com veredito de Têmis (dimensões exatas, max 7 cores da Rampa Lúmen, sem halos semi-transparentes).
+- **Integração Aseprite e Godot:** Spritesheet exportada pelo Aseprite (`comfy_lumen_slime_idle_sheet.png`) e testada no Godot headless (`tests/unit/test_comfy_anim.gd`) com `texture_filter = 1` e reprodução fluida.
+- **Próxima Etapa Desbloqueada:** FASE R11 (Produzir Bosque de Lúmen).
 
 ---
 

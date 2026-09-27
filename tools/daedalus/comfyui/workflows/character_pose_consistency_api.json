@@ -1,0 +1,120 @@
+{
+  "1": {
+    "inputs": {
+      "ckpt_name": "sdxl_lightning_4step.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "2": {
+    "inputs": {
+      "image": "reference_lumen_slime.png"
+    },
+    "class_type": "LoadImage"
+  },
+  "3": {
+    "inputs": {
+      "pixels": [
+        "2",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEEncode"
+  },
+  "4": {
+    "inputs": {
+      "text": "dark fantasy lumen slime creature, squished down low, crouching compressed idle pose, glowing core, pure side-view, solid black background, 16-bit pixel art style",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "5": {
+    "inputs": {
+      "text": "blurry, smooth shading, photographic, 3d, realistic, gradient, duplicate, multiple characters",
+      "clip": [
+        "1",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "6": {
+    "inputs": {
+      "seed": 2001,
+      "steps": 4,
+      "cfg": 1.5,
+      "sampler_name": "euler",
+      "scheduler": "sgm_uniform",
+      "denoise": 0.65,
+      "model": [
+        "1",
+        0
+      ],
+      "positive": [
+        "4",
+        0
+      ],
+      "negative": [
+        "5",
+        0
+      ],
+      "latent_image": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "KSampler"
+  },
+  "7": {
+    "inputs": {
+      "samples": [
+        "6",
+        0
+      ],
+      "vae": [
+        "1",
+        2
+      ]
+    },
+    "class_type": "VAEDecode"
+  },
+  "8": {
+    "inputs": {
+      "image": [
+        "7",
+        0
+      ],
+      "hex_palette": "#0c2229, #14444d, #1f7580, #32b2a6, #67f0cc, #d4fffa, #000000"
+    },
+    "class_type": "PixelGrid_ApplyPalette"
+  },
+  "9": {
+    "inputs": {
+      "image": [
+        "8",
+        0
+      ],
+      "upscale_method": "nearest-exact",
+      "width": 48,
+      "height": 48,
+      "crop": "disabled"
+    },
+    "class_type": "ImageScale"
+  },
+  "10": {
+    "inputs": {
+      "filename_prefix": "slime_pose_pose1_48",
+      "images": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "SaveImage"
+  }
+}

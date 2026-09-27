@@ -8,6 +8,16 @@
 
 ```yaml
 models:
+  - id: sdxl_lightning_4step
+    purpose: Gerador ultrarrápido (4 passos) de conceitos de personagens e variações de pose para CPU e GPU.
+    source: "https://huggingface.co/ByteDance/SDXL-Lightning"
+    license: "CreativeML OpenRAIL++-M"
+    commercial_use: "yes"
+    redistribution: "yes"
+    filename: "sdxl_lightning_4step.safetensors"
+    sha256: "e0d996ee0013e79d9d3561f50fcafb9a17e3ff07b780358e3b66d67932c4d490"
+    approved: true
+
   - id: sd_xl_base_1.0
     purpose: Gerador base de conceitos e referências de personagens em alta definição.
     source: "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0"
