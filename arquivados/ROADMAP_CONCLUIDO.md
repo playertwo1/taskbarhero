@@ -1157,3 +1157,73 @@ STATUS: PASS — MVP OFICIALMENTE CONCLUÍDO E HOMOLOGADO!
 ## ARGOS v0.0 — Hooks concluídos
 
 | **v0.0 — Hooks** | DevMode, Telemetry, StateExporter, TestHooks, DebugBridge. | Estado observável e controlável em compilações de desenvolvimento (`scripts/debug/`). | **PASS** (Implementado e integrado ao projeto). |
+
+---
+
+## Entregas pós-MVP concluídas — 2026-09-28
+
+Esta seção arquiva itens concluídos que ainda apareciam na roadmap ativa. Ela registra o escopo entregue e aponta para as fontes atuais. **CONCLUÍDO** não significa que um conceito foi aprovado como regra final nem que todo asset passou por auditoria visual/mobile.
+
+### ART-0 — Direção Golden e produção técnica
+
+- [x] As quatro referências Golden (herói, inimigo, chefe e animação) foram aprovadas e liberadas para orientar a produção dos assets do MVP.
+- [x] Produção técnica das folhas e camadas de ambiente registradas no [inventário de sprites](../docs/art/MVP_SPRITE_INVENTORY.md); lint técnico dos lotes informado como `PASS`.
+- [ ] **Continua na roadmap ativa:** auditoria visual independente e revisão mobile dos assets integrados. A aprovação dos Golden e o lint não substituem esse gate.
+
+### Roster e sistemas de heróis — HERO-1, decisões registradas
+
+- [x] Roster de oito heróis e papéis registrados; fichas de identidade e contratos visuais criados. Consulte o [índice de heróis](../docs/02_heroes/INDEX.md) e o [registro central](../docs/CONTENT_REGISTRY.md).
+- [x] Oito heróis integrados em cenas Godot, party de três, animações e seleção de party; evidências existentes em `tests/unit/TestPartySelection.tscn` e `tests/unit/TestMainPartyIntegration.tscn`.
+- [x] Decisões de loadout, desbloqueio por marcos, escolha e melhoria de skills, ranks e ativação automática registradas no [Sistema de skills](../docs/03_systems/SKILL_SYSTEM.md) e em [`HERO_STANDARD.md`](../HERO_STANDARD.md).
+- [x] Produção técnica das spritesheets dos oito heróis registrada no [inventário visual](../docs/art/MVP_SPRITE_INVENTORY.md); QA visual/mobile permanece aberto.
+
+### Bestiário do Capítulo 1 — integração concluída
+
+- [x] Cinco famílias adicionadas ao Bosque de Lúmen (Saqueador da Mata, Xamã de Esporos, Sentinela de Raízes, Lobo de Sombra e Matriarca do Micélio) com dados/cenas registrados em `data/enemies/` e `scenes/enemies/`.
+- [x] Evidência de validação de cenas registrada em `tests/unit/test_all_heroes_and_enemies_scenes.gd`; consultar o código e os dados antes de afirmar balanceamento.
+- [x] Produção técnica do bestiário do Capítulo 1 registrada no [inventário visual](../docs/art/MVP_SPRITE_INVENTORY.md); QA visual/mobile permanece aberto.
+
+### Conteúdo e ícones — catálogo inicial registrado
+
+- [x] Rascunho inicial do Capítulo 1 organizado em cinco fases macro e dez subfases candidatas no [overview](../docs/04_content/chapters/chapter_01/OVERVIEW.md). A direção macro foi aprovada; nomes, encontros e detalhes ainda em aberto continuam na roadmap.
+- [x] Catálogo de design com 15 conceitos de skills para Bastião, Flecha e Íris e 30 itens (15 existentes e 15 candidatos) registrado no overview e nos índices. Os candidatos não são valores runtime aprovados.
+- [x] Grade visual do inventário e tamanho de 32×32 para ícones de itens escolhidos por Rafael em 2026-09-28.
+- [x] Lotes técnicos de ícones de itens, skills e fases registrados no [inventário visual](../docs/art/MVP_SPRITE_INVENTORY.md); revisão visual/mobile continua aberta.
+
+### Propostas pós-MVP documentadas e indexadas
+
+- [x] [Equipamentos e Artesãos](../docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md), [Árvore dos Ecos](../docs/03_systems/GLOBAL_RESONANCE_TREE.md) e [Bastião Golden Reference](../docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md) transcritos, preservados e adicionados aos índices. Os originais DOCX ficam em [`documents/`](../documents/INDEX.md).
+- [x] As três propostas foram copiadas para o NexusVault e indexadas como notas pesquisáveis em 2026-09-28.
+- [ ] **Continua na roadmap ativa:** reconciliar propostas com regras e conteúdo atuais antes de aprovar escopo ou implementar. As propostas permanecem em `DESIGN`/`HIPÓTESE`.
+
+## Pendências que continuam abertas
+
+- QA visual independente e validação mobile de sprites, inventário e ícones.
+- Reconciliar os conceitos de conteúdo e as propostas de sistemas com as decisões vigentes; não transformar item arquivado como entrega documental em aprovação de design ou implementação.
+- A roadmap ativa lista a sequência e os gates que ainda precisam ser concluídos.
+
+### EXP-DESIGN-1 — Primeira consolidação do loop e da persistência
+
+- [x] Centralizar o ciclo mínimo de preparação no Hub, expedição automática, objetivo, encerramento e retorno em [Loop central](../docs/00_project/CORE_LOOP.md) e [Pilares de design](../docs/00_project/GAME_PILLARS.md).
+- [x] Consolidar no [Run e meta-progressão](../docs/03_systems/RUN_META_PROGRESSION.md) as regras já decididas: fases concluídas persistem; a fase incompleta recomeça do início após retorno voluntário; HP recupera no Hub; XP, ouro e itens obtidos permanecem após derrota ou retorno.
+- [x] Corrigir referências que ainda marcavam decisões registradas por Rafael como abertas e separar as pendências restantes: pausa/retomada, troca de equipamento durante a expedição, comportamento offline em objetivos/chefes e função mínima dos Ecos.
+- [ ] A reconciliação dos catálogos e propostas e a atualização final do registry/índices permanecem na roadmap ativa; este registro não fecha EXP-DESIGN-1.
+
+### EXP-DESIGN-1 — Estado de pausa
+
+- [x] **Decisão delegada a recomendação em 2026-09-28:** não criar um estado separado de pausa/retomada na primeira fatia. Sair ou deixar o app em segundo plano segue as regras de progresso offline.
+- [ ] Os detalhes de simulação offline durante a expedição continuam na roadmap ativa.
+
+### EXP-DESIGN-1 — Equipamento durante expedições
+
+- [x] **Decisão delegada a recomendação em 2026-09-28:** o loadout fica travado durante a expedição; drops são guardados e podem ser equipados no Hub após o encerramento. Regra de design pós-MVP; não descreve o comportamento atual do MVP.
+
+### EXP-DESIGN-1 — Limite da progressão offline
+
+- [x] **Decisão delegada a recomendação em 2026-09-28:** a simulação offline resolve somente a expedição atual e para ao alcançar o objetivo escolhido ou ocorrer derrota; registra o resultado uma vez e retorna ao Hub, sem iniciar outra expedição automaticamente.
+- [ ] Fórmula, teto de tempo, resolução de combate, recompensas e resumo permanecem na roadmap ativa para definição e validação.
+
+### ECHO/HUB-1 — Função mínima dos Ecos
+
+- [x] **DECIDIDO por Rafael em 2026-09-28:** na primeira fatia, os Ecos são descobertas narrativas registradas no Codex, sem efeito de gameplay. Regras autoritativas em [Sistema de Ecos](../docs/03_systems/ECHO_SYSTEM.md); obtenção, apresentação e catálogo individual continuam abertos.
+- [ ] Reconciliar as propostas de Árvore da Ressonância e equipamentos/Ecos para fases posteriores; continuam na roadmap ativa.
