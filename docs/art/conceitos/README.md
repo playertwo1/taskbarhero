@@ -19,9 +19,9 @@
 ## Pastas
 
 - [Modelos conceituais de heróis](../CONCEPT_MODEL_STYLE.md) — estilo aprovado, mapa das imagens atuais por personagem e caminho das fichas/contratos para futura criação de sprites.
-- [Monstros comuns](./monstros/README.md) — 8 fichas (4 existentes e 4 candidatos).
-- [Elites](./elites/README.md) — 1 ficha do Lobo Alfa existente.
-- [Chefes](./chefes/README.md) — 1 boss existente e uma proposta de minichefe.
+- [Monstros comuns](./monstros/README.md) — fichas existentes e propostas; veja também o [bestiário proposto](./BESTIARIO_PROPOSTO.md).
+- [Elites](./elites/README.md) — fichas existentes e propostas, marcadas como `CONCEPT`.
+- [Chefes](./chefes/README.md) — fichas existentes e propostas, marcadas como `CONCEPT`.
 - [Itens](./itens/README.md) — 30 fichas individuais para o catálogo do MVP + candidatos do Capítulo 1.
 
 Os conceitos não incluem skills nem fases; permanecem catalogadas na [base visual](../ASSET_VISUAL_BLUEPRINT.md) para uma próxima fatia.

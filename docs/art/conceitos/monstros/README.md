@@ -1,6 +1,6 @@
 # Monstros — conceitos visuais
 
-8 fichas individuais. Cada ficha separa a descrição do asset das regras comuns e inclui um prompt para gerar o conceito.
+8 fichas existentes. As propostas novas estão apenas em estrutura-base, marcadas como `CONCEPT`, no [índice do bestiário proposto](../BESTIARIO_PROPOSTO.md).
 
 - [Geleia de Lúmen](./geleia_lumen.md) — existente; seguir o Golden de inimigo e o contrato `enemy_lumen_slime.yaml` sem redesign.
 - [Gremlin de Folha](./gremlin_folha.md) — existente; preservar os detalhes do contrato `mob_gremlin_folha.yaml`.
