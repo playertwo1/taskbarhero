@@ -11,10 +11,8 @@ canvas:
   pivot: [24, 44]
 
 palette:
-  rampas:
-    - nobre       # Vestes místicas e capuz talares (#190d26, #321453, #5a1db9, #915eed, #dcc4ff)
-    - lumen       # Orbe mágica, emanações e feitiços (#0b2920, #14533d, #1db97a, #5eedaa, #c4ffea)
-    - ouro        # Detalhes do cajado, fivelas e broche focal (#241b08, #5c430a, #a87b13, #e6b422, #ffe875)
+  master: TY_HIGH_FANTASY_40
+  subsets: [crimson, lumen, gold]
   max_colors: 15
 
 animations:
@@ -44,7 +42,7 @@ animations:
     description: "Cai de joelhos, o orbe de lúmen dissipa-se e o corpo dissolve-se em dither espectral até o repouso."
 
 output:
-  source_file: "assets/sprites/heroes/iris/hero_iris.aseprite"
+  source_file: "assets/sprites/heroes/iris/hero_iris_golden.aseprite"
   sheet_file: "assets/sprites/heroes/iris/hero_iris_sheet.png"
   json_file: "assets/sprites/heroes/iris/hero_iris_sheet.json"
   format: "horizontal_strip"

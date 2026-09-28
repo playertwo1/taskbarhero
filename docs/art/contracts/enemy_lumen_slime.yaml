@@ -1,4 +1,4 @@
-contract_version: "1.0.0"
+contract_version: "1.1.0"
 asset_id: enemy_geleia_lumen
 name: "Geleia de Lúmen"
 category: enemy
@@ -6,10 +6,10 @@ type: mob_common
 region: bosque_de_lumen
 
 canvas:
-  width: 32
-  height: 32
-  baseline_y: 29
-  pivot: [16, 29]
+  width: 64
+  height: 64
+  baseline_y: 60
+  pivot: [32, 60]
 
 style:
   genre: dark_fantasy
@@ -45,6 +45,9 @@ animations:
     loop: false
 
 export:
+  source_file: "assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_golden.aseprite"
+  sheet_file: "assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_sheet.png"
+  json_file: "assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_sheet.json"
   format: png
   color_depth: rgba_32
   transparent_background: true
@@ -55,7 +58,7 @@ export:
 
 acceptance_criteria:
   technical:
-    - canvas_size_exact: "32x32"
+    - canvas_size_exact: "64x64"
     - background_transparent: true
     - total_frames_exact: 16
     - max_colors_respected: 12

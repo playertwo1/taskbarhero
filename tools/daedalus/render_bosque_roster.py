@@ -71,9 +71,9 @@ def render_showcase():
     canvas.paste(bast_f, (180, GROUND_Y - 88), bast_f)
 
     # ENEMIES:
-    # Slime: 32x32, baseline Y=29 -> topo = GROUND_Y - 29*2 = GROUND_Y - 58
-    slime_f   = extract_idle_frame(MOB_SLIME, 32, 32, 0).resize((64, 64), Image.NEAREST)
-    canvas.paste(slime_f, (340, GROUND_Y - 58), slime_f)
+    # Geleia de Lúmen: 64x64, baseline Y=60 -> topo = GROUND_Y - 60*2
+    slime_f   = extract_idle_frame(MOB_SLIME, 64, 64, 0).resize((128, 128), Image.NEAREST)
+    canvas.paste(slime_f, (340, GROUND_Y - 120), slime_f)
 
     # Gremlin: 32x32, baseline Y=29 -> topo = GROUND_Y - 58
     gremlin_f = extract_idle_frame(MOB_GREMLIN, 32, 32, 0).resize((64, 64), Image.NEAREST)

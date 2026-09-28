@@ -42,7 +42,7 @@ animations:
     description: "Rachaduras profundas fendem a couraça de pedra; os cascos cedem e o colosso desaba no solo, evaporando sua luz em poeira espectral."
 
 output:
-  source_file: "assets/sprites/bosses/guardiao_cervo/boss_guardiao_cervo.aseprite"
+  source_file: "assets/sprites/bosses/guardiao_cervo/boss_guardiao_cervo_golden.aseprite"
   sheet_file: "assets/sprites/bosses/guardiao_cervo/boss_guardiao_cervo_sheet.png"
   json_file: "assets/sprites/bosses/guardiao_cervo/boss_guardiao_cervo_sheet.json"
   format: "horizontal_strip"

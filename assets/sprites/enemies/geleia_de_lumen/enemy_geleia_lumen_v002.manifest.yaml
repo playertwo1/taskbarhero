@@ -1,0 +1,48 @@
+asset_id: enemy_geleia_lumen
+status: ARTISTIC_QA
+version: 2
+contract: docs/art/contracts/enemy_lumen_slime.yaml
+golden_reference: GOLDEN_ENEMY_GEL_LUMEN_V1
+references:
+  - docs/art/golden/hero_bastiao_candidate_v002.png
+  - docs/art/golden/enemy_geleia_lumen_candidate_v001.png
+  - docs/art/golden/boss_guardiao_cervo_candidate_v002.png
+generation:
+  workflow: image_gen_4x4_atlas_then_FFmpeg_downscale_Aseprite_TY40_quantization
+  workflow_version: '2'
+  comfyui_version: null
+  custom_nodes: []
+  model: OpenAI image_gen
+  model_license_record: "personal use approved by Rafael on 2026-09-27; no redistribution or commercial clearance"
+  lora: null
+  adapters: []
+  seed: null
+  sampler: null
+  steps: null
+  cfg: null
+  generation_resolution: "4x4 generated atlas reduced to 64x64 frames"
+  controlnet: null
+  controlnet_weight: null
+  ip_adapter_weight: null
+  prompt_file: null
+  input_hashes: [bc1e2a39ed35d29f9806c6f773f377bb15958d83c9f216ca2980dba30b2b132e, 512feed18b561d7b59c56d5afac2f651dd930952d1c5f25fd8cb8d703f0f17f7, da2b1fae5987c68433b06623778c33dc0e5e587709320d91ccd0ecb4dc6ea6d3]
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [lumen, crimson]
+  colors_used: 12
+  exceptional_colors: []
+output:
+  files: [assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_sheet.png]
+  frame_size: {width: 64, height: 64}
+  frame_count: 16
+  layout: horizontal_strip
+  facing: left
+  alpha: true
+  hashes: [ea4284f62d8c54467f9a6ddbd1c81c0313600b40d454a541d1ccce800afb48a5]
+qa:
+  technical: PASS
+  artistic: PENDING
+  mobile: PENDING
+  reviewer: null
+  reviewed_at: null
+  report: Sprite lint PASS; independent visual audit and mobile review are pending.

@@ -1,0 +1,45 @@
+asset_id: enemy_geleia_lumen
+status: CONCEPT_APPROVED
+version: 1
+contract: docs/art/contracts/enemy_lumen_slime.yaml
+golden_reference: GOLDEN_ENEMY_GEL_LUMEN_V1
+references: []
+generation:
+  workflow: imagegen_then_Aseprite_palette_conversion_and_nearest_neighbor_upscale
+  workflow_version: "1"
+  comfyui_version: null
+  custom_nodes: []
+  model: OpenAI image generation
+  model_license_record: personal use approved by Rafael on 2026-09-27; no redistribution or commercial clearance
+  lora: null
+  adapters: []
+  seed: null
+  sampler: null
+  steps: null
+  cfg: null
+  generation_resolution: 32x32 original concept expanded to 64x64 for style reference
+  controlnet: null
+  controlnet_weight: null
+  ip_adapter_weight: null
+  prompt_file: null
+  input_hashes: [dcf62ef0b637526c945afb7c9c5430cfc9cc15ed85c381db529cdf80606e8fd0]
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [lumen, crimson]
+  colors_used: 11
+  exceptional_colors: []
+output:
+  files: [docs/art/golden/enemy_geleia_lumen_candidate_v001.png]
+  frame_size: {width: 64, height: 64}
+  frame_count: 1
+  layout: single
+  facing: left
+  alpha: true
+  hashes: [512feed18b561d7b59c56d5afac2f651dd930952d1c5f25fd8cb8d703f0f17f7]
+qa:
+  technical: PENDING
+  artistic: PASS
+  mobile: PENDING
+  reviewer: Rafael (owner-approved visual example)
+  reviewed_at: 2026-09-27
+  report: Rafael explicitly approved this Geleia image as the personal-project visual Golden example. Static style reference only; complete 16-frame release sheet, baseline verification and independent technical QA remain pending.

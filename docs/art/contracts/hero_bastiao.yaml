@@ -45,6 +45,9 @@ animations:
     loop: false
 
 export:
+  source_file: "assets/sprites/heroes/bastiao/hero_bastiao_golden.aseprite"
+  sheet_file: "assets/sprites/heroes/bastiao/hero_bastiao_sheet.png"
+  json_file: "assets/sprites/heroes/bastiao/hero_bastiao_sheet.json"
   format: png
   color_depth: rgba_32
   transparent_background: true

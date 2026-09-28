@@ -1,0 +1,45 @@
+asset_id: boss_guardiao_cervo
+status: REJECTED
+version: 1
+contract: docs/art/contracts/boss_guardiao_cervo.yaml
+golden_reference: null
+references: []
+generation:
+  workflow: preserve_existing_sheet_and_quantize_with_aseprite
+  workflow_version: "1"
+  comfyui_version: null
+  custom_nodes: []
+  model: unknown_existing_repo_asset
+  model_license_record: docs/art/REFERENCE_LIBRARY.md; original model lineage remains unverified; personal project review only
+  lora: null
+  adapters: []
+  seed: null
+  sampler: null
+  steps: null
+  cfg: null
+  generation_resolution: existing 1024x64 16-frame sheet, quantized in place to TY40 candidate copy
+  controlnet: null
+  controlnet_weight: null
+  ip_adapter_weight: null
+  prompt_file: null
+  input_hashes: [ea1002fba5ce42c179fcb90d4e6a5647eec4551e35cd5bf5f43d7f66a57e2067]
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [neutral_stone, wood, lumen, forest]
+  colors_used: 12
+  exceptional_colors: []
+output:
+  files: [docs/art/golden/guardiao_cervo_candidate_v001.png]
+  frame_size: {width: 64, height: 64}
+  frame_count: 16
+  layout: horizontal_strip
+  facing: left
+  alpha: true
+  hashes: [f6c897265d74f833966e0cf4cab0af13f18fd9e40528ad4cc4c952f00f12c4c1]
+qa:
+  technical: PENDING
+  artistic: FAIL
+  mobile: PENDING
+  reviewer: Rafael
+  reviewed_at: 2026-09-27
+  report: Rafael rejected this earlier candidate as below the approved Slime quality bar. Superseded by v002; retained for history.

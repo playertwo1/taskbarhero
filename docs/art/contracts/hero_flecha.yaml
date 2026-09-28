@@ -11,10 +11,8 @@ canvas:
   pivot: [24, 44]
 
 palette:
-  rampas:
-    - silvestre   # Couro, túnica e capuz (#0d2615, #184725, #2b7a3e, #52b769, #98e2a3)
-    - madeira     # Arco longo e astes (#2e1f14, #543820, #8a5e35, #bf8c56, #e3ba88)
-    - ferro       # Pontas de flechas e fivelas (#131921, #3a4e63, #a8c5e6)
+  master: TY_HIGH_FANTASY_40
+  subsets: [forest, wood, iron]
   max_colors: 14
 
 animations:
@@ -44,7 +42,7 @@ animations:
     description: "Colapso no chão com desprendimento do arco e dissolução em dither de sombras."
 
 output:
-  source_file: "assets/sprites/heroes/flecha/hero_flecha.aseprite"
+  source_file: "assets/sprites/heroes/flecha/hero_flecha_golden.aseprite"
   sheet_file: "assets/sprites/heroes/flecha/hero_flecha_sheet.png"
   json_file: "assets/sprites/heroes/flecha/hero_flecha_sheet.json"
   format: "horizontal_strip"

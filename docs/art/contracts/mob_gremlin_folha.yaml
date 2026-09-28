@@ -11,11 +11,8 @@ canvas:
   pivot: [16, 29]
 
 palette:
-  rampas:
-    - silvestre   # Corpo, máscara de folhas e pele musgosa (#0d2615, #184725, #2b7a3e, #52b769, #98e2a3)
-    - madeira     # Tanga de couro, cabo da adaga e galhos (#2e1f14, #543820, #8a5e35, #bf8c56)
-    - ouro        # Olhos amarelados brilhantes (#ffe875)
-    - ferro       # Lâmina de sílex/pedra cinza (#3a4e63, #a8c5e6)
+  master: TY_HIGH_FANTASY_40
+  subsets: [forest, wood, gold, iron]
   max_colors: 13
 
 animations:
@@ -45,7 +42,7 @@ animations:
     description: "Queda desarticulada no solo, desmanchando-se em folhas secas e dither de sombras."
 
 output:
-  source_file: "assets/sprites/enemies/gremlin_de_folha/mob_gremlin_folha.aseprite"
+  source_file: "assets/sprites/enemies/gremlin_de_folha/mob_gremlin_folha_golden.aseprite"
   sheet_file: "assets/sprites/enemies/gremlin_de_folha/mob_gremlin_folha_sheet.png"
   json_file: "assets/sprites/enemies/gremlin_de_folha/mob_gremlin_folha_sheet.json"
   format: "horizontal_strip"

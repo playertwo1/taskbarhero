@@ -11,10 +11,8 @@ canvas:
   pivot: [24, 44]
 
 palette:
-  rampas:
-    - madeira     # Couro, cerdas e cascos (#2e1f14, #543820, #8a5e35, #bf8c56)
-    - silvestre   # Musgo no lombo e folhagem (#0d2615, #184725, #2b7a3e, #52b769)
-    - ferro       # Presas de marfim e realces (#adb5bd, #f1f3f5)
+  master: TY_HIGH_FANTASY_40
+  subsets: [wood, forest, neutral_stone]
   max_colors: 12
 
 animations:
@@ -44,7 +42,7 @@ animations:
     description: "Colapso lateral no solo, com o musgo do lombo se desprendendo em dither espectral."
 
 output:
-  source_file: "assets/sprites/enemies/javali_de_musgo/mob_javali_musgo.aseprite"
+  source_file: "assets/sprites/enemies/javali_de_musgo/mob_javali_musgo_golden.aseprite"
   sheet_file: "assets/sprites/enemies/javali_de_musgo/mob_javali_musgo_sheet.png"
   json_file: "assets/sprites/enemies/javali_de_musgo/mob_javali_musgo_sheet.json"
   format: "horizontal_strip"

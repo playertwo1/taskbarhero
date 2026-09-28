@@ -1,0 +1,45 @@
+asset_id: boss_guardiao_cervo
+status: CONCEPT_APPROVED
+version: 2
+contract: docs/art/contracts/boss_guardiao_cervo.yaml
+golden_reference: GOLDEN_BOSS_GUARDIAO_CERVO_V1
+references: []
+generation:
+  workflow: imagegen_then_Aseprite_palette_conversion_and_pixel_scale
+  workflow_version: "1"
+  comfyui_version: null
+  custom_nodes: []
+  model: OpenAI image generation
+  model_license_record: personal use approved by Rafael on 2026-09-27; no redistribution or commercial clearance
+  lora: null
+  adapters: []
+  seed: null
+  sampler: null
+  steps: null
+  cfg: null
+  generation_resolution: 1254x1254 concept source quantized and reduced to 64x64
+  controlnet: null
+  controlnet_weight: null
+  ip_adapter_weight: null
+  prompt_file: null
+  input_hashes: [b7dbe4d0dbf5ba1cbf031be408f6088b222ccb15d25f3d5ae53a266af3065c5b]
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [neutral_stone, wood, lumen, forest]
+  colors_used: 11
+  exceptional_colors: []
+output:
+  files: [docs/art/golden/boss_guardiao_cervo_candidate_v002.png]
+  frame_size: {width: 64, height: 64}
+  frame_count: 1
+  layout: single
+  facing: left
+  alpha: true
+  hashes: [da2b1fae5987c68433b06623778c33dc0e5e587709320d91ccd0ecb4dc6ea6d3]
+qa:
+  technical: PENDING
+  artistic: PASS
+  mobile: PENDING
+  reviewer: Rafael (owner-approved visual Golden)
+  reviewed_at: 2026-09-27
+  report: Rafael approved this Guardião-Cervo image as the visual Golden example for personal use. It is a single-frame visual reference; full 16-frame release sheet, baseline verification and technical QA remain pending.

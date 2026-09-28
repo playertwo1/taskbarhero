@@ -1,0 +1,45 @@
+asset_id: enemy_geleia_lumen
+status: CONCEPT_APPROVED
+version: 1
+contract: docs/art/contracts/enemy_lumen_slime.yaml
+golden_reference: GOLDEN_ENEMY_GEL_LUMEN_V1
+references: []
+generation:
+  workflow: imagegen_animation_concept_then_Aseprite_palette_conversion
+  workflow_version: "1"
+  comfyui_version: null
+  custom_nodes: []
+  model: OpenAI image generation
+  model_license_record: personal use approved by Rafael on 2026-09-27; no redistribution or commercial clearance
+  lora: null
+  adapters: []
+  seed: null
+  sampler: null
+  steps: null
+  cfg: null
+  generation_resolution: 2172x724 generated concept sheet, four 64x64 frames extracted and quantized
+  controlnet: null
+  controlnet_weight: null
+  ip_adapter_weight: null
+  prompt_file: null
+  input_hashes: [1a2c8cec10d117e5b94468e5ca67321474ffdca83df2794208ae984a7c7e33d5]
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [lumen, crimson]
+  colors_used: 10
+  exceptional_colors: []
+output:
+  files: [docs/art/golden/enemy_geleia_lumen_idle_candidate_v001.png]
+  frame_size: {width: 64, height: 64}
+  frame_count: 4
+  layout: horizontal_strip
+  facing: left
+  alpha: true
+  hashes: [ed45ec2a2606fab692dd97a5e3ceec6c17996d261430a9054d88624c430749ce]
+qa:
+  technical: PENDING
+  artistic: PASS
+  mobile: PENDING
+  reviewer: Rafael (owner-approved visual Golden)
+  reviewed_at: 2026-09-27
+  report: Rafael approved these four idle frames as the visual Golden animation for personal use. Timing is 160ms per frame; full 16-frame enemy release sheet, 1x mobile QA and technical QA remain pending.

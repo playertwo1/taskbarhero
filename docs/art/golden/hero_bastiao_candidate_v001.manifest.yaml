@@ -1,0 +1,45 @@
+asset_id: hero_bastiao
+status: REJECTED
+version: 1
+contract: docs/art/contracts/hero_bastiao.yaml
+golden_reference: null
+references: []
+generation:
+  workflow: preserve_existing_sheet_and_quantize_with_aseprite
+  workflow_version: "1"
+  comfyui_version: null
+  custom_nodes: []
+  model: unknown_existing_repo_asset
+  model_license_record: docs/art/REFERENCE_LIBRARY.md; original model lineage remains unverified; personal project review only
+  lora: null
+  adapters: []
+  seed: null
+  sampler: null
+  steps: null
+  cfg: null
+  generation_resolution: existing 768x48 16-frame sheet, quantized in place to TY40 Iron+Gold candidate copy
+  controlnet: null
+  controlnet_weight: null
+  ip_adapter_weight: null
+  prompt_file: null
+  input_hashes: [8a9a12e838deaa5c65c2382809db93e738db5bc6befb95b036a5b5aa074328aa]
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [iron, gold]
+  colors_used: 11
+  exceptional_colors: []
+output:
+  files: [docs/art/golden/hero_bastiao_candidate_v001.png]
+  frame_size: {width: 48, height: 48}
+  frame_count: 16
+  layout: horizontal_strip
+  facing: right
+  alpha: true
+  hashes: [6bd14372ea32f74b58551c0f74d9ac025c8c03a715a726d3281367d9801a1a84]
+qa:
+  technical: PENDING
+  artistic: FAIL
+  mobile: PENDING
+  reviewer: Rafael
+  reviewed_at: 2026-09-27
+  report: Rafael rejected this earlier candidate as below the approved Slime quality bar. Superseded by v002; retained for history.

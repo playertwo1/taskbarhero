@@ -11,10 +11,8 @@ canvas:
   pivot: [24, 44]
 
 palette:
-  rampas:
-    - ardosia     # Pelagem sombria e garras (#0d1117, #161b22, #21262d, #30363d, #8b949e)
-    - lumen       # Olhos, runas no flanco e juba espectral (#0d3320, #1a5c38, #2da44e, #56d364, #aff5b4)
-    - presas      # Caninos e dentes (#d0d7de, #f6f8fa)
+  master: TY_HIGH_FANTASY_40
+  subsets: [neutral_stone, lumen]
   max_colors: 12
 
 animations:
@@ -44,7 +42,7 @@ animations:
     description: "Colapso gracioso das patas ao solo, desvanecendo sua essência em chamas tênues de lúmen espectral."
 
 output:
-  source_file: "assets/sprites/enemies/lobo_alfa_de_lumen/mob_lobo_alfa.aseprite"
+  source_file: "assets/sprites/enemies/lobo_alfa_de_lumen/mob_lobo_alfa_golden.aseprite"
   sheet_file: "assets/sprites/enemies/lobo_alfa_de_lumen/mob_lobo_alfa_sheet.png"
   json_file: "assets/sprites/enemies/lobo_alfa_de_lumen/mob_lobo_alfa_sheet.json"
   format: "horizontal_strip"

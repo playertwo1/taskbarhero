@@ -9,14 +9,14 @@ O MVP do Pocket Hero foi concluído e homologado no gate R19 em 2026-09-27. O hi
 
 ## Trabalho em andamento — ART-0 Golden References
 
-Os quatro exemplos visuais do ART-0 foram aprovados por Rafael em 2026-09-27 e estão registrados com hashes em [`docs/art/golden/README.md`](docs/art/golden/README.md). **A produção em massa continua bloqueada** até preparar as folhas completas e passar o QA técnico/visual; os arquivos aprovados são referências visuais, não substituem os assets de release.
+Os quatro Golden foram aprovados por Rafael em 2026-09-27, e ele autorizou refazer os sprites restantes do MVP seguindo essa direção. **ART-0 está PASS para produção.** As nove folhas animadas e quatro camadas de ambiente foram substituídas nos caminhos usados pelo projeto; o lint técnico das folhas passou. QA visual independente e revisão mobile seguem como aceite de release por concluir. Veja o [inventário de sprites](docs/art/MVP_SPRITE_INVENTORY.md) e o [registro Golden](docs/art/golden/README.md).
 
 - [x] **GOLDEN HERO** — Bastião v002 aprovado visualmente; hash fixado; folha completa/QA pendente.
 - [x] **GOLDEN ENEMY** — Geleia 64×64 aprovada visualmente; hash fixado; folha completa/QA pendente.
 - [x] **GOLDEN BOSS** — Guardião-Cervo v002 aprovado visualmente; hash fixado; folha completa/QA pendente.
 - [x] **GOLDEN ANIMATION** — idle da Geleia, 4 quadros a 160ms, aprovado visualmente; hash fixado; release/QA pendente.
 
-As quatro aprovações visuais já foram registradas. Não marcar o gate de produção como concluído nem abrir lotes até que as folhas completas e o QA técnico/visual passem. Os registros e contratos atuais são as fontes de estado para essa etapa.
+As quatro aprovações visuais estão registradas. O gate autoriza produzir as folhas completas, enquanto QA visual/mobile por asset continua separado e pendente até revisão. Os registros e contratos atuais são as fontes de estado para essa etapa.
 
 ## Design em andamento — conteúdo do Capítulo 1
 
@@ -28,7 +28,7 @@ Rafael definiu começar a construir conteúdo além do MVP, iniciando pelo Capí
 - [ ] Definir fórmulas, fontes/saídas de recursos e simulações antes de congelar números.
 - [ ] Depois da aprovação de design, planejar schema/dados e um segmento jogável vertical.
 
-Este trabalho é de design. Não libera produção de arte em massa, que continua bloqueada pelo QA de release do ART-0.
+Este trabalho é de design e não altera o escopo de produção de sprites do MVP autorizado pelo ART-0.
 
 ## Pendências registradas de setup
 
@@ -66,7 +66,7 @@ O overlay deve permanecer separado da arquitetura central do MVP até essa fase 
 
 ## Ordem e limites
 
-1. Concluir ART-0 antes de iniciar produção em massa de arte.
+1. Manter os Golden como direção aprovada e concluir a auditoria visual/mobile dos sprites produzidos antes do aceite de release.
 2. Priorizar as próximas entregas entre ARGOS e Overlay quando houver decisão de produto.
 3. Não adicionar backend, contas, multiplayer, cloud save, monetização ou conteúdo extenso sem necessidade concreta e priorização explícita.
 
