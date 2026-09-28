@@ -205,7 +205,7 @@ func _refresh_grid(items: Array) -> void:
 		tile.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		tile.focus_mode = Control.FOCUS_NONE
 		tile.tooltip_text = str(item.get("name", "Item"))
-		var is_selected := item.get("id", "") == selected_item.get("id", "")
+		var is_selected: bool = (str(item.get("id", "")) == str(selected_item.get("id", "")))
 		tile.add_theme_stylebox_override("normal", _tile_style(is_selected))
 		tile.add_theme_stylebox_override("hover", _tile_style(is_selected, true))
 		tile.add_theme_stylebox_override("pressed", _tile_style(true))
@@ -255,7 +255,7 @@ func _refresh_detail() -> void:
 	selected_name.text = str(selected_item.get("name", "Item"))
 	var icon_path := str(selected_item.get("icon", ""))
 	selected_icon.texture = load(icon_path) if ResourceLoader.exists(icon_path) else null
-	var is_candidate := selected_item.get("status", "") == "visual_candidate"
+	var is_candidate: bool = (str(selected_item.get("status", "")) == "visual_candidate")
 	var owned := _owned_count(str(selected_item.get("id", "")))
 	var gameplay: Dictionary = selected_item.get("gameplay", {})
 	var rarity := str(gameplay.get("rarity", ""))

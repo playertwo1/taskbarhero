@@ -115,10 +115,10 @@ Sete ramos:
 
 - [x] conceito geral definido;
 - [x] integração com Hub/lore definida;
-- [ ] selecionar ~30 nós para o MVP;
-- [ ] definir pré-requisitos;
-- [ ] definir custos relativos;
-- [ ] definir diagrama/UI;
+- [x] selecionar 30 nós e registrar pré-requisitos;
+- [x] definir faixas relativas de custo;
+- [x] criar diagrama de dependências e princípio de expansão da UI;
+- [ ] desenhar/prototipar a UI detalhada em `HUB-1`/`SLICE-1`;
 - [ ] expandir apenas depois do slice validado.
 
 Alvo posterior: aproximadamente **84 nós**, sem obrigar essa quantidade no primeiro vertical slice.
@@ -136,6 +136,8 @@ As funções são distribuídas pelo Refúgio da Vigília:
 - **Gravadora de Ecos** — Echoes, memórias e modificadores raros;
 - **Ourives** — joias, acessórios e especialização fina.
 
+A ordem, o mínimo de serviço por artesão e o que fica fora do slice estão aprovados em [CRAFT-1](docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md). Reforja, fabricação livre, sockets e outros serviços listados acima são possibilidades futuras, não requisitos do primeiro slice.
+
 ### Equipamento
 
 - [x] 10 slots canônicos definidos em design;
@@ -152,28 +154,7 @@ Os serviços da cidade devem aparecer gradualmente conforme o Hub é reconstruí
 
 ## 7. LORE-1 — Fundação narrativa
 
-Conceitos mantidos:
-
-- Lúmen;
-- Apagamento;
-- Corações de Lúmen;
-- Guardiões;
-- Ecos;
-- Observador como mistério não resolvido.
-
-### Bastião
-
-A lore pessoal do Bastião agora funciona como Golden Reference narrativo e conecta diretamente gameplay, equipamentos e campanha pessoal.
-
-- [x] Primeiro Juramento;
-- [x] Guarda da Primeira Muralha;
-- [x] Porta da Vigília;
-- [x] origem de Muralha do Primeiro Juramento e Vigília;
-- [x] 5 missões pessoais;
-- [x] arco “Eu fico”;
-- [ ] diálogos finais e implementação.
-
-- [ ] criar `LORE_BIBLE.md` consolidando as regras globais sem resolver cedo os mistérios principais.
+**Concluído:** a [Bíblia de Lore](docs/01_world/LORE_BIBLE.md) consolida as regras globais e mantém as causas e mistérios principais em aberto. A lore individual do Bastião está na seção [decisões atuais](docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md#lore-pessoal-do-bastiao-decisoes-atuais); diálogos e implementação permanecem trabalho futuro.
 
 ---
 
@@ -181,7 +162,7 @@ A lore pessoal do Bastião agora funciona como Golden Reference narrativo e cone
 
 O Capítulo 1 continua sendo o **Bosque de Lúmen**, preservando a direção já aprovada de dez subfases, ecologia própria, elites, mini-bosses e Guardião-Cervo.
 
-O documento antigo do capítulo possui conteúdo útil, mas qualquer referência a **15 skills / 5 skills por herói** deve ser considerada desatualizada para design futuro.
+O overview atual do capítulo lista 15 conceitos de skills normais — cinco para cada herói inicial — e não inclui as Signature Skills. É um catálogo parcial, não uma alternativa à meta canônica de seis skills por herói.
 
 ### Próximas correções
 
@@ -189,7 +170,7 @@ O documento antigo do capítulo possui conteúdo útil, mas qualquer referência
 - [ ] decidir qual subset de skills/passivas/Traits aparece no slice;
 - [ ] reconciliar os 30 itens com o novo sistema de 10 slots;
 - [ ] detalhar encontros de chefes;
-- [ ] integrar Echoes e eventos ao novo loop;
+- [ ] introduzir no conteúdo um Echo funcional opcional, com recompensa determinística e função registrada no [Sistema de Ecos](docs/03_systems/ECHO_SYSTEM.md);
 - [ ] definir como o Fragmento do Coração Verde altera visualmente o Hub.
 
 ---
@@ -206,7 +187,7 @@ Fluxo-alvo:
 - [ ] Bastião como referência estrutural;
 - [ ] pelo menos duas builds claramente distintas;
 - [ ] subset de equipamentos;
-- [ ] 1 Echo funcional;
+- [ ] 1 Echo funcional opcional para completar o slice, sem ser necessário para vencer;
 - [ ] 1 elite;
 - [ ] 1 evento;
 - [ ] 1 mini-boss;
@@ -216,17 +197,19 @@ Fluxo-alvo:
 - [ ] retorno ao Hub com progressão perceptível;
 - [ ] mudança visual do Refúgio após o boss.
 
+**DECISÃO de DESIGN-1:** incluir um Echo funcional opcional, como recompensa determinística que conecta loot, build e lore. Não será obrigatório para vencer; escopo restrito e exemplo aprovado estão no [Sistema de Ecos](docs/03_systems/ECHO_SYSTEM.md).
+
 ---
 
 ## 10. Próxima ordem de execução
 
-1. **SYNC-0** — colocar no repositório os novos contratos de design e atualizar índices;
-2. fechar separação entre **run / herói / equipamento / conta**;
-3. criar `LORE_BIBLE.md`;
-4. registrar Bastião como Golden Reference de design;
-5. definir os ~30 nós do MVP da Árvore dos Ecos;
-6. fechar MVP do Ferreiro/Alquimista/Ecos/Ourives;
-7. reconciliar economia e 30 itens;
+1. [x] **SYNC-0** — colocar no repositório os novos contratos de design e atualizar índices;
+2. [x] **DESIGN-1** — fechar a fundação e a separação entre **run / herói / equipamento / conta**;
+3. [x] **LORE-1** — criar a Bíblia de Lore, reconciliada com o Capítulo 1 e a lore canônica do Bastião;
+4. [x] registrar Bastião como Golden Reference de design;
+5. [x] **TREE-1** — definir os ~30 nós do MVP da Árvore dos Ecos;
+6. [x] **CRAFT-1** — definir função, fonte/sink e ordem de desbloqueio dos quatro artesãos;
+7. **ITEM-1 — próxima fase:** reconciliar os dez slots, raridades, schema e 30 itens;
 8. atualizar o documento do Bosque de Lúmen;
 9. iniciar **Flecha** como segundo herói completo seguindo o padrão do Bastião;
 10. preparar `SLICE-1`;

@@ -1,0 +1,53 @@
+{
+  "asset_id": "desafio_do_guardiao",
+  "status": "ARTISTIC_QA",
+  "version": 1,
+  "contract": "docs/art/contracts/skill_icons/skill_icon_crimson_gold_iron.yaml",
+  "concept": "docs/04_content/chapters/chapter_01/OVERVIEW.md#desafio_do_guardiao",
+  "content_state": "chapter_01",
+  "generation": {
+    "workflow": "handcrafted_pixel_art_ty40_quantized_icon",
+    "workflow_version": "1",
+    "model": "handcrafted pixel design",
+    "model_license_record": "Pocket Hero original design asset",
+    "seed": null,
+    "sampler": null,
+    "steps": null,
+    "cfg": null,
+    "generation_resolution": "32x32 native",
+    "input_hashes": []
+  },
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "crimson",
+      "gold",
+      "iron"
+    ],
+    "colors_used": 6,
+    "exceptional_colors": []
+  },
+  "output": {
+    "files": [
+      "assets/sprites/skills/icons/desafio_do_guardiao.png"
+    ],
+    "frame_size": {
+      "width": 32,
+      "height": 32
+    },
+    "frame_count": 1,
+    "layout": "single",
+    "facing": "skill_icon",
+    "alpha": true,
+    "hashes": [
+      "eef3e446df910ebb5383645da4129df2ac59d0198f2a97f0c72d9c11d6c81b17"
+    ]
+  },
+  "qa": {
+    "technical": "PASS",
+    "artistic": "PENDING",
+    "reviewer": null,
+    "reviewed_at": null,
+    "report": "Sprite lint PASS; independent visual audit and mobile review are pending."
+  }
+}

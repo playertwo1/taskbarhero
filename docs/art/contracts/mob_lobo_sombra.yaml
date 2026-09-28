@@ -1,0 +1,45 @@
+id: mob_lobo_sombra
+name: "Lobo de Sombra"
+category: mob
+description: "Predador quadrúpede esguio e veloz com pelagem carvão angular e olhos escarlates brilhantes. Caça em matilha acompanhando o Lobo Alfa, realizando botes rápidos e flanqueamentos nos heróis da retaguarda."
+facing: left
+
+canvas:
+  width: 48
+  height: 48
+  baseline_y: 44
+  pivot: [24, 44]
+
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [neutral_stone, crimson]
+  max_colors: 12
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 120
+    loop: false
+
+output:
+  source_file: "assets/sprites/enemies/lobo_de_sombra/mob_lobo_sombra_golden.aseprite"
+  sheet_file: "assets/sprites/enemies/lobo_de_sombra/mob_lobo_sombra_sheet.png"
+  json_file: "assets/sprites/enemies/lobo_de_sombra/mob_lobo_sombra_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [768, 48]

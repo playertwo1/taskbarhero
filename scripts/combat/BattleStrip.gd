@@ -10,18 +10,32 @@ var enemy_name: String = "Inimigo"
 var current_enemy_id: String = ""
 var current_enemy_scene_id: String = ""
 
-# Cenas dos 3 heróis da party
-const BASTIAO_SCENE = preload("res://scenes/heroes/Bastiao.tscn")
-const IRIS_SCENE = preload("res://scenes/heroes/Iris.tscn")
-const FLECHA_SCENE = preload("res://scenes/heroes/Flecha.tscn")
+# Cenas dos 8 heróis do Pocket Hero
+const HERO_SCENES: Dictionary = {
+	"bastiao": preload("res://scenes/heroes/Bastiao.tscn"),
+	"flecha": preload("res://scenes/heroes/Flecha.tscn"),
+	"iris": preload("res://scenes/heroes/Iris.tscn"),
+	"brasa": preload("res://scenes/heroes/Brasa.tscn"),
+	"veu": preload("res://scenes/heroes/Veu.tscn"),
+	"orvalho": preload("res://scenes/heroes/Orvalho.tscn"),
+	"forja": preload("res://scenes/heroes/Forja.tscn"),
+	"sino": preload("res://scenes/heroes/Sino.tscn")
+}
 
-# Cenas dos inimigos do Bosque de Lúmen
-const SLIME_SCENE = preload("res://scenes/enemies/GeleiaDeLumen.tscn")
-const GREMLIN_SCENE = preload("res://scenes/enemies/GremlinDeFolha.tscn")
-const JAVALI_SCENE = preload("res://scenes/enemies/JavaliDeMusgo.tscn")
-const ESPIRITO_SCENE = preload("res://scenes/enemies/EspiritoDeRaiz.tscn")
-const LOBO_SCENE = preload("res://scenes/enemies/LoboAlfaDeLumen.tscn")
-const CERVO_SCENE = preload("res://scenes/enemies/GuardiaoCervoDePedra.tscn")
+# Cenas dos 11 inimigos e chefes do Bosque de Lúmen
+const ENEMY_SCENES: Dictionary = {
+	"geleia_de_lumen": preload("res://scenes/enemies/GeleiaDeLumen.tscn"),
+	"gremlin_de_folha": preload("res://scenes/enemies/GremlinDeFolha.tscn"),
+	"javali_de_musgo": preload("res://scenes/enemies/JavaliDeMusgo.tscn"),
+	"espirito_de_raiz": preload("res://scenes/enemies/EspiritoDeRaiz.tscn"),
+	"saqueador_da_mata": preload("res://scenes/enemies/SaqueadorDaMata.tscn"),
+	"xama_de_esporos": preload("res://scenes/enemies/XamaDeEsporos.tscn"),
+	"sentinela_de_raizes": preload("res://scenes/enemies/SentinelaDeRaizes.tscn"),
+	"lobo_de_sombra": preload("res://scenes/enemies/LoboDeSombra.tscn"),
+	"lobo_alfa_de_lumen": preload("res://scenes/enemies/LoboAlfaDeLumen.tscn"),
+	"matriarca_do_micelio": preload("res://scenes/enemies/MatriarcaDoMicelio.tscn"),
+	"guardiao_cervo_de_pedra": preload("res://scenes/enemies/GuardiaoCervoDePedra.tscn")
+}
 
 # Cenário em 5 camadas (Zero mixels, AMOLED, estética Bosque de Lúmen)
 const TEX_BG_DISTANT = preload("res://assets/sprites/environment/bosque_lumen/bg_distant.png")
@@ -30,41 +44,56 @@ const TEX_GROUND_STRIP = preload("res://assets/sprites/environment/bosque_lumen/
 const TEX_FG_ELEMENTS = preload("res://assets/sprites/environment/bosque_lumen/fg_elements.png")
 
 var party_visuals: Dictionary = {}
-var hero_visual: Node2D = null # Alias para Bastião (retrocompatibilidade)
+var hero_visual: Node2D = null # Alias para Bastião/Front (retrocompatibilidade)
 var enemy_visual: Node2D = null
 var anim_time: float = 0.0
 
-# Posicionamento horizontal de formação (sem sobreposição, escala 2.0x uniforme)
+# Posicionamento horizontal de formação por slot ou herói
 const FORMATION_X_FACTORS := {
-	"flecha": 0.11,  # Slot back (arqueiro)
-	"iris": 0.24,    # Slot mid (maga)
-	"bastiao": 0.38  # Slot front (tanque)
+	"back": 0.11,
+	"mid": 0.24,
+	"front": 0.38,
+	"flecha": 0.11,
+	"iris": 0.24,
+	"bastiao": 0.38
 }
 
 func _ready() -> void:
 	custom_minimum_size = Vector2(0, 220)
 	set_process(true)
+	if GameManager.has_signal("party_composition_changed") and not GameManager.party_composition_changed.is_connected(_setup_party):
+		GameManager.party_composition_changed.connect(_setup_party)
 	_setup_party()
 
 func _setup_party() -> void:
-	var hero_scenes := {
-		"flecha": FLECHA_SCENE,
-		"iris": IRIS_SCENE,
-		"bastiao": BASTIAO_SCENE
-	}
-	
-	for hid in ["flecha", "iris", "bastiao"]:
+	# Remove heróis que não estão mais na party
+	var current_keys := party_visuals.keys()
+	for hid in current_keys:
+		if not GameManager.party.has(hid):
+			if party_visuals[hid] != null and is_instance_valid(party_visuals[hid]):
+				party_visuals[hid].queue_free()
+			party_visuals.erase(hid)
+
+	# Instancia ou atualiza os heróis da party ativa
+	for hid in GameManager.party.keys():
 		if not party_visuals.has(hid) or party_visuals[hid] == null or not is_instance_valid(party_visuals[hid]):
-			var inst = hero_scenes[hid].instantiate()
-			add_child(inst)
-			party_visuals[hid] = inst
-		var node: Node2D = party_visuals[hid]
-		node.scale = Vector2(2.0, 2.0)
-		node.visible = true
-		if node.has_method("reset"):
-			node.reset()
+			if HERO_SCENES.has(hid):
+				var inst: Node2D = HERO_SCENES[hid].instantiate()
+				add_child(inst)
+				party_visuals[hid] = inst
+		var node: Node2D = party_visuals.get(hid)
+		if node and is_instance_valid(node):
+			node.scale = Vector2(2.0, 2.0)
+			node.visible = true
+			if node.has_method("reset"):
+				node.reset()
 			
-	hero_visual = party_visuals.get("bastiao")
+	if GameManager.party.has("bastiao"):
+		hero_visual = party_visuals.get("bastiao")
+	elif party_visuals.size() > 0:
+		hero_visual = party_visuals.values()[0]
+	else:
+		hero_visual = null
 
 func _setup_hero() -> void:
 	_setup_party()
@@ -77,11 +106,20 @@ func _process(delta: float) -> void:
 	
 	var ground_y := size.y - 42.0
 	
-	# Posiciona todos os 3 heróis da party em suas respectivas formações
+	# Posiciona todos os heróis da party em suas respectivas formações (back, mid, front)
+	var slot_factors := {
+		"back": 0.11,
+		"mid": 0.24,
+		"front": 0.38
+	}
 	for hid in party_visuals.keys():
 		var node: Node2D = party_visuals[hid]
 		if node and is_instance_valid(node) and node.visible:
-			var hx: float = size.x * float(FORMATION_X_FACTORS.get(hid, 0.25))
+			var slot = "mid"
+			if GameManager.party.has(hid):
+				slot = GameManager.party[hid].get("slot", "mid")
+			var factor: float = float(slot_factors.get(slot, FORMATION_X_FACTORS.get(hid, 0.25)))
+			var hx: float = size.x * factor
 			node.position = Vector2(hx, ground_y)
 		
 	if enemy_visual and is_instance_valid(enemy_visual) and enemy_visual.visible:
@@ -95,20 +133,7 @@ func set_enemy(enemy_data: Dictionary) -> void:
 	enemy_name = enemy_data.get("name", "Inimigo")
 	enemy_is_boss = enemy_data.get("boss", false)
 	
-	var target_scene: PackedScene = null
-	match current_enemy_id:
-		"geleia_de_lumen":
-			target_scene = SLIME_SCENE
-		"gremlin_de_folha":
-			target_scene = GREMLIN_SCENE
-		"javali_de_musgo":
-			target_scene = JAVALI_SCENE
-		"espirito_de_raiz":
-			target_scene = ESPIRITO_SCENE
-		"lobo_alfa_de_lumen":
-			target_scene = LOBO_SCENE
-		"guardiao_cervo_de_pedra":
-			target_scene = CERVO_SCENE
+	var target_scene: PackedScene = ENEMY_SCENES.get(current_enemy_id, null)
 	
 	if target_scene != null:
 		if enemy_visual == null or not is_instance_valid(enemy_visual) or current_enemy_scene_id != current_enemy_id:

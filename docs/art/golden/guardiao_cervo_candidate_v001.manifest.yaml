@@ -29,7 +29,7 @@ palette:
   colors_used: 12
   exceptional_colors: []
 output:
-  files: [docs/art/golden/guardiao_cervo_candidate_v001.png]
+  files: []
   frame_size: {width: 64, height: 64}
   frame_count: 16
   layout: horizontal_strip
@@ -42,4 +42,4 @@ qa:
   mobile: PENDING
   reviewer: Rafael
   reviewed_at: 2026-09-27
-  report: Rafael rejected this earlier candidate as below the approved Slime quality bar. Superseded by v002; retained for history.
+  report: Rafael rejected this earlier candidate as below the approved Slime quality bar. The pre-Golden PNG was removed on 2026-09-28; this manifest remains only as a decision record. Do not use it as a sprite reference.

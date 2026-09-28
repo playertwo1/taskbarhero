@@ -81,7 +81,7 @@ Para garantir consistência e legibilidade visual:
 **Assets de Referência Canônica:**
 - **Herói de Referência:** Bastião (`assets/sprites/heroes/bastiao/hero_bastiao_sheet.png`, 48×48 px, 16 frames, 9 cores, Rampa Ferro & Ouro).
 - **Inimigo de Referência:** Geleia de Lúmen (`assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_sheet.png`, 32×32 px, 16 frames, 5 cores, Rampa Lúmen).
-- **Cenário de Teste:** Faixa de Combate AMOLED (`docs/art/preview_bosque_lumen_r11.png` e `docs/art/combat_loop_bosque_lumen.gif`).
+- **Preview atual do cenário:** [Bosque de Lúmen completo pós-Golden](./preview_bosque_lumen_complete.png). As imagens estática e animada originais de R11 foram removidas em 2026-09-28 por mostrarem sprites pré-Golden; não as use como referência visual.
 
 ### 7.1 Regras Congeladas para Próximos Assets (Flecha, Íris, Mobs, Boss)
 1. **Grid e Escala Universal:**

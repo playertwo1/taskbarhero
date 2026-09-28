@@ -1,0 +1,49 @@
+id: hero_forja
+name: "Forja"
+category: hero
+description: "Engenheira catadora de relíquias do mundo antigo. Óculos de solda de latão erguidos na testa, avental de couro reforçado com cinto de ferramentas, empunhando chave-martelo de artesão e acompanhada por um pequeno drone sentinela rúnico."
+facing: right
+
+canvas:
+  width: 48
+  height: 48
+  baseline_y: 44
+  pivot: [24, 44]
+
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [iron, gold, lumen, wood]
+  max_colors: 15
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+    description: "Postura alerta ajustando a chave-martelo, com a sentinela flutuando em leve oscilação ao ombro."
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+    description: "Golpe de martelo no chão ativando faíscas de Lúmen que disparam projéteis mecânicos à frente."
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+    description: "Levanta a marreta como escudo com recuo do corpo e faíscas de impacto."
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 120
+    loop: false
+    description: "Cai de joelhos, as engrenagens da sentinela desmontam-se com um chiado e cessam suas luzes."
+
+output:
+  source_file: "assets/sprites/heroes/forja/hero_forja_golden.aseprite"
+  sheet_file: "assets/sprites/heroes/forja/hero_forja_sheet.png"
+  json_file: "assets/sprites/heroes/forja/hero_forja_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [768, 48]

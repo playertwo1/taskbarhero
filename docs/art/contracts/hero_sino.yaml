@@ -1,0 +1,49 @@
+id: hero_sino
+name: "Sino"
+category: hero
+description: "Memorialista e guardião das memórias do mundo pré-Apagamento. Veste estola cerimonial de seda com bordados musicais de Lúmen, empunhando um cajado sagrado de carrilhões e sinos de cristal que ressoam melodias temporais. Suporte de ritmo e buffer de grupo."
+facing: right
+
+canvas:
+  width: 48
+  height: 48
+  baseline_y: 44
+  pivot: [24, 44]
+
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [lumen, gold, crimson, iron]
+  max_colors: 15
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+    description: "Postura solene segurando o cajado carrilhão na vertical, sinos de cristal em balanço harmônico com partículas de notas."
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+    description: "Ergue o cajado com badalada ressonante, liberando anéis concêntricos de notas douradas para os aliados."
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+    description: "Protege o rosto com a manga da túnica enquanto os sinos produzem um tilintar metálico abafado."
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 120
+    loop: false
+    description: "Cai ajoelhado em reverência, os sinos tocam uma última nota melancólica e se silenciam em dither luminoso."
+
+output:
+  source_file: "assets/sprites/heroes/sino/hero_sino_golden.aseprite"
+  sheet_file: "assets/sprites/heroes/sino/hero_sino_sheet.png"
+  json_file: "assets/sprites/heroes/sino/hero_sino_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [768, 48]

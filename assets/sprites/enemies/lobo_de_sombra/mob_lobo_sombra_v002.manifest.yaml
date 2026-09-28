@@ -1,0 +1,48 @@
+asset_id: mob_lobo_sombra
+status: ARTISTIC_QA
+version: 2
+contract: docs/art/contracts/mob_lobo_sombra.yaml
+golden_reference: GOLDEN_MOB_LOBO_SOMBRA_V1
+references:
+  - docs/art/golden/hero_bastiao_candidate_v002.png
+  - docs/art/golden/enemy_geleia_lumen_candidate_v001.png
+  - docs/art/golden/boss_guardiao_cervo_candidate_v002.png
+generation:
+  workflow: image_gen_concept_then_LANCZOS_pixel_snap_and_TY40_quantization
+  workflow_version: '2'
+  comfyui_version: null
+  custom_nodes: []
+  model: OpenAI image_gen
+  model_license_record: "personal use approved by Rafael on 2026-09-28; no redistribution or commercial clearance"
+  lora: null
+  adapters: []
+  seed: null
+  sampler: null
+  steps: null
+  cfg: null
+  generation_resolution: "Generated concept downscaled to 48x48 character frames"
+  controlnet: null
+  controlnet_weight: null
+  ip_adapter_weight: null
+  prompt_file: null
+  input_hashes: []
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [neutral_stone, crimson]
+  colors_used: 12
+  exceptional_colors: []
+output:
+  files: [assets/sprites/enemies/lobo_de_sombra/mob_lobo_sombra_sheet.png]
+  frame_size: {width: 48, height: 48}
+  frame_count: 16
+  layout: horizontal_strip
+  facing: left
+  alpha: true
+  hashes: [28e41e4853353d334126210e2afbcdd3c154f075dd7465c9d3b495f9c3a24b38]
+qa:
+  technical: PASS
+  artistic: PENDING
+  mobile: PENDING
+  reviewer: null
+  reviewed_at: null
+  report: Sprite lint PASS; independent visual audit and mobile review are pending.

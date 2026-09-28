@@ -1,0 +1,53 @@
+{
+  "asset_id": "stage_01_entrada_do_bosque",
+  "status": "ARTISTIC_QA",
+  "version": 1,
+  "contract": "docs/art/contracts/stage_icons/stage_icon_forest_neutral_stone_wood.yaml",
+  "concept": "docs/04_content/chapters/chapter_01/OVERVIEW.md#stage_01_entrada_do_bosque",
+  "content_state": "chapter_01",
+  "generation": {
+    "workflow": "handcrafted_pixel_art_ty40_quantized_icon",
+    "workflow_version": "1",
+    "model": "handcrafted pixel design",
+    "model_license_record": "Pocket Hero original design asset",
+    "seed": null,
+    "sampler": null,
+    "steps": null,
+    "cfg": null,
+    "generation_resolution": "32x32 native",
+    "input_hashes": []
+  },
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "forest",
+      "neutral_stone",
+      "wood"
+    ],
+    "colors_used": 7,
+    "exceptional_colors": []
+  },
+  "output": {
+    "files": [
+      "assets/sprites/environment/stages/stage_01_entrada_do_bosque.png"
+    ],
+    "frame_size": {
+      "width": 32,
+      "height": 32
+    },
+    "frame_count": 1,
+    "layout": "single",
+    "facing": "stage_icon",
+    "alpha": true,
+    "hashes": [
+      "a63a326b616c231a840f195bb4ba2799015520bf7361c522456a94b4a1ad1d7d"
+    ]
+  },
+  "qa": {
+    "technical": "PASS",
+    "artistic": "PENDING",
+    "reviewer": null,
+    "reviewed_at": null,
+    "report": "Sprite lint PASS; independent visual audit and mobile review are pending."
+  }
+}

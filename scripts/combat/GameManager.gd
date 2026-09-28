@@ -10,15 +10,11 @@ signal party_hero_attacked(hero_id: String)
 signal party_hero_damaged(hero_id: String, amount: float, current_hp: float, max_hp: float)
 signal party_hero_died(hero_id: String)
 signal party_hero_revived(hero_id: String)
+signal party_composition_changed
 
 const ENEMIES_DATA_PATH := "res://data/enemies/enemies.json"
 
-var enemies_database: Array = []
-var active_enemy: Dictionary = {}
-var active_enemy_hp: float = 0.0
-
-# Party de 3 heróis: Bastião (Front), Íris (Mid), Flecha (Back)
-var party: Dictionary = {
+const HERO_DATABASE: Dictionary = {
 	"bastiao": {
 		"id": "bastiao",
 		"name": "Bastião",
@@ -63,7 +59,93 @@ var party: Dictionary = {
 		"attack_range": 400.0,
 		"crit_rate": 0.15,
 		"is_alive": true
+	},
+	"brasa": {
+		"id": "brasa",
+		"name": "Brasa",
+		"role": "bruiser",
+		"slot": "front",
+		"base_hp": 110.0,
+		"current_hp": 110.0,
+		"base_attack": 13.0,
+		"base_defense": 2.0,
+		"attack_cd": 0.20,
+		"cd_interval": 0.85,
+		"attack_range": 200.0,
+		"crit_rate": 0.10,
+		"is_alive": true
+	},
+	"veu": {
+		"id": "veu",
+		"name": "Véu",
+		"role": "assassin",
+		"slot": "mid",
+		"base_hp": 70.0,
+		"current_hp": 70.0,
+		"base_attack": 16.0,
+		"base_defense": 1.0,
+		"attack_cd": 0.10,
+		"cd_interval": 0.70,
+		"attack_range": 250.0,
+		"crit_rate": 0.20,
+		"is_alive": true
+	},
+	"orvalho": {
+		"id": "orvalho",
+		"name": "Orvalho",
+		"role": "healer",
+		"slot": "back",
+		"base_hp": 80.0,
+		"current_hp": 80.0,
+		"base_attack": 7.0,
+		"base_defense": 2.0,
+		"attack_cd": 0.50,
+		"cd_interval": 1.20,
+		"attack_range": 300.0,
+		"crit_rate": 0.05,
+		"is_alive": true
+	},
+	"forja": {
+		"id": "forja",
+		"name": "Forja",
+		"role": "shielder",
+		"slot": "front",
+		"base_hp": 120.0,
+		"current_hp": 120.0,
+		"base_attack": 9.0,
+		"base_defense": 4.0,
+		"attack_cd": 0.30,
+		"cd_interval": 1.00,
+		"attack_range": 200.0,
+		"crit_rate": 0.05,
+		"is_alive": true
+	},
+	"sino": {
+		"id": "sino",
+		"name": "Sino",
+		"role": "buffer",
+		"slot": "mid",
+		"base_hp": 75.0,
+		"current_hp": 75.0,
+		"base_attack": 8.0,
+		"base_defense": 2.0,
+		"attack_cd": 0.15,
+		"cd_interval": 0.80,
+		"attack_range": 350.0,
+		"crit_rate": 0.08,
+		"is_alive": true
 	}
+}
+
+var enemies_database: Array = []
+var active_enemy: Dictionary = {}
+var active_enemy_hp: float = 0.0
+
+# Party ativa de 3 heróis (padrão inicial do MVP: Bastião, Íris, Flecha)
+var party: Dictionary = {
+	"bastiao": HERO_DATABASE["bastiao"].duplicate(true),
+	"iris": HERO_DATABASE["iris"].duplicate(true),
+	"flecha": HERO_DATABASE["flecha"].duplicate(true)
 }
 
 var formation_slots: Dictionary = {
@@ -71,6 +153,22 @@ var formation_slots: Dictionary = {
 	"mid": "iris",
 	"back": "flecha"
 }
+
+func set_party_selection(hero_ids: Array) -> void:
+	party.clear()
+	formation_slots.clear()
+	var default_slots := ["back", "mid", "front"]
+	for i in range(mini(hero_ids.size(), 3)):
+		var hid: String = str(hero_ids[i])
+		if HERO_DATABASE.has(hid):
+			var data: Dictionary = HERO_DATABASE[hid].duplicate(true)
+			data["slot"] = default_slots[i]
+			data["is_alive"] = true
+			data["current_hp"] = data["base_hp"]
+			party[hid] = data
+			formation_slots[default_slots[i]] = hid
+	_init_party_stats()
+	party_composition_changed.emit()
 
 var hero_base_hp: float = 100.0
 var hero_base_attack: float = 10.0
@@ -145,9 +243,9 @@ func _process(delta: float) -> void:
 		return
 
 	# Cooldowns individuais simples de ataque para cada herói vivo da party
-	for hero_id in ["bastiao", "iris", "flecha"]:
+	for hero_id in party.keys():
 		var h: Dictionary = party[hero_id]
-		if not h["is_alive"]:
+		if not h.get("is_alive", false):
 			continue
 		h["attack_cd"] -= delta
 		if h["attack_cd"] <= 0.0:
@@ -246,21 +344,29 @@ func _hero_attack_from(hero_id: String) -> void:
 
 func _hero_attack() -> void:
 	# Wrapper para manter compatibilidade com chamadas legado
-	_hero_attack_from("bastiao")
+	var front_id: String = formation_slots.get("front", "")
+	if front_id == "" and party.size() > 0:
+		front_id = party.keys()[0]
+	if front_id != "":
+		_hero_attack_from(front_id)
 
 func _get_enemy_target() -> String:
-	# Targeting baseado na ordem de formação: front (Bastião) -> mid (Íris) -> back (Flecha)
-	var front_id: String = formation_slots.get("front", "bastiao")
-	if party.has(front_id) and party[front_id]["is_alive"]:
+	# Targeting baseado na ordem de formação: front -> mid -> back
+	var front_id: String = formation_slots.get("front", "")
+	if party.has(front_id) and party[front_id].get("is_alive", false):
 		return front_id
 
-	var mid_id: String = formation_slots.get("mid", "iris")
-	if party.has(mid_id) and party[mid_id]["is_alive"]:
+	var mid_id: String = formation_slots.get("mid", "")
+	if party.has(mid_id) and party[mid_id].get("is_alive", false):
 		return mid_id
 
-	var back_id: String = formation_slots.get("back", "flecha")
-	if party.has(back_id) and party[back_id]["is_alive"]:
+	var back_id: String = formation_slots.get("back", "")
+	if party.has(back_id) and party[back_id].get("is_alive", false):
 		return back_id
+
+	for hid in party.keys():
+		if party[hid].get("is_alive", false):
+			return hid
 
 	return ""
 
@@ -398,7 +504,11 @@ func get_total_hero_defense() -> float:
 	var target_id := _get_enemy_target()
 	if target_id != "":
 		return get_hero_defense(target_id)
-	return get_hero_defense("bastiao")
+	if formation_slots.has("front"):
+		return get_hero_defense(formation_slots["front"])
+	elif party.size() > 0:
+		return get_hero_defense(party.keys()[0])
+	return 0.0
 
 func get_total_hero_max_hp() -> float:
 	var total := 0.0
@@ -407,7 +517,12 @@ func get_total_hero_max_hp() -> float:
 	return total
 
 func get_total_hero_crit() -> float:
-	return get_hero_crit("flecha")
+	if party.has("flecha"):
+		return get_hero_crit("flecha")
+	var max_crit := 0.0
+	for hid in party.keys():
+		max_crit = maxf(max_crit, get_hero_crit(hid))
+	return max_crit
 
 func get_total_hero_lifesteal() -> float:
 	var val := 0.0

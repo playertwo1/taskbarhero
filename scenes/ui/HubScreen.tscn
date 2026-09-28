@@ -1,0 +1,197 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8m3v7x9y1k2p"]
+
+[ext_resource type="Script" path="res://scripts/ui/HubScreen.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/ui/hub/hub_option2_tree_432x960.png" id="2_bg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_topbar"]
+bg_color = Color(0.0941176, 0.0784314, 0.145098, 0.88)
+border_width_bottom = 2
+border_color = Color(0.352941, 0.411765, 0.533333, 0.8)
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bottomnav"]
+bg_color = Color(0.0941176, 0.0784314, 0.145098, 0.95)
+border_width_top = 2
+border_color = Color(0.352941, 0.411765, 0.533333, 0.8)
+
+[node name="HubScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_bg")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="TopBar" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_topbar")
+
+[node name="Margin" type="MarginContainer" parent="TopBar"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="HBox" type="HBoxContainer" parent="TopBar/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VillageInfo" type="VBoxContainer" parent="TopBar/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TitleLabel" type="Label" parent="TopBar/Margin/HBox/VillageInfo"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.976471, 0.639216, 0.105882, 1)
+theme_override_font_sizes/font_size = 12
+text = "O REFÚGIO"
+
+[node name="LevelLabel" type="Label" parent="TopBar/Margin/HBox/VillageInfo"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.835294, 0.921569, 0.894118, 1)
+theme_override_font_sizes/font_size = 13
+text = "Vila Nv. 1: Acampamento Frágil"
+
+[node name="Resources" type="VBoxContainer" parent="TopBar/Margin/HBox"]
+layout_mode = 2
+
+[node name="GoldLabel" type="Label" parent="TopBar/Margin/HBox/Resources"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.905882, 0.384314, 1)
+theme_override_font_sizes/font_size = 11
+text = "Ouro: 1450"
+
+[node name="SoulsLabel" type="Label" parent="TopBar/Margin/HBox/Resources"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.192157, 0.635294, 0.945098, 1)
+theme_override_font_sizes/font_size = 11
+text = "Lúmen: 320"
+
+[node name="UpgradeBtn" type="Button" parent="TopBar/Margin/HBox"]
+texture_filter = 1
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+text = "MELHORAR"
+
+[node name="Hotspots" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BlacksmithBtn" type="Button" parent="Hotspots"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 560.0
+offset_right = 140.0
+offset_bottom = 760.0
+tooltip_text = "Ferreiro Thorne: Melhorar e Forjar Equipamentos"
+flat = true
+
+[node name="AlchemistBtn" type="Button" parent="Hotspots"]
+layout_mode = 0
+offset_left = 290.0
+offset_top = 560.0
+offset_right = 420.0
+offset_bottom = 760.0
+tooltip_text = "Alquimista Mirela: Poções e Elixires"
+flat = true
+
+[node name="JewelerBtn" type="Button" parent="Hotspots"]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 370.0
+offset_right = 410.0
+offset_bottom = 510.0
+tooltip_text = "Joalheiro Caelen: Gemas e Encantamentos"
+flat = true
+
+[node name="CampfireBtn" type="Button" parent="Hotspots"]
+layout_mode = 0
+offset_left = 145.0
+offset_top = 550.0
+offset_right = 285.0
+offset_bottom = 700.0
+tooltip_text = "Fogueira da Party: Gerenciar Heróis e Formação"
+flat = true
+
+[node name="TreeBtn" type="Button" parent="Hotspots"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 130.0
+offset_right = 310.0
+offset_bottom = 430.0
+tooltip_text = "Árvore Ancestral: Ressonância Global e Ecos"
+flat = true
+
+[node name="BottomNav" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bottomnav")
+
+[node name="HBox" type="HBoxContainer" parent="BottomNav"]
+layout_mode = 2
+alignment = 1
+
+[node name="BtnVillage" type="Button" parent="BottomNav/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Vila"
+
+[node name="BtnHeroes" type="Button" parent="BottomNav/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Heróis"
+
+[node name="BtnExplore" type="Button" parent="BottomNav/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Explorar"
+
+[node name="BtnInventory" type="Button" parent="BottomNav/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Itens"
+
+[node name="BtnMenu" type="Button" parent="BottomNav/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+text = "Menu"

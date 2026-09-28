@@ -27,6 +27,15 @@ A proposta de longo prazo descreve cinco biomas — Bosque de Lúmen, Distrito C
 
 Sistemas candidatos incluem party de até três, papéis de combate distintos, Ecos desbloqueados por marcos, loot com afixos que alteram habilidades, reciclagem/filtro de loot, dificuldades que remixam conteúdo e tracker com XP/h, ouro/h, TTK, mortes, drops e inventário. São propostas para priorização futura, não todas requisitos do MVP.
 
+## Design pós-MVP — fontes canônicas
+
+Os documentos abaixo registram propostas de expansão pós-MVP. Consulte o [roadmap](../ROADMAP.md) para prioridade e gates; estas referências de design não comprovam implementação nem fecham decisões marcadas **EM ABERTO**.
+
+- [Padrão canônico dos heróis](../HERO_STANDARD.md) — estrutura comum para o roster.
+- [Bastião Golden Reference](02_heroes/BASTIAO_GOLDEN_REFERENCE.md) — modelo de profundidade para fichas de herói.
+- [Árvore Global de Ressonância / Árvore dos Ecos](03_systems/GLOBAL_RESONANCE_TREE.md) — progressão global compartilhada; catálogo TREE-1 de 30 nós aprovado para design, sem implementação runtime.
+- [Equipamentos e Artesãos da Cidade](03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md) — arquitetura CRAFT-1 aprovada; fontes/sinks numéricos, catálogo de itens e implementação seguem para etapas próprias.
+
 ## Direção e produção de sprites
 
 - Pixel art dark fantasy, vista lateral, silhuetas claras em escala mobile.
@@ -55,9 +64,9 @@ Sistemas candidatos incluem party de até três, papéis de combate distintos, E
 - Importação e teste no Godot.
 - Validação mobile quando a arte afetar a faixa de combate.
 
-## Próximas etapas conforme os documentos
+## Snapshot histórico de setup (2026-09-26)
 
-O roadmap chama o primeiro marco de **SETUP-01**: verificar ferramentas e fluxo Android/Godot; ele permanece pendente no checklist existente. O manual do pipeline recomenda depois provar um único slime animado de ponta a ponta. O documento de referências sugere, em paralelo, um pacote visual maior do Bosque de Lúmen (**ART-C0-LUMEN**).
+O texto abaixo registra uma consolidação anterior e não define a fase atual. O roadmap vigente é a fonte para próximos passos. Naquele snapshot, o roadmap chamava o primeiro marco de **SETUP-01** e o manual recomendava provar um slime animado de ponta a ponta; o documento de referências também sugeria um pacote visual maior do Bosque de Lúmen (**ART-C0-LUMEN**).
 
 **Divergência a resolver antes de produzir arte:** escolher entre validar primeiro um único sprite/pipeline e iniciar diretamente o pacote ART-C0-LUMEN. Não tratar nenhuma dessas propostas como aprovação já dada.
 

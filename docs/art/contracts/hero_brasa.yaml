@@ -1,0 +1,49 @@
+id: hero_brasa
+name: "Brasa"
+category: hero
+description: "Sobrevivente feroz marcada pelo Apagamento. Cabelos cor de brasa desgrenhados, armadura rústica de tiras de couro e metal escurecido por cinzas, empunhando machados duplos de combate. Bruiser de linha de frente que converte ferimentos em Fúria devastadora."
+facing: right
+
+canvas:
+  width: 48
+  height: 48
+  baseline_y: 44
+  pivot: [24, 44]
+
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [crimson, iron, wood, gold]
+  max_colors: 15
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+    description: "Postura pesada e desafiadora, respiração profunda com vapor de calor e machados prontos ao lado do corpo."
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+    description: "Passo frontal violento desferindo golpe cruzado descendente com ambos os machados gerando fagulhas."
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+    description: "Tronco recua com impacto mas firma os pés no chão encarando com olhos em fúria."
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 120
+    loop: false
+    description: "Solta os machados no chão, cai de joelhos exausta e dissipa sua última centelha em cinzas fumegantes."
+
+output:
+  source_file: "assets/sprites/heroes/brasa/hero_brasa_golden.aseprite"
+  sheet_file: "assets/sprites/heroes/brasa/hero_brasa_sheet.png"
+  json_file: "assets/sprites/heroes/brasa/hero_brasa_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [768, 48]

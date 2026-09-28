@@ -1,0 +1,48 @@
+asset_id: mob_xama_esporos
+status: ARTISTIC_QA
+version: 2
+contract: docs/art/contracts/mob_xama_esporos.yaml
+golden_reference: GOLDEN_MOB_XAMA_ESPOROS_V1
+references:
+  - docs/art/golden/hero_bastiao_candidate_v002.png
+  - docs/art/golden/enemy_geleia_lumen_candidate_v001.png
+  - docs/art/golden/boss_guardiao_cervo_candidate_v002.png
+generation:
+  workflow: image_gen_concept_then_LANCZOS_pixel_snap_and_TY40_quantization
+  workflow_version: '2'
+  comfyui_version: null
+  custom_nodes: []
+  model: OpenAI image_gen
+  model_license_record: "personal use approved by Rafael on 2026-09-28; no redistribution or commercial clearance"
+  lora: null
+  adapters: []
+  seed: null
+  sampler: null
+  steps: null
+  cfg: null
+  generation_resolution: "Generated concept downscaled to 48x48 character frames"
+  controlnet: null
+  controlnet_weight: null
+  ip_adapter_weight: null
+  prompt_file: null
+  input_hashes: []
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [forest, lumen, crimson, wood]
+  colors_used: 14
+  exceptional_colors: []
+output:
+  files: [assets/sprites/enemies/xama_de_esporos/mob_xama_esporos_sheet.png]
+  frame_size: {width: 48, height: 48}
+  frame_count: 16
+  layout: horizontal_strip
+  facing: left
+  alpha: true
+  hashes: [fdd9a04e5315855b6879b4bc9b173b57f7483114e18cf1ae33251295f02fe7db]
+qa:
+  technical: PASS
+  artistic: PENDING
+  mobile: PENDING
+  reviewer: null
+  reviewed_at: null
+  report: Sprite lint PASS; independent visual audit and mobile review are pending.

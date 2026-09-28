@@ -6,6 +6,8 @@
 **Status:** 🏁 **HOMOLOGADO (SETUP-01 PASS, FASE R8 PASS, FASE R7 PASS)**  
 **Branch:** `main` (alinhada com `origin/main`)  
 
+> **Nota de manutenção (2026-09-28):** este registro preserva o histórico das etapas R9/R11. As fontes `.aseprite`, bases e prévias pré-Golden citadas abaixo foram removidas após a aprovação Golden. Os nomes dos arquivos abaixo descrevem saídas existentes na época, não assets atuais. Para produção e revisão visual, use [`docs/art/golden/README.md`](art/golden/README.md) e [`docs/art/MVP_SPRITE_INVENTORY.md`](art/MVP_SPRITE_INVENTORY.md).
+
 ---
 
 ## 1. Resumo Executivo da Sessão

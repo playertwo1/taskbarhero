@@ -12,9 +12,11 @@ extends Control
 @onready var inventory_label: Label = $Root/Content/Inventory
 @onready var status_label: Label = $Root/Content/Status
 @onready var equip_button: Button = $Root/Content/ActionRow/EquipButton
+@onready var party_button: Button = $Root/Content/ActionRow/PartyButton
 @onready var inventory_button: Button = $Root/Content/ActionRow/InventoryButton
 @onready var tracker_button: Button = $Root/Content/ActionRow/TrackerButton
 @onready var inventory_screen: Control = $InventoryScreen
+@onready var party_screen: Control = $PartyScreen
 @onready var offline_modal: Control = $OfflineModal
 @onready var offline_time_label: Label = $OfflineModal/Center/Card/VBox/Time
 @onready var offline_rewards_label: Label = $OfflineModal/Center/Card/VBox/Rewards
@@ -42,6 +44,8 @@ func _ready() -> void:
 	if not offline_data.is_empty():
 		_show_offline_modal(offline_data)
 	
+	party_button.pressed.connect(_on_party_button_pressed)
+	party_screen.party_updated.connect(_on_party_updated)
 	tracker_button.pressed.connect(_on_tracker_button_pressed)
 	inventory_button.pressed.connect(_on_inventory_button_pressed)
 	inventory_screen.connect("item_equipped", _on_inventory_item_equipped)
@@ -92,9 +96,13 @@ func _update_battle_strip_ratios() -> void:
 func _update_ui() -> void:
 	level_label.text = "LV %d" % ProgressionManager.level
 	
-	var bastiao_hp: float = float(GameManager.party.get("bastiao", {}).get("current_hp", 0.0))
-	var iris_hp: float = float(GameManager.party.get("iris", {}).get("current_hp", 0.0))
-	var flecha_hp: float = float(GameManager.party.get("flecha", {}).get("current_hp", 0.0))
+	var hero_hps: Array[String] = []
+	for hid in GameManager.party.keys():
+		var h_name: String = str(GameManager.party[hid].get("name", hid))
+		var prefix: String = h_name.substr(0, 2) if (hid in ["brasa", "forja"]) else h_name.substr(0, 1)
+		var h_hp: float = float(GameManager.party[hid].get("current_hp", 0.0))
+		hero_hps.append("%s:%.0f" % [prefix, h_hp])
+	var party_hp_str: String = " ".join(hero_hps)
 	
 	stats_label.text = "⚔ %.0f  🛡 %.1f  ❤ %.0f/%.0f" % [
 		GameManager.get_total_hero_attack(),
@@ -102,7 +110,7 @@ func _update_ui() -> void:
 		GameManager.hero_current_hp,
 		GameManager.get_total_hero_max_hp()
 	]
-	subtitle_label.text = "Bosque de Lúmen • B:%.0f I:%.0f F:%.0f" % [bastiao_hp, iris_hp, flecha_hp]
+	subtitle_label.text = "Bosque de Lúmen • %s" % party_hp_str
 	gold_label.text = "Ouro: %d" % ProgressionManager.gold
 	
 	var st := ProgressionManager.get_current_stage_data()
@@ -197,6 +205,13 @@ func _on_inventory_button_pressed() -> void:
 
 func _on_inventory_item_equipped(item_name: String) -> void:
 	status_label.text = "%s equipado." % item_name
+	_update_ui()
+
+func _on_party_button_pressed() -> void:
+	party_screen.open()
+
+func _on_party_updated(_party: Array) -> void:
+	status_label.text = "Composição da equipe atualizada!"
 	_update_ui()
 
 func _on_stage_changed(stage_index: int, stage_name: String) -> void:

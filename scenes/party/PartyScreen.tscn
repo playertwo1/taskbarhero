@@ -1,0 +1,92 @@
+[gd_scene load_steps=5 format=3 uid="uid://partyscreen001"]
+
+[ext_resource type="Script" path="res://scripts/ui/PartyScreen.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleOverlay"]
+bg_color = Color(0.02, 0.03, 0.04, 0.9)
+
+[sub_resource type="StyleBoxFlat" id="StyleCard"]
+bg_color = Color(0.08, 0.1, 0.13, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.25, 0.35, 0.45, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
+content_margin_left = 16.0
+content_margin_top = 16.0
+content_margin_right = 16.0
+content_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleButton"]
+bg_color = Color(0.16, 0.28, 0.34, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+content_margin_left = 16.0
+content_margin_top = 10.0
+content_margin_right = 16.0
+content_margin_bottom = 10.0
+
+[node name="PartyScreen" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleOverlay")
+script = ExtResource("1_script")
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 2
+
+[node name="Card" type="PanelContainer" parent="Center"]
+custom_minimum_size = Vector2(380, 520)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleCard")
+
+[node name="VBox" type="VBoxContainer" parent="Center/Card"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Header" type="HBoxContainer" parent="Center/Card/VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Center/Card/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.96, 0.8, 0.28, 1)
+theme_override_font_sizes/font_size = 18
+text = "Mesa da Expedição (Party)"
+
+[node name="CloseButton" type="Button" parent="Center/Card/VBox/Header"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+text = "✕"
+
+[node name="SlotsLabel" type="Label" parent="Center/Card/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.45, 0.75, 0.95, 1)
+theme_override_font_sizes/font_size = 13
+text = "Party Selecionada (3/3): Bastião, Íris, Flecha"
+autowrap_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Center/Card/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="HeroList" type="VBoxContainer" parent="Center/Card/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="ApplyButton" type="Button" parent="Center/Card/VBox"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleButton")
+text = "Confirmar Expedição"

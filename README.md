@@ -21,6 +21,14 @@ Criar um jogo mobile com combate automático, progressão, loot, heróis, inimig
 
 - `ROADMAP.md` — roteiro detalhado desde a preparação do Windows e instalação das ferramentas até o MVP Android e a fase pós-MVP de overlay.
 
+## Navegação do repositório
+
+- [`AGENTS.md`](AGENTS.md) — índice operacional e ordem de leitura para agentes.
+- [`PROJECT_STATE.md`](PROJECT_STATE.md) — resumo observável do estado e localização das fontes runtime.
+- [`CHANGELOG.md`](CHANGELOG.md) — mudanças estruturais e releases.
+- [`docs/INDEX.md`](docs/INDEX.md) — índice por área da documentação.
+- [`docs/CONTENT_REGISTRY.md`](docs/CONTENT_REGISTRY.md) — IDs de design, status e roteamento dos catálogos.
+
 ## Design incremental
 
 - `docs/design/INCREMENTAL_DESIGN_GUIDE.md` — resumo operacional da doutrina incremental; o guia temático completo e o DOCX original estão em `documents/`.

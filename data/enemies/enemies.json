@@ -44,6 +44,50 @@
     "weight": 10
   },
   {
+    "id": "saqueador_da_mata",
+    "name": "Saqueador da Mata",
+    "max_hp": 70,
+    "attack": 7,
+    "defense": 3,
+    "xp": 16,
+    "gold_min": 3,
+    "gold_max": 7,
+    "weight": 18
+  },
+  {
+    "id": "xama_de_esporos",
+    "name": "Xamã de Esporos",
+    "max_hp": 55,
+    "attack": 8,
+    "defense": 1,
+    "xp": 20,
+    "gold_min": 4,
+    "gold_max": 9,
+    "weight": 16
+  },
+  {
+    "id": "sentinela_de_raizes",
+    "name": "Sentinela de Raízes",
+    "max_hp": 95,
+    "attack": 7,
+    "defense": 4,
+    "xp": 26,
+    "gold_min": 5,
+    "gold_max": 12,
+    "weight": 14
+  },
+  {
+    "id": "lobo_de_sombra",
+    "name": "Lobo de Sombra",
+    "max_hp": 60,
+    "attack": 13,
+    "defense": 2,
+    "xp": 28,
+    "gold_min": 6,
+    "gold_max": 14,
+    "weight": 12
+  },
+  {
     "id": "lobo_alfa_de_lumen",
     "name": "Lobo Alfa de Lúmen",
     "max_hp": 130,
@@ -54,6 +98,18 @@
     "gold_max": 20,
     "weight": 6,
     "elite": true
+  },
+  {
+    "id": "matriarca_do_micelio",
+    "name": "Matriarca do Micélio",
+    "max_hp": 190,
+    "attack": 15,
+    "defense": 4,
+    "xp": 75,
+    "gold_min": 20,
+    "gold_max": 35,
+    "weight": 5,
+    "boss": true
   },
   {
     "id": "guardiao_cervo_de_pedra",

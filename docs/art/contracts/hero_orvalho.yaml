@@ -1,0 +1,49 @@
+id: hero_orvalho
+name: "Orvalho"
+category: hero
+description: "Pequeno e excêntrico jardineiro que cultiva sementes onde o Lúmen morreu. Usa chapéu rústico de abas largas com um broto crescendo no topo, túnica terrosa com bolsos de sementes e empunha um regador rúnico de madeira com cajado de broto."
+facing: right
+
+canvas:
+  width: 48
+  height: 48
+  baseline_y: 44
+  pivot: [24, 44]
+
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [forest, wood, lumen, neutral_stone]
+  max_colors: 14
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+    description: "Balanço curioso do corpo, ajeita a aba do chapéu com o brotinho balançando suavemente no topo."
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+    description: "Lança sementes brilhantes com o regador rúnico, fazendo pequenas vinhas florescerem no ar."
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+    description: "Tropeça para trás assustado segurando o chapéu com ambas as mãos."
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 120
+    loop: false
+    description: "Cai sentado, o regador rola pelo chão e o corpo se transforma em uma moita viçosa de brotos de Lúmen."
+
+output:
+  source_file: "assets/sprites/heroes/orvalho/hero_orvalho_golden.aseprite"
+  sheet_file: "assets/sprites/heroes/orvalho/hero_orvalho_sheet.png"
+  json_file: "assets/sprites/heroes/orvalho/hero_orvalho_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [768, 48]

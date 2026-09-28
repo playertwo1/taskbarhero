@@ -1,0 +1,48 @@
+asset_id: hero_veu
+status: ARTISTIC_QA
+version: 2
+contract: docs/art/contracts/hero_veu.yaml
+golden_reference: GOLDEN_HERO_VEU_V1
+references:
+  - docs/art/golden/hero_bastiao_candidate_v002.png
+  - docs/art/golden/enemy_geleia_lumen_candidate_v001.png
+  - docs/art/golden/boss_guardiao_cervo_candidate_v002.png
+generation:
+  workflow: image_gen_concept_then_LANCZOS_pixel_snap_and_TY40_quantization
+  workflow_version: '2'
+  comfyui_version: null
+  custom_nodes: []
+  model: OpenAI image_gen
+  model_license_record: "personal use approved by Rafael on 2026-09-28; no redistribution or commercial clearance"
+  lora: null
+  adapters: []
+  seed: null
+  sampler: null
+  steps: null
+  cfg: null
+  generation_resolution: "Generated concept downscaled to 48x48 character frames"
+  controlnet: null
+  controlnet_weight: null
+  ip_adapter_weight: null
+  prompt_file: null
+  input_hashes: []
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [iron, crimson, neutral_stone]
+  colors_used: 14
+  exceptional_colors: []
+output:
+  files: [assets/sprites/heroes/veu/hero_veu_sheet.png]
+  frame_size: {width: 48, height: 48}
+  frame_count: 16
+  layout: horizontal_strip
+  facing: right
+  alpha: true
+  hashes: [2e3503e13a76a5cf787d5db3146a67f781a754a5650ddb0dc07dc1ea1f7948da]
+qa:
+  technical: PASS
+  artistic: PENDING
+  mobile: PENDING
+  reviewer: null
+  reviewed_at: null
+  report: Sprite lint PASS; independent visual audit and mobile review are pending.

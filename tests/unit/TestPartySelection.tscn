@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://partyselection001"]
+
+[ext_resource type="Script" path="res://tests/unit/test_party_selection.gd" id="1_test"]
+
+[node name="TestPartySelection" type="Node"]
+script = ExtResource("1_test")

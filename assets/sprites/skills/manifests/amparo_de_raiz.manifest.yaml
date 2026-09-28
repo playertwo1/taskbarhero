@@ -1,0 +1,54 @@
+{
+  "asset_id": "amparo_de_raiz",
+  "status": "ARTISTIC_QA",
+  "version": 1,
+  "contract": "docs/art/contracts/skill_icons/skill_icon_forest_iron_lumen_wood.yaml",
+  "concept": "docs/04_content/chapters/chapter_01/OVERVIEW.md#amparo_de_raiz",
+  "content_state": "chapter_01",
+  "generation": {
+    "workflow": "handcrafted_pixel_art_ty40_quantized_icon",
+    "workflow_version": "1",
+    "model": "handcrafted pixel design",
+    "model_license_record": "Pocket Hero original design asset",
+    "seed": null,
+    "sampler": null,
+    "steps": null,
+    "cfg": null,
+    "generation_resolution": "32x32 native",
+    "input_hashes": []
+  },
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "forest",
+      "iron",
+      "lumen",
+      "wood"
+    ],
+    "colors_used": 7,
+    "exceptional_colors": []
+  },
+  "output": {
+    "files": [
+      "assets/sprites/skills/icons/amparo_de_raiz.png"
+    ],
+    "frame_size": {
+      "width": 32,
+      "height": 32
+    },
+    "frame_count": 1,
+    "layout": "single",
+    "facing": "skill_icon",
+    "alpha": true,
+    "hashes": [
+      "c7b32550f0c17e83da7d8f6a311ba5241020f9b416ea5ef4c46d016013286d79"
+    ]
+  },
+  "qa": {
+    "technical": "PASS",
+    "artistic": "PENDING",
+    "reviewer": null,
+    "reviewed_at": null,
+    "report": "Sprite lint PASS; independent visual audit and mobile review are pending."
+  }
+}

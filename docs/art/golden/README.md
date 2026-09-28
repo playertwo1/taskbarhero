@@ -28,7 +28,9 @@ O contrato de Geleia passou para 64×64, baseline `y=60` e pivô `[32, 60]` (ver
 
 ## Comparação de candidatos
 
-As primeiras propostas de Bastião e Guardião-Cervo foram rejeitadas por Rafael como inferiores ao padrão visual da Geleia; permanecem preservadas como v001. Os quatro Golden visuais atuais foram aprovados em v001/v002 para uso pessoal. Nenhum substitui as folhas completas de release. A autorização é pessoal; não concede direitos de redistribuição ou uso comercial.
+As primeiras propostas de Bastião e Guardião-Cervo foram rejeitadas por Rafael como inferiores ao padrão visual da Geleia. A pedido de Rafael, os PNGs pré-Golden v001 foram removidos do repositório em 2026-09-28 para impedir que sejam reutilizados como referência; os manifestos textuais mantêm o registro da rejeição. Consulte apenas os quatro Golden identificados nesta página e os assets atuais do [inventário MVP](../MVP_SPRITE_INVENTORY.md). Os Golden foram aprovados para uso pessoal; a autorização não concede direitos de redistribuição ou uso comercial.
+
+**Higiene de referência:** fontes editáveis e prévias de sprites produzidas antes da aprovação Golden foram removidas de `assets/sprites/` e das prévias antigas em `docs/art/`. Menções a arquivos antigos no [registro de auditoria](../../REGISTRO_DE_AUDITORIA.md) são apenas históricas. Não recrie nem use essas saídas antigas como base; para produção, siga esta página, os contratos atuais e os manifestos `v002`.
 
 ## Versionamento
 

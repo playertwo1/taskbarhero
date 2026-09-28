@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8y1v2k3pocket"]
+[gd_scene load_steps=9 format=3 uid="uid://b8y1v2k3pocket"]
 
 [ext_resource type="Script" path="res://scripts/combat/Main.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/combat/BattleStrip.gd" id="2"]
 [ext_resource type="PackedScene" path="res://scenes/inventory/InventoryScreen.tscn" id="3"]
+[ext_resource type="PackedScene" path="res://scenes/party/PartyScreen.tscn" id="4_party"]
 
 [sub_resource type="StyleBoxFlat" id="StyleCard"]
 bg_color = Color(0.065, 0.07, 0.085, 1)
@@ -171,6 +172,13 @@ size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleButton")
 text = "Autoequipar"
 
+[node name="PartyButton" type="Button" parent="Root/Content/ActionRow"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleButton")
+text = "Party"
+
 [node name="InventoryButton" type="Button" parent="Root/Content/ActionRow"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
@@ -324,3 +332,5 @@ theme_override_styles/normal = SubResource("StyleButton")
 text = "Fechar"
 
 [node name="InventoryScreen" parent="." instance=ExtResource("3")]
+
+[node name="PartyScreen" parent="." instance=ExtResource("4_party")]

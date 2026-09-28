@@ -1,11 +1,11 @@
 extends SceneTree
 
 func _init() -> void:
-	print("--- TESTE COMFY-00.11: VALIDAÇÃO DA MINI-ANIMAÇÃO COMFYUI + ASEPRITE NO GODOT ---")
+	print("--- TESTE DE SPRITE: VALIDAÇÃO DO IDLE DA GELEIA PÓS-GOLDEN NO GODOT ---")
 	var success := true
 
-	# 1. Carregar spritesheet gerada pelo ComfyUI e consolidada no Aseprite
-	var sheet_path := "res://assets/sprites/enemies/geleia_de_lumen/comfy_lumen_slime_idle_sheet.png"
+	# 1. Usar a folha canônica atual, produzida após a aprovação Golden.
+	var sheet_path := "res://assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_sheet.png"
 	var sheet_tex: Texture2D = load(sheet_path)
 	if not sheet_tex:
 		print("ERRO: Nao foi possivel carregar ", sheet_path)
@@ -14,13 +14,13 @@ func _init() -> void:
 
 	var size := sheet_tex.get_size()
 	print("[PASS] Textura carregada com sucesso. Dimensoes: ", size)
-	if size != Vector2(192, 48):
-		print("ERRO: Dimensoes da spritesheet invalidas! Esperado (192, 48), obtido: ", size)
+	if size != Vector2(1024, 64):
+		print("ERRO: Dimensoes da spritesheet invalidas! Esperado (1024, 64), obtido: ", size)
 		success = false
 	else:
-		print("  -> Spritesheet horizontal 192x48 px (4 frames de 48x48 px): OK")
+		print("  -> Spritesheet horizontal 1024x64 px (16 frames de 64x64 px): OK")
 
-	# 2. Criar SpriteFrames dinamicamente a partir dos 4 quadros de 48x48
+	# 2. Criar SpriteFrames dinamicamente a partir dos 4 quadros idle de 64x64
 	var sf := SpriteFrames.new()
 	sf.add_animation("idle")
 	sf.set_animation_speed("idle", 6.66) # ~150ms por quadro
@@ -29,7 +29,7 @@ func _init() -> void:
 	for i in range(4):
 		var atlas := AtlasTexture.new()
 		atlas.atlas = sheet_tex
-		atlas.region = Rect2(i * 48, 0, 48, 48)
+		atlas.region = Rect2(i * 64, 0, 64, 64)
 		sf.add_frame("idle", atlas)
 
 	print("[PASS] SpriteFrames montado com %d frames para animacao 'idle'." % sf.get_frame_count("idle"))
@@ -57,8 +57,8 @@ func _init() -> void:
 
 	print("================================================================================")
 	if success:
-		print("=== TESTE COMFY-ANIM-01 (COMFY-00.11): PASS ===")
+		print("=== TESTE IDLE GELEIA PÓS-GOLDEN: PASS ===")
 		quit(0)
 	else:
-		print("=== TESTE COMFY-ANIM-01 (COMFY-00.11): FALHOU ===")
+		print("=== TESTE IDLE GELEIA PÓS-GOLDEN: FALHOU ===")
 		quit(1)

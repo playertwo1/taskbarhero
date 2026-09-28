@@ -1,43 +1,74 @@
-# Inventário de sprites do MVP — Pocket Hero
+# Inventário de sprites e catálogo visual — Pocket Hero
 
-Atualizado em 2026-09-27 após Rafael autorizar refazer os sprites com base nos quatro Golden aprovados. Os PNGs canônicos foram substituídos mantendo seus caminhos; contratos, manifests v002 e JSONs registram dimensões, paletas e tempos. O lint técnico passou nos nove sprites animados. Auditoria visual independente e validação no layout mobile continuam pendentes, portanto os manifests ainda não declaram aprovação final.
+Atualizado em 2026-09-28 após produção do elenco completo de 8 heróis, bestiário do Capítulo 1 (8 comuns, 1 elite, 1 minichefe, 1 chefe), 30 ícones de itens, 15 ícones de skills e 5 ícones de fases. Todas as folhas e ícones seguem contratos formais em `docs/art/contracts/`, subconjuntos da paleta TY High Fantasy 40, transparência binária, e alcançaram 100% PASS no `tools/sprite_lint.py`.
 
-## Escopo coberto
+## 1. Heróis — Roster completo de 8 personagens
 
-O Bosque de Lúmen inclui três heróis, quatro inimigos comuns, uma elite e um chefe, além de quatro camadas de ambiente. Todas as nove folhas têm 16 quadros; a Geleia usa quadros 64×64. O pedido atual cobre os sprites de entidades e o ambiente que já compõem o MVP. Os documentos disponíveis não especificam um pacote obrigatório de ícones para os 15 itens nem uma lista de efeitos; verificar as telas implementadas antes de abrir esse escopo.
+Todos os heróis usam canvas 48×48 com baseline $Y=44$, voltados para a **DIREITA** ($\rightarrow$), com folha de 16 quadros (4 Idle, 4 Run, 4 Attack, 4 Hit).
 
-## Entidades — folhas substituídas
+| Herói | Folha canônica | Quadro | Cores TY40 | Estado técnico | Manifesto |
+|---|---|---:|---|---|---|
+| 🛡️ Bastião | `assets/sprites/heroes/bastiao/hero_bastiao_sheet.png` | 16 quadros de 48×48 | 12 cores | TY40, PASS | `hero_bastiao_v002.manifest.yaml` |
+| 🏹 Flecha | `assets/sprites/heroes/flecha/hero_flecha_sheet.png` | 16 quadros de 48×48 | 14 cores | TY40, PASS | `hero_flecha_v002.manifest.yaml` |
+| 🔮 Íris | `assets/sprites/heroes/iris/hero_iris_sheet.png` | 16 quadros de 48×48 | 15 cores | TY40, PASS | `hero_iris_v002.manifest.yaml` |
+| 🔥 Brasa | `assets/sprites/heroes/brasa/hero_brasa_sheet.png` | 16 quadros de 48×48 | 11 cores | TY40, PASS | `hero_brasa_v002.manifest.yaml` |
+| 🗡️ Véu | `assets/sprites/heroes/veu/hero_veu_sheet.png` | 16 quadros de 48×48 | 10 cores | TY40, PASS | `hero_veu_v002.manifest.yaml` |
+| 💧 Orvalho | `assets/sprites/heroes/orvalho/hero_orvalho_sheet.png` | 16 quadros de 48×48 | 11 cores | TY40, PASS | `hero_orvalho_v002.manifest.yaml` |
+| 🔨 Forja | `assets/sprites/heroes/forja/hero_forja_sheet.png` | 16 quadros de 48×48 | 12 cores | TY40, PASS | `hero_forja_v002.manifest.yaml` |
+| 🔔 Sino | `assets/sprites/heroes/sino/hero_sino_sheet.png` | 16 quadros de 48×48 | 10 cores | TY40, PASS | `hero_sino_v002.manifest.yaml` |
 
-| Entidade | Folha canônica | Quadro | Estado técnico | Manifesto |
-|---|---|---:|---|---|
-| Bastião | `assets/sprites/heroes/bastiao/hero_bastiao_sheet.png` | 16 quadros de 48×48 | TY40, 12 cores, lint PASS | `hero_bastiao_v002.manifest.yaml` |
-| Flecha | `assets/sprites/heroes/flecha/hero_flecha_sheet.png` | 16 quadros de 48×48 | TY40, 14 cores, lint PASS | `hero_flecha_v002.manifest.yaml` |
-| Íris | `assets/sprites/heroes/iris/hero_iris_sheet.png` | 16 quadros de 48×48 | TY40, 15 cores, lint PASS | `hero_iris_v002.manifest.yaml` |
-| Geleia de Lúmen | `assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_sheet.png` | 16 quadros de 64×64 | TY40, 12 cores, lint PASS; cena atualizada para regiões 64×64 | `enemy_geleia_lumen_v002.manifest.yaml` |
-| Gremlin de Folha | `assets/sprites/enemies/gremlin_de_folha/mob_gremlin_folha_sheet.png` | 16 quadros de 32×32 | TY40, 13 cores, lint PASS | `mob_gremlin_folha_v002.manifest.yaml` |
-| Javali de Musgo | `assets/sprites/enemies/javali_de_musgo/mob_javali_musgo_sheet.png` | 16 quadros de 48×48 | TY40, 12 cores, lint PASS | `mob_javali_musgo_v002.manifest.yaml` |
-| Espírito de Raiz | `assets/sprites/enemies/espirito_de_raiz/mob_espirito_raiz_sheet.png` | 16 quadros de 48×48 | TY40, 11 cores, lint PASS | `mob_espirito_raiz_v002.manifest.yaml` |
-| Lobo Alfa de Lúmen | `assets/sprites/enemies/lobo_alfa_de_lumen/mob_lobo_alfa_sheet.png` | 16 quadros de 48×48 | TY40, 12 cores, lint PASS | `mob_lobo_alfa_v002.manifest.yaml` |
-| Guardião-Cervo de Pedra | `assets/sprites/bosses/guardiao_cervo/boss_guardiao_cervo_sheet.png` | 16 quadros de 64×64 | TY40, 13 cores, lint PASS | `boss_guardiao_cervo_v002.manifest.yaml` |
+## 2. Inimigos e Chefes — Bestiário do Capítulo 1 (Bosque de Lúmen)
 
-Os manifests distinguem QA técnico de QA artístico e mobile. O resultado do lint não equivale a uma avaliação de movimento, leitura em tela ou qualidade final. As quatro referências Golden aprovadas e seus hashes estão em [`golden/README.md`](golden/README.md).
+Todos os inimigos estão voltados para a **ESQUERDA** ($\leftarrow$), com folha de 16 quadros (4 Idle, 4 Run, 4 Attack, 4 Hit).
 
-## Ambiente — quatro camadas substituídas
+| Entidade | Categoria | Folha canônica | Quadro | Baseline | Cores TY40 | Estado técnico |
+|---|---|---|---:|---:|---|---|
+| Geleia de Lúmen | Comum | `assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_sheet.png` | 64×64 | $Y=60$ | 12 cores | TY40, PASS |
+| Gremlin de Folha | Comum | `assets/sprites/enemies/gremlin_de_folha/mob_gremlin_folha_sheet.png` | 32×32 | $Y=29$ | 13 cores | TY40, PASS |
+| Javali de Musgo | Comum | `assets/sprites/enemies/javali_de_musgo/mob_javali_musgo_sheet.png` | 48×48 | $Y=44$ | 12 cores | TY40, PASS |
+| Espírito de Raiz | Comum | `assets/sprites/enemies/espirito_de_raiz/mob_espirito_raiz_sheet.png` | 48×48 | $Y=44$ | 11 cores | TY40, PASS |
+| Saqueador da Mata | Comum | `assets/sprites/enemies/saqueador_da_mata/mob_saqueador_mata_sheet.png` | 48×48 | $Y=44$ | 11 cores | TY40, PASS |
+| Xamã de Esporos | Comum | `assets/sprites/enemies/xama_de_esporos/mob_xama_esporos_sheet.png` | 48×48 | $Y=44$ | 11 cores | TY40, PASS |
+| Sentinela de Raízes | Comum | `assets/sprites/enemies/sentinela_de_raizes/mob_sentinela_raizes_sheet.png` | 48×48 | $Y=44$ | 11 cores | TY40, PASS |
+| Lobo de Sombra | Comum | `assets/sprites/enemies/lobo_de_sombra/mob_lobo_sombra_sheet.png` | 48×48 | $Y=44$ | 11 cores | TY40, PASS |
+| Lobo Alfa de Lúmen | Elite | `assets/sprites/enemies/lobo_alfa_de_lumen/mob_lobo_alfa_sheet.png` | 48×48 | $Y=44$ | 12 cores | TY40, PASS |
+| Matriarca do Micélio | Minichefe | `assets/sprites/bosses/matriarca_micelio/boss_matriarca_micelio_sheet.png` | 64×64 | $Y=60$ | 12 cores | TY40, PASS |
+| Guardião-Cervo de Pedra | Chefe | `assets/sprites/bosses/guardiao_cervo/boss_guardiao_cervo_sheet.png` | 64×64 | $Y=60$ | 13 cores | TY40, PASS |
 
-Os nomes e dimensões usados pelo jogo foram preservados:
+## 3. Ícones de Itens (30 ícones — 32×32)
 
-| Camada | Arquivo | Tamanho | Nota |
-|---|---|---:|---|
-| Fundo distante | `assets/sprites/environment/bosque_lumen/bg_distant.png` | 216×110 | Fundo opaco quantizado em TY40 |
-| Árvores intermediárias | `assets/sprites/environment/bosque_lumen/mid_trees.png` | 216×110 | Camada transparente, TY40 |
-| Faixa de chão | `assets/sprites/environment/bosque_lumen/ground_strip.png` | 216×42 | Camada transparente, TY40 |
-| Elementos frontais | `assets/sprites/environment/bosque_lumen/fg_elements.png` | 216×24 | Camada transparente, TY40 |
+Localizados em `assets/sprites/items/icons/` com manifestos em `assets/sprites/items/manifests/`:
+- **15 itens do MVP:** Adaga de Luz, Amuleto do Cervo, Arco da Copa Silente, Armadura do Guardião, Cajado de Lúmen, Capa da Névoa Verde, Colar de Espíritos, Coração da Floresta, Couraça de Javali, Dente de Basalto, Espada de Musgo, Gibão de Casca, Pedra Polida, Placa Rochosa, Túnica de Folhas.
+- **15 novos itens de design:** Broche do Eco Claro, Cetro do Veio Âmbar, Couraça de Casca Musgosa, Jaqueta do Rastro Longo, Lâmina Silvestre, Lâmina da Trilha Partida, Maça da Raiz-Clara, Machado Ancestral, Manto de Micélio Trançado, Nó dos Marcos Antigos, Peitoral do Vigia Caído, Presa da Matilha, Ramo de Pedra-Runa, Semente do Veio Vivo, Semente Vital.
+- **Status técnico:** 30/30 PASS no `sprite_lint.py`.
 
-As quatro camadas precisam de revisão de composição no cenário e na câmera mobile antes do aceite visual de release.
+## 4. Ícones de Skills (15 ícones — 32×32)
 
-## Aceite restante
+Localizados em `assets/sprites/skills/icons/` com manifestos em `assets/sprites/skills/manifests/`:
+- **Bastião (5):** Amparo de Raiz, Contra-golpe de Casca, Desafio do Guardião, Trama de Escudos, Voto da Clareira.
+- **Flecha (5):** Marca da Caçada, Tiro de Ruptura, Rajada da Copa, Flecha de Execução, Passo do Rastro.
+- **Íris (5):** Lança de Lúmen, Véu de Micélio, Fratura Arcana, Pulso Restaurador, Prisma de Retorno.
+- **Status técnico:** 15/15 PASS no `sprite_lint.py`.
 
-1. Fazer auditoria visual do conjunto de animações e das quatro camadas no cenário real.
-2. Revisar escala, baseline, sobreposições e leitura em tela mobile.
-3. Investigar ícones de itens e efeitos somente se forem exigidos pelas telas do MVP.
-4. Atualizar QA e manifests para `APPROVED`/`INTEGRATED` depois dos aceites, sem confundir PASS técnico com aprovação artística.
+## 5. Ícones de Fases (5 ícones — 32×32)
+
+Localizados em `assets/sprites/environment/stages/` com manifestos em `assets/sprites/environment/manifests/`:
+- `stage_01_entrada_do_bosque.png`
+- `stage_02_clareira_da_pressao.png`
+- `stage_03_ninho_silvestre.png`
+- `stage_04_covil_do_alfa.png`
+- `stage_05_santuario_do_guardiao.png`
+- **Status técnico:** 5/5 PASS no `sprite_lint.py`.
+
+## 6. Ambiente — Bosque de Lúmen (4 Camadas)
+
+Localizados em `assets/sprites/environment/bosque_lumen/`:
+- Fundo distante (`bg_distant.png`, 216×110, opaco)
+- Árvores intermediárias (`mid_trees.png`, 216×110, transparente)
+- Faixa de chão (`ground_strip.png`, 216×42, transparente)
+- Elementos frontais (`fg_elements.png`, 216×24, transparente)
+
+## 7. Próximos passos de validação visual
+
+1. Auditoria visual independente e revisão mobile dos novos lotes integrados.
+2. Homologação das proporções e composições na cena de combate do Godot.

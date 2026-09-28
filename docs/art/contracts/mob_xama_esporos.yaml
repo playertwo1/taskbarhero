@@ -1,0 +1,45 @@
+id: mob_xama_esporos
+name: "Xamã de Esporos"
+category: mob
+description: "Cultista fúngico menor envolto em farrapos e um chapéu cogumelo pontiagudo avermelhado. Porta cajado entalhado com nódulo de esporos brilhantes de Lúmen, conjurando nuvens tóxicas e sustentação para os bandos do bosque."
+facing: left
+
+canvas:
+  width: 48
+  height: 48
+  baseline_y: 44
+  pivot: [24, 44]
+
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [forest, lumen, crimson, wood]
+  max_colors: 14
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 120
+    loop: false
+
+output:
+  source_file: "assets/sprites/enemies/xama_de_esporos/mob_xama_esporos_golden.aseprite"
+  sheet_file: "assets/sprites/enemies/xama_de_esporos/mob_xama_esporos_sheet.png"
+  json_file: "assets/sprites/enemies/xama_de_esporos/mob_xama_esporos_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [768, 48]

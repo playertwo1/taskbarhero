@@ -1,0 +1,53 @@
+{
+  "asset_id": "passo_do_rastro",
+  "status": "ARTISTIC_QA",
+  "version": 1,
+  "contract": "docs/art/contracts/skill_icons/skill_icon_forest_neutral_stone_wood.yaml",
+  "concept": "docs/04_content/chapters/chapter_01/OVERVIEW.md#passo_do_rastro",
+  "content_state": "chapter_01",
+  "generation": {
+    "workflow": "handcrafted_pixel_art_ty40_quantized_icon",
+    "workflow_version": "1",
+    "model": "handcrafted pixel design",
+    "model_license_record": "Pocket Hero original design asset",
+    "seed": null,
+    "sampler": null,
+    "steps": null,
+    "cfg": null,
+    "generation_resolution": "32x32 native",
+    "input_hashes": []
+  },
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "forest",
+      "neutral_stone",
+      "wood"
+    ],
+    "colors_used": 7,
+    "exceptional_colors": []
+  },
+  "output": {
+    "files": [
+      "assets/sprites/skills/icons/passo_do_rastro.png"
+    ],
+    "frame_size": {
+      "width": 32,
+      "height": 32
+    },
+    "frame_count": 1,
+    "layout": "single",
+    "facing": "skill_icon",
+    "alpha": true,
+    "hashes": [
+      "727452d54b913ff659269b63261aecb3338dc2689cca8fae4327afc9d47d2537"
+    ]
+  },
+  "qa": {
+    "technical": "PASS",
+    "artistic": "PENDING",
+    "reviewer": null,
+    "reviewed_at": null,
+    "report": "Sprite lint PASS; independent visual audit and mobile review are pending."
+  }
+}

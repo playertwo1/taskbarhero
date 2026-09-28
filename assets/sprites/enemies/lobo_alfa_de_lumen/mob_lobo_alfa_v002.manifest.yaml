@@ -38,7 +38,7 @@ output:
   layout: horizontal_strip
   facing: left
   alpha: true
-  hashes: [6b74d62462f7bdfeaa8714aeabbcd724b8de031cf18a67a5a39c7179df138cb7]
+  hashes: [bf666d331e9f9f1ebe9050beaa5885118fa8df71a78a4cea421a7131221ead40]
 qa:
   technical: PASS
   artistic: PENDING

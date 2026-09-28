@@ -21,6 +21,7 @@ build/
 *.log
 .DS_Store
 Thumbs.db
+.codex-remote-attachments/
 
 # Python e caches
 __pycache__/

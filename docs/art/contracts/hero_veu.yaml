@@ -1,0 +1,49 @@
+id: hero_veu
+name: "Véu"
+category: hero
+description: "Assassina silenciosa que caminha entre sombras. Veste capa e capuz escuros em degradê carvão com franja carmesim visível sob o capuz, empunha adagas duplas afiadas e move-se com postura ágil e letal. Atacante móvel focada em execução de alvos expostos."
+facing: right
+
+canvas:
+  width: 48
+  height: 48
+  baseline_y: 44
+  pivot: [24, 44]
+
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [iron, crimson, neutral_stone]
+  max_colors: 14
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+    description: "Postura baixa e esguia com adagas empunhadas em guarda, micro-oscilação da barra da capa sombria."
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+    description: "Avanço fulminante desferindo golpe cruzado duplo de adagas com rastro cortante e retorno à guarda."
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+    description: "Esquiva parcial e recuo com as adagas cruzadas à frente do peito."
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 120
+    loop: false
+    description: "Desaba suavemente dissolvendo-se em uma névoa de sombras e cinzas até desaparecer."
+
+output:
+  source_file: "assets/sprites/heroes/veu/hero_veu_golden.aseprite"
+  sheet_file: "assets/sprites/heroes/veu/hero_veu_sheet.png"
+  json_file: "assets/sprites/heroes/veu/hero_veu_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [768, 48]

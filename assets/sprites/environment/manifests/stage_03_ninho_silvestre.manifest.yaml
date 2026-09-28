@@ -1,0 +1,53 @@
+{
+  "asset_id": "stage_03_ninho_silvestre",
+  "status": "ARTISTIC_QA",
+  "version": 1,
+  "contract": "docs/art/contracts/stage_icons/stage_icon_forest_lumen_wood.yaml",
+  "concept": "docs/04_content/chapters/chapter_01/OVERVIEW.md#stage_03_ninho_silvestre",
+  "content_state": "chapter_01",
+  "generation": {
+    "workflow": "handcrafted_pixel_art_ty40_quantized_icon",
+    "workflow_version": "1",
+    "model": "handcrafted pixel design",
+    "model_license_record": "Pocket Hero original design asset",
+    "seed": null,
+    "sampler": null,
+    "steps": null,
+    "cfg": null,
+    "generation_resolution": "32x32 native",
+    "input_hashes": []
+  },
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "forest",
+      "lumen",
+      "wood"
+    ],
+    "colors_used": 7,
+    "exceptional_colors": []
+  },
+  "output": {
+    "files": [
+      "assets/sprites/environment/stages/stage_03_ninho_silvestre.png"
+    ],
+    "frame_size": {
+      "width": 32,
+      "height": 32
+    },
+    "frame_count": 1,
+    "layout": "single",
+    "facing": "stage_icon",
+    "alpha": true,
+    "hashes": [
+      "0d6c067297a18a03c96cd6de4153f9ecb59dc4ccc9af345dbc6110a0e65f6b7a"
+    ]
+  },
+  "qa": {
+    "technical": "PASS",
+    "artistic": "PENDING",
+    "reviewer": null,
+    "reviewed_at": null,
+    "report": "Sprite lint PASS; independent visual audit and mobile review are pending."
+  }
+}

@@ -62,22 +62,21 @@ A meta-progressão deve ser percebida fisicamente no **Refúgio da Vigília**. N
 
 ## Entregas
 
-- [ ] Criar `GAME_PILLARS.md`
-- [ ] Criar `CORE_LOOP.md`
-- [ ] Criar `LORE_BIBLE.md`
-- [ ] Criar `GAME_GLOSSARY.md`
+- [x] Criar rascunho `GAME_PILLARS.md` (ainda em `DESIGN`)
+- [x] Criar rascunho `CORE_LOOP.md` (ainda em `DESIGN`)
+- [x] Criar rascunho `GLOSSARY.md` (nome/caminho canônico registrado no índice de Projeto)
 - [x] Definir composição da party: **3 heróis ativos entre 8 disponíveis**
 - [x] Definir padrão canônico de herói: ataque básico + 6 skills + 16 passivas + 3 Traits + Mastery 1–10
 - [x] Definir Bastião como **Golden Reference de design** para os demais heróis
-- [x] Definir conceito da **Árvore dos Ecos / Árvore Global de Ressonância**
+- [x] Definir conceito e escopo inicial da **Árvore dos Ecos / Árvore Global de Ressonância**: 30 nós em sete ramos, detalhados em `TREE-1`
 - [x] Definir conceito de **equipamentos + artesãos da cidade**, substituindo um sistema abstrato tipo Cube
-- [ ] Importar/converter os documentos canônicos para a estrutura `docs/` do repositório
-- [ ] Definir regras finais de run versus meta-progressão
-- [ ] Definir como skills são oferecidas/evoluem durante a run sem conflitar com a árvore permanente do herói
-- [ ] Definir como itens são obtidos, comparados, equipados, desmontados e reforjados
-- [ ] Definir como Ecos são adquiridos e como se relacionam com equipamentos e lore
-- [ ] Definir condições de vitória e derrota
-- [ ] Definir duração-alvo inicial de uma run
+- [x] Importar/converter os contratos canônicos de design para `docs/` e atualizar seus índices (**SYNC-0 concluído**)
+- [x] Fechar a fronteira de run versus meta-progressão na matriz autoritativa; parâmetros offline/economia ficam para `ECON-1`
+- [x] Registrar regras decididas de oferta/evolução de skills e encaminhar tiers, conjuntos de escolha, gatilhos e efeitos ainda abertos ao [Sistema de skills](docs/03_systems/SKILL_SYSTEM.md)
+- [x] Definir a regra-base de obtenção, comparação, equipagem e salvamento/desmontagem; raridades, schema e reforja ficam para `ITEM-1`
+- [x] Definir função e escopo mínimo de Echo no slice; conteúdo e implementação ficam para `ECHO-1`
+- [x] Definir vitória, derrota e retirada voluntária como saídas da expedição
+- [x] Definir que a expedição é delimitada pelo objetivo, sem cronômetro de derrota; medir duração-alvo em playtest/pacing
 
 ## Contratos já introduzidos
 
@@ -108,6 +107,8 @@ Cada herói completo possui:
 
 ## Gate DESIGN-1 PASS
 
+**Estado:** `PASS` em 2026-09-28 para a fundação e separação de sistemas pós-MVP. `CRAFT-1`, `ITEM-1` e `ECON-1` ainda detalham serviços, dados e valores antes de qualquer implementação; este gate não aprova runtime nem balanceamento.
+
 PASS quando:
 
 - a fantasia central estiver documentada;
@@ -122,50 +123,16 @@ PASS quando:
 
 # 3. LORE-1 — Fundação narrativa
 
-## Conceitos centrais
+## Entregas
 
-### Lúmen
+- [x] Criar [`LORE_BIBLE.md`](docs/01_world/LORE_BIBLE.md) como fonte central da cosmologia e das regras do mundo.
+- [x] Reconciliar a bíblia com o Capítulo 1 e o Golden Reference do Bastião, sem resolver os mistérios centrais.
 
-Energia ligada a vida, memória e identidade.
-
-### O Apagamento
-
-Fenômeno responsável pela perda gradual do Lúmen.
-
-Uma criatura afetada pode perder:
-
-- memórias;
-- instintos;
-- identidade;
-- capacidade de reconhecer aliados.
-
-### Corações de Lúmen
-
-Grandes núcleos ligados às regiões do mundo.
-
-Cada capítulo pode revelar um Coração e um Guardião.
-
-### Guardiões
-
-Não são necessariamente vilões.
-
-São criaturas ou entidades responsáveis por proteger regiões e que podem ter sido corrompidas pelo Apagamento.
-
-### Ecos
-
-Fragmentos de memória preservados pelo Lúmen.
-
-Servem simultaneamente como:
-
-- sistema de gameplay;
-- coleção;
-- progressão;
-- bestiário;
-- veículo de lore.
+Conceitos, grau de certeza e limites de continuidade ficam na [Bíblia de Lore](docs/01_world/LORE_BIBLE.md), fonte autoritativa para essa área.
 
 ## Mistérios centrais
 
-Manter inicialmente sem resposta definitiva:
+Permanecem sem resposta definitiva conforme a [Bíblia de Lore](docs/01_world/LORE_BIBLE.md):
 
 - [ ] O Apagamento é natural?
 - [ ] Para onde o Lúmen desaparece?
@@ -176,34 +143,16 @@ Manter inicialmente sem resposta definitiva:
 
 ## Golden Reference narrativo — Bastião
 
-A lore pessoal do Bastião está definida em conceito e deve servir como referência de integração entre narrativa e mecânica.
-
-Pontos canônicos:
-
-- antigo membro da **Guarda da Primeira Muralha**;
-- o nome verdadeiro foi perdido pelo Apagamento;
-- **Bastião** é o nome adquirido pela função que passou a representar;
-- **Primeiro Juramento:** “Enquanto houver alguém atrás de mim, eu permaneço.”;
-- **Porta da Vigília** é o centro de sua memória perdida;
-- seu arco trabalha dever, memória, culpa e a diferença entre resistir e viver;
-- o nome verdadeiro não deve ser revelado nesta etapa.
-
-### Campanha pessoal — 5 missões
-
-1. **A Porta** — retorno às ruínas da Primeira Muralha;
-2. **Nomes no Ferro** — origem do escudo e dos companheiros perdidos;
-3. **O Último a Sair** — descoberta de que permaneceu mesmo após a evacuação;
-4. **O Nome Esquecido** — recusa recuperar sua identidade ao custo das memórias alheias;
-5. **Eu Fico** — repetição da antiga batalha, agora com aliados permanecendo ao seu lado.
-
-**Status:** `LORE_DESIGN_COMPLETE` para Bastião; diálogos completos, encounters finais e implementação continuam pendentes.
+A lore pessoal e as cinco missões aprovadas estão na [Golden Reference do Bastião](docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md#lore-pessoal-do-bastiao-decisoes-atuais). Diálogos, encontros finais e implementação continuam pendentes.
 
 ## Gate LORE-1 PASS
 
-- regras básicas do universo definidas;
-- nenhum mistério principal respondido cedo demais;
-- lore do Bosque de Lúmen consistente com o universo;
-- narrativa compatível com gameplay.
+- [x] regras básicas do universo definidas na Bíblia de Lore;
+- [x] nenhum mistério principal respondido cedo demais;
+- [x] lore do Bosque de Lúmen consistente com as regras globais, mantendo sua história e desfecho em aberto;
+- [x] narrativa compatível com o escopo de gameplay e sem confirmar implementação inexistente.
+
+**Status do gate:** `PASS` em 2026-09-28 para a fundação narrativa. Conteúdo narrativo detalhado do capítulo, diálogos e implementação seguem fases próprias.
 
 ---
 
@@ -491,12 +440,14 @@ Eles não substituem Lúmen nem materiais de crafting.
 
 ## Gate TREE-1 PASS
 
-- MVP de ~30 nós definido;
-- custo e pré-requisitos modelados;
-- nenhum ramo possui upgrades puramente redundantes;
-- pelo menos parte dos nós libera sistemas, não só atributos;
-- economia simulável antes de valores finais;
-- UI comporta expansão futura sem redesenho total.
+- [x] MVP de 30 nós definido;
+- [x] faixas relativas de custo e pré-requisitos modelados;
+- [x] os sete ramos têm identidade e efeitos distintos, sem progressão de atributos repetida como conteúdo principal;
+- [x] vários nós liberam sistemas, serviços ou opções de jogo, além dos bônus de atributo;
+- [x] economia simulável antes de custos finais, com Fragmentos de Ressonância e fontes/sinks definidos;
+- [x] layout por ramos expansíveis/navegáveis comporta nós futuros sem redesenhar a estrutura-base.
+
+**Status do gate:** `PASS` em 2026-09-28 para catálogo e dependências de design. Não aprova custo final, balanceamento, UI detalhada ou runtime.
 
 ---
 
@@ -505,6 +456,8 @@ Eles não substituem Lúmen nem materiais de crafting.
 Pocket Hero não deve usar um “Cube” abstrato como centro do crafting.
 
 As mesmas funções são distribuídas por **personagens e estabelecimentos do Refúgio da Vigília**.
+
+As listas seguintes mostram os papéis gerais de cada artesão. O escopo mínimo, fontes/sinks e ordem de abertura aprovados estão na seção [CRAFT-1 do documento de equipamentos](docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md); capacidades mais avançadas não são requisitos do slice.
 
 ## Ferreiro
 
@@ -555,11 +508,13 @@ O jogador deve perceber a cidade crescendo:
 
 ## Gate CRAFT-1 PASS
 
-- serviços mínimos de cada artesão definidos;
-- ordem de desbloqueio documentada;
-- cada serviço possui fonte e sink econômico;
-- nenhum serviço duplica outro sem motivo;
-- crafting melhora escolhas, não substitui completamente o loot.
+- [x] serviços mínimos de cada artesão definidos;
+- [x] ordem de desbloqueio documentada;
+- [x] cada serviço possui fonte e sink econômico identificado; quantidades seguem para `ITEM-1`/`ECON-1`;
+- [x] responsabilidades não se duplicam sem motivo;
+- [x] crafting melhora escolhas e usa drops/recompensas, sem substituir completamente o loot.
+
+**Status do gate:** `PASS` em 2026-09-28 para arquitetura e escopo de serviço. Receitas, quantidades, custos, UI, balanceamento e runtime ainda dependem dos gates próprios.
 
 ---
 
@@ -664,7 +619,7 @@ Os nomes e quantidades finais de tiers de raridade permanecem sujeitos ao docume
 - affixes e limites de reforja definidos;
 - pelo menos 10 itens alteram comportamento;
 - pelo menos 8 itens suportam builds diferentes;
-- pelo menos 1 Echo funcional no slice;
+- incluir um Echo funcional opcional como recompensa determinística; não é obrigatório para vencer o slice;
 - nenhum item obrigatório para todos os personagens;
 - desmontagem/crafting não torna drops irrelevantes.
 
@@ -1175,7 +1130,6 @@ Somente após os sistemas anteriores possuírem design suficiente.
 - Bastião implementado como referência estrutural;
 - subset de skills/passivas/Traits suficiente para demonstrar builds distintas;
 - subset de equipamentos cobrindo os principais tipos de slot;
-- 1 Echo funcional;
 - subset de inimigos;
 - 1 elite;
 - 1 evento;
@@ -1186,6 +1140,8 @@ Somente após os sistemas anteriores possuírem design suficiente.
 - Árvore dos Ecos com pequeno ramo funcional;
 - Ferreiro com pelo menos **desmontagem + 1 serviço de melhoria**;
 - mudança visual perceptível no Hub após conclusão.
+
+**DECISÃO de DESIGN-1:** incluir um Echo funcional opcional no slice. Ele não é necessário para vencer; a função e os limites estão no [Sistema de Ecos](docs/03_systems/ECHO_SYSTEM.md).
 
 ## Fora do slice inicial
 
@@ -1296,16 +1252,16 @@ Relacionamento forte com Sino e Íris.
 
 A ordem abaixo substitui a sequência anterior para refletir os sistemas introduzidos em 2026-09-28.
 
-## Agora — sincronização de design
+## Fundação concluída e próxima fase
 
-1. **SYNC-0** — importar os novos contratos/documentos para o repositório e atualizar índices;
-2. **DESIGN-1** — fechar run vs herói vs conta vs equipamento;
-3. **LORE-1** — iniciar `LORE_BIBLE.md` preservando os mistérios centrais;
-4. **HERO-STD** — congelar o padrão canônico de herói;
-5. **HERO-001 BASTIÃO** — registrar Golden Reference completo;
-6. **TREE-1 MVP** — desenhar os ~30 nós iniciais da Árvore dos Ecos;
-7. **CRAFT-1 MVP** — definir Ferraria/Alquimia/Ecos/Ourives e ordem de desbloqueio;
-8. **ITEM-1** — reconciliar 10 slots, raridades, Item Power, affixes e 30 itens;
+1. [x] **SYNC-0** — importar os novos contratos/documentos para o repositório e atualizar índices;
+2. [x] **DESIGN-1** — fechar a fundação e a separação entre run, herói, equipamento e conta;
+3. [x] **LORE-1** — consolidar `LORE_BIBLE.md` preservando os mistérios centrais;
+4. [x] **HERO-STD** — padrão canônico registrado como `CANONICAL` em [`HERO_STANDARD.md`](HERO_STANDARD.md);
+5. [x] **HERO-001 BASTIÃO** — registrar Golden Reference completo;
+6. [x] **TREE-1 MVP** — definir os 30 nós, pré-requisitos, faixas relativas de custo e dependências da Árvore dos Ecos;
+7. [x] **CRAFT-1 MVP** — definir função, fonte/sink, limites do slice e ordem de desbloqueio dos quatro artesãos;
+8. **ITEM-1 — próxima fase** — reconciliar 10 slots, raridades, Item Power, affixes e 30 itens;
 9. **ECON-1** — fontes/sinks e primeira simulação.
 
 ## Depois — conteúdo jogável
@@ -1370,31 +1326,31 @@ Essa interação deve ser o principal diferencial do Pocket Hero.
 
 # 26. Próximo checkpoint
 
-## NEXT — SYNC-0 / TREE-1 / HERO-002
+## CHECKPOINT — ITEM-1 / ECON-1 / HERO-002
 
 ### A. Sincronizar documentação
 
-- [ ] adicionar o padrão canônico de heróis ao repositório;
-- [ ] adicionar o Golden Reference do Bastião;
-- [ ] adicionar a Árvore Global de Ressonância / Árvore dos Ecos;
-- [ ] adicionar Equipamentos e Artesãos da Cidade;
-- [ ] atualizar `documents/INDEX.md` e `POCKET_HERO_PROJECT_BRIEF.md`;
-- [ ] marcar documentos antigos de 5 skills como **superseded** onde houver conflito.
+- [x] adicionar o padrão canônico de heróis ao repositório e apontar os índices para a fonte única na raiz;
+- [x] adicionar o Golden Reference do Bastião;
+- [x] adicionar a Árvore Global de Ressonância / Árvore dos Ecos;
+- [x] adicionar Equipamentos e Artesãos da Cidade;
+- [x] atualizar `documents/INDEX.md` e `POCKET_HERO_PROJECT_BRIEF.md`;
+- [x] reconciliar referências ao catálogo antigo de 5 skills por herói: os 15 conceitos normais existentes são parciais, sem Signature Skills, e não substituem o padrão de 6 skills por herói.
 
 ### B. Fechar MVP da progressão global
 
-- [ ] selecionar aproximadamente 30 nós da Árvore dos Ecos;
-- [ ] definir custos apenas em escala relativa inicialmente;
-- [ ] definir quais nós liberam segundo slot, Ferraria e demais sistemas;
-- [ ] criar diagrama de dependências.
+- [x] selecionar 30 nós da Árvore dos Ecos em sete ramos;
+- [x] definir custos apenas em escala relativa; valores absolutos seguem para `ECON-1`;
+- [x] definir os nós que liberam o segundo slot de skill, a Ferraria e demais sistemas;
+- [x] criar diagrama de dependências entre ramos e nós.
 
 ### C. Fechar MVP de equipamento/cidade
 
 - [ ] confirmar os 10 slots;
 - [ ] congelar esquema inicial de raridade/Item Power/affixes;
-- [ ] definir desmontagem e primeiro upgrade do Ferreiro;
-- [ ] definir primeiro uso de Essências no Alquimista;
-- [ ] selecionar 1 Echo para o vertical slice.
+- [x] definir desmontagem e primeiro aprimoramento controlado do Ferreiro; valores seguem para `ITEM-1`/`ECON-1`;
+- [x] definir o primeiro uso de Essência: destilação alimenta Catalisadores para serviços avançados do Ferreiro, fora do slice;
+- [x] decidir em `DESIGN-1` a inclusão de um Echo funcional opcional; a ficha completa e a implementação permanecem para `ECHO-1`.
 
 ### D. Próximo herói
 

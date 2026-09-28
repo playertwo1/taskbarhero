@@ -1,0 +1,45 @@
+asset_id: enemy_geleia_lumen
+status: DRAFT
+version: 1
+contract: docs/art/contracts/enemy_lumen_slime.yaml
+golden_reference: null
+references: []
+generation:
+  workflow: nearest_neighbor_upscale_from_32px_draft
+  workflow_version: "1"
+  comfyui_version: null
+  custom_nodes: []
+  model: OpenAI image generation source concept
+  model_license_record: personal use approved by Rafael on 2026-09-27; reuse limited to Pocket Hero personal project, no redistribution clearance
+  lora: null
+  adapters: []
+  seed: null
+  sampler: null
+  steps: null
+  cfg: null
+  generation_resolution: 32x32 source; nearest-neighbor upscale to 64x64
+  controlnet: null
+  controlnet_weight: null
+  ip_adapter_weight: null
+  prompt_file: null
+  input_hashes: [dcf62ef0b637526c945afb7c9c5430cfc9cc15ed85c381db529cdf80606e8fd0]
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [lumen, crimson]
+  colors_used: 11
+  exceptional_colors: []
+output:
+  files: [assets/sprites/enemies/geleia_de_lumen/enemy_geleia_lumen_concept_64x64_v001.png]
+  frame_size: {width: 64, height: 64}
+  frame_count: 1
+  layout: single
+  facing: left
+  alpha: true
+  hashes: [512feed18b561d7b59c56d5afac2f651dd930952d1c5f25fd8cb8d703f0f17f7]
+qa:
+  technical: PENDING
+  artistic: PENDING
+  mobile: PENDING
+  reviewer: null
+  reviewed_at: null
+  report: Draft scale comparison only. The enemy contract specifies 32x32 and 16 frames; this 64x64 preview is not contract-compliant, not integrated, and not GOLDEN. Visual review and mobile readability remain pending.

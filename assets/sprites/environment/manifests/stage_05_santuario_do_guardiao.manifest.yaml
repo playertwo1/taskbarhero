@@ -1,0 +1,53 @@
+{
+  "asset_id": "stage_05_santuario_do_guardiao",
+  "status": "ARTISTIC_QA",
+  "version": 1,
+  "contract": "docs/art/contracts/stage_icons/stage_icon_gold_lumen_neutral_stone.yaml",
+  "concept": "docs/04_content/chapters/chapter_01/OVERVIEW.md#stage_05_santuario_do_guardiao",
+  "content_state": "chapter_01",
+  "generation": {
+    "workflow": "handcrafted_pixel_art_ty40_quantized_icon",
+    "workflow_version": "1",
+    "model": "handcrafted pixel design",
+    "model_license_record": "Pocket Hero original design asset",
+    "seed": null,
+    "sampler": null,
+    "steps": null,
+    "cfg": null,
+    "generation_resolution": "32x32 native",
+    "input_hashes": []
+  },
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "gold",
+      "lumen",
+      "neutral_stone"
+    ],
+    "colors_used": 7,
+    "exceptional_colors": []
+  },
+  "output": {
+    "files": [
+      "assets/sprites/environment/stages/stage_05_santuario_do_guardiao.png"
+    ],
+    "frame_size": {
+      "width": 32,
+      "height": 32
+    },
+    "frame_count": 1,
+    "layout": "single",
+    "facing": "stage_icon",
+    "alpha": true,
+    "hashes": [
+      "99beabe7c2dbb2fc0dbc75809cb9a16bcd471a7fb661e926685448b2687514f5"
+    ]
+  },
+  "qa": {
+    "technical": "PASS",
+    "artistic": "PENDING",
+    "reviewer": null,
+    "reviewed_at": null,
+    "report": "Sprite lint PASS; independent visual audit and mobile review are pending."
+  }
+}

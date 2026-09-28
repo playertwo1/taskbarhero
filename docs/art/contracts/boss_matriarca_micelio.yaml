@@ -1,51 +1,45 @@
-{
-  "contract_version": "1.0.0",
-  "asset_id": "boss_matriarca_micelio",
-  "name": "Matriarca do Micélio",
-  "category": "boss_visual_candidate",
-  "content_state": "visual hypothesis; no gameplay, loot or behavior approval",
-  "canvas": {
-    "width": 64,
-    "height": 64,
-    "baseline_y": 60,
-    "pivot": [
-      32,
-      60
-    ]
-  },
-  "style": {
-    "genre": "dark_fantasy",
-    "technique": "pixel_art",
-    "facing": "left",
-    "palette": {
-      "master": "TY_HIGH_FANTASY_40",
-      "subsets": [
-        "forest",
-        "wood",
-        "lumen"
-      ],
-      "max_colors": 14
-    }
-  },
-  "pose": "single neutral key pose; no animation frames implied",
-  "export": {
-    "format": "png",
-    "color_depth": "rgba_32",
-    "transparent_background": true,
-    "frame_count": 1
-  },
-  "acceptance_criteria": {
-    "technical": [
-      "canvas_size_exact: 64x64",
-      "transparent_background: true",
-      "binary_alpha: true",
-      "max_colors: 14"
-    ],
-    "visual": [
-      "three mushroom caps at different heights",
-      "single visible center core",
-      "root arch base",
-      "side view enemy facing left"
-    ]
-  }
-}
+id: boss_matriarca_micelio
+name: "Matriarca do Micélio"
+category: boss
+description: "Minichefe monumental do Ninho Silvestre. Entidade vegetal ancestral e imóvel com camadas de chapéus de cogumelo em coroa orgânica, mantos de micélio e raízes arqueadas. Protege um coração brilhante de Lúmen no centro do tronco."
+facing: left
+
+canvas:
+  width: 64
+  height: 64
+  baseline_y: 60
+  pivot: [32, 60]
+
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [forest, wood, lumen]
+  max_colors: 14
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 120
+    loop: false
+
+output:
+  source_file: "assets/sprites/bosses/matriarca_micelio/boss_matriarca_micelio_golden.aseprite"
+  sheet_file: "assets/sprites/bosses/matriarca_micelio/boss_matriarca_micelio_sheet.png"
+  json_file: "assets/sprites/bosses/matriarca_micelio/boss_matriarca_micelio_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [1024, 64]

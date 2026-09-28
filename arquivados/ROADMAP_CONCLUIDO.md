@@ -1226,4 +1226,5 @@ Esta seção arquiva itens concluídos que ainda apareciam na roadmap ativa. Ela
 ### ECHO/HUB-1 — Função mínima dos Ecos
 
 - [x] **DECIDIDO por Rafael em 2026-09-28:** na primeira fatia, os Ecos são descobertas narrativas registradas no Codex, sem efeito de gameplay. Regras autoritativas em [Sistema de Ecos](../docs/03_systems/ECHO_SYSTEM.md); obtenção, apresentação e catálogo individual continuam abertos.
-- [ ] Reconciliar as propostas de Árvore da Ressonância e equipamentos/Ecos para fases posteriores; continuam na roadmap ativa.
+- **SUPERSEDED por decisão posterior de Rafael em 2026-09-28:** a função ficou em aberto até `DESIGN-1`; um Echo não é requisito fechado do slice. Consulte a decisão atual no [Sistema de Ecos](../docs/03_systems/ECHO_SYSTEM.md).
+- [ ] Reconciliar as propostas de Árvore da Ressonância e equipamentos/Ecos em `DESIGN-1`; decidir quais podem ser candidatas do slice e quais ficam para fases futuras.

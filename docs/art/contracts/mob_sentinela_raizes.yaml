@@ -1,0 +1,45 @@
+id: mob_sentinela_raizes
+name: "Sentinela de Raízes"
+category: mob
+description: "Construto vegetal maciço de madeira ancestral e raízes entrelaçadas. Protege em seu peito um núcleo pulsante de Lúmen, servindo como muralha viva e defensora das trilhas profundas do bosque."
+facing: left
+
+canvas:
+  width: 48
+  height: 48
+  baseline_y: 44
+  pivot: [24, 44]
+
+palette:
+  master: TY_HIGH_FANTASY_40
+  subsets: [wood, forest, neutral_stone, lumen]
+  max_colors: 14
+
+animations:
+  idle:
+    frames: 4
+    fps: 6
+    duration_ms: 160
+    loop: true
+  attack:
+    frames: 4
+    fps: 10
+    duration_ms: 100
+    loop: false
+  hit:
+    frames: 2
+    fps: 12
+    duration_ms: 80
+    loop: false
+  death:
+    frames: 6
+    fps: 8
+    duration_ms: 120
+    loop: false
+
+output:
+  source_file: "assets/sprites/enemies/sentinela_de_raizes/mob_sentinela_raizes_golden.aseprite"
+  sheet_file: "assets/sprites/enemies/sentinela_de_raizes/mob_sentinela_raizes_sheet.png"
+  json_file: "assets/sprites/enemies/sentinela_de_raizes/mob_sentinela_raizes_sheet.json"
+  format: "horizontal_strip"
+  sheet_dimensions: [768, 48]
