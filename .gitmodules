@@ -1,0 +1,8 @@
+[submodule "tools/daedalus/ComfyUI-PixelGridHelpers"]
+	path = tools/daedalus/ComfyUI-PixelGridHelpers
+	url = https://github.com/molbal/ComfyUI-PixelGridHelpers
+	ignore = untracked
+[submodule "tools/daedalus/spritefusion-pixel-snapper"]
+	path = tools/daedalus/spritefusion-pixel-snapper
+	url = https://github.com/Hugo-Dz/spritefusion-pixel-snapper
+	ignore = untracked

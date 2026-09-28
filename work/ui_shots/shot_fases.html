@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pocket Hero — Protótipos de Telas (Hub, Fases, Título, Loadout)</title>
+<script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+<style>
+:root {
+  --bg-deep: #0b0f12;
+  --bg-surface: #141b1f;
+  --bg-card: #1c252a;
+  --border-subtle: #2d3b42;
+  --border-active: #48606a;
+  --text-main: #f0ece1;
+  --text-muted: #9ba8a2;
+  --teal-lumen: #7ec4a8;
+  --gold-runa: #d4b36a;
+  --orange-brasa: #d96943;
+  --purple-eco: #aa85c7;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 24px;
+}
+
+.phone-frame {
+  width: 320px;
+  height: 620px;
+  background: #10161a;
+  border: 2px solid #33434c;
+  border-radius: 28px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.65);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+}
+
+.notch {
+  height: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 18px 0;
+  font-size: 10px;
+  color: #7b8c87;
+  font-weight: 600;
+}
+
+.pixel-box {
+  background: #182227;
+  border: 1px solid #2e3e46;
+  border-radius: 8px;
+}
+
+.pixel-box.active {
+  border-color: var(--teal-lumen);
+  box-shadow: 0 0 10px rgba(126, 196, 168, 0.2);
+}
+
+.pixel-box.gold {
+  border-color: var(--gold-runa);
+}
+
+.pixel-badge {
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+::-webkit-scrollbar-track {
+  background: #12181b;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a383f;
+  border-radius: 2px;
+}
+</style>
+
+</head>
+<body class="antialiased" style="background: #0b0f12; padding: 18px 24px; color: #f0ece1;">
+  <div style="max-width: 1140px; margin: 0 auto 14px; display: flex; justify-content: space-between; align-items: flex-end; border-bottom: 1px solid #243238; padding-bottom: 10px;">
+    <div>
+      <span class="pixel-badge" style="background: #193328; color: #7ec4a8; border: 1px solid #2b5946;">Pocket Hero Mobile</span>
+      <h2 style="font-size: 20px; font-weight: 800; margin: 4px 0 0; color: #f0ece1;">2. Seleção de Fases (Bosque de Lúmen) — 3 Opções</h2>
+    </div>
+    <div style="font-size: 11px; color: #8ba098;">1080×2340 Mobile Form Factor · Opções A, B e C</div>
+  </div>
+  <div style="max-width: 1140px; margin: 0 auto;">
+    <div id="screen-fases" class="screen-view">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- OPÇÃO 2A: TRILHA VERTICAL DE NÓS (SLAY THE SPIRE STYLE) -->
+        <div class="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl p-4 flex flex-col items-center">
+          <div class="w-full flex justify-between items-center mb-3">
+            <div>
+              <span class="pixel-badge bg-[#193328] text-[var(--teal-lumen)] border border-[#2b5946]">Opção 2A</span>
+              <h3 class="text-sm font-bold text-white mt-1">Trilha Vertical de Encontros</h3>
+            </div>
+            <span class="text-[10px] text-[var(--teal-lumen)] font-bold">Recomendado</span>
+          </div>
+
+          <!-- Mobile Frame -->
+          <div class="phone-frame">
+            <div class="notch"><span>10:30</span><span>●●● 100%</span></div>
+            <div class="p-3 border-b border-[#202c33] bg-[#131b20] flex justify-between items-center">
+              <div>
+                <div class="text-[9px] text-[var(--teal-lumen)] uppercase font-bold">Capítulo 1</div>
+                <div class="text-xs font-bold text-white">Bosque de Lúmen</div>
+              </div>
+              <span class="text-[10px] bg-[#1e2c28] text-[var(--teal-lumen)] px-2 py-0.5 rounded border border-[#325244]">10 Subfases</span>
+            </div>
+
+            <!-- Scrollable Vertical Path -->
+            <div class="flex-1 p-3 overflow-y-auto flex flex-col-reverse items-center gap-4 bg-gradient-to-t from-[#0e1417] via-[#121c21] to-[#162725]">
+
+              <!-- Fase 1: Entrada (Começo) -->
+              <div class="w-full pixel-box p-2.5 bg-[#17262b] border-[var(--teal-lumen)] cursor-pointer">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-[#1b3d32] text-[var(--teal-lumen)] font-bold flex items-center justify-center text-xs">1</span>
+                    <div>
+                      <div class="text-[10px] font-bold text-white">Trilha dos Marcos</div>
+                      <div class="text-[8px] text-[#7d948b]">Geleia de Lúmen · Gremlin</div>
+                    </div>
+                  </div>
+                  <span class="pixel-badge bg-[#1e3b2e] text-[var(--teal-lumen)]">Limpa ✓</span>
+                </div>
+              </div>
+
+              <!-- Conexão tracejada -->
+              <div class="h-4 border-l-2 border-dashed border-[#2f4a43]"></div>
+
+              <!-- Fase 2: Clareira -->
+              <div class="w-full pixel-box p-2.5 bg-[#17262b] border-[var(--teal-lumen)] cursor-pointer">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-[#1b3d32] text-[var(--teal-lumen)] font-bold flex items-center justify-center text-xs">2</span>
+                    <div>
+                      <div class="text-[10px] font-bold text-white">Clareira Micelial</div>
+                      <div class="text-[8px] text-[#7d948b]">Xamã de Esporos (Suporte)</div>
+                    </div>
+                  </div>
+                  <span class="pixel-badge bg-[#1e3b2e] text-[var(--teal-lumen)]">Melhor XP</span>
+                </div>
+              </div>
+
+              <div class="h-4 border-l-2 border-dashed border-[#2f4a43]"></div>
+
+              <!-- Fase 3: Minichefe Matriarca -->
+              <div class="w-full pixel-box p-2.5 bg-[#261f2d] border-[var(--purple-eco)] cursor-pointer ring-1 ring-[var(--purple-eco)]">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-[#3d244c] text-[var(--purple-eco)] font-bold flex items-center justify-center text-xs">☠️</span>
+                    <div>
+                      <div class="text-[10px] font-bold text-white">Câmara do Micélio</div>
+                      <div class="text-[8px] text-[#baa4ca]">MINICHEFE: Matriarca</div>
+                    </div>
+                  </div>
+                  <span class="pixel-badge bg-[#3a1d47] text-[var(--purple-eco)]">Alerta</span>
+                </div>
+              </div>
+
+              <div class="h-4 border-l-2 border-dashed border-[#44374a]"></div>
+
+              <!-- Fase 4: Elite Lobo Alfa -->
+              <div class="w-full pixel-box p-2.5 bg-[#292218] border-[var(--gold-runa)] cursor-pointer">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-[#4a3a1d] text-[var(--gold-runa)] font-bold flex items-center justify-center text-xs">🐺</span>
+                    <div>
+                      <div class="text-[10px] font-bold text-white">Pedra da Matilha</div>
+                      <div class="text-[8px] text-[#cfbe99]">ELITE: Lobo Alfa</div>
+                    </div>
+                  </div>
+                  <span class="pixel-badge bg-[#3d2d14] text-[var(--gold-runa)]">Bloqueado</span>
+                </div>
+              </div>
+
+              <div class="h-4 border-l-2 border-dashed border-[#3a3528]"></div>
+
+              <!-- Fase 5: Boss Supremo -->
+              <div class="w-full pixel-box p-2.5 bg-[#2d1b1a] border-[var(--orange-brasa)] opacity-75">
+                <div class="flex items-center justify-between">
+                  <div class="flex items-center gap-2">
+                    <span class="w-6 h-6 rounded-full bg-[#52231e] text-[var(--orange-brasa)] font-bold flex items-center justify-center text-xs">👑</span>
+                    <div>
+                      <div class="text-[10px] font-bold text-white">Santuário do Guardião</div>
+                      <div class="text-[8px] text-[#caa19b]">BOSS: Guardião-Cervo</div>
+                    </div>
+                  </div>
+                  <span class="text-xs">🔒</span>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Quick Start Footer -->
+            <div class="p-3 bg-[#0d1316] border-t border-[#1e2a30]">
+              <button class="w-full py-2.5 bg-[var(--teal-lumen)] text-[#0c1311] font-bold rounded-xl text-xs flex items-center justify-center gap-1.5 shadow-md">
+                ▶ ENTRAR NA SUBFASE SELECIONADA
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-3 text-xs text-[var(--text-muted)] space-y-1">
+            <p><strong>Vantagem:</strong> Mostra exatamente os 10 beats do design com clareza dos tipos de ameaça (normal, minichefe, elite e boss).</p>
+            <p><strong>Ação:</strong> O jogador escolhe onde farmar ou até onde avançar.</p>
+          </div>
+        </div>
+
+        <!-- OPÇÃO 2B: MAPA REGIONAL DE NÓS (CARTOGRÁFICO) -->
+        <div class="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl p-4 flex flex-col items-center">
+          <div class="w-full flex justify-between items-center mb-3">
+            <div>
+              <span class="pixel-badge bg-[#2d3b42] text-[#bcd4de] border border-[#445b66]">Opção 2B</span>
+              <h3 class="text-sm font-bold text-white mt-1">Mapa de Regiões de Lúmen</h3>
+            </div>
+            <span class="text-[10px] text-[var(--text-muted)]">Exploração Livre</span>
+          </div>
+
+          <!-- Mobile Frame -->
+          <div class="phone-frame">
+            <div class="notch"><span>10:30</span><span>●●● 100%</span></div>
+            <div class="p-3 border-b border-[#202c33] bg-[#131b20]">
+              <div class="text-[9px] text-[#93a6ad] uppercase font-bold">Mapa do Apagamento</div>
+              <div class="text-xs font-bold text-white">Territórios de Lúmen</div>
+            </div>
+
+            <!-- Map Graphic Viewport -->
+            <div class="flex-1 relative bg-[#0f171b] p-3 overflow-hidden flex flex-col justify-between">
+              <!-- Background Map Illustration Sim -->
+              <div class="absolute inset-0 opacity-15 bg-[radial-gradient(#7ec4a8_1px,transparent_1px)] [background-size:16px_16px]"></div>
+
+              <!-- Ponto 1: Entrada -->
+              <div class="relative z-10 p-2 bg-[#142327ee] border border-[var(--teal-lumen)] rounded-xl">
+                <div class="flex justify-between items-center">
+                  <span class="text-[10px] font-bold text-white">Região 1: Entrada do Bosque</span>
+                  <span class="text-[8px] text-[var(--teal-lumen)]">100% Purificado</span>
+                </div>
+                <div class="text-[8px] text-[#7d918b] mt-1">Fases 1 e 2 · Taxa XP: 320/h</div>
+              </div>
+
+              <!-- Ponto 2: O Ninho Silvestre (Minichefe) -->
+              <div class="relative z-10 p-2 bg-[#231a29ee] border border-[var(--purple-eco)] rounded-xl mt-2">
+                <div class="flex justify-between items-center">
+                  <span class="text-[10px] font-bold text-white">Região 2: Ninho & Micélio</span>
+                  <span class="text-[8px] text-[var(--purple-eco)]">Boss Disponível</span>
+                </div>
+                <div class="text-[8px] text-[#9a89a6] mt-1">Câmara da Matriarca · Drops Raros</div>
+              </div>
+
+              <!-- Ponto 3: Santuário Antigo -->
+              <div class="relative z-10 p-2 bg-[#171b1eee] border border-[#3b4b52] rounded-xl mt-2 opacity-60">
+                <div class="flex justify-between items-center">
+                  <span class="text-[10px] font-bold text-[#8ea1a9]">Região 3: Santuário de Pedra</span>
+                  <span class="text-[8px] text-[#5e7078]">Bloqueado</span>
+                </div>
+                <div class="text-[8px] text-[#5a6a70] mt-1">Derrote o Lobo Alfa primeiro</div>
+              </div>
+
+              <!-- Detail Card do Ponto Selecionado -->
+              <div class="mt-auto pixel-box p-3 bg-[#131d22] border-[var(--teal-lumen)]">
+                <div class="text-[11px] font-bold text-white mb-1">Entrada do Bosque (Fase 1)</div>
+                <div class="text-[9px] text-[#8ea49d] mb-2">Ideal para coletar cascas de musgo e sementes iniciais sem risco de morte da party.</div>
+                <div class="flex justify-between items-center text-[9px] bg-[#0c1316] p-1.5 rounded">
+                  <span class="text-[var(--gold-runa)]">Drop: Adaga de Luz</span>
+                  <span class="text-[var(--teal-lumen)]">Ouro: 160/h</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#0d1316] border-t border-[#1e2a30]">
+              <button class="w-full py-2.5 bg-[#255243] hover:bg-[#306856] text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5">
+                INICIAR NESTA REGIÃO
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-3 text-xs text-[var(--text-muted)] space-y-1">
+            <p><strong>Vantagem:</strong> Excelente sensação de mapa geográfico e visualização do progresso de purificação do mundo.</p>
+            <p><strong>Ação:</strong> Toque na região para ler drops e stats antes de viajar.</p>
+          </div>
+        </div>
+
+        <!-- OPÇÃO 2C: CARROSSEL DE FICHAS -->
+        <div class="bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-2xl p-4 flex flex-col items-center">
+          <div class="w-full flex justify-between items-center mb-3">
+            <div>
+              <span class="pixel-badge bg-[#36273b] text-[var(--purple-eco)] border border-[#5d3f66]">Opção 2C</span>
+              <h3 class="text-sm font-bold text-white mt-1">Carrossel de Expedição</h3>
+            </div>
+            <span class="text-[10px] text-[var(--text-muted)]">Cards Ricos</span>
+          </div>
+
+          <!-- Mobile Frame -->
+          <div class="phone-frame">
+            <div class="notch"><span>10:30</span><span>●●● 100%</span></div>
+            <div class="p-3 border-b border-[#202c33] bg-[#131b20]">
+              <div class="text-[9px] text-[var(--purple-eco)] uppercase font-bold">Registro de Fases</div>
+              <div class="text-xs font-bold text-white">Escolha sua Batalha</div>
+            </div>
+
+            <!-- Ficha Grande Central -->
+            <div class="flex-1 p-3 flex flex-col justify-center bg-[#0e1417]">
+              <div class="pixel-box p-4 bg-gradient-to-b from-[#18272b] to-[#121c20] border-2 border-[var(--teal-lumen)] shadow-xl relative">
+                <!-- Tag de Dificuldade -->
+                <span class="absolute top-3 right-3 pixel-badge bg-[#193d31] text-[var(--teal-lumen)] border border-[#306150]">Fase 2 de 5</span>
+
+                <div class="text-xs text-[var(--text-muted)]">Subfase 2.1</div>
+                <div class="text-sm font-extrabold text-white mt-0.5">Clareira Micelial</div>
+                <div class="text-[9px] text-[var(--teal-lumen)] font-semibold mt-1">Ameaça Principal: Xamã de Esporos</div>
+
+                <!-- Preview Visual do Inimigo -->
+                <div class="w-full h-24 bg-[#0a1013] border border-[#21353a] rounded-lg my-3 flex items-center justify-center">
+                  <div class="text-center">
+                    <span class="text-3xl">🍄</span>
+                    <div class="text-[8px] text-[#7d9990] mt-1">Inimigo de suporte que cura e gera névoa</div>
+                  </div>
+                </div>
+
+                <!-- Recompensas esperadas -->
+                <div class="text-[9px] font-bold text-white mb-1">Drops Típicos:</div>
+                <div class="grid grid-cols-3 gap-1 text-[8px] text-center">
+                  <span class="bg-[#192429] p-1 rounded text-[#b3c7c0]">Espada Musgo</span>
+                  <span class="bg-[#192429] p-1 rounded text-[var(--gold-runa)]">Couraça Javali</span>
+                  <span class="bg-[#192429] p-1 rounded text-[#81bda8]">Esporo Puro</span>
+                </div>
+              </div>
+
+              <!-- Indicador de Carrossel -->
+              <div class="flex justify-center gap-1.5 mt-3">
+                <span class="w-2 h-2 rounded-full bg-[#27383f]"></span>
+                <span class="w-4 h-2 rounded-full bg-[var(--teal-lumen)]"></span>
+                <span class="w-2 h-2 rounded-full bg-[#27383f]"></span>
+                <span class="w-2 h-2 rounded-full bg-[#27383f]"></span>
+                <span class="w-2 h-2 rounded-full bg-[#27383f]"></span>
+              </div>
+            </div>
+
+            <div class="p-3 bg-[#0d1316] border-t border-[#1e2a30]">
+              <button class="w-full py-2.5 bg-gradient-to-r from-[#205241] to-[#1e4659] text-white font-bold rounded-xl text-xs flex items-center justify-center gap-1.5">
+                BATALHAR NESTA FASE
+              </button>
+            </div>
+          </div>
+
+          <div class="mt-3 text-xs text-[var(--text-muted)] space-y-1">
+            <p><strong>Vantagem:</strong> Cartões com informações completas e visual rico sobre as criaturas e recompensas de cada local.</p>
+            <p><strong>Ação:</strong> Deslize horizontal entre os capítulos e fases.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
