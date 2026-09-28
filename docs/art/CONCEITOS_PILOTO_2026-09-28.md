@@ -4,7 +4,7 @@
 
 ## Entregas atuais
 
-- [Grade de prévia dos 30 ícones](./previews/item_icons_32x32_contact_sheet.png) — 15 itens atuais e 15 candidatos visuais; PNGs individuais em [`assets/sprites/items/`](../../assets/sprites/items/).
+- [Grade de prévia dos 30 ícones](./previews/item_icons_32x32_contact_sheet.png) — lote visual do catálogo anterior (15 runtime + 15 candidatos), não mapeado ao catálogo canônico v0.4; PNGs em [`assets/sprites/items/`](../../assets/sprites/items/).
 - [Catálogo visual usado pela interface](../../data/items/item_visual_catalog.json) — inclui estado `mvp` ou `visual_candidate`; não substitui a tabela de loot.
 - [Tela de inventário em grade](../../scenes/inventory/InventoryScreen.tscn) — acessível pelo botão “Itens” na tela principal; só permite equipar itens MVP que realmente estejam na mochila.
 - [Matriarca do Micélio 64×64](./previews/matriarca_micelio_64x64_preview_8x.png) — uma pose neutra candidata. O Guardião-Cervo continua usando o Golden aprovado e sua folha existente, sem redesenho.

@@ -1,8 +1,13 @@
 # Balanceamento — índice
 
+- **Modelo ECON-1:** [economia inicial, custos propostos e diagnóstico estático](ECONOMY_MODEL.md). Valores quantitativos são hipóteses; o documento não altera o runtime.
+- **Estrutura canônica de balanceamento:** [atributos compartilhados e registros de heróis, inimigos, equipamentos e efeitos](COMBAT_BALANCE_STANDARD.md). Estrutura aprovada para design; números e integração permanecem separados.
+- **Simulações reproduzíveis:** [baseline do runtime legado](../../tools/economy/simulate_econ1_first_clear.py) e [encontros, materiais, Ferreiro e TTK do Capítulo 1](../../tools/economy/simulate_chapter1_balance.py).
+- **Materiais importados:** [Balance Pack v0.1/v0.2 e regras de adaptação](../../documents/references/balance_pack_v0.1/README.md); referência, não fonte canônica de números.
+- **Fonte canônica de combate e loot:** [TASKBAR Sistema Completo v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md), aprovado para design; integração e validação/runtime seguem a roadmap.
 - **Números runtime:** [`data/items/items.json`](../../data/items/items.json), [`data/enemies/enemies.json`](../../data/enemies/enemies.json) e [`data/stages/stages.json`](../../data/stages/stages.json). Os arquivos de dados prevalecem sobre texto de conceito.
 - **Regras/metodologia:** [guia avançado de economia, pacing e balanceamento](../../documents/GUIA_AVANCADO_ECONOMIA_PACING_BALANCEAMENTO_POCKET_HERO.md).
 - **Achados registrados:** [balance findings](../qa/BALANCE_FINDINGS.md).
-- **Simulação/telemetria futura:** roadmap e [arquitetura ARGOS](../qa/ARGOS_ARCHITECTURE.md).
+- **Próximas simulações/telemetria:** [modelo ECON-1](ECONOMY_MODEL.md), roadmap e [arquitetura ARGOS](../qa/ARGOS_ARCHITECTURE.md).
 
 Não há uma fórmula de dano canônica separada ainda. Registrar hipótese, fórmula, fontes, saídas e método de medição antes de congelar novos números.

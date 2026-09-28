@@ -44,13 +44,13 @@ As cores específicas, proporções, margens e limites de cores continuam vindo 
 
 O conteúdo da tabela é uma proposta de linguagem. Não adiciona automaticamente telas, bestiário, equipamentos visíveis nos heróis ou novos sistemas ao jogo.
 
-As ideias individuais e os prompts prontos para gerar conceitos de monstros, elite, chefes e os 30 itens estão organizados por pasta em [`conceitos/README.md`](./conceitos/README.md). Contratos e Golden aprovados continuam prevalecendo sobre essas fichas.
+As fichas visuais existentes documentam assets legados; a base canônica v0.4 rege as identidades atuais de inimigos e itens. Use o índice de arte e os catálogos canônicos antes de gerar novos conceitos. Contratos Golden de assets correspondentes continuam prevalecendo para identidade já aprovada.
 
 ## 4. Sistema para ícones
 
 ### Itens
 
-- Produzir **30 ícones de item** após confirmar a necessidade e os tamanhos na tela de inventário: os 15 itens já existentes e os 15 candidatos novos do Capítulo 1 em [`../04_content/chapters/chapter_01/OVERVIEW.md`](../04_content/chapters/chapter_01/OVERVIEW.md).
+- Criar/atualizar **30 ícones de item** com base nas 5 Armas, 5 Secundários, 5 Armaduras, 10 Acessórios e 5 Ecos do [catálogo v0.4](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md); os 30 ícones existentes pertencem ao catálogo visual legado até revisão e mapeamento.
 - Manter o desenho-base do item separado de moldura de raridade, estado equipado e seleção. A interface pode compor esses estados sem gerar quatro cópias coloridas do mesmo ícone.
 - Variar primeiro a forma e o material. Uma Lendária deve continuar reconhecível sem moldura colorida.
 - Nesta proposta, não desenhar nome, sigla ou texto dentro do canvas. Nome, raridade e comparação são texto/UI fora do sprite.
@@ -81,7 +81,7 @@ O rascunho de conteúdo prevê oito famílias de inimigo comum, Lobo Alfa de Lú
 
 ## 6. Lote-piloto e autorização de produção
 
-Rafael escolheu a grade visual do inventário e definiu 32×32 para os ícones em 2026-09-28. Também autorizou a produção visual direta dos 30 ícones. O lote foi criado com contratos e manifestos e passou pelo linter técnico; auditoria artística independente e revisão mobile continuam pendentes. Os 15 candidatos não foram adicionados aos dados de loot/gameplay.
+Rafael escolheu a grade visual do inventário e definiu 32×32 para os ícones em 2026-09-28. Os 30 ícones existentes foram produzidos para o catálogo anterior. Com a aprovação do cânone v0.4, auditoria visual e mapeamento com os novos IDs passam a ser necessários antes da integração. Linter técnico anterior não comprova correspondência visual com o catálogo atual.
 
 O piloto para outras famílias de assets continua necessário antes de lotes de skills, fases e novas famílias animadas:
 

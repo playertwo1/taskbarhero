@@ -1,8 +1,8 @@
 # Itens — conceitos visuais
 
-30 fichas de ícone do catálogo: 15 existentes no MVP e 15 candidatos novos. Ideias de forma/material são propostas visuais; efeitos não são redefinidos aqui.
+As fichas abaixo e seus sprites formam o conjunto visual legado do catálogo anterior (15 itens runtime + 15 candidatos). Eles não correspondem automaticamente aos 30 itens da base canônica v0.4. Use o [catálogo canônico de itens](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md) para IDs, nomes e identidade; novas fichas visuais devem ser criadas a partir dele.
 
-Rafael escolheu a grade de inventário e definiu o tamanho final 32×32 em 2026-09-28. Os 30 PNGs e seus manifestos estão em [`assets/sprites/items/`](../../../../assets/sprites/items/), com a [prévia do catálogo](../../previews/item_icons_32x32_contact_sheet.png). Os 15 candidatos permanecem visuais e não foram adicionados ao gameplay.
+Rafael escolheu a grade de inventário e definiu o tamanho final 32×32 em 2026-09-28. Os 30 PNGs e seus manifestos legados estão em [`assets/sprites/items/`](../../../../assets/sprites/items/), com a [prévia do catálogo anterior](../../previews/item_icons_32x32_contact_sheet.png). Preserve-os; não os atribua a IDs novos sem revisão visual e mapeamento explícito.
 
 - [Adaga de Luz](./adaga_luz.md) — arma
 
@@ -63,4 +63,3 @@ Rafael escolheu a grade de inventário e definiu o tamanho final 32×32 em 2026-
 - [Semente Vital](./semente_vital.md) — amuleto
 
 - [Túnica de Folhas](./tunica_folhas.md) — armadura
-

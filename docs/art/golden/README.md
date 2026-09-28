@@ -6,10 +6,10 @@ Golden é uma referência interna congelada, com asset, hash, contrato, licença
 
 Rafael aprovou os quatro Golden visuais e autorizou refazer o restante do MVP com base neles em 2026-09-27. Os quatro slots abaixo estão completos e o lote de sprites do MVP foi produzido. O ART-0 está **PASS para iniciar a produção**; isso não significa que cada sprite final passou por auditoria visual independente ou validação mobile.
 
-- [ ] **GOLDEN HERO** — herói aprovado, contrato e hash fixos.
-- [ ] **GOLDEN ENEMY** — inimigo aprovado, contrato e hash fixos.
-- [ ] **GOLDEN BOSS** — boss aprovado, contrato e hash fixos.
-- [ ] **GOLDEN ANIMATION** — animação curta aprovada, com frames, timing e hashes registrados.
+- [x] **GOLDEN HERO** — herói aprovado, contrato e hash fixos.
+- [x] **GOLDEN ENEMY** — inimigo aprovado, contrato e hash fixos.
+- [x] **GOLDEN BOSS** — boss aprovado, contrato e hash fixos.
+- [x] **GOLDEN ANIMATION** — animação curta aprovada, com frames, timing e hashes registrados.
 
 **Estado atual: ART-0 PASS / SPRITES DO MVP PRODUZIDOS / QA DE RELEASE EM ANDAMENTO.** Rafael aprovou os exemplos visuais de Bastião, Geleia de Lúmen, Guardião-Cervo e animação idle em 2026-09-27, para uso pessoal, e autorizou aplicar essa direção ao restante dos sprites. Os hashes estão fixados abaixo. A aprovação Golden fixa a direção visual; cada folha final ainda precisa de auditoria visual e revisão mobile antes de receber aceite de release.
 

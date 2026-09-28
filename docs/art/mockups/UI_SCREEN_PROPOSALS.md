@@ -57,7 +57,7 @@ A porta de entrada do aplicativo no Android.
 
 ## 4. Loadout e Preparação de Combate
 
-Tela onde o jogador prepara a equipe antes de iniciar uma fase desafiadora: escolher a formação dos 3 heróis, as 2 skills ativas por herói e os 3 equipamentos de cada um (15 slots no total).
+Tela conceitual onde o jogador prepara a equipe antes de iniciar uma fase desafiadora: escolher a formação dos 3 heróis, as 2 skills ativas por herói e o loadout de 6 posições por herói (18 posições no total, incluindo Echo).
 
 | Opção | Nome | Conceito Visual | Filosofia de UX / Trade-off |
 | :--- | :--- | :--- | :--- |

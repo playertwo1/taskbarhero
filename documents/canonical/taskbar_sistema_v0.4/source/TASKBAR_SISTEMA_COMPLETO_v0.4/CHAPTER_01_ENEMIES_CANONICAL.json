@@ -1,0 +1,1675 @@
+{
+  "schema_version": "0.4",
+  "chapter_id": "CHAPTER_01",
+  "enemy_count": 17,
+  "enemies": [
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EN_C1_001",
+        "display_name": "Geleia de Lúmen",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "LUMEN_SLIME",
+        "rank": "NORMAL",
+        "archetype": "STANDARD",
+        "tags": [
+          "LUMEN",
+          "CREATURE"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "STANDARD_NORMAL",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "NORMAL_STANDARD",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "LUMEN_SLIME",
+        "role": "tutorial / pressão simples",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 1.0
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 3,
+          "max": 6,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_LUMEN_RESIDUE",
+            "chance": 0.65,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 0.1,
+          "rarity_table_id": "RARITY_C1_NORMAL",
+          "item_power_profile": "IP_C1_NORMAL",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_R_001"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_R_001",
+            "chance": 0.02,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": {
+          "item_id": "ITEM_E_001",
+          "base_chance": 0.0035,
+          "bestiary_progression": true,
+          "final_tier_grant_once_if_missing": true
+        },
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EN_C1_001",
+        "bestiary_profile_id": "LUMEN_SLIME"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EN_C1_002",
+        "display_name": "Espírito de Raiz",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "ROOT_SPIRIT",
+        "rank": "NORMAL",
+        "archetype": "CONTROLLER",
+        "tags": [
+          "NATURE",
+          "SPIRIT",
+          "CONTROL"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "CONTROLLER_NORMAL",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "NORMAL_CONTROLLER",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "ROOT_SPIRIT",
+        "role": "Root / aprisionamento",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 1.3
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 4,
+          "max": 7,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_ANCESTRAL_FIBER",
+            "chance": 0.75,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 0.11,
+          "rarity_table_id": "RARITY_C1_NORMAL",
+          "item_power_profile": "IP_C1_NORMAL",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_S_003",
+            "ITEM_R_009"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_S_003",
+            "chance": 0.015,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_R_009",
+            "chance": 0.0015,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": null,
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EN_C1_002",
+        "bestiary_profile_id": "ROOT_SPIRIT"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EN_C1_003",
+        "display_name": "Gremlin de Folhas",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "LEAF_GREMLIN",
+        "rank": "NORMAL",
+        "archetype": "ASSASSIN",
+        "tags": [
+          "GREMLIN",
+          "ASSASSIN"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "ASSASSIN_NORMAL",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "NORMAL_ASSASSIN",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "LEAF_GREMLIN",
+        "role": "pressão de backline",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 1.25
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 4,
+          "max": 8,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_ANCESTRAL_FIBER",
+            "chance": 0.7,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 0.12,
+          "rarity_table_id": "RARITY_C1_NORMAL",
+          "item_power_profile": "IP_C1_NORMAL",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_W_002",
+            "ITEM_A_001"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_W_002",
+            "chance": 0.02,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_A_001",
+            "chance": 0.015,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": null,
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EN_C1_003",
+        "bestiary_profile_id": "LEAF_GREMLIN"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EN_C1_004",
+        "display_name": "Javali de Musgo",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "MOSS_BOAR",
+        "rank": "NORMAL",
+        "archetype": "HEAVY",
+        "tags": [
+          "BEAST",
+          "HEAVY",
+          "STAGGER"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "HEAVY_NORMAL",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "NORMAL_HEAVY",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "MOSS_BOAR",
+        "role": "investida / alto HP / Stagger",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 1.4
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 5,
+          "max": 8,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_DENSE_MOSS",
+            "chance": 0.85,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 0.12,
+          "rarity_table_id": "RARITY_C1_NORMAL",
+          "item_power_profile": "IP_C1_NORMAL",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_W_003",
+            "ITEM_A_002"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_W_003",
+            "chance": 0.02,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_A_002",
+            "chance": 0.015,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": null,
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EN_C1_004",
+        "bestiary_profile_id": "MOSS_BOAR"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EN_C1_005",
+        "display_name": "Mariposa Luminosa",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "LUMEN_MOTH",
+        "rank": "NORMAL",
+        "archetype": "SUPPORT",
+        "tags": [
+          "LUMEN",
+          "FLYING",
+          "SUPPORT"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "SUPPORT_NORMAL",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "NORMAL_SUPPORT",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "LUMEN_MOTH",
+        "role": "buff de aliados",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 1.25
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 4,
+          "max": 7,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_LUMEN_RESIDUE",
+            "chance": 0.7,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 0.11,
+          "rarity_table_id": "RARITY_C1_NORMAL",
+          "item_power_profile": "IP_C1_NORMAL",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_R_005"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_R_005",
+            "chance": 0.01,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": {
+          "item_id": "ITEM_E_002",
+          "base_chance": 0.0035,
+          "bestiary_progression": true,
+          "final_tier_grant_once_if_missing": true
+        },
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EN_C1_005",
+        "bestiary_profile_id": "LUMEN_MOTH"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EN_C1_006",
+        "display_name": "Cogumelo Sonolento",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "DROWSY_MUSHROOM",
+        "rank": "NORMAL",
+        "archetype": "CONTROLLER",
+        "tags": [
+          "FUNGUS",
+          "CONTROL",
+          "ZONE"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "CONTROLLER_NORMAL",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "NORMAL_CONTROLLER",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "DROWSY_MUSHROOM",
+        "role": "Slow / zona",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 1.3
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 3,
+          "max": 7,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_ANCESTRAL_FIBER",
+            "chance": 0.8,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 0.1,
+          "rarity_table_id": "RARITY_C1_NORMAL",
+          "item_power_profile": "IP_C1_NORMAL",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_R_002",
+            "ITEM_S_002"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_R_002",
+            "chance": 0.02,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_S_002",
+            "chance": 0.0125,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": null,
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EN_C1_006",
+        "bestiary_profile_id": "DROWSY_MUSHROOM"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EN_C1_007",
+        "display_name": "Trepa-Cadáver",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "CORPSE_VINE",
+        "rank": "NORMAL",
+        "archetype": "HEAVY",
+        "tags": [
+          "PLANT",
+          "CORRUPTED",
+          "HEAVY"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "HEAVY_NORMAL",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "NORMAL_HEAVY",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "CORPSE_VINE",
+        "role": "retorno se não finalizado",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 1.4
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 5,
+          "max": 8,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_ANCESTRAL_FIBER",
+            "chance": 0.85,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 0.12,
+          "rarity_table_id": "RARITY_C1_NORMAL",
+          "item_power_profile": "IP_C1_NORMAL",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_R_009",
+            "ITEM_R_007"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_R_009",
+            "chance": 0.0125,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_R_007",
+            "chance": 0.01,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": null,
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EN_C1_007",
+        "bestiary_profile_id": "CORPSE_VINE"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EN_C1_008",
+        "display_name": "Caracol Cristalino",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "CRYSTAL_SNAIL",
+        "rank": "NORMAL",
+        "archetype": "HEAVY",
+        "tags": [
+          "CRYSTAL",
+          "HEAVY",
+          "DEFENSIVE"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "HEAVY_NORMAL",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "NORMAL_HEAVY",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "CRYSTAL_SNAIL",
+        "role": "defesa / janela vulnerável",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 1.4
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 5,
+          "max": 8,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_GREEN_CRYSTAL",
+            "chance": 0.9,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 0.13,
+          "rarity_table_id": "RARITY_C1_NORMAL",
+          "item_power_profile": "IP_C1_NORMAL",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_A_003",
+            "ITEM_R_005"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_A_003",
+            "chance": 0.02,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_R_005",
+            "chance": 0.015,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": null,
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EN_C1_008",
+        "bestiary_profile_id": "CRYSTAL_SNAIL"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EN_C1_009",
+        "display_name": "Raposa Oca",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "HOLLOW_FOX",
+        "rank": "NORMAL",
+        "archetype": "ASSASSIN",
+        "tags": [
+          "HOLLOW",
+          "ASSASSIN",
+          "ILLUSION"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "ASSASSIN_NORMAL",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "NORMAL_ASSASSIN",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "HOLLOW_FOX",
+        "role": "ilusões / duplicatas",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 1.25
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 5,
+          "max": 8,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_LUMEN_RESIDUE",
+            "chance": 0.75,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 0.14,
+          "rarity_table_id": "RARITY_C1_NORMAL",
+          "item_power_profile": "IP_C1_NORMAL",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_W_004",
+            "ITEM_R_006",
+            "ITEM_R_004"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_R_006",
+            "chance": 0.02,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_R_004",
+            "chance": 0.01,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": null,
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EN_C1_009",
+        "bestiary_profile_id": "HOLLOW_FOX"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EN_C1_010",
+        "display_name": "Sapinho do Lúmen",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "LUMEN_FROG",
+        "rank": "NORMAL",
+        "archetype": "STANDARD",
+        "tags": [
+          "LUMEN",
+          "MOBILE",
+          "CREATURE"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "STANDARD_NORMAL",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "NORMAL_STANDARD",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "LUMEN_FROG",
+        "role": "mobilidade / interrupção",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 1.0
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 3,
+          "max": 7,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_LUMEN_RESIDUE",
+            "chance": 0.65,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 0.11,
+          "rarity_table_id": "RARITY_C1_NORMAL",
+          "item_power_profile": "IP_C1_NORMAL",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_R_003",
+            "ITEM_R_001"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_R_003",
+            "chance": 0.02,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_R_001",
+            "chance": 0.01,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": null,
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EN_C1_010",
+        "bestiary_profile_id": "LUMEN_FROG"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EL_C1_001",
+        "display_name": "Geleia Anciã",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "LUMEN_SLIME",
+        "rank": "ELITE",
+        "archetype": "STANDARD",
+        "tags": [
+          "LUMEN",
+          "CREATURE",
+          "ELITE"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "STANDARD_ELITE",
+        "damage_types": [
+          "ARCANE"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "ELITE_STANDARD",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "ANCIENT_SLIME",
+        "role": "adds / sustain",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 2.5
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 25,
+          "max": 40,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_LUMEN_RESIDUE",
+            "chance": 1.0,
+            "quantity_min": 1,
+            "quantity_max": 2
+          },
+          {
+            "material_id": "MAT_C1_CORRUPTED_ESSENCE",
+            "chance": 0.25,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 1.0,
+          "rarity_table_id": "RARITY_C1_ELITE",
+          "item_power_profile": "IP_C1_ELITE",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_R_001",
+            "ITEM_E_001"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true,
+          "additional_roll_chance": 0.2
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_E_001",
+            "chance": 0.08,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_R_001",
+            "chance": 0.12,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": {
+          "item_id": "ITEM_E_001",
+          "base_chance": 0.08,
+          "bestiary_progression": true,
+          "final_tier_grant_once_if_missing": true
+        },
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EL_C1_001",
+        "bestiary_profile_id": "LUMEN_SLIME_ELITE"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EL_C1_002",
+        "display_name": "Javali Cicatrizado",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "MOSS_BOAR",
+        "rank": "ELITE",
+        "archetype": "HEAVY",
+        "tags": [
+          "BEAST",
+          "HEAVY",
+          "STAGGER",
+          "ELITE"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "HEAVY_ELITE",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "ELITE_HEAVY",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "SCARRED_BOAR",
+        "role": "Heavy / Stagger",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 3.5
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 30,
+          "max": 45,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_DENSE_MOSS",
+            "chance": 1.0,
+            "quantity_min": 1,
+            "quantity_max": 2
+          },
+          {
+            "material_id": "MAT_C1_CORRUPTED_ESSENCE",
+            "chance": 0.3,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 1.0,
+          "rarity_table_id": "RARITY_C1_ELITE",
+          "item_power_profile": "IP_C1_ELITE",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_W_003",
+            "ITEM_A_004"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true,
+          "additional_roll_chance": 0.2
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_W_003",
+            "chance": 0.12,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_A_004",
+            "chance": 0.07,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": null,
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EL_C1_002",
+        "bestiary_profile_id": "MOSS_BOAR_ELITE"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "EL_C1_003",
+        "display_name": "Gremlin Espinhento",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "LEAF_GREMLIN",
+        "rank": "ELITE",
+        "archetype": "ASSASSIN",
+        "tags": [
+          "GREMLIN",
+          "ASSASSIN",
+          "ELITE"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "ASSASSIN_ELITE",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "ELITE_ASSASSIN",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "THORN_GREMLIN",
+        "role": "Assassin / pressão",
+        "target_rules": "BACKLINE_PRIORITY",
+        "encounter_cost": 3.125
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 25,
+          "max": 45,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_ANCESTRAL_FIBER",
+            "chance": 1.0,
+            "quantity_min": 1,
+            "quantity_max": 2
+          },
+          {
+            "material_id": "MAT_C1_CORRUPTED_ESSENCE",
+            "chance": 0.25,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 1.0,
+          "rarity_table_id": "RARITY_C1_ELITE",
+          "item_power_profile": "IP_C1_ELITE",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_W_002",
+            "ITEM_A_001"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true,
+          "additional_roll_chance": 0.2
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_W_002",
+            "chance": 0.12,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_A_001",
+            "chance": 0.1,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": null,
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": null,
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "EL_C1_003",
+        "bestiary_profile_id": "LEAF_GREMLIN_ELITE"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "MB_C1_001",
+        "display_name": "Rainha das Geleias",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "LUMEN_SLIME_QUEEN",
+        "rank": "MINIBOSS",
+        "archetype": "STANDARD",
+        "tags": [
+          "LUMEN",
+          "MINIBOSS",
+          "SUMMONER"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "STANDARD_MINIBOSS",
+        "damage_types": [
+          "ARCANE"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "MINIBOSS",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "SLIME_QUEEN",
+        "role": "adds / gestão de campo",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 7.0
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 80,
+          "max": 110,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_LUMEN_RESIDUE",
+            "chance": 1.0,
+            "quantity_min": 2,
+            "quantity_max": 4
+          },
+          {
+            "material_id": "MAT_C1_CORRUPTED_ESSENCE",
+            "chance": 1.0,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 1.0,
+          "rarity_table_id": "RARITY_C1_MINIBOSS",
+          "item_power_profile": "IP_C1_MINIBOSS",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_R_001",
+            "ITEM_E_001",
+            "ITEM_S_004"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true,
+          "additional_roll_chance": 0.35
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_R_001",
+            "chance": 0.25,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_E_001",
+            "chance": 0.2,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_S_004",
+            "chance": 0.05,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": {
+          "item_id": "ITEM_E_001",
+          "base_chance": 0.2,
+          "bestiary_progression": false,
+          "final_tier_grant_once_if_missing": false
+        },
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": {
+          "enabled": true,
+          "chance": 0.25,
+          "options": 3,
+          "picks": 1,
+          "source_pool": "POOL_C1_MINIBOSS"
+        },
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "MB_C1_001",
+        "bestiary_profile_id": "SLIME_QUEEN"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "MB_C1_002",
+        "display_name": "Javali da Ponte",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "BRIDGE_BOAR",
+        "rank": "MINIBOSS",
+        "archetype": "HEAVY",
+        "tags": [
+          "BEAST",
+          "MINIBOSS",
+          "STAGGER"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "HEAVY_MINIBOSS",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "MINIBOSS",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "BRIDGE_BOAR",
+        "role": "investidas / controle de espaço",
+        "target_rules": "DEFAULT",
+        "encounter_cost": 9.8
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 90,
+          "max": 130,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_DENSE_MOSS",
+            "chance": 1.0,
+            "quantity_min": 2,
+            "quantity_max": 4
+          },
+          {
+            "material_id": "MAT_C1_CORRUPTED_ESSENCE",
+            "chance": 1.0,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 1.0,
+          "rarity_table_id": "RARITY_C1_MINIBOSS",
+          "item_power_profile": "IP_C1_MINIBOSS",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_W_003",
+            "ITEM_A_004",
+            "ITEM_A_003"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true,
+          "additional_roll_chance": 0.35
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_W_003",
+            "chance": 0.2,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_A_004",
+            "chance": 0.15,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_A_003",
+            "chance": 0.08,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": null,
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": {
+          "enabled": true,
+          "chance": 0.25,
+          "options": 3,
+          "picks": 1,
+          "source_pool": "POOL_C1_MINIBOSS"
+        },
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "MB_C1_002",
+        "bestiary_profile_id": "BRIDGE_BOAR"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "MB_C1_003",
+        "display_name": "O Espinheiro",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "THE_THORNBUSH",
+        "rank": "MINIBOSS",
+        "archetype": "CONTROLLER",
+        "tags": [
+          "PLANT",
+          "MINIBOSS",
+          "CONTROL",
+          "ZONE"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_DYNAMIC",
+        "stats_profile": "CONTROLLER_MINIBOSS",
+        "damage_types": [
+          "PHYSICAL"
+        ],
+        "resistance_profile": "C1_DEFAULT",
+        "stagger_profile": "MINIBOSS",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "THE_THORNBUSH",
+        "role": "ocupação progressiva da arena",
+        "target_rules": "AREA_CONTROL",
+        "encounter_cost": 9.1
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 90,
+          "max": 130,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_ANCESTRAL_FIBER",
+            "chance": 1.0,
+            "quantity_min": 2,
+            "quantity_max": 4
+          },
+          {
+            "material_id": "MAT_C1_CORRUPTED_ESSENCE",
+            "chance": 1.0,
+            "quantity_min": 1,
+            "quantity_max": 1
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 1.0,
+          "rarity_table_id": "RARITY_C1_MINIBOSS",
+          "item_power_profile": "IP_C1_MINIBOSS",
+          "regional_pool_id": "POOL_C1_REGIONAL",
+          "personal_pool": [
+            "ITEM_R_009",
+            "ITEM_R_008",
+            "ITEM_E_003"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true,
+          "additional_roll_chance": 0.35
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_R_009",
+            "chance": 0.18,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_R_008",
+            "chance": 0.12,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_E_003",
+            "chance": 0.07,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": {
+          "item_id": "ITEM_E_003",
+          "base_chance": 0.07,
+          "bestiary_progression": false,
+          "final_tier_grant_once_if_missing": false
+        },
+        "memory": null,
+        "guaranteed_drops": [],
+        "reward_choice": {
+          "enabled": true,
+          "chance": 0.25,
+          "options": 3,
+          "picks": 1,
+          "source_pool": "POOL_C1_MINIBOSS"
+        },
+        "pity": {
+          "profile_id": null
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "MB_C1_003",
+        "bestiary_profile_id": "THE_THORNBUSH"
+      }
+    },
+    {
+      "schema_version": "0.4",
+      "identity": {
+        "id": "BOSS_C1_001",
+        "display_name": "Guardião-Cervo de Pedra",
+        "chapter_id": "CHAPTER_01",
+        "family_id": "STONE_GUARDIAN_STAG",
+        "rank": "BOSS",
+        "archetype": "HEAVY",
+        "tags": [
+          "GUARDIAN",
+          "BOSS",
+          "LUMEN",
+          "STONE"
+        ]
+      },
+      "combat": {
+        "content_level_profile": "C1_BOSS",
+        "stats_profile": "BOSS_C1_GUARDIAN",
+        "damage_types": [
+          "PHYSICAL",
+          "ARCANE"
+        ],
+        "resistance_profile": "BOSS_C1_GUARDIAN",
+        "stagger_profile": "BOSS",
+        "skills": [],
+        "status_immunities": []
+      },
+      "ai": {
+        "behavior_profile": "GUARDIAN_STAG",
+        "role": "3 fases / Guardião corrompido",
+        "target_rules": "BOSS_SCRIPTED",
+        "encounter_cost": 20.0
+      },
+      "loot": {
+        "gold": {
+          "enabled": true,
+          "min": 250,
+          "max": 400,
+          "chance": 1.0
+        },
+        "materials": [
+          {
+            "material_id": "MAT_C1_CORRUPTED_ESSENCE",
+            "chance": 1.0,
+            "quantity_min": 1,
+            "quantity_max": 3
+          },
+          {
+            "material_id": "MAT_C1_GUARDIAN_SHARD",
+            "chance": 1.0,
+            "quantity_min": 1,
+            "quantity_max": 2
+          }
+        ],
+        "equipment": {
+          "enabled": true,
+          "chance": 1.0,
+          "rarity_table_id": "RARITY_C1_BOSS",
+          "item_power_profile": "IP_C1_BOSS",
+          "regional_pool_id": "POOL_C1_BOSS",
+          "personal_pool": [
+            "ITEM_A_005"
+          ],
+          "smart_loot": true,
+          "duplicate_protection": true,
+          "slot_pity_eligible": true,
+          "additional_roll_chance": 0.5
+        },
+        "signature_drops": [
+          {
+            "item_id": "ITEM_A_005",
+            "chance": 0.08,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          },
+          {
+            "item_id": "ITEM_E_005",
+            "chance": 0.01,
+            "quantity_min": 1,
+            "quantity_max": 1,
+            "independent_roll": true
+          }
+        ],
+        "echo": null,
+        "memory": {
+          "item_id": "ITEM_E_005",
+          "first_clear_guaranteed": true,
+          "repeat_chance": 0.01
+        },
+        "guaranteed_drops": [
+          {
+            "condition": "FIRST_CLEAR",
+            "type": "MATERIAL",
+            "id": "MAT_C1_HEART_FRAGMENT",
+            "quantity": 1
+          },
+          {
+            "condition": "FIRST_CLEAR",
+            "type": "MEMORY",
+            "id": "ITEM_E_005",
+            "quantity": 1
+          },
+          {
+            "condition": "FIRST_CLEAR",
+            "type": "MATERIAL",
+            "id": "MAT_C1_GUARDIAN_SHARD",
+            "quantity": 2
+          },
+          {
+            "condition": "FIRST_CLEAR",
+            "type": "EQUIPMENT",
+            "minimum_rarity": "EPIC",
+            "quantity": 1
+          }
+        ],
+        "reward_choice": {
+          "enabled": true,
+          "first_clear_guaranteed": true,
+          "repeat_chance": 0.35,
+          "options": 3,
+          "picks": 1,
+          "source_pool": "POOL_C1_BOSS"
+        },
+        "pity": {
+          "profile_id": "PITY_C1_GUARDIAN_RELIC"
+        }
+      },
+      "telemetry": {
+        "loot_profile_id": "BOSS_C1_001",
+        "bestiary_profile_id": "STONE_GUARDIAN_STAG"
+      }
+    }
+  ]
+}

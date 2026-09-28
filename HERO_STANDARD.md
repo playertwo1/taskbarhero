@@ -2,7 +2,7 @@
 
 ## Padrão Canônico dos Heróis
 
-**Status:** CANONICAL  
+**Status:** `APPROVED` — padrão canônico
 **Aplica-se a:** todos os heróis jogáveis  
 **Roster inicial:** 8 heróis  
 **Objetivo:** impedir inconsistências entre personagens e garantir profundidade suficiente de progressão.
@@ -16,13 +16,13 @@ Todo herói jogável deve possuir exatamente:
 | Sistema | Quantidade |
 | --- | --- |
 | Ataque básico | 1 |
-| Skills ativas | 6 |
+| Skills ativas | 6 no total, incluindo 1 Signature |
 | Passivas | 16 |
 | Builds principais | 3 |
 | Traits de especialização | 3 |
 | Tiers da árvore | 8 |
 | Slots de skill em combate | 2 |
-| Slots de equipamento | 10 |
+| Slots de equipamento | 6 (5 convencionais + 1 Echo) |
 | Níveis normais | 100 |
 | Níveis de Maestria | 10 |
 | Missões pessoais | 5 |
@@ -72,7 +72,7 @@ HERÓI
 │   └── Mastery 1–10
 │
 ├── Equipamento
-│   └── 10 slots
+│   └── 6 slots: Arma, Secundário, Armadura, Acessório I, Acessório II e Echo
 │
 ├── Lore
 │   └── 5 capítulos
@@ -85,13 +85,11 @@ HERÓI
 
 ### 3. Skills
 
-Cada herói possui:
-
-1 ataque básico + 5 skills normais + 1 Signature Skill.
+Cada herói possui **6 skills no total**: 5 skills normais + 1 Signature Skill. O ataque básico é separado e não conta como skill.
 
 Total:
 
-**7 ações próprias por personagem.**
+São 6 skills e 1 ataque básico: **7 ações próprias por personagem**.
 
 Com 8 personagens:
 
@@ -131,7 +129,7 @@ Deve:
 
 ### 4. Slots de habilidade
 
-O personagem pode possuir 6 skills, mas somente:
+O personagem possui 6 skills no total, incluindo a Signature, mas somente:
 
 **2 skills ativas equipadas simultaneamente.**
 
@@ -270,20 +268,18 @@ Respec deve existir através do Hub para incentivar experimentação.
 
 ### 9. Equipamentos
 
-Cada herói possui 10 slots.
+Cada herói possui **6 slots: 5 equipamentos convencionais e 1 Echo**.
 
 | Slot | Função |
 | --- | --- |
-| Weapon | principal fonte ofensiva |
-| Secondary | escudo, foco, ferramenta etc. |
-| Head | defesa/utilidade |
-| Chest | defesa principal |
-| Gloves | ataque/velocidade |
-| Boots | velocidade/esquiva |
-| Amulet | efeitos especiais |
-| Ring | especialização |
-| Relic | modificadores raros |
-| Echo | efeitos ligados à lore |
+| Arma | principal fonte ofensiva e identidade do herói |
+| Secundário | escudo, grimório, aljava, foco ou ferramenta, conforme o herói |
+| Armadura | defesa e atributos principais; consolida cabeça, peito, luvas e botas |
+| Acessório I | especialização de build |
+| Acessório II | especialização de build; usa a mesma família de itens do Acessório I |
+| Echo | efeitos especiais ligados à memória e à lore; família e catálogo próprios |
+
+Cada peça convencional deve justificar seu espaço por identidade ou suporte a uma build; evitar equipamentos que só acrescentem um pequeno bônus estatístico sem decisão interessante. As duas posições de acessório compartilham a família de equipamentos e aceitam itens compatíveis.
 
 #### Echo
 
@@ -530,7 +526,7 @@ Com oito heróis teremos:
 - 128 passivas
 - 24 Traits
 - 24 builds principais
-- 80 slots de equipamento
+- 48 posições de equipamento (6 por herói)
 - 40 missões pessoais
 - 32 formas visuais
 - 80 níveis de Maestria
@@ -580,8 +576,7 @@ Os outros documentos detalham os sistemas.
 
 ### 18. Definition of Done
 
-Um herói somente pode receber o status:  
-`HERO_DESIGN_COMPLETE`
+Um herói somente pode receber o status `PASS`
 
 quando possuir:
 - identidade;
@@ -589,13 +584,12 @@ quando possuir:
 - mecânica central;
 - fraqueza;
 - ataque básico;
-- 6 skills;
-- Signature Skill;
+- 6 skills no total, incluindo 1 Signature Skill;
 - 16 passivas;
 - 3 Traits;
 - 3 builds;
 - árvore T0–T7;
-- 10 slots compatíveis;
+- 6 slots compatíveis (5 equipamentos convencionais + 1 Echo);
 - pelo menos 3 itens exclusivos;
 - 5 capítulos de lore;
 - 4 estágios visuais;
@@ -604,7 +598,7 @@ quando possuir:
 - números iniciais de balanceamento.
 
 Enquanto qualquer item estiver ausente:  
-`HERO_DESIGN_WIP`
+`DESIGN`
 
 ---
 

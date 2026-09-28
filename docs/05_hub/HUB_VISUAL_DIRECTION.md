@@ -4,9 +4,9 @@
 
 ## Referência base escolhida
 
-Rafael escolheu como base de composição a imagem [Refúgio da Vigília com party e serviços](../../art/mockups/hub_environment_concepts_v003/07_refugio_party_e_servicos.png), em 2026-09-28.
+Rafael escolheu como base de composição a imagem [Refúgio da Vigília com party e serviços](../art/mockups/hub_environment_concepts_v003/07_refugio_party_e_servicos.png), em 2026-09-28.
 
-Para orientar a tela mobile, existe também o estudo [Composição mobile retrato](../../art/mockups/hub_environment_concepts_v004/08_refugio_mobile_retrato.png). Ele transpõe a leitura da base para a proporção vertical; a imagem horizontal v003 continua sendo a referência original escolhida.
+Para orientar a tela mobile, existe também o estudo [Composição mobile retrato](../art/mockups/hub_environment_concepts_v004/08_refugio_mobile_retrato.png). Ele transpõe a leitura da base para a proporção vertical; a imagem horizontal v003 continua sendo a referência original escolhida.
 
 Ela define o ponto de partida visual: pátio neutro de pedra e madeira, portão e rotas ao fundo, pequeno foco de Lúmen, forja, bancada de alquimia, fachadas para futuros serviços e área de descanso com fogueira e bancos. O Hub deve servir de base recorrente nas viagens entre biomas; floresta, mina ou outra cidade não devem dominar sua identidade. Lúmen aparece como luz/energia localizada. A Árvore dos Ecos não é o tema nem o marco central desta direção visual.
 
@@ -33,7 +33,7 @@ A imagem escolhida é uma referência de composição gerada para exploração. 
 ## Navegação
 
 - [Índice do Hub](INDEX.md)
-- [Conceito escolhido e notas](../../art/mockups/hub_environment_concepts_v003/README.md)
-- [Estudo de composição mobile retrato](../../art/mockups/hub_environment_concepts_v004/README.md)
+- [Conceito escolhido e notas](../art/mockups/hub_environment_concepts_v003/README.md)
+- [Estudo de composição mobile retrato](../art/mockups/hub_environment_concepts_v004/README.md)
 - [Sistemas de artesãos e crafting](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md)
 - [Inventário de sprites e ambientes atuais](../art/MVP_SPRITE_INVENTORY.md)

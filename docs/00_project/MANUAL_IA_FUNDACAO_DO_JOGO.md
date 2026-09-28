@@ -47,7 +47,7 @@ Consulte primeiro o índice da área. Crie o documento de detalhe na pasta corre
 | Identidade, papel e história de um herói | [`docs/02_heroes/`](../02_heroes/INDEX.md) | Não misture ficha narrativa com números runtime ou lista detalhada de skills. |
 | Regras compartilhadas de combate, party, skills, itens, Ecos ou chefes | [`docs/03_systems/`](../03_systems/INDEX.md) | Descreva o funcionamento geral; o conteúdo individual fica em sua categoria. |
 | Skills, itens, inimigos, Ecos e capítulos | [`docs/04_content/`](../04_content/INDEX.md) | Use índices e documentos existentes; confira o registry antes de criar ID ou duplicar catálogo. |
-| Refúgio e serviços entre expedições | [`docs/05_hub/`](../05_hub/INDEX.md) | A área não tem especificação aprovada; siga a prioridade e as decisões do roadmap. |
+| Refúgio e serviços entre expedições | [`docs/05_hub/`](../05_hub/INDEX.md) | Há um protótipo isolado de UI; o Hub não está integrado ao fluxo principal e não tem especificação global aprovada. Siga a prioridade e as decisões do roadmap. |
 | Fórmulas, drops, economia e hipóteses de balanceamento | [`docs/06_balance/`](../06_balance/INDEX.md) | Registrar hipóteses, fontes/saídas e método de medição; não chamar valores de balanceados sem evidência. |
 | Direção, contratos, conceitos, sprites e QA visual | [`docs/07_art/`](../07_art/INDEX.md) e [`AGENTS.md`](../../AGENTS.md) | Para sprites, Golden e contrato têm precedência sobre conceitos. |
 | Plano de teste, playtest, auditoria e aceite | [`docs/08_qa/`](../08_qa/INDEX.md) | Declare o que cada verificação prova e o que ainda não cobre. |

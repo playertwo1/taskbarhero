@@ -1,0 +1,134 @@
+{
+  "schema_version": "0.4",
+  "smart_loot": {
+    "relevant_weight": 0.7,
+    "free_weight": 0.3
+  },
+  "duplicate_protection": {
+    "history_size": 6,
+    "weight_multiplier_by_recent_count": {
+      "1": 0.7,
+      "2": 0.4,
+      "3": 0.15
+    },
+    "minimum_weight_greater_than_zero": true
+  },
+  "slot_pity": {
+    "soft_1_after": 12,
+    "soft_1_multiplier": 1.5,
+    "soft_2_after": 18,
+    "soft_2_multiplier": 2.5,
+    "hard_priority_after": 24,
+    "categories": [
+      "WEAPON",
+      "SECONDARY",
+      "ARMOR",
+      "ACCESSORY",
+      "ECHO"
+    ]
+  },
+  "quality_floor": {
+    "COMMON": {
+      "min_affixes": 1
+    },
+    "UNCOMMON": {
+      "min_affixes": 2
+    },
+    "RARE": {
+      "min_affixes": 2,
+      "max_affixes": 3,
+      "min_synergy_affixes": 1
+    },
+    "EPIC": {
+      "min_affixes": 3,
+      "max_affixes": 4,
+      "min_synergy_affixes": 1,
+      "min_high_value_affixes": 1
+    },
+    "RELIC": {
+      "unique_effect_required": true
+    },
+    "MEMORY": {
+      "fixed_or_scripted": true
+    }
+  },
+  "item_power_profiles": {
+    "IP_C1_NORMAL": {
+      "min": 1,
+      "max": 18
+    },
+    "IP_C1_ELITE": {
+      "min": 10,
+      "max": 24
+    },
+    "IP_C1_MINIBOSS": {
+      "min": 16,
+      "max": 28
+    },
+    "IP_C1_BOSS": {
+      "min": 22,
+      "max": 32
+    }
+  },
+  "reward_choice": {
+    "miniboss_chance": 0.25,
+    "boss_repeat_chance": 0.35,
+    "boss_first_clear_guaranteed": true,
+    "options": 3,
+    "picks": 1
+  },
+  "boss_fragments": {
+    "material_id": "MAT_C1_GUARDIAN_SHARD",
+    "repeat_quantity": [
+      1,
+      2
+    ],
+    "first_clear_quantity": 2,
+    "random_relic_recipe_cost": 6,
+    "chosen_relic_recipe_cost": 10
+  },
+  "bestiary_echo": {
+    "common_thresholds": [
+      15,
+      40,
+      80
+    ],
+    "multipliers": [
+      1.0,
+      1.25,
+      1.6,
+      2.0
+    ],
+    "final_tier_grant_once_if_missing": true
+  },
+  "rarity_tables": {
+    "RARITY_C1_NORMAL": {
+      "COMMON": 0.62,
+      "UNCOMMON": 0.27,
+      "RARE": 0.09,
+      "EPIC": 0.018,
+      "RELIC": 0.002
+    },
+    "RARITY_C1_ELITE": {
+      "COMMON": 0.0,
+      "UNCOMMON": 0.35,
+      "RARE": 0.45,
+      "EPIC": 0.18,
+      "RELIC": 0.02
+    },
+    "RARITY_C1_MINIBOSS": {
+      "COMMON": 0.0,
+      "UNCOMMON": 0.0,
+      "RARE": 0.45,
+      "EPIC": 0.48,
+      "RELIC": 0.07
+    },
+    "RARITY_C1_BOSS": {
+      "COMMON": 0.0,
+      "UNCOMMON": 0.0,
+      "RARE": 0.15,
+      "EPIC": 0.7,
+      "RELIC": 0.15
+    }
+  }
+}

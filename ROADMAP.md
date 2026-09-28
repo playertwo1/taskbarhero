@@ -40,14 +40,14 @@ O padrão futuro passa a ser:
 - **8 heróis jogáveis**;
 - party de **3 heróis ativos**;
 - **1 ataque básico por herói**;
-- **6 skills por herói**, sendo 1 Signature;
+- **6 skills por herói no total**, sendo 5 normais e 1 Signature;
 - **16 passivas por herói**;
 - **3 Traits por herói**;
 - **3 caminhos principais de build**;
 - **2 slots de skill em combate**;
 - level **1–100**;
 - **Mastery 1–10**;
-- **10 slots de equipamento**;
+- **6 slots de equipamento: 5 convencionais + 1 Echo**;
 - **5 missões pessoais por herói**;
 - **4 estágios visuais**.
 
@@ -71,7 +71,7 @@ Bastião passa a ser a referência estrutural para os sete heróis seguintes.
 - [x] identidade Tank / Protector;
 - [x] Guarda, Perfect Block e Desequilíbrio;
 - [x] ataque básico;
-- [x] 6 skills;
+- [x] 6 skills no total, incluindo a Signature;
 - [x] 16 passivas;
 - [x] 3 branches e 3 Capstones;
 - [x] 3 Traits;
@@ -91,7 +91,7 @@ Bastião passa a ser a referência estrutural para os sete heróis seguintes.
 - [ ] implementação;
 - [ ] balanceamento e QA.
 
-**Estado:** `HERO_DESIGN_CONTENT_COMPLETE`.
+**Status do ciclo:** `DESIGN` — consulte esta seção e a ficha Golden para o escopo documentado e suas pendências.
 
 ---
 
@@ -131,20 +131,21 @@ O sistema não utilizará um Cube abstrato como centro do crafting.
 
 As funções são distribuídas pelo Refúgio da Vigília:
 
-- **Ferreiro** — desmontagem, melhoria, reforja e fabricação;
-- **Alquimista** — transmutação, Essências e Catalisadores;
-- **Gravadora de Ecos** — Echoes, memórias e modificadores raros;
-- **Ourives** — joias, acessórios e especialização fina.
+- **Ferreiro** — Arma, Secundário e Armadura; desmontagem e melhoria conforme os gates aprovados;
+- **Alquimista** — materiais, catalisadores, transmutação e consumíveis;
+- **Gravadora de Ecos** — slot e catálogo independente de Echo;
+- **Ourives** — Acessório I e II, com especialização de build.
 
 A ordem, o mínimo de serviço por artesão e o que fica fora do slice estão aprovados em [CRAFT-1](docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md). Reforja, fabricação livre, sockets e outros serviços listados acima são possibilidades futuras, não requisitos do primeiro slice.
 
 ### Equipamento
 
-- [x] 10 slots canônicos definidos em design;
-- [x] conceito de Item Power, affixes e progressão documentado;
-- [ ] reconciliar raridades finais;
-- [ ] fechar schema de item;
-- [ ] atualizar catálogo inicial de 30 itens;
+- [x] seis slots canônicos definidos em design (cinco convencionais + Echo), com escopo do primeiro catálogo registrado;
+- [x] raridades canônicas de design seguem v0.4; subset do slice e migração das quatro raridades runtime legadas seguem os gates de `SLICE-1`;
+- [x] contrato de design de item e fronteira sem migração runtime documentados;
+- [x] catálogo canônico v0.4 de 30 itens definido; os 15 registros runtime anteriores estão mapeados como legados;
+- [x] Item Power separado conceitualmente de raridade; números e fórmula seguem para `ECON-1`;
+- [x] affixes aleatórios e reforja adiados para depois do slice;
 - [ ] selecionar subset para o vertical slice;
 - [ ] implementar primeiro serviço do Ferreiro.
 
@@ -160,7 +161,7 @@ Os serviços da cidade devem aparecer gradualmente conforme o Hub é reconstruí
 
 ## 8. CONTENT-1 — Capítulo 1: Bosque de Lúmen
 
-O Capítulo 1 continua sendo o **Bosque de Lúmen**, preservando a direção já aprovada de dez subfases, ecologia própria, elites, mini-bosses e Guardião-Cervo.
+O Capítulo 1 continua sendo o **Bosque de Lúmen**, com dez subfases. Bestiário, itens, materiais e loot seguem a base canônica v0.4. Uma proposta de quinze encontros mistos, quantidades, custos locais e padrões do boss final está em [ENCOUNTERS.md](docs/04_content/chapters/chapter_01/ENCOUNTERS.md), com formações em [encounter_plan.json](docs/04_content/chapters/chapter_01/encounter_plan.json). É design para validação, não dado runtime.
 
 O overview atual do capítulo lista 15 conceitos de skills normais — cinco para cada herói inicial — e não inclui as Signature Skills. É um catálogo parcial, não uma alternativa à meta canônica de seis skills por herói.
 
@@ -168,8 +169,8 @@ O overview atual do capítulo lista 15 conceitos de skills normais — cinco par
 
 - [ ] atualizar o Capítulo 1 para o novo padrão de heróis;
 - [ ] decidir qual subset de skills/passivas/Traits aparece no slice;
-- [ ] reconciliar os 30 itens com o novo sistema de 10 slots;
-- [ ] detalhar encontros de chefes;
+- [x] reconciliar o catálogo de 30 itens com o sistema canônico de slots; a seleção do slice segue para `SLICE-1`;
+- [x] detalhar encontros e padrões propostos de chefes; validar taxa de vitória inicial e combate implementado em `SLICE-1`;
 - [ ] introduzir no conteúdo um Echo funcional opcional, com recompensa determinística e função registrada no [Sistema de Ecos](docs/03_systems/ECHO_SYSTEM.md);
 - [ ] definir como o Fragmento do Coração Verde altera visualmente o Hub.
 
@@ -209,11 +210,13 @@ Fluxo-alvo:
 4. [x] registrar Bastião como Golden Reference de design;
 5. [x] **TREE-1** — definir os ~30 nós do MVP da Árvore dos Ecos;
 6. [x] **CRAFT-1** — definir função, fonte/sink e ordem de desbloqueio dos quatro artesãos;
-7. **ITEM-1 — próxima fase:** reconciliar os dez slots, raridades, schema e 30 itens;
-8. atualizar o documento do Bosque de Lúmen;
-9. iniciar **Flecha** como segundo herói completo seguindo o padrão do Bastião;
-10. preparar `SLICE-1`;
-11. depois usar ARGOS para balanceamento e regressão.
+7. [x] **ITEM-1** — reconciliar slots, raridades, contrato de item e catálogo de 30;
+8. **ECON-1 — em andamento:** [modelo econômico](docs/06_balance/ECONOMY_MODEL.md), [15 encontros mistos/32 derrotas e proposta do Guardião](docs/04_content/chapters/chapter_01/ENCOUNTERS.md), [plano estruturado](docs/04_content/chapters/chapter_01/encounter_plan.json) e [simulação reproduzível](tools/economy/simulate_chapter1_balance.py). A simulação verifica cobertura do bestiário, encounter budgets, rendimento de materiais/Ouro e TTK teórico. Falta validar combate, taxa de vitória na primeira tentativa e pacing em `SLICE-1`, além do teto/conversão offline, antes do gate `PASS`;
+9. validar e consolidar no Bosque de Lúmen os marcos econômicos após o gate `ECON-1`;
+10. iniciar **Flecha** como segundo herói completo seguindo o padrão do Bastião;
+11. executar **[BALANCE-FOUNDATION-1](ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md#20-balance-foundation-1--contrato-canonico-de-balanceamento)** para consolidar o contrato comum de atributos e registros de heróis, inimigos, equipamentos e efeitos;
+12. preparar `SLICE-1` com as regras e métricas aprovadas;
+13. depois do primeiro slice, usar ARGOS e telemetria em **BALANCE-1** para ajuste iterativo.
 
 Não iniciar produção massiva dos 7 heróis restantes ou da árvore completa antes de os contratos acima passarem pelo slice.
 
@@ -241,6 +244,10 @@ Os hooks da v0.0 foram concluídos e permanecem planejadas:
 | **v0.3 — Scale** | Simulador headless (10k–100k execuções) e Argos Analyst. | Relatórios de inflação, drops, TTK e economia da Árvore/artesãos. | PENDENTE |
 | **v0.4 — Learning** | Godot RL Agents. | Experimento de estratégias emergentes/exploits. | EXPERIMENTAL |
 | **v1.0 — Autonomous QA** | Pipeline build → test → report → fix → retest. | Ciclo validado em CI. | PENDENTE |
+
+### Base canônica de combate e loot v0.4
+
+Rafael aprovou [TASKBAR Sistema Completo v0.4](documents/canonical/taskbar_sistema_v0.4/README.md) como fonte canônica de design para combate, balanceamento, inimigos, equipamentos, materiais, raridades, loot e economia. `BALANCE-FOUNDATION-1` e [LOOT-EXPANSION-1](ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md#23-loot-expansion-1--economia-e-loot-completos) cuidam da adaptação ao runtime e validação; os dados atuais do MVP permanecem como implementação observada até a migração.
 
 ### Overlay Android
 

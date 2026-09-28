@@ -1,6 +1,6 @@
 # Workflow ComfyUI — conceitos e sprites
 
-ComfyUI explora conceitos e prepara poses; não aprova nem finaliza pixel art. O acabamento manual no Aseprite/pixel-mcp, auditoria independente da Têmis e integração pelo Godot continuam obrigatórios. Este guia complementa [`COMFY_PIPELINE.md`](./COMFY_PIPELINE.md) e os workflows versionados em [`../../tools/daedalus/comfyui/workflows/`](../../tools/daedalus/comfyui/workflows/).
+ComfyUI explora conceitos e prepara poses; não aprova nem finaliza pixel art. O acabamento manual no Aseprite/pixel-mcp, auditoria independente da Têmis e integração pelo Godot continuam obrigatórios. Este guia complementa os workflows versionados em [`../../tools/daedalus/comfyui/workflows/`](../../tools/daedalus/comfyui/workflows/) e substitui o [pipeline legado arquivado](../../arquivados/arte/COMFY_PIPELINE_LEGADO.md).
 
 ## Contexto mínimo e ordem de autoridade
 

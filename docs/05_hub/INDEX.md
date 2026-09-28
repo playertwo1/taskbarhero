@@ -1,10 +1,10 @@
 # Hub — índice
 
-O MVP atual não possui uma área runtime de Hub. As referências abaixo são propostas de design pós-MVP, não confirmação de implementação.
+O fluxo principal do MVP não integra um sistema de Hub. Existe uma cena isolada de protótipo de UI em [`scenes/ui/HubScreen.tscn`](../../scenes/ui/HubScreen.tscn), mas ela não é a cena principal nem confirma serviços, persistência ou progressão de Hub implementados. As referências abaixo descrevem o design pós-MVP.
 
 - **Direção visual escolhida para o futuro Hub:** [Refúgio da Vigília — composição mobile e referência base](HUB_VISUAL_DIRECTION.md). [Imagem base com party e serviços](../art/mockups/hub_environment_concepts_v003/07_refugio_party_e_servicos.png) · [estudo vertical para celular](../art/mockups/hub_environment_concepts_v004/08_refugio_mobile_retrato.png). São referências conceituais, não sprite final nem prova de implementação.
 
-- **Artesãos e serviços da cidade:** [equipamentos e artesãos — CRAFT-1](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md); quatro funções e sequência estão aprovadas para design. O slice limita o Ferreiro e a Gravadora ao escopo mínimo; Alquimista e Ourives dependem de `ITEM-1`/`ECON-1`.
+- **Artesãos e serviços da cidade:** [equipamentos e artesãos — CRAFT-1 / ITEM-1](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md); Ferreiro atende Arma, Secundário e Armadura; Ourives atende os dois slots de Acessório; Gravadora atende Echo; Alquimista atende materiais, catalisadores, transmutação e consumíveis. A disponibilidade de cada serviço continua condicionada aos gates de conteúdo/economia.
 - **Árvore e meta-progressão:** [Árvore dos Ecos](../03_systems/GLOBAL_RESONANCE_TREE.md); estrutura e catálogo de 30 nós aprovados em design `TREE-1`; valores, economia, interface e runtime continuam pendentes.
 - **Ecos/Codex:** um Echo funcional e opcional está incluído no escopo de design do slice; extração, infusão e Codex completo ficam para depois. Consulte o [Sistema de Ecos](../03_systems/ECHO_SYSTEM.md).
 - **Prioridade e gates:** [roadmap pós-MVP](../../ROADMAP.md), trilhas BUILD/ITEM e ECHO/HUB.

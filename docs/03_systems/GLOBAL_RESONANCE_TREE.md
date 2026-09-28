@@ -264,7 +264,7 @@ A árvore é global e nunca deve favorecer apenas um herói. Ela pode, porém, c
 
 ## 14. MVP recomendado
 
-Para a primeira versão jogável da árvore, iniciar com os 30 nós abaixo. O catálogo aprova identidades, funções e dependências de design, mas não é autorização para implementação: `CRAFT-1`, `ITEM-1`, `ECON-1`, `ECHO-1` e `SLICE-1` ainda definem detalhes de serviço, economia, conteúdo, interface e integração.
+Para a primeira versão jogável da árvore, iniciar com os 30 nós abaixo. O catálogo aprova identidades, funções e dependências de design, mas não é autorização para implementação: `CRAFT-1` e `ITEM-1` definem a arquitetura; `ECON-1`, `ECHO-1` e `SLICE-1` ainda definem economia, conteúdo e integração runtime.
 
 ### Regras do catálogo
 
@@ -313,9 +313,9 @@ Para a primeira versão jogável da árvore, iniciar com os 30 nós abaixo. O ca
 | --- | --- | --- | --- | --- |
 | `TREE_OFI_001` | Forja Reerguida · cidade | Restaura e mantém o Ferreiro disponível no Refúgio. | `VIG_005` | Médio |
 | `TREE_OFI_002` | Desmontagem Protegida · serviço | Abre a desmontagem de equipamento, com confirmação e proteção contra desmontagem acidental de itens favoritos. | `OFI_001` | Baixo |
-| `TREE_OFI_003` | Aprimoramento Controlado · serviço | Abre um serviço previsível de melhoria de equipamento, inicialmente usando Sucata; fórmula e custos ficam para `ITEM-1`/`ECON-1`. | `OFI_002` | Médio |
-| `TREE_OFI_004` | Bancada do Ourives · cidade | Restaura o Ourives depois que Ferreiro e Alquimista básico estão estabelecidos. Exige acessórios definidos em `ITEM-1`; restauração física persiste após respec. | `OFI_003` + `ALQ_002` | Alto |
-| `TREE_OFI_005` | Joalheria de Precisão · serviço | Abre uma receita controlada de acessório baseada no catálogo de `ITEM-1`. Sockets e lapidação dependem de especificação própria; fora do primeiro slice. | `OFI_004` | Alto |
+| `TREE_OFI_003` | Aprimoramento Controlado · serviço | Abre um serviço previsível de melhoria de equipamento usando o material canônico selecionado para o slice; fórmula e custos ficam para `ECON-1`. | `OFI_002` | Médio |
+| `TREE_OFI_004` | Bancada do Ourives · cidade | Restaura o Ourives depois que Ferreiro e Alquimista básico estão estabelecidos. Acessórios elegíveis exigem conteúdo futuro; restauração física persiste após respec. | `OFI_003` + `ALQ_002` | Alto |
+| `TREE_OFI_005` | Joalheria de Precisão · serviço | Abre uma receita controlada de acessório baseada em catálogo de expansão e aprovada pela economia. Sockets e lapidação dependem de especificação própria; fora do primeiro slice. | `OFI_004` | Alto |
 
 ### Alquimia — 4 nós
 
@@ -324,7 +324,7 @@ Para a primeira versão jogável da árvore, iniciar com os 30 nós abaixo. O ca
 | `TREE_ALQ_001` | Laboratório Reaberto · cidade | Restaura e mantém o Alquimista disponível no Refúgio, depois dos primeiros serviços do Ferreiro. | `OFI_003` | Médio |
 | `TREE_ALQ_002` | Transmutação Básica · serviço | Abre receitas controladas de conversão entre materiais já existentes. Taxas e receitas ficam para `CRAFT-1`/`ECON-1`. | `ALQ_001` | Médio |
 | `TREE_ALQ_003` | Essências Extraídas · serviço | Abre extração de essências de equipamentos elegíveis, conforme regras futuras de itens. | `ALQ_002` | Alto |
-| `TREE_ALQ_004` | Catalisadores Preparados · serviço | Abre receitas de catalisadores para serviços avançados do Ferreiro; não libera reforja antes dos gates de `ITEM-1`/`ECON-1`. | `ALQ_003` | Alto |
+| `TREE_ALQ_004` | Catalisadores Preparados · serviço | Abre receitas de catalisadores para serviços avançados do Ferreiro; não libera reforja antes de expansão de itens e economia aprovadas. | `ALQ_003` | Alto |
 
 ### Jornada — 3 nós
 
@@ -374,8 +374,9 @@ Todas as seis áreas ficam acessíveis após `VIG_005`; o jogador pode alterná-
 ## Fora do gate TREE-1
 
 - custos numéricos de Fragmentos, fontes/sinks, retorno de conteúdo repetido e limites de proteção da Fortuna: `ECON-1`;
-- ordem, função e escopo inicial dos artesãos: `CRAFT-1`; receitas, materiais, custos e momento de restauração no conteúdo: `ITEM-1`/`ECON-1`;
-- schema, atributos, upgrade e reforja de itens: `ITEM-1`;
+- ordem, função e escopo inicial dos artesãos: `CRAFT-1`; custos, fontes/sinks e valores: `ECON-1`;
+- migração runtime e subset implementado: `SLICE-1`;
+- Item Power numérico, affixes e reforja: expansão futura após especificação própria;
 - compatibilidade, raridades e conteúdo jogável de Ecos: `ECHO-1`;
 - reforja, atributos ancorados e ascensão do Ferreiro: expansão futura da árvore depois de validar o slice;
 - distribuição da interface, ícones, estados visuais e confirmação de respec: `HUB-1`/`SLICE-1`;

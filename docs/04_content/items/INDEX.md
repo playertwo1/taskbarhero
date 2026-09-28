@@ -1,10 +1,12 @@
 # Itens — índice
 
-- **Runtime:** [catálogo e valores efetivos](../../../data/items/items.json). O JSON é autoridade para IDs runtime, slots, raridade, atributos e pesos.
-- **Design:** [Capítulo 1 — catálogo de 30 itens](../chapters/chapter_01/OVERVIEW.md#equipamentos--catálogo-total-de-30-itens). Os 15 novos ainda são candidatos e não têm valores balanceados.
-- **Sistema candidato pós-MVP:** [equipamentos, raridades, Item Power, affixes e crafting](../../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md). A proposta de dez slots e raridades adicionais não altera o runtime atual.
-- **Direção visual:** [fichas dos ícones](../../art/conceitos/itens/README.md).
-- **Artesãos do Hub:** veja a seção de serviços na [proposta de equipamento e crafting](../../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
-- **Economia e pacing:** consulte o [guia avançado](../../../documents/GUIA_AVANCADO_ECONOMIA_PACING_BALANCEAMENTO_POCKET_HERO.md); custos e drops novos aguardam design e simulação.
+- **Catálogo canônico de 30 itens:** [CHAPTER_01_ITEM_CATALOG](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md). Ele define os IDs, nomes, categorias e identidade dos itens; categorias: 5 Armas, 5 Secundários, 5 Armaduras, 10 Acessórios e 5 Ecos.
+- **Raridades, budgets, affixes e Item Power:** [base canônica v0.4](../../../documents/canonical/taskbar_sistema_v0.4/README.md).
+- **Materiais e fontes:** [catálogo de materiais do Capítulo 1](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_MATERIAL_CATALOG.md).
+- **Loot e algoritmo de recompensa:** [Drop Resolver](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/DROP_RESOLVER_SPEC.md) e [tabelas de drop](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_DROP_TABLES.md).
+- **Runtime atual:** [catálogo e valores carregados](../../../data/items/items.json). Mantido como implementação legada até migração aprovada.
+- **Compatibilidade:** [IDs runtime antigos e mapeamento](../LEGACY_RUNTIME_CATALOG.md).
+- **Slots e artesãos:** [HERO_STANDARD](../../../HERO_STANDARD.md) e [equipamentos/crafting](../../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
+- **Arte:** [fichas dos ícones](../../art/conceitos/itens/README.md) e [assets já integrados](../../../assets/sprites/items/README.md).
 
-Não copie números runtime para fichas de conceito. Ao editar, altere a autoridade adequada e mantenha os links atualizados.
+Os 30 itens canônicos estão `APPROVED` para design. O runtime só carrega seus registros atuais; não declare novos itens implementados antes da migração e do QA.

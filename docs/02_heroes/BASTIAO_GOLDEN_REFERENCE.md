@@ -6,342 +6,32 @@ source: "[3-Taskbar_Hero_Bastiao_Golden_Reference_v0.1.docx](../../documents/3-T
 # Bastião Golden Reference
 
 > **Fonte e escopo:** Esta ficha é o modelo de profundidade e organização para os próximos heróis; reutilize a estrutura, não copie a mecânica ou os números exclusivos do Bastião. “Golden Reference” aqui significa referência de design, não aprovação de sprite Golden. O padrão HERO_STANDARD e as decisões recentes de Rafael prevalecem. Valores e sistemas adicionais permanecem em DESIGN/HIPÓTESE até revisão, balanceamento e aceite.
-> **Documento original:** [3-Taskbar_Hero_Bastiao_Golden_Reference_v0.1.docx](../../documents/3-Taskbar_Hero_Bastiao_Golden_Reference_v0.1.docx). A conversão preserva texto e tabelas; elementos visuais do Word, se houver, continuam disponíveis apenas no DOCX.
+> **Documento original:** [3-Taskbar_Hero_Bastiao_Golden_Reference_v0.1.docx](../../documents/3-Taskbar_Hero_Bastiao_Golden_Reference_v0.1.docx). Esta versão Markdown foi curada para manter apenas o conteúdo de referência e as decisões atuais; o DOCX original preserva o documento integral e seus elementos visuais.
 
 ## Regras de precedência no Pocket Hero
 
-- [`HERO_STANDARD.md`](../../HERO_STANDARD.md) continua sendo a fonte única para a anatomia e os requisitos compartilhados dos oito heróis. A parte repetida sobre o padrão canônico abaixo é preservada para consulta da fonte, não cria uma segunda autoridade.
+- [`HERO_STANDARD.md`](../../HERO_STANDARD.md) continua sendo a fonte única para a anatomia e os requisitos compartilhados dos oito heróis. Regras compartilhadas do herói devem ser consultadas no padrão canônico, sem duplicação nesta ficha.
 - A ficha de Bastião serve como exemplo de profundidade, não como autorização para copiar kit, passivas, Traits, Maestria, lore ou valores para os demais heróis.
 - As decisões atuais do [Sistema de skills](../03_systems/SKILL_SYSTEM.md) prevalecem. A fonte descreve observação/timing de Perfect Block; como o combate do Pocket Hero é automático, qualquer uso precisa ser adaptado a regras automáticas e não pode exigir comando durante a luta.
-- A lista de skills de outros heróis na parte de padrão geral é apenas proposta da fonte. O [catálogo do Capítulo 1](../04_content/chapters/chapter_01/OVERVIEW.md) e decisões recentes de Rafael não são substituídos por esses nomes.
+- O DOCX original inclui propostas genéricas para outros heróis; elas não foram reproduzidas nesta ficha curada. O [catálogo do Capítulo 1](../04_content/chapters/chapter_01/OVERVIEW.md) e as fichas individuais mantêm autoridade para esses heróis.
 - Números de Guarda, dano, cooldown, duração, ranks, custos, Maestria e progressão visual são propostas. Não copiar para `/data/` nem tratar seções rotuladas `DESIGN_COMPLETE` no DOCX como aceite do Pocket Hero.
 - O diretório `game/heroes/` sugerido pela fonte não existe neste repositório Godot. Para implementação, siga [`AGENTS.md`](../../AGENTS.md), cenas em `scenes/` e scripts em `scripts/`.
 
 ## BASTIÃO — GOLDEN REFERENCE
 
-Projeto: Taskbar Hero Mobile
+Projeto: Pocket Hero
 Versão: 0.1
-Status geral: HERO_DESIGN_WIP
+Status do registro de design: `DESIGN`; o status atual e as pendências estão no [roadmap](../../ROADMAP.md#4-hero-001--bastião-golden-reference-de-design).
 Documento-base: padrão canônico + kit de combate + passivas + traits + maestria
 
-Documento consolidado para servir como referência de implementação do Bastião e como molde estrutural para os demais heróis.
+Documento de design do Bastião e referência de profundidade para as demais fichas. A implementação é comprovada pelo código, dados e testes do repositório.
 
-## Parte I — Padrão Canônico dos Heróis
+## Regras compartilhadas e lore pessoal
 
-## 1. Regra principal
+As regras compartilhadas de anatomia, skills, equipamentos, progressão e critério de conclusão têm fonte única em [`HERO_STANDARD.md`](../../HERO_STANDARD.md). A fonte DOCX v0.1 continha uma cópia extensa dessas regras e de propostas genéricas de roster; essa cópia foi retirada desta versão curada para não divergir do padrão vigente. O DOCX original continua preservado em `documents/`.
 
-Todo herói jogável deve possuir exatamente:
-
-
-| Sistema | Quantidade |
-| --- | --- |
-| Ataque básico | 1 |
-| Skills ativas | 6 |
-| Passivas | 16 |
-| Builds principais | 3 |
-| Traits de especialização | 3 |
-| Tiers da árvore | 8 |
-| Slots de skill em combate | 2 |
-| Slots de equipamento | 10 |
-| Níveis normais | 100 |
-| Níveis de Maestria | 10 |
-| Missões pessoais | 5 |
-| Estágios visuais | 4 |
-| Mecânica exclusiva | 1 |
-| Fraqueza clara | 1 |
-| Signature Skill | 1 |
-
-Nenhum herói deve ser considerado completo sem esses elementos.
-
-## 2. Anatomia de um herói
-
-HERÓI
-│
-├── Identidade
-│   ├── Fantasia
-│   ├── Papel
-│   ├── Mecânica exclusiva
-│   ├── Fraqueza
-│   └── Lore
-│
-├── Combate
-│   ├── Ataque básico
-│   ├── Skill 1
-│   ├── Skill 2
-│   ├── Skill 3
-│   ├── Skill 4
-│   ├── Skill 5
-│   └── Signature Skill
-│
-├── Skill Tree
-│   ├── Passiva de Identidade
-│   ├── Build A — 5 passivas
-│   ├── Build B — 5 passivas
-│   └── Build C — 5 passivas
-│
-├── Especialização
-│   ├── Trait A
-│   ├── Trait B
-│   └── Trait C
-│
-├── Progressão
-│   ├── Level 1–100
-│   └── Mastery 1–10
-│
-├── Equipamento
-│   └── 10 slots
-│
-├── Lore
-│   └── 5 capítulos
-│
-└── Aparência
-    └── 4 estágios
-
-## 3. Skills
-
-Cada herói possui 1 ataque básico + 5 skills normais + 1 Signature Skill.
-
-Total: 7 ações próprias por personagem.
-
-Com 8 personagens: 8 ataques básicos + 48 skills = 56 ações únicas.
-
-### Skills normais
-
-Cada skill normal possui até 5 ranks.
-
-Uma skill não deve simplesmente ganhar mais dano. Sempre que possível, os ranks mais altos também devem alterar alguma propriedade:
-
-alcance;
-
-área;
-
-duração;
-
-número de alvos;
-
-interação com a mecânica do herói;
-
-status aplicado;
-
-geração de recurso.
-
-### Signature Skill
-
-É a habilidade que representa o personagem. Possui 3 ranks.
-
-Deve:
-
-ser visualmente reconhecível;
-
-explorar a mecânica exclusiva do herói;
-
-provocar mudança perceptível no combate;
-
-ser importante para pelo menos uma build;
-
-nunca ser apenas "300% de dano".
-
-## 4. Slots de habilidade
-
-O personagem pode possuir 6 skills, mas somente 2 skills ativas equipadas simultaneamente.
-
-6 skills disponíveis
-        ↓
-Escolher 2
-        ↓
-Equipamentos
-        ↓
-Passivas
-        ↓
-Trait
-        ↓
-BUILD
-
-O primeiro slot existe desde o início. O segundo slot é desbloqueado através da progressão global do Hub, valendo para todos os heróis.
-
-## 5. Passivas
-
-Cada herói possui exatamente 16 nós passivos.
-
-1 Passiva de Identidade
-
-BUILD A
-├── A1
-├── A2
-├── A3
-├── A4
-└── A5 — Capstone
-
-BUILD B
-├── B1
-├── B2
-├── B3
-├── B4
-└── B5 — Capstone
-
-BUILD C
-├── C1
-├── C2
-├── C3
-├── C4
-└── C5 — Capstone
-
-Total: 1 + 5 + 5 + 5 = 16.
-
-Cada passiva pode possuir até 5 ranks. O último nó de cada branch é um Capstone e precisa mudar significativamente a forma como aquela build funciona.
-
-## 6. Traits
-
-Cada herói possui exatamente 3 Traits. Existe um Trait associado a cada build.
-
-Exemplo:
-
-BASTIÃO
-
-Guardião
-Retaliação
-Controle
-
-O jogador escolhe 1 Trait ativo por vez.
-
-Traits não devem ser simplesmente +10% de dano. Devem modificar alguma regra.
-
-## 7. Árvore de progressão
-
-Existem 8 Tiers.
-
-
-| Tier | Requisito | Conteúdo principal |
-| --- | --- | --- |
-| T0 | Lv.1 | identidade + primeiras skills |
-| T1 | Lv.10 | início das três builds |
-| T2 | Lv.20 | skill adicional + passivas |
-| T3 | Lv.30 | Traits + nova skill |
-| T4 | Lv.40 | skill avançada |
-| T5 | Lv.50 | passivas avançadas |
-| T6 | Lv.60 | Signature Skill |
-| T7 | Lv.70 | Capstones |
-
-O Tier 70 encerra a abertura estrutural da árvore. Do nível 70 ao 100 o jogador passa a aperfeiçoar a build que criou.
-
-## 8. Skill Points
-
-O herói recebe pontos de árvore durante a progressão. O orçamento final deve ser inferior ao custo necessário para maximizar tudo.
-
-Regra: um personagem jamais deve conseguir maximizar completamente as três builds simultaneamente.
-
-A árvore completa possui aproximadamente 108 pontos possíveis de investimento. O personagem recebe no máximo aproximadamente 75 Skill Points durante sua progressão normal.
-
-Não existe build perfeita.
-Existe escolha.
-
-Respec deve existir através do Hub para incentivar experimentação.
-
-## 9. Equipamentos
-
-Cada herói possui 10 slots.
-
-
-| Slot | Função |
-| --- | --- |
-| Weapon | principal fonte ofensiva |
-| Secondary | escudo, foco, ferramenta etc. |
-| Head | defesa/utilidade |
-| Chest | defesa principal |
-| Gloves | ataque/velocidade |
-| Boots | velocidade/esquiva |
-| Amulet | efeitos especiais |
-| Ring | especialização |
-| Relic | modificadores raros |
-| Echo | efeitos ligados à lore |
-
-### Echo
-
-O slot Echo será exclusivo do nosso universo. Ecos são fragmentos de memória preservados através do Lúmen.
-
-Um Echo poderá modificar:
-
-skills;
-
-mecânica do herói;
-
-interação com aliados;
-
-Signature Skill;
-
-comportamento de summons;
-
-recursos especiais.
-
-Exemplo:
-
-Eco da Sentinela Perdida
-Muralha Viva passa a proteger também o aliado com menor HP.
-
-Isso conecta diretamente LOOT + BUILD + LORE.
-
-## 10. Level
-
-Level máximo: 100.
-
-### Lv.1–30 — Descoberta
-
-O jogador aprende a mecânica do personagem.
-
-### Lv.31–60 — Especialização
-
-A build começa a tomar forma.
-
-### Lv.61–70 — Consolidação
-
-Signature Skill e Capstones aparecem.
-
-### Lv.71–100 — Aperfeiçoamento
-
-O jogador otimiza equipamentos, ranks e sinergias.
-
-## 11. Maestria
-
-Depois do nível 100 começa Mastery 1–10.
-
-Maestria representa domínio daquele personagem. Não deve existir progressão infinita.
-
-
-| Mastery | Recompensa |
-| --- | --- |
-| M1 | bônus pequeno da mecânica central |
-| M3 | modificador de skill |
-| M5 | evolução visual |
-| M7 | modificador avançado |
-| M10 | Signature Modifier + aparência final |
-
-O M10 representa um personagem verdadeiramente dominado.
-
-## 12. Evolução visual
-
-Cada herói possui 4 versões visuais.
-
-### Forma I — Base
-
-Personagem original.
-
-### Forma II — Desperto
-
-Desbloqueada durante a campanha pessoal. Mudanças pequenas: detalhes, partículas, arma e acessórios.
-
-### Forma III — Ressonante
-
-Lúmen começa a se manifestar visualmente.
-
-### Forma IV — Lendária
-
-Mastery 10. É a versão visual definitiva daquele personagem.
-
-A silhueta base deve continuar reconhecível em todas as formas.
-
-## 13. Lore pessoal
-
-### Lore pessoal do Bastião — decisões atuais
+<a id="lore-pessoal-do-bastiao-decisoes-atuais"></a>
+## Lore pessoal do Bastião — decisões atuais
 
 **Status:** `DESIGN`; fatos abaixo são canônicos para a concepção narrativa atual. Diálogos, encontros finais e implementação continuam pendentes.
 
@@ -359,189 +49,6 @@ As cinco missões pessoais são:
 3. **O Último a Sair** — descoberta de que permaneceu mesmo após a evacuação.
 4. **O Nome Esquecido** — recusa recuperar sua identidade ao custo das memórias alheias.
 5. **Eu Fico** — repetição da antiga batalha, agora com aliados permanecendo ao seu lado.
-
-Esta seção é a fonte autoritativa da lore pessoal do Bastião. A [Bíblia de Lore](../01_world/LORE_BIBLE.md) define apenas as regras globais do universo.
-
-Todo herói recebe 5 missões próprias.
-
-CAPÍTULO I
-Quem ele era.
-
-CAPÍTULO II
-O que perdeu.
-
-CAPÍTULO III
-Sua relação com o Apagamento.
-
-CAPÍTULO IV
-Sua memória/Eco mais importante.
-
-CAPÍTULO V
-Resolução pessoal.
-
-Essas missões podem liberar skins, Ecos, diálogos, itens, entradas no Codex e pequenas alterações no Hub.
-
-Gameplay importante nunca deve exigir pagamento.
-
-## 14. Os oito heróis
-
-
-| Herói | Papel | Mecânica | Build A | Build B | Build C |
-| --- | --- | --- | --- | --- | --- |
-| Bastião | Tank | Escudo | Guardião | Retaliação | Controle |
-| Flecha | DPS | Marca | Crítico | Marca | Velocidade |
-| Íris | Mage | Lúmen | Arcano | Controle | Lúmen |
-| Brasa | Bruiser | Fúria | Fúria | Queimadura | Sobrevivência |
-| Véu | Assassin | Exposição | Execução | Veneno | Sombra |
-| Orvalho | Healer | Sementes | Cura | Jardim | Simbiose |
-| Forja | Summoner | Engenhocas | Torres | Armadilhas | Autômatos |
-| Sino | Buffer | Ritmo | Ritmo | Ressonância | Memória |
-
-### Bastião
-
-Role: Tank. Mecânica: Escudo / Proteção. Builds: Guardião / Retaliação / Controle.
-
-Skills: Muralha Viva; Contra-Golpe; Desafio; Fortaleza; Impacto de Escudo; Último Bastião (Signature).
-
-Fantasia: "Eu fico."
-
-### Flecha
-
-Role: Ranged DPS. Mecânica: Marca / Crítico. Builds: Crítico / Marca / Velocidade.
-
-Skills: Marca do Caçador; Flecha Perfurante; Olho Aguçado; Rajada; Ricochete; Chuva de Flechas (Signature).
-
-### Íris
-
-Role: Mage / Control. Mecânica: Lúmen / Controle. Builds: Arcano / Controle / Lúmen.
-
-Skills: Pulso Prismático; Prisão de Lúmen; Refração; Véu Astral; Eco Prismático; Colapso Prismático (Signature).
-
-### Brasa
-
-Role: Bruiser / Berserker. Mecânica: Fúria / HP baixo. Builds: Fúria / Queimadura / Sobrevivência.
-
-Skills: Sangue Quente; Golpe Incandescente; Fúria Crescente; Devorar Chamas; Investida de Cinzas; Última Centelha (Signature).
-
-### Véu
-
-Role: Assassin. Mecânica: Exposição / Execução. Builds: Execução / Veneno / Sombra.
-
-Skills: Passo Entre Mundos; Corte Silencioso; Veneno Negro; Marca da Morte; Fenda Sombria; Fim Inevitável (Signature).
-
-### Orvalho
-
-Role: Healer / Support. Mecânica: Sementes. Builds: Cura / Jardim / Simbiose.
-
-Skills: Semente Vital; Espinhos Vivos; Raízes Protetoras; Simbiose; Florescer; Última Primavera (Signature).
-
-### Forja
-
-Role: Engineer / Summoner. Mecânica: Engenhocas. Builds: Torres / Armadilhas / Autômatos.
-
-Skills: Sentinela; Mina de Lúmen; Farol; Drone Catador; Sobrecarga; Projeto Impossível (Signature).
-
-### Sino
-
-Role: Buffer / Tempo. Mecânica: Ritmo / Memória. Builds: Ritmo / Ressonância / Memória.
-
-Skills: Primeira Nota; Ressonância; Compasso; Memória Persistente; Crescendo; Encore (Signature).
-
-## 15. Conteúdo total do roster
-
-8 ataques básicos
-48 skills ativas
-128 passivas
-24 Traits
-24 builds principais
-80 slots de equipamento
-40 missões pessoais
-32 formas visuais
-80 níveis de Maestria
-
-Somente o sistema de heróis já produz 176 elementos de build, considerando apenas 48 skills + 128 passivas.
-
-## 16. Estrutura no repositório
-
-game/
-└── heroes/
-    ├── bastiao/
-    ├── flecha/
-    ├── iris/
-    ├── brasa/
-    ├── veu/
-    ├── orvalho/
-    ├── forja/
-    └── sino/
-
-Dentro de cada herói:
-
-bastiao/
-├── HERO.md
-├── SKILLS.md
-├── PASSIVES.md
-├── TRAITS.md
-├── MASTERY.md
-├── LORE.md
-├── ITEMS.md
-├── SYNERGIES.md
-└── art/
-
-HERO.md é a fonte principal de verdade. Os outros documentos detalham os sistemas.
-
-## 17. Definition of Done
-
-Um herói somente pode receber HERO_DESIGN_COMPLETE quando possuir:
-
-identidade;
-
-role;
-
-mecânica central;
-
-fraqueza;
-
-ataque básico;
-
-6 skills;
-
-Signature Skill;
-
-16 passivas;
-
-3 Traits;
-
-3 builds;
-
-árvore T0–T7;
-
-10 slots compatíveis;
-
-pelo menos 3 itens exclusivos;
-
-5 capítulos de lore;
-
-4 estágios visuais;
-
-sinergias com outros personagens;
-
-sprites definidos pelo padrão oficial de arte;
-
-números iniciais de balanceamento.
-
-Enquanto qualquer item estiver ausente: HERO_DESIGN_WIP.
-
-## 18. Regra de ouro
-
-Quantidade sozinha não cria profundidade. Cada personagem deve responder claramente:
-
-Por que eu escolheria esse herói?
-
-Que decisões diferentes posso tomar ao montá-lo?
-
-Por que eu voltaria a jogar com ele depois de 20 horas?
-
-Se essas respostas não forem claras, o personagem ainda não está pronto.
 
 ## Parte II — Bastião: Kit Base
 
@@ -895,7 +402,7 @@ Esse equilíbrio define o personagem.
 
 ## Parte III — Passivas do Bastião
 
-Status: DESIGN_COMPLETE
+Escopo documentado: 16 passivas
 Total: 16 passivas
 Branches: Guardião / Retaliação / Controle
 Ranks por passiva: 5
@@ -1348,7 +855,7 @@ Nunca balancear removendo a característica principal de uma passiva. Se Julgame
 
 ## Parte IV — Traits do Bastião
 
-Status: DESIGN_COMPLETE
+Escopo documentado: 3 Traits
 Total: 3 Traits
 Traits ativos simultaneamente: 1
 Desbloqueio: Tier 3 / aproximadamente Lv.30
@@ -1622,7 +1129,7 @@ Se um Trait for claramente superior em todas as situações, ele está mal desen
 
 ## Parte V — Maestria do Bastião
 
-Status: DESIGN_COMPLETE
+Escopo documentado: Maestria do herói, níveis 1–10
 Sistema: Hero Mastery
 Níveis: 10
 Pré-requisito: Hero Level 100
@@ -1801,7 +1308,7 @@ Bosses são imunes ao stagger, mas recebem aumento temporário de stagger recebi
 
 ## 12. Mastery 8 — Juramento Antigo
 
-Bastião recebe um segundo slot exclusivo para ECHO DE MAESTRIA. Esse slot aceita apenas Ecos específicos do personagem e não substitui o Echo normal do equipamento.
+O DOCX original propõe um segundo slot exclusivo para Echo de Maestria. Essa proposta **não foi adotada**: o modelo canônico possui um único slot Echo por herói. Os exemplos abaixo ficam como conceitos de Ecos alternativos que, se aprovados futuramente, ocupariam o mesmo slot único. Nada nesta seção amplia o equipamento do slice.
 
 Exemplos:
 
@@ -1937,7 +1444,7 @@ A razão dessas mudanças deve aparecer na história.
 | M5 | Forma Ressonante + Ressonância |
 | M6 | provocação aprimorada |
 | M7 | Doutrina |
-| M8 | Echo de Maestria |
+| M8 | Echo alternativo de Maestria para o slot Echo único (proposta) |
 | M9 | Inabalável evoluído |
 | M10 | Forma Lendária + Signature Modifier |
 
@@ -1982,16 +1489,16 @@ Um Bastião M10 deve parecer mais completo e interessante, não dez vezes mais f
 | sinergias | preliminar |
 | equipamentos exclusivos | 3 iniciais |
 | Mastery 1–10 | concluído |
-| Lore 5 capítulos | pendente |
+| Lore pessoal e 5 missões | conceitos registrados; diálogos e encontros pendentes |
 | evolução visual | definida em conceito; arte pendente |
 | números finais | pendente |
 | balanceamento | pendente |
 
-Status atual: HERO_DESIGN_WIP
+Status do ciclo de design: `DESIGN`. Para o estado atual e as pendências, consulte o [roadmap](../../ROADMAP.md#4-hero-001--bastião-golden-reference-de-design).
 
 ## Próximos itens recomendados
 
-Lore e 5 missões pessoais do Bastião.
+Diálogos e encontros das cinco missões pessoais do Bastião.
 
 Itens exclusivos adicionais e Echoes.
 

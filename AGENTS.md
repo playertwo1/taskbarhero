@@ -13,7 +13,7 @@ Este arquivo é o índice operacional do repositório. Use [`docs/INDEX.md`](doc
 
 1. [`PROJECT_STATE.md`](PROJECT_STATE.md) — resumo de estado observado e caminhos autoritativos.
 2. [`ROADMAP.md`](ROADMAP.md) — prioridade, trabalho atual e gates.
-3. [`docs/INDEX.md`](docs/INDEX.md) e, quando relevante, [`documents/INDEX.md`](documents/INDEX.md).
+3. [`docs/INDEX.md`](docs/INDEX.md), [`documents/INDEX.md`](documents/INDEX.md) e, quando a tarefa usar sistemas aprovados, [`documents/canonical/INDEX.md`](documents/canonical/INDEX.md).
 4. `INDEX.md` da área afetada, conforme a tabela abaixo.
 5. Ficha da entidade/conteúdo e documento do sistema envolvido.
 6. Dados runtime necessários em [`data/`](data/); eles são autoridade para valores carregados pelo jogo.
@@ -28,12 +28,13 @@ Para tarefas de visão, arquitetura documental ou fundação do jogo, consulte [
 | Local | Autoridade / função | Índice |
 | --- | --- | --- |
 | `/docs/` | Por quê e como o jogo deve funcionar; intenção e design. | [`docs/INDEX.md`](docs/INDEX.md) |
+| `/documents/canonical/` | Fontes canônicas importadas aprovadas; respeite a precedência registrada no `README.md` de cada pacote. | [`documents/canonical/INDEX.md`](documents/canonical/INDEX.md) |
 | Estado/plano/histórico | [`PROJECT_STATE.md`](PROJECT_STATE.md), [`ROADMAP.md`](ROADMAP.md) e [`CHANGELOG.md`](CHANGELOG.md) | Estado observado, plano e mudanças têm papéis distintos. |
 | `/data/` | Quais IDs e valores o jogo carrega em runtime. | [`docs/CONTENT_REGISTRY.md`](docs/CONTENT_REGISTRY.md) aponta para os catálogos; os JSON são a fonte dos valores. |
 | `/scripts/` e `/scenes/` | Como o projeto Godot implementa comportamento. Não existe `/src/` neste repositório hoje. | [Índice de sistemas](docs/03_systems/INDEX.md) |
 | `/assets/` | Imagens, animações e outros assets usados pelo projeto. | [Índice de arte](docs/07_art/INDEX.md) |
 | `/tests/` | Verificações executáveis e evidência coberta por elas. | [Índice de QA](docs/08_qa/INDEX.md) |
-| `/arquivados/` | Registros históricos de trabalho concluído. | [`arquivados/ROADMAP_CONCLUIDO.md`](arquivados/ROADMAP_CONCLUIDO.md) |
+| `/arquivados/` | Registros históricos úteis, versões substituídas e trabalho concluído. | [`arquivados/INDEX.md`](arquivados/INDEX.md) |
 
 ### Índices por área
 
@@ -57,7 +58,8 @@ Não crie fichas vazias para completar essa árvore. Um índice pode apontar uma
 - Separe **DECIDIDO**, **RECOMENDADO**, **HIPÓTESE** e **EM ABERTO**. Não transforme números ou propostas de teste em requisitos finais sem confirmação/evidência.
 - Se uma decisão aberta afetar a tarefa, pare e peça a escolha de Rafael em vez de inventá-la.
 - **ONE FACT → ONE AUTHORITY:** cada decisão, regra, número ou fato tem uma fonte autoritativa. Índices, roadmap, registry e brief apontam para ela sem copiar seus detalhes. `/docs` guarda intenção; `/data` guarda valores runtime; código implementa; testes provam somente o que executam.
-- IDs de design seguem os prefixos registrados em [`docs/CONTENT_REGISTRY.md`](docs/CONTENT_REGISTRY.md). IDs runtime atuais em JSON não devem ser renomeados nem substituídos por IDs de design sem migração explícita e aprovada.
+- **Base canônica de combate/loot:** para balanceamento, schema e conteúdo de inimigos, equipamentos, materiais, drops, raridades e economia, siga [TASKBAR Sistema Completo v0.4](documents/canonical/taskbar_sistema_v0.4/README.md), aprovado por Rafael como base canônica de design. O catálogo e os contratos detalhados permanecem nos arquivos de origem indicados pelo índice; não mantenha cópias divergentes.
+- IDs de design seguem os prefixos registrados em [`docs/CONTENT_REGISTRY.md`](docs/CONTENT_REGISTRY.md), incluindo os prefixos da base canônica v0.4. IDs runtime atuais em JSON não devem ser renomeados nem substituídos por IDs de design sem migração explícita; registre aliases até o gate de migração.
 - Use somente estes status de ciclo de vida para novos registros: `CONCEPT`, `DESIGN`, `APPROVED`, `IMPLEMENTING`, `IMPLEMENTED`, `QA`, `PASS`, `DEPRECATED`. Não confunda status com certeza: use **HIPÓTESE** ou **EM ABERTO** no texto quando necessário. Normalize registros antigos ao tocá-los, sem reclassificar etapa por inferência.
 
 ## Produto e originalidade

@@ -1,5 +1,7 @@
 # Argos — Autonomous Playtester do Pocket Hero
 
+Consulte a [persona e as regras de operação do Argos](ARGOS_SOUL.md) antes de executar um profile.
+
 > **Missão:** Argos é a camada autônoma de playtest do Pocket Hero. Não substitui o julgamento humano de diversão, mas executa testes repetitivos, explora diferentes perfis de jogadores, busca bugs e exploits, mede balanceamento e entrega evidências estruturadas para Têmis (auditoria) e Ergane (implementação/correção).
 
 ---

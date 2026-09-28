@@ -1,23 +1,25 @@
 ---
-status: DESIGN
+status: APPROVED
 source: "[1-Taskbar_Equipamentos_e_Artesaos_da_Cidade_v0.1.docx](../../documents/1-Taskbar_Equipamentos_e_Artesaos_da_Cidade_v0.1.docx)"
 ---
 
 # Equipamentos e artesãos da cidade
 
-> **Fonte e escopo:** Esta é uma transcrição estruturada da proposta v0.1. O conteúdo é DESIGN/HIPÓTESE, não altera slots, raridades, economia ou runtime atuais. A palavra MVP no original se refere ao protótipo mínimo do sistema de crafting e não reabre o MVP do Pocket Hero já concluído.
+> **Autoridade atual:** slots, função dos artesãos e limites próprios de Pocket Hero estão resumidos nas decisões `CRAFT-1`/`ITEM-1`. Para catálogo, raridades, materiais, stats, affixes, Item Power e loot, prevalece a [base canônica v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md). O corpo original abaixo de “PROJETO TASKBAR” é uma transcrição histórica v0.1; trechos que conflitem com v0.4 estão supersedidos. A palavra MVP no original não reabre o MVP concluído do Pocket Hero.
 > **Documento original:** [1-Taskbar_Equipamentos_e_Artesaos_da_Cidade_v0.1.docx](../../documents/1-Taskbar_Equipamentos_e_Artesaos_da_Cidade_v0.1.docx). A conversão preserva texto e tabelas; elementos visuais do Word, se houver, continuam disponíveis apenas no DOCX.
 
 ## Decisões de base aprovadas por delegação de Rafael
 
 - **DECIDIDO em 2026-09-28:** equipamento é preparação persistente. O jogador compara e altera loadout somente no Hub; durante a expedição ele fica travado, e drops vão para o inventário sem substituir ou destruir automaticamente peças equipadas.
 - **DECIDIDO em 2026-09-28:** aquisição combina drops e recompensas determinísticas de marcos. Uma build não pode depender de obter um item aleatório específico; o item novo permanece guardado até o jogador escolher equipá-lo.
-- **DECIDIDO em 2026-09-28:** manter as quatro raridades existentes no primeiro slice. Raridades adicionais, Item Power e affixes avançados só entram após reconciliação e simulação em `ITEM-1`.
+- **DECIDIDO em 2026-09-28:** para o design futuro, adotar as seis raridades de v0.4: Comum, Incomum, Raro, Épico, Relíquia e Memória. Os quatro níveis do runtime atual permanecem apenas como estado implementado legado até uma migração; o subconjunto de raridades do slice será fechado em seu gate.
 - **DECIDIDO em 2026-09-28:** o Ferreiro é o primeiro serviço de equipamento: oferece desmontagem e um serviço de melhoria controlada. Desmontar exige confirmação explícita e exibe o resultado; itens favoritos/protegidos não podem ser desmontados. Reforja aleatória, fixação de affix, ascensão e crafting livre ficam para depois do slice.
-- **DECIDIDO em 2026-09-28:** para testar o Ferreiro, usar inicialmente um material de salvamento (`Sucata`) obtido ao desmontar equipamento e consumido na melhoria. Manter ouro como custo secundário quando os valores forem definidos; não introduzir outras famílias de materiais no slice.
+- **DECIDIDO por delegação em 2026-09-28:** o primeiro recorte do Ferreiro usará `MAT_C1_LUMEN_RESIDUE` (Resíduo de Lúmen), um material que existe no catálogo canônico v0.4. `Sucata`, ausente desse catálogo, não faz parte do cânone atual nem do recorte proposto.
 - **DECIDIDO em 2026-09-28:** a abertura dos artesãos é gradual e persistente na conta/Hub. O Ferreiro vem primeiro; Alquimista e Ourives entram conforme suas funções estiverem sustentadas por conteúdo e economia. A Gravadora de Ecos só abre junto do sistema de Echo decidido abaixo.
+- **DECIDIDO em 2026-09-28:** cada herói tem seis posições de equipamento: Arma, Secundário, Armadura, Acessório I, Acessório II e Echo. São cinco equipamentos convencionais e um Echo. Cabeça, peito, luvas e botas se consolidam em Armadura; amuletos, anéis e relíquias se consolidam na família Acessório. Toda peça deve sustentar uma identidade ou decisão de build, evitando itens que só ofereçam um pequeno bônus estatístico.
+- **DECIDIDO em 2026-09-28:** Ferreiro cuida de Arma, Secundário e Armadura; Ourives, dos dois slots de Acessório; Gravadora, de Echo; Alquimista, de materiais, catalisadores, transmutação e consumíveis.
 
-Essas decisões são de arquitetura do design. Valores, schema runtime, quantidade de cada slot no primeiro slice, custos e tabelas de drop continuam em aberto para `ITEM-1`/`ECON-1`.
+Essas decisões são de arquitetura do design. A base canônica de catálogo e loot é v0.4; os seis slots e os artesãos adaptam-se a ela. Seleção de conteúdo do slice, migração de schema runtime, custos e QA seguem para `SLICE-1`/`ECON-1`/`LOOT-EXPANSION-1`.
 
 ## CRAFT-1 — escopo e sequência aprovados
 
@@ -29,8 +31,8 @@ Essas decisões são de arquitetura do design. Valores, schema runtime, quantida
 | --- | --- | --- | --- |
 | 1 | **Ferreiro** | Primeiro artesão restaurado pelo Ramo da Oficina (`TREE_OFI_001`). Desmontagem e aprimoramento abrem pelos nós `TREE_OFI_002` e `TREE_OFI_003`. | Desmontagem com confirmação e proteção de favoritos; um caminho controlado de aprimoramento. Sem reforja, auto-desmontagem ou fabricação livre no slice. |
 | 2 | **Gravadora de Ecos** | Junto da primeira recompensa Echo e da introdução do sistema (`TREE_MEM_001`/`TREE_MEM_002`, `ECHO-1`). Precisa ser opcional para conclusão da expedição. | Arquivar Ecos descobertos e equipar/trocar os que o jogador já possui, somente no Hub. Sem extração, cópia, infusão, melhoria ou coleção completa. |
-| 3 | **Alquimista** | Depois do Ferreiro, quando `CRAFT-1` e `ECON-1` aprovarem uma fonte e um uso para materiais transformáveis (`TREE_ALQ_001`/`TREE_ALQ_002`). | Começa com transmutação de materiais existentes. Destilação de Essência e catalisadores entram depois de schema de item e economia. |
-| 4 | **Ourives** | Depois de Alquimia básica e quando `ITEM-1` definir acessórios elegíveis (`TREE_OFI_004`/`TREE_OFI_005`). | Uma receita determinística e curada de acessório. Sockets, lapidação e recalibração não entram sem aprovação própria em `ITEM-1`/`ECON-1`. |
+| 3 | **Alquimista** | Depois do Ferreiro, quando `ECON-1` aprovar uma fonte e um uso para materiais transformáveis (`TREE_ALQ_001`/`TREE_ALQ_002`). | Começa com transmutação de materiais existentes. Destilação de Essência e catalisadores entram depois de especificar equipamentos elegíveis e economia. |
+| 4 | **Ourives** | Depois de Alquimia básica e quando conteúdo futuro definir acessórios elegíveis (`TREE_OFI_004`/`TREE_OFI_005`). | Uma receita determinística e curada de acessório. Sockets, lapidação e recalibração exigem expansão e aprovação econômica próprias. |
 
 A disponibilidade de cada artesão ou serviço é persistente na conta/Hub. Respec nunca fecha oficina nem remove um serviço já restaurado. As áreas dos sete ramos podem ficar visíveis após a Keystone da Árvore; serviços individuais só abrem ao cumprir seus pré-requisitos de árvore, conteúdo e sistema.
 
@@ -38,26 +40,50 @@ A disponibilidade de cada artesão ou serviço é persistente na conta/Hub. Resp
 
 | Serviço | Função sem sobreposição | Fonte de entrada | Saída / sink | Estado de economia |
 | --- | --- | --- | --- | --- |
-| Ferreiro — desmontagem | Converter equipamento selecionado que o jogador não quer manter. | Peça obtida por drop ou recompensa determinística; confirmação obrigatória. Favoritos/protegidos são inelegíveis. | Sucata para aprimoramento inicial. O item escolhido é consumido; nada é desmontado automaticamente no slice. | Sucata pode ser definida no CRAFT-1; quantidades e diferenças por slot/raridade ficam para `ITEM-1`/`ECON-1`. |
-| Ferreiro — aprimoramento controlado | Melhorar uma peça elegível sem rerrolar atributos nem apagar a identidade do item. | Equipamento selecionado e Sucata; ouro pode ser custo secundário. | Sucata é consumida e o mesmo item recebe uma melhoria limitada. | Faixa, custo, limite e valor secundário ficam para `ITEM-1`/`ECON-1`. |
+| Ferreiro — desmontagem | Converter equipamento selecionado que o jogador não quer manter. | Peça obtida por drop ou recompensa determinística; confirmação obrigatória. Favoritos/protegidos são inelegíveis. | Material comum compatível com o item/região. No recorte do Capítulo 1, usar Resíduo de Lúmen; nada é desmontado automaticamente no slice. | Tipo e quantidades respeitam v0.4; rendimentos por item/raridade e elegibilidade do subset serão simulados em `ECON-1`/`SLICE-1`. |
+| Ferreiro — aprimoramento controlado | Melhorar uma peça elegível sem rerrolar atributos nem apagar a identidade do item. | Equipamento selecionado e material canônico do recorte; Ouro pode ser custo secundário. | Consome os materiais aprovados e o mesmo item recebe uma melhoria limitada. | **Recomendação para o slice:** demonstrar Reforço `+1` conforme v0.4 (`+2%` do poder de status base). A hipótese de custo está em [ECONOMY_MODEL.md](../06_balance/ECONOMY_MODEL.md); elegibilidade ainda será fechada em `SLICE-1`. Não aumenta Item Power. |
 | Gravadora — catalogar/equipar Echo | Consultar memória descoberta e alterar qual Echo possuído está equipado. | Echo recebido em recompensa/missão determinística. | Nenhum Echo é consumido ou duplicado ao catalogar/equipar; o item continua no inventário persistente. | Sem moeda no fluxo básico. Qualquer custo futuro precisa de motivo e sink próprios em `ECHO-1`/`ECON-1`. |
-| Alquimista — transmutar | Trocar materiais excedentes de faixas inferiores por material de faixa superior já definido. | Materiais de crafting existentes obtidos em conteúdo/desmontagem. | Consome os materiais de entrada e concede um resultado compatível com receitas elegíveis. | Famílias, receitas, taxas e limites ficam para `CRAFT-1`/`ECON-1`; não introduzir moedas por conveniência. |
-| Alquimista — destilar/criar catalisador | Preparar insumo para serviços avançados do Ferreiro. | Equipamentos elegíveis para destilação e materiais existentes; a extração sempre mostra o resultado antes de consumir a peça. | Essência é produzida por destilação; Catalisador usa Essência e é consumido por reforja/serviços avançados futuros. | Fora do slice; elegibilidade, receitas, confirmação e quantidades ficam para `ITEM-1`/`ECON-1`. |
-| Ourives — receita de acessório | Produzir um acessório conhecido com resultado determinístico. | Materiais e ouro definidos para a receita, vindos de conteúdo/economia aprovados. | Consome os insumos e produz um acessório do catálogo sem rolagem aleatória obrigatória. | Primeiro slot/receita e recursos ficam para `ITEM-1`/`ECON-1`. |
+| Alquimista — transmutar | Trocar materiais excedentes de faixas inferiores por material de faixa superior já definido. | Materiais de crafting existentes obtidos em conteúdo/desmontagem. | Consome os materiais de entrada e concede um resultado compatível com receitas elegíveis. | Famílias, receitas, taxas e limites econômicos ficam para `ECON-1`; não introduzir moedas por conveniência. |
+| Alquimista — destilar/criar catalisador | Preparar insumo para serviços avançados do Ferreiro. | Equipamentos elegíveis para destilação e materiais existentes; a extração sempre mostra o resultado antes de consumir a peça. | Essência é produzida por destilação; Catalisador usa Essência e é consumido por reforja/serviços avançados futuros. | Fora do slice; elegibilidade exige catálogo futuro e receitas/quantidades dependem de `ECON-1`. |
+| Ourives — receita de acessório | Produzir um acessório conhecido com resultado determinístico. | Materiais e ouro definidos para a receita, vindos de conteúdo/economia aprovados. | Consome os insumos e produz um acessório do catálogo sem rolagem aleatória obrigatória. | Catálogo futuro de acessórios e recursos/receita dependem de expansão de conteúdo e `ECON-1`. |
 
-**Materiais no slice:** somente `Sucata` entra no ciclo do Ferreiro. Não adicionar Essência, Catalisador, Liga ou outras famílias antes de cada uma ter fonte, sink e UI especificados. Fragmentos de Ressonância permanecem recurso da árvore; Ouro continua separado.
+**Materiais no recorte proposto para o slice:** somente Resíduo de Lúmen (`MAT_C1_LUMEN_RESIDUE`) entra no ciclo inicial do Ferreiro. Não adicionar Essência Corrompida nem outras famílias antes de cada uma ter fonte, sink e UI especificados. Fragmentos de Ressonância permanecem recurso da Árvore; Ouro continua separado. A desmontagem segue a regra comum de material de v0.4, sem criar uma moeda chamada Sucata.
 
 **Fora de CRAFT-1 / slice:** reforja e proteção de atributos, forja livre de bases, ascensão, sockets/lapidação, extração/infusão/cópia/melhoria de Ecos, consumíveis, purificação, síntese avançada e auto-desmontagem. Reforja e proteção de atributos deixam de ocupar os dois últimos nós iniciais de Oficina; ficam para possível expansão da árvore depois da validação do slice.
 
 O Cartógrafo/Mercador não faz parte dos quatro artesãos deste gate. Contratos e recompensas de expedição ficam com a lógica de conteúdo até surgir um serviço distinto, necessário e com fonte/sink definidos.
 
-As dependências com os nós aprovados ficam na [Árvore dos Ecos](GLOBAL_RESONANCE_TREE.md); números, taxas e pools permanecem fora desta fonte até `ITEM-1`/`ECON-1`.
+As dependências com os nós aprovados ficam na [Árvore dos Ecos](GLOBAL_RESONANCE_TREE.md); números, taxas e pools econômicos permanecem para `ECON-1`.
+
+## ITEM-1 — modelo e escopo inicial aprovados
+
+**Status:** `APPROVED` para o contrato de design em 2026-09-28. Não altera o JSON, cenas, interface ou regras runtime atuais.
+
+- Os **seis slots** do [`HERO_STANDARD.md`](../../HERO_STANDARD.md) são Arma, Secundário, Armadura, Acessório I, Acessório II e Echo. O catálogo canônico v0.4 tem 5 Armas, 5 Secundários, 5 Armaduras, 10 Acessórios e 5 Ecos; os tokens runtime `weapon`, `armor` e `amulet` seguem como legado até migração.
+- O catálogo de **30 itens** e seus IDs são os da fonte canônica v0.4. O Echo está incluído na contagem dos 30 como categoria, equipado na posição Echo; não adicionar um catálogo independente duplicado.
+- A escala canônica tem seis raridades: **Comum, Incomum, Raro, Épico, Relíquia e Memória**. A Memória é especial/narrativa conforme v0.4; os quatro tiers do runtime atual não substituem esse modelo de design.
+- Cada item do slice tem identidade e propriedades fixas e curadas. Não haverá rolagem aleatória de affixes nem reforja no primeiro slice. Um efeito mecânico especial é opcional e definido por item; ele não é gerado novamente a cada drop.
+- O sistema de `Item Power`, seus budgets e sua relação com raridade/affixes seguem a especificação v0.4. Não está integrado ao runtime atual.
+- Para documentação de design, o registro descreve: ID de design no registry; ID runtime existente quando aplicável; nome; slot canônico (mais token legado quando houver); raridade; atributos-base; efeito fixo opcional; origem/recompensa. Custos, pesos e taxas de drop ficam para `ECON-1`. Isso não autoriza migrar o formato achatado atual de `data/items/items.json` para um novo schema.
+
+| Campo de design | Obrigatoriedade/uso | Limite nesta fase |
+| --- | --- | --- |
+| `design_id` | Obrigatório para cada item catalogado; vem do [registry](../CONTENT_REGISTRY.md). | ID persistente, distinto do ID runtime. |
+| `runtime_id` | Ausente nos 30 itens canônicos até a migração de conteúdo. | Usar os IDs legados apenas no [manifesto de compatibilidade](../04_content/LEGACY_RUNTIME_CATALOG.md); não associá-los por categoria. |
+| `name` | Obrigatório; nome de catálogo. | Candidatos preservam o nome listado no overview até uma revisão explícita. |
+| `slot` | Obrigatório; posição/família compatível no modelo canônico. | Usar as categorias e compatibilidades da fonte v0.4; IDs runtime atuais continuam em sua forma legada. |
+| `rarity` | Obrigatório conforme a raridade permitida na fonte v0.4. | O runtime preserva temporariamente seus quatro valores; o slice escolhe o subset durante a implementação. |
+| `base_stats` | Estrutura fixa de atributos-base por item. | Números e budgets seguem para `ECON-1`; o JSON atual mantém atributos achatados. |
+| `fixed_effect` | Opcional, definido por ficha para itens que mudam uma interação. | Sem geração aleatória de efeito no slice. |
+| `source` | Obrigatório antes de publicar drop/recompensa. | Tipo de origem pode ser design; fonte concreta, peso e frequência seguem para `CONTENT-1`/`ECON-1`. |
+
+Os 30 itens canônicos v0.4 estão `APPROVED` como design. O recorte exato usado no slice será escolhido em `SLICE-1`; não é necessário implementar os 30 de uma vez.
 
 ## Como usar esta proposta no Pocket Hero
 
 - O runtime atual continua definido por [`data/items/items.json`](../../data/items/items.json): três slots (`weapon`, `armor`, `amulet`) e quatro raridades (`Comum`, `Raro`, `Épico`, `Lendário`).
-- O [`HERO_STANDARD.md`](../../HERO_STANDARD.md) já descreve uma direção de dez slots por herói. A expansão do runtime para esse modelo ainda precisa de escopo, migração e roadmap próprios.
-- Os sete grupos de raridade, Item Power, affixes, materiais, custos e serviços abaixo são propostas; não alteram JSON, código, inventário ou economia.
+- O [`HERO_STANDARD.md`](../../HERO_STANDARD.md) descreve seis slots canônicos. Os três tokens atuais de item (`weapon`, `armor`, `amulet`) não equivalem a seis posições; a expansão do runtime exige escopo e migração próprios.
+- As seis raridades, budgets, affixes e Item Power de design seguem v0.4. O JSON, código e inventário atuais só mudam durante uma migração aprovada.
 - A trilha de artesãos e estabelecimentos deve ser planejada como progressão pós-MVP. O “MVP recomendado” na fonte significa um protótipo mínimo do sistema de crafting.
 - A nota sobre personagens e equipamentos exclusivos do Bastião é material de exemplo, subordinado à ficha de referência e às decisões de gameplay atuais.
 
@@ -74,7 +100,7 @@ As dependências com os nós aprovados ficam na [Árvore dos Ecos](GLOBAL_RESONA
 | Escopo | Sistema global / Hub / progressão |
 | Uso | Documento-base para implementação e balanceamento |
 
-**Documento de design — referência canônica**
+**Documento de design histórico v0.1 — não canônico quando divergir da base v0.4**
 
 ## 1. Visão do sistema
 
@@ -87,28 +113,38 @@ O sistema de equipamentos é uma das grandes fontes de progressão repetível. E
 
 > EXPEDIÇÃO
 
-## 2. Os 10 slots de equipamento
+## 2. Os seis slots canônicos de equipamento
 
+O modelo de [`HERO_STANDARD.md`](../../HERO_STANDARD.md) possui cinco slots convencionais e um Echo. O runtime e o catálogo do Capítulo 1 ainda usam três tipos de registro (`weapon`, `armor`, `amulet`); esses tipos legados não provam que a interface ou os dados suportem as seis posições.
 
-| Slot | Função de design | Observação |
+| Slot canônico | Função de design | Escopo do catálogo inicial |
 | --- | --- | --- |
-| Arma | Principal identidade ofensiva | Frequentemente específica por herói/classe |
-| Secundário | Escudo, foco, ferramenta etc. | Pode mudar bastante o gameplay |
-| Cabeça | Defesa/utilidade | Universal por arquétipo |
-| Peito | Maior peça defensiva | Maior orçamento de defesa |
-| Luvas | Ataque/velocidade | Foco ofensivo |
-| Botas | Movimento/esquiva | Foco em mobilidade |
-| Amuleto | Efeitos especiais | Atributos híbridos |
-| Anel | Especialização | Boa fonte de affixes |
-| Relíquia | Poderes raros | Ligada a história/mundo |
-| Echo | Modifica skill/lore | Slot exclusivo do nosso universo |
+| Arma (`weapon`) | Principal fonte ofensiva e identidade do herói | Incluída no catálogo de 30 |
+| Secundário | Escudo, grimório, aljava, foco ou ferramenta, conforme o herói | Conteúdo futuro |
+| Armadura (`armor` legado) | Defesa e atributos principais; consolida cabeça, peito, luvas e botas | Incluída no catálogo de 30 |
+| Acessório I | Especialização de build | Pool inicial derivado dos amuletos; compatibilidade ainda será definida por item |
+| Acessório II | Especialização de build | Mesmo pool familiar de acessórios; cada posição pode aceitar itens compatíveis |
+| Echo | Efeitos especiais ligados à memória e à lore | Categoria com cinco itens no catálogo canônico de 30; ocupa a posição Echo |
+
+O Ferreiro atende Arma, Secundário e Armadura; o Ourives atende Acessório I e II; a Gravadora de Ecos atende Echo; o Alquimista atende materiais, catalisadores, transmutação e consumíveis. Cada peça deve oferecer identidade ou decisão de build, em vez de apenas acrescentar um bônus estatístico pequeno.
 
 ## 3. Raridades
 
-A raridade deve indicar principalmente complexidade e potencial de build, não apenas números maiores. O jogador precisa reconhecer rapidamente o valor de um drop.
+A direção geral continua sendo comunicar identidade e potencial de build, não apenas números maiores. Para o design canônico, valem as seis raridades definidas em v0.4. O runtime atual ainda carrega quatro; a compatibilidade transitória está documentada na ponte de IDs legados.
+
+| Raridade inicial | Estado e uso |
+| --- | --- |
+| Comum | Existente no runtime; mantida |
+| Raro | Existente no runtime; mantida |
+| Épico | Existente no runtime; mantida |
+| Lendário | Existente no runtime; mantida |
+
+Os nomes e papéis de raridade deste trecho v0.1 estão supersedidos pela escala v0.4. Relíquia é raridade e não cria um slot adicional; Memória tem tratamento próprio e não entra no roll genérico comum.
 
 
-| Raridade | Affixes típicos | Papel |
+**A tabela a seguir é uma transcrição histórica v0.1. Para raridades e qualidade, a única autoridade atual é [LOOT_QUALITY_SYSTEM_v0.4](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/LOOT_QUALITY_SYSTEM_v0.4.md).**
+
+| Raridade candidata | Affixes típicos na proposta | Papel futuro proposto |
 | --- | --- | --- |
 | Comum | 1 | Base / início |
 | Incomum | 2 | Primeira especialização |
@@ -123,6 +159,8 @@ A raridade deve indicar principalmente complexidade e potencial de build, não a
 > Não precisamos lançar dez raridades de uma vez. Sete categorias claras são mais fáceis de ler, balancear e expandir.
 
 ## 4. Anatomia de um item
+
+O exemplo a seguir é conceitual e de longo prazo; não introduz níveis de item, affixes rolados ou valores no runtime do slice.
 
 
 | Campo | Exemplo |
@@ -148,7 +186,7 @@ As funções de um sistema central de crafting são distribuídas entre especial
 | Ferreiro — Forja | Upgrade, desmontagem, reforja física, criação de armas/armaduras |
 | Alquimista — Laboratório | Transmutação de materiais, essências, catalisadores, consumíveis |
 | Gravadora de Ecos — Santuário | Echoes, poderes especiais, extração/infusão de memória |
-| Ourives — Bancada | Anéis, amuletos, sockets e ajustes finos |
+| Ourives — Bancada | Acessórios; sockets e ajustes finos continuam sujeitos a aprovação futura |
 | Cartógrafo / Mercador | Conversões limitadas, contratos e recompensas de expedição |
 
 ## 6. Ferreiro da cidade
@@ -229,9 +267,9 @@ Esse NPC substitui a parte mais “mágica” do Cube. Seu papel é trabalhar co
 
 ## 9. Ourives
 
-O Ourives cuida da especialização fina: anéis, amuletos e sockets. Esse NPC deve ser desbloqueado depois do Ferreiro para não inundar o início com sistemas.
+O Ourives cuida da especialização fina dos acessórios (incluindo itens que antes eram agrupados como anéis, amuletos ou relíquias). Sockets continuam sendo uma possibilidade futura sujeita a gate próprio. Esse NPC deve ser desbloqueado depois do Ferreiro para não inundar o início com sistemas.
 
-- Criar anéis e amuletos-base.
+- Criar acessórios-base (família que inclui itens antes classificados como anéis, amuletos e relíquias).
 - Adicionar/remover sockets dentro de limites.
 - Lapidar gemas ou cristais.
 - Recalibrar pequenos atributos utilitários.
@@ -250,16 +288,18 @@ Poucas famílias claras são melhores que dezenas de moedas sem função. O joga
 | Cristal de Ressonância | Bosses/marcos | Echoes e upgrades especiais |
 | Memória Fragmentada | Missões/lore | Gravadora de Ecos |
 
-## 11. Item Power e nível
+## 11. Item Power e nível — direção futura
 
-Equipamento possui Item Power separado do nível do herói. Item Power define a faixa de valores-base e de affixes. O objetivo é permitir comparar peças sem esconder tudo em números complexos.
+Se vier a ser introduzido, Item Power fica separado do nível do herói e define uma faixa de atributos-base. Sua função é permitir comparar peças sem esconder tudo em números complexos. A separação conceitual de raridade, poder-base e efeito especial está aprovada; fórmula, faixa, interface e uso em runtime não estão.
 
 - Nível do herói define o que pode cair.
-- Item Power define a força potencial da peça.
+- Item Power define a faixa potencial dos atributos-base da peça.
 - Raridade define quantidade/qualidade de propriedades.
 - Poder especial define identidade.
 - Crafting melhora a peça, mas não deve tornar qualquer drop antigo eterno sem custo alto.
-## 12. Affixes
+## 12. Affixes — expansão após o slice
+
+O primeiro slice não rola affixes aleatórios nem oferece reforja. Até existir um pool aprovado e uma simulação de economia, os atributos e efeitos são fixos por item.
 
 
 | Família | Exemplos |
@@ -360,7 +400,7 @@ O Bastião serve como primeiro caso de teste do sistema. Seus itens exclusivos j
 | Horizonte | Conteúdo aprovado |
 | --- | --- |
 | `SLICE-1` | Ferreiro: desmontagem protegida e aprimoramento controlado. Gravadora: catalogar e equipar/trocar o Echo opcional já obtido. Alquimista e Ourives não são requisitos do slice. |
-| Depois do slice | Alquimista: transmutação após definir fonte/sink. Ourives: uma receita curada após `ITEM-1`. Ambos passam por economia antes da integração. |
+| Depois do slice | Alquimista: transmutação após definir fonte/sink. Ourives: uma receita curada após especificação futura de acessórios. Ambos passam por economia antes da integração. |
 | Expansão futura | Reforja, catalisadores, sockets, essências avançadas, ascensão, serviços completos da Gravadora, receitas de endgame e qualquer novo artesão. |
 
 ## 21. Estrutura recomendada no repositório
@@ -379,7 +419,7 @@ O Bastião serve como primeiro caso de teste do sistema. Seus itens exclusivos j
 
 ## 22. Definition of Done
 
-- Os 10 slots possuem função clara.
+- Os seis slots possuem função clara e todo item deve justificar sua contribuição para uma build.
 - Raridades e número de affixes estão definidos.
 - Item Power está separado de raridade.
 - Ferreiro possui fluxo de desmontagem, upgrade e reforja.

@@ -7,6 +7,7 @@
 - **Plano, prioridade e gates:** [`ROADMAP.md`](ROADMAP.md).
 - **Implementação:** cenas em [`scenes/`](scenes/) e scripts em [`scripts/`](scripts/). O repositório Godot não tem uma pasta `src/`.
 - **Valores carregados pelo jogo:** arquivos JSON sob [`data/`](data/).
+- **Design canônico de combate/loot:** [TASKBAR Sistema Completo v0.4](documents/canonical/taskbar_sistema_v0.4/README.md); não confundir com a implementação observada em `/data`.
 - **Arte efetivamente usada pelo projeto:** [`assets/`](assets/), principalmente `assets/sprites/`.
 - **Evidência de comportamento:** arquivos sob [`tests/`](tests/) e resultados de execução registrados no roadmap.
 - **Histórico concluído:** [`arquivados/ROADMAP_CONCLUIDO.md`](arquivados/ROADMAP_CONCLUIDO.md).
@@ -19,7 +20,7 @@ Este arquivo não duplica contagens ou checklists. Use os caminhos abaixo para i
 - Itens/runtime: [`data/items/items.json`](data/items/items.json).
 - Inimigos/runtime: [`data/enemies/enemies.json`](data/enemies/enemies.json).
 - Fases/runtime: [`data/stages/stages.json`](data/stages/stages.json).
-- Skills/design e capítulo: [overview do Capítulo 1](docs/04_content/chapters/chapter_01/OVERVIEW.md); confira código e `/data` antes de afirmar implementação.
+- Skills/design e capítulo: [overview do Capítulo 1](docs/04_content/chapters/chapter_01/OVERVIEW.md); o plano proposto de encontros e boss está em [ENCOUNTERS.md](docs/04_content/chapters/chapter_01/ENCOUNTERS.md), com simulação ligada à [roadmap](ROADMAP.md). Confira código e `/data` antes de afirmar implementação.
 - Evidência de validação: [`tests/`](tests/) e resultados/gates em [`ROADMAP.md`](ROADMAP.md).
 
 ## Estado de produção

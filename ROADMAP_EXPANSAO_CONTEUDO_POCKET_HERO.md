@@ -3,7 +3,7 @@
 **Status:** planejamento ativo — revisado em 2026-09-28  
 **Base:** complementar ao `ROADMAP.md` principal  
 **Objetivo:** transformar o Pocket Hero de um MVP funcional em um jogo com identidade, progressão, builds, lore, Hub e conteúdo suficiente para sustentar o Capítulo 1 sem inflar prematuramente o escopo.  
-**Mudança desta revisão:** incorporar o padrão canônico dos 8 heróis, o Bastião como Golden Reference de design, a Árvore dos Ecos, equipamentos de 10 slots e os artesãos da cidade.
+**Mudança desta revisão:** incorporar o padrão canônico dos 8 heróis, o Bastião como Golden Reference de design, a Árvore dos Ecos, equipamentos de 6 slots e os artesãos da cidade.
 
 ---
 
@@ -73,7 +73,7 @@ A meta-progressão deve ser percebida fisicamente no **Refúgio da Vigília**. N
 - [x] Importar/converter os contratos canônicos de design para `docs/` e atualizar seus índices (**SYNC-0 concluído**)
 - [x] Fechar a fronteira de run versus meta-progressão na matriz autoritativa; parâmetros offline/economia ficam para `ECON-1`
 - [x] Registrar regras decididas de oferta/evolução de skills e encaminhar tiers, conjuntos de escolha, gatilhos e efeitos ainda abertos ao [Sistema de skills](docs/03_systems/SKILL_SYSTEM.md)
-- [x] Definir a regra-base de obtenção, comparação, equipagem e salvamento/desmontagem; raridades, schema e reforja ficam para `ITEM-1`
+- [x] Definir regra-base de obtenção, comparação, equipagem e salvamento/desmontagem; o contrato de design foi fechado em `ITEM-1`, e schema runtime/reforja dependem de fases próprias
 - [x] Definir função e escopo mínimo de Echo no slice; conteúdo e implementação ficam para `ECHO-1`
 - [x] Definir vitória, derrota e retirada voluntária como saídas da expedição
 - [x] Definir que a expedição é delimitada pelo objetivo, sem cronômetro de derrota; medir duração-alvo em playtest/pacing
@@ -93,7 +93,7 @@ Cada herói completo possui:
 - 2 slots de skill em combate;
 - level 1–100;
 - Mastery 1–10;
-- 10 slots de equipamento;
+- 6 slots de equipamento (5 convencionais + 1 Echo);
 - 5 missões pessoais;
 - 4 estágios visuais;
 - 1 mecânica exclusiva e 1 fraqueza clara.
@@ -107,7 +107,7 @@ Cada herói completo possui:
 
 ## Gate DESIGN-1 PASS
 
-**Estado:** `PASS` em 2026-09-28 para a fundação e separação de sistemas pós-MVP. `CRAFT-1`, `ITEM-1` e `ECON-1` ainda detalham serviços, dados e valores antes de qualquer implementação; este gate não aprova runtime nem balanceamento.
+**Estado:** `PASS` em 2026-09-28 para a fundação e separação de sistemas pós-MVP. `CRAFT-1` e `ITEM-1` passaram em design; `ECON-1` ainda define números e valida a economia antes de implementar esses sistemas. Este gate não aprova runtime nem balanceamento.
 
 PASS quando:
 
@@ -323,7 +323,7 @@ Por herói:
 - [x] modificador M3;
 - [x] Forma Ressonante M5;
 - [x] Doutrina M7;
-- [x] Echo de Maestria M8;
+- [x] conceito de Echo alternativo M8 para o slot Echo único (sem slot adicional; fora do slice);
 - [x] evolução de Inabalável M9;
 - [x] Forma Lendária + Signature Modifier M10;
 - [x] campanha pessoal de 5 missões;
@@ -332,7 +332,7 @@ Por herói:
 - [ ] encounters implementados;
 - [ ] sprites/efeitos finais.
 
-**Estado do Bastião:** `HERO_DESIGN_CONTENT_COMPLETE` — Golden Reference para produção dos demais heróis.
+**Estado do ciclo de design do Bastião:** `DESIGN` — referência de profundidade para os demais heróis; números, diálogos, encontros, arte final e implementação continuam pendentes nos gates correspondentes.
 
 ## Gate HERO-1 PASS
 
@@ -510,7 +510,7 @@ O jogador deve perceber a cidade crescendo:
 
 - [x] serviços mínimos de cada artesão definidos;
 - [x] ordem de desbloqueio documentada;
-- [x] cada serviço possui fonte e sink econômico identificado; quantidades seguem para `ITEM-1`/`ECON-1`;
+- [x] cada serviço possui fonte e sink econômico identificado; quantidades seguem para `ECON-1`;
 - [x] responsabilidades não se duplicam sem motivo;
 - [x] crafting melhora escolhas e usa drops/recompensas, sem substituir completamente o loot.
 
@@ -520,111 +520,25 @@ O jogador deve perceber a cidade crescendo:
 
 # 6. ITEM-1 — Equipamentos e catálogo inicial
 
-O sistema de equipamento passa a utilizar **10 slots por herói**.
+O contrato aprovado, a relação entre os slots canônicos e o catálogo inicial, as raridades e os limites do primeiro slice ficam na [fonte de equipamento](docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md). O catálogo nominal e visual dos 30 itens fica no [overview do Capítulo 1](docs/04_content/chapters/chapter_01/OVERVIEW.md#equipamentos--catálogo-total-de-30-itens) e no [índice de itens](docs/04_content/items/INDEX.md); este roadmap não replica suas fichas.
 
-## Slots canônicos
+**Base aprovada:** seis slots: Arma, Secundário, Armadura, Acessório I, Acessório II e Echo (cinco equipamentos convencionais + um Echo). O catálogo v0.4 inclui 5 Armas, 5 Secundários, 5 Armaduras, 10 Acessórios e 5 Ecos. Os 15 registros runtime anteriores permanecem como legado; veja a [ponte de IDs](docs/04_content/LEGACY_RUNTIME_CATALOG.md).
 
-1. Weapon
-2. Secondary
-3. Head
-4. Chest
-5. Gloves
-6. Boots
-7. Amulet
-8. Ring
-9. Relic
-10. Echo
+O cânone de design usa as seis raridades definidas em v0.4. Os quatro tiers carregados pelo runtime são um estado legado, não a escala global do design. O subconjunto de raridades, affixes e Item Power efetivamente usado no slice deve seguir a [fonte canônica](documents/canonical/taskbar_sistema_v0.4/README.md) e ser validado por `ECON-1`/`SLICE-1`.
 
-O slot **Echo** conecta diretamente loot, build e lore.
+Equipamentos pessoais do Bastião são referências narrativas/de build na [Golden Reference](docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md); seus nomes não aumentam automaticamente o catálogo dos 30. **A Sentinela que Ficou** permanece no sistema separado de Ecos.
 
-## Estrutura de item
+## Gate ITEM-1 — design PASS
 
-Um item pode possuir, conforme raridade e categoria:
+- [x] definir os seis slots do herói; integrar os cinco grupos de item do catálogo canônico v0.4;
+- [x] aprovar os 30 itens canônicos v0.4; manter os 15 itens antigos somente como registros runtime legados até migração;
+- [x] aprovar a escala de seis raridades da base v0.4; documentar as quatro raridades runtime como legado e definir o subset do slice em gate próprio;
+- [x] registrar contrato de design sem migração do JSON/runtime;
+- [x] definir atributos/efeitos fixos para o slice e adiar affixes aleatórios/reforja;
+- [x] definir Item Power como conceito separado de raridade, com fórmula/valores pendentes;
+- [x] encaminhar valores, pesos, custos e simulação a `ECON-1`.
 
-- Item Power;
-- atributo-base;
-- affixes;
-- modificador mecânico;
-- raridade;
-- tags de herói/build;
-- interação com Echo;
-- origem/lore quando relevante.
-
-## Catálogo inicial
-
-Preservar os itens existentes e evoluir o catálogo total inicialmente para **30 itens**, priorizando variedade funcional antes de quantidade.
-
-Itens candidatos já definidos:
-
-- [ ] Casca do Guardião
-- [ ] Olho de Vidro Verde
-- [ ] Raiz Faminta
-- [ ] Cinza Eterna
-- [ ] Sino Partido
-- [ ] Engrenagem Impossível
-- [ ] Agulha da Viúva
-- [ ] Coração de Pedra
-- [ ] Fragmento Prismático
-- [ ] Pétala do Primeiro Jardim
-
-## Equipamentos exclusivos de referência — Bastião
-
-- [x] **Muralha do Primeiro Juramento** — escudo ligado à sua campanha pessoal;
-- [x] **Vigília** — espada feita com fragmentos da Porta da Vigília;
-- [x] **A Sentinela que Ficou** — Echo ligado à memória da evacuação.
-
-## Exemplos de efeitos desejados
-
-### Casca do Guardião
-Receber escudo gera uma pequena onda de dano.
-
-### Olho de Vidro Verde
-Críticos aplicam Marca.
-
-### Raiz Faminta
-Cura excedente pode virar escudo.
-
-### Cinza Eterna
-Inimigos queimados explodem ao morrer.
-
-### Sino Partido
-Toda terceira skill pode repetir parcialmente.
-
-### Engrenagem Impossível
-Engenhocas duram mais em troca de poder pessoal de Forja.
-
-### Agulha da Viúva
-Veneno pode causar crítico.
-
-### Coração de Pedra
-Menos HP = maior resistência.
-
-### Fragmento Prismático
-Atingir múltiplos inimigos com magia reduz cooldown.
-
-### Pétala do Primeiro Jardim
-Cura pode gerar Semente.
-
-## Raridade e progressão
-
-Raridade deve controlar quantidade/qualidade de propriedades e acesso a efeitos especiais, mas **Item Power e efeito mecânico devem ser avaliados separadamente** para evitar que raridade sozinha determine o melhor item.
-
-Os nomes e quantidades finais de tiers de raridade permanecem sujeitos ao documento canônico de equipamentos e aos testes de pacing.
-
-## Gate ITEM-1 PASS
-
-- 10 slots definidos e representados na UI;
-- 30 itens documentados;
-- raridades e regras de Item Power definidas;
-- affixes e limites de reforja definidos;
-- pelo menos 10 itens alteram comportamento;
-- pelo menos 8 itens suportam builds diferentes;
-- incluir um Echo funcional opcional como recompensa determinística; não é obrigatório para vencer o slice;
-- nenhum item obrigatório para todos os personagens;
-- desmontagem/crafting não torna drops irrelevantes.
-
----
-
+**Status do gate:** `PASS` em 2026-09-28 para a arquitetura ITEM-1 então revisada. A aprovação posterior de v0.4 substitui o catálogo/raridades anteriores; migração runtime, UI e balanceamento ainda exigem gates próprios.
 # 7. CONTENT-1 — Bosque de Lúmen
 
 O Capítulo 1 permanece composto por **10 subfases**.
@@ -1063,6 +977,8 @@ Não revelar sua identidade nesta etapa.
 
 # 19. ECON-1 — Economia mínima
 
+**Status:** `DESIGN` em andamento. O [modelo ECON-1](docs/06_balance/ECONOMY_MODEL.md) registra diagnóstico, cenários de custo, simulação Monte Carlo e limite estrutural da expedição offline. CONTENT-1 já registra uma hipótese de distribuição do bestiário v0.4 pelas dez subfases e uma recompensa opcional e não repetível de Resíduo de Lúmen para experimentar o Ferreiro. A distribuição não define contagens finais nem balanceamento; quantidades, rendimentos e custos precisam ser recalculados. TTK, teto numérico e conversão temporal offline ficam para medição em SLICE-1. Nenhum `/data` ou código homologado foi alterado.
+
 A economia deve continuar simples de entender, mesmo com os novos sistemas.
 
 Separar **recursos principais** de **materiais de crafting/tokens especiais**.
@@ -1112,11 +1028,63 @@ Para cada recurso/material documentar:
 - não existe recurso sem função clara;
 - custos principais são simuláveis;
 - nenhum sistema exige grind excessivo para funcionar;
+- a primeira expedição offline termina no objetivo/derrota sem iniciar outra; teto numérico e conversão de tempo ficam para medição no `SLICE-1`;
+- a melhoria do Ferreiro pode ser demonstrada com uma fonte não repetível do material canônico selecionado, sem sacrificar a única peça útil nem ser requisito para vencer;
 - números permanecem hipóteses até playtest/ARGOS.
 
 ---
 
-# 20. SLICE-1 — Vertical Slice do jogo real
+# 20. BALANCE-FOUNDATION-1 — Contrato canônico de balanceamento
+
+**Status:** `DESIGN` planejado. A base v0.4 está aprovada; esta fase integra sua estrutura aos heróis/combate do Pocket Hero, reconcilia runtime legado e prepara simulação/baselines para o slice. Não altera o runtime homologado antes do gate de migração.
+
+## Objetivo
+
+Usar Bastião como referência e integrar a estrutura canônica v0.4 para comparar heróis, inimigos, equipamentos, skills/passivas/Traits e efeitos. Manter uma única fonte de verdade, registrar aliases entre IDs e validar os baselines aprovados por simulação/playtest antes de migrá-los ao runtime.
+
+## Subfases
+
+### BALANCE-FND-1A — Auditoria do registro de status
+
+- [ ] mapear nomes/valores runtime atuais para os IDs de design, mantendo IDs runtime intactos;
+- [ ] definir unidade, significado, cálculo, fontes permitidas e limites de cada status canônico;
+- [ ] separar status-base, recurso de classe, estado temporário e métrica de progressão/loot;
+- [ ] registrar como Guard, Perfect Block, Desequilíbrio/Stagger, threat e summons se relacionam com o pipeline compartilhado.
+
+### BALANCE-FND-1B — Modelos de combate e budgets
+
+- [ ] integrar as fórmulas canônicas de dano, crítico, defesa/penetração, cura, escudo e EHP; conferir caps, ordem e exemplos calculados contra o combate atual;
+- [ ] fechar o modelo de progressão de atributos e uma entidade de referência para normalizar comparações;
+- [ ] construir baseline inicial de heróis começando pelo Bastião e validar a faixa com Flecha e Íris;
+- [ ] descrever arquétipo/rank de inimigos e escalonamento de capítulo/dificuldade sem duplicar fichas;
+- [ ] integrar os budgets de equipamento por raridade e slot, incluindo o custo de poder de efeitos únicos, e preparar casos de validação;
+- [ ] formalizar duração, stacking, dispel, Tenacidade e orçamento de DOT/HOT para buffs e debuffs;
+- [ ] mapear tipos de dano, affixes e sistemas v0.4 ao combate do Pocket Hero; documentar incompatibilidades e solicitar decisão somente quando duas regras aprovadas não puderem coexistir.
+
+### BALANCE-FND-1C — Telemetria e gates de validação
+
+- [ ] especificar métricas de dano, cura, escudo, controle, recursos, TTK, EHP, sobrevivência e frequência de uso;
+- [ ] montar matriz de comparação de builds, equipamento esperado e abaixo/acima do esperado, ranks e bosses;
+- [ ] documentar critérios de aceite e checklist de QA para heróis, inimigos, equipamentos e efeitos;
+- [ ] rastrear cada número como `DECIDIDO`, `HIPÓTESE` ou `EM ABERTO`, indicando fonte, método e limitações;
+- [ ] registrar discrepâncias com `/data` como trabalho de migração separado, sem mudar o MVP neste gate.
+
+## Gate BALANCE-FOUNDATION-1 PASS
+
+- todo atributo canônico tem identificador estável, definição e unidade;
+- heróis, inimigos, equipamento e efeitos usam o mesmo modelo de status/modificadores, sem regra paralela por entidade;
+- templates remetem às fontes de identidade/conteúdo existentes e não duplicam fatos canônicos;
+- fórmula e limites são calculáveis manualmente e cobertos por exemplos;
+- baselines iniciais não excedem budgets sem justificativa documentada;
+- indicadores de telemetria e aceite permitem comparar ao menos Bastião, trio inicial, inimigos do Capítulo 1, elite, minichefe, boss e os seis slots de equipamento;
+- hipóteses numéricas seguem claramente separadas das regras aprovadas e valores runtime;
+- toda migração necessária é apontada e tem escopo explícito; nenhuma mudança silenciosa em `/data`, scripts ou cenas.
+
+O `PASS` desta fase aprova o contrato de design e os baselines para teste, não declara que o jogo está balanceado. Playtest, telemetria real e ajuste iterativo permanecem na fase pós-slice [`BALANCE-1`](#22-balance-1--balanceamento).
+
+---
+
+# 21. SLICE-1 — Vertical Slice do jogo real
 
 Somente após os sistemas anteriores possuírem design suficiente.
 
@@ -1167,7 +1135,7 @@ PASS quando:
 
 ---
 
-# 21. BALANCE-1 — Balanceamento
+# 22. BALANCE-1 — Balanceamento
 
 Após o Vertical Slice.
 
@@ -1203,7 +1171,42 @@ Prioridades de simulação:
 
 ---
 
-# 22. FUTURE-REGIONS — Apenas sementes narrativas
+# 23. LOOT-EXPANSION-1 — Economia e loot completos
+
+**Status:** `APPROVED` como base canônica de design por decisão de Rafael em 2026-09-28. A integração, migração dos IDs runtime e validação continuam planejadas para depois do slice. Consulte [TASKBAR Sistema Completo v0.4](documents/canonical/taskbar_sistema_v0.4/README.md).
+
+## Objetivo
+
+Integrar ao Pocket Hero a camada canônica v0.4 de loot/data-driven que conecta inimigo, encontro, item, material, Echo/Memória e economia. Preservar os seis slots do jogo e manter mapeamentos dos IDs atuais até migração compatível.
+
+## Escopo
+
+- [ ] integrar o `ENEMY_CANONICAL_SCHEMA` e os 17 registros aprovados ao modelo Pocket Hero, preservando aliases dos IDs runtime até a migração;
+- [ ] substituir como catálogo futuro as 11 propostas anteriores pelos 17 inimigos canônicos (10 normais, 3 elites, 3 minichefes e 1 boss); mapear encontros do Bosque para as dez subfases;
+- [ ] adotar o catálogo canônico de 30 itens nas categorias Arma, Secundário, Armadura, Acessório e Echo, compatibilizando os seis slots;
+- [ ] integrar os sete materiais e as seis raridades canônicas; definir o subconjunto do primeiro slice sem contradizer a fonte global;
+- [ ] integrar o Drop Resolver: ouro, materiais, equipamento, Signature, Echo/Memória e recompensas garantidas com ordem determinística;
+- [ ] integrar os mecanismos canônicos de Smart Loot, Duplicate Protection, Slot Pity, Quality Floor, Reward Choice, Boss Fragments e Bestiário; calibrar parâmetros por simulação e registrar qualquer proposta de alteração como decisão separada;
+- [ ] definir persistência e idempotência de first clear/pity, seed reproduzível, save migration, overflow de inventário e telemetria local;
+- [ ] manter tabelas humanas como vistas derivadas de uma fonte de dados aprovada, evitando duas autoridades para os mesmos drops;
+- [ ] simular primeiro clear, repetição, pity e crafting para inflação, farm dominante, equipamento útil e impacto de cada recurso;
+- [ ] criar schemas, ferramentas de validação, cenários QA e critérios de aceite antes da implementação de runtime.
+
+## Gate LOOT-EXPANSION-1 PASS
+
+- conteúdo canônico está em fonte única, com migração sem colisão/reutilização de IDs e aliases runtime documentados;
+- cada item/material/recompensa possui fonte e sink claros, e as raridades/slots respeitam o padrão canônico;
+- algoritmo de recompensa é determinístico por estado e seed e concede first clear no máximo uma vez;
+- pity e proteções não forçam itens ilegais para um pool nem elevam o poder acima dos budgets;
+- simulações mostram distribuição, progresso, economia, extremos e limitações para primeira conclusão e repetição;
+- save, overflow, telemetria e QA têm contrato verificável;
+- a fase não reabre nem altera retroativamente o MVP homologado.
+
+O v0.4 já é o cânone de design. `PASS` desta fase comprovará que a integração e a migração respeitam esse cânone; não afirmará equilíbrio sem simulação/playtest nem implementação sem evidência do runtime.
+
+---
+
+# 24. FUTURE-REGIONS — Apenas sementes narrativas
 
 Não produzir conteúdo completo ainda.
 
@@ -1248,7 +1251,7 @@ Relacionamento forte com Sino e Íris.
 
 ---
 
-# 23. Ordem de execução recomendada
+# 25. Ordem de execução recomendada
 
 A ordem abaixo substitui a sequência anterior para refletir os sistemas introduzidos em 2026-09-28.
 
@@ -1257,12 +1260,12 @@ A ordem abaixo substitui a sequência anterior para refletir os sistemas introdu
 1. [x] **SYNC-0** — importar os novos contratos/documentos para o repositório e atualizar índices;
 2. [x] **DESIGN-1** — fechar a fundação e a separação entre run, herói, equipamento e conta;
 3. [x] **LORE-1** — consolidar `LORE_BIBLE.md` preservando os mistérios centrais;
-4. [x] **HERO-STD** — padrão canônico registrado como `CANONICAL` em [`HERO_STANDARD.md`](HERO_STANDARD.md);
+4. [x] **HERO-STD** — padrão canônico registrado como `APPROVED` em [`HERO_STANDARD.md`](HERO_STANDARD.md);
 5. [x] **HERO-001 BASTIÃO** — registrar Golden Reference completo;
 6. [x] **TREE-1 MVP** — definir os 30 nós, pré-requisitos, faixas relativas de custo e dependências da Árvore dos Ecos;
 7. [x] **CRAFT-1 MVP** — definir função, fonte/sink, limites do slice e ordem de desbloqueio dos quatro artesãos;
-8. **ITEM-1 — próxima fase** — reconciliar 10 slots, raridades, Item Power, affixes e 30 itens;
-9. **ECON-1** — fontes/sinks e primeira simulação.
+8. [x] **ITEM-1** — reconciliar slots, raridades, contrato de item e catálogo de 30;
+9. **ECON-1 — em andamento** — modelo, simulação reproduzível da primeira passagem e cenário offline limitado ao objetivo; usar o mapa provisório do Capítulo 1 e a fonte opcional de Resíduo de Lúmen para recalcular custos/rendimentos conforme v0.4. Teto/conversão temporal dependem de TTK medido em SLICE-1, conforme o [modelo econômico](docs/06_balance/ECONOMY_MODEL.md).
 
 ## Depois — conteúdo jogável
 
@@ -1275,8 +1278,10 @@ A ordem abaixo substitui a sequência anterior para refletir os sistemas introdu
 16. **EVENT-1 / HERO-EVENT-1**;
 17. **ECHO-1**;
 18. **HUB-1** — layout e progressão visual;
-19. **SLICE-1** — vertical slice completo;
-20. **BALANCE-1 / ARGOS**.
+19. **BALANCE-FOUNDATION-1** — estruturar registros e baselines compartilhados;
+20. **SLICE-1** — vertical slice completo usando os contratos da fundação;
+21. **BALANCE-1 / ARGOS** — telemetria e ajustes iterativos pós-slice;
+22. **LOOT-EXPANSION-1** — integrar a base canônica v0.4 ao runtime, migrar IDs com aliases e validar loot/economia após os gates anteriores.
 
 ## Paralelo, sem bloquear o slice
 
@@ -1298,7 +1303,7 @@ Se houver conflito entre um documento antigo e o padrão canônico introduzido n
 
 ---
 
-# 24. Critério de controle de escopo
+# 26. Critério de controle de escopo
 
 Antes de adicionar qualquer novo sistema, perguntar:
 
@@ -1312,7 +1317,7 @@ Se a resposta for **não para todos**, não priorizar.
 
 ---
 
-# 25. Regra de conteúdo
+# 27. Regra de conteúdo
 
 O objetivo não é criar centenas de sistemas independentes.
 
@@ -1324,9 +1329,9 @@ Essa interação deve ser o principal diferencial do Pocket Hero.
 
 ---
 
-# 26. Próximo checkpoint
+# 28. Próximo checkpoint
 
-## CHECKPOINT — ITEM-1 / ECON-1 / HERO-002
+## CHECKPOINT — ECON-1 / CONTENT-1 / HERO-002
 
 ### A. Sincronizar documentação
 
@@ -1346,9 +1351,10 @@ Essa interação deve ser o principal diferencial do Pocket Hero.
 
 ### C. Fechar MVP de equipamento/cidade
 
-- [ ] confirmar os 10 slots;
-- [ ] congelar esquema inicial de raridade/Item Power/affixes;
-- [x] definir desmontagem e primeiro aprimoramento controlado do Ferreiro; valores seguem para `ITEM-1`/`ECON-1`;
+- [x] confirmar os seis slots canônicos e documentar os tipos do runtime como legado;
+- [x] aprovar as seis raridades da base v0.4; manter apenas anotação histórica sobre quatro raridades no runtime antigo;
+- [x] aprovar o catálogo canônico v0.4 de 30 itens; manter catálogo runtime anterior até migração explícita;
+- [x] definir desmontagem e primeiro aprimoramento controlado do Ferreiro; valores seguem para `ECON-1`;
 - [x] definir o primeiro uso de Essência: destilação alimenta Catalisadores para serviços avançados do Ferreiro, fora do slice;
 - [x] decidir em `DESIGN-1` a inclusão de um Echo funcional opcional; a ficha completa e a implementação permanecem para `ECHO-1`.
 

@@ -1,0 +1,36 @@
+{
+  "schema_version": "1.0",
+  "chapter_id": "CHAPTER_01",
+  "status": "DESIGN",
+  "certainty": "HIPOTESE",
+  "source_of_truth": "This file owns the proposed Chapter 1 encounter roster and quantities. It is design-only and is not loaded by the game.",
+  "optional_blacksmith_event": {
+    "name": "Reserva de Resíduo",
+    "reward": { "material_id": "MAT_C1_LUMEN_RESIDUE", "quantity": 2 },
+    "repeatable": false,
+    "location": "After MB_C1_003 and before BOSS_C1_001"
+  },
+  "first_blacksmith_upgrade_per_item": {
+    "upgrade": "Reforço +1",
+    "material_id": "MAT_C1_LUMEN_RESIDUE",
+    "material_quantity": 5,
+    "gold_quantity": 50
+  },
+  "encounters": [
+    {"id":"C1_1_1_A","substage":"1.1","name":"Primeira luz","kind":"NORMAL","role":"Tutorial de alvo único; baixa pressão.","members":[{"enemy_id":"EN_C1_001","count":2}]},
+    {"id":"C1_1_2_A","substage":"1.2","name":"Vigia da trilha","kind":"NORMAL","role":"Introduz interrupção e mobilidade.","members":[{"enemy_id":"EN_C1_010","count":1},{"enemy_id":"EN_C1_001","count":1}]},
+    {"id":"C1_1_2_B","substage":"1.2","name":"Sinalizador tomado","kind":"NORMAL","role":"Ensina a priorizar o suporte; limitar a dois adds simultâneos.","members":[{"enemy_id":"EN_C1_005","count":1},{"enemy_id":"EN_C1_001","count":2}]},
+    {"id":"C1_2_1_A","substage":"2.1","name":"Raiz e emboscada","kind":"NORMAL","role":"Sinergia controller + assassin; enfrentar em formação curta e legível.","members":[{"enemy_id":"EN_C1_002","count":1},{"enemy_id":"EN_C1_003","count":1}]},
+    {"id":"C1_2_1_B","substage":"2.1","name":"Salto na clareira","kind":"NORMAL","role":"Reforça leitura de mobilidade sem acumular dois controladores.","members":[{"enemy_id":"EN_C1_010","count":1},{"enemy_id":"EN_C1_003","count":1}]},
+    {"id":"C1_2_2_A","substage":"2.2","name":"Ravina do musgo","kind":"NORMAL","role":"Ataque anunciado do heavy combinado com zona de controle.","members":[{"enemy_id":"EN_C1_004","count":1},{"enemy_id":"EN_C1_006","count":1}]},
+    {"id":"C1_2_2_B","substage":"2.2","name":"Geleia Anciã","kind":"ELITE","role":"Primeiro elite; duas geleias comuns no máximo como adds.","members":[{"enemy_id":"EL_C1_001","count":1},{"enemy_id":"EN_C1_001","count":2}]},
+    {"id":"C1_3_1_A","substage":"3.1","name":"Galeria de raízes","kind":"NORMAL","role":"Heavy defensivo e inimigo que retorna; terminar um alvo antes de dividir dano.","members":[{"enemy_id":"EN_C1_007","count":1},{"enemy_id":"EN_C1_008","count":1}]},
+    {"id":"C1_3_1_B","substage":"3.1","name":"Javali Cicatrizado","kind":"ELITE","role":"Elite com um Caracol como apoio; sem outro atacante de backline.","members":[{"enemy_id":"EL_C1_002","count":1},{"enemy_id":"EN_C1_008","count":1}]},
+    {"id":"C1_3_2_A","substage":"3.2","name":"Rainha das Geleias","kind":"MINIBOSS","role":"Duas invocações de uma geleia por luta: uma na fase 2 e uma na fase 3; não simultâneas.","members":[{"enemy_id":"MB_C1_001","count":1},{"enemy_id":"EN_C1_001","count":2}],"add_schedule":"Spawn one EN_C1_001 at 70% HP and one at 35% HP; each previous add must be defeated before the next spawn."},
+    {"id":"C1_4_1_A","substage":"4.1","name":"Caçada cruzada","kind":"NORMAL","role":"Dois assassinos com telegraphs alternados, nunca ataques perigosos simultâneos.","members":[{"enemy_id":"EN_C1_009","count":1},{"enemy_id":"EN_C1_003","count":1}]},
+    {"id":"C1_4_1_B","substage":"4.1","name":"Gremlin Espinhento","kind":"ELITE","role":"Elite isolado do suporte para preservar a leitura dos ataques à retaguarda.","members":[{"enemy_id":"EL_C1_003","count":1}]},
+    {"id":"C1_4_2_A","substage":"4.2","name":"Javali da Ponte","kind":"MINIBOSS","role":"Minichefe solo; uma entrada de Sapinho pode ocorrer na fase final, após o tell da investida.","members":[{"enemy_id":"MB_C1_002","count":1},{"enemy_id":"EN_C1_010","count":1}],"add_schedule":"Spawn one EN_C1_010 once at 35% HP, after the boss's charge resolves."},
+    {"id":"C1_5_1_A","substage":"5.1","name":"O Espinheiro","kind":"MINIBOSS","role":"Minichefe de zona com um Caracol; evitar adicionar Cogumelo/controlador à arena.","members":[{"enemy_id":"MB_C1_003","count":1},{"enemy_id":"EN_C1_008","count":1}]},
+    {"id":"C1_5_2_A","substage":"5.2","name":"Guardião-Cervo de Pedra","kind":"BOSS","role":"Boss final com um add por fase 2; ataques perigosos devem alternar com janela de recuperação.","members":[{"enemy_id":"BOSS_C1_001","count":1},{"enemy_id":"EN_C1_001","count":1}],"add_schedule":"Spawn one EN_C1_001 at 70% HP. Do not add another enemy during the fight."}
+  ]
+}

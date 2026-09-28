@@ -3,22 +3,26 @@
 O catálogo canônico de IDs, nomes e status do roster fica no [registro central](../CONTENT_REGISTRY.md).
 
 > [!IMPORTANT]
-> **Padrão Canônico dos Heróis:** Consulte o [HERO_STANDARD.md](../../HERO_STANDARD.md) na raiz do repositório para a especificação canônica obrigatória de anatomia, 7 ações (1 básica + 5 skills + 1 Signature), 16 passivas, 3 Traits, 10 slots de equipamento, níveis 1–100, Mastery 1–10, missões pessoais, 4 estágios visuais e definition of done. O arquivo local `HERO_STANDARD.md` é apenas um ponteiro de compatibilidade.
+> **Padrão Canônico dos Heróis:** Consulte o [HERO_STANDARD.md](../../HERO_STANDARD.md) na raiz do repositório: 7 ações (1 ataque básico + 6 skills no total, incluindo 1 Signature), 16 passivas, 3 Traits, 6 slots de equipamento (5 convencionais + 1 Echo), níveis 1–100, Mastery 1–10, missões pessoais, 4 estágios visuais e definition of done.
+
+Para o bloco de atributos e alvos de balanceamento, siga o [padrão compartilhado de balanceamento](../06_balance/COMBAT_BALANCE_STANDARD.md). Ele não substitui a ficha de identidade nem introduz migração runtime.
 
 O roster completo do Pocket Hero é composto por **8 heróis**, sendo que qualquer expedição é formada por um trio (3 ativos). A composição da party é uma das decisões táticas centrais do jogo: as mecânicas combinam organicamente sem necessidade de bônus artificiais.
 
 ## Roster dos 8 heróis
 
-| ID de design | Nome | Função central | Mecânica chave | Status | Ficha de detalhe |
-| --- | --- | --- | --- | --- | --- |
-| `HERO_001` | **Bastião** | Tanque / Proteção | Escudo / Guarda (Defesa e Retaliação) | `DESIGN` | [Modelo Golden de design](BASTIAO_GOLDEN_REFERENCE.md) / [Ficha](hero_001_bastiao.md) / [Perfil anterior](BASTIAO_HERO.md) |
-| `HERO_002` | **Flecha** | Ranged DPS | Marca da Caçada / Crítico contínuo | `IMPLEMENTED` | [hero_002_flecha.md](hero_002_flecha.md) |
-| `HERO_003` | **Íris** | Maga / AoE | Feixes de Lúmen / Controle arcano | `IMPLEMENTED` | [hero_003_iris.md](hero_003_iris.md) |
-| `HERO_004` | **Brasa** | Bruiser / Berserker | Fúria / Dano em baixo HP | `APPROVED` | [hero_004_brasa.md](hero_004_brasa.md) |
-| `HERO_005` | **Véu** | Assassino / Backline Killer | Exposição / Execução | `APPROVED` | [hero_005_veu.md](hero_005_veu.md) |
-| `HERO_006` | **Orvalho** | Healer / Regeneração | Sementes / Florescimento em jardim | `APPROVED` | [hero_006_orvalho.md](hero_006_orvalho.md) |
-| `HERO_007` | **Forja** | Engenheira / Invocadora | Engenhocas / Magitecnologia antiga | `APPROVED` | [hero_007_forja.md](hero_007_forja.md) |
-| `HERO_008` | **Sino** | Suporte Buffer | Ritmo / Manipulação de notas e memórias | `APPROVED` | [hero_008_sino.md](hero_008_sino.md) |
+| ID de design | Nome | Função central | Mecânica chave | Ficha de detalhe |
+| --- | --- | --- | --- | --- |
+| `HERO_001` | **Bastião** | Tanque / Proteção | Escudo / Guarda (Defesa e Retaliação) | [Golden Reference de design](BASTIAO_GOLDEN_REFERENCE.md) / [Ficha resumida](hero_001_bastiao.md) |
+| `HERO_002` | **Flecha** | Ranged DPS | Marca da Caçada / Crítico contínuo | [hero_002_flecha.md](hero_002_flecha.md) |
+| `HERO_003` | **Íris** | Maga / AoE | Feixes de Lúmen / Controle arcano | [hero_003_iris.md](hero_003_iris.md) |
+| `HERO_004` | **Brasa** | Bruiser / Berserker | Fúria / Dano em baixo HP | [hero_004_brasa.md](hero_004_brasa.md) |
+| `HERO_005` | **Véu** | Assassino / Backline Killer | Exposição / Execução | [hero_005_veu.md](hero_005_veu.md) |
+| `HERO_006` | **Orvalho** | Healer / Regeneração | Sementes / Florescimento em jardim | [hero_006_orvalho.md](hero_006_orvalho.md) |
+| `HERO_007` | **Forja** | Engenheira / Invocadora | Engenhocas / Magitecnologia antiga | [hero_007_forja.md](hero_007_forja.md) |
+| `HERO_008` | **Sino** | Suporte Buffer | Ritmo / Manipulação de notas e memórias | [hero_008_sino.md](hero_008_sino.md) |
+
+IDs e status de ciclo são autoridade do [registro central](../CONTENT_REGISTRY.md). As cenas de runtime ficam em [`scenes/heroes/`](../../scenes/heroes/); uma cena existente não comprova conclusão do design no [padrão canônico](../../HERO_STANDARD.md).
 
 ## Progressão narrativa e impacto no Hub (Refúgio da Vigília)
 

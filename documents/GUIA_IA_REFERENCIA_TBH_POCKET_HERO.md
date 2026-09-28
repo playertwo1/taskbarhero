@@ -4,6 +4,8 @@
 
 ## **Guia de Referência do TBH para Criação por IA**
 
+> **Atualização de autoridade:** este guia v1.0 é referência histórica de pesquisa. Para o design canônico de combate, balanceamento, inimigos, equipamentos, raridades, materiais e loot, prevalece [TASKBAR Sistema Completo v0.4](./canonical/taskbar_sistema_v0.4/README.md). Este guia não pode reabrir ou substituir essas decisões.
+
 *Mecânicas · fases · heróis · itens · loot · progressão · pets · crafting · comunidade · princípios do nosso jogo*
 
 > DECISÃO DE PRODUTO DO POCKET HERO

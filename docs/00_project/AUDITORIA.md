@@ -6,6 +6,8 @@ review_date: 2026-09-28
 
 # Auditoria — decisões de design delegadas
 
+> **Nota de atualização:** este documento registra decisões anteriores à aprovação de TASKBAR Sistema Completo v0.4. Para combate/loot, catálogo de inimigos, itens, raridades, materiais e economia, as partes desta auditoria que divergirem da [base canônica v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md) estão supersedidas. Os itens de run, árvore, slots de herói e artesãos continuam válidos onde não houver conflito; use suas fontes autoritativas.
+
 Este documento registra recomendações que Rafael autorizou explicitamente o agente a aprovar durante a fundação pós-MVP. O objetivo é facilitar a revisão de Rafael. Cada regra detalhada permanece na fonte autoritativa indicada; esta auditoria não substitui esses documentos nem afirma que as regras estão implementadas.
 
 ## Expedição e persistência
@@ -26,8 +28,8 @@ Este documento registra recomendações que Rafael autorizou explicitamente o ag
 ## Equipamento e artesãos
 
 - Drops e recompensas determinísticas alimentam o inventário persistente; equipamento não troca nem é destruído automaticamente. Alterações de loadout acontecem no Hub, e o loadout fica fixo durante a expedição. Fonte: [Equipamentos e artesãos](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
-- O primeiro slice mantém as quatro raridades que já existem. Raridades adicionais, Item Power e affixes avançados passam por ITEM-1 e simulação antes de adoção. Fonte: [Equipamentos e artesãos](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
-- O Ferreiro é o primeiro serviço: desmontagem protegida por confirmação e um serviço de melhoria controlada. Inicialmente, `Sucata` vem da desmontagem e serve à melhoria; ouro pode ser custo secundário. Não entram reforja aleatória, fixação de affix, ascensão ou outras famílias de material no slice. Fonte: [Equipamentos e artesãos](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
+- Snapshot anterior ao cânone v0.4: as raridades do runtime (quatro níveis) não definem mais a escala global; consulte a decisão atual na seção [Base canônica de combate e loot v0.4](#base-canônica-de-combate-e-loot-v04) e no [sistema de equipamentos](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
+- O Ferreiro é o primeiro serviço: desmontagem protegida por confirmação e um serviço de melhoria controlada. O recorte de material está definido na [fonte de equipamentos e artesãos](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md) conforme o catálogo v0.4; a antiga proposta de Sucata foi substituída. Ouro pode ser custo secundário. Não entram reforja aleatória, fixação de affix, ascensão ou outras famílias de material no slice.
 - Artesãos são desbloqueados gradualmente e de forma persistente na conta/Hub; Ferreiro vem primeiro, outros serviços entram quando tiverem função e economia definidas. Fonte: [Equipamentos e artesãos](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
 
 ## Árvore dos Ecos e meta-progressão
@@ -49,15 +51,24 @@ Fonte autoritativa: [catálogo TREE-1](../03_systems/GLOBAL_RESONANCE_TREE.md). 
 
 ## Artesãos da cidade — CRAFT-1
 
-- Ordem aprovada: Ferreiro primeiro; Gravadora de Ecos junto da primeira recompensa Echo; Alquimista quando houver materiais com fonte e sink sustentados; Ourives depois de Alquimia básica e da definição dos acessórios em `ITEM-1`.
-- No slice, o Ferreiro oferece desmontagem protegida e aprimoramento controlado usando Sucata. Não há desmontagem automática, reforja, fabricação livre nem outras famílias de materiais.
+- Ordem aprovada: Ferreiro primeiro; Gravadora de Ecos junto da primeira recompensa Echo; Alquimista quando houver materiais com fonte e sink sustentados; Ourives depois de Alquimia básica e da especificação futura de acessórios.
+- No slice, o Ferreiro oferece desmontagem protegida e aprimoramento controlado usando o material canônico selecionado em `ECON-1`. Não há desmontagem automática, reforja, fabricação livre nem outras famílias de materiais.
 - No slice, a Gravadora registra e permite equipar/trocar apenas Ecos possuídos no Hub. A recompensa Echo é opcional; não entram extração, cópia, infusão, melhoria ou Codex completo.
 - Alquimista começa com transmutação de materiais existentes. Essência, destilada de itens elegíveis, primeiro alimenta Catalisadores usados por serviços avançados do Ferreiro; ambos ficam após o slice.
-- Ourives começa futuramente com uma receita curada e determinística de acessório. Sockets, lapidação e recalibração dependem de aprovação em `ITEM-1`/`ECON-1`.
+- Ourives começa futuramente com uma receita curada e determinística de acessório. Sockets, lapidação e recalibração exigem especificação de expansão e aprovação econômica próprias.
 - O Cartógrafo/Mercador fica fora do gate CRAFT-1 até existir um serviço distinto com fonte e sink próprios.
 - `TREE_OFI_004`/`TREE_OFI_005` passam a restaurar o Ourives e abrir sua receita após `ALQ_002`; reforja e proteção de atributo saem dos 30 nós iniciais e podem voltar em expansão posterior.
 
-Fonte autoritativa: [Equipamentos e artesãos — CRAFT-1](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md). Receitas, valores e schemas permanecem em `ITEM-1`/`ECON-1`; não há mudança runtime.
+Fonte autoritativa: [Equipamentos e artesãos — CRAFT-1](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md). Receitas detalhadas, valores e economia ainda estão pendentes; não há mudança runtime.
+
+## Base canônica de combate e loot v0.4
+
+- Rafael aprovou TASKBAR Sistema Completo v0.4 como base canônica de design para inimigos, equipamento, seis raridades, sete materiais, combate, loot e economia. A especificação e catálogos ficam no [índice canônico](../../documents/canonical/taskbar_sistema_v0.4/README.md).
+- Mantêm-se os seis slots definidos para heróis: Arma, Secundário, Armadura, Acessório I, Acessório II e Echo. O cânone contém 30 itens em cinco grupos (5 Armas, 5 Secundários, 5 Armaduras, 10 Acessórios, 5 Ecos) e 17 inimigos.
+- Os 15 itens e 11 inimigos atuais em `/data` são conteúdo runtime legado, preservado até migração explícita. Consulte a [ponte de compatibilidade](../04_content/LEGACY_RUNTIME_CATALOG.md); não inferir equivalências.
+- A economia ECON-1 e as decisões anteriores de raridade/material valem como hipóteses/recorte do primeiro slice onde forem compatíveis com v0.4; não definem mais o catálogo global.
+
+Fonte autoritativa: [base canônica v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md), [padrão de balanceamento](../06_balance/COMBAT_BALANCE_STANDARD.md) e [roadmap](../../ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md#23-loot-expansion-1--economia-e-loot-completos). Runtime permanece separado até migração.
 
 ## Echo no primeiro slice
 
@@ -83,7 +94,8 @@ Estes pontos não são omissões da auditoria; foram deliberadamente deixados pa
 
 - Valores do teto offline, drops, custos, duração observada e parâmetros de pacing: `ECON-1`.
 - Custos finais, fontes/sinks simulados e limites econômicos da Árvore: `ECON-1`.
-- Schema de item, subset dos slots no slice, raridades futuras e regras detalhadas de reforja: `ITEM-1`.
+- Migração do schema runtime, subset de itens do slice e fontes/taxas de loot: `SLICE-1`/`ECON-1`.
+- Item Power numérico, raridades futuras, affixes e reforja: expansão posterior com especificação e simulação próprias.
 - Fonte narrativa do Echo no capítulo, ficha e runtime: `CONTENT-1`/`ECHO-1`.
 - Aquisição e ritmo de Mastery, conteúdo de outros heróis e cânone detalhado: `HERO-STD`/`LORE-1` e etapas posteriores.
 

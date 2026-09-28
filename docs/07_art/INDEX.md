@@ -5,7 +5,9 @@ O conteúdo de arte existente permanece em [`docs/art/`](../art/), sua localiza�
 - [Direção visual](../art/ART_DIRECTION.md) · [guia de sprites](../art/SPRITE_STYLE_GUIDE.md) · [paleta](../art/PALETTE.md)
 - [Base visual](../art/ASSET_VISUAL_BLUEPRINT.md) e [conceitos por categoria](../art/conceitos/README.md)
 - [Golden/ART-0](../art/golden/README.md) · [inventário MVP](../art/MVP_SPRITE_INVENTORY.md)
-- [Contratos](../art/contracts/) · [manifestos](../art/manifests/README.md) · [QA de sprites](../art/QA_SPRITES.md)
+- [Contratos](../art/contracts/) · [manifestos](../art/manifests/README.md) · [QA de sprites](../art/QA_SPRITES.md) · [catálogo de rejeitados](../art/REJECT_CATALOG.md)
+- [Auditoria visual preliminar](../art/QA_VISUAL_PRELIMINAR_2026-09-28.md) · [rotas atuais do Hub](../05_hub/HUB_VISUAL_DIRECTION.md)
+- Snapshots locais de instalação e caminhos foram arquivados em [`arquivados/INDEX.md`](../../arquivados/INDEX.md); não representam o ambiente atual sem nova conferência.
 - [Pipeline Daedalus](../art/DAEDALUS_SOUL.md) · [Receitas de prompting](../art/PROMPT_RECIPES.md)
 - [Conceitos-piloto de chefes e itens (2026-09-28)](../art/CONCEITOS_PILOTO_2026-09-28.md)
 - [Direção aprovada para modelos conceituais de heróis](../art/CONCEPT_MODEL_STYLE.md) · [cinco heróis restantes v001](../art/mockups/hero_model_concepts_v001/README.md) · [trio inicial v002](../art/mockups/hero_model_concepts_v002/README.md) · [Íris revisada v003](../art/mockups/hero_model_concepts_v003/README.md) — referências visuais, não sprites finais.

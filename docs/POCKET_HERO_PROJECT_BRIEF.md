@@ -1,86 +1,29 @@
-# Pocket Hero — resumo consolidado do projeto
+# Pocket Hero — resumo do projeto
 
-> Consolidação dos documentos de referência e pipeline recebidos em 2026-09-26. Os DOCX integrais estão preservados em `docs/archive/`; este arquivo destaca as decisões e critérios úteis para execução. Quando houver divergência entre propostas, ela fica explícita em vez de ser tratada como decisão aprovada.
+> Documento de orientação. [`AGENTS.md`](../AGENTS.md), [`PROJECT_STATE.md`](../PROJECT_STATE.md), [`ROADMAP.md`](../ROADMAP.md), dados e código mantêm autoridade sobre instruções, plano, estado e comportamento.
 
-## Identidade e objetivo
+## Identidade
 
-**Pocket Hero** (nome de trabalho; repositório `playertwo1/taskbarhero`) é um RPG mobile idle de combate automático, com pixel art dark fantasy e batalha legível em uma faixa compacta. Android é a plataforma inicial. O jogo deve ter identidade própria: referências de gênero podem orientar estruturas e sistemas, nunca copiar arte, sprites, nomes distintivos, interface, textos ou balanceamento de terceiros.
+**Pocket Hero** é um RPG mobile de combate automático com party, equipamento e progressão. `taskbarhero` é o nome do repositório. Android em um aplicativo normal é a plataforma inicial. A identidade de personagens, mundo, arte, mapas, textos e interface é original; outros jogos servem apenas como referência de estrutura e princípios. Não há vantagem de poder paga no escopo aprovado.
 
-A proposta combina combate automático com decisões do jogador sobre formação, equipamento, progressão e eficiência de farm. O overlay sobre outros apps é uma ideia pós-MVP, não parte da primeira entrega.
+## MVP homologado
 
-## MVP
+O MVP foi concluído no gate **R19**, em 2026-09-27. Evidências e checklist estão em [`arquivados/ROADMAP_CONCLUIDO.md`](../arquivados/ROADMAP_CONCLUIDO.md); o estado e o plano atual estão em [`ROADMAP.md`](../ROADMAP.md).
 
-O primeiro objetivo é provar um jogo completo dentro de um app Android normal:
+O conteúdo de runtime registra o Bosque de Lúmen, cinco fases macro, trio inicial Bastião/Flecha/Íris, oito inimigos comuns, uma elite, um minichefe e um chefe, além de 15 itens de gameplay. O [registro central](CONTENT_REGISTRY.md) aponta para os catálogos e os JSON autoritativos. Presença de cena, dado ou item não implica que um conceito futuro esteja aprovado ou completo em design.
 
-- **Bosque de Lúmen**, com cinco fases: entrada, pressão, ninho/farm, elite e chefe.
-- Três heróis: **Bastião** (proteção), **Flecha** (dano à distância) e **Íris** (magia em área).
-- Quatro inimigos comuns, uma elite e o **Guardião-Cervo de Pedra** como chefe.
-- Combate automático, XP/nível, ouro, atributos, equipamento, 15 itens iniciais, save local e progresso offline.
-- APK debug instalável, legibilidade em tela pequena e uma sessão prolongada sem crash.
-- O overlay Android, servidor/contas, multiplayer, monetização, cloud save e produção em muitas regiões ficam fora do MVP.
+Para o conteúdo futuro, TASKBAR Sistema Completo v0.4 é a base canônica aprovada de combate, balanceamento, bestiário, equipamentos, materiais e loot. Ela não descreve ainda o runtime atual; consulte a [ponte de compatibilidade](04_content/LEGACY_RUNTIME_CATALOG.md).
 
-O MVP só fecha após cumprir seus critérios e passar pela auditoria técnica, visual e de gameplay (roadmap R18–R19).
+## Expansão pós-MVP
 
-## Visão de conteúdo posterior
+- O [padrão canônico dos heróis](../HERO_STANDARD.md) define seis skills (cinco normais e uma Signature) e seis posições de equipamento (Arma, Secundário, Armadura, dois Acessórios e Echo).
+- `TREE-1`, `CRAFT-1` e `ITEM-1` foram aprovados como design. Seus valores econômicos e simulação seguem para `ECON-1`; o runtime ainda não foi migrado para os novos sistemas.
+- A trilha detalhada de conteúdo está em [`ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md`](../ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md). A prioridade ativa fica sempre no [`ROADMAP.md`](../ROADMAP.md).
 
-A proposta de longo prazo descreve cinco biomas — Bosque de Lúmen, Distrito Cinzento, Mar de Vidro, Espinha do Inverno e Fortaleza Rubra — mais **Eco Corrompido**, uma camada de endgame com mutações, modificadores e risco/recompensa. A escala deve crescer por famílias de inimigos e variantes, não por assets isolados em massa.
+## Visão futura
 
-Sistemas candidatos incluem party de até três, papéis de combate distintos, Ecos desbloqueados por marcos, loot com afixos que alteram habilidades, reciclagem/filtro de loot, dificuldades que remixam conteúdo e tracker com XP/h, ouro/h, TTK, mortes, drops e inventário. São propostas para priorização futura, não todas requisitos do MVP.
+Novos biomas, endgame, mais sistemas e expansão de catálogo são possibilidades de longo prazo. Não os trate como requisitos fechados; consulte as fases e gates do roadmap antes de produzir conteúdo.
 
-## Design pós-MVP — fontes canônicas
+## Arte e navegação
 
-Os documentos abaixo registram propostas de expansão pós-MVP. Consulte o [roadmap](../ROADMAP.md) para prioridade e gates; estas referências de design não comprovam implementação nem fecham decisões marcadas **EM ABERTO**.
-
-- [Padrão canônico dos heróis](../HERO_STANDARD.md) — estrutura comum para o roster.
-- [Bastião Golden Reference](02_heroes/BASTIAO_GOLDEN_REFERENCE.md) — modelo de profundidade para fichas de herói.
-- [Árvore Global de Ressonância / Árvore dos Ecos](03_systems/GLOBAL_RESONANCE_TREE.md) — progressão global compartilhada; catálogo TREE-1 de 30 nós aprovado para design, sem implementação runtime.
-- [Equipamentos e Artesãos da Cidade](03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md) — arquitetura CRAFT-1 aprovada; fontes/sinks numéricos, catálogo de itens e implementação seguem para etapas próprias.
-
-## Direção e produção de sprites
-
-- Pixel art dark fantasy, vista lateral, silhuetas claras em escala mobile.
-- Heróis voltados à direita; inimigos à esquerda; luz principal no alto à esquerda.
-- Fundo transparente para entidades, pixel-perfect/nearest-neighbor e outline seletivo.
-- Testar canvas de 32×32 contra 48×48 antes de congelar o padrão; paleta comum sugerida de 16–24 cores, com exceções justificadas.
-- Derivar variantes de uma silhueta-mãe, preservando a leitura e mudando poucos elementos relevantes.
-- Nomear assets com IDs estáveis e versão (`*_v001`); contratos definem dimensões, animações, exportação e QA.
-
-### Pipeline proposto
-
-1. Rafael define o pedido; **Theia** delimita escopo e prioridade.
-2. **Daedalus** cria contrato de asset e produz arte com **pixel-mcp + Aseprite**.
-3. A saída inclui spritesheet, metadata e preview, seguida de checagens técnicas.
-4. **Têmis** (ou auditor independente) avalia contrato e consistência; o executor não aprova o próprio trabalho.
-5. Após PASS, **Ergane** integra no Godot e valida cena, animação e comportamento.
-6. Validar legibilidade em aparelho real; registrar versão, evidências e manifest.
-
-**Hermes** faz roteamento e handoff; **Research** entra quando faltar informação. **Pixelorama** é ferramenta opcional de revisão manual. O projeto não deve instalar ferramentas, configurar MCPs ou produzir em lote sem a autorização/etapa correspondente.
-
-### Gates sugeridos
-
-- Contrato completo antes da arte.
-- Arquivos, dimensões, frames, transparência, nomes e exportações conferidos.
-- Revisão visual independente.
-- Importação e teste no Godot.
-- Validação mobile quando a arte afetar a faixa de combate.
-
-## Snapshot histórico de setup (2026-09-26)
-
-O texto abaixo registra uma consolidação anterior e não define a fase atual. O roadmap vigente é a fonte para próximos passos. Naquele snapshot, o roadmap chamava o primeiro marco de **SETUP-01** e o manual recomendava provar um slime animado de ponta a ponta; o documento de referências também sugeria um pacote visual maior do Bosque de Lúmen (**ART-C0-LUMEN**).
-
-**Divergência a resolver antes de produzir arte:** escolher entre validar primeiro um único sprite/pipeline e iniciar diretamente o pacote ART-C0-LUMEN. Não tratar nenhuma dessas propostas como aprovação já dada.
-
-## Estado registrado nesta consolidação
-
-- O MCP `pixel-art` v0.5.0 foi instalado e registrado no perfil Hermes `default`; health check do servidor/Aseprite e `hermes mcp test` passaram. A allowlist expõe 29 ferramentas, com `trust: untrusted` e sampling desativado.
-- Nenhum sprite foi criado, nenhum código do jogo foi alterado e Godot/Android não foram testados nesta tarefa. O Aseprite local é 1.3.7; o health check passou, mas a geração de arte ainda não foi validada.
-- **Snapshot histórico (2026-09-26, antes da publicação dos guias):** `main` estava em `67c226f` e alinhada com `origin/main`; `Aseprite/` e `Godot_v4.7.2-stable_win64.exe/` estavam não rastreadas e foram preservadas sem alteração. A presença da pasta Godot não comprova setup funcional.
-- Próxima ação recomendada: abrir uma nova sessão Hermes para carregar as ferramentas, fazer um teste isolado de sprite e resolver se o primeiro gate de arte será um slime de prova ou ART-C0-LUMEN.
-
-## Fontes do repositório
-
-- Jogo de referência instalado via Steam: `C:\Program Files (x86)\Steam\steamapps\common\TaskbarHero` — usar para estudar estrutura e sistemas; não copiar assets, arte, nomes ou conteúdo protegido.
-- `docs/archive/TBH_Referencias_e_Banco_de_Ideias_Pocket_Hero.docx`
-- `docs/archive/Pocket_Hero_Pipeline_IA_Sprites_Hermes.docx`
-- `ROADMAP.md`
-- `docs/REFERENCIAS_TBH.md` e `docs/PIPELINE_IA_SPRITES.md` são materiais anteriores; consultar os DOCX integrais e esta consolidação para a proposta atual.
+A direção visual, Golden, contratos, conceitos e QA têm entrada em [`docs/07_art/INDEX.md`](07_art/INDEX.md). Para os fluxos de sprites, leia [`docs/art/conceitos/README.md`](art/conceitos/README.md) e a documentação apontada pelos índices. A organização completa do repositório está em [`docs/INDEX.md`](INDEX.md); as fontes DOCX e guias completos estão em [`documents/INDEX.md`](../documents/INDEX.md).

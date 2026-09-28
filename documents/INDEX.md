@@ -43,6 +43,8 @@ Os DOCX são preservados como fontes originais. As versões Markdown facilitam b
 | Equipamentos, crafting e artesãos da cidade (proposta v0.1) | [`../docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md`](../docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md) | [`1-Taskbar_Equipamentos_e_Artesaos_da_Cidade_v0.1.docx`](./1-Taskbar_Equipamentos_e_Artesaos_da_Cidade_v0.1.docx) |
 | Árvore global de ressonância / Árvore dos Ecos (proposta v0.1) | [`../docs/03_systems/GLOBAL_RESONANCE_TREE.md`](../docs/03_systems/GLOBAL_RESONANCE_TREE.md) | [`2-Taskbar_Arvore_Global_de_Ressonancia_v0.1.docx`](./2-Taskbar_Arvore_Global_de_Ressonancia_v0.1.docx) |
 | Bastião como modelo de design para os heróis (referência v0.1) | [`../docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md`](../docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md) | [`3-Taskbar_Hero_Bastiao_Golden_Reference_v0.1.docx`](./3-Taskbar_Hero_Bastiao_Golden_Reference_v0.1.docx) |
+| Referências importadas de balanceamento (Balance Pack v0.1/v0.2) | [`references/balance_pack_v0.1/README.md`](./references/balance_pack_v0.1/README.md) | [`references/balance_pack_v0.1/TASKBAR_BALANCE_PACK_v0.1.zip`](./references/balance_pack_v0.1/TASKBAR_BALANCE_PACK_v0.1.zip) |
+| Base canônica de combate, balanceamento e loot v0.4 | [`canonical/taskbar_sistema_v0.4/README.md`](./canonical/taskbar_sistema_v0.4/README.md) | [`canonical/taskbar_sistema_v0.4/TASKBAR_SISTEMA_COMPLETO_v0.4.zip`](./canonical/taskbar_sistema_v0.4/TASKBAR_SISTEMA_COMPLETO_v0.4.zip) |
 
 ## Rotas de leitura por tarefa
 
@@ -51,6 +53,8 @@ Os DOCX são preservados como fontes originais. As versões Markdown facilitam b
 - **Loop, progressão ou nova mecânica:** [`../docs/design/INCREMENTAL_DESIGN_GUIDE.md`](../docs/design/INCREMENTAL_DESIGN_GUIDE.md) + guia de design incremental.
 - **Usar referências de Task Bar Hero/TBH:** guia de referência, especialmente sua hierarquia de fontes e regras de originalidade.
 - **Criar moeda, curva, item, drop, boss, offline ou meta-progressão:** guia avançado de economia e balanceamento.
+- **Atributos e estrutura balanceável de entidade:** [padrão canônico de combate](../docs/06_balance/COMBAT_BALANCE_STANDARD.md); use as referências importadas somente como material de estudo.
+- **Combate, balanceamento e loot:** siga a [base canônica v0.4](./canonical/taskbar_sistema_v0.4/README.md); consulte `LOOT-EXPANSION-1` para migração/integração. Dados runtime legados permanecem em `data/` até migração aprovada.
 - **Design pós-MVP de equipamentos, artesãos, Árvore dos Ecos ou Bastião:** consulte as propostas v0.1 na tabela acima e a fase correspondente da [`../ROADMAP.md`](../ROADMAP.md); elas não provam implementação nem aprovação de números.
 - **Onboarding, UI, acessibilidade, haptics, bateria, Dev Mode, playtest ou aceite:** guia de UX e playtest.
 - **Sprites, contratos de arte e integração:** [`../docs/PIPELINE_IA_SPRITES.md`](../docs/PIPELINE_IA_SPRITES.md) + fase correspondente do roadmap.
