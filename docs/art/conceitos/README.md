@@ -21,9 +21,9 @@
 ## Pastas
 
 - [Modelos conceituais de heróis](../CONCEPT_MODEL_STYLE.md) — estilo aprovado, mapa das imagens atuais por personagem e caminho das fichas/contratos para futura criação de sprites.
-- [Monstros comuns](./monstros/README.md) — fichas legadas; compare com o bestiário canônico v0.4.
-- [Elites](./elites/README.md) — fichas legadas; os três elites canônicos precisam de mapeamento visual.
-- [Chefes](./chefes/README.md) — Guardião-Cervo coincide com o boss v0.4; outras fichas são legadas.
+- [Monstros comuns](./monstros/README.md) — fichas canônicas com brief, status e drops; fichas antigas ficam identificadas como referências legadas.
+- [Elites](./elites/README.md) — brief inicial para as três elites canônicas e arquivo da referência legada.
+- [Chefes e minichefes](./chefes/README.md) — brief para os três minichefes canônicos e Golden do Guardião-Cervo.
 - [Itens](./itens/README.md) — 30 fichas para o catálogo anterior; o catálogo v0.4 precisa ser mapeado/ilustrado.
 
 Os conceitos não incluem skills nem fases; permanecem catalogadas na [base visual](../ASSET_VISUAL_BLUEPRINT.md) para uma próxima fatia.

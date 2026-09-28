@@ -1,6 +1,19 @@
 # Monstros — conceitos visuais
 
-As fichas abaixo documentam arte legada de inimigos anteriores. O bestiário de design vigente é o [catálogo canônico v0.4 de 17 entidades](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMY_CATALOG.md); os IDs, arquétipos e relações de loot estão no [JSON](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json). Reutilize arte somente quando houver alias explícito ou aprovação visual.
+As fichas marcadas **cânone** trazem resumo de função, status e drops do bestiário v0.4, além de uma proposta visual para orientar novos sprites. O [JSON do Capítulo 1](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json) continua sendo a autoridade dos dados.
+
+## Inimigos canônicos
+
+- [Mariposa Luminosa](./en_c1_005_mariposa_luminosa.md) — `EN_C1_005`.
+- [Cogumelo Sonolento](./en_c1_006_cogumelo_sonolento.md) — `EN_C1_006`.
+- [Trepa-Cadáver](./en_c1_007_trepa_cadaver.md) — `EN_C1_007`.
+- [Caracol Cristalino](./en_c1_008_caracol_cristalino.md) — `EN_C1_008`.
+- [Raposa Oca](./en_c1_009_raposa_oca.md) — `EN_C1_009`.
+- [Sapinho do Lúmen](./en_c1_010_sapinho_do_lumen.md) — `EN_C1_010`.
+
+## Referências visuais legadas
+
+Elas não correspondem automaticamente às identidades do bestiário. Reutilize somente com alias explícito ou aprovação visual.
 
 - [Geleia de Lúmen](./geleia_lumen.md) — existente; seguir o Golden de inimigo e o contrato `enemy_lumen_slime.yaml` sem redesign.
 - [Gremlin de Folha](./gremlin_folha.md) — existente; preservar os detalhes do contrato `mob_gremlin_folha.yaml`.
