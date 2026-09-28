@@ -1,0 +1,54 @@
+{
+  "asset_id": "boss_matriarca_micelio",
+  "status": "ARTISTIC_QA",
+  "version": 1,
+  "contract": "docs/art/contracts/boss_matriarca_micelio.yaml",
+  "golden_reference": "GOLDEN_BOSS_GUARDIAO_CERVO_V1 (style reference only)",
+  "generation": {
+    "workflow": "image_gen_reference_to_single_pose_alpha_crop_nearest_scale_ty40_quantize",
+    "workflow_version": "1",
+    "model": "OpenAI image_gen",
+    "model_license_record": "Uso pessoal aprovado por Rafael em 2026-09-27; não autoriza redistribuição ou uso comercial.",
+    "seed": null,
+    "sampler": null,
+    "steps": null,
+    "cfg": null,
+    "generation_resolution": "1254x1254 source reduced to 64x64",
+    "input_hashes": [
+      "319b739bd7550a0b57d3f437ef1aba8f323900c53fd3ce916ac201813d0b1d44"
+    ]
+  },
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "forest",
+      "wood",
+      "lumen"
+    ],
+    "colors_used": 13,
+    "exceptional_colors": []
+  },
+  "output": {
+    "files": [
+      "assets/sprites/bosses/matriarca_micelio/boss_matriarca_micelio_v001.png"
+    ],
+    "frame_size": {
+      "width": 64,
+      "height": 64
+    },
+    "frame_count": 1,
+    "layout": "single",
+    "facing": "left",
+    "alpha": true,
+    "hashes": [
+      "583e019cbceaa0ef7c7297be022c8df6cbfebd8a028a4223d32bd44038049f2f"
+    ]
+  },
+  "qa": {
+    "technical": "PASS",
+    "artistic": "PENDING",
+    "reviewer": null,
+    "reviewed_at": null,
+    "report": "Single neutral key pose candidate; no animation sheet or gameplay content implied."
+  }
+}

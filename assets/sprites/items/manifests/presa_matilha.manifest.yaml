@@ -1,0 +1,58 @@
+{
+  "asset_id": "presa_matilha",
+  "status": "ARTISTIC_QA",
+  "version": 1,
+  "contract": "docs/art/contracts/item_icons/item_icon_iron_lumen_wood.yaml",
+  "concept": "docs/art/conceitos/itens/presa_matilha.md",
+  "content_state": "visual_candidate",
+  "generation": {
+    "workflow": "image_gen_single_icon_alpha_crop_nearest_scale_ty40_quantize",
+    "workflow_version": "1",
+    "model": "OpenAI image_gen",
+    "model_license_record": "Uso pessoal aprovado por Rafael em 2026-09-27; não autoriza redistribuição ou uso comercial.",
+    "seed": null,
+    "sampler": null,
+    "steps": null,
+    "cfg": null,
+    "generation_resolution": "1254x1254 source, final 32x32",
+    "input_hashes": [
+      "e561f537e6653ad38d46aff23021b5c4a8ccdca1eb2910cb4984573785efbad1",
+      "bc1e2a39ed35d29f9806c6f773f377bb15958d83c9f216ca2980dba30b2b132e",
+      "512feed18b561d7b59c56d5afac2f651dd930952d1c5f25fd8cb8d703f0f17f7",
+      "da2b1fae5987c68433b06623778c33dc0e5e587709320d91ccd0ecb4dc6ea6d3"
+    ]
+  },
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "wood",
+      "iron",
+      "lumen"
+    ],
+    "colors_used": 9,
+    "exceptional_colors": []
+  },
+  "output": {
+    "files": [
+      "assets/sprites/items/icons/presa_matilha.png"
+    ],
+    "frame_size": {
+      "width": 32,
+      "height": 32
+    },
+    "frame_count": 1,
+    "layout": "single",
+    "facing": "inventory_icon",
+    "alpha": true,
+    "hashes": [
+      "c0a2f7dfd9d0ca6100f98c1f71cbcb187192ff936ec0a3f4f28032f9fbe6c1b2"
+    ]
+  },
+  "qa": {
+    "technical": "PASS",
+    "artistic": "PENDING",
+    "reviewer": null,
+    "reviewed_at": null,
+    "report": "Sprite lint PASS; independent visual audit and mobile review are pending."
+  }
+}

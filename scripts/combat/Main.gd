@@ -12,7 +12,9 @@ extends Control
 @onready var inventory_label: Label = $Root/Content/Inventory
 @onready var status_label: Label = $Root/Content/Status
 @onready var equip_button: Button = $Root/Content/ActionRow/EquipButton
+@onready var inventory_button: Button = $Root/Content/ActionRow/InventoryButton
 @onready var tracker_button: Button = $Root/Content/ActionRow/TrackerButton
+@onready var inventory_screen: Control = $InventoryScreen
 @onready var offline_modal: Control = $OfflineModal
 @onready var offline_time_label: Label = $OfflineModal/Center/Card/VBox/Time
 @onready var offline_rewards_label: Label = $OfflineModal/Center/Card/VBox/Rewards
@@ -41,6 +43,8 @@ func _ready() -> void:
 		_show_offline_modal(offline_data)
 	
 	tracker_button.pressed.connect(_on_tracker_button_pressed)
+	inventory_button.pressed.connect(_on_inventory_button_pressed)
+	inventory_screen.connect("item_equipped", _on_inventory_item_equipped)
 	tracker_close_button.pressed.connect(_on_tracker_close_pressed)
 	btn_session.pressed.connect(func(): _switch_tracker_view("session"))
 	btn_2hours.pressed.connect(func(): _switch_tracker_view("last_2_hours"))
@@ -186,6 +190,13 @@ func _on_equip_pressed() -> void:
 		status_label.text = "Equipados %d item(s) de maior poder!" % count
 	else:
 		status_label.text = "Nenhum equipamento melhor disponível."
+	_update_ui()
+
+func _on_inventory_button_pressed() -> void:
+	inventory_screen.call("show_screen")
+
+func _on_inventory_item_equipped(item_name: String) -> void:
+	status_label.text = "%s equipado." % item_name
 	_update_ui()
 
 func _on_stage_changed(stage_index: int, stage_name: String) -> void:

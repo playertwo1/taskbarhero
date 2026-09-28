@@ -1,0 +1,58 @@
+{
+  "asset_id": "couraca_de_javali",
+  "status": "ARTISTIC_QA",
+  "version": 1,
+  "contract": "docs/art/contracts/item_icons/item_icon_forest_neutral_stone_wood.yaml",
+  "concept": "docs/art/conceitos/itens/couraca_javali.md",
+  "content_state": "mvp",
+  "generation": {
+    "workflow": "image_gen_single_icon_alpha_crop_nearest_scale_ty40_quantize",
+    "workflow_version": "1",
+    "model": "OpenAI image_gen",
+    "model_license_record": "Uso pessoal aprovado por Rafael em 2026-09-27; não autoriza redistribuição ou uso comercial.",
+    "seed": null,
+    "sampler": null,
+    "steps": null,
+    "cfg": null,
+    "generation_resolution": "1254x1254 source, final 32x32",
+    "input_hashes": [
+      "cc6bc2449f2c0bb958c2c40babe054b7686b0aaea9067231836c65896eccdc8e",
+      "bc1e2a39ed35d29f9806c6f773f377bb15958d83c9f216ca2980dba30b2b132e",
+      "512feed18b561d7b59c56d5afac2f651dd930952d1c5f25fd8cb8d703f0f17f7",
+      "da2b1fae5987c68433b06623778c33dc0e5e587709320d91ccd0ecb4dc6ea6d3"
+    ]
+  },
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "wood",
+      "forest",
+      "neutral_stone"
+    ],
+    "colors_used": 8,
+    "exceptional_colors": []
+  },
+  "output": {
+    "files": [
+      "assets/sprites/items/icons/couraca_de_javali.png"
+    ],
+    "frame_size": {
+      "width": 32,
+      "height": 32
+    },
+    "frame_count": 1,
+    "layout": "single",
+    "facing": "inventory_icon",
+    "alpha": true,
+    "hashes": [
+      "3bccabadeb0db68e840bfa448d714220fa846bb62e96a14c91745247e671a8b3"
+    ]
+  },
+  "qa": {
+    "technical": "PASS",
+    "artistic": "PENDING",
+    "reviewer": null,
+    "reviewed_at": null,
+    "report": "Sprite lint PASS; independent visual audit and mobile review are pending."
+  }
+}

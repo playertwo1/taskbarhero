@@ -1,0 +1,57 @@
+{
+  "asset_id": "tunica_de_folhas",
+  "status": "ARTISTIC_QA",
+  "version": 1,
+  "contract": "docs/art/contracts/item_icons/item_icon_forest_wood.yaml",
+  "concept": "docs/art/conceitos/itens/tunica_folhas.md",
+  "content_state": "mvp",
+  "generation": {
+    "workflow": "image_gen_single_icon_alpha_crop_nearest_scale_ty40_quantize",
+    "workflow_version": "1",
+    "model": "OpenAI image_gen",
+    "model_license_record": "Uso pessoal aprovado por Rafael em 2026-09-27; não autoriza redistribuição ou uso comercial.",
+    "seed": null,
+    "sampler": null,
+    "steps": null,
+    "cfg": null,
+    "generation_resolution": "1254x1254 source, final 32x32",
+    "input_hashes": [
+      "4982333802f7dc0ff73b0ea72884c29703b7f1f26c15f2ef8db47e574e1c2f6b",
+      "bc1e2a39ed35d29f9806c6f773f377bb15958d83c9f216ca2980dba30b2b132e",
+      "512feed18b561d7b59c56d5afac2f651dd930952d1c5f25fd8cb8d703f0f17f7",
+      "da2b1fae5987c68433b06623778c33dc0e5e587709320d91ccd0ecb4dc6ea6d3"
+    ]
+  },
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "forest",
+      "wood"
+    ],
+    "colors_used": 6,
+    "exceptional_colors": []
+  },
+  "output": {
+    "files": [
+      "assets/sprites/items/icons/tunica_de_folhas.png"
+    ],
+    "frame_size": {
+      "width": 32,
+      "height": 32
+    },
+    "frame_count": 1,
+    "layout": "single",
+    "facing": "inventory_icon",
+    "alpha": true,
+    "hashes": [
+      "8210e17a276d49155d2b54d9f86c2ca92a9b8d2218783ad7a4090f8a82b8f3f8"
+    ]
+  },
+  "qa": {
+    "technical": "PASS",
+    "artistic": "PENDING",
+    "reviewer": null,
+    "reviewed_at": null,
+    "report": "Sprite lint PASS; independent visual audit and mobile review are pending."
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "asset_id": "peitoral_vigia_caido",
+  "status": "ARTISTIC_QA",
+  "version": 1,
+  "contract": "docs/art/contracts/item_icons/item_icon_iron_neutral_stone_wood.yaml",
+  "concept": "docs/art/conceitos/itens/peitoral_vigia_caido.md",
+  "content_state": "visual_candidate",
+  "generation": {
+    "workflow": "image_gen_single_icon_alpha_crop_nearest_scale_ty40_quantize",
+    "workflow_version": "1",
+    "model": "OpenAI image_gen",
+    "model_license_record": "Uso pessoal aprovado por Rafael em 2026-09-27; não autoriza redistribuição ou uso comercial.",
+    "seed": null,
+    "sampler": null,
+    "steps": null,
+    "cfg": null,
+    "generation_resolution": "1254x1254 source, final 32x32",
+    "input_hashes": [
+      "74bfcfa408e6a9555a72d28f0656c4c769dcc69fb0aca34ef34a50121a4de884",
+      "bc1e2a39ed35d29f9806c6f773f377bb15958d83c9f216ca2980dba30b2b132e",
+      "512feed18b561d7b59c56d5afac2f651dd930952d1c5f25fd8cb8d703f0f17f7",
+      "da2b1fae5987c68433b06623778c33dc0e5e587709320d91ccd0ecb4dc6ea6d3"
+    ]
+  },
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "neutral_stone",
+      "wood",
+      "iron"
+    ],
+    "colors_used": 7,
+    "exceptional_colors": []
+  },
+  "output": {
+    "files": [
+      "assets/sprites/items/icons/peitoral_vigia_caido.png"
+    ],
+    "frame_size": {
+      "width": 32,
+      "height": 32
+    },
+    "frame_count": 1,
+    "layout": "single",
+    "facing": "inventory_icon",
+    "alpha": true,
+    "hashes": [
+      "dde1786be1019886e7530b919b3c84c7376f3bbf45378a6d1ca38856c2e5b3d7"
+    ]
+  },
+  "qa": {
+    "technical": "PASS",
+    "artistic": "PENDING",
+    "reviewer": null,
+    "reviewed_at": null,
+    "report": "Sprite lint PASS; independent visual audit and mobile review are pending."
+  }
+}

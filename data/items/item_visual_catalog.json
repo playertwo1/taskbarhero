@@ -1,0 +1,433 @@
+[
+  {
+    "id": "adaga_de_luz",
+    "name": "Adaga de Luz",
+    "slot": "weapon",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/adaga_de_luz.png",
+    "concept": "docs/art/conceitos/itens/adaga_luz.md",
+    "manifest": "assets/sprites/items/manifests/adaga_de_luz.manifest.yaml",
+    "gameplay": {
+      "id": "adaga_de_luz",
+      "name": "Adaga de Luz",
+      "slot": "weapon",
+      "rarity": "Comum",
+      "attack": 2,
+      "weight": 35
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "espada_de_musgo",
+    "name": "Espada de Musgo",
+    "slot": "weapon",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/espada_de_musgo.png",
+    "concept": "docs/art/conceitos/itens/espada_musgo.md",
+    "manifest": "assets/sprites/items/manifests/espada_de_musgo.manifest.yaml",
+    "gameplay": {
+      "id": "espada_de_musgo",
+      "name": "Espada de Musgo",
+      "slot": "weapon",
+      "rarity": "Comum",
+      "attack": 4,
+      "weight": 25
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "lamina_silvestre",
+    "name": "Lâmina Silvestre",
+    "slot": "weapon",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/lamina_silvestre.png",
+    "concept": "docs/art/conceitos/itens/lamina_silvestre.md",
+    "manifest": "assets/sprites/items/manifests/lamina_silvestre.manifest.yaml",
+    "gameplay": {
+      "id": "lamina_silvestre",
+      "name": "Lâmina Silvestre",
+      "slot": "weapon",
+      "rarity": "Raro",
+      "attack": 7,
+      "crit": 0.03,
+      "weight": 15
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "machado_ancestral",
+    "name": "Machado Ancestral",
+    "slot": "weapon",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/machado_ancestral.png",
+    "concept": "docs/art/conceitos/itens/machado_ancestral.md",
+    "manifest": "assets/sprites/items/manifests/machado_ancestral.manifest.yaml",
+    "gameplay": {
+      "id": "machado_ancestral",
+      "name": "Machado Ancestral",
+      "slot": "weapon",
+      "rarity": "Épico",
+      "attack": 12,
+      "crit": 0.06,
+      "weight": 8
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "cajado_de_lumen",
+    "name": "Cajado de Lúmen",
+    "slot": "weapon",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/cajado_de_lumen.png",
+    "concept": "docs/art/conceitos/itens/cajado_lumen.md",
+    "manifest": "assets/sprites/items/manifests/cajado_de_lumen.manifest.yaml",
+    "gameplay": {
+      "id": "cajado_de_lumen",
+      "name": "Cajado de Lúmen",
+      "slot": "weapon",
+      "rarity": "Lendário",
+      "attack": 18,
+      "crit": 0.1,
+      "weight": 3
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "tunica_de_folhas",
+    "name": "Túnica de Folhas",
+    "slot": "armor",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/tunica_de_folhas.png",
+    "concept": "docs/art/conceitos/itens/tunica_folhas.md",
+    "manifest": "assets/sprites/items/manifests/tunica_de_folhas.manifest.yaml",
+    "gameplay": {
+      "id": "tunica_de_folhas",
+      "name": "Túnica de Folhas",
+      "slot": "armor",
+      "rarity": "Comum",
+      "defense": 1,
+      "max_hp": 8,
+      "weight": 35
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "gibao_de_casca",
+    "name": "Gibão de Casca",
+    "slot": "armor",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/gibao_de_casca.png",
+    "concept": "docs/art/conceitos/itens/gibao_casca.md",
+    "manifest": "assets/sprites/items/manifests/gibao_de_casca.manifest.yaml",
+    "gameplay": {
+      "id": "gibao_de_casca",
+      "name": "Gibão de Casca",
+      "slot": "armor",
+      "rarity": "Comum",
+      "defense": 2,
+      "max_hp": 15,
+      "weight": 25
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "couraca_de_javali",
+    "name": "Couraça de Javali",
+    "slot": "armor",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/couraca_de_javali.png",
+    "concept": "docs/art/conceitos/itens/couraca_javali.md",
+    "manifest": "assets/sprites/items/manifests/couraca_de_javali.manifest.yaml",
+    "gameplay": {
+      "id": "couraca_de_javali",
+      "name": "Couraça de Javali",
+      "slot": "armor",
+      "rarity": "Raro",
+      "defense": 4,
+      "max_hp": 28,
+      "weight": 15
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "placa_rochosa",
+    "name": "Placa Rochosa",
+    "slot": "armor",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/placa_rochosa.png",
+    "concept": "docs/art/conceitos/itens/placa_rochosa.md",
+    "manifest": "assets/sprites/items/manifests/placa_rochosa.manifest.yaml",
+    "gameplay": {
+      "id": "placa_rochosa",
+      "name": "Placa Rochosa",
+      "slot": "armor",
+      "rarity": "Épico",
+      "defense": 7,
+      "max_hp": 50,
+      "weight": 8
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "armadura_do_guardiao",
+    "name": "Armadura do Guardião",
+    "slot": "armor",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/armadura_do_guardiao.png",
+    "concept": "docs/art/conceitos/itens/armadura_guardiao.md",
+    "manifest": "assets/sprites/items/manifests/armadura_do_guardiao.manifest.yaml",
+    "gameplay": {
+      "id": "armadura_do_guardiao",
+      "name": "Armadura do Guardião",
+      "slot": "armor",
+      "rarity": "Lendário",
+      "defense": 12,
+      "max_hp": 90,
+      "weight": 3
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "pedra_polida",
+    "name": "Pedra Polida",
+    "slot": "amulet",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/pedra_polida.png",
+    "concept": "docs/art/conceitos/itens/pedra_polida.md",
+    "manifest": "assets/sprites/items/manifests/pedra_polida.manifest.yaml",
+    "gameplay": {
+      "id": "pedra_polida",
+      "name": "Pedra Polida",
+      "slot": "amulet",
+      "rarity": "Comum",
+      "crit": 0.02,
+      "weight": 35
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "semente_vital",
+    "name": "Semente Vital",
+    "slot": "amulet",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/semente_vital.png",
+    "concept": "docs/art/conceitos/itens/semente_vital.md",
+    "manifest": "assets/sprites/items/manifests/semente_vital.manifest.yaml",
+    "gameplay": {
+      "id": "semente_vital",
+      "name": "Semente Vital",
+      "slot": "amulet",
+      "rarity": "Comum",
+      "lifesteal": 0.02,
+      "weight": 25
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "colar_de_espiritos",
+    "name": "Colar de Espíritos",
+    "slot": "amulet",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/colar_de_espiritos.png",
+    "concept": "docs/art/conceitos/itens/colar_espiritos.md",
+    "manifest": "assets/sprites/items/manifests/colar_de_espiritos.manifest.yaml",
+    "gameplay": {
+      "id": "colar_de_espiritos",
+      "name": "Colar de Espíritos",
+      "slot": "amulet",
+      "rarity": "Raro",
+      "crit": 0.04,
+      "lifesteal": 0.02,
+      "weight": 15
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "amuleto_do_cervo",
+    "name": "Amuleto do Cervo",
+    "slot": "amulet",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/amuleto_do_cervo.png",
+    "concept": "docs/art/conceitos/itens/amuleto_cervo.md",
+    "manifest": "assets/sprites/items/manifests/amuleto_do_cervo.manifest.yaml",
+    "gameplay": {
+      "id": "amuleto_do_cervo",
+      "name": "Amuleto do Cervo",
+      "slot": "amulet",
+      "rarity": "Épico",
+      "crit": 0.07,
+      "lifesteal": 0.04,
+      "weight": 8
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "coracao_da_floresta",
+    "name": "Coração da Floresta",
+    "slot": "amulet",
+    "status": "mvp",
+    "icon": "res://assets/sprites/items/icons/coracao_da_floresta.png",
+    "concept": "docs/art/conceitos/itens/coracao_floresta.md",
+    "manifest": "assets/sprites/items/manifests/coracao_da_floresta.manifest.yaml",
+    "gameplay": {
+      "id": "coracao_da_floresta",
+      "name": "Coração da Floresta",
+      "slot": "amulet",
+      "rarity": "Lendário",
+      "crit": 0.12,
+      "lifesteal": 0.06,
+      "weight": 3
+    },
+    "state_label": "MVP"
+  },
+  {
+    "id": "arco_copa_silente",
+    "name": "Arco da Copa Silente",
+    "slot": "weapon",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/arco_copa_silente.png",
+    "concept": "docs/art/conceitos/itens/arco_copa_silente.md",
+    "manifest": "assets/sprites/items/manifests/arco_copa_silente.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "broche_eco_claro",
+    "name": "Broche do Eco Claro",
+    "slot": "amulet",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/broche_eco_claro.png",
+    "concept": "docs/art/conceitos/itens/broche_eco_claro.md",
+    "manifest": "assets/sprites/items/manifests/broche_eco_claro.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "capa_nevoa_verde",
+    "name": "Capa da Névoa Verde",
+    "slot": "armor",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/capa_nevoa_verde.png",
+    "concept": "docs/art/conceitos/itens/capa_nevoa_verde.md",
+    "manifest": "assets/sprites/items/manifests/capa_nevoa_verde.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "cetro_veio_ambar",
+    "name": "Cetro do Veio Âmbar",
+    "slot": "weapon",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/cetro_veio_ambar.png",
+    "concept": "docs/art/conceitos/itens/cetro_veio_ambar.md",
+    "manifest": "assets/sprites/items/manifests/cetro_veio_ambar.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "couraca_casca_muscosa",
+    "name": "Couraça de Casca Musgosa",
+    "slot": "armor",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/couraca_casca_muscosa.png",
+    "concept": "docs/art/conceitos/itens/couraca_casca_muscosa.md",
+    "manifest": "assets/sprites/items/manifests/couraca_casca_muscosa.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "dente_basalto",
+    "name": "Dente de Basalto",
+    "slot": "amulet",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/dente_basalto.png",
+    "concept": "docs/art/conceitos/itens/dente_basalto.md",
+    "manifest": "assets/sprites/items/manifests/dente_basalto.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "jaqueta_rastro_longo",
+    "name": "Jaqueta do Rastro Longo",
+    "slot": "armor",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/jaqueta_rastro_longo.png",
+    "concept": "docs/art/conceitos/itens/jaqueta_rastro_longo.md",
+    "manifest": "assets/sprites/items/manifests/jaqueta_rastro_longo.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "lamina_trilha_partida",
+    "name": "Lâmina da Trilha Partida",
+    "slot": "weapon",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/lamina_trilha_partida.png",
+    "concept": "docs/art/conceitos/itens/lamina_trilha_partida.md",
+    "manifest": "assets/sprites/items/manifests/lamina_trilha_partida.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "maca_raiz_clara",
+    "name": "Maça da Raiz-Clara",
+    "slot": "weapon",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/maca_raiz_clara.png",
+    "concept": "docs/art/conceitos/itens/maca_raiz_clara.md",
+    "manifest": "assets/sprites/items/manifests/maca_raiz_clara.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "manto_micelio_trancado",
+    "name": "Manto de Micélio Trançado",
+    "slot": "armor",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/manto_micelio_trancado.png",
+    "concept": "docs/art/conceitos/itens/manto_micelio_trancado.md",
+    "manifest": "assets/sprites/items/manifests/manto_micelio_trancado.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "no_marcos_antigos",
+    "name": "Nó dos Marcos Antigos",
+    "slot": "amulet",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/no_marcos_antigos.png",
+    "concept": "docs/art/conceitos/itens/no_marcos_antigos.md",
+    "manifest": "assets/sprites/items/manifests/no_marcos_antigos.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "peitoral_vigia_caido",
+    "name": "Peitoral do Vigia Caído",
+    "slot": "armor",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/peitoral_vigia_caido.png",
+    "concept": "docs/art/conceitos/itens/peitoral_vigia_caido.md",
+    "manifest": "assets/sprites/items/manifests/peitoral_vigia_caido.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "presa_matilha",
+    "name": "Presa da Matilha",
+    "slot": "amulet",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/presa_matilha.png",
+    "concept": "docs/art/conceitos/itens/presa_matilha.md",
+    "manifest": "assets/sprites/items/manifests/presa_matilha.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "ramo_pedra_runa",
+    "name": "Ramo de Pedra-Runa",
+    "slot": "weapon",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/ramo_pedra_runa.png",
+    "concept": "docs/art/conceitos/itens/ramo_pedra_runa.md",
+    "manifest": "assets/sprites/items/manifests/ramo_pedra_runa.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  },
+  {
+    "id": "semente_veio_vivo",
+    "name": "Semente do Veio Vivo",
+    "slot": "amulet",
+    "status": "visual_candidate",
+    "icon": "res://assets/sprites/items/icons/semente_veio_vivo.png",
+    "concept": "docs/art/conceitos/itens/semente_veio_vivo.md",
+    "manifest": "assets/sprites/items/manifests/semente_veio_vivo.manifest.yaml",
+    "state_label": "Candidato visual · sem dados de gameplay"
+  }
+]

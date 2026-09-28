@@ -1,0 +1,57 @@
+{
+  "asset_id": "espada_de_musgo",
+  "status": "ARTISTIC_QA",
+  "version": 1,
+  "contract": "docs/art/contracts/item_icons/item_icon_forest_iron.yaml",
+  "concept": "docs/art/conceitos/itens/espada_musgo.md",
+  "content_state": "mvp",
+  "generation": {
+    "workflow": "image_gen_single_icon_alpha_crop_nearest_scale_ty40_quantize",
+    "workflow_version": "1",
+    "model": "OpenAI image_gen",
+    "model_license_record": "Uso pessoal aprovado por Rafael em 2026-09-27; não autoriza redistribuição ou uso comercial.",
+    "seed": null,
+    "sampler": null,
+    "steps": null,
+    "cfg": null,
+    "generation_resolution": "1254x1254 source, final 32x32",
+    "input_hashes": [
+      "13f9c3f0e98f3fab90b1b42354ce8815a09f5be9569f788f868b7de2d4edc01c",
+      "bc1e2a39ed35d29f9806c6f773f377bb15958d83c9f216ca2980dba30b2b132e",
+      "512feed18b561d7b59c56d5afac2f651dd930952d1c5f25fd8cb8d703f0f17f7",
+      "da2b1fae5987c68433b06623778c33dc0e5e587709320d91ccd0ecb4dc6ea6d3"
+    ]
+  },
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "iron",
+      "forest"
+    ],
+    "colors_used": 8,
+    "exceptional_colors": []
+  },
+  "output": {
+    "files": [
+      "assets/sprites/items/icons/espada_de_musgo.png"
+    ],
+    "frame_size": {
+      "width": 32,
+      "height": 32
+    },
+    "frame_count": 1,
+    "layout": "single",
+    "facing": "inventory_icon",
+    "alpha": true,
+    "hashes": [
+      "0d8045661c293435128f3fb2e88ac318faa4a8909ff7fecf30691d262d54a668"
+    ]
+  },
+  "qa": {
+    "technical": "PASS",
+    "artistic": "PENDING",
+    "reviewer": null,
+    "reviewed_at": null,
+    "report": "Sprite lint PASS; independent visual audit and mobile review are pending."
+  }
+}

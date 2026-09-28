@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8y1v2k3pocket"]
+[gd_scene load_steps=8 format=3 uid="uid://b8y1v2k3pocket"]
 
 [ext_resource type="Script" path="res://scripts/combat/Main.gd" id="1"]
 [ext_resource type="Script" path="res://scripts/combat/BattleStrip.gd" id="2"]
+[ext_resource type="PackedScene" path="res://scenes/inventory/InventoryScreen.tscn" id="3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleCard"]
 bg_color = Color(0.065, 0.07, 0.085, 1)
@@ -168,14 +169,21 @@ custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleButton")
-text = "Equipar Melhores"
+text = "Autoequipar"
+
+[node name="InventoryButton" type="Button" parent="Root/Content/ActionRow"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleButton")
+text = "Itens"
 
 [node name="TrackerButton" type="Button" parent="Root/Content/ActionRow"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleButton")
-text = "Tracker Lite"
+text = "Tracker"
 
 [node name="BattleStrip" type="Control" parent="Root/Content"]
 layout_mode = 2
@@ -314,3 +322,5 @@ custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleButton")
 text = "Fechar"
+
+[node name="InventoryScreen" parent="." instance=ExtResource("3")]

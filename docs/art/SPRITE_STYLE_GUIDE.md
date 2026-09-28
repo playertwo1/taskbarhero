@@ -854,3 +854,7 @@ Use Minimum Sufficient Context.
 > **Pocket Hero deve parecer um jogo criado deliberadamente em pixel art — nunca uma ilustração de IA reduzida para 48×48.**
 
 > **Se o sprite não funciona pequeno, ele não funciona.**
+
+## Ícones de itens — tamanho definido
+
+Por decisão de Rafael em 2026-09-28, os ícones do inventário Pocket Hero usam canvas final 32×32. A arte do item fica isolada e transparente; moldura, raridade, seleção e quantidade pertencem à interface. Validar a leitura mobile antes de aceite de release.
