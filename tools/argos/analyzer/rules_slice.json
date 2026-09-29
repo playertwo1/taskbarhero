@@ -1,0 +1,25 @@
+{
+  "id": "rules_slice",
+  "status": "HIPOTESE",
+  "note": "Faixas e metas usadas pelo Argos Analyst. As faixas de TTK vêm do v0.4; as metas de caminhos viáveis e de tentativas são hipóteses de produto a confirmar por Rafael. Nada aqui prova diversão.",
+  "ttk_ranges": {
+    "elite": {"min": 15, "max": 30, "source": "docs/06_balance/SLICE_BALANCE_CONTRACT.md, seção 5 (faixa v0.4)"},
+    "rainha": {"min": 40, "max": 75, "source": "docs/06_balance/SLICE_BALANCE_CONTRACT.md, seção 5 (faixa v0.4)"},
+    "guardiao": {"min": 120, "max": 210, "source": "docs/04_content/chapters/chapter_01/ENCOUNTERS.md (120–210 s)"}
+  },
+  "viable_path": {
+    "min_route_win_rate": 0.5,
+    "max_level": 8,
+    "min_paths": 2,
+    "min_paths_without": {"hero_003": "lumen"},
+    "min_paths_without_count": 1,
+    "source": "Pedido de Rafael (2026-09-29): mais de um caminho viável, sem depender da cura"
+  },
+  "dominance": {"win_rate_gap": 0.5, "source": "Perfil optimizer do Argos: build dominante elimina escolhas"},
+  "first_try_reference": {"level": 5, "min": 0.4, "max": 0.6, "source": "ENCOUNTERS.md: 40–60% na primeira tentativa é meta de teste humano; aqui só referência"},
+  "campaign": {
+    "median_attempts_min": 2,
+    "median_attempts_max": 5,
+    "source": "Pedido de Rafael: desafio e progresso após derrotas (HIPÓTESE de faixa)"
+  }
+}

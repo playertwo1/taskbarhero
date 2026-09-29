@@ -1,0 +1,3 @@
+# Saídas pesadas do Argos: ficam locais. REPORT.md, summary.json e meta.json podem ser versionados.
+reports/**/runs.jsonl
+reports/**/godot.log

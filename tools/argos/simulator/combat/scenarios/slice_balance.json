@@ -1,0 +1,16 @@
+{
+  "id": "slice_balance",
+  "description": "Matriz completa do slice: 18 combinações de builds, níveis 3/5/8, rota, segmentos isolados e campanha de tentativas.",
+  "seeds": 6,
+  "levels": [3, 5, 8],
+  "builds": {
+    "hero_001": ["guardiao", "retaliacao", "retaliacao_tele"],
+    "hero_002": ["critico", "marca"],
+    "hero_003": ["arcano", "controle", "lumen"]
+  },
+  "modes": ["route", "segments", "campaign"],
+  "campaign": {"start_level": 1, "max_attempts": 10},
+  "rank_milestones": [3, 5, 7, 9, 11, 13, 15, 17, 19],
+  "max_time": 3600,
+  "stuck_seconds": 30
+}

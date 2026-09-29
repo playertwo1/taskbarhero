@@ -176,13 +176,13 @@ Anotadas no marco SETUP-01; não reabrem o MVP.
 
 ### ARGOS — Autonomous Playtester
 
-Hooks da v0.0 concluídos.
+Hooks da v0.0 concluídos. **Ordem revisada (Rafael, 2026-09-29):** simulador + Analyst antes do Maestro, porque o gargalo atual é balanceamento; RSN Game QA fica como referência de oráculos, não dependência.
 
 | Versão | Escopo | Entrega / gate | Estado |
 | --- | --- | --- | --- |
 | **v0.1 — Foundation** | GdUnit4, Maestro MCP, perfis Beginner/Chaos. | APK testado por jornadas Android; 10+ regressões críticas. | PENDENTE |
 | **v0.2 — Visual** | Fallback CLI Android, screenshots, regressão visual. | Detectar botões inacessíveis e HUD quebrado. | PENDENTE |
-| **v0.3 — Scale** | Simulador headless (10k–100k execuções) e Argos Analyst. | Relatórios de inflação, drops, TTK e economia. | PENDENTE |
+| **v0.3 — Scale** | Simulador headless (10k–100k execuções) e Argos Analyst. | Relatórios de inflação, drops, TTK e economia. | `IMPLEMENTING` — ARGOS-SIM de combate/campanha do slice em uso ([README](tools/argos/README.md), [achados](docs/08_qa/BALANCE_FINDINGS.md)); economia e loot pendentes |
 | **v0.4 — Learning** | Godot RL Agents. | Experimento de estratégias emergentes/exploits. | EXPERIMENTAL |
 | **v1.0 — Autonomous QA** | build → test → report → fix → retest. | Ciclo validado em CI. | PENDENTE |
 

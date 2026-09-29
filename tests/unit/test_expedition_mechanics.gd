@@ -34,6 +34,7 @@ func _ready() -> void:
 	_test_skill_ranks()
 	_test_prepared_targets()
 	_test_heal_threat()
+	_test_passives()
 	_test_xp()
 	_test_determinism()
 
@@ -242,6 +243,42 @@ func _test_heal_threat() -> void:
 			threat = float(enemies[0]["threat"].get("hero_003", 0.0))
 	_expect("houve cura efetiva", healed > 0.0)
 	_check("ameaça da Íris = dano + 0,5 × cura", threat, iris_damage + 0.5 * healed)
+
+func _passive_rows() -> Array:
+	return SliceStats.load_rows("res://data/skills/passives_slice.json", "slice")
+
+# Peso do Escudo (0,20×ATK no Perfect Block) e Contenção Arcana (atordoa alvo preparado e
+# interrompe o golpe telegrafado).
+func _test_passives() -> void:
+	print("
+>>> 5d. PASSIVAS")
+	var bast := _bastiao(0.0)
+	bast["builds"] = {"r": {"name": "r", "skills": [], "passives": ["passive_bas_peso_do_escudo"]}}
+	var events := _run([bast], [{"enemy_id": "en_c1_001", "count": 1}], [], {"builds": {"hero_001": "r"}, "passives": _passive_rows()}).run_to_end(0.25)
+	var pd := _of(events, "passive_damage")
+	# 10 × 0,20 × (1 − 6,75/106,75)
+	_check("Peso do Escudo no Perfect Block de t = 1", float(pd[0]["damage"]) if not pd.is_empty() and absf(float(pd[0]["time"]) - 1.0) < EPS else -1.0, 2.0 * 0.936768)
+
+	var mech := {"telegraph": {"id": "t", "every": 3, "windup": 1.5, "coefficient": 2.2, "target": "front", "exposed_duration": 3.0, "exposed_vulnerability": 0.15}}
+	var tele := _enemy_variant("en_c1_001", "t_tele2", mech)
+	var guard := _bastiao(0.0)
+	guard["builds"] = {"g": {"name": "g", "skills": []}}
+	var iris: Dictionary = {}
+	for r in hero_rows:
+		if r["id"] == "hero_003":
+			iris = r.duplicate(true)
+	iris["base_stats"]["attack"] = [0.001, 0.001]
+	iris["builds"] = {"c": {"name": "c", "skills": ["skill_iri_003"], "passives": ["trait_iri_002"]}}
+	var run := _run([guard, iris], [{"enemy_id": "t_tele2", "count": 1}], [tele], {
+		"builds": {"hero_001": "g", "hero_003": "c"}, "passives": _passive_rows(),
+		"formation": {"front": "hero_001", "mid": "hero_003"},
+		"trigger_overrides": {"skill_iri_003": {"type": "enemy_telegraph"}},
+	})
+	var ev := run.run_to_end(0.25)
+	var cut := _of(ev, "telegraph_interrupted")
+	_expect("Contenção Arcana interrompe o 1º golpe telegrafado (t = 3)", not cut.is_empty() and absf(float(cut[0]["time"]) - 3.0) < EPS)
+	var heavy: Array = _of(ev, "enemy_attack").filter(func(e): return e["heavy"] and float(e["time"]) < 6.0)
+	_expect("o golpe pesado interrompido não acontece", heavy.is_empty())
 
 func _test_xp() -> void:
 	print("\n>>> 6. XP")

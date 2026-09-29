@@ -45,3 +45,27 @@ Execute a primeira sessão no Android.
 Objetivos: chegar ao primeiro drop, equipar, primeiro level-up.
 Entregue: timeline, findings classificados e steps reproduzíveis.
 ```
+
+---
+
+## ARGOS-SIM — simulador headless e Analyst (em uso)
+
+Primeira camada implementada, antes do Maestro, porque o gargalo atual é balanceamento. **Não usa IA no laço:** o Godot roda o `ExpeditionRun` determinístico e o Analyst aplica regras fixas. Uma IA (ou pessoa) lê só o `REPORT.md`.
+
+```text
+python tools/argos/run.py --scenario slice_quick     # ~2 s, 4 combinações no nível 5
+python tools/argos/run.py --scenario slice_balance   # ~75 s, 18 combinações × níveis 3/5/8 + campanha
+python -m unittest tools/argos/analyzer/test_analyze.py
+```
+
+| Peça | Arquivo | Função |
+| --- | --- | --- |
+| Cenários | `simulator/combat/scenarios/*.json` | combinações de builds, níveis, sementes, modos (`route`, `segments`, `campaign`), marcos de rank; `overrides.enemy_damage_scale` só vale na execução |
+| Simulador | `simulator/combat/argos_sim.gd` (`ArgosSim.tscn`) | uma linha JSON por execução em `runs.jsonl`, com métricas e oráculos |
+| Oráculos | idem | tempo voltando, HP negativo, herói derrotado agindo, inimigo derrotado agindo ou derrotado duas vezes, XP pago ≠ esperado, combate travado, execução sem fim, log dependente do passo |
+| Analyst | `analyzer/analyze.py` + `analyzer/rules_slice.json` | agrega, classifica achados (BUG, BALANCE, PACING, INFO) e compara com o relatório anterior do mesmo cenário |
+| Relatórios | `reports/<data>_<commit>/` | `REPORT.md`, `summary.json`, `meta.json` versionáveis; `runs.jsonl` e `godot.log` ficam locais |
+
+`run.py` sai com código 1 se houver achado BUG ou `SCRIPT ERROR`. As faixas de `rules_slice.json` citam a fonte; as metas de caminhos viáveis e de tentativas são **HIPÓTESE** até decisão de Rafael. Simulação não é playtest e não avalia diversão.
+
+Próximas camadas: `StateExporter`/`DebugBridge` apontando para a expedição do slice e, depois, Maestro para jornadas no Android.
