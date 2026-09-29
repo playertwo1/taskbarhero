@@ -73,3 +73,11 @@ Fonte dos números: `python tools/argos/run.py --scenario slice_balance` (6 seme
 * **Proposta do Argos:** manter valores runtime; no playtest comparar curar, sacrificar e política livre com as mesmas builds/sementes, acompanhando HP antes do boss, vitórias, raridade recebida e Resíduo. Rever a meta de Resíduo separadamente se a medição real confirmar excedente.
 * **Decisão humana:** pendente. Métricas são HIPÓTESE e não justificam ajuste de números por si só.
 
+### [BAL-008] A fase final do Guardião pressiona a vitória na faixa de nível 12
+* **Data:** 2026-09-29
+* **Build Commit:** `a976815` com alterações locais; relatório `20260929-193319_a976815`.
+* **Métrica observada:** `slice_run_layer` marcou 18 combinações com pacing tardio (vitória entre níveis 12,5 e 15) e uma combinação sem vitória. O relatório anterior `20260929-172102_cd47758` marcava 13 combinações tardias e uma sem vitória. Na cena `TestExpeditionChoices`, o trio Guardião/Crítico/Controle no nível 12 e seed 101 perdeu nas duas cadências. Uma comparação pareada de 24 seeds da mesma build/nível, com uma cópia em memória dos dados, resultou em 1/24 vitórias com telegraph a cada 2 ataques e 7/24 a cada 3. A fase durou em média 52,7 s e 65,3 s, respectivamente; o progresso médio nos fragmentos foi 79,9% e 87,0%; golpes telegrafados médios 12,4 e 11,4; heróis vivos ao final 0,08 e 0,50. Na seed 101, a fase começou em 184,4 s; os dois primeiros fragmentos caíram em 200,2 s e 221,6 s; a party caiu em 242,6 s com 49% de HP restante no terceiro fragmento.
+* **Hipótese:** o fluxo sequencial está funcionando. A cadência a cada 3 ataques teve mais vitórias e sobreviventes na amostra, apesar de alongar a fase, e é a opção menos punitiva. O seed 101 ainda perde nas duas variantes; a cadência não explica sozinha essa regressão. Simulação determinística não substitui playtest.
+* **Recomendação:** preferir a cadência a cada 3 ataques, preservando os três alvos sequenciais e os ataques do Guardião. Manter a falha da seed 101 visível; não enfraquecer nem reescrever o teste para fazê-lo passar.
+* **Decisão humana:** Rafael adotou a recomendação em 2026-09-29; `telegraph_every` foi ajustado para 3 em [`enemies.json`](../../data/enemies/enemies.json). A hipótese de balanceamento permanece sujeita a playtest.
+

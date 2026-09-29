@@ -258,7 +258,7 @@
           "name": "A Memória",
           "phase_gate": true,
           "corruption_fragments": 3,
-          "telegraph_every": 2
+          "telegraph_every": 3
         }
       ]
     }
