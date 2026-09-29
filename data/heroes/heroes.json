@@ -1,0 +1,181 @@
+[
+  {
+    "id": "hero_001",
+    "design_id": "HERO_001",
+    "legacy_alias": "bastiao",
+    "name": "Bastião",
+    "content_set": "slice",
+    "role": "Tank / Protector",
+    "base_stats": {
+      "max_hp": [
+        160.0,
+        700.0
+      ],
+      "attack": [
+        10.0,
+        42.0
+      ],
+      "defense": [
+        18.0,
+        80.0
+      ]
+    },
+    "attack_speed": 0.8,
+    "crit_chance": 0.03,
+    "crit_damage": 1.5,
+    "skill_haste": 0.0,
+    "tenacity": 20.0,
+    "builds": {
+      "guardiao": {
+        "name": "Guardião",
+        "skills": [
+          "skill_bas_006",
+          "skill_bas_009"
+        ],
+        "passives": [
+          "passive_bas_ombro_a_ombro",
+          "passive_bas_escudo_compartilhado",
+          "passive_bas_voto_do_escudo"
+        ]
+      },
+      "retaliacao": {
+        "name": "Retaliação",
+        "skills": [
+          "skill_bas_007",
+          "skill_bas_008"
+        ],
+        "passives": [
+          "passive_bas_peso_do_escudo",
+          "passive_bas_momento",
+          "passive_bas_ferro_responde"
+        ]
+      }
+    },
+    "basic_stagger": 18.0,
+    "perfect_block": {
+      "status": "HIPOTESE",
+      "source": "SLICE_BALANCE_CONTRACT.md, seção 3; recarga EM ABERTO",
+      "recharge": 8.0,
+      "damage_multiplier": 0.2,
+      "stagger": 30.0
+    },
+    "identity_passive": "passive_bas_inabalavel"
+  },
+  {
+    "id": "hero_002",
+    "design_id": "HERO_002",
+    "legacy_alias": "flecha",
+    "name": "Flecha",
+    "content_set": "slice",
+    "role": "Ranged DPS",
+    "base_stats": {
+      "max_hp": [
+        100.0,
+        380.0
+      ],
+      "attack": [
+        14.0,
+        60.0
+      ],
+      "defense": [
+        7.0,
+        28.0
+      ]
+    },
+    "attack_speed": 1.2,
+    "crit_chance": 0.1,
+    "crit_damage": 1.6,
+    "skill_haste": 0.0,
+    "tenacity": 0.0,
+    "builds": {
+      "critico": {
+        "name": "Crítico",
+        "skills": [
+          "skill_fle_008",
+          "skill_fle_007"
+        ],
+        "passives": [
+          "passive_fle_respiracao_controlada",
+          "passive_fle_ponta_de_penetracao",
+          "passive_fle_ponto_de_mira"
+        ]
+      },
+      "marca": {
+        "name": "Marca",
+        "skills": [
+          "skill_fle_006",
+          "skill_fle_009"
+        ],
+        "passives": [
+          "passive_fle_rastro_aberto",
+          "passive_fle_pressao_coordenada",
+          "passive_fle_cacada_coordenada"
+        ]
+      }
+    },
+    "basic_stagger": 6.0,
+    "identity_passive": "passive_fle_instinto_de_cacadora"
+  },
+  {
+    "id": "hero_003",
+    "design_id": "HERO_003",
+    "legacy_alias": "iris",
+    "name": "Íris",
+    "content_set": "slice",
+    "role": "Mage / Control",
+    "base_stats": {
+      "max_hp": [
+        95.0,
+        360.0
+      ],
+      "attack": [
+        15.0,
+        63.0
+      ],
+      "defense": [
+        6.0,
+        25.0
+      ]
+    },
+    "attack_speed": 0.9,
+    "crit_chance": 0.05,
+    "crit_damage": 1.5,
+    "skill_haste": 15.0,
+    "tenacity": 0.0,
+    "builds": {
+      "arcano": {
+        "name": "Arcano",
+        "skills": [
+          "skill_iri_001",
+          "skill_iri_005"
+        ],
+        "passives": [
+          "pass_iri_002",
+          "pass_iri_003",
+          "trait_iri_001"
+        ]
+      },
+      "controle": {
+        "name": "Controle",
+        "skills": [
+          "skill_iri_003",
+          "skill_iri_002"
+        ],
+        "passives": [
+          "pass_iri_004",
+          "pass_iri_005",
+          "trait_iri_002"
+        ]
+      },
+      "lumen": {
+        "name": "Lúmen",
+        "skills": [
+          "skill_iri_004",
+          "skill_iri_002"
+        ]
+      }
+    },
+    "basic_stagger": 8.0,
+    "identity_passive": "pass_iri_001"
+  }
+]

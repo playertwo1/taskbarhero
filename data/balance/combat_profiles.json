@@ -1,0 +1,162 @@
+{
+  "schema_version": "1.0",
+  "status": "HIPOTESE",
+  "source": "docs/06_balance/SLICE_BALANCE_CONTRACT.md",
+  "reference_hero": {
+    "max_hp": [
+      115.0,
+      470.0
+    ],
+    "attack": [
+      12.0,
+      50.0
+    ],
+    "defense": [
+      9.0,
+      36.0
+    ],
+    "attack_speed": 1.0
+  },
+  "archetypes": {
+    "STANDARD": {
+      "max_hp": 0.85,
+      "attack": 0.75,
+      "defense": 0.75,
+      "attack_speed": 1.0
+    },
+    "HEAVY": {
+      "max_hp": 1.4,
+      "attack": 0.85,
+      "defense": 1.25,
+      "attack_speed": 0.7
+    },
+    "ASSASSIN": {
+      "max_hp": 0.55,
+      "attack": 1.15,
+      "defense": 0.5,
+      "attack_speed": 1.25
+    },
+    "CONTROLLER": {
+      "max_hp": 0.75,
+      "attack": 0.65,
+      "defense": 0.8,
+      "attack_speed": 0.8
+    },
+    "SUPPORT": {
+      "max_hp": 0.7,
+      "attack": 0.55,
+      "defense": 0.7,
+      "attack_speed": 0.85
+    }
+  },
+  "ranks": {
+    "NORMAL": {
+      "max_hp": 1.0,
+      "attack": 1.0,
+      "defense": 1.0,
+      "tenacity": 0
+    },
+    "ELITE": {
+      "max_hp": 2.3,
+      "attack": 1.25,
+      "defense": 1.15,
+      "tenacity": 25
+    },
+    "MINIBOSS": {
+      "max_hp": 7.0,
+      "attack": 1.55,
+      "defense": 1.35,
+      "tenacity": 50
+    },
+    "BOSS": {
+      "max_hp": 20.0,
+      "attack": 1.8,
+      "defense": 1.5,
+      "tenacity": 100
+    }
+  },
+  "enemy_damage_scale": 0.5,
+  "party_hp_scale": {
+    "ELITE": 3.0,
+    "MINIBOSS": 3.0,
+    "BOSS": 1.5
+  },
+  "stagger": {
+    "status": "HIPOTESE",
+    "source": "STAGGER_SYSTEM.md e BOSS_RULES.md do v0.4; valores no meio das faixas canônicas",
+    "recovery_delay": 3.0,
+    "recovery_per_second": 0.1,
+    "ranks": {
+      "NORMAL": {
+        "posture": 100.0,
+        "break_duration": 2.0,
+        "vulnerability": 0.15,
+        "immunity": 2.0
+      },
+      "ELITE": {
+        "posture": 180.0,
+        "break_duration": 1.75,
+        "vulnerability": 0.15,
+        "immunity": 2.0
+      },
+      "MINIBOSS": {
+        "posture": 350.0,
+        "break_duration": 1.4,
+        "vulnerability": 0.15,
+        "immunity": 3.0
+      },
+      "BOSS": {
+        "posture": 600.0,
+        "break_duration": 1.1,
+        "vulnerability": 0.1,
+        "immunity": 4.0
+      }
+    }
+  },
+  "imbalance": {
+    "status": "HIPOTESE",
+    "source": "SLICE_BALANCE_CONTRACT.md, seção 3: damage_bonus −10%; conversão do −20% de resistência a stagger EM ABERTO, aqui +20% de stagger recebido",
+    "damage_bonus": -0.1,
+    "stagger_taken_bonus": 0.2,
+    "duration": 4.0
+  },
+  "skill_rank": {
+    "status": "HIPOTESE",
+    "source": "SKILL_SYSTEM.md (até 5 ranks); efeitos de R2–R5 por skill em skills_slice.json, conforme CHAPTER_01_HERO_COMBAT_PROPOSAL.md; marcos de obtenção EM ABERTO",
+    "max": 5
+  },
+  "xp": {
+    "status": "HIPOTESE",
+    "source": "ECONOMY_MODEL.md, finding 1: primeira conclusão leva a party ao nível 6; curva igual à do runtime atual (ProgressionManager)",
+    "by_rank": {
+      "NORMAL": 6,
+      "ELITE": 25,
+      "MINIBOSS": 45,
+      "BOSS": 80
+    },
+    "curve": {
+      "base": 25.0,
+      "growth": 1.15,
+      "per_level": 5.0
+    },
+    "max_level": 100
+  },
+  "recovery_between_encounters": {
+    "status": "HIPOTESE",
+    "source": "DECIDIDO por Rafael em 2026-09-29: fôlego entre encontros. Valor de 10% do HP máximo, só se ninguém caiu no encontro, é hipótese medida no cenário slice_paths do Argos",
+    "fraction": 0.1,
+    "only_if_no_fall": true
+  },
+  "chapter_targets": {
+    "status": "DECIDIDO",
+    "source": "Rafael, 2026-09-29: jogo incremental 1–100; o Guardião do Capítulo 1 deve ser vencido por volta do nível 10–11, após derrotas e vitórias parciais",
+    "CHAPTER_01": {
+      "boss_win_level": [
+        10,
+        11
+      ]
+    }
+  },
+  "balance_version": "0.5",
+  "party_hp_scale_note": "v0.5: chefe ×1,5 (era ×2; ×3 no contrato original). Com o Guardião no nível 10, ×2 levava a vitória ao nível 13; ×1,5 centra a vitória no nível 11 (tune_v05_levels). HIPÓTESE."
+}

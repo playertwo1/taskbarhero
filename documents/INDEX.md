@@ -16,16 +16,7 @@ last_reviewed: 2026-09-28
 
 ## Hierarquia das fontes
 
-Em caso de conflito, use esta ordem e registre a divergência:
-
-1. Instrução ou decisão explícita mais recente de Rafael.
-2. [`../AGENTS.md`](../AGENTS.md) para instruções de trabalho dos agentes.
-3. Código e testes atuais para afirmar o que está implementado e verificado.
-4. [`../ROADMAP.md`](../ROADMAP.md) para sequência do trabalho e critérios previstos.
-5. [`../docs/POCKET_HERO_PROJECT_BRIEF.md`](../docs/POCKET_HERO_PROJECT_BRIEF.md) para o resumo consolidado do projeto e seu estado registrado.
-6. [`AI_PROJECT_GUIDE.md`](./AI_PROJECT_GUIDE.md) como contexto curto para agentes.
-7. Guias temáticos abaixo: fundamentos e recomendações de design; não converta automaticamente uma hipótese em decisão.
-8. Documentos antigos e referências externas: consulte como evidência contextual, respeitando data, tipo de fonte e originalidade do projeto.
+A ordem de autoridade e de carregamento é definida somente em [`../AGENTS.md`](../AGENTS.md) (seções *Ordem de carregamento de contexto* e *Fontes e decisões*). Em resumo: a decisão mais recente de Rafael prevalece; código e testes provam o que existe; o roadmap define plano e gates; guias e referências deste diretório são contexto, não prova nem autorização. Registre qualquer divergência encontrada.
 
 Rótulos usados no guia: **DECIDIDO** = direção registrada como requisito; **RECOMENDADO** = princípio a aplicar salvo conflito; **HIPÓTESE** = valor/ideia a testar; **EM ABERTO** = requer escolha ou confirmação de Rafael; **STATUS REGISTRADO** = evidência datada, que precisa ser atualizada antes de agir se puder ter mudado.
 
@@ -50,7 +41,7 @@ Os DOCX são preservados como fontes originais. As versões Markdown facilitam b
 
 - **Arquitetura da documentação e catálogos do jogo:** [`../docs/INDEX.md`](../docs/INDEX.md) e [`../docs/CONTENT_REGISTRY.md`](../docs/CONTENT_REGISTRY.md).
 - **Escopo, fase atual ou próximo trabalho:** [`../ROADMAP.md`](../ROADMAP.md) + [`../docs/POCKET_HERO_PROJECT_BRIEF.md`](../docs/POCKET_HERO_PROJECT_BRIEF.md).
-- **Loop, progressão ou nova mecânica:** [`../docs/design/INCREMENTAL_DESIGN_GUIDE.md`](../docs/design/INCREMENTAL_DESIGN_GUIDE.md) + guia de design incremental.
+- **Loop, progressão ou nova mecânica:** [`../docs/00_project/INCREMENTAL_DESIGN_GUIDE.md`](../docs/00_project/INCREMENTAL_DESIGN_GUIDE.md) + guia de design incremental.
 - **Usar referências de Task Bar Hero/TBH:** guia de referência, especialmente sua hierarquia de fontes e regras de originalidade.
 - **Criar moeda, curva, item, drop, boss, offline ou meta-progressão:** guia avançado de economia e balanceamento.
 - **Atributos e estrutura balanceável de entidade:** [padrão canônico de combate](../docs/06_balance/COMBAT_BALANCE_STANDARD.md); use as referências importadas somente como material de estudo.

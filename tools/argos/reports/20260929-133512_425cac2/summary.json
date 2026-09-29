@@ -1,0 +1,2222 @@
+{
+ "meta": {
+  "enemy_damage_scale": 0.5,
+  "godot": "4.7.2-stable (official)",
+  "kind": "meta",
+  "scenario": "slice_balance",
+  "seeds": 6.0,
+  "commit": "425cac2",
+  "dirty": false,
+  "scenario_file": "tools/argos/simulator/combat/scenarios/slice_balance.json"
+ },
+ "findings": [
+  {
+   "type": "BALANCE",
+   "severity": "HIGH",
+   "title": "Poucos caminhos viáveis",
+   "metric": "viáveis até o nível 8 (rota ≥ 50%): 6; sem lumen: 0",
+   "rule": "Pedido de Rafael (2026-09-29): mais de um caminho viável, sem depender da cura"
+  },
+  {
+   "type": "BALANCE",
+   "severity": "HIGH",
+   "title": "Dominância no nível 3",
+   "metric": "melhor 100% vs mediana 0%; líderes: retaliacao_tele/critico/lumen, retaliacao_tele/marca/lumen",
+   "rule": "Perfil optimizer do Argos: build dominante elimina escolhas"
+  },
+  {
+   "type": "BALANCE",
+   "severity": "HIGH",
+   "title": "Dominância no nível 5",
+   "metric": "melhor 100% vs mediana 0%; líderes: guardiao/critico/lumen, retaliacao/marca/lumen, retaliacao_tele/critico/lumen, retaliacao_tele/marca/lumen",
+   "rule": "Perfil optimizer do Argos: build dominante elimina escolhas"
+  },
+  {
+   "type": "BALANCE",
+   "severity": "HIGH",
+   "title": "Dominância no nível 8",
+   "metric": "melhor 100% vs mediana 0%; líderes: guardiao/critico/lumen, guardiao/marca/lumen, retaliacao/critico/lumen, retaliacao/marca/lumen, retaliacao_tele/critico/lumen, retaliacao_tele/marca/lumen",
+   "rule": "Perfil optimizer do Argos: build dominante elimina escolhas"
+  },
+  {
+   "type": "BALANCE",
+   "severity": "MEDIUM",
+   "title": "TTK de elite fora de 15–30 s",
+   "metric": "1/54 combinações vencedoras fora; mediana 18 s; pior retaliacao/marca/arcano nível 8: 15 s",
+   "rule": "docs/06_balance/SLICE_BALANCE_CONTRACT.md, seção 5 (faixa v0.4)"
+  },
+  {
+   "type": "BALANCE",
+   "severity": "MEDIUM",
+   "title": "TTK de rainha fora de 40–75 s",
+   "metric": "2/54 combinações vencedoras fora; mediana 47 s; pior retaliacao_tele/marca/arcano nível 8: 39 s",
+   "rule": "docs/06_balance/SLICE_BALANCE_CONTRACT.md, seção 5 (faixa v0.4)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vitória na 1ª tentativa desde o nível inicial: retaliacao_tele/critico/lumen",
+   "metric": "33% das campanhas vencem na tentativa 1",
+   "rule": "Pedido de Rafael: desafio e progresso após derrotas (HIPÓTESE de faixa)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vitória na 1ª tentativa desde o nível inicial: retaliacao_tele/marca/lumen",
+   "metric": "17% das campanhas vencem na tentativa 1",
+   "rule": "Pedido de Rafael: desafio e progresso após derrotas (HIPÓTESE de faixa)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Combinações que nunca vencem na campanha",
+   "metric": "6: guardiao/critico/arcano, guardiao/marca/arcano, retaliacao/critico/arcano, retaliacao/marca/arcano, retaliacao_tele/critico/arcano, retaliacao_tele/marca/arcano",
+   "rule": "Pedido de Rafael: desafio e progresso após derrotas (HIPÓTESE de faixa)"
+  },
+  {
+   "type": "PACING",
+   "severity": "LOW",
+   "title": "Tentativas fora da faixa: guardiao/critico/controle",
+   "metric": "mediana 10.0 tentativas, nível 15.0",
+   "rule": "Pedido de Rafael: desafio e progresso após derrotas (HIPÓTESE de faixa)"
+  },
+  {
+   "type": "PACING",
+   "severity": "LOW",
+   "title": "Tentativas fora da faixa: guardiao/marca/controle",
+   "metric": "mediana 10.0 tentativas, nível 15.0",
+   "rule": "Pedido de Rafael: desafio e progresso após derrotas (HIPÓTESE de faixa)"
+  },
+  {
+   "type": "PACING",
+   "severity": "LOW",
+   "title": "Tentativas fora da faixa: retaliacao/critico/controle",
+   "metric": "mediana 10.0 tentativas, nível 15.0",
+   "rule": "Pedido de Rafael: desafio e progresso após derrotas (HIPÓTESE de faixa)"
+  },
+  {
+   "type": "PACING",
+   "severity": "LOW",
+   "title": "Tentativas fora da faixa: retaliacao/marca/controle",
+   "metric": "mediana 8.5 tentativas, nível 13.5",
+   "rule": "Pedido de Rafael: desafio e progresso após derrotas (HIPÓTESE de faixa)"
+  },
+  {
+   "type": "PACING",
+   "severity": "LOW",
+   "title": "Tentativas fora da faixa: retaliacao_tele/critico/controle",
+   "metric": "mediana 10.0 tentativas, nível 15.0",
+   "rule": "Pedido de Rafael: desafio e progresso após derrotas (HIPÓTESE de faixa)"
+  },
+  {
+   "type": "PACING",
+   "severity": "LOW",
+   "title": "Tentativas fora da faixa: retaliacao_tele/marca/controle",
+   "metric": "mediana 9.5 tentativas, nível 14.5",
+   "rule": "Pedido de Rafael: desafio e progresso após derrotas (HIPÓTESE de faixa)"
+  },
+  {
+   "type": "INFO",
+   "severity": "INFO",
+   "title": "Referência de primeira tentativa no nível 5",
+   "metric": "melhor combinação 100% (meta humana 40%–60%)",
+   "rule": "ENCOUNTERS.md: 40–60% na primeira tentativa é meta de teste humano; aqui só referência"
+  }
+ ],
+ "route": [
+  {
+   "build": "guardiao/critico/arcano",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/critico/arcano",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/critico/arcano",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": 16.63225521338095,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": 5.11918271390417,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 16.67681748829075,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.8333333333333334,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 49.886258473370845,
+   "healing": 574.909090909091
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 56.93851487891665,
+   "healing": 567.3418108156525
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 62.090140760841095,
+   "healing": 567.989762925343
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": 16.0994334213739,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 20.7070008399061,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.6666666666666666,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 48.70037539211325,
+   "healing": 555.498665572509
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.8333333333333334,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 55.7706662045491,
+   "healing": 547.744076017267
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 68.3731700775747,
+   "healing": 546.3654617170835
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 12.592659662641307,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": 16.6840043392958,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 33.72491596539945,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.5,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 34.6237758408571,
+   "healing": 438.3559943582515
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.6666666666666666,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 47.685572868300554,
+   "healing": 508.181818181818
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 63.2134649218944,
+   "healing": 527.583341797867
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 16.9052291840913,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": 3.54974084328109,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": 14.053261332287756,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 33.027782312684096,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.16666666666666666,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 38.365168514942454,
+   "healing": 487.468906270035
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 50.15603810166235,
+   "healing": 498.0181818181815
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 63.35933663254835,
+   "healing": 505.51061452514
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_4_1_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 10.001057256973919,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": 16.7659319375225,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 35.672995283245854,
+   "healing": 525.7961789973075
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 42.9342226828077,
+   "healing": 518.3454545454545
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 58.1105655638434,
+   "healing": 505.51061452514
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_4_1_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": null,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 6.493506165202395,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_3_2_a",
+   "hp_before_boss_pct": 4.80528230170406,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 5.626554559379896,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 25.563174935512798,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 3,
+   "runs": 6,
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 42.70132569227335,
+   "healing": 515.010539812797
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 5,
+   "runs": 6,
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 43.86414536225825,
+   "healing": 508.181818181818
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 8,
+   "runs": 6,
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 59.3091636819072,
+   "healing": 507.672727272727
+  }
+ ],
+ "segments": [
+  {
+   "build": "guardiao/critico/arcano",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 18.8888888888889,
+   "hp_left_pct": 62.1585283844476
+  },
+  {
+   "build": "guardiao/critico/arcano",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "guardiao/critico/arcano",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 50.0,
+   "hp_left_pct": 60.93301208850765
+  },
+  {
+   "build": "guardiao/critico/arcano",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 18.3333333333333,
+   "hp_left_pct": 64.9444726809114
+  },
+  {
+   "build": "guardiao/critico/arcano",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "guardiao/critico/arcano",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 47.5,
+   "hp_left_pct": 66.87227132748245
+  },
+  {
+   "build": "guardiao/critico/arcano",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.3913043478261,
+   "hp_left_pct": 69.4504588943707
+  },
+  {
+   "build": "guardiao/critico/arcano",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "guardiao/critico/arcano",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 42.7536231884058,
+   "hp_left_pct": 72.5770841826014
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 20.8333333333333,
+   "hp_left_pct": 67.27295089418675
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 55.0,
+   "hp_left_pct": 67.9465387994974
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 20.0,
+   "hp_left_pct": 70.3495109924113
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 52.1739130434783,
+   "hp_left_pct": 69.3552321706498
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 18.05555555555555,
+   "hp_left_pct": 74.48551604914626
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.16666666666666666,
+   "ttk": 163.333333333334,
+   "hp_left_pct": 11.5050300311772
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 47.6388888888889,
+   "hp_left_pct": 75.37191897148715
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 21.1111111111111,
+   "hp_left_pct": 68.94240537760251
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 186.041666666667,
+   "hp_left_pct": 54.72381656277395
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 57.08333333333335,
+   "hp_left_pct": 81.89772402451669
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 20.0,
+   "hp_left_pct": 76.5536194162344
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 175.0000000000005,
+   "hp_left_pct": 67.0433633164242
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 53.3333333333334,
+   "hp_left_pct": 86.16541984415015
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 18.3333333333333,
+   "hp_left_pct": 79.9771602163346
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 160.833333333333,
+   "hp_left_pct": 72.52231614946155
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 49.58333333333335,
+   "hp_left_pct": 88.6775961645841
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.6388888888889,
+   "hp_left_pct": 66.9756906678072
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 49.5289855072464,
+   "hp_left_pct": 61.5987051331269
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 16.6666666666667,
+   "hp_left_pct": 70.75746859367
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 44.4444444444445,
+   "hp_left_pct": 68.34172085223945
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 15.41666666666665,
+   "hp_left_pct": 75.80546804507634
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 41.25,
+   "hp_left_pct": 74.57703118449555
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 20.9722222222222,
+   "hp_left_pct": 63.90642582235135
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 53.5416666666667,
+   "hp_left_pct": 68.46487428454205
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 19.0277777777778,
+   "hp_left_pct": 68.92770249335746
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 48.81944444444445,
+   "hp_left_pct": 72.0941417811254
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.6388888888889,
+   "hp_left_pct": 71.3569714103447
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.3333333333333333,
+   "ttk": 157.2222222222225,
+   "hp_left_pct": 17.0434552759314
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 44.72222222222225,
+   "hp_left_pct": 76.2585614031463
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 20.9722222222222,
+   "hp_left_pct": 73.68691225569665
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 181.83333333333348,
+   "hp_left_pct": 60.3064539358662
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 55.6944444444445,
+   "hp_left_pct": 84.9573920670781
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 19.58333333333335,
+   "hp_left_pct": 79.1749527720457
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 165.833333333333,
+   "hp_left_pct": 66.76268484976936
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 50.0,
+   "hp_left_pct": 87.9627095279301
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.6388888888889,
+   "hp_left_pct": 85.63754484590855
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 152.916666666667,
+   "hp_left_pct": 70.59104300642426
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 46.0416666666667,
+   "hp_left_pct": 87.1756909818023
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.5,
+   "hp_left_pct": 60.8936105912114
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 46.45833333333335,
+   "hp_left_pct": 63.992898639299156
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 16.83333333333335,
+   "hp_left_pct": 64.8424101346771
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 43.614130434782595,
+   "hp_left_pct": 64.02322807706196
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 15.8333333333333,
+   "hp_left_pct": 70.5019490310425
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.5,
+   "ttk": 134.166666666666,
+   "hp_left_pct": 7.89794554350764
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 41.1111111111111,
+   "hp_left_pct": 71.2866192319677
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 19.1666666666667,
+   "hp_left_pct": 66.778384090916
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 50.0,
+   "hp_left_pct": 68.8821689388148
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.7777777777778,
+   "hp_left_pct": 71.7664412016247
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 47.7777777777778,
+   "hp_left_pct": 73.3027697348298
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 16.45833333333335,
+   "hp_left_pct": 75.3700380219457
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 44.3055555555556,
+   "hp_left_pct": 78.3035937942556
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 19.58333333333335,
+   "hp_left_pct": 72.30707664037016
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 169.58333333333348,
+   "hp_left_pct": 60.3355068153455
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 51.87222222222225,
+   "hp_left_pct": 85.56730594942326
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 18.75,
+   "hp_left_pct": 74.6019615959245
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 159.0142857142855,
+   "hp_left_pct": 70.7683685464476
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 49.375,
+   "hp_left_pct": 80.34331240393726
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.08333333333335,
+   "hp_left_pct": 80.72348515192024
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 147.08333333333348,
+   "hp_left_pct": 77.5760255335906
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 46.45833333333335,
+   "hp_left_pct": 88.047063099787
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 16.6666666666667,
+   "hp_left_pct": 66.75908387426735
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 45.6944444444445,
+   "hp_left_pct": 63.308018312541
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 15.5555555555556,
+   "hp_left_pct": 70.19632158368904
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 42.1111111111111,
+   "hp_left_pct": 66.9087416928005
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 14.7222222222222,
+   "hp_left_pct": 75.919112705604
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.16666666666666666,
+   "ttk": 153.333333333334,
+   "hp_left_pct": 4.62721062740086
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 39.0277777777778,
+   "hp_left_pct": 74.28584655597055
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 18.81944444444445,
+   "hp_left_pct": 68.98922978851495
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 49.58333333333335,
+   "hp_left_pct": 70.27907037888556
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.5,
+   "hp_left_pct": 73.1846481485252
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 45.15,
+   "hp_left_pct": 72.4062012691451
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 16.0,
+   "hp_left_pct": 75.36476625866786
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.8333333333333334,
+   "ttk": 140.0,
+   "hp_left_pct": 25.2749698335903
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 42.0,
+   "hp_left_pct": 80.25588430095
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 19.1666666666667,
+   "hp_left_pct": 73.3702059278694
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 168.0,
+   "hp_left_pct": 62.8973158808204
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 52.5,
+   "hp_left_pct": 81.3858615454527
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.6388888888889,
+   "hp_left_pct": 76.3237986363361
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 153.875,
+   "hp_left_pct": 69.64373796795644
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 47.5,
+   "hp_left_pct": 82.94733133089426
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 16.45833333333335,
+   "hp_left_pct": 81.2787756845704
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 141.90714285714301,
+   "hp_left_pct": 78.8747470694502
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 44.3055555555556,
+   "hp_left_pct": 81.9946741039487
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.5,
+   "hp_left_pct": 61.1448854501695
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 46.6666666666667,
+   "hp_left_pct": 62.6424764991382
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.0289855072464,
+   "hp_left_pct": 64.54808307857786
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 43.75,
+   "hp_left_pct": 67.2547550539127
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 15.8333333333333,
+   "hp_left_pct": 69.5671575526909
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.5,
+   "ttk": 139.130434782609,
+   "hp_left_pct": 19.3933516854314
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 40.41666666666665,
+   "hp_left_pct": 71.4070279897627
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 19.58333333333335,
+   "hp_left_pct": 66.1545661349937
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 50.0,
+   "hp_left_pct": 71.17940995443765
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 18.3333333333333,
+   "hp_left_pct": 71.498320783683
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.5,
+   "ttk": 155.0,
+   "hp_left_pct": 32.4317930272246
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 47.5,
+   "hp_left_pct": 73.4987932156936
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 16.6666666666667,
+   "hp_left_pct": 77.5389226965743
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 143.88888888888948,
+   "hp_left_pct": 27.6516880030743
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 42.9166666666667,
+   "hp_left_pct": 77.54609518021789
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 20.0,
+   "hp_left_pct": 71.7964072762537
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 167.33333333333348,
+   "hp_left_pct": 70.1862282270338
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 52.01111111111115,
+   "hp_left_pct": 82.97739635834904
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 18.3333333333333,
+   "hp_left_pct": 76.9355381628699
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 156.666666666667,
+   "hp_left_pct": 83.40808369625145
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 50.0,
+   "hp_left_pct": 83.95090324584815
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 16.6666666666667,
+   "hp_left_pct": 82.5024151764711
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 144.7222222222225,
+   "hp_left_pct": 85.60250741235146
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 46.6666666666667,
+   "hp_left_pct": 87.87638792617929
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.19565217391305,
+   "hp_left_pct": 66.0863243167428
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 45.8666666666667,
+   "hp_left_pct": 64.31367743963095
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 16.25,
+   "hp_left_pct": 69.1777769115337
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 42.5,
+   "hp_left_pct": 65.31237418423134
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 15.0,
+   "hp_left_pct": 74.39010004658016
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.6666666666666666,
+   "ttk": 142.291666666667,
+   "hp_left_pct": 18.0290731768477
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 38.81944444444445,
+   "hp_left_pct": 74.4139732440039
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 19.1666666666667,
+   "hp_left_pct": 68.5079889382048
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 49.5696078431373,
+   "hp_left_pct": 69.67797134321336
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.6388888888889,
+   "hp_left_pct": 72.74285174234379
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 149.4444444444445,
+   "hp_left_pct": 26.4799775082669
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 45.2777777777778,
+   "hp_left_pct": 74.92040158973174
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 16.45833333333335,
+   "hp_left_pct": 77.53365093329646
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 137.5,
+   "hp_left_pct": 29.974809731976897
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 41.45833333333335,
+   "hp_left_pct": 80.27330028709741
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 3,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 19.1666666666667,
+   "hp_left_pct": 73.9226658512522
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 3,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 164.305555555556,
+   "hp_left_pct": 79.22214552893075
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 3,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 51.525,
+   "hp_left_pct": 83.3192883527202
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 5,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 17.6388888888889,
+   "hp_left_pct": 77.9017766816195
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 150.173015873016,
+   "hp_left_pct": 79.3260059479406
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 47.6388888888889,
+   "hp_left_pct": 84.4636094341041
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 8,
+   "segment": "elite",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 16.6666666666667,
+   "hp_left_pct": 81.8331135102968
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 139.58333333333348,
+   "hp_left_pct": 82.3489791229111
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 6,
+   "win_rate": 1.0,
+   "ttk": 43.95833333333335,
+   "hp_left_pct": 86.65805753861065
+  }
+ ],
+ "campaign": [
+  {
+   "build": "guardiao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 0.0,
+   "first_try": 0.0,
+   "median_attempts": null,
+   "median_win_level": null
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 0.5,
+   "first_try": 0.0,
+   "median_attempts": 10,
+   "median_win_level": 15
+  },
+  {
+   "build": "guardiao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 2.0,
+   "median_win_level": 5.0
+  },
+  {
+   "build": "guardiao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 0.0,
+   "first_try": 0.0,
+   "median_attempts": null,
+   "median_win_level": null
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 0.5,
+   "first_try": 0.0,
+   "median_attempts": 10,
+   "median_win_level": 15
+  },
+  {
+   "build": "guardiao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 2.0,
+   "median_win_level": 5.0
+  },
+  {
+   "build": "retaliacao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 0.0,
+   "first_try": 0.0,
+   "median_attempts": null,
+   "median_win_level": null
+  },
+  {
+   "build": "retaliacao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 10.0,
+   "median_win_level": 15.0
+  },
+  {
+   "build": "retaliacao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 2.0,
+   "median_win_level": 5.0
+  },
+  {
+   "build": "retaliacao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 0.0,
+   "first_try": 0.0,
+   "median_attempts": null,
+   "median_win_level": null
+  },
+  {
+   "build": "retaliacao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 8.5,
+   "median_win_level": 13.5
+  },
+  {
+   "build": "retaliacao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 2.0,
+   "median_win_level": 5.0
+  },
+  {
+   "build": "retaliacao_tele/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 0.0,
+   "first_try": 0.0,
+   "median_attempts": null,
+   "median_win_level": null
+  },
+  {
+   "build": "retaliacao_tele/critico/controle",
+   "campaigns": 6,
+   "win_rate": 0.5,
+   "first_try": 0.0,
+   "median_attempts": 10,
+   "median_win_level": 15
+  },
+  {
+   "build": "retaliacao_tele/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.3333333333333333,
+   "median_attempts": 2.0,
+   "median_win_level": 5.0
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 0.0,
+   "first_try": 0.0,
+   "median_attempts": null,
+   "median_win_level": null
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 9.5,
+   "median_win_level": 14.5
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.16666666666666666,
+   "median_attempts": 2.0,
+   "median_win_level": 5.0
+  }
+ ],
+ "violations": {},
+ "violation_examples": {}
+}

@@ -80,7 +80,24 @@ Antes de criar um sprite ou ícone, leia [`docs/art/conceitos/README.md`](docs/a
 
 Abra o arquivo `.md` do asset exato; ele contém a ideia visual e um prompt específico para gerar o conceito. Antes de produzir, consulte também [`docs/art/ASSET_VISUAL_BLUEPRINT.md`](docs/art/ASSET_VISUAL_BLUEPRINT.md), [`docs/art/SPRITE_STYLE_GUIDE.md`](docs/art/SPRITE_STYLE_GUIDE.md) e [`docs/art/PALETTE.md`](docs/art/PALETTE.md). Para assets com contrato ou Golden, siga-os como fonte prioritária. Conceitos marcados como candidatos ou hipóteses não aprovam conteúdo de gameplay.
 
-Para sprites do MVP, use somente os Golden registrados em [`docs/art/golden/README.md`](docs/art/golden/README.md), os contratos atuais e as folhas/manifests `v002` listados em [`docs/art/MVP_SPRITE_INVENTORY.md`](docs/art/MVP_SPRITE_INVENTORY.md). Fontes editáveis e prévias anteriores à aprovação Golden foram removidas; caminhos antigos citados em auditorias/arquivos históricos são registros, não assets disponíveis nem referências visuais. Não execute os pipelines legados `build_styled_*`, `generate_*` ou `build_comfy_anim.py` para produzir ou sobrescrever sprites do MVP.
+Para sprites do MVP, use somente os Golden registrados em [`docs/art/golden/README.md`](docs/art/golden/README.md), os contratos atuais e as folhas/manifests `v002` listados em [`docs/art/MVP_SPRITE_INVENTORY.md`](docs/art/MVP_SPRITE_INVENTORY.md). Fontes editáveis e prévias anteriores à aprovação Golden foram removidas; caminhos antigos citados em auditorias/arquivos históricos são registros, não assets disponíveis nem referências visuais. Os pipelines legados (`build_styled_*`, `generate_*`, `build_comfy_anim.py` e similares) foram movidos para [`arquivados/pipelines_legados/`](arquivados/pipelines_legados/README.md); não os execute para produzir ou sobrescrever sprites do MVP.
+
+## Testes e Argos (playtester automático)
+
+Use estas ferramentas antes de afirmar que algo funciona ou está balanceado. Detalhes e estrutura: [`tools/argos/README.md`](tools/argos/README.md).
+
+| Pergunta | Comando | Saída |
+| --- | --- | --- |
+| O código continua correto? | `python tools/run_godot_tests.py` | PASS/FAIL por cena; falha também em `SCRIPT ERROR` |
+| Como está o balanceamento do slice? | `python tools/argos/run.py --scenario slice_quick` (~2 s) ou `--scenario slice_balance` (~75 s) | `tools/argos/reports/<data>_<commit>/REPORT.md` |
+| O Analyst do Argos funciona? | `python -m unittest tools/argos/analyzer/test_analyze.py` | OK/FAIL |
+
+- Rode o Argos depois de mudar `data/`, `scripts/combat/` ou regras de combate; compare o `REPORT.md` com o anterior (o relatório mostra a diferença).
+- Leia só o `REPORT.md`. Abra `runs.jsonl` apenas para investigar um achado específico: economiza contexto.
+- Achado `BUG` do Argos é defeito a corrigir. Achados `BALANCE`/`PACING` vão para [`docs/08_qa/BALANCE_FINDINGS.md`](docs/08_qa/BALANCE_FINDINGS.md) com hipótese e proposta; a decisão é de Rafael.
+- Para testar um cenário hipotético (ex.: outro dano inimigo), crie ou copie um cenário em `tools/argos/simulator/combat/scenarios/` com `overrides`; não altere `/data` só para medir.
+- Não afrouxe `tools/argos/analyzer/rules_slice.json` para fazer um relatório passar; mudança de meta exige decisão de Rafael.
+- Resultado do Argos é simulação determinística, não playtest: não conclua diversão, e registre o commit do relatório como evidência.
 
 ## Implementação e aceite
 

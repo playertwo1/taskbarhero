@@ -38,3 +38,6 @@ tools/daedalus/comfyui/custom_nodes/
 *.ckpt
 *.pth
 *.bin
+
+# Área de trabalho local de arte (rascunhos, fontes intermediárias, capturas)
+/work/

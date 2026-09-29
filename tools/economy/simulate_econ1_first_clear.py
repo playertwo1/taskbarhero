@@ -64,8 +64,9 @@ def percentile(values: list[int], p: float) -> int:
 
 def simulate(runs: int, combat_seed: int, loot_seed: int) -> dict[str, Any]:
     stages = load_json(STAGE_PATH)
-    enemies = {enemy["id"]: enemy for enemy in load_json(ENEMY_PATH)}
-    items = load_json(ITEM_PATH)
+    # Linhas do slice (content_set == "slice") não fazem parte do baseline legado.
+    enemies = {enemy["id"]: enemy for enemy in load_json(ENEMY_PATH) if enemy.get("content_set", "legacy") == "legacy"}
+    items = [item for item in load_json(ITEM_PATH) if item.get("content_set", "legacy") == "legacy"]
 
     combat_rng = random.Random(combat_seed)
     loot_rng = random.Random(loot_seed)

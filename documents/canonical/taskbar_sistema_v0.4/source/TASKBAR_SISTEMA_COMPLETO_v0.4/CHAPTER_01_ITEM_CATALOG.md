@@ -1,8 +1,8 @@
 # CHAPTER_01_ITEM_CATALOG.md
 
-> **Versão:** 0.3  
+> **Versão:** 0.4 — adaptação Pocket Hero de compatibilidade por herói
 > **Capítulo:** Bosque de Lúmen  
-> **Meta:** 30 itens iniciais
+> **Base importada:** 30 itens; três templates adicionais de arma/secundário para o trio inicial. Alteração de design solicitada por Rafael em 2026-09-29; números de affix permanecem hipótese.
 
 ---
 
@@ -35,16 +35,19 @@ Possuem identidade fixa.
 
 | ID | Item | Slot | Base | Raridade permitida | Identidade |
 |---|---|---|---|---|---|
-| `ITEM_W_001` | Galho de Vigília | WEAPON | COMUM | Comum–Épico | Ataque básico; template simples do Bosque. |
-| `ITEM_W_002` | Arco de Folha Tensa | WEAPON | INCOMUM | Incomum–Épico | Ataque + crítico; favorece Flecha sem ser exclusivo. |
-| `ITEM_W_003` | Presa do Javali de Musgo | WEAPON | RARO | Raro–Épico | Dano físico + Stagger em golpes pesados. |
+| `ITEM_W_001` | Galho de Vigília | WEAPON | COMUM | Comum–Épico | Espada de madeira; ataque básico de Bastião. |
+| `ITEM_W_002` | Arco de Folha Tensa | WEAPON | INCOMUM | Incomum–Épico | Arco da Flecha; ataque + crítico. |
+| `ITEM_W_003` | Presa do Javali de Musgo | WEAPON | RARO | Raro–Épico | Espada de presa para Bastião; dano físico + Stagger em golpes pesados. |
 | `ITEM_W_004` | Lâmina da Raposa Oca | WEAPON | RARO | Raro–Épico | Crítico/mobilidade; bônus breve após reposicionamento. |
 | `ITEM_W_005` | Agulha da Viúva | WEAPON | RELIQUIA | Relíquia | Veneno pode causar crítico; build-defining. |
+| `ITEM_W_006` | Cajado Prismático | WEAPON | COMUM | Comum–Épico | Cajado da Íris; ataque arcano, área e recarga conforme raridade. |
 | `ITEM_S_001` | Broquel de Casca | SECONDARY | COMUM | Comum–Épico | Defesa + geração moderada de shield. |
 | `ITEM_S_002` | Lanterna de Esporos | SECONDARY | INCOMUM | Incomum–Épico | Status Power; melhora zonas/debuffs. |
 | `ITEM_S_003` | Totem da Raiz Antiga | SECONDARY | RARO | Raro–Épico | Tenacidade + interação com Root/controle. |
 | `ITEM_S_004` | Farol Prismático | SECONDARY | EPICO | Épico | Arcano + Skill Haste ao acertar múltiplos alvos. |
 | `ITEM_S_005` | Engrenagem Impossível | SECONDARY | RELIQUIA | Relíquia | Engenhocas duram mais em troca de poder pessoal de Forja. |
+| `ITEM_S_006` | Aljava da Trilha | SECONDARY | COMUM | Comum–Épico | Secundário da Flecha; ataques e Marca. |
+| `ITEM_S_007` | Foco de Micélio | SECONDARY | COMUM | Comum–Épico | Secundário da Íris; Skill Haste e escudo. |
 | `ITEM_A_001` | Manto de Folhas | ARMOR | COMUM | Comum–Épico | HP leve + movimento. |
 | `ITEM_A_002` | Couraça de Musgo | ARMOR | INCOMUM | Incomum–Épico | HP + Defesa. |
 | `ITEM_A_003` | Casco Cristalino | ARMOR | RARO | Raro–Épico | Defesa alta; janela defensiva após receber golpe forte. |
@@ -71,12 +74,12 @@ Possuem identidade fixa.
 # 3. Contagem
 
 ```text
-Armas:       5
-Secundários: 5
+Armas:       6
+Secundários: 7
 Armaduras:   5
 Acessórios: 10
 Ecos:        5
-TOTAL:      30
+TOTAL:      33
 ```
 
 ---
@@ -86,8 +89,19 @@ TOTAL:      30
 - item com raridade variável respeita Stat Budget da raridade sorteada;
 - Relíquia possui efeito único e budget reservado para esse efeito;
 - Memória não participa de reforja normal;
-- nenhum item é exclusivo de um herói, mesmo quando favorece uma build;
-- itens de build precisam continuar úteis em mais de uma composição quando possível.
+- armas e secundários respeitam a forma de uso do herói: Bastião usa espada/escudo, Flecha usa arco/aljava, Íris usa cajado/foco ou lanterna; nenhum deles equipa arma ou secundário das outras duas classes;
+- armaduras, acessórios e Ecos podem ser compartilhados quando o efeito funciona para o herói; itens cujo efeito exige uma skill ou recurso ausente não entram no pool útil desse herói;
+- a compatibilidade completa dos outros cinco heróis fica para seus kits e não é inferida a partir do trio.
+
+### Compatibilidade inicial do trio
+
+| Herói | Armas | Secundários | Armaduras | Acessórios |
+| --- | --- | --- | --- | --- |
+| Bastião | `ITEM_W_001`, `ITEM_W_003` | `ITEM_S_001`, `ITEM_S_003` | `ITEM_A_001`–`ITEM_A_005` | `ITEM_R_001`, `ITEM_R_003`, `ITEM_R_006`, `ITEM_R_007` |
+| Flecha | `ITEM_W_002` | `ITEM_S_006`, `ITEM_S_003` | `ITEM_A_001`–`ITEM_A_003` | `ITEM_R_001`, `ITEM_R_002`, `ITEM_R_003`, `ITEM_R_004`, `ITEM_R_006`, `ITEM_R_007` |
+| Íris | `ITEM_W_006` | `ITEM_S_002`, `ITEM_S_003`, `ITEM_S_004`, `ITEM_S_007` | `ITEM_A_001`–`ITEM_A_003` | `ITEM_R_001`, `ITEM_R_002`, `ITEM_R_005`, `ITEM_R_007`, `ITEM_R_009` |
+
+Os intervalos de armaduras indicam compatibilidade física, não disponibilidade no primeiro clear. `ITEM_A_005` continua sendo drop do boss. A Gota de Lúmen (`ITEM_R_001`) só produz valor quando o herói usa o recurso que ela melhora; até esse recurso estar ativo, não oferecê-la como opção útil. O Totem (`ITEM_S_003`) é secundário compartilhado de controle/tenacidade, não escudo, aljava ou arma.
 
 ---
 

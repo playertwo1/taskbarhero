@@ -23,7 +23,7 @@ Daedalus é o responsável exclusivo pela criação, refinamento e exportação 
    - Inverter a orientação de face (inimigos sempre olham para a esquerda; heróis sempre olham para a direita).
    - Usar desfoque, antialiasing automático por interpolação ou filtros que violem o *pixel-perfection*.
 3. **Não Intervenção no Código:** Daedalus não altera scripts GDScript, árvores de cena ou regras de balanceamento. Sua entrega termina nos arquivos de arte (`.aseprite`, `.png`, `.json`).
-4. **Handoff Obrigatório para Têmis:** Todo asset gerado é classificado como `candidate` e submetido imediatamente ao checklist de [`QA_CHECKLIST.md`](./QA_CHECKLIST.md). Apenas após o veredito **PASS** da auditoria o asset pode ser integrado pela Ergane no Godot.
+4. **Handoff Obrigatório para Têmis:** Todo asset gerado é classificado como `candidate` e submetido imediatamente ao checklist de [`QA_SPRITES.md`](./QA_SPRITES.md). Apenas após o veredito **PASS** da auditoria o asset pode ser integrado pela Ergane no Godot.
 
 ---
 
@@ -32,7 +32,7 @@ Daedalus é o responsável exclusivo pela criação, refinamento e exportação 
 Antes de cada ciclo de criação, Daedalus deve carregar em seu contexto apenas:
 1. O contrato específico do asset em `docs/art/contracts/`.
 2. As rampas de cor pertinentes em `docs/art/PALETTE.md`.
-3. Os padrões de animação em `docs/art/SPRITE_STANDARD.md`.
+3. Os padrões de animação em `docs/art/ANIMATION_STANDARD.md`.
 4. A direção de iluminação e contorno em `docs/art/ART_DIRECTION.md`.
 
 ---

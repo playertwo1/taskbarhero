@@ -8,8 +8,10 @@ Arquitetura neutra de pedra e madeira; os Lúmens aparecem como pequenos focos d
 
 ## Opções
 
-4. [Encruzilhada da Vigília](04_encruzilhada_da_vigilia.png) — posto fortificado com rotas de saída e serviços modulares.
-5. [Pátio-Fortaleza](05_patio_fortaleza.png) — sede protegida com pátio de preparo, forja e fachadas adaptáveis.
-6. [Rua dos Ofícios](06_rua_dos_oficios.png) — praça de serviços compacta e reconhecível, organizada por fachadas.
+4. `04_encruzilhada_da_vigilia.png` — posto fortificado com rotas de saída e serviços modulares.
+5. `05_patio_fortaleza.png` — sede protegida com pátio de preparo, forja e fachadas adaptáveis.
+6. `06_rua_dos_oficios.png` — praça de serviços compacta e reconhecível, organizada por fachadas.
 
 As imagens são referências conceituais geradas para comparação, não arte final, Golden, sprites nem aprovação de produção. Redesenhar antes da integração: simplificar detalhe e perspectiva, separar arquitetura/props em camadas, revisar símbolos decorativos e cores, e seguir contratos, paleta TY40 e QA de pixel art.
+
+> **Imagens removidas em 2026-09-29:** conceitos superados pela base escolhida (v003/v004). Recupere-as do histórico do git no commit `10e67b6` se precisar consultá-las.

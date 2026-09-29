@@ -15,7 +15,7 @@ Este arquivo é somente uma porta de entrada. Ele não duplica o estado completo
 
 1. [`../AGENTS.md`](../AGENTS.md) — instruções, precedência e mapa do repositório.
 2. [`../PROJECT_STATE.md`](../PROJECT_STATE.md) — local das fontes observáveis de runtime e estado resumido.
-3. [`../ROADMAP.md`](../ROADMAP.md) — prioridade ativa e gates; a trilha expandida está em [`../ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md`](../ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md).
+3. [`../ROADMAP.md`](../ROADMAP.md) — roadmap único: prioridade, ordem e gates.
 4. [`../docs/INDEX.md`](../docs/INDEX.md) e [`../docs/CONTENT_REGISTRY.md`](../docs/CONTENT_REGISTRY.md) — navegação de design e catálogo de IDs.
 5. Abra apenas o índice e a fonte autoritativa da área afetada.
 

@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://tools/balance/probe_campaign.gd" id="1"]
+
+[node name="ProbeCampaign" type="Node"]
+script = ExtResource("1")

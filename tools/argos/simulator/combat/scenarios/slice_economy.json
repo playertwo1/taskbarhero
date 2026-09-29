@@ -1,0 +1,16 @@
+{
+  "id": "slice_economy",
+  "description": "Campanha com loot: drops pelo modelo canônico simplificado entram no inventário e o Hub equipa o melhor item antes da próxima tentativa. Mede ouro, Resíduo, itens e o efeito do equipamento no número de tentativas.",
+  "seeds": 6,
+  "levels": [5],
+  "builds": {
+    "hero_001": ["guardiao", "retaliacao", "retaliacao_tele"],
+    "hero_002": ["critico", "marca"],
+    "hero_003": ["arcano", "controle", "lumen"]
+  },
+  "modes": ["campaign"],
+  "campaign": {"start_level": 1, "max_attempts": 10, "loot": true},
+  "rank_milestones": [3, 5, 7, 9, 11, 13, 15, 17, 19],
+  "max_time": 3600,
+  "stuck_seconds": 30
+}

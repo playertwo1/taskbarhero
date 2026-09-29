@@ -1,0 +1,1009 @@
+{
+ "meta": {
+  "enemy_damage_scale": 0.5,
+  "godot": "4.7.2-stable (official)",
+  "kind": "meta",
+  "scenario": "tune_v05_builds",
+  "seeds": 6.0,
+  "variants": [
+   "base_v05",
+   "ambos",
+   "ambos_arcano2"
+  ],
+  "commit": "b2c730a",
+  "dirty": true,
+  "scenario_file": "tools/argos/simulator/combat/scenarios/tune_v05_builds.json"
+ },
+ "findings": [
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: ambos · guardiao/critico/arcano",
+   "metric": "nível 14.0 (meta 9–12), 9.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: ambos · guardiao/marca/arcano",
+   "metric": "nível 13.5 (meta 9–12), 8.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: ambos · retaliacao/critico/arcano",
+   "metric": "nível 14.0 (meta 9–12), 8.5 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: ambos · retaliacao/marca/arcano",
+   "metric": "nível 13.0 (meta 9–12), 7.5 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: ambos_arcano2 · guardiao/critico/arcano",
+   "metric": "nível 15.0 (meta 9–12), 10.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: ambos_arcano2 · guardiao/marca/arcano",
+   "metric": "nível 13.5 (meta 9–12), 7.5 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: ambos_arcano2 · retaliacao/critico/arcano",
+   "metric": "nível 13.0 (meta 9–12), 8.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: base_v05 · guardiao/critico/arcano",
+   "metric": "nível 15.0 (meta 9–12), 10.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: base_v05 · guardiao/marca/arcano",
+   "metric": "nível 15.0 (meta 9–12), 10.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: base_v05 · retaliacao/critico/arcano",
+   "metric": "nível 13.0 (meta 9–12), 8.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "INFO",
+   "severity": "INFO",
+   "title": "Itens por tentativa",
+   "metric": "mediana 4.0 item(ns) por tentativa entre combinações",
+   "rule": "SLICE_1_SCOPE.md seção 3: mínimo de 5 Resíduos antes do boss = um Reforço +1 (HIPÓTESE)"
+  }
+ ],
+ "variants": [
+  {
+   "variant": "ambos",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 12,
+   "heal_attempts": 4.25,
+   "no_heal_attempts_best": 4.0,
+   "no_heal_paths_ok": 1,
+   "no_heal_paths_ok_list": [
+    "retaliacao_tele/marca/controle"
+   ]
+  },
+  {
+   "variant": "ambos_arcano2",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 12,
+   "heal_attempts": 4.25,
+   "no_heal_attempts_best": 4.0,
+   "no_heal_paths_ok": 1,
+   "no_heal_paths_ok_list": [
+    "retaliacao_tele/marca/controle"
+   ]
+  },
+  {
+   "variant": "base_v05",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 12,
+   "heal_attempts": 4.25,
+   "no_heal_attempts_best": 4.0,
+   "no_heal_paths_ok": 1,
+   "no_heal_paths_ok_list": [
+    "retaliacao_tele/marca/controle"
+   ]
+  }
+ ],
+ "route": [],
+ "segments": [],
+ "campaign": [
+  {
+   "build": "ambos · guardiao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 9.0,
+   "median_win_level": 14.0
+  },
+  {
+   "build": "ambos · guardiao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "ambos · guardiao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.5,
+   "median_win_level": 9.5
+  },
+  {
+   "build": "ambos · guardiao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 8.0,
+   "median_win_level": 13.5
+  },
+  {
+   "build": "ambos · guardiao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "ambos · guardiao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "ambos · retaliacao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 8.5,
+   "median_win_level": 14.0
+  },
+  {
+   "build": "ambos · retaliacao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 11.5
+  },
+  {
+   "build": "ambos · retaliacao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0
+  },
+  {
+   "build": "ambos · retaliacao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 7.5,
+   "median_win_level": 13.0
+  },
+  {
+   "build": "ambos · retaliacao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 5.5,
+   "median_win_level": 11.0
+  },
+  {
+   "build": "ambos · retaliacao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.5,
+   "median_win_level": 9.5
+  },
+  {
+   "build": "ambos · retaliacao_tele/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.5,
+   "median_win_level": 11.5
+  },
+  {
+   "build": "ambos · retaliacao_tele/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 5.5,
+   "median_win_level": 11.0
+  },
+  {
+   "build": "ambos · retaliacao_tele/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "ambos · retaliacao_tele/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 11.0
+  },
+  {
+   "build": "ambos · retaliacao_tele/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "ambos · retaliacao_tele/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "ambos_arcano2 · guardiao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 10.0,
+   "median_win_level": 15.0
+  },
+  {
+   "build": "ambos_arcano2 · guardiao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "ambos_arcano2 · guardiao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.5,
+   "median_win_level": 9.5
+  },
+  {
+   "build": "ambos_arcano2 · guardiao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 7.5,
+   "median_win_level": 13.5
+  },
+  {
+   "build": "ambos_arcano2 · guardiao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "ambos_arcano2 · guardiao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 8.0,
+   "median_win_level": 13.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 11.5
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 7.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 5.5,
+   "median_win_level": 11.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.5,
+   "median_win_level": 9.5
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao_tele/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 7.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao_tele/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 5.5,
+   "median_win_level": 11.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao_tele/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao_tele/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 11.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao_tele/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao_tele/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "base_v05 · guardiao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 10.0,
+   "median_win_level": 15.0
+  },
+  {
+   "build": "base_v05 · guardiao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "base_v05 · guardiao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0
+  },
+  {
+   "build": "base_v05 · guardiao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 10.0,
+   "median_win_level": 15.0
+  },
+  {
+   "build": "base_v05 · guardiao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "base_v05 · guardiao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "base_v05 · retaliacao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 8.0,
+   "median_win_level": 13.0
+  },
+  {
+   "build": "base_v05 · retaliacao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 11.5
+  },
+  {
+   "build": "base_v05 · retaliacao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0
+  },
+  {
+   "build": "base_v05 · retaliacao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 7.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "base_v05 · retaliacao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 5.5,
+   "median_win_level": 11.0
+  },
+  {
+   "build": "base_v05 · retaliacao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.5,
+   "median_win_level": 9.5
+  },
+  {
+   "build": "base_v05 · retaliacao_tele/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 7.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "base_v05 · retaliacao_tele/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 5.5,
+   "median_win_level": 11.0
+  },
+  {
+   "build": "base_v05 · retaliacao_tele/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "base_v05 · retaliacao_tele/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 11.0
+  },
+  {
+   "build": "base_v05 · retaliacao_tele/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "base_v05 · retaliacao_tele/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  }
+ ],
+ "economy": [
+  {
+   "build": "ambos · guardiao/critico/arcano",
+   "gold_per_attempt": 230,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 13.5,
+   "residue_total": 115.5
+  },
+  {
+   "build": "ambos · guardiao/critico/controle",
+   "gold_per_attempt": 237,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 11.0,
+   "residue_total": 79.5
+  },
+  {
+   "build": "ambos · guardiao/critico/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 9.5,
+   "residue_total": 58.5
+  },
+  {
+   "build": "ambos · guardiao/marca/arcano",
+   "gold_per_attempt": 237.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 13.5,
+   "residue_total": 101.5
+  },
+  {
+   "build": "ambos · guardiao/marca/controle",
+   "gold_per_attempt": 232.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 11.0,
+   "residue_total": 76.5
+  },
+  {
+   "build": "ambos · guardiao/marca/lumen",
+   "gold_per_attempt": 237,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 10.0,
+   "residue_total": 51.5
+  },
+  {
+   "build": "ambos · retaliacao/critico/arcano",
+   "gold_per_attempt": 227.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.0,
+   "residue_total": 105.0
+  },
+  {
+   "build": "ambos · retaliacao/critico/controle",
+   "gold_per_attempt": 234,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 11.0,
+   "residue_total": 76.5
+  },
+  {
+   "build": "ambos · retaliacao/critico/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 10.0,
+   "residue_total": 63.5
+  },
+  {
+   "build": "ambos · retaliacao/marca/arcano",
+   "gold_per_attempt": 230.0,
+   "residue_per_attempt": 12.5,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.0,
+   "residue_total": 93.5
+  },
+  {
+   "build": "ambos · retaliacao/marca/controle",
+   "gold_per_attempt": 233,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 10.5,
+   "residue_total": 67.0
+  },
+  {
+   "build": "ambos · retaliacao/marca/lumen",
+   "gold_per_attempt": 237.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 9.5,
+   "residue_total": 57.5
+  },
+  {
+   "build": "ambos · retaliacao_tele/critico/arcano",
+   "gold_per_attempt": 226,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 11.0,
+   "residue_total": 81.5
+  },
+  {
+   "build": "ambos · retaliacao_tele/critico/controle",
+   "gold_per_attempt": 238,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 10.0,
+   "residue_total": 74.0
+  },
+  {
+   "build": "ambos · retaliacao_tele/critico/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 10.5,
+   "residue_total": 51.5
+  },
+  {
+   "build": "ambos · retaliacao_tele/marca/arcano",
+   "gold_per_attempt": 226.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.0,
+   "residue_total": 77.0
+  },
+  {
+   "build": "ambos · retaliacao_tele/marca/controle",
+   "gold_per_attempt": 236,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 11.0,
+   "residue_total": 54.0
+  },
+  {
+   "build": "ambos · retaliacao_tele/marca/lumen",
+   "gold_per_attempt": 235.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.5,
+   "equipped_at_end": 8.5,
+   "residue_total": 48.5
+  },
+  {
+   "build": "ambos_arcano2 · guardiao/critico/arcano",
+   "gold_per_attempt": 236,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 14.0,
+   "residue_total": 125.0
+  },
+  {
+   "build": "ambos_arcano2 · guardiao/critico/controle",
+   "gold_per_attempt": 237,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 11.0,
+   "residue_total": 79.5
+  },
+  {
+   "build": "ambos_arcano2 · guardiao/critico/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 9.5,
+   "residue_total": 58.5
+  },
+  {
+   "build": "ambos_arcano2 · guardiao/marca/arcano",
+   "gold_per_attempt": 233.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.5,
+   "residue_total": 97.0
+  },
+  {
+   "build": "ambos_arcano2 · guardiao/marca/controle",
+   "gold_per_attempt": 232.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 11.0,
+   "residue_total": 76.5
+  },
+  {
+   "build": "ambos_arcano2 · guardiao/marca/lumen",
+   "gold_per_attempt": 237,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 10.0,
+   "residue_total": 51.5
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao/critico/arcano",
+   "gold_per_attempt": 227.0,
+   "residue_per_attempt": 12.5,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 13.0,
+   "residue_total": 97.5
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao/critico/controle",
+   "gold_per_attempt": 234,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 11.0,
+   "residue_total": 76.5
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao/critico/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 10.0,
+   "residue_total": 63.5
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao/marca/arcano",
+   "gold_per_attempt": 229.5,
+   "residue_per_attempt": 12.5,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.5,
+   "residue_total": 89.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao/marca/controle",
+   "gold_per_attempt": 233,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 10.5,
+   "residue_total": 67.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao/marca/lumen",
+   "gold_per_attempt": 237.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 9.5,
+   "residue_total": 57.5
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao_tele/critico/arcano",
+   "gold_per_attempt": 228,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 11.5,
+   "residue_total": 89.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao_tele/critico/controle",
+   "gold_per_attempt": 238,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 10.0,
+   "residue_total": 74.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao_tele/critico/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 10.5,
+   "residue_total": 51.5
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao_tele/marca/arcano",
+   "gold_per_attempt": 233.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.5,
+   "residue_total": 77.5
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao_tele/marca/controle",
+   "gold_per_attempt": 236,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 11.0,
+   "residue_total": 54.0
+  },
+  {
+   "build": "ambos_arcano2 · retaliacao_tele/marca/lumen",
+   "gold_per_attempt": 235.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.5,
+   "equipped_at_end": 8.5,
+   "residue_total": 48.5
+  },
+  {
+   "build": "base_v05 · guardiao/critico/arcano",
+   "gold_per_attempt": 231,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 13.5,
+   "residue_total": 127.5
+  },
+  {
+   "build": "base_v05 · guardiao/critico/controle",
+   "gold_per_attempt": 235.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.0,
+   "residue_total": 82.5
+  },
+  {
+   "build": "base_v05 · guardiao/critico/lumen",
+   "gold_per_attempt": 238.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.5,
+   "residue_total": 69.5
+  },
+  {
+   "build": "base_v05 · guardiao/marca/arcano",
+   "gold_per_attempt": 231.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 13.5,
+   "residue_total": 131.0
+  },
+  {
+   "build": "base_v05 · guardiao/marca/controle",
+   "gold_per_attempt": 237.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 10.5,
+   "residue_total": 78.0
+  },
+  {
+   "build": "base_v05 · guardiao/marca/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 9.0,
+   "residue_total": 50.5
+  },
+  {
+   "build": "base_v05 · retaliacao/critico/arcano",
+   "gold_per_attempt": 226,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 12.0,
+   "residue_total": 102.5
+  },
+  {
+   "build": "base_v05 · retaliacao/critico/controle",
+   "gold_per_attempt": 234,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 11.0,
+   "residue_total": 76.5
+  },
+  {
+   "build": "base_v05 · retaliacao/critico/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 10.0,
+   "residue_total": 63.5
+  },
+  {
+   "build": "base_v05 · retaliacao/marca/arcano",
+   "gold_per_attempt": 234.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.0,
+   "residue_total": 87.5
+  },
+  {
+   "build": "base_v05 · retaliacao/marca/controle",
+   "gold_per_attempt": 233,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 10.5,
+   "residue_total": 67.0
+  },
+  {
+   "build": "base_v05 · retaliacao/marca/lumen",
+   "gold_per_attempt": 237.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 9.5,
+   "residue_total": 57.5
+  },
+  {
+   "build": "base_v05 · retaliacao_tele/critico/arcano",
+   "gold_per_attempt": 226.5,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.5,
+   "residue_total": 84.0
+  },
+  {
+   "build": "base_v05 · retaliacao_tele/critico/controle",
+   "gold_per_attempt": 238,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 10.0,
+   "residue_total": 74.0
+  },
+  {
+   "build": "base_v05 · retaliacao_tele/critico/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 10.5,
+   "residue_total": 51.5
+  },
+  {
+   "build": "base_v05 · retaliacao_tele/marca/arcano",
+   "gold_per_attempt": 234,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 11.0,
+   "residue_total": 79.5
+  },
+  {
+   "build": "base_v05 · retaliacao_tele/marca/controle",
+   "gold_per_attempt": 236,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 11.0,
+   "residue_total": 54.0
+  },
+  {
+   "build": "base_v05 · retaliacao_tele/marca/lumen",
+   "gold_per_attempt": 235.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.5,
+   "equipped_at_end": 8.5,
+   "residue_total": 48.5
+  }
+ ],
+ "violations": {},
+ "violation_examples": {}
+}

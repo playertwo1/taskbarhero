@@ -76,6 +76,6 @@ Não estabelecer respostas definitivas nesta fase para:
 ## Fontes de design
 
 - [ROADMAP principal — LORE-1](../../ROADMAP.md)
-- [ROADMAP de expansão — LORE-1](../../ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md)
+- [ROADMAP — fundação concluída (LORE-1)](../../ROADMAP.md#3-fundação-concluída) · [sementes futuras](FUTURE_SEEDS.md)
 - [Capítulo 1 — Bosque de Lúmen](../04_content/chapters/chapter_01/OVERVIEW.md)
 - [Golden Reference do Bastião](../02_heroes/BASTIAO_GOLDEN_REFERENCE.md)

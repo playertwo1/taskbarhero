@@ -1,0 +1,6 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://tools/argos/simulator/combat/argos_sim.gd" id="1"]
+
+[node name="ArgosSim" type="Node"]
+script = ExtResource("1")

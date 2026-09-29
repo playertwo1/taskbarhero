@@ -36,4 +36,18 @@ O linter emite IDs técnicos próprios, mapeados para `SPR-001` a `SPR-008`; fal
 
 ## Resultado
 
+Formato do parecer (herdado do checklist R7):
+
+```text
+VEREDITO: [PASS | FAIL | ESCALATE]
+EVIDÊNCIAS:
+- [item auditado]: [evidência observada]
+AÇÃO RECOMENDADA:
+- PASS: liberar para integração no Godot.
+- FAIL: devolver com códigos SPR-*, frames/pixels e correção.
+- ESCALATE: bloquear e submeter a Rafael se houver contradição de design ou escopo.
+```
+
+Critérios visuais complementares: teste de silhueta preenchida em preto, luz principal do alto à esquerda (~45°), sem jaggies, doubles, pillow-shading ou pixels isolados, e baseline conforme [`ANIMATION_STANDARD.md`](./ANIMATION_STANDARD.md#defaults-técnicos-herdados-do-padrão-r7).
+
 `PASS` exige todos os critérios aplicáveis aprovados e nenhuma falha aberta. Caso contrário, `FAIL` com códigos, arquivo/frames, evidência e ação de correção. Registre cada tentativa sem apagar resultados anteriores.

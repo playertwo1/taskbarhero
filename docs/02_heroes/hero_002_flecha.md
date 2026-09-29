@@ -37,7 +37,7 @@ Baixa resistência quando inimigos alcançam a retaguarda; Flecha depende de esp
 
 ## Builds principais
 
-Consulte as três combinações iniciais recomendadas em [FLECHA_SKILLS.md](../04_content/skills/FLECHA_SKILLS.md). As 16 passivas estão conceituadas em [hero_002_flecha_passives.md](hero_002_flecha_passives.md); seus números ainda não foram definidos. Traits, Mastery, lore pessoal e equipamentos/Echos continuam pendentes.
+Consulte as três combinações iniciais recomendadas em [FLECHA_SKILLS.md](../04_content/skills/FLECHA_SKILLS.md). As 16 passivas estão conceituadas em [hero_002_flecha_passives.md](hero_002_flecha_passives.md); três Traits recomendados, um por build, estão em [hero_002_flecha_traits.md](hero_002_flecha_traits.md); a proposta de Mastery 1–10 está em [hero_002_flecha_mastery.md](hero_002_flecha_mastery.md). Valores e gatilhos continuam sem validação. Lore pessoal e equipamentos/Echos continuam pendentes.
 
 ---
 

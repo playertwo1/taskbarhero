@@ -1,0 +1,15 @@
+{
+  "id": "slice_quick",
+  "description": "Checagem rápida (~1 min): 4 combinações representativas, rota e segmentos, sem campanha.",
+  "seeds": 4,
+  "levels": [5],
+  "builds": {
+    "hero_001": ["retaliacao_tele"],
+    "hero_002": ["marca"],
+    "hero_003": ["arcano", "controle", "lumen"]
+  },
+  "modes": ["route", "segments"],
+  "rank_milestones": [3, 5, 7, 9, 11, 13, 15, 17, 19],
+  "max_time": 3600,
+  "stuck_seconds": 30
+}

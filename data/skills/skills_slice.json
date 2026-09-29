@@ -1,0 +1,536 @@
+[
+  {
+    "id": "skill_bas_006",
+    "design_id": "SKILL_BAS_006",
+    "hero": "hero_001",
+    "name": "Muralha Viva",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 14.0,
+    "trigger": {
+      "type": "ally_behind_hp_below",
+      "threshold": 0.8
+    },
+    "effects": [
+      {
+        "type": "buff",
+        "stat": "damage_taken",
+        "op": "ADD_PERCENT",
+        "value": -0.5,
+        "duration": 6.0,
+        "targets": "allies_behind",
+        "defensive": true
+      }
+    ],
+    "source": "docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md, skill 1; gatilho e alcance contra qualquer ataque: HIPÓTESE do SLICE-1A-4a; v0.5: −50% (era −40%) após tune_v05_builds",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.duration": 7.0
+        }
+      },
+      "3": {
+        "add": [
+          {
+            "type": "buff",
+            "stat": "defense",
+            "op": "ADD_PERCENT",
+            "value": 0.1,
+            "duration": 7.0,
+            "targets": "allies_behind",
+            "defensive": true
+          }
+        ]
+      },
+      "4": {
+        "note": "área maior: allies_behind já cobre todos os aliados atrás"
+      },
+      "5": {
+        "note": "não implementado no slice: Perfect Block prolonga a Muralha"
+      }
+    },
+    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+  },
+  {
+    "id": "skill_bas_007",
+    "design_id": "SKILL_BAS_007",
+    "hero": "hero_001",
+    "name": "Contra-Golpe",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 8.0,
+    "trigger": {
+      "type": "enemies_alive"
+    },
+    "effects": [
+      {
+        "type": "counter_stance",
+        "duration": 4.0,
+        "damage_reduction": 0.7,
+        "counter_coefficient": 1.8,
+        "counter_stagger": 40.0,
+        "imbalance": true
+      }
+    ],
+    "source": "BASTIAO_GOLDEN_REFERENCE.md, skill 2 e 'Erguer Escudo' (70%); janela de 4 s: HIPÓTESE do SLICE-1A-4a; Desequilíbrio no revide conforme CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.counter_coefficient": 2.16
+        }
+      },
+      "3": {
+        "note": "ganho de Guarda dormente no slice"
+      },
+      "4": {
+        "set": {
+          "0.stun": 0.5
+        }
+      },
+      "5": {
+        "note": "não implementado no slice: onda 0,60×ATK no Perfect Block"
+      }
+    },
+    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+  },
+  {
+    "id": "skill_bas_008",
+    "design_id": "SKILL_BAS_008",
+    "hero": "hero_001",
+    "name": "Desafio",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 15.0,
+    "trigger": {
+      "type": "enemy_targets_ally"
+    },
+    "effects": [
+      {
+        "type": "taunt",
+        "duration": 4.0,
+        "ally_damage_multiplier": 0.85
+      }
+    ],
+    "source": "BASTIAO_GOLDEN_REFERENCE.md, skill 3; gatilho: HIPÓTESE do SLICE-1A-4a",
+    "ranks": {
+      "2": {
+        "note": "provoca todos os inimigos no slice desde o R1"
+      },
+      "3": {
+        "set": {
+          "0.duration": 5.0
+        }
+      },
+      "4": {
+        "set": {
+          "0.imbalance": true
+        }
+      },
+      "5": {
+        "note": "não implementado no slice: abate reduz a recarga"
+      }
+    },
+    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+  },
+  {
+    "id": "skill_bas_009",
+    "design_id": "SKILL_BAS_009",
+    "hero": "hero_001",
+    "name": "Fortaleza",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 16.0,
+    "trigger": {
+      "type": "self_hp_below",
+      "threshold": 0.7
+    },
+    "effects": [
+      {
+        "type": "buff",
+        "stat": "damage_taken",
+        "op": "ADD_PERCENT",
+        "value": -0.5,
+        "duration": 5.0,
+        "targets": "self",
+        "defensive": true
+      }
+    ],
+    "source": "BASTIAO_GOLDEN_REFERENCE.md, skill 4; gatilho: HIPÓTESE do SLICE-1A-4a; v0.5: −50% e recarga 16 s (era −40% e 20 s) após tune_v05_builds",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.duration": 6.0
+        }
+      },
+      "3": {
+        "note": "não implementado no slice: regeneração (HOT fora do slice)"
+      },
+      "4": {
+        "add": [
+          {
+            "type": "buff",
+            "stat": "damage_taken",
+            "op": "ADD_PERCENT",
+            "value": -0.1,
+            "duration": 6.0,
+            "targets": "allies",
+            "defensive": true
+          }
+        ]
+      },
+      "5": {
+        "note": "postura não interrompível: sem interrupção de heróis no slice"
+      }
+    },
+    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+  },
+  {
+    "id": "skill_fle_006",
+    "design_id": "SKILL_FLE_006",
+    "hero": "hero_002",
+    "name": "Marca",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 12.0,
+    "trigger": {
+      "type": "enemy_unmarked"
+    },
+    "effects": [
+      {
+        "type": "mark",
+        "duration": 6.0
+      }
+    ],
+    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.duration": 8.0
+        }
+      },
+      "3": {
+        "set": {
+          "0.owner_bonus": 0.1
+        }
+      },
+      "4": {
+        "note": "não implementado no slice: acerto aliado prolonga a Marca"
+      },
+      "5": {
+        "note": "não implementado no slice: transferência ao abater"
+      }
+    },
+    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+  },
+  {
+    "id": "skill_fle_007",
+    "design_id": "SKILL_FLE_007",
+    "hero": "hero_002",
+    "name": "Flecha Perfurante",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 12.0,
+    "trigger": {
+      "type": "enemies_alive"
+    },
+    "effects": [
+      {
+        "type": "attack",
+        "coefficient": 1.45,
+        "second_coefficient": 0.65,
+        "stagger": 25.0
+      }
+    ],
+    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.third_coefficient": 0.4
+        }
+      },
+      "3": {
+        "set": {
+          "0.stagger_bonus_vs_marked": 0.2
+        }
+      },
+      "4": {
+        "note": "não implementado no slice: ignora 15% de escudo"
+      },
+      "5": {
+        "add": [
+          {
+            "type": "attack",
+            "coefficient": 0.5,
+            "only_if_marked": true
+          }
+        ]
+      }
+    },
+    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+  },
+  {
+    "id": "skill_fle_008",
+    "design_id": "SKILL_FLE_008",
+    "hero": "hero_002",
+    "name": "Olho Aguçado",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 18.0,
+    "trigger": {
+      "type": "enemies_alive"
+    },
+    "effects": [
+      {
+        "type": "buff",
+        "stat": "crit_chance",
+        "op": "FLAT",
+        "value": 0.08,
+        "duration": 5.0,
+        "targets": "self"
+      }
+    ],
+    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.duration": 6.0
+        }
+      },
+      "3": {
+        "note": "não implementado no slice: +4 p.p. contra marcado"
+      },
+      "4": {
+        "note": "não implementado no slice"
+      },
+      "5": {
+        "note": "não implementado no slice"
+      }
+    },
+    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+  },
+  {
+    "id": "skill_fle_009",
+    "design_id": "SKILL_FLE_009",
+    "hero": "hero_002",
+    "name": "Rajada",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 14.0,
+    "trigger": {
+      "type": "enemies_alive"
+    },
+    "effects": [
+      {
+        "type": "attack",
+        "coefficient": 0.55,
+        "hits": 3,
+        "stagger": 8.0
+      }
+    ],
+    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.hits": 4,
+          "0.coefficient": 0.48
+        }
+      },
+      "3": {
+        "note": "não implementado no slice: +5 p.p. no último disparo"
+      },
+      "4": {
+        "note": "não implementado no slice"
+      },
+      "5": {
+        "note": "não implementado no slice"
+      }
+    },
+    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+  },
+  {
+    "id": "skill_iri_001",
+    "design_id": "SKILL_IRI_001",
+    "hero": "hero_003",
+    "name": "Lança de Lúmen",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 10.0,
+    "trigger": {
+      "type": "enemies_alive"
+    },
+    "effects": [
+      {
+        "type": "attack",
+        "coefficient": 1.55,
+        "stagger": 30.0
+      }
+    ],
+    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.coefficient": 1.7
+        }
+      },
+      "3": {
+        "set": {
+          "0.bonus_vs_prepared": 0.15
+        }
+      },
+      "4": {
+        "set": {
+          "0.second_coefficient": 0.45
+        }
+      },
+      "5": {
+        "note": "não implementado no slice: reduz a recarga do Prisma"
+      }
+    },
+    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+  },
+  {
+    "id": "skill_iri_005",
+    "design_id": "SKILL_IRI_005",
+    "hero": "hero_003",
+    "name": "Prisma de Retorno",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 14.0,
+    "trigger": {
+      "type": "enemy_marked_or_imbalanced"
+    },
+    "effects": [
+      {
+        "type": "attack",
+        "coefficient": 1.4,
+        "stagger": 25.0
+      }
+    ],
+    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.coefficient": 1.55
+        }
+      },
+      "3": {
+        "note": "não implementado no slice: +5% no próximo ataque aliado"
+      },
+      "4": {
+        "note": "janela de preparação: o slice usa a duração da Marca/Desequilíbrio"
+      },
+      "5": {
+        "note": "não implementado no slice"
+      }
+    },
+    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+  },
+  {
+    "id": "skill_iri_003",
+    "design_id": "SKILL_IRI_003",
+    "hero": "hero_003",
+    "name": "Fratura Arcana",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 15.0,
+    "trigger": {
+      "type": "enemies_alive"
+    },
+    "effects": [
+      {
+        "type": "attack",
+        "coefficient": 0.9,
+        "stagger": 45.0
+      },
+      {
+        "type": "enemy_debuff",
+        "stat": "defense",
+        "value": -0.15,
+        "duration": 5.0
+      }
+    ],
+    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "ranks": {
+      "2": {
+        "set": {
+          "1.duration": 6.0
+        }
+      },
+      "3": {
+        "set": {
+          "0.stagger_bonus_vs_prepared": 0.2
+        }
+      },
+      "4": {
+        "note": "não implementado no slice: Rede de Micélio reduz AS"
+      },
+      "5": {
+        "note": "não implementado no slice"
+      }
+    },
+    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+  },
+  {
+    "id": "skill_iri_002",
+    "design_id": "SKILL_IRI_002",
+    "hero": "hero_003",
+    "name": "Véu de Micélio",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 15.0,
+    "trigger": {
+      "type": "ally_hp_below",
+      "threshold": 0.7
+    },
+    "effects": [
+      {
+        "type": "shield",
+        "fraction": 0.2,
+        "duration": 6.0
+      }
+    ],
+    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.fraction": 0.22
+        }
+      },
+      "3": {
+        "set": {
+          "0.second_fraction": 0.1
+        }
+      },
+      "4": {
+        "set": {
+          "0.duration": 8.0
+        }
+      },
+      "5": {
+        "note": "não implementado no slice: escudo restante vira cura"
+      }
+    },
+    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+  },
+  {
+    "id": "skill_iri_004",
+    "design_id": "SKILL_IRI_004",
+    "hero": "hero_003",
+    "name": "Pulso Restaurador",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 16.0,
+    "trigger": {
+      "type": "ally_hp_below",
+      "threshold": 0.85
+    },
+    "effects": [
+      {
+        "type": "heal",
+        "coefficient": 0.3,
+        "threshold": 0.85
+      }
+    ],
+    "source": "Revisão experimental solicitada por Rafael em 2026-09-29. Com fôlego ativo, a varredura tune_heal do Argos mostrou 1,2×/12 s vencendo no nível 1; 0,3×/16 s leva a build Lúmen a vencer por volta do nível 7–9,5. Fora do recorte segundo CHAPTER_01_HERO_COMBAT_PROPOSAL.md; HIPÓTESE"
+  }
+]

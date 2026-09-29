@@ -27,7 +27,7 @@ func load_database() -> void:
 	if file != null:
 		var parsed = JSON.parse_string(file.get_as_text())
 		if parsed is Array:
-			items_database = parsed
+			items_database = SliceStats.filter_rows(parsed, SliceStats.LEGACY)
 
 func roll_drop(boss: bool = false) -> Variant:
 	if items_database.is_empty():

@@ -1,6 +1,7 @@
 # Inimigos — índice
 
 - **Bestário e loot de design canônicos:** [JSON do Capítulo 1](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json). Ele define estrutura, IDs, ranks, arquétipos e dados de loot dos 17 inimigos.
+- **Hipótese numérica dos 17:** [atributos derivados e skills por inimigo](CHAPTER_01_COMBAT_PROPOSAL.md); `combat.skills` do JSON canônico continua vazio até migração validada.
 - **Schema:** [ENEMY_CANONICAL_SCHEMA](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/ENEMY_CANONICAL_SCHEMA.md).
 - **Visão resumida:** [catálogo de inimigos do Capítulo 1](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMY_CATALOG.md); o JSON é a fonte detalhada.
 - **Runtime atual:** [inimigos e valores carregados](../../../data/enemies/enemies.json). É implementação legada, não substitui o cânone v0.4.
