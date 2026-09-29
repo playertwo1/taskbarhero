@@ -24,7 +24,23 @@
     "crit_chance": 0.03,
     "crit_damage": 1.5,
     "skill_haste": 0.0,
-    "tenacity": 20.0
+    "tenacity": 20.0,
+    "builds": {
+      "guardiao": {
+        "name": "Guardião",
+        "skills": [
+          "skill_bas_006",
+          "skill_bas_009"
+        ]
+      },
+      "retaliacao": {
+        "name": "Retaliação",
+        "skills": [
+          "skill_bas_007",
+          "skill_bas_008"
+        ]
+      }
+    }
   },
   {
     "id": "hero_002",

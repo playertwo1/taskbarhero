@@ -65,13 +65,13 @@ Fora do slice: Impacto de Escudo e Último Bastião; Ricochete, Chuva de Flechas
 
 | Slot | Itens do slice |
 | --- | --- |
-| Arma | `ITEM_W_001` Galho de Vigília (Comum), `ITEM_W_002` Arco de Folha Tensa (Incomum), `ITEM_W_003` Presa do Javali de Musgo (Raro) |
-| Secundário | `ITEM_S_002` Lanterna de Esporos (Incomum), `ITEM_S_003` Totem da Raiz Antiga (Raro), `ITEM_S_004` Farol Prismático (Épico) |
+| Arma | `ITEM_W_001` Galho de Vigília (espada de Bastião, Comum), `ITEM_W_002` Arco de Folha Tensa (Flecha, Incomum), `ITEM_W_003` Presa do Javali de Musgo (espada de Bastião, Raro), `ITEM_W_006` Cajado Prismático (Íris, Comum–Épico) |
+| Secundário | `ITEM_S_001` Broquel de Casca (escudo de Bastião, Comum–Épico), `ITEM_S_002` Lanterna de Esporos (Íris, Incomum), `ITEM_S_003` Totem da Raiz Antiga (compartilhável, Raro), `ITEM_S_004` Farol Prismático (Íris, Épico), `ITEM_S_006` Aljava da Trilha (Flecha, Comum–Épico), `ITEM_S_007` Foco de Micélio (Íris, Comum–Épico) |
 | Armadura | `ITEM_A_001` Manto de Folhas (Comum), `ITEM_A_002` Couraça de Musgo (Incomum), `ITEM_A_003` Casco Cristalino (Raro), `ITEM_A_004` Coração de Pedra (Épico), `ITEM_A_005` Casca do Guardião (Relíquia) |
 | Acessório I / II | `ITEM_R_001` Gota de Lúmen (Comum), `ITEM_R_004` Olho de Vidro Verde (Raro), `ITEM_R_005` Fragmento Prismático (Raro) |
 | Echo | *A Sentinela que Ficou* (seção 5); sem ID v0.4 |
 
-São **14 itens** de equipamento comum (fora o Echo). Nomes, slot e identidade vêm do [catálogo de itens v0.4](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md).
+São **18 templates** de equipamento no recorte (fora o Echo), incluindo os novos cajado, aljava e foco e o broquel agora necessário ao Bastião. Nomes, slot, identidade e compatibilidade vêm do [catálogo de itens v0.4 adaptado](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md). A integração desses quatro secundários/arma adicionais em `/data`, loot e testes permanece trabalho de `SLICE-1A`; esta alteração documental não declara implementação.
 
 - **Raridades:** Comum, Incomum, Raro nos drops normais; Épico como pool do equipamento garantido no primeiro clear do boss (`FIRST_CLEAR`, `minimum_rarity: EPIC`); Relíquia (Casca do Guardião) como drop do boss. **EM ABERTO:** as tabelas `RARITY_C1_*` v0.4 permitem Épico em outros drops, então a renormalização para o recorte fica para o BALANCE-FOUNDATION-1.
 - **Ferreiro:** desmontagem e Reforço +1 em Arma, Secundário e Armadura. Custo e definição do Reforço em [ENCOUNTERS.md](ENCOUNTERS.md) e no [modelo econômico](../../../06_balance/ECONOMY_MODEL.md).

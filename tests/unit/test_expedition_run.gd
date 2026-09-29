@@ -146,7 +146,7 @@ func _test_hand_calculated_kill() -> void:
 func _test_targeting() -> void:
 	print("\n>>> 3. ALVOS E FOCO")
 	var route := _route([_enc("duo", 1, [{"enemy_id": "en_c1_001", "count": 2}])])
-	var run := ExpeditionRun.create(route, [_hero("hero_001"), _hero("hero_002"), _hero("hero_003")], enemy_rows, {"seed": 3, "crits": false, "party_level": 1})
+	var run := ExpeditionRun.create(route, [_hero("hero_001"), _hero("hero_002"), _hero("hero_003")], enemy_rows, {"seed": 3, "crits": false, "party_level": 1, "targeting": "front"})
 	var events := run.run_to_end(0.25)
 	var first_target_change := -1
 	var last_on_first := -1
@@ -166,7 +166,7 @@ func _test_targeting() -> void:
 	_expect("inimigos só atacam o front enquanto ele vive", enemy_targets.size() == 1 and enemy_targets.has("hero_001"))
 
 	# Front frágil: cai e o alvo passa para o mid (Íris, hero_003).
-	var frail := ExpeditionRun.create(route, [_hero("hero_001", 5.0, 1.0), _hero("hero_002"), _hero("hero_003")], enemy_rows, {"seed": 3, "crits": false, "party_level": 1})
+	var frail := ExpeditionRun.create(route, [_hero("hero_001", 5.0, 1.0), _hero("hero_002"), _hero("hero_003")], enemy_rows, {"seed": 3, "crits": false, "party_level": 1, "targeting": "front"})
 	var ev2 := frail.run_to_end(0.25)
 	var saw_mid := false
 	var front_dead_at := -1.0

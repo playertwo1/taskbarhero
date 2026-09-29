@@ -13,7 +13,7 @@ O conteúdo integral e os schemas originais estão preservados nesta pasta. O JS
 - [Schema canônico de inimigos](source/TASKBAR_SISTEMA_COMPLETO_v0.4/ENEMY_CANONICAL_SCHEMA.md)
 - [Inimigos e loot do Capítulo 1 (JSON autoritativo)](source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json)
 - [Catálogo de inimigos](source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMY_CATALOG.md)
-- [Catálogo canônico dos 30 equipamentos](source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md)
+- [Catálogo de itens adaptado para Pocket Hero](source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md) — preserva os 30 IDs importados e acrescenta 3 templates com compatibilidade por herói decidida por Rafael; o ZIP original permanece como registro v0.4.
 - [Materiais do Capítulo 1](source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_MATERIAL_CATALOG.md)
 - [Economia de loot](source/TASKBAR_SISTEMA_COMPLETO_v0.4/LOOT_ECONOMY_SYSTEM.md)
 - [Qualidade, smart loot e proteção contra repetição](source/TASKBAR_SISTEMA_COMPLETO_v0.4/LOOT_QUALITY_SYSTEM_v0.4.md)

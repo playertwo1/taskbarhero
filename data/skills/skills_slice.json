@@ -1,0 +1,93 @@
+[
+  {
+    "id": "skill_bas_006",
+    "design_id": "SKILL_BAS_006",
+    "hero": "hero_001",
+    "name": "Muralha Viva",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 14.0,
+    "trigger": {
+      "type": "ally_behind_hp_below",
+      "threshold": 0.8
+    },
+    "effects": [
+      {
+        "type": "buff",
+        "stat": "damage_taken",
+        "op": "ADD_PERCENT",
+        "value": -0.4,
+        "duration": 6.0,
+        "targets": "allies_behind",
+        "defensive": true
+      }
+    ],
+    "source": "docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md, skill 1; gatilho e alcance contra qualquer ataque: HIPÓTESE do SLICE-1A-4a"
+  },
+  {
+    "id": "skill_bas_007",
+    "design_id": "SKILL_BAS_007",
+    "hero": "hero_001",
+    "name": "Contra-Golpe",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 8.0,
+    "trigger": {
+      "type": "enemies_alive"
+    },
+    "effects": [
+      {
+        "type": "counter_stance",
+        "duration": 4.0,
+        "damage_reduction": 0.7,
+        "counter_coefficient": 1.8
+      }
+    ],
+    "source": "BASTIAO_GOLDEN_REFERENCE.md, skill 2 e 'Erguer Escudo' (70%); janela de 4 s: HIPÓTESE do SLICE-1A-4a"
+  },
+  {
+    "id": "skill_bas_008",
+    "design_id": "SKILL_BAS_008",
+    "hero": "hero_001",
+    "name": "Desafio",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 15.0,
+    "trigger": {
+      "type": "enemy_targets_ally"
+    },
+    "effects": [
+      {
+        "type": "taunt",
+        "duration": 4.0,
+        "ally_damage_multiplier": 0.85
+      }
+    ],
+    "source": "BASTIAO_GOLDEN_REFERENCE.md, skill 3; gatilho: HIPÓTESE do SLICE-1A-4a"
+  },
+  {
+    "id": "skill_bas_009",
+    "design_id": "SKILL_BAS_009",
+    "hero": "hero_001",
+    "name": "Fortaleza",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 20.0,
+    "trigger": {
+      "type": "self_hp_below",
+      "threshold": 0.7
+    },
+    "effects": [
+      {
+        "type": "buff",
+        "stat": "damage_taken",
+        "op": "ADD_PERCENT",
+        "value": -0.4,
+        "duration": 5.0,
+        "targets": "self",
+        "defensive": true
+      }
+    ],
+    "source": "BASTIAO_GOLDEN_REFERENCE.md, skill 4; gatilho: HIPÓTESE do SLICE-1A-4a"
+  }
+]

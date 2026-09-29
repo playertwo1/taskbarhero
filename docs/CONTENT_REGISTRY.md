@@ -77,7 +77,7 @@ Os IDs, nomes, ranks, arquétipos e registros de loot dos 17 inimigos do Capítu
 
 ## Itens e materiais
 
-O [catálogo canônico v0.4](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md) é autoridade para os 30 itens do Capítulo 1; o [catálogo de materiais](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_MATERIAL_CATALOG.md) é autoridade para os sete materiais. As regras de raridade e economia estão no [índice canônico](../documents/canonical/taskbar_sistema_v0.4/README.md). Os registros antigos presentes em runtime permanecem identificados na [ponte de compatibilidade](04_content/LEGACY_RUNTIME_CATALOG.md) até migração. Consulte também os índices de [itens](04_content/items/INDEX.md) e [balanceamento](06_balance/INDEX.md).
+O [catálogo canônico v0.4 adaptado](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md) é autoridade para os 30 itens importados e 3 templates adicionais de compatibilidade por herói no Capítulo 1; o [catálogo de materiais](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_MATERIAL_CATALOG.md) é autoridade para os sete materiais. As regras de raridade e economia estão no [índice canônico](../documents/canonical/taskbar_sistema_v0.4/README.md). Os registros antigos presentes em runtime permanecem identificados na [ponte de compatibilidade](04_content/LEGACY_RUNTIME_CATALOG.md) até migração. Consulte também os índices de [itens](04_content/items/INDEX.md) e [balanceamento](06_balance/INDEX.md).
 
 ## Capítulo 1 e subfases
 
