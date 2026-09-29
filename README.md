@@ -15,3 +15,12 @@ O MVP foi homologado no gate `R19`. A prioridade pós-MVP e as etapas atuais est
 - [`arquivados/INDEX.md`](arquivados/INDEX.md) — documentação histórica preservada.
 
 Código do jogo fica em `scenes/` e `scripts/`; dados de runtime em `data/`; arte final em `assets/`; evidências executáveis em `tests/`. Consulte os índices antes de abrir ou editar uma área.
+
+## Verificação
+
+```text
+python tools/run_godot_tests.py                          # suíte de testes Godot (headless)
+python tools/argos/run.py --scenario slice_balance       # Argos: simulação de balanceamento + relatório
+```
+
+O **Argos** é o playtester automático do projeto: roda milhares de expedições no Godot sem interface, verifica invariantes (bugs) e gera um `REPORT.md` com achados de balanceamento. Como usar e regras para agentes: [`tools/argos/README.md`](tools/argos/README.md) e a seção "Testes e Argos" de [`AGENTS.md`](AGENTS.md).
