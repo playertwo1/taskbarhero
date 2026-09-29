@@ -236,7 +236,7 @@
     "stagger_profile": "BOSS",
     "mechanics": {
       "status": "HIPOTESE",
-      "source": "ENCOUNTERS.md (3 fases, golpe telegrafado, janela após errar, add na fase 2); números são hipótese",
+      "source": "ENCOUNTERS.md (fases, golpes telegrafados, add na fase 2 e fragmentos sequenciais na fase final); números são hipótese",
       "basic_coefficient": 0.6,
       "telegraph": {
         "id": "golpe_de_casco",
@@ -250,10 +250,14 @@
       "phases": [
         {
           "hp_below": 0.7,
+          "name": "O Corrompido",
           "spawn_deferred": true
         },
         {
           "hp_below": 0.35,
+          "name": "A Memória",
+          "phase_gate": true,
+          "corruption_fragments": 3,
           "telegraph_every": 2
         }
       ]

@@ -40,7 +40,10 @@ func _ready() -> void:
 	var item_rows := {}
 	for row in SliceSession.data()["items"]:
 		item_rows[row["id"]] = row
-	_ctx = {"node_names": node_names, "hero_names": HERO_NAMES, "item_rows": item_rows, "texts": EventTexts.create(EventTexts.load_texts())}
+	var enemy_names := {}
+	for row in SliceSession.data()["enemies"]:
+		enemy_names[row["id"]] = row.get("name", row["id"])
+	_ctx = {"node_names": node_names, "hero_names": HERO_NAMES, "enemy_names": enemy_names, "item_rows": item_rows, "texts": EventTexts.create(EventTexts.load_texts())}
 	_build_ui()
 	_show("prep")
 

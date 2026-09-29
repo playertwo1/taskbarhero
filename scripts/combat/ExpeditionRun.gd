@@ -8,7 +8,7 @@ const Profiles := preload("res://scripts/combat/BalanceProfiles.gd")
 ## Usa CombatMath, BalanceProfiles e ThreatMath. Inclui skills com gatilho e cooldown, buffs de
 ## damage_taken, postura de contra-ataque, provocação e alvo por ameaça.
 ## SLICE-1A-4b/1C (HIPÓTESE): Stagger e quebra, Perfect Block e Desequilíbrio, golpe telegrafado,
-## fases de chefe com adds adiados ("deferred"), ranks de skill, XP por inimigo derrotado e as
+## fases de chefe com adds adiados e objetivos sequenciais, ranks de skill, XP por inimigo derrotado e as
 ## passivas/Traits do recorte com efeito em combate (data/skills/passives_slice.json). Sem loot.
 ## Regras: docs/00_project/CORE_LOOP.md e docs/06_balance/SLICE_BALANCE_CONTRACT.md.
 
@@ -317,7 +317,7 @@ func _new_enemy(row: Dictionary, level: int) -> Dictionary:
 	var mechanics: Dictionary = row.get("mechanics", {})
 	var enemy := {
 		"uid": "%s#%d" % [row["id"], _uid_counter], "id": row["id"], "rank": row["rank"], "stats": stats,
-		"hp": float(stats["max_hp"]), "alive": true, "threat": {}, "target": "",
+		"hp": float(stats["max_hp"]), "alive": true, "targetable": true, "objective": false, "threat": {}, "target": "",
 		"next_at": time + CombatMath.attack_interval(float(stats["attack_speed"])),
 		"marked_until": 0.0, "defense_debuff_until": 0.0, "defense_debuff": 0.0,
 		"posture_max": float(stagger.get("posture", 0.0)), "posture": float(stagger.get("posture", 0.0)),
@@ -326,9 +326,37 @@ func _new_enemy(row: Dictionary, level: int) -> Dictionary:
 		"mechanics": mechanics, "phase_index": 0, "attacks_done": 0, "telegraph_until": -INF, "telegraph_target": "",
 		"mark_owner": "", "mark_bonus": 0.0,
 		"telegraph_every": int(mechanics.get("telegraph", {}).get("every", 0)),
+		"corruption_fragments_remaining": 0, "corruption_fragments_total": 0, "corruption_fragment_hp": 0.0,
 	}
 	_uid_counter += 1
 	return enemy
+
+func _new_corruption_fragment(parent: Dictionary) -> Dictionary:
+	var hp := float(parent["corruption_fragment_hp"])
+	var sequence := int(parent["corruption_fragments_total"]) - int(parent["corruption_fragments_remaining"]) + 1
+	var stats: Dictionary = parent["stats"].duplicate(true)
+	stats["max_hp"] = hp
+	var fragment := {
+		"uid": "corruption_fragment#%d" % _uid_counter, "id": "corruption_fragment", "rank": "NORMAL", "stats": stats,
+		"hp": hp, "alive": true, "targetable": true, "objective": true, "threat": {}, "target": "",
+		"next_at": INF, "marked_until": 0.0, "defense_debuff_until": 0.0, "defense_debuff": 0.0,
+		"posture_max": 0.0, "posture": 0.0, "posture_at": time, "last_stagger_at": -INF,
+		"broken_until": -INF, "immune_until": -INF, "imbalance_until": -INF, "exposed_until": -INF,
+		"exposed_vulnerability": 0.0, "mechanics": {}, "phase_index": 0, "attacks_done": 0,
+		"telegraph_until": -INF, "telegraph_target": "", "mark_owner": "", "mark_bonus": 0.0,
+		"telegraph_every": 0, "objective_parent_uid": parent["uid"], "objective_sequence": sequence,
+		"objective_total": int(parent["corruption_fragments_total"]),
+	}
+	_uid_counter += 1
+	return fragment
+
+func _spawn_corruption_fragment(parent: Dictionary, events: Array) -> void:
+	var fragment := _new_corruption_fragment(parent)
+	_enemies.insert(0, fragment)
+	events.append({
+		"type": "corruption_fragment_spawned", "time": time, "uid": fragment["uid"],
+		"sequence": fragment["objective_sequence"], "total": fragment["objective_total"],
+	})
 
 func _purge_expired() -> void:
 	for hid in _hero_order:
@@ -388,7 +416,7 @@ func _next_event(limit: float) -> Dictionary:
 				best_prio = 2
 				best = {"kind": "hero", "at": at, "ref": h}
 	for e in _enemies:
-		if e["alive"]:
+		if e["alive"] and not bool(e.get("objective", false)):
 			var at := float(e["next_at"])
 			if at < best_at - EPS or (absf(at - best_at) <= EPS and 3 < best_prio):
 				best_at = at
@@ -400,7 +428,7 @@ func _next_event(limit: float) -> Dictionary:
 
 func _first_alive_enemy() -> Dictionary:
 	for e in _enemies:
-		if e["alive"]:
+		if e["alive"] and bool(e.get("targetable", true)):
 			return e
 	return {}
 
@@ -682,7 +710,7 @@ func _cast(hero: Dictionary, sk: Dictionary, events: Array) -> void:
 func _nth_alive_enemy(n: int) -> Dictionary:
 	var seen := 0
 	for e in _enemies:
-		if not e["alive"]:
+		if not e["alive"] or not bool(e.get("targetable", true)):
 			continue
 		if seen == n:
 			return e
@@ -791,9 +819,21 @@ func _check_phases(enemy: Dictionary, events: Array) -> void:
 		if float(enemy["hp"]) > float(enemy["stats"]["max_hp"]) * float(phase["hp_below"]) + EPS:
 			return
 		enemy["phase_index"] = int(enemy["phase_index"]) + 1
-		events.append({"type": "boss_phase", "time": time, "uid": enemy["uid"], "phase": int(enemy["phase_index"]) + 1})
+		events.append({
+			"type": "boss_phase", "time": time, "uid": enemy["uid"],
+			"phase": int(enemy["phase_index"]) + 1, "name": String(phase.get("name", "")),
+		})
 		if phase.has("telegraph_every"):
 			enemy["telegraph_every"] = int(phase["telegraph_every"])
+		var fragment_count := int(phase.get("corruption_fragments", 0))
+		if bool(phase.get("phase_gate", false)) and fragment_count > 0:
+			var gate_hp := maxf(0.0, float(enemy["hp"]))
+			enemy["targetable"] = false
+			enemy["corruption_fragments_total"] = fragment_count
+			enemy["corruption_fragments_remaining"] = fragment_count
+			enemy["corruption_fragment_hp"] = gate_hp / float(fragment_count)
+			events.append({"type": "corruption_fragments_started", "time": time, "uid": enemy["uid"], "count": fragment_count})
+			_spawn_corruption_fragment(enemy, events)
 		if bool(phase.get("spawn_deferred", false)):
 			var count := int(phase.get("spawn_count", _deferred.size()))
 			for _i in mini(count, _deferred.size()):
@@ -806,22 +846,47 @@ func _check_phases(enemy: Dictionary, events: Array) -> void:
 
 ## Aplica dano a um inimigo, gera ameaça para o herói e trata a derrota. Devolve true se morreu.
 func _damage_enemy(enemy: Dictionary, damage: float, hero: Dictionary, events: Array) -> bool:
+	if not bool(enemy.get("targetable", true)):
+		return false
 	var effective := minf(damage, float(enemy["hp"]))
 	enemy["hp"] = maxf(0.0, float(enemy["hp"]) - damage)
 	var gained: float = effective * _threat_multiplier(hero)
 	enemy["threat"][hero["id"]] = float(enemy["threat"].get(hero["id"], 0.0)) + gained
-	if float(enemy["hp"]) > 0.0:
-		_check_phases(enemy, events)
+	_check_phases(enemy, events)
+	if not bool(enemy.get("targetable", true)) or float(enemy["hp"]) > 0.0:
 		return false
+	if bool(enemy.get("objective", false)):
+		enemy["alive"] = false
+		events.append({
+			"type": "corruption_fragment_destroyed", "time": time, "uid": enemy["uid"],
+			"sequence": enemy["objective_sequence"], "total": enemy["objective_total"],
+		})
+		var parent: Dictionary = {}
+		for candidate in _enemies:
+			if candidate["uid"] == enemy["objective_parent_uid"]:
+				parent = candidate
+				break
+		if not parent.is_empty():
+			parent["corruption_fragments_remaining"] = int(parent["corruption_fragments_remaining"]) - 1
+			if int(parent["corruption_fragments_remaining"]) > 0:
+				_spawn_corruption_fragment(parent, events)
+			else:
+				events.append({"type": "boss_memory_restored", "time": time, "uid": parent["uid"]})
+				parent["hp"] = 0.0
+				_defeat_enemy(parent, events)
+		return true
+	_defeat_enemy(enemy, events)
+	return true
+
+func _defeat_enemy(enemy: Dictionary, events: Array) -> void:
 	enemy["alive"] = false
 	enemy["telegraph_until"] = -INF
 	var xp := int(_profiles.get("xp", {}).get("by_rank", {}).get(enemy["rank"], 0))
 	events.append({"type": "enemy_defeated", "time": time, "uid": enemy["uid"], "id": enemy["id"], "xp": xp})
-	if loot != null:
+	if loot != null and _enemy_rows.has(enemy["id"]):
 		_collect_drop(enemy, events)
 	if _first_alive_enemy().is_empty():
 		_finish_encounter(events)
-	return true
 
 func _hero_attack(hero: Dictionary, events: Array) -> void:
 	var enemy := _first_alive_enemy()
@@ -919,7 +984,7 @@ func _enemy_attack(enemy: Dictionary, events: Array, coefficient: float = 1.0, t
 		hero["guard_ready_at"] = time + float(pb["recharge"])
 		_imbalance(enemy, events)
 		events.append({"type": "perfect_block", "time": time, "hero": target_id, "source": enemy["uid"], "heavy": not telegraph.is_empty()})
-	if not telegraph.is_empty() and (blocked or stance_hit):
+	if not telegraph.is_empty() and (blocked or stance_hit) and bool(enemy.get("targetable", true)):
 		enemy["exposed_until"] = time + float(telegraph["exposed_duration"])
 		enemy["exposed_vulnerability"] = float(telegraph["exposed_vulnerability"])
 		events.append({"type": "enemy_exposed", "time": time, "uid": enemy["uid"], "until": enemy["exposed_until"]})

@@ -21,13 +21,13 @@ status: DESIGN
 
 **Alvo de balanceamento:** confronto longo e exigente, com counterplay legível. O encontro deve respeitar a referência canônica de 120–210 segundos contra `HERO_REFERENCE`; para uma party de três, o teste de design escala o orçamento de HP pelo tamanho da party e compara com o DPS combinado dos três heróis iniciais. A simulação de ECON-1 estima TTK teórico de cerca de **139 s** com a party inicial nos níveis 1 e 6, sem afirmar taxa de vitória.
 
-Fases e padrões propostos para `SLICE-1`:
+Fases e padrões propostos para `SLICE-1`, alinhados aos nomes da [lore canônica](../../../01_world/loreparte1.md):
 
-1. **100–70% — Guarda do santuário:** golpe de casco telegrafado e varredura frontal alternados; após errar a investida, o Guardião abre uma janela de resposta.
-2. **70–35% — Chamado do bosque:** surge uma Geleia de Lúmen. O boss conserva um ataque principal por vez e cria uma pausa clara para lidar com o add ou continuar o dano.
-3. **35–0% — Última vigília:** combina investida e varredura com recuperação menor, sem sobrepor duas áreas letais. O Guardião fica vulnerável após a investida longa.
+1. **100–70% — O Protetor:** o Guardião luta com ataques telegrafados e cadenciados.
+2. **70–35% — O Corrompido:** a corrupção assume o controle e surge uma Geleia de Lúmen como reforço.
+3. **35–0% — A Memória:** a fase abre explicitamente um bloqueio de fase. A vida restante do chefe vira três alvos temporários sequenciais; o Guardião continua atacando enquanto são destruídos. Ao destruir o último, a memória retorna e o encontro termina.
 
-Não usar bloqueio invisível de vida nem golpe inevitável de morte. Dano alto precisa de telegraph e resposta; cura e escudo continuam úteis. Os thresholds e ataques acima são um contrato de design proposto, sujeito ao protótipo e às regras de boss v0.4.
+Não usar bloqueio invisível de vida nem golpe inevitável de morte. O bloqueio da fase final é explícito: os fragmentos aparecem no log e recebem o dano da party, em sequência. Dano alto precisa de telegraph e resposta; cura e escudo continuam úteis. Os thresholds e ataques acima são um contrato de design proposto, sujeito ao protótipo e às regras de boss v0.4.
 
 ### Critério de dificuldade
 
