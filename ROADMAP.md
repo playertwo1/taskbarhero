@@ -8,7 +8,7 @@ Roadmap único do projeto: define prioridade, ordem e gates. Detalhes de design 
 
 ## 1. Onde estamos
 
-- **MVP:** concluído e homologado no gate **R19** em 2026-09-27. Não reabrir.
+- **MVP:** concluído e homologado no gate **R19** em 2026-09-27. Não reabrir; o conteúdo legado será substituído pelo slice no `1A-CUT` (seção 4, decisão de 2026-09-29).
 - **Fase atual:** expansão de conteúdo, identidade e meta-progressão.
 - **Diagnóstico de 2026-09-29:** a fundação de design está ampla (sistemas, Bastião, Flecha, Árvore, artesãos, itens, economia), mas nenhum número foi validado em jogo. O gargalo agora é **provar os contratos no SLICE-1**, não escrever mais fichas.
 - **Próximo passo:** [SLICE-1](#43-slice-1--vertical-slice-do-jogo-real), começando por 1A (migração do subconjunto para `/data` e combate). SLICE-0 e BALANCE-FOUNDATION-1 estão `PASS` (2026-09-29).
@@ -18,7 +18,7 @@ Roadmap único do projeto: define prioridade, ordem e gates. Detalhes de design 
 
 ## 2. Princípios e controle de escopo
 
-- Preservar o MVP homologado e os Golden References aprovados; mudanças canônicas novas orientam **design futuro** e não alteram código homologado sem tarefa explícita de migração.
+- Preservar os Golden References aprovados. O MVP homologado é substituído pelo conteúdo do slice no `1A-CUT` (decisão de Rafael, 2026-09-29); antes disso, mudanças canônicas novas não alteram código homologado sem tarefa explícita de migração.
 - Bosque de Lúmen continua sendo o Capítulo 1; não iniciar capítulos futuros antes de validar o loop.
 - Sem backend, contas, multiplayer, cloud save ou monetização.
 - Números de balanceamento são **HIPÓTESE** até simulação e playtest.
@@ -55,7 +55,7 @@ Gates `PASS` em design. Nenhum deles aprova runtime, números finais ou balancea
 
 A ordem é esta. Não pular etapas: cada uma entrega o que a seguinte consome.
 
-**DECIDIDO (Rafael, 2026-09-29) — estratégia de runtime do slice:** o SLICE-1 migra para `/data` **somente o subconjunto v0.4 que usa**, com aliases dos IDs runtime atuais registrados no [registro de conteúdo](docs/CONTENT_REGISTRY.md). Não haverá arquivos de dados paralelos. O MVP homologado continua jogável e com testes passando a cada etapa; LOOT-EXPANSION-1 completa a migração depois do slice.
+**DECIDIDO (Rafael, 2026-09-29) — estratégia de runtime do slice:** o SLICE-1 migra para `/data` **somente o subconjunto v0.4 que usa**, com aliases dos IDs runtime atuais registrados no [registro de conteúdo](docs/CONTENT_REGISTRY.md). Não haverá arquivos de dados paralelos. **Revisado em 2026-09-29 (Rafael):** o conteúdo legado do MVP é **removido** de `/data`, do código e dos testes na etapa `1A-CUT`, quando a rota do slice já funciona; até lá ele coexiste e a suíte segue verde. Depois do corte, o MVP antigo deixa de ser jogável (histórico no git e em `arquivados/`). LOOT-EXPANSION-1 completa a migração depois do slice.
 
 ### 4.0 ECON-1 — Economia mínima · `DESIGN` em andamento
 
@@ -110,9 +110,9 @@ Gate PASS: tudo que o slice usa tem definição única e fórmula calculável à
 
 Fluxo: `Hub → party → build → expedição → combate → escolha → evento → elite → mini-boss → boss → retorno → Árvore/Ferreiro → evolução do Hub`
 
-Cada etapa fecha com teste automatizado novo em `tests/`, a suíte completa passando (`python tools/run_godot_tests.py`) e o MVP ainda jogável.
+Cada etapa fecha com teste automatizado novo em `tests/`, a suíte completa passando (`python tools/run_godot_tests.py`) e o jogo rodando com o conteúdo vigente (o legado só existe até o `1A-CUT`).
 
-- **1A — Combate e dados:** migrar o subconjunto v0.4 para `/data` com aliases; combate usa o modelo do BALANCE-FOUNDATION-1; trio com as skills do recorte.
+- **1A — Combate e dados:** migrar o subconjunto v0.4 para `/data` com aliases; combate usa o modelo do BALANCE-FOUNDATION-1; trio com as skills do recorte. Sub-fatias: `1A-1` `CombatMath` (feito), `1A-2` dados e carregadores do slice, `1A-3` rota de 10 encontros e combate, `1A-CUT` remoção do legado com testes reescritos, `1A-4` skills, passivas e Traits, `1A-5` telemetria.
 - **1B — Run:** expedição com escolhas de build, evento e elite; loot do recorte equipável ou reciclável.
 - **1C — Chefes:** mini-boss e Guardião-Cervo com mecânicas distintas de inimigo comum.
 - **1D — Retorno:** Hub, ramo da Árvore, Ferreiro (desmontagem + 1 melhoria), Echo opcional e mudança visual do Refúgio após o boss.

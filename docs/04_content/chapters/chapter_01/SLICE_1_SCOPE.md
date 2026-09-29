@@ -131,7 +131,7 @@ Registro central: [CONTENT_REGISTRY](../../../CONTENT_REGISTRY.md). Aliases de i
 | Rainha das Geleias | `MB_C1_001` | **nenhum** |
 | Os 14 itens da seção 3 | `ITEM_*` | **nenhum** (catálogo legado sem equivalência de identidade) |
 
-- Nenhum ID runtime atual é renomeado. Os não usados (`saqueador_da_mata`, `xama_de_esporos` e os demais legados) continuam carregáveis e o MVP segue jogável.
+- **DECIDIDO (Rafael, 2026-09-29):** o conteúdo legado é **removido** de `/data`, do código e dos testes no `1A-CUT`, inclusive os IDs não usados (`saqueador_da_mata`, `xama_de_esporos` e os demais). Até o corte ele coexiste e a suíte segue verde. O alias (`legacy_alias`) serve para reaproveitar nome e sprite, não mantém o registro legado vivo.
 - **Skills:** `SKILL_BAS_006` a `011` (Golden Reference) substituem `SKILL_BAS_001` a `005`, que passam a `DEPRECATED`; `SKILL_IRI_001`, `002`, `003` e `005` são mantidos; `SKILL_FLE_006` a `010` já estão registrados.
 - **Passivas e Traits do slice:** convenção `PASS_<herói>_###` e `TRAIT_<herói>_###`. Só os nós novos da Íris recebem ID (`PASS_IRI_001` a `005`, `TRAIT_IRI_001` e `002`, no [kit](../../../02_heroes/hero_003_iris_slice_kit.md)). Os nós de Bastião e Flecha continuam referenciados pelo nome nas suas fichas, sem ID inventado aqui.
 - **Evento:** `EVENT_C1_001`. **Echo:** sem ID.

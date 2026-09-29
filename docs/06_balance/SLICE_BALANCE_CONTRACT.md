@@ -14,9 +14,9 @@ certainty: HIPOTESE
 
 ## 1. Compatibilidade com o combate atual
 
-**DECIDIDO (Rafael, 2026-09-29):** as fórmulas v0.4 valem **só para o conteúdo do slice**; o MVP homologado continua com a matemática atual.
+**DECIDIDO (Rafael, 2026-09-29; revisado no mesmo dia):** o combate do slice usa as fórmulas v0.4. O conteúdo legado do MVP e a matemática atual (`atk − def`) são **removidos** no `1A-CUT`, quando a rota do slice já funciona; até lá coexistem, com a fórmula escolhida pelo conjunto de conteúdo. Depois do corte só existe a fórmula v0.4.
 
-| | Combate atual (MVP) | Slice (v0.4) |
+| | Combate atual (removido no `1A-CUT`) | Slice (v0.4) |
 | --- | --- | --- |
 | Dano | `max(1, ataque − defesa)` ([GameManager.gd](../../scripts/combat/GameManager.gd)) | `ataque × (1 − defesa/(defesa+100))`, mínimo 1 |
 | Crítico | ×2,0 fixo; chance por herói (5% a 20%) | `crit_damage` base ×1,5 por herói; `crit_chance` base 5% |
@@ -24,8 +24,8 @@ certainty: HIPOTESE
 | Nível | +10 HP, +1,5 ATK, +0,5 DEF por nível | interpolação linear até o nível 100 |
 | Inimigos | 1 inimigo ativo por vez (`active_enemy`) | encontros de 1 a 3 inimigos |
 
-- **RECOMENDADO (consequência da decisão; confirmar no `SLICE-1A`):** a fórmula é escolhida pelo **conjunto de conteúdo da expedição**, não por entidade. A rota do MVP usa heróis e inimigos legados com a fórmula atual; a rota do slice usa só entidades migradas com a fórmula v0.4. Não há party ou encontro que misture os dois.
-- Nenhum arquivo em `/data` é alterado por este contrato. A migração do subconjunto é trabalho do `SLICE-1A`, com aliases já registrados no [SLICE_1_SCOPE](../04_content/chapters/chapter_01/SLICE_1_SCOPE.md), seção 8.
+- **Coexistência temporária (até o `1A-CUT`):** a fórmula é escolhida pelo **conjunto de conteúdo da expedição** (`content_set`), não por entidade. Legado usa a fórmula atual; slice usa a v0.4; nunca há party ou encontro que misture os dois.
+- Nenhum arquivo em `/data` é alterado por este contrato. A migração do subconjunto e a remoção do legado são trabalho do `SLICE-1A` (`1A-2` a `1A-CUT`); o alias serve para reaproveitar nome e sprite, registrado no [SLICE_1_SCOPE](../04_content/chapters/chapter_01/SLICE_1_SCOPE.md), seção 8.
 - O suporte a vários inimigos simultâneos e a skills equipadas não existe hoje no runtime e é escopo do `SLICE-1A`, não deste contrato.
 
 ## 2. Status do slice — DECIDIDO
@@ -96,7 +96,7 @@ Bastião: HP 160, ATK 10, DEF 18, AS 0,80, crit 3%, crit dmg ×1,5. Geleia de L�
 | Golpe da Geleia em Bastião: 4,5 × (1 − 0,1525) | 3,81 |
 | Tempo para a Geleia matar Bastião sozinha: 160 ÷ 3,81 | 42,0 s |
 
-**Contra o combate atual:** com a fórmula do MVP, Bastião (ATK 8) contra a Geleia legada (HP 30, DEF 0) dá `max(1, 8 − 0)` = 8 por golpe, e a Geleia legada dá `max(1, 4 − 4)` = 1. As escalas de HP e dano diferem (Geleia legada 30 HP; Geleia v0.4 97,75 HP), o que confirma que os dois conjuntos não podem se misturar.
+**Contra o combate atual:** com a fórmula do MVP, Bastião (ATK 8) contra a Geleia legada (HP 30, DEF 0) dá `max(1, 8 − 0)` = 8 por golpe, e a Geleia legada dá `max(1, 4 − 4)` = 1. As escalas de HP e dano diferem (Geleia legada 30 HP; Geleia v0.4 97,75 HP), o que mostra a diferença de escala entre os dois modelos; o legado sai no `1A-CUT`.
 
 ## 5. Baselines do trio e dos inimigos
 
@@ -165,7 +165,7 @@ Fonte: [BALANCE_TELEMETRY](../../documents/canonical/taskbar_sistema_v0.4/source
 
 | Número ou regra | Estado | Fonte | Método |
 | --- | --- | --- | --- |
-| Fórmula v0.4 só no slice; MVP legado intacto | DECIDIDO | Rafael, 2026-09-29 | Decisão registrada |
+| Fórmula v0.4 no slice; legado removido no `1A-CUT` | DECIDIDO | Rafael, 2026-09-29 (revisão) | Coexistência só até o corte |
 | 13 status do slice | DECIDIDO | Rafael, 2026-09-29 | Seção 2 |
 | Guarda fora do slice; cláusulas dormentes | DECIDIDO | Rafael, 2026-09-29 | Sem gasto equipado |
 | Perfect Block por prontidão com recarga | HIPÓTESE | Rafael, 2026-09-29 | Regra determinística; intervalo EM ABERTO |
