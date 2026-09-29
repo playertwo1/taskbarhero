@@ -1,0 +1,713 @@
+{
+ "meta": {
+  "enemy_damage_scale": 0.5,
+  "godot": "4.7.2-stable (official)",
+  "kind": "meta",
+  "scenario": "tune_heal",
+  "seeds": 6.0,
+  "variants": [
+   "pulso_1.2_cd12",
+   "pulso_0.8_cd12",
+   "pulso_0.6_cd14",
+   "pulso_0.45_cd15",
+   "pulso_0.3_cd16"
+  ],
+  "commit": "ed61189",
+  "dirty": false,
+  "scenario_file": "tools/argos/simulator/combat/scenarios/tune_heal.json"
+ },
+ "findings": [
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.3_cd16 · retaliacao_tele/critico/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.3_cd16 · retaliacao_tele/marca/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.45_cd15 · guardiao/marca/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.45_cd15 · retaliacao/marca/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.45_cd15 · retaliacao_tele/critico/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.45_cd15 · retaliacao_tele/marca/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.6_cd14 · guardiao/critico/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.6_cd14 · guardiao/marca/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.6_cd14 · retaliacao/critico/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.6_cd14 · retaliacao/marca/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.6_cd14 · retaliacao_tele/critico/lumen",
+   "metric": "nível 5.0 (meta 9–12), 2.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.6_cd14 · retaliacao_tele/marca/lumen",
+   "metric": "nível 5.0 (meta 9–12), 2.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.8_cd12 · guardiao/critico/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.8_cd12 · guardiao/marca/lumen",
+   "metric": "nível 5.0 (meta 9–12), 2.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.8_cd12 · retaliacao/critico/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.8_cd12 · retaliacao/marca/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.8_cd12 · retaliacao_tele/critico/lumen",
+   "metric": "nível 5.0 (meta 9–12), 2.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_0.8_cd12 · retaliacao_tele/marca/lumen",
+   "metric": "nível 5.0 (meta 9–12), 2.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_1.2_cd12 · retaliacao_tele/critico/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence cedo demais: pulso_1.2_cd12 · retaliacao_tele/marca/lumen",
+   "metric": "nível 7.0 (meta 9–12), 3.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "INFO",
+   "severity": "INFO",
+   "title": "Itens por tentativa",
+   "metric": "mediana 5.0 item(ns) por tentativa entre combinações",
+   "rule": "SLICE_1_SCOPE.md seção 3: mínimo de 5 Resíduos antes do boss = um Reforço +1 (HIPÓTESE)"
+  }
+ ],
+ "variants": [
+  {
+   "variant": "pulso_0.3_cd16",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 0,
+   "heal_attempts": 4.0,
+   "no_heal_attempts_best": null,
+   "no_heal_paths_ok": 0,
+   "no_heal_paths_ok_list": []
+  },
+  {
+   "variant": "pulso_0.45_cd15",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 0,
+   "heal_attempts": 3.0,
+   "no_heal_attempts_best": null,
+   "no_heal_paths_ok": 0,
+   "no_heal_paths_ok_list": []
+  },
+  {
+   "variant": "pulso_0.6_cd14",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 0,
+   "heal_attempts": 3.0,
+   "no_heal_attempts_best": null,
+   "no_heal_paths_ok": 0,
+   "no_heal_paths_ok_list": []
+  },
+  {
+   "variant": "pulso_0.8_cd12",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 0,
+   "heal_attempts": 2.5,
+   "no_heal_attempts_best": null,
+   "no_heal_paths_ok": 0,
+   "no_heal_paths_ok_list": []
+  },
+  {
+   "variant": "pulso_1.2_cd12",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 0,
+   "heal_attempts": 4.0,
+   "no_heal_attempts_best": null,
+   "no_heal_paths_ok": 0,
+   "no_heal_paths_ok_list": []
+  }
+ ],
+ "route": [],
+ "segments": [],
+ "campaign": [
+  {
+   "build": "pulso_0.3_cd16 · guardiao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "pulso_0.3_cd16 · guardiao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "pulso_0.3_cd16 · retaliacao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.5,
+   "median_win_level": 9.5
+  },
+  {
+   "build": "pulso_0.3_cd16 · retaliacao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "pulso_0.3_cd16 · retaliacao_tele/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.3_cd16 · retaliacao_tele/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.45_cd15 · guardiao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "pulso_0.45_cd15 · guardiao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.45_cd15 · retaliacao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "pulso_0.45_cd15 · retaliacao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.45_cd15 · retaliacao_tele/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.45_cd15 · retaliacao_tele/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.6_cd14 · guardiao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.6_cd14 · guardiao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.6_cd14 · retaliacao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.6_cd14 · retaliacao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.6_cd14 · retaliacao_tele/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 2.0,
+   "median_win_level": 5.0
+  },
+  {
+   "build": "pulso_0.6_cd14 · retaliacao_tele/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 2.0,
+   "median_win_level": 5.0
+  },
+  {
+   "build": "pulso_0.8_cd12 · guardiao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.8_cd12 · guardiao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 2.0,
+   "median_win_level": 5.0
+  },
+  {
+   "build": "pulso_0.8_cd12 · retaliacao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.8_cd12 · retaliacao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_0.8_cd12 · retaliacao_tele/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 2.0,
+   "median_win_level": 5.0
+  },
+  {
+   "build": "pulso_0.8_cd12 · retaliacao_tele/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 2.0,
+   "median_win_level": 5.0
+  },
+  {
+   "build": "pulso_1.2_cd12 · guardiao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "pulso_1.2_cd12 · guardiao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "pulso_1.2_cd12 · retaliacao/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.5,
+   "median_win_level": 9.5
+  },
+  {
+   "build": "pulso_1.2_cd12 · retaliacao/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "pulso_1.2_cd12 · retaliacao_tele/critico/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  },
+  {
+   "build": "pulso_1.2_cd12 · retaliacao_tele/marca/lumen",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "first_try": 0.0,
+   "median_attempts": 3.0,
+   "median_win_level": 7.0
+  }
+ ],
+ "economy": [
+  {
+   "build": "pulso_0.3_cd16 · guardiao/critico/lumen",
+   "gold_per_attempt": 236.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 10.5,
+   "residue_total": 53.5
+  },
+  {
+   "build": "pulso_0.3_cd16 · guardiao/marca/lumen",
+   "gold_per_attempt": 237,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 10.0,
+   "residue_total": 51.0
+  },
+  {
+   "build": "pulso_0.3_cd16 · retaliacao/critico/lumen",
+   "gold_per_attempt": 238,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 10.0,
+   "residue_total": 58.0
+  },
+  {
+   "build": "pulso_0.3_cd16 · retaliacao/marca/lumen",
+   "gold_per_attempt": 236.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 9.0,
+   "residue_total": 47.5
+  },
+  {
+   "build": "pulso_0.3_cd16 · retaliacao_tele/critico/lumen",
+   "gold_per_attempt": 236,
+   "residue_per_attempt": 14,
+   "items_per_attempt": 5,
+   "equipped_at_end": 9.5,
+   "residue_total": 42.5
+  },
+  {
+   "build": "pulso_0.3_cd16 · retaliacao_tele/marca/lumen",
+   "gold_per_attempt": 237.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 10.0,
+   "residue_total": 43.0
+  },
+  {
+   "build": "pulso_0.45_cd15 · guardiao/critico/lumen",
+   "gold_per_attempt": 238.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 10.0,
+   "residue_total": 51.5
+  },
+  {
+   "build": "pulso_0.45_cd15 · guardiao/marca/lumen",
+   "gold_per_attempt": 237,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 9.5,
+   "residue_total": 41.0
+  },
+  {
+   "build": "pulso_0.45_cd15 · retaliacao/critico/lumen",
+   "gold_per_attempt": 236,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 11.0,
+   "residue_total": 51.5
+  },
+  {
+   "build": "pulso_0.45_cd15 · retaliacao/marca/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 9.5,
+   "residue_total": 41.0
+  },
+  {
+   "build": "pulso_0.45_cd15 · retaliacao_tele/critico/lumen",
+   "gold_per_attempt": 238,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 9.5,
+   "residue_total": 39.0
+  },
+  {
+   "build": "pulso_0.45_cd15 · retaliacao_tele/marca/lumen",
+   "gold_per_attempt": 238,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 9.5,
+   "residue_total": 39.0
+  },
+  {
+   "build": "pulso_0.6_cd14 · guardiao/critico/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 10.0,
+   "residue_total": 43.0
+  },
+  {
+   "build": "pulso_0.6_cd14 · guardiao/marca/lumen",
+   "gold_per_attempt": 238,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 9.5,
+   "residue_total": 39.0
+  },
+  {
+   "build": "pulso_0.6_cd14 · retaliacao/critico/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 9.5,
+   "residue_total": 41.0
+  },
+  {
+   "build": "pulso_0.6_cd14 · retaliacao/marca/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 9.5,
+   "residue_total": 41.0
+  },
+  {
+   "build": "pulso_0.6_cd14 · retaliacao_tele/critico/lumen",
+   "gold_per_attempt": 238,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 6.5,
+   "residue_total": 29.0
+  },
+  {
+   "build": "pulso_0.6_cd14 · retaliacao_tele/marca/lumen",
+   "gold_per_attempt": 238.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 6.5,
+   "residue_total": 29.5
+  },
+  {
+   "build": "pulso_0.8_cd12 · guardiao/critico/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 9.0,
+   "residue_total": 37.5
+  },
+  {
+   "build": "pulso_0.8_cd12 · guardiao/marca/lumen",
+   "gold_per_attempt": 359.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 6.5,
+   "residue_total": 28.0
+  },
+  {
+   "build": "pulso_0.8_cd12 · retaliacao/critico/lumen",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.5,
+   "equipped_at_end": 9.0,
+   "residue_total": 40.0
+  },
+  {
+   "build": "pulso_0.8_cd12 · retaliacao/marca/lumen",
+   "gold_per_attempt": 237,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 9.0,
+   "residue_total": 40.0
+  },
+  {
+   "build": "pulso_0.8_cd12 · retaliacao_tele/critico/lumen",
+   "gold_per_attempt": 238,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 8.0,
+   "residue_total": 28.0
+  },
+  {
+   "build": "pulso_0.8_cd12 · retaliacao_tele/marca/lumen",
+   "gold_per_attempt": 359.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 6.5,
+   "residue_total": 28.0
+  },
+  {
+   "build": "pulso_1.2_cd12 · guardiao/critico/lumen",
+   "gold_per_attempt": 236.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 10.5,
+   "residue_total": 53.5
+  },
+  {
+   "build": "pulso_1.2_cd12 · guardiao/marca/lumen",
+   "gold_per_attempt": 237,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 10.0,
+   "residue_total": 51.0
+  },
+  {
+   "build": "pulso_1.2_cd12 · retaliacao/critico/lumen",
+   "gold_per_attempt": 238,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 10.0,
+   "residue_total": 58.0
+  },
+  {
+   "build": "pulso_1.2_cd12 · retaliacao/marca/lumen",
+   "gold_per_attempt": 236.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 9.0,
+   "residue_total": 47.5
+  },
+  {
+   "build": "pulso_1.2_cd12 · retaliacao_tele/critico/lumen",
+   "gold_per_attempt": 236,
+   "residue_per_attempt": 14,
+   "items_per_attempt": 5,
+   "equipped_at_end": 9.5,
+   "residue_total": 42.5
+  },
+  {
+   "build": "pulso_1.2_cd12 · retaliacao_tele/marca/lumen",
+   "gold_per_attempt": 237.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 10.0,
+   "residue_total": 43.0
+  }
+ ],
+ "violations": {},
+ "violation_examples": {}
+}
