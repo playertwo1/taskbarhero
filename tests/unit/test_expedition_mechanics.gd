@@ -31,6 +31,7 @@ func _ready() -> void:
 	_test_stagger_break()
 	_test_telegraph_and_counter()
 	_test_phase_spawn()
+	_test_guardian_memory_fragments()
 	_test_skill_ranks()
 	_test_prepared_targets()
 	_test_heal_threat()
@@ -158,6 +159,54 @@ func _test_phase_spawn() -> void:
 	var after: Array = _of(events, "hero_attack").filter(func(e): return float(e["time"]) > float(phase[0]["time"]) + EPS)
 	_expect("Bastião passa a bater no add", not after.is_empty() and String(after[0]["target"]).begins_with("en_c1_001"))
 	_expect("encontro só termina com todos derrotados", _of(events, "enemy_defeated").size() == 3 and _of(events, "expedition_won").size() == 1)
+
+func _test_guardian_memory_fragments() -> void:
+	print("\n>>> 4b. FASE DA MEMÓRIA DO GUARDIÃO")
+	var guardian := _enemy_variant("boss_c1_001", "t_guardian", {
+		"basic_coefficient": 0.6,
+		"telegraph": {
+			"id": "golpe_de_casco", "every": 2, "windup": 1.5, "coefficient": 2.4,
+			"target": "front", "exposed_duration": 3.0, "exposed_vulnerability": 0.15,
+		},
+		"phases": [{
+			"hp_below": 0.35, "name": "A Memória", "phase_gate": true,
+			"corruption_fragments": 3, "telegraph_every": 2,
+		}],
+	})
+	var profiles := SliceStats.load_profiles()
+	profiles["ranks"]["BOSS"]["max_hp"] = 0.01
+	var events := _run([_bastiao()], [{"enemy_id": "t_guardian", "count": 1}], [guardian], {
+		"balance_profiles": profiles,
+	}).run_to_end(0.25)
+	var started := _of(events, "corruption_fragments_started")
+	var spawned := _of(events, "corruption_fragment_spawned")
+	var destroyed := _of(events, "corruption_fragment_destroyed")
+	_expect("fase final anuncia três fragmentos", started.size() == 1 and int(started[0]["count"]) == 3)
+	_expect("três fragmentos são expostos", spawned.size() == 3 and destroyed.size() == 3)
+	var sequence_is_valid := true
+	var last_spawned := 0
+	var last_destroyed := 0
+	for event in events:
+		if String(event["type"]) == "corruption_fragment_spawned":
+			var sequence := int(event["sequence"])
+			if sequence != last_spawned + 1 or (last_spawned > 0 and last_destroyed != last_spawned):
+				sequence_is_valid = false
+			last_spawned = sequence
+		elif String(event["type"]) == "corruption_fragment_destroyed":
+			var sequence := int(event["sequence"])
+			if sequence != last_spawned:
+				sequence_is_valid = false
+			last_destroyed = sequence
+	_expect("cada fragmento surge após o anterior ser destruído", sequence_is_valid and last_destroyed == 3)
+	var guardian_attack_during_sequence := false
+	var phase_started_at := float(started[0]["time"]) if not started.is_empty() else INF
+	var guardian_uid := String(started[0]["uid"]) if not started.is_empty() else ""
+	for event in _of(events, "enemy_attack"):
+		if String(event["source"]) == guardian_uid and float(event["time"]) > phase_started_at:
+			guardian_attack_during_sequence = true
+			break
+	_expect("Guardião continua atacando durante a sequência", guardian_attack_during_sequence)
+	_expect("último fragmento restaura a memória e encerra o encontro", _of(events, "boss_memory_restored").size() == 1 and _of(events, "expedition_won").size() == 1)
 
 func _skill(id: String) -> Dictionary:
 	for s in skill_rows:
