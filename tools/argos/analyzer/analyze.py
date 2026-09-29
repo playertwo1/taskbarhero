@@ -211,6 +211,10 @@ def _campaign_and_economy(summary, rules, findings):
         if r["first_try"] > 0:
             findings.append(finding("PACING", "MEDIUM", f"Vitória na 1ª tentativa desde o nível inicial: {r['build']}",
                                     f"{r['first_try']:.0%} das campanhas vencem na tentativa 1", cr["source"]))
+        elif r["median_win_level"] is not None and "win_level_min" in cr and not (cr["win_level_min"] <= r["median_win_level"] <= cr["win_level_max"]):
+            early = r["median_win_level"] < cr["win_level_min"]
+            findings.append(finding("PACING", "MEDIUM", f"Vence {'cedo' if early else 'tarde'} demais: {r['build']}",
+                                    f"nível {r['median_win_level']:.1f} (meta {cr['win_level_min']}–{cr['win_level_max']}), {r['median_attempts']:.1f} tentativas", cr["source"]))
         elif r["median_attempts"] is not None and not (cr["median_attempts_min"] <= r["median_attempts"] <= cr["median_attempts_max"]):
             findings.append(finding("PACING", "LOW", f"Tentativas fora da faixa: {r['build']}",
                                     f"mediana {r['median_attempts']:.1f} tentativas, nível {r['median_win_level']:.1f}", cr["source"]))

@@ -197,8 +197,21 @@ func _test_hp_persists_and_end_states() -> void:
 			cleared_a = e
 		if e["type"] == "encounter_started" and e["node_id"] == "b":
 			started_b = e
-	_expect("HP do fim do encontro A é o HP do início do B", cleared_a["party_hp"]["hero_001"] == started_b["party_hp"]["hero_001"])
-	_expect("sem cura entre encontros", started_b["party_hp"]["hero_001"] < 160.0)
+	# Fôlego (combat_profiles, DECIDIDO por Rafael): +10% do HP máximo se ninguém caiu no encontro.
+	_check("fôlego: HP do início do B = fim do A + 16", started_b["party_hp"]["hero_001"], minf(160.0, cleared_a["party_hp"]["hero_001"] + 16.0))
+	var no_breath := ExpeditionRun.create(route, [_hero("hero_001")], enemy_rows, {"seed": 1, "crits": false, "party_level": 1, "recovery_between_encounters": {}}).run_to_end(0.5)
+	var hp_a := -1.0
+	var hp_b := -2.0
+	for e in no_breath:
+		if e["type"] == "encounter_cleared" and e["node_id"] == "a":
+			hp_a = e["party_hp"]["hero_001"]
+		if e["type"] == "encounter_started" and e["node_id"] == "b":
+			hp_b = e["party_hp"]["hero_001"]
+	_expect("sem fôlego ({}), HP do fim do A é o HP do início do B", hp_a == hp_b)
+	# Alguém caiu no encontro: sem fôlego para os vivos.
+	var fall_route := _route([_enc("a", 1, [{"enemy_id": "en_c1_001", "count": 3}]), _enc("b", 1, [{"enemy_id": "en_c1_001", "count": 1}])])
+	var fall := ExpeditionRun.create(fall_route, [_hero("hero_001", 5000.0), _hero("hero_002", 1.0)], enemy_rows, {"seed": 1, "crits": false, "party_level": 1, "targeting": "front", "formation": {"front": "hero_002", "mid": "hero_001"}}).run_to_end(0.5)
+	_expect("com queda no encontro, ninguém recupera", _count(fall, "recovery") == 0 and _count(fall, "hero_defeated") == 1)
 	var starts := events.filter(func(e): return e["type"] == "encounter_started")
 	_check("transição entre encontros", starts[1]["time"] - cleared_a["time"], 0.6)
 

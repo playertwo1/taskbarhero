@@ -121,6 +121,12 @@ Resultado de `slice_baseline.py` (party Bastião, Flecha e Íris, sem equipament
 - **Se o `SLICE-1E` ficar fora de 40–60% de vitórias na primeira tentativa:** ajustar primeiro telegraphs, recuperação, adds e dano recebido (regra de [ENCOUNTERS.md](../04_content/chapters/chapter_01/ENCOUNTERS.md)); ajustar HP só se o TTK também sair da faixa.
 - **Baseline do trio:** as linhas de [HERO_STATS_BALANCE](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/HERO_STATS_BALANCE.md) para Bastião, Flecha e Íris. A referência do Bastião é EHP alto com DPS abaixo do herói de referência, como o v0.4 admite; a das outras duas fica na faixa de 85–115% do `HERO_REFERENCE` **com o kit completo**, que o slice ainda não mede.
 
+### Meta de progressão e recuperação (Rafael, 2026-09-29)
+
+- **DECIDIDO:** o jogo é incremental (níveis 1–100). O Guardião do Capítulo 1 deve ser vencido **por volta do nível 10–11**, depois de derrotas e vitórias parciais; vencer no nível 5 não é objetivo. O alvo está em `chapter_targets` de [combat_profiles.json](../../data/balance/combat_profiles.json).
+- **DECIDIDO:** HP volta ao máximo no Hub; dentro da expedição existe **fôlego entre encontros**. **HIPÓTESE:** 10% do HP máximo dos vivos ao fim de um encontro em que ninguém caiu (`recovery_between_encounters` no mesmo arquivo).
+- **Medido (Argos, simulação, não playtest):** com fôlego e o Pulso Restaurador experimental reduzido, as 18 combinações de builds vencem a campanha entre os níveis 7 e 14 (mediana perto de 9–12). Relatórios e achados: [BALANCE_FINDINGS](../08_qa/BALANCE_FINDINGS.md) e `tools/argos/reports/`.
+
 ## 6. Orçamentos de slots e raridades do recorte
 
 Fonte: [EQUIPMENT_BALANCE](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/EQUIPMENT_BALANCE.md) e [STAT_BUDGETS](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/STAT_BUDGETS.md). BP é ferramenta interna e não aparece para o jogador.

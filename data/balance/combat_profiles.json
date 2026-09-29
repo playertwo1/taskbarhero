@@ -140,5 +140,21 @@
       "per_level": 5.0
     },
     "max_level": 100
+  },
+  "recovery_between_encounters": {
+    "status": "HIPOTESE",
+    "source": "DECIDIDO por Rafael em 2026-09-29: fôlego entre encontros. Valor de 10% do HP máximo, só se ninguém caiu no encontro, é hipótese medida no cenário slice_paths do Argos",
+    "fraction": 0.1,
+    "only_if_no_fall": true
+  },
+  "chapter_targets": {
+    "status": "DECIDIDO",
+    "source": "Rafael, 2026-09-29: jogo incremental 1–100; o Guardião do Capítulo 1 deve ser vencido por volta do nível 10–11, após derrotas e vitórias parciais",
+    "CHAPTER_01": {
+      "boss_win_level": [
+        10,
+        11
+      ]
+    }
   }
 }

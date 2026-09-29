@@ -26,19 +26,19 @@ Fonte dos números: `python tools/argos/run.py --scenario slice_balance` (6 seme
 * **Data:** 2026-09-29
 * **Métrica observada:** as 6 combinações com Íris Lúmen vencem a rota em 2 tentativas (nível ~5); nenhuma combinação sem cura atinge 50% de vitória na rota até o nível 8.
 * **Hipótese:** sem recuperação de HP fora do Hub, os comuns e a elite consomem ~70% do HP antes da Rainha; o contrato já previa custo de 5–8% por comum, 41% na elite e 127% na Rainha.
-* **Proposta do Argos:** escolher entre reduzir `enemy_damage_scale` (0,35 leva parties sem cura a vencer o Guardião isolado a partir do nível 3), encurtar a rota ou permitir recuperação pontual (o Poço de Lúmen do recorte).
-* **Decisão humana:** pendente (Rafael).
+* **Proposta do Argos:** escolher entre reduzir `enemy_damage_scale` (0,35 leva parties sem cura a vencer o Guardião isolado a partir do nível 3), encurtar a rota ou permitir recuperação pontual (o Poço de Lúmen do recorte). O cenário `slice_paths` comparou poções, fôlego, Poço, Véu maior, Caçada e Muralha R5: só recuperação limitada (poções ou fôlego) abriu caminhos sem cura.
+* **Decisão humana:** Rafael escolheu **fôlego entre encontros** (2026-09-29) e fixou a meta de vencer o Guardião por volta do nível 10–11. Com fôlego e o Pulso reduzido para 0,3×/16 s, as 18 combinações vencem a campanha entre os níveis 7 e 14 (`slice_balance`). **Estado:** resolvido em simulação; pendente de playtest.
 
 ### [BAL-002] Build Arcano nunca vence a campanha
 * **Data:** 2026-09-29
 * **Métrica observada:** 0% em 10 tentativas nas 6 combinações com Íris Arcano.
 * **Hipótese:** o Arcano não tem sustentação nem resposta a golpe forte; passivas de Íris ainda com números de simulação.
 * **Proposta do Argos:** revisar após a decisão de BAL-001; medir o Arcano com Retaliação (Desequilíbrio alimenta o Prisma).
-* **Decisão humana:** pendente.
+* **Decisão humana:** após o fôlego, o Arcano vence em 4,5–9 tentativas (nível 9,5–14); com Guardião ainda fica tarde (nível 14). Ajuste fino pendente.
 
 ### [BAL-003] Controle vence só depois de ~10 tentativas
 * **Data:** 2026-09-29
 * **Métrica observada:** mediana de 8,5–10 tentativas, vitória por volta do nível 13–15.
 * **Hipótese:** a curva linear 1–100 dá ~2,5% de força por nível; o progresso após derrotas precisa vir de ranks, itens e Árvore.
 * **Proposta do Argos:** definir os marcos de rank e o ganho de itens/Árvore antes de ajustar a curva.
-* **Decisão humana:** pendente.
+* **Decisão humana:** meta definida (nível 10–11, jogo incremental). Com fôlego, Controle vence em 4–6,5 tentativas (nível 9–12,5), dentro ou perto da meta.

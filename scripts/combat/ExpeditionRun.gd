@@ -38,7 +38,8 @@ var _taunt: Dictionary = {}
 var _profiles: Dictionary = {}
 var _deferred: Array = []
 var _uid_counter: int = 0
-## Recuperação opcional, desligada por padrão (regra atual: HP só volta no Hub). Usada por cenários do Argos.
+## Recuperação na expedição: fôlego entre encontros vem de combat_profiles (DECIDIDO por Rafael);
+## poções e cura em evento ficam desligadas por padrão e só existem em cenários do Argos.
 var _potions: Dictionary = {}
 var _recovery: Dictionary = {}
 var _event_heal: Dictionary = {}
@@ -50,19 +51,19 @@ var _fell_this_encounter: bool = false
 ## e equipment (hero id → lista de instâncias com id, rarity, item_power, item_level),
 ## skill_ranks (skill id → rank 1–5), trigger_overrides (skill id → gatilho escolhido no Hub)
 ## e passives (linhas de passives_slice.json; sem elas, heróis lutam sem passivas/Traits).
-## Opções de recuperação (HIPÓTESE, desligadas por padrão): potions {count, heal_fraction, threshold},
-## recovery_between_encounters {fraction, only_if_no_fall} e event_heal {id do evento → fração}.
+## Recuperação: recovery_between_encounters {fraction, only_if_no_fall} (padrão: combat_profiles;
+## {} desliga), potions {count, heal_fraction, threshold} e event_heal {id do evento → fração}.
 static func create(route: Dictionary, hero_rows: Array, enemy_rows: Array, options: Dictionary = {}) -> ExpeditionRun:
 	var run := ExpeditionRun.new()
 	run._nodes = route.get("nodes", [])
 	run._transition_seconds = float(route.get("transition_seconds", 0.6))
 	run._crits = bool(options.get("crits", true))
 	run._potions = options.get("potions", {}).duplicate()
-	run._recovery = options.get("recovery_between_encounters", {})
 	run._event_heal = options.get("event_heal", {})
 	run._targeting = String(options.get("targeting", "threat"))
 	run._rng.seed = int(options.get("seed", 1))
 	run._profiles = SliceStats.load_profiles()
+	run._recovery = options.get("recovery_between_encounters", run._profiles.get("recovery_between_encounters", {}))
 	var ranks: Dictionary = options.get("skill_ranks", {})
 	var overrides: Dictionary = options.get("trigger_overrides", {})
 	var passive_rows := {}
@@ -296,7 +297,8 @@ func _finish_encounter(events: Array) -> void:
 		"type": "encounter_cleared", "time": time, "node_id": _nodes[node_index]["id"],
 		"duration": time - _node_started_at, "party_hp": _party_hp(),
 	})
-	if not _recovery.is_empty() and not (bool(_recovery.get("only_if_no_fall", false)) and _fell_this_encounter):
+	var last_node := node_index >= _nodes.size() - 1
+	if not last_node and not _recovery.is_empty() and not (bool(_recovery.get("only_if_no_fall", false)) and _fell_this_encounter):
 		_recover_party(float(_recovery["fraction"]), "between_encounters", events)
 	_begin_transition()
 

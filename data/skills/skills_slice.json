@@ -519,7 +519,7 @@
     "name": "Pulso Restaurador",
     "content_set": "slice",
     "status": "HIPOTESE",
-    "cooldown": 12.0,
+    "cooldown": 16.0,
     "trigger": {
       "type": "ally_hp_below",
       "threshold": 0.85
@@ -527,10 +527,10 @@
     "effects": [
       {
         "type": "heal",
-        "coefficient": 1.2,
+        "coefficient": 0.3,
         "threshold": 0.85
       }
     ],
-    "source": "Revisão experimental solicitada por Rafael em 2026-09-29; 2,0×/10 s reduzido para 1,2×/12 s após sondagem de campanha (cura vencia a rota no nível 1). Fora do recorte segundo CHAPTER_01_HERO_COMBAT_PROPOSAL.md; HIPÓTESE"
+    "source": "Revisão experimental solicitada por Rafael em 2026-09-29. Com fôlego ativo, a varredura tune_heal do Argos mostrou 1,2×/12 s vencendo no nível 1; 0,3×/16 s leva a build Lúmen a vencer por volta do nível 7–9,5. Fora do recorte segundo CHAPTER_01_HERO_COMBAT_PROPOSAL.md; HIPÓTESE"
   }
 ]

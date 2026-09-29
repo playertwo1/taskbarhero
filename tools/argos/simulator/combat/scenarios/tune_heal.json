@@ -1,0 +1,23 @@
+{
+  "id": "tune_heal",
+  "description": "Varredura do Pulso Restaurador (skill experimental de cura) com fôlego ativo, para a build Lúmen vencer o Guardião por volta do nível 10–11.",
+  "seeds": 6,
+  "levels": [5],
+  "builds": {
+    "hero_001": ["guardiao", "retaliacao", "retaliacao_tele"],
+    "hero_002": ["critico", "marca"],
+    "hero_003": ["lumen"]
+  },
+  "modes": ["campaign"],
+  "campaign": {"start_level": 1, "max_attempts": 14, "loot": true},
+  "rank_milestones": [3, 5, 7, 9, 11, 13, 15, 17, 19],
+  "max_time": 3600,
+  "stuck_seconds": 30,
+  "variants": [
+    {"id": "pulso_1.2_cd12", "skill_overrides": {}},
+    {"id": "pulso_0.8_cd12", "skill_overrides": {"skill_iri_004": {"0.coefficient": 0.8}}},
+    {"id": "pulso_0.6_cd14", "skill_overrides": {"skill_iri_004": {"0.coefficient": 0.6, "cooldown": 14.0}}},
+    {"id": "pulso_0.45_cd15", "skill_overrides": {"skill_iri_004": {"0.coefficient": 0.45, "cooldown": 15.0}}},
+    {"id": "pulso_0.3_cd16", "skill_overrides": {"skill_iri_004": {"0.coefficient": 0.3, "cooldown": 16.0}}}
+  ]
+}
