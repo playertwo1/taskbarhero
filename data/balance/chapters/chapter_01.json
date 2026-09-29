@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0",
+  "profile_id": "CHAPTER_01_BALANCE_V0_5",
+  "chapter_id": "CHAPTER_01",
+  "content_set": "slice",
+  "status": "IMPLEMENTING",
+  "certainty": "HIPOTESE",
+  "source": "docs/06_balance/BALANCE_V0.5.md",
+  "enemy_damage_scale": 0.5,
+  "party_hp_scale": {"ELITE": 3.0, "MINIBOSS": 3.0, "BOSS": 1.5},
+  "recovery_between_encounters": {
+    "certainty": "HIPOTESE",
+    "source": "DECIDIDO por Rafael em 2026-09-29: fôlego entre encontros; valor medido pelo Argos",
+    "fraction": 0.1,
+    "only_if_no_fall": true
+  },
+  "chapter_targets": {
+    "certainty": "DECIDIDO",
+    "source": "Rafael, 2026-09-29",
+    "CHAPTER_01": {"boss_win_level": [10, 11]}
+  },
+  "runtime": {
+    "route": "res://data/expedition/route_c1.json",
+    "heroes": "res://data/heroes/heroes.json",
+    "enemies": "res://data/enemies/enemies.json",
+    "skills": "res://data/skills/skills_slice.json",
+    "passives": "res://data/skills/passives_slice.json",
+    "items": "res://data/items/items.json"
+  },
+  "argos": {
+    "default_party": ["hero_001", "hero_002", "hero_003"],
+    "segments": {"elite": "c1_2_2_b", "rainha": "c1_3_2_a", "guardiao": "c1_5_2_a"},
+    "boss_entry_node": "c1_3_2_a"
+  },
+  "balance_version": "0.5",
+  "party_hp_scale_note": "Chefe ×1,5; elite e minichefe ×3. Valores locais do Capítulo 1, não regra global."
+}

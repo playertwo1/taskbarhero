@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pocket-hero/combat-core",
+  "type": "object",
+  "required": ["profile_id", "reference_hero", "archetypes", "ranks", "stat_caps", "threat_profiles", "xp"],
+  "properties": {
+    "profile_id": {"type": "string", "minLength": 1},
+    "reference_hero": {"type": "object"},
+    "archetypes": {"type": "object", "minProperties": 1},
+    "ranks": {"type": "object", "minProperties": 1},
+    "stat_caps": {"type": "object"},
+    "threat_profiles": {"type": "object", "minProperties": 1},
+    "xp": {"type": "object"}
+  },
+  "additionalProperties": true
+}

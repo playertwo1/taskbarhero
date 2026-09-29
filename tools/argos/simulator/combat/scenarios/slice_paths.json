@@ -1,5 +1,7 @@
 {
   "id": "slice_paths",
+  "chapter_id": "CHAPTER_01",
+  "party": ["hero_001", "hero_002", "hero_003"],
   "description": "Caminhos alternativos à cura (proposta de 2026-09-29). Cada variante só existe na simulação; valores são HIPÓTESE para medir sensibilidade, exceto os ranks R5 das passivas do Bastião, que vêm da ficha.",
   "seeds": 6,
   "levels": [5],

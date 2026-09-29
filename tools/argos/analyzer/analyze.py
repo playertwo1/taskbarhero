@@ -63,9 +63,14 @@ def summarize(runs):
         for r in rs:
             if not r["won"]:
                 lost[r["lost_at"]] += 1
-        entry = [r["nodes"]["c1_3_2_a"]["party_hp_pct"] for r in rs if "c1_3_2_a" in r["nodes"]]
+        entry = []
+        for r in rs:
+            node_id = r.get("boss_entry_node", "")
+            if node_id and node_id in r["nodes"]:
+                entry.append(r["nodes"][node_id]["party_hp_pct"])
         route_rows.append({
             "build": build, "level": level, "runs": len(rs),
+            "build_map": rs[0].get("build_map", {}),
             "win_rate": sum(r["won"] for r in rs) / len(rs),
             "main_loss": max(lost, key=lost.get) if lost else "",
             "hp_before_boss_pct": median(entry),
@@ -76,6 +81,7 @@ def summarize(runs):
         wins = [r for r in rs if r["won"]]
         seg_rows.append({
             "build": build, "level": level, "segment": seg, "runs": len(rs),
+            "content_level": rs[0].get("content_level", level),
             "win_rate": len(wins) / len(rs),
             "ttk": median([list(r["nodes"].values())[0]["ttk"] for r in wins if r["nodes"]]),
             "hp_left_pct": median([list(r["nodes"].values())[0]["party_hp_pct"] for r in wins if r["nodes"]]),
@@ -97,13 +103,39 @@ def summarize(runs):
         won = [c for c in cs if c["won"]]
         camp_rows.append({
             "build": build, "campaigns": len(cs), "win_rate": len(won) / len(cs),
+            "build_map": cs[0].get("build_map", {}),
             "first_try": sum(1 for c in won if c["attempts"] == 1) / len(cs),
             "median_attempts": median([c["attempts"] for c in won]),
             "median_win_level": median([c["history"][-1]["level"] for c in won]),
         })
+    events = defaultdict(lambda: {"offered": 0, "choices": defaultdict(int)})
+    loot_by_rarity = defaultdict(int)
+    attempts_by_variant = defaultdict(int)
+    for cs in campaign.values():
+        for c in cs:
+            variant, _ = split_label(c["build"])
+            variant = variant or "base"
+            for h in c.get("history", []):
+                layer = h.get("events")
+                if layer is None:
+                    continue
+                attempts_by_variant[variant] += 1
+                for event_id, n in layer.get("offered", {}).items():
+                    events[(variant, event_id)]["offered"] += n
+                for key, n in layer.get("resolved", {}).items():
+                    event_id, choice = key.split(":", 1)
+                    events[(variant, event_id)]["choices"][choice] += n
+                for rarity, n in layer.get("loot_by_rarity", {}).items():
+                    loot_by_rarity[rarity] += n
+    run_layer = {
+        "events": [{"variant": v, "event": e, "offered": data["offered"], "choices": dict(data["choices"]),
+                    "per_100_attempts": 100.0 * data["offered"] / attempts_by_variant[v] if attempts_by_variant[v] else 0.0}
+                   for (v, e), data in sorted(events.items())],
+        "loot_by_rarity": dict(loot_by_rarity),
+    }
     return {
         "route": route_rows, "segments": seg_rows, "campaign": camp_rows, "economy": econ_rows,
-        "violations": dict(violations), "violation_examples": violation_examples,
+        "violations": dict(violations), "violation_examples": violation_examples, "run_layer": run_layer,
     }
 
 
@@ -115,7 +147,7 @@ def split_label(label):
     return "", label
 
 
-def variant_rows(summary, heal_build="lumen", max_attempts_ok=5):
+def variant_rows(summary, excluded_hero="hero_003", excluded_build="lumen", max_attempts_ok=5):
     """Por variante: rota da cura vs. sem cura, e caminhos sem cura que vencem a campanha em até N tentativas."""
     variants = []
     for r in summary["route"] + summary["campaign"]:
@@ -126,10 +158,10 @@ def variant_rows(summary, heal_build="lumen", max_attempts_ok=5):
     for v in variants:
         route = [r for r in summary["route"] if split_label(r["build"])[0] == v]
         camp = [r for r in summary["campaign"] if split_label(r["build"])[0] == v]
-        heal_route = [r["win_rate"] for r in route if split_label(r["build"])[1].split("/")[2] == heal_build]
-        other_route = [r for r in route if split_label(r["build"])[1].split("/")[2] != heal_build]
-        heal_camp = [r for r in camp if split_label(r["build"])[1].split("/")[2] == heal_build]
-        other_camp = [r for r in camp if split_label(r["build"])[1].split("/")[2] != heal_build]
+        heal_route = [r["win_rate"] for r in route if r.get("build_map", {}).get(excluded_hero) == excluded_build]
+        other_route = [r for r in route if r.get("build_map", {}).get(excluded_hero) != excluded_build]
+        heal_camp = [r for r in camp if r.get("build_map", {}).get(excluded_hero) == excluded_build]
+        other_camp = [r for r in camp if r.get("build_map", {}).get(excluded_hero) != excluded_build]
         good = [r for r in other_camp if r["win_rate"] >= 0.5 and r["median_attempts"] is not None and r["median_attempts"] <= max_attempts_ok]
         out.append({
             "variant": v,
@@ -156,7 +188,8 @@ def evaluate(summary, rules):
         findings.append(finding("BUG", severity, f"Oráculo violado: {v}", f"{n} execução(ões); exemplo {summary['violation_examples'][v]}", "invariante do simulador"))
 
     for seg, rng in rules["ttk_ranges"].items():
-        rows = [r for r in summary["segments"] if r["segment"] == seg and r["ttk"] is not None]
+        rows = [r for r in summary["segments"] if r["segment"] == seg and r["ttk"] is not None
+                and r["level"] == r.get("content_level", r["level"])]
         if not rows:
             continue
         ttks = [r["ttk"] for r in rows]
@@ -170,15 +203,23 @@ def evaluate(summary, rules):
     if not summary["route"]:
         return _campaign_and_economy(summary, rules, findings)
     vp = rules["viable_path"]
-    viable = sorted({r["build"] for r in summary["route"] if r["level"] <= vp["max_level"] and r["win_rate"] >= vp["min_route_win_rate"]})
-    excluded_hero, excluded_build = next(iter(vp["min_paths_without"].items()))
-    idx = {"hero_001": 0, "hero_002": 1, "hero_003": 2}[excluded_hero]
-    without = [b for b in viable if b.split("/")[idx] != excluded_build]
-    metric = f"viáveis até o nível {vp['max_level']} (rota ≥ {vp['min_route_win_rate']:.0%}): {len(viable)}; sem {excluded_build}: {len(without)}"
-    if len(viable) < vp["min_paths"] or len(without) < vp["min_paths_without_count"]:
-        findings.append(finding("BALANCE", "HIGH", "Poucos caminhos viáveis", metric, vp["source"]))
+    covered_levels = sorted({r["level"] for r in summary["route"]})
+    eligible_levels = [level for level in covered_levels if level <= vp["max_level"]]
+    min_coverage_level = vp.get("min_coverage_level", vp["max_level"] - 1)
+    if not eligible_levels or max(eligible_levels) < min_coverage_level:
+        metric = f"níveis cobertos: {covered_levels}; requer ao menos nível {min_coverage_level}"
+        findings.append(finding("INFO", "INFO", "Regra de caminhos não avaliada", metric, vp["source"]))
     else:
-        findings.append(finding("INFO", "INFO", "Caminhos viáveis", metric + "; " + ", ".join(viable), vp["source"]))
+        evaluation_level = max(eligible_levels)
+        viable_rows = [r for r in summary["route"] if r["level"] == evaluation_level and r["win_rate"] >= vp["min_route_win_rate"]]
+        viable = sorted({r["build"] for r in viable_rows})
+        excluded_hero, excluded_build = next(iter(vp["min_paths_without"].items()))
+        without = [r["build"] for r in viable_rows if r.get("build_map", {}).get(excluded_hero) != excluded_build]
+        metric = f"viáveis no nível {evaluation_level} (rota ≥ {vp['min_route_win_rate']:.0%}): {len(viable)}; sem {excluded_build}: {len(set(without))}"
+        if len(viable) < vp["min_paths"] or len(without) < vp["min_paths_without_count"]:
+            findings.append(finding("BALANCE", "HIGH", "Poucos caminhos viáveis", metric, vp["source"]))
+        else:
+            findings.append(finding("INFO", "INFO", "Caminhos viáveis", metric + "; " + ", ".join(viable), vp["source"]))
 
     by_level = defaultdict(list)
     for r in summary["route"]:
@@ -261,10 +302,12 @@ def num(v, fmt="{:.0f}"):
     return "—" if v is None else fmt.format(v)
 
 
-def write_report(out_dir, meta, summary, findings, prev):
+def write_report(out_dir, meta, summary, findings, prev, rules):
     lines = [f"# Argos — relatório `{meta.get('scenario', '?')}`", ""]
     lines.append(f"- Commit: `{meta.get('commit', '?')}`{' (com alterações locais)' if meta.get('dirty') else ''} · Godot {meta.get('godot', '?')}")
     lines.append(f"- Sementes por célula: {int(meta['seeds']) if isinstance(meta.get('seeds'), (int, float)) else '?'} · `enemy_damage_scale` {meta.get('enemy_damage_scale', '?')}")
+    if meta.get("balance_hash"):
+        lines.append(f"- Entradas de balanceamento: `{meta['balance_hash']}`")
     lines.append("- Simulação determinística; **não é playtest** e não avalia diversão.")
     lines += ["", "## Achados", ""]
     for f in findings:
@@ -273,8 +316,9 @@ def write_report(out_dir, meta, summary, findings, prev):
         lines.append("- Nenhum.")
 
     prev_route = {(r["build"], r["level"]): r["win_rate"] for r in prev["route"]} if prev else {}
+    party_label = "/".join(meta.get("party", [])) or "ordem do cenário"
     lines += ["", "## Rota completa (vitória por combinação e nível)", "",
-              "| Build (Bastião/Flecha/Íris) | Nível | Vitória | Δ anterior | Perde mais em | HP ao chegar no Guardião | Cura |",
+              f"| Build ({party_label}) | Nível | Vitória | Δ anterior | Perde mais em | HP antes do chefe | Cura |",
               "| --- | ---: | ---: | ---: | --- | ---: | ---: |"]
     for r in summary["route"]:
         key = (r["build"], r["level"])
@@ -283,19 +327,20 @@ def write_report(out_dir, meta, summary, findings, prev):
 
     if summary["segments"]:
         lines += ["", "## Encontros isolados com HP cheio", "",
-                  "| Build | Nível | Encontro | Vitória | TTK mediano | HP restante |", "| --- | ---: | --- | ---: | ---: | ---: |"]
+                  "| Build | Nível da party | Nível do encontro | Encontro | Vitória | TTK mediano | HP restante |", "| --- | ---: | ---: | --- | ---: | ---: | ---: |"]
         for r in summary["segments"]:
-            lines.append(f"| {r['build']} | {r['level']} | {r['segment']} | {pct(r['win_rate'])} | {num(r['ttk'], '{:.0f} s')} | {num(r['hp_left_pct'], '{:.0f}%')} |")
+            lines.append(f"| {r['build']} | {r['level']} | {r['content_level']} | {r['segment']} | {pct(r['win_rate'])} | {num(r['ttk'], '{:.0f} s')} | {num(r['hp_left_pct'], '{:.0f}%')} |")
 
     if summary["campaign"]:
         lines += ["", "## Campanha (tentativas até vencer; HP cheio a cada volta ao Hub, XP acumulado)", "",
                   "| Build | Vence | 1ª tentativa | Tentativas (mediana) | Nível na vitória |", "| --- | ---: | ---: | ---: | ---: |"]
         for r in summary["campaign"]:
             lines.append(f"| {r['build']} | {pct(r['win_rate'])} | {pct(r['first_try'])} | {num(r['median_attempts'], '{:.1f}')} | {num(r['median_win_level'], '{:.1f}')} |")
-    variants = variant_rows(summary)
+    excluded_hero, excluded_build = next(iter(rules["viable_path"]["min_paths_without"].items()))
+    variants = variant_rows(summary, excluded_hero, excluded_build)
     if variants:
-        lines += ["", "## Comparação de variantes (sem cura = Íris fora da build Lúmen)", "",
-                  "| Variante | Rota: cura | Rota: melhor sem cura | Sem cura com rota ≥ 50% | Tentativas: cura | Tentativas: melhor sem cura | Caminhos sem cura em ≤ 5 tentativas |",
+        lines += ["", f"## Comparação de variantes ({excluded_hero} fora da build {excluded_build})", "",
+                  f"| Variante | Rota: {excluded_build} | Rota: melhor sem {excluded_build} | Sem {excluded_build} com rota ≥ 50% | Tentativas: {excluded_build} | Tentativas: melhor sem {excluded_build} | Caminhos sem {excluded_build} em ≤ 5 tentativas |",
                   "| --- | ---: | ---: | ---: | ---: | ---: | --- |"]
         for r in variants:
             paths = f"{r['no_heal_paths_ok']}/{r['no_heal_combos']}"
@@ -308,6 +353,16 @@ def write_report(out_dir, meta, summary, findings, prev):
                   "| --- | ---: | ---: | ---: | ---: | ---: |"]
         for r in summary["economy"]:
             lines.append(f"| {r['build']} | {num(r['gold_per_attempt'])} | {num(r['residue_per_attempt'], '{:.1f}')} | {num(r['items_per_attempt'], '{:.1f}')} | {num(r['equipped_at_end'])} | {num(r['residue_total'])} |")
+    layer = summary.get("run_layer", {"events": [], "loot_by_rarity": {}})
+    if layer["events"]:
+        lines += ["", "## Eventos e loot da run (SLICE-1B, campanha com o núcleo real)", "",
+                  "| Variante | Evento | Oferecido | Por 100 tentativas | Escolhas |", "| --- | --- | ---: | ---: | --- |"]
+        for r in layer["events"]:
+            split = ", ".join(f"{k}: {v}" for k, v in sorted(r["choices"].items())) or "—"
+            lines.append(f"| {r['variant']} | {r['event']} | {r['offered']} | {r['per_100_attempts']:.0f} | {split} |")
+        if layer["loot_by_rarity"]:
+            lines.append("")
+            lines.append("Itens recebidos por raridade: " + ", ".join(f"{k} {v}" for k, v in sorted(layer["loot_by_rarity"].items())) + ".")
     if prev:
         lines += ["", f"Comparação com `{prev.get('_dir', 'anterior')}`."]
     open(os.path.join(out_dir, "REPORT.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
@@ -330,10 +385,12 @@ def main():
     rules = json.load(open(args.rules, encoding="utf-8"))
     summary = summarize(runs)
     findings = evaluate(summary, rules)
-    data = {"meta": meta, "findings": findings, "variants": variant_rows(summary), **summary}
+    excluded_hero, excluded_build = next(iter(rules["viable_path"]["min_paths_without"].items()))
+    data = {"meta": meta, "findings": findings,
+            "variants": variant_rows(summary, excluded_hero, excluded_build), **summary}
     prev = previous_summary(args.report_dir, args.previous, meta.get("scenario"))
     json.dump(data, open(os.path.join(args.report_dir, "summary.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
-    write_report(args.report_dir, meta, summary, findings, prev)
+    write_report(args.report_dir, meta, summary, findings, prev, rules)
     bugs = [f for f in findings if f["type"] == "BUG"]
     print(f"Argos: {len(runs)} execuções, {len(findings)} achados ({len(bugs)} BUG). Relatório: {os.path.join(args.report_dir, 'REPORT.md')}")
     sys.exit(1 if bugs else 0)

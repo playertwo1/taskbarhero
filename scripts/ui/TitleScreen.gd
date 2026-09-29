@@ -34,9 +34,9 @@ func _start_game() -> void:
 	_starting = true
 	start_game_requested.emit()
 	
-	# Transição para a tela principal de combate
+	# Transição para a campanha do slice
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 0.0, 0.3)
 	tween.tween_callback(func():
-		get_tree().change_scene_to_file("res://scenes/main/Main.tscn")
+		get_tree().change_scene_to_file("res://scenes/slice/SliceCampaign.tscn")
 	)

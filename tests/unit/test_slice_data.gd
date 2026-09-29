@@ -124,19 +124,14 @@ func _test_hero_rows() -> void:
 			print("[PASS] %s -> %s" % [id, expected[id]])
 
 func _test_legacy_unchanged() -> void:
-	print("\n>>> 4. LEGADO INALTERADO E SEM VAZAMENTO")
-	GameManager.load_enemies_database()
-	_expect("carregamento padrão de inimigos: 11 legados", GameManager.enemies_database.size() == 11)
-	for e in GameManager.enemies_database:
-		if e.get("content_set", "legacy") != "legacy":
-			_fail("linha do slice vazou para o carregador legado: %s" % e.get("id", "?"))
-	LootManager.load_database()
-	_expect("carregamento padrão de itens: 15 legados", LootManager.items_database.size() == 15)
-	for it in LootManager.items_database:
-		if it.get("content_set", "legacy") != "legacy":
-			_fail("linha do slice vazou para o carregador legado: %s" % it.get("id", "?"))
-	_expect("load_rows legacy devolve 11 inimigos", SliceStats.load_rows(ENEMIES_PATH, "legacy").size() == 11)
-	_expect("load_rows legacy devolve 15 itens", SliceStats.load_rows(ITEMS_PATH, "legacy").size() == 15)
+	print("
+>>> 4. LEGADO REMOVIDO (1A-CUT)")
+	for path in [ENEMIES_PATH, ITEMS_PATH, HEROES_PATH]:
+		var rows: Array = SliceStats.load_rows(path, "slice")
+		var file := FileAccess.open(path, FileAccess.READ)
+		var all_rows: Array = JSON.parse_string(file.get_as_text())
+		_expect("%s: todas as linhas são do slice" % path, rows.size() == all_rows.size())
+	_expect("stages.json legado removido", not FileAccess.file_exists("res://data/stages/stages.json"))
 
 # Valores esperados calculados por tools/balance/slice_baseline.py (fórmulas do contrato).
 func _test_enemy_derivation() -> void:

@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "status": "HIPOTESE",
+  "source": "docs/03_systems/SLICE_1B_RUN_SPEC.md seção 3; nomes dos candidatos de docs/04_content/chapters/chapter_01/DESIGN_SEEDS.md",
+  "random_rules": {"transition_chance": 0.25, "secret_chance": 0.01, "max_random_per_run": 2},
+  "events": [
+    {"id": "event_c1_001", "design_id": "EVENT_C1_001", "kind": "fixed", "name": "Poço de Lúmen", "weight": 0, "once_per_save": false, "conditions": [],
+     "choices": [
+       {"id": "heal", "label": "Curar a party", "effects": [{"type": "heal_fraction", "scope": "all", "value": 0.35}]},
+       {"id": "sacrifice", "label": "Sacrificar vida por uma recompensa rara", "effects": [
+         {"type": "damage_fraction", "scope": "all", "value": 0.25},
+         {"type": "grant_reward_choice", "min_rarity": "Raro"}]}
+     ]},
+    {"id": "event_c1_reserva_residuo", "design_id": null, "kind": "fixed", "name": "Reserva de Resíduo", "weight": 0, "once_per_save": false, "auto": true, "conditions": [],
+     "choices": [{"id": "collect", "label": "Recolher", "effects": [{"type": "grant_material", "id": "MAT_C1_LUMEN_RESIDUE", "quantity": 2}]}]},
+    {"id": "event_c1_criatura_ferida", "design_id": null, "kind": "random", "name": "Criatura Ferida", "weight": 60, "once_per_save": false, "conditions": [],
+     "choices": [
+       {"id": "save", "label": "Salvar", "effects": [
+         {"type": "damage_fraction", "scope": "all", "value": 0.10},
+         {"type": "grant_item", "rarity": "Comum"},
+         {"type": "set_flag", "flag": "criatura_salva"},
+         {"type": "reveal_lore", "text_id": "LORE_EVT_CRIATURA_FERIDA"}]},
+       {"id": "ignore", "label": "Ignorar", "effects": []}
+     ]},
+    {"id": "event_c1_raiz_oca", "design_id": null, "kind": "random", "name": "Raiz Oca", "weight": 40, "once_per_save": false, "conditions": [],
+     "choices": [
+       {"id": "open", "label": "Abrir a raiz", "outcomes": [
+         {"id": "spines", "weight": 20, "effects": [{"type": "damage_fraction", "scope": "all", "value": 0.10}]},
+         {"id": "cache", "weight": 15, "effects": [{"type": "grant_item", "rarity": "Incomum"}, {"type": "reveal_lore", "text_id": "LORE_EVT_RAIZ_OCA"}]},
+         {"id": "nothing", "weight": 65, "effects": []}]},
+       {"id": "ignore", "label": "Ignorar", "effects": []}
+     ]},
+    {"id": "event_c1_arvore_cantante", "design_id": null, "kind": "random", "name": "Árvore Cantante", "weight": 50, "once_per_save": false, "conditions": [],
+     "choices": [
+       {"id": "touch", "label": "Tocar", "effects": [{"type": "modify_next_encounter", "stat": "attack_speed", "op": "ADD_PERCENT", "value": 0.08, "encounters": 1}]},
+       {"id": "cut", "label": "Cortar", "effects": [{"type": "damage_fraction", "scope": "all", "value": 0.05}, {"type": "grant_item", "rarity": "Comum"}]},
+       {"id": "ignore", "label": "Ignorar", "effects": []}
+     ]},
+    {"id": "event_c1_cristal_partido", "design_id": null, "kind": "random", "name": "Cristal Partido", "weight": 30, "once_per_save": false, "conditions": [],
+     "choices": [
+       {"id": "absorb", "label": "Absorver o poder", "effects": [
+         {"type": "damage_fraction", "scope": "all", "value": 0.15},
+         {"type": "modify_next_encounter", "stat": "attack", "op": "ADD_PERCENT", "value": 0.12, "encounters": 2}]},
+       {"id": "leave", "label": "Deixar", "effects": []}
+     ]},
+    {"id": "event_c1_memorial", "design_id": null, "kind": "random", "name": "Memorial Esquecido", "weight": 30, "once_per_save": false, "conditions": [],
+     "choices": [
+       {"id": "honor", "label": "Honrar {hero}", "per_hero": true, "effects": [
+         {"type": "heal_fraction", "scope": "pick", "value": 0.15},
+         {"type": "reveal_lore", "text_id": "LORE_EVT_MEMORIAL_{hero}"}]}
+     ]},
+    {"id": "event_c1_eco_percebido", "design_id": null, "kind": "personal", "name": "Eco Percebido", "weight": 30, "once_per_save": false,
+     "conditions": [{"type": "party_has", "hero": "hero_003"}],
+     "choices": [
+       {"id": "react", "label": "Reagir ao Eco", "effects": [
+         {"type": "reveal_lore", "text_id": "LORE_EVT_ECO_PERCEBIDO"},
+         {"type": "modify_next_encounter", "stat": "attack", "op": "ADD_PERCENT", "value": 0.05, "encounters": 1}]}
+     ]},
+    {"id": "event_c1_rastro_cacada", "design_id": null, "kind": "personal", "name": "Rastro da Caçada", "weight": 30, "once_per_save": false,
+     "conditions": [{"type": "party_has", "hero": "hero_002"}],
+     "choices": [
+       {"id": "follow", "label": "Seguir o rastro", "effects": [
+         {"type": "damage_fraction", "scope": "all", "value": 0.08},
+         {"type": "modify_next_encounter", "mark_first_enemy": true, "encounters": 1}]},
+       {"id": "ignore", "label": "Ignorar", "effects": []}
+     ]},
+    {"id": "event_c1_sobrevivente", "design_id": null, "kind": "personal", "name": "O Sobrevivente", "weight": 30, "once_per_save": false,
+     "conditions": [{"type": "party_has", "hero": "hero_001"}],
+     "choices": [
+       {"id": "protect", "label": "Proteger", "effects": [
+         {"type": "damage_fraction", "scope": "hero_001", "value": 0.15},
+         {"type": "grant_item", "rarity": "Incomum"},
+         {"type": "reveal_lore", "text_id": "LORE_EVT_SOBREVIVENTE"}]},
+       {"id": "pass", "label": "Passar", "effects": []}
+     ]},
+    {"id": "event_c1_observador", "design_id": null, "kind": "secret", "name": "O Observador", "weight": 0, "once_per_save": true, "auto": true, "conditions": [],
+     "choices": [{"id": "witness", "label": "Testemunhar", "effects": [
+       {"type": "set_flag", "flag": "observador_visto"},
+       {"type": "reveal_lore", "text_id": "LORE_EVT_OBSERVADOR"}]}]}
+  ]
+}

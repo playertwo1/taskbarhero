@@ -11,7 +11,7 @@
                                │
                                ▼
                     ┌─────────────────────┐
-                    │   GdUnit4 Runner    │  (Testes internos unitários e de integração)
+                    │  GODOT HEADLESS     │  (Cenas de teste unitário e integração)
                     └──────────┬──────────┘
                                │ PASS
                                ▼
@@ -53,17 +53,19 @@
 
 ## 2. Componentes da Stack
 
-1. **GdUnit4:** Framework embutido no Godot 4 para testes unitários, asserções, mocks/spies, scene runner, fuzzing e CI.
+1. **Runner Godot headless (implementado):** `tools/run_godot_tests.py` descobre as cenas em `tests/`, executa cada uma e falha também em `SCRIPT ERROR`. GdUnit4 continua como possibilidade futura, sem instalação atual.
 2. **Maestro + MCP:** Operação externa no Android/emulador via servidor MCP oficial (`maestro mcp`). Inspeciona telas, tira screenshots e executa jornadas completas de usuário.
-3. **DebugBridge & Telemetry (`scripts/debug/`):** Interface interna controlada que expõe estado, eventos (TTK, XP/h, gold/h) e hooks para Dev Mode sem vazar para compilações de release.
+3. **Estado e telemetria (parcialmente implementado):** `StateExporter`/`DebugBridge` expõem o snapshot do slice; `SliceTelemetry` agrega eventos do `ExpeditionRun` sem influenciar o combate. Métricas de economia e jornada dependem das etapas seguintes.
 4. **Android CLI (Fallback Visual):** Comandos `android screen capture` e `android screen resolve` para mapeamento de coordenadas #N quando o canvas não expõe nós semânticos.
-5. **Simulador Headless:** Execução massiva em tempo acelerado (10k a 100k runs) para estimar TTK, win rate de bosses, inflação de ouro e distribuição de raridades de itens.
-6. **Argos Analyst:** Motor de detecção de anomalias estatísticas a partir de logs e snapshots de sessões de teste.
+5. **Simulador Headless (implementado para o slice):** cenários configuram capítulo, party, builds, níveis, sementes e modos. A matriz vigente roda 1.404 execuções; 10k–100k continua meta para cargas futuras.
+6. **Argos Analyst (implementado):** agrega `runs.jsonl`, aplica regras com cobertura explícita, compara relatórios e classifica `BUG`, `BALANCE`, `PACING` e `INFO`.
+
+Antes da simulação, [`validate_balance_data.py`](../../tools/balance/validate_balance_data.py) verifica a composição núcleo → capítulo → cenário. Cada relatório registra SHA-256 das entradas usadas; detalhes em [GLOBAL_BALANCE_SYSTEM](../06_balance/GLOBAL_BALANCE_SYSTEM.md).
 
 ---
 
 ## 3. Os Dois Olhos do Argos
 
-* **Olho Interno (Estado):** Snapshot estruturado JSON via `StateExporter.gd` (HP, atributos, inventário, seeds, tempo de jogo).
+* **Olho Interno (Estado):** snapshot estruturado via `StateExporter.gd` e eventos agregados por `SliceTelemetry`; inventário e save retornam no `1B`/`1D`.
 * **Olho Externo (Visual):** Screenshot da tela Android capturada pelo Maestro ou Android CLI.
 * **Detecção de Divergências:** Permite ao Argos acusar quando o que está desenhado na tela diverge do que realmente foi processado na lógica interna (ex.: barra de vida cheia na UI, mas entidade morta na memória).

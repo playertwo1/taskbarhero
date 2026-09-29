@@ -1,6 +1,8 @@
 [
   {
     "id": "hero_001",
+    "formation_slot": "front",
+    "threat_profile": "TANK_GUARDIAN",
     "design_id": "HERO_001",
     "legacy_alias": "bastiao",
     "name": "Bastião",
@@ -63,6 +65,8 @@
   },
   {
     "id": "hero_002",
+    "formation_slot": "back",
+    "threat_profile": "DEFAULT",
     "design_id": "HERO_002",
     "legacy_alias": "flecha",
     "name": "Flecha",
@@ -118,6 +122,8 @@
   },
   {
     "id": "hero_003",
+    "formation_slot": "mid",
+    "threat_profile": "DEFAULT",
     "design_id": "HERO_003",
     "legacy_alias": "iris",
     "name": "Íris",

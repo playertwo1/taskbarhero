@@ -6,7 +6,7 @@
 
 - [Grade de prévia dos 30 ícones](./previews/item_icons_32x32_contact_sheet.png) — lote visual do catálogo anterior (15 runtime + 15 candidatos), não mapeado ao catálogo canônico v0.4; PNGs em [`assets/sprites/items/`](../../assets/sprites/items/).
 - [Catálogo visual usado pela interface](../../data/items/item_visual_catalog.json) — inclui estado `mvp` ou `visual_candidate`; não substitui a tabela de loot.
-- [Tela de inventário em grade](../../scenes/inventory/InventoryScreen.tscn) — acessível pelo botão “Itens” na tela principal; só permite equipar itens MVP que realmente estejam na mochila.
+- Tela de inventário em grade (removida no `1A-CUT`; recuperável no git, commit `cd47758`) — acessível pelo botão “Itens” na tela principal; só permite equipar itens MVP que realmente estejam na mochila.
 - [Matriarca do Micélio 64×64](./previews/matriarca_micelio_64x64_preview_8x.png) — uma pose neutra candidata. O Guardião-Cervo continua usando o Golden aprovado e sua folha existente, sem redesenho.
 
 O linter de sprites passou para **31/31 manifestos** (30 ícones e a pose da Matriarca). Auditoria visual independente e validação mobile continuam pendentes. A pose da Matriarca não define animações nem aprova lore, atributos, loot ou comportamento.

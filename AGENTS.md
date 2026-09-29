@@ -31,7 +31,7 @@ Para tarefas de visão, arquitetura documental ou fundação do jogo, consulte [
 | `/documents/canonical/` | Fontes canônicas importadas aprovadas; respeite a precedência registrada no `README.md` de cada pacote. | [`documents/canonical/INDEX.md`](documents/canonical/INDEX.md) |
 | Estado/plano/histórico | [`PROJECT_STATE.md`](PROJECT_STATE.md), [`ROADMAP.md`](ROADMAP.md) e [`CHANGELOG.md`](CHANGELOG.md) | Estado observado, plano e mudanças têm papéis distintos. |
 | `/data/` | Quais IDs e valores o jogo carrega em runtime. | [`docs/CONTENT_REGISTRY.md`](docs/CONTENT_REGISTRY.md) aponta para os catálogos; os JSON são a fonte dos valores. |
-| `/scripts/` e `/scenes/` | Como o projeto Godot implementa comportamento. Não existe `/src/` neste repositório hoje. | [Índice de sistemas](docs/03_systems/INDEX.md) |
+| `/scripts/` e `/scenes/` | Como o projeto Godot implementa comportamento. Não existe `/src/` neste repositório hoje. O fluxo jogável é `TitleScreen → SliceCampaign`; `scripts/run/` guarda a lógica de loot, inventário, eventos, save e campanha do slice (`1B`) e `scripts/ui/SliceCampaignScreen.gd` apresenta o fluxo; o loop legado do MVP (`GameManager`, `LootManager`, `ProgressionManager`, `SaveManager`, `Main`) foi removido no `1A-CUT` e só existe no git (commit `cd47758`). | [Índice de sistemas](docs/03_systems/INDEX.md) |
 | `/assets/` | Imagens, animações e outros assets usados pelo projeto. | [Índice de arte](docs/07_art/INDEX.md) |
 | `/tests/` | Verificações executáveis e evidência coberta por elas. | [Índice de QA](docs/08_qa/INDEX.md) |
 | `/arquivados/` | Registros históricos úteis, versões substituídas e trabalho concluído. | [`arquivados/INDEX.md`](arquivados/INDEX.md) |
@@ -59,6 +59,7 @@ Não crie fichas vazias para completar essa árvore. Um índice pode apontar uma
 - Se uma decisão aberta afetar a tarefa, pare e peça a escolha de Rafael em vez de inventá-la.
 - **ONE FACT → ONE AUTHORITY:** cada decisão, regra, número ou fato tem uma fonte autoritativa. Índices, roadmap, registry e brief apontam para ela sem copiar seus detalhes. `/docs` guarda intenção; `/data` guarda valores runtime; código implementa; testes provam somente o que executam.
 - **Base canônica de combate/loot:** para balanceamento, schema e conteúdo de inimigos, equipamentos, materiais, drops, raridades e economia, siga [TASKBAR Sistema Completo v0.4](documents/canonical/taskbar_sistema_v0.4/README.md), aprovado por Rafael como base canônica de design. O catálogo e os contratos detalhados permanecem nos arquivos de origem indicados pelo índice; não mantenha cópias divergentes.
+- **Composição runtime de balanceamento:** siga [GLOBAL_BALANCE_SYSTEM.md](docs/06_balance/GLOBAL_BALANCE_SYSTEM.md). `data/balance/combat_profiles.json` é manifesto; `combat_core.json` guarda regras compartilhadas; `data/balance/chapters/*.json` guarda valores e caminhos locais. Valide com `python tools/balance/validate_balance_data.py` antes do Argos.
 - IDs de design seguem os prefixos registrados em [`docs/CONTENT_REGISTRY.md`](docs/CONTENT_REGISTRY.md), incluindo os prefixos da base canônica v0.4. IDs runtime atuais em JSON não devem ser renomeados nem substituídos por IDs de design sem migração explícita; registre aliases até o gate de migração.
 - Use somente estes status de ciclo de vida para novos registros: `CONCEPT`, `DESIGN`, `APPROVED`, `IMPLEMENTING`, `IMPLEMENTED`, `QA`, `PASS`, `DEPRECATED`. Não confunda status com certeza: use **HIPÓTESE** ou **EM ABERTO** no texto quando necessário. Normalize registros antigos ao tocá-los, sem reclassificar etapa por inferência.
 
@@ -66,6 +67,7 @@ Não crie fichas vazias para completar essa árvore. Um índice pode apontar uma
 
 - O produto é Pocket Hero; `taskbarhero` é o nome do repositório. TBH/Task Bar Hero é apenas referência.
 - Preserve identidade, nomes, arte, lore, UI, mapas, textos e balanceamento originais. Não copie assets ou conteúdo distintivo do jogo de referência.
+- O MVP antigo foi substituído pelo slice no `1A-CUT`; não recrie o loop legado nem reintroduza conteúdo sem `content_set: "slice"`. O produto continua sendo um app Android normal.
 - O MVP é Android como app normal. Overlay, backend, contas, multiplayer, cloud save, monetização e expansão grande de conteúdo estão fora do MVP.
 - Não introduza vantagem paga ou sistema que dependa de compra.
 
@@ -88,7 +90,8 @@ Use estas ferramentas antes de afirmar que algo funciona ou está balanceado. De
 
 | Pergunta | Comando | Saída |
 | --- | --- | --- |
-| O código continua correto? | `python tools/run_godot_tests.py` | PASS/FAIL por cena; falha também em `SCRIPT ERROR` |
+| O código continua correto? | `python tools/run_godot_tests.py` | PASS/FAIL por cena; falha também em `SCRIPT ERROR`. Depois do `1A-CUT` a suíte só cobre o slice (`tests/unit/`); não existem mais os testes R10–R16 |
+| Como estão os eventos e o loot da run? | `python tools/argos/run.py --scenario slice_run_layer` | `tools/argos/reports/<data>_<commit>/REPORT.md` |
 | Como está o balanceamento do slice? | `python tools/argos/run.py --scenario slice_quick` (~2 s) ou `--scenario slice_balance` (~75 s) | `tools/argos/reports/<data>_<commit>/REPORT.md` |
 | O Analyst do Argos funciona? | `python -m unittest tools/argos/analyzer/test_analyze.py` | OK/FAIL |
 

@@ -1,8 +1,8 @@
 # Catálogos runtime legados e migração v0.4
 
-**Função:** ponte temporária entre os IDs que o MVP carrega hoje e os IDs dos catálogos canônicos v0.4. Os IDs listados à esquerda continuam em `/data`; não os renomeie até o `1A-CUT`, que remove o conteúdo legado (decisão de Rafael, 2026-09-29).
+**Função:** tabela de aliases entre os IDs do MVP antigo e os IDs dos catálogos canônicos v0.4. **O conteúdo legado foi removido de `/data` no `1A-CUT` (2026-09-29)**; os IDs da coluna “runtime atual” existem só no histórico do git (commit `cd47758`) e no campo `legacy_alias` das linhas do slice, que serve para reaproveitar nome e sprite.
 
-**Alias no slice (`SLICE-1A-2`):** as linhas do slice em `/data` têm `content_set: "slice"`, `id` igual ao ID de design em minúsculas (por exemplo `en_c1_001`), `design_id` e `legacy_alias` com o ID antigo desta tabela, ou `null` quando a entidade é nova. O alias serve para reaproveitar nome e sprite; os stats do slice vêm de `data/balance/combat_profiles.json` e não dos valores legados. Linhas sem `content_set` pertencem ao conjunto legado, e os carregadores só leem o legado por padrão.
+**Alias no slice (`SLICE-1A-2`):** as linhas do slice em `/data` têm `content_set: "slice"`, `id` igual ao ID de design em minúsculas (por exemplo `en_c1_001`), `design_id` e `legacy_alias` com o ID antigo desta tabela, ou `null` quando a entidade é nova. O alias serve para reaproveitar nome e sprite; os stats vêm da composição de `data/balance/combat_core.json` com o perfil do capítulo, e não dos valores legados. Depois do `1A-CUT` todas as linhas de `/data` pertencem ao slice.
 
 ## Inimigos
 

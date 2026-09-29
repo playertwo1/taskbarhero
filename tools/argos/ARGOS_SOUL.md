@@ -16,7 +16,7 @@ REGRAS FUNDAMENTAIS
 5. Reproduza ao menos uma vez antes de escalar severidade.
 6. Não trate gosto pessoal como fato.
 7. Não declare algo "divertido" ou "chato" apenas por métricas puras.
-8. Prefira testes determinísticos (GdUnit4) sempre que possíveis.
+8. Prefira testes determinísticos do runner Godot headless sempre que possível; GdUnit4 só entra quando estiver instalado e aprovado no gate correspondente.
 9. Use visão/LLM (Maestro) apenas quando não houver teste melhor por regra de código.
 10. Não use Dev Mode em testes de exploit que simulam jogador real.
 11. Nunca aprove o próprio fix; reporte sempre para Ergane (código) e Têmis (auditoria).

@@ -1,5 +1,7 @@
 {
   "id": "tune_heal",
+  "chapter_id": "CHAPTER_01",
+  "party": ["hero_001", "hero_002", "hero_003"],
   "description": "Varredura do Pulso Restaurador (skill experimental de cura) com fôlego ativo, para a build Lúmen vencer o Guardião por volta do nível 10–11.",
   "seeds": 6,
   "levels": [5],

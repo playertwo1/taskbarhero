@@ -45,7 +45,7 @@ Os DOCX são preservados como fontes originais. As versões Markdown facilitam b
 - **Usar referências de Task Bar Hero/TBH:** guia de referência, especialmente sua hierarquia de fontes e regras de originalidade.
 - **Criar moeda, curva, item, drop, boss, offline ou meta-progressão:** guia avançado de economia e balanceamento.
 - **Atributos e estrutura balanceável de entidade:** [padrão canônico de combate](../docs/06_balance/COMBAT_BALANCE_STANDARD.md); use as referências importadas somente como material de estudo.
-- **Combate, balanceamento e loot:** siga a [base canônica v0.4](./canonical/taskbar_sistema_v0.4/README.md); consulte `LOOT-EXPANSION-1` para migração/integração. Dados runtime legados permanecem em `data/` até migração aprovada.
+- **Combate, balanceamento e loot:** siga a [base canônica v0.4](./canonical/taskbar_sistema_v0.4/README.md) para design e o [sistema global](../docs/06_balance/GLOBAL_BALANCE_SYSTEM.md) para runtime, validação e simulação. O slice já usa núcleo + perfil de capítulo; conteúdo fora do recorte continua em `LOOT-EXPANSION-1`.
 - **Design pós-MVP de equipamentos, artesãos, Árvore dos Ecos ou Bastião:** consulte as propostas v0.1 na tabela acima e a fase correspondente da [`../ROADMAP.md`](../ROADMAP.md); elas não provam implementação nem aprovação de números.
 - **Onboarding, UI, acessibilidade, haptics, bateria, Dev Mode, playtest ou aceite:** guia de UX e playtest.
 - **Sprites, contratos de arte e integração:** [`../docs/PIPELINE_IA_SPRITES.md`](../docs/PIPELINE_IA_SPRITES.md) + fase correspondente do roadmap.

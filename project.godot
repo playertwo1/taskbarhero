@@ -5,21 +5,15 @@ config_version=5
 [application]
 
 config/name="Pocket Hero"
-run/main_scene="res://scenes/main/Main.tscn"
+run/main_scene="res://scenes/ui/TitleScreen.tscn"
 run/max_fps=120
 config/icon="res://icon.png"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 
 [autoload]
 
-SaveManager="*res://scripts/save/SaveManager.gd"
-ProgressionManager="*res://scripts/progression/ProgressionManager.gd"
-LootManager="*res://scripts/loot/LootManager.gd"
-GameManager="*res://scripts/combat/GameManager.gd"
 DevMode="*res://scripts/debug/DevMode.gd"
-Telemetry="*res://scripts/debug/Telemetry.gd"
 StateExporter="*res://scripts/debug/StateExporter.gd"
-TestHooks="*res://scripts/debug/TestHooks.gd"
 DebugBridge="*res://scripts/debug/DebugBridge.gd"
 
 [display]

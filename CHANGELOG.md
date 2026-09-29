@@ -2,6 +2,38 @@
 
 Registro breve de mudanças estruturais e releases. Detalhes de planejamento continuam no roadmap; histórico de gates concluídos permanece arquivado.
 
+## 2026-09-29 — 1B tela, textos e Argos
+
+- Novo fluxo `TitleScreen → SliceCampaign`: preparação, run jogável com eventos e escolhas, tela de inventário para equipar/reciclar e resultado com save mínimo.
+- `EventTexts` lê `data/expedition/event_texts_c1.json` e `SliceLogText` apresenta os eventos na interface. `EVENT_TEXTS.md` é a vista derivada; os textos continuam `DESIGN`, aguardando revisão de Rafael.
+- Argos passa a simular campanhas com loot e eventos reais em `slice_run_layer`, além de resumir frequência de eventos, escolha do Poço, raridades e Resíduo por variante.
+- Evidência: 25/25 cenas Godot, 10 testes do Analyst, `slice_quick` e `slice_run_layer` sem `BUG`; inspeção visual manual em 432×960 fica pendente para ambiente com janela Godot disponível.
+
+## 2026-09-29 — 1B núcleo: loot, inventário, eventos e save
+
+- Novo `scripts/run/`: `LootRoller` (drops e Reward Choice por seed, `data/loot/drops_c1.json`), `SliceInventory` (equipar, trocar, reciclar em Resíduo, trava durante a run), `EventDirector` (10 eventos + Reserva de Resíduo em `data/expedition/events_c1.json`, condições por party, chance baixa e secreto uma vez por save), `SliceSave` (JSON versionado; versão desconhecida ou arquivo corrompido nunca são sobrescritos) e `SliceCampaign` (aplica e grava cada recompensa ao recebê-la).
+- `ExpeditionRun` ganha o estado `choice` (o tempo não avança), `choose(index)`, drops e efeitos de evento; sem `loot`/`events` o run é idêntico ao anterior. `SliceTelemetry` ganha a camada `run_layer`.
+- Ferramentas: `tools/godot_import.py` (registra `class_name` novos) e `tools/run_one_scene.py` (roda uma cena de teste). 19/19 cenas PASS naquela etapa. Tela e cenários do Argos foram concluídos no Plano B.
+
+## 2026-09-29 — fundação global de balanceamento
+
+- Separados o núcleo compartilhado (`data/balance/combat_core.json`), o overlay do Capítulo 1 (`data/balance/chapters/chapter_01.json`) e o manifesto de composição (`combat_profiles.json`). `BalanceProfiles.gd` resolve núcleo → capítulo → override; `SliceStats.gd` permanece como adaptador.
+- Formação, ameaça, party, rotas, segmentos e ponto anterior ao chefe passaram a vir dos dados. O Argos não contém mais IDs fixos do trio ou do Capítulo 1.
+- Adicionados schemas, validação executável e hash SHA-256 das entradas nos relatórios. Regras de caminhos respeitam cobertura de nível; TTK exige nível equivalente entre party e encontro.
+- Evidência: validador `OK`, 13/13 cenas Godot, 6/6 testes do Analyst, `slice_quick` com 48 runs e `slice_balance` com 1.404 runs, sem `BUG`. Dominância de Lúmen e pacing do Arcano foram mantidos como achados, sem ajuste silencioso de números.
+
+## 2026-09-29 — 1A-5: telemetria do slice
+
+- `SliceTelemetry` (`scripts/combat/`) agrega os eventos do `ExpeditionRun` conforme a seção 7 do contrato de balanceamento; opcional (`options["telemetry"]`), sem influência no combate, resumo em `snapshot()["telemetry"]`. Novo `tests/unit/test_slice_telemetry.gd`; a suíte passou a 12/12 nessa etapa. Métricas sem dado no run ficam listadas no contrato.
+
+## 2026-09-29 — 1A-CUT: legado do MVP removido
+
+- Removidos o loop contínuo legado e seus autoloads (`GameManager`, `ProgressionManager`, `LootManager`, `SaveManager`, `Telemetry`, `TestHooks`), `Main`, `BattleStrip`, `PartyScreen`, `InventoryScreen`, `data/stages/stages.json`, as linhas legadas de `enemies.json` e `items.json` (agora só `content_set: "slice"`) e os testes R10–R16 e de party/Main. Histórico no git (commit `cd47758`).
+- Fluxo principal: `TitleScreen → SliceProbe` (cena inicial `TitleScreen`). Comandos legados do `DebugBridge` (`give_gold`, `set_level`, `spawn_enemy`, `simulate_offline`, `reset_state`) saíram; `get_state` devolve o snapshot do slice.
+- `tools/economy/simulate_econ1_first_clear.py` arquivado em `arquivados/pipelines_legados/`; `tools/balance/slice_baseline.py` lê os níveis de `data/expedition/route_c1.json`.
+- Perdas assumidas até `1B`/`1D`: save, progresso offline, tracker, XP/ouro contínuos, loot e inventário. Suíte: 11/11 cenas PASS; Argos `slice_quick` sem BUG.
+- Roadmap: auditoria de `1A-2` a `1A-5` registrada; a telemetria do `ExpeditionRun` foi concluída na etapa seguinte.
+
 ## 2026-09-29 — balanceamento v0.5 e Argos
 
 - `docs/06_balance/BALANCE_V0.5.md`: meta incremental (Guardião do Capítulo 1 por volta do nível 10–11), fôlego entre encontros, fases 1/3/5/7/10, chefe ×1,5, golpes telegrafados, ranks R2–R5, passivas e Traits; o v0.4 canônico não foi alterado.

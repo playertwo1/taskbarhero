@@ -7,7 +7,7 @@
 - **Raridades, budgets, affixes e Item Power:** [base canônica v0.4](../../../documents/canonical/taskbar_sistema_v0.4/README.md).
 - **Materiais e fontes:** [catálogo de materiais do Capítulo 1](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_MATERIAL_CATALOG.md).
 - **Loot e algoritmo de recompensa:** [Drop Resolver](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/DROP_RESOLVER_SPEC.md) e [tabelas de drop](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_DROP_TABLES.md).
-- **Runtime atual:** [catálogo e valores carregados](../../../data/items/items.json). Mantido como implementação legada até migração aprovada.
+- **Runtime atual:** [catálogo e valores carregados](../../../data/items/items.json). Contém só os 18 templates do slice; os 15 itens legados foram removidos no `1A-CUT`. O resto do catálogo segue para `LOOT-EXPANSION-1`.
 - **Compatibilidade:** [IDs runtime antigos e mapeamento](../LEGACY_RUNTIME_CATALOG.md).
 - **Slots e artesãos:** [HERO_STANDARD](../../../HERO_STANDARD.md) e [equipamentos/crafting](../../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
 - **Arte:** [fichas dos ícones](../../art/conceitos/itens/README.md) e [assets já integrados](../../../assets/sprites/items/README.md).

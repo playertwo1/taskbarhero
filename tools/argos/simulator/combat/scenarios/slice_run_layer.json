@@ -1,0 +1,24 @@
+{
+  "id": "slice_run_layer",
+  "chapter_id": "CHAPTER_01",
+  "party": ["hero_001", "hero_002", "hero_003"],
+  "description": "Campanha com o núcleo real do 1B (LootRoller, EventDirector, SliceInventory). Variantes fixam a escolha do Poço e aumentam a frequência de eventos para medir o pior e o melhor caso sem depender de sorte.",
+  "seeds": 6,
+  "levels": [5],
+  "builds": {
+    "hero_001": ["guardiao", "retaliacao"],
+    "hero_002": ["critico", "marca"],
+    "hero_003": ["arcano", "controle"]
+  },
+  "modes": ["campaign"],
+  "campaign": {"start_level": 1, "max_attempts": 10, "run_layer": true, "policy": {"reward": "best"}},
+  "variants": [
+    {"id": "base", "note": "Política padrão: Poço cura (opção 0), recompensa melhor item."},
+    {"id": "poco_curar", "note": "Poço sempre cura.", "campaign_policy": {"event_c1_001": "heal"}},
+    {"id": "poco_sacrificar", "note": "Poço sempre sacrifica (recompensa rara).", "campaign_policy": {"event_c1_001": "sacrifice"}},
+    {"id": "eventos_frequentes", "note": "50% de chance de evento por transição, até 4 por run.", "event_rules": {"transition_chance": 0.5, "max_random_per_run": 4}}
+  ],
+  "rank_milestones": [3, 5, 7, 9, 11, 13, 15, 17, 19],
+  "max_time": 3600,
+  "stuck_seconds": 30
+}

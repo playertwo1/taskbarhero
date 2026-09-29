@@ -1,5 +1,7 @@
 {
   "id": "slice_balance",
+  "chapter_id": "CHAPTER_01",
+  "party": ["hero_001", "hero_002", "hero_003"],
   "description": "Matriz completa do slice (balanceamento v0.5): 18 combinações, rota e segmentos nos níveis 8/10/12, campanha com loot até 16 tentativas. Meta de Rafael: vencer o Guardião por volta do nível 10–11.",
   "seeds": 6,
   "levels": [

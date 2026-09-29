@@ -6,7 +6,7 @@ certainty: HIPOTESE
 
 # Balanceamento v0.5 — Capítulo 1 incremental
 
-**Autoridade:** intenção, regras de escala e registro das mudanças do balanceamento do slice sobre a base canônica [TASKBAR v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md). **Os valores ficam em `/data`** ([combat_profiles](../../data/balance/combat_profiles.json), [heroes](../../data/heroes/heroes.json), [enemies](../../data/enemies/enemies.json), [skills](../../data/skills/skills_slice.json), [passivas](../../data/skills/passives_slice.json), [items](../../data/items/items.json), [rota](../../data/expedition/route_c1.json)); a tabela de mudanças abaixo é histórico, não fonte. O v0.4 não é editado. Tudo aqui é **simulação** do Argos, não playtest.
+**Autoridade:** intenção, regras de escala e registro das mudanças do balanceamento do slice sobre a base canônica [TASKBAR v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md). **Os valores ficam em `/data`**: [núcleo global](../../data/balance/combat_core.json), [perfil do Capítulo 1](../../data/balance/chapters/chapter_01.json), [heroes](../../data/heroes/heroes.json), [enemies](../../data/enemies/enemies.json), [skills](../../data/skills/skills_slice.json), [passivas](../../data/skills/passives_slice.json), [items](../../data/items/items.json) e [rota](../../data/expedition/route_c1.json). O [manifesto](../../data/balance/combat_profiles.json) apenas compõe esses perfis. A tabela abaixo é histórico. O v0.4 não é editado. Tudo aqui é **simulação** do Argos, não playtest.
 
 ## 1. O que queremos (DECIDIDO por Rafael, 2026-09-29)
 
@@ -20,14 +20,14 @@ certainty: HIPOTESE
 | Sistema | Regra | Autoridade | Estado |
 | --- | --- | --- | --- |
 | Status dos heróis | HP/ATK/DEF lineares do nível 1 ao 100 pela tabela do v0.4; ~2,5% de força por nível. Velocidade, crítico, Haste e Tenacidade não sobem por nível | `heroes.json` · [HERO_STATS_BALANCE](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/HERO_STATS_BALANCE.md) | canônico |
-| XP e nível | XP por rank do inimigo e curva do runtime; uma rota completa rende ~2 níveis no início. XP de derrotas também conta | `combat_profiles.xp` | HIPÓTESE |
+| XP e nível | XP por rank do inimigo e curva do runtime; uma rota completa rende ~2 níveis no início. XP de derrotas também conta | `combat_core.xp` | HIPÓTESE |
 | Skills | 2 por herói; ranks R1–R5 com números **e** comportamento por skill; 1 rank a cada 2 níveis a partir do 3 (marcos EM ABERTO) | `skills_slice.json` (`ranks`) · [proposta](CHAPTER_01_HERO_COMBAT_PROPOSAL.md) | HIPÓTESE |
 | Passivas e Traits | pacote fixo por build no slice; Bastião com números da ficha, Íris e Flecha com números de simulação | `passives_slice.json` | DESIGN/HIPÓTESE |
 | Equipamentos | orçamento canônico: raridade × slot × item power × nível do item; conjunto lendário completo = +30–45%. Drops pelas tabelas do v0.4; nível do item = nível do encontro | `items.json` · [SliceItemStats](../../scripts/combat/SliceItemStats.gd) · [EQUIPMENT_BALANCE](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/EQUIPMENT_BALANCE.md) | canônico |
-| Inimigos | `HERO_REFERENCE` do nível × arquétipo × rank × `enemy_damage_scale`; HP de elite/mini-boss/boss × escala de party | `combat_profiles.json` | HIPÓTESE |
+| Inimigos | `HERO_REFERENCE` do nível × arquétipo × rank × `enemy_damage_scale`; HP de elite/mini-boss/boss × escala de party | `combat_core.json` + `chapters/chapter_01.json` | HIPÓTESE |
 | Nível do conteúdo | **nível recomendado por fase: 1 / 3 / 5 / 7 e Guardião 10** | `route_c1.json` | **v0.5** |
 | Mecânicas | golpe forte telegrafado na linha de frente, Stagger/quebra, Perfect Block, Desequilíbrio, fases com adds, ameaça de cura/escudo | `enemies.json` (`mechanics`) · [ExpeditionRun](../../scripts/combat/ExpeditionRun.gd) | HIPÓTESE |
-| Recuperação | fôlego: fração do HP máximo dos vivos ao fim de um encontro sem queda; nada depois do último encontro | `combat_profiles.recovery_between_encounters` | DECIDIDO (valor HIPÓTESE) |
+| Recuperação | fôlego: fração do HP máximo dos vivos ao fim de um encontro sem queda; nada depois do último encontro | `chapters/chapter_01.json → recovery_between_encounters` | DECIDIDO (valor HIPÓTESE) |
 
 **Consequência para o jogo incremental:** o nível sozinho rende pouco. O progresso entre tentativas vem da soma de nível + ranks de skill + itens; por isso a vitória no nível 10–11 exige de 4 a 10 tentativas, e não uma parede que só XP resolve.
 

@@ -1,21 +1,18 @@
 extends RefCounted
 class_name ExpeditionRun
 
+const Profiles := preload("res://scripts/combat/BalanceProfiles.gd")
+
 ## Núcleo de simulação da expedição do slice (SLICE-1A-3a e 1A-4a).
 ## Puro: sem autoload, sem nós e sem tempo real. Determinístico dado rota, dados, seed e opções.
-## Usa CombatMath, SliceStats e ThreatMath. Inclui skills com gatilho e cooldown, buffs de
+## Usa CombatMath, BalanceProfiles e ThreatMath. Inclui skills com gatilho e cooldown, buffs de
 ## damage_taken, postura de contra-ataque, provocação e alvo por ameaça.
 ## SLICE-1A-4b/1C (HIPÓTESE): Stagger e quebra, Perfect Block e Desequilíbrio, golpe telegrafado,
 ## fases de chefe com adds adiados ("deferred"), ranks de skill, XP por inimigo derrotado e as
 ## passivas/Traits do recorte com efeito em combate (data/skills/passives_slice.json). Sem loot.
 ## Regras: docs/00_project/CORE_LOOP.md e docs/06_balance/SLICE_BALANCE_CONTRACT.md.
 
-const DEFAULT_FORMATION := {"front": "hero_001", "mid": "hero_003", "back": "hero_002"}
 const SLOTS := ["front", "mid", "back"]
-## HIPÓTESE local do SLICE-1A-4a: o v0.4 não define teto para damage_taken.
-const DAMAGE_TAKEN_FLOOR := 0.25
-## v0.4 (THREAT_AGGRO_SYSTEM.md): Bastião gera ×1,5 de ameaça com efeitos defensivos ativos.
-const DEFENSIVE_THREAT_MULTIPLIER := 1.5
 const EPS := 0.000001
 
 var state: String = "fighting"  # fighting | transition | won | lost
@@ -38,12 +35,26 @@ var _taunt: Dictionary = {}
 var _profiles: Dictionary = {}
 var _deferred: Array = []
 var _uid_counter: int = 0
-## Recuperação na expedição: fôlego entre encontros vem de combat_profiles (DECIDIDO por Rafael);
+## Recuperação na expedição: fôlego entre encontros vem do perfil do capítulo (DECIDIDO por Rafael);
 ## poções e cura em evento ficam desligadas por padrão e só existem em cenários do Argos.
 var _potions: Dictionary = {}
 var _recovery: Dictionary = {}
 var _event_heal: Dictionary = {}
 var _fell_this_encounter: bool = false
+## Telemetria opcional (SLICE-1A-5): só agrega os eventos; o combate nunca a lê.
+var telemetry: SliceTelemetry = null
+## SLICE-1B: loot, eventos e escolhas pendentes. Sem loot/events o run é idêntico ao anterior.
+var loot: LootRoller = null
+var director: EventDirector = null
+var pending: Dictionary = {}
+var rewards: Dictionary = {"items": [], "materials": {}, "flags": {}, "lore": []}
+var _offers: Array = []
+var _flags: Dictionary = {}
+var _first_clear: bool = false
+var _party_level: int = 1
+var _equipped_list: Array = []
+var _event_mods: Array = []
+var _mod_uid: int = 0
 
 ## options: seed (int), crits (bool), party_level (int), formation (slot → hero id),
 ## targeting ("threat" ou "front"), skills (linhas de skills_slice.json) e
@@ -51,7 +62,7 @@ var _fell_this_encounter: bool = false
 ## e equipment (hero id → lista de instâncias com id, rarity, item_power, item_level),
 ## skill_ranks (skill id → rank 1–5), trigger_overrides (skill id → gatilho escolhido no Hub)
 ## e passives (linhas de passives_slice.json; sem elas, heróis lutam sem passivas/Traits).
-## Recuperação: recovery_between_encounters {fraction, only_if_no_fall} (padrão: combat_profiles;
+## Recuperação: recovery_between_encounters {fraction, only_if_no_fall} (padrão: perfil do capítulo;
 ## {} desliga), potions {count, heal_fraction, threshold} e event_heal {id do evento → fração}.
 static func create(route: Dictionary, hero_rows: Array, enemy_rows: Array, options: Dictionary = {}) -> ExpeditionRun:
 	var run := ExpeditionRun.new()
@@ -62,7 +73,17 @@ static func create(route: Dictionary, hero_rows: Array, enemy_rows: Array, optio
 	run._event_heal = options.get("event_heal", {})
 	run._targeting = String(options.get("targeting", "threat"))
 	run._rng.seed = int(options.get("seed", 1))
-	run._profiles = SliceStats.load_profiles()
+	if bool(options.get("telemetry", false)):
+		run.telemetry = SliceTelemetry.new(options.get("telemetry_context", {}))
+	run.loot = options.get("loot", null)
+	run.director = options.get("events", null)
+	run._flags = options.get("flags", {}).duplicate()
+	run._first_clear = bool(options.get("first_clear", false))
+	run._party_level = int(options.get("party_level", 1))
+	for hero_gear in options.get("equipment", {}).values():
+		run._equipped_list.append_array(hero_gear)
+	var chapter_id := String(route.get("chapter_id", ""))
+	run._profiles = options.get("balance_profiles", Profiles.load_profiles(chapter_id))
 	run._recovery = options.get("recovery_between_encounters", run._profiles.get("recovery_between_encounters", {}))
 	var ranks: Dictionary = options.get("skill_ranks", {})
 	var overrides: Dictionary = options.get("trigger_overrides", {})
@@ -81,7 +102,7 @@ static func create(route: Dictionary, hero_rows: Array, enemy_rows: Array, optio
 	var by_id := {}
 	for row in hero_rows:
 		by_id[row["id"]] = row
-	var formation: Dictionary = options.get("formation", DEFAULT_FORMATION)
+	var formation: Dictionary = options.get("formation", _default_formation(hero_rows))
 	var order: Array = []
 	for slot in SLOTS:
 		var hid: String = String(formation.get(slot, ""))
@@ -92,7 +113,7 @@ static func create(route: Dictionary, hero_rows: Array, enemy_rows: Array, optio
 			order.append(row["id"])
 	for hid in order:
 		var row: Dictionary = by_id[hid]
-		var stats := SliceStats.hero_stats(row, level)
+		var stats := Profiles.hero_stats(row, level)
 		stats = SliceItemStats.equip(stats, hid, equipment.get(hid, []), item_rows)
 		var skills: Array = []
 		var passive_ids: Array = [row.get("identity_passive", "")]
@@ -105,6 +126,7 @@ static func create(route: Dictionary, hero_rows: Array, enemy_rows: Array, optio
 				skills.append({"def": def, "ready_at": 0.0, "ready_seen": false})
 		run._heroes[hid] = {
 			"id": hid, "stats": stats, "hp": float(stats["max_hp"]), "alive": true, "next_at": 0.0,
+			"threat_profile": String(row.get("threat_profile", "DEFAULT")),
 			"skills": skills, "effects": [], "stance": {}, "guard_ready_at": 0.0,
 			"basic_stagger": float(row.get("basic_stagger", 0.0)), "perfect_block": row.get("perfect_block", {}),
 			"passives": {}, "stacks": {},
@@ -114,6 +136,14 @@ static func create(route: Dictionary, hero_rows: Array, enemy_rows: Array, optio
 				run._heroes[hid]["passives"][passive_rows[pid]["kind"]] = passive_rows[pid]["params"]
 	run._hero_order = order
 	return run
+
+static func _default_formation(hero_rows: Array) -> Dictionary:
+	var formation := {}
+	for row in hero_rows:
+		var slot := String(row.get("formation_slot", ""))
+		if SLOTS.has(slot) and not formation.has(slot):
+			formation[slot] = String(row.get("id", ""))
+	return formation
 
 ## Cópia da skill no rank pedido. Cada rank R2–R5 em def["ranks"] aplica, em ordem, "set"
 ## ("campo" no topo ou "índice.campo" num efeito) e "add" (efeitos novos). Rank 1 = dados base.
@@ -137,7 +167,7 @@ static func ranked_skill(def: Dictionary, rank: int, profiles: Dictionary) -> Di
 	out.erase("ranks")
 	return out
 
-## XP necessário para passar do nível ao seguinte (HIPÓTESE em combat_profiles.xp.curve).
+## XP necessário para passar do nível ao seguinte (HIPÓTESE em combat_core.xp.curve).
 static func xp_to_next(level: int, profiles: Dictionary) -> int:
 	var c: Dictionary = profiles["xp"]["curve"]
 	return int(round(float(c["base"]) * pow(float(c["growth"]), level - 1) + float(c["per_level"]) * level))
@@ -145,13 +175,15 @@ static func xp_to_next(level: int, profiles: Dictionary) -> int:
 ## Avança a simulação em dt segundos e devolve os eventos ocorridos no intervalo.
 func step(dt: float) -> Array:
 	var events: Array = []
-	if state == "won" or state == "lost":
+	if state == "won" or state == "lost" or state == "choice":
 		return events
 	var target := time + dt
 	if _pending_start:
 		_pending_start = false
 		_advance_node(events)
 	while state != "won" and state != "lost":
+		if state == "choice":
+			break
 		if state == "transition":
 			if _transition_until <= target:
 				time = _transition_until
@@ -176,13 +208,20 @@ func step(dt: float) -> Array:
 				_enemy_act(ev["ref"], events)
 				if state == "fighting":
 					_evaluate_skills(events)
+	if telemetry != null:
+		telemetry.ingest(events)
 	return events
 
 ## Roda até o fim (vitória ou derrota) ou até max_time e devolve todos os eventos.
-func run_to_end(dt: float = 0.25, max_time: float = 3600.0) -> Array:
+## Em `choice`, usa chooser.call(pending) -> int (ou a opção 0 sem chooser); sem isso o laço nunca avançaria.
+func run_to_end(dt: float = 0.25, max_time: float = 3600.0, chooser: Callable = Callable()) -> Array:
 	var all: Array = []
 	while state != "won" and state != "lost" and time < max_time:
-		all.append_array(step(dt))
+		if state == "choice":
+			var index := int(chooser.call(pending)) if chooser.is_valid() else 0
+			all.append_array(choose(index))
+		else:
+			all.append_array(step(dt))
 	return all
 
 func snapshot() -> Dictionary:
@@ -198,11 +237,14 @@ func snapshot() -> Dictionary:
 	for hid in _hero_order:
 		var h: Dictionary = _heroes[hid]
 		party.append({"id": hid, "hp": float(h["hp"]), "max_hp": float(h["stats"]["max_hp"]), "alive": bool(h["alive"])})
-	return {
+	var snap := {
 		"state": state, "time": time, "node_index": node_index,
 		"node_id": _nodes[node_index]["id"] if node_index >= 0 and node_index < _nodes.size() else "",
 		"party_hp": _party_hp(), "party": party, "enemies": enemies,
 	}
+	if telemetry != null:
+		snap["telemetry"] = telemetry.summary()
+	return snap
 
 func _party_hp() -> Dictionary:
 	var hp := {}
@@ -219,6 +261,10 @@ func _advance_node(events: Array) -> void:
 	var node: Dictionary = _nodes[node_index]
 	if node["type"] == "event":
 		events.append({"type": "event_reached", "time": time, "node_id": node["id"]})
+		if director != null and not director.event_by_id(String(node["id"])).is_empty():
+			_queue_event(director.event_by_id(String(node["id"])))
+			_next_offer(events)
+			return
 		if _event_heal.has(node["id"]):
 			_recover_party(float(_event_heal[node["id"]]), "event", events)
 		_begin_transition()
@@ -250,6 +296,7 @@ func _start_encounter(node: Dictionary, events: Array) -> void:
 		if h["alive"]:
 			h["next_at"] = time + CombatMath.attack_interval(float(h["stats"]["attack_speed"]))
 			h["guard_ready_at"] = time
+	_apply_event_mods(events)
 	events.append({"type": "encounter_started", "time": time, "node_id": node["id"], "party_hp": _party_hp()})
 	_mark_ready_seen()
 	if _enemies.is_empty():
@@ -265,7 +312,7 @@ func _mark_ready_seen() -> void:
 				sk["ready_seen"] = true
 
 func _new_enemy(row: Dictionary, level: int) -> Dictionary:
-	var stats := SliceStats.enemy_stats(row, level, true)
+	var stats := Profiles.enemy_stats(row, level, true, _profiles)
 	var stagger: Dictionary = _profiles.get("stagger", {}).get("ranks", {}).get(row["rank"], {})
 	var mechanics: Dictionary = row.get("mechanics", {})
 	var enemy := {
@@ -300,7 +347,9 @@ func _finish_encounter(events: Array) -> void:
 	var last_node := node_index >= _nodes.size() - 1
 	if not last_node and not _recovery.is_empty() and not (bool(_recovery.get("only_if_no_fall", false)) and _fell_this_encounter):
 		_recover_party(float(_recovery["fraction"]), "between_encounters", events)
-	_begin_transition()
+	_expire_event_mods()
+	_queue_offers_after_encounter(events)
+	_next_offer(events)
 
 ## Recupera uma fração do HP máximo dos heróis vivos (derrotados continuam fora até o Hub).
 func _recover_party(fraction: float, source: String, events: Array) -> void:
@@ -381,7 +430,10 @@ func _has_defensive_effect(hero: Dictionary) -> bool:
 	return _taunt_active() and _taunt["hero"] == hero["id"]
 
 func _threat_multiplier(hero: Dictionary) -> float:
-	return DEFENSIVE_THREAT_MULTIPLIER if hero["id"] == "hero_001" and _has_defensive_effect(hero) else 1.0
+	var profile: Dictionary = _profiles.get("threat_profiles", {}).get(hero.get("threat_profile", "DEFAULT"), {})
+	if _has_defensive_effect(hero):
+		return float(profile.get("defensive_active_multiplier", profile.get("base_multiplier", 1.0)))
+	return float(profile.get("base_multiplier", 1.0))
 
 func _damage_taken_multiplier(hero: Dictionary, extra_reduction: float = 0.0) -> float:
 	var mods: Array = []
@@ -397,7 +449,8 @@ func _damage_taken_multiplier(hero: Dictionary, extra_reduction: float = 0.0) ->
 	var protector := _protector(hero, "ally_aura_dr")
 	if not protector.is_empty():
 		mods.append({"op": "ADD_PERCENT", "value": -float(protector["passives"]["ally_aura_dr"]["value"]), "source_type": "PASSIVE", "source_id": "ally_aura_dr"})
-	return CombatMath.resolve_stat(1.0, mods, DAMAGE_TAKEN_FLOOR)
+	var floor := float(_profiles.get("stat_caps", {}).get("damage_taken_multiplier_min", 0.25))
+	return CombatMath.resolve_stat(1.0, mods, floor)
 
 # --- Passivas ------------------------------------------------------------------------------------
 
@@ -764,6 +817,8 @@ func _damage_enemy(enemy: Dictionary, damage: float, hero: Dictionary, events: A
 	enemy["telegraph_until"] = -INF
 	var xp := int(_profiles.get("xp", {}).get("by_rank", {}).get(enemy["rank"], 0))
 	events.append({"type": "enemy_defeated", "time": time, "uid": enemy["uid"], "id": enemy["id"], "xp": xp})
+	if loot != null:
+		_collect_drop(enemy, events)
 	if _first_alive_enemy().is_empty():
 		_finish_encounter(events)
 	return true
@@ -925,3 +980,183 @@ func _no_hero_alive() -> bool:
 		if _heroes[hid]["alive"]:
 			return false
 	return true
+
+# --- SLICE-1B: ofertas, escolhas, loot e efeitos de evento ------------------------------------
+
+## Nível do encontro atual ou, num nó de evento (sem nível), do último encontro já passado.
+func _current_level() -> int:
+	var i := mini(node_index, _nodes.size() - 1)
+	while i >= 0:
+		if _nodes[i].has("level"):
+			return int(_nodes[i]["level"])
+		i -= 1
+	return _party_level
+
+func _event_context() -> Dictionary:
+	var alive: Array = []
+	for hid in _hero_order:
+		if _heroes[hid]["alive"]:
+			alive.append(hid)
+	return {"alive_heroes": alive, "party_level": _party_level, "equipped": _equipped_list,
+		"previous_no_falls": not _fell_this_encounter, "flags": _flags}
+
+func _queue_event(event: Dictionary) -> void:
+	_offers.append({"kind": "event", "id": event["id"], "event": event, "options": director.choices_for(event, _event_context())})
+
+func _queue_offers_after_encounter(events: Array) -> void:
+	var node: Dictionary = _nodes[node_index]
+	var kind := String(node.get("kind", "NORMAL"))
+	if loot != null:
+		if kind == "ELITE" or kind == "MINIBOSS":
+			_offers.append({"kind": "reward", "id": "reward_%s" % node["id"], "options": loot.roll_choice(kind, _current_level())})
+		elif kind == "BOSS":
+			var boss := loot.roll_boss(_first_clear, _current_level())
+			for inst in boss["items"]:
+				_grant_item(inst, events)
+			if not boss["choice"].is_empty():
+				_offers.append({"kind": "reward", "id": "reward_%s" % node["id"], "options": boss["choice"]})
+	if director != null and kind == "NORMAL" and node_index + 1 < _nodes.size():
+		var next_node: Dictionary = _nodes[node_index + 1]
+		if next_node["type"] == "encounter" and String(next_node.get("kind", "NORMAL")) == "NORMAL":
+			var event := director.roll_transition(_event_context())
+			if not event.is_empty():
+				_queue_event(event)
+
+func _option_labels(offer: Dictionary) -> Array:
+	var labels: Array = []
+	for option in offer["options"]:
+		labels.append(String(option.get("label", option.get("id", ""))))
+	return labels
+
+## Abre a próxima oferta (pausa em `choice`) ou, sem ofertas, inicia a transição.
+func _next_offer(events: Array) -> void:
+	while not _offers.is_empty():
+		var offer: Dictionary = _offers.pop_front()
+		if offer["options"].is_empty():
+			continue
+		var is_event := String(offer["kind"]) == "event"
+		if is_event and bool(offer["event"].get("auto", false)):
+			events.append({"type": "event_offered", "time": time, "id": offer["id"], "auto": true})
+			_resolve_event_choice(offer, offer["options"][0], events)
+			continue
+		pending = offer
+		state = "choice"
+		events.append({"type": "event_offered" if is_event else "reward_offered", "time": time, "id": offer["id"], "options": _option_labels(offer)})
+		return
+	pending = {}
+	_begin_transition()
+
+## Resolve a escolha pendente. Devolve os eventos gerados ([] se não há escolha ou o índice é inválido).
+func choose(index: int) -> Array:
+	var events: Array = []
+	if state != "choice" or index < 0 or index >= pending["options"].size():
+		return events
+	var offer := pending
+	var option: Dictionary = offer["options"][index]
+	pending = {}
+	if String(offer["kind"]) == "event":
+		_resolve_event_choice(offer, option, events)
+	else:
+		events.append({"type": "reward_chosen", "time": time, "id": offer["id"], "item": option})
+		_grant_item(option, events)
+	_next_offer(events)
+	if telemetry != null:
+		telemetry.ingest(events)
+	return events
+
+func _resolve_event_choice(offer: Dictionary, choice: Dictionary, events: Array) -> void:
+	director.mark_seen(String(offer["id"]))
+	_flags["seen_%s" % offer["id"]] = true
+	rewards["flags"]["seen_%s" % offer["id"]] = true
+	var effects := director.resolve(choice)
+	events.append({"type": "event_resolved", "time": time, "id": offer["id"], "choice": choice["id"], "effects": effects.size(), "outcome": director.last_outcome})
+	for fx in effects:
+		_apply_effect(fx, events)
+
+func _grant_item(inst: Dictionary, events: Array) -> void:
+	rewards["items"].append(inst)
+	events.append({"type": "loot_dropped", "time": time, "item": inst})
+
+func _grant_material(id: String, quantity: int, events: Array) -> void:
+	rewards["materials"][id] = int(rewards["materials"].get(id, 0)) + quantity
+	events.append({"type": "material_dropped", "time": time, "id": id, "quantity": quantity})
+
+func _collect_drop(enemy: Dictionary, events: Array) -> void:
+	var drop := loot.roll_enemy_drop(_enemy_rows[enemy["id"]], _current_level())
+	for inst in drop["items"]:
+		_grant_item(inst, events)
+	for id in drop["materials"]:
+		_grant_material(String(id), int(drop["materials"][id]), events)
+
+func _scope_heroes(scope: String) -> Array:
+	var out: Array = []
+	for hid in _hero_order:
+		if _heroes[hid]["alive"] and (scope == "all" or scope == hid):
+			out.append(_heroes[hid])
+	return out
+
+func _apply_effect(fx: Dictionary, events: Array) -> void:
+	match String(fx["type"]):
+		"heal_fraction":
+			for h in _scope_heroes(String(fx.get("scope", "all"))):
+				var amount: float = minf(float(h["stats"]["max_hp"]) * float(fx["value"]), float(h["stats"]["max_hp"]) - float(h["hp"]))
+				if amount > 0.0:
+					h["hp"] = float(h["hp"]) + amount
+					events.append({"type": "recovery", "time": time, "source": "event", "target": h["id"], "amount": amount})
+		"damage_fraction":
+			for h in _scope_heroes(String(fx.get("scope", "all"))):
+				var lost: float = minf(float(h["stats"]["max_hp"]) * float(fx["value"]), float(h["hp"]) - 1.0)
+				if lost > 0.0:
+					h["hp"] = float(h["hp"]) - lost
+				events.append({"type": "event_damage", "time": time, "target": h["id"], "amount": maxf(lost, 0.0), "remaining": float(h["hp"])})
+		"grant_material":
+			_grant_material(String(fx["id"]), int(fx["quantity"]), events)
+		"grant_item":
+			if loot != null:
+				var inst := loot.roll_event_item(String(fx["rarity"]), _current_level())
+				if not inst.is_empty():
+					_grant_item(inst, events)
+		"grant_reward_choice":
+			if loot != null:
+				_offers.push_front({"kind": "reward", "id": "reward_event", "options": loot.roll_event_choice(_current_level(), String(fx["min_rarity"]))})
+		"set_flag":
+			_flags[fx["flag"]] = true
+			rewards["flags"][fx["flag"]] = true
+			events.append({"type": "flag_set", "time": time, "flag": fx["flag"]})
+		"reveal_lore":
+			rewards["lore"].append(fx["text_id"])
+			events.append({"type": "lore_revealed", "time": time, "text_id": fx["text_id"]})
+		"modify_next_encounter":
+			var mod: Dictionary = fx.duplicate(true)
+			mod["left"] = int(fx.get("encounters", 1))
+			mod["mid"] = _mod_uid
+			_mod_uid += 1
+			_event_mods.append(mod)
+			events.append({"type": "next_encounter_modified", "time": time, "mark": bool(fx.get("mark_first_enemy", false)), "stat": String(fx.get("stat", ""))})
+
+## Aplica os modificadores pendentes ao encontro que começa: bônus de status da party (durante N encontros) e Marca no primeiro inimigo (uma vez).
+func _apply_event_mods(_events: Array) -> void:
+	for mod in _event_mods:
+		if bool(mod.get("mark_first_enemy", false)):
+			if not _enemies.is_empty() and int(mod["left"]) > 0:
+				_enemies[0]["marked_until"] = time + 30.0
+			mod["left"] = 0
+			continue
+		if int(mod["left"]) > 0 and not bool(mod.get("applied", false)):
+			for hid in _hero_order:
+				if _heroes[hid]["alive"]:
+					_heroes[hid]["effects"].append({"source": "event", "mid": mod["mid"], "stat": mod["stat"], "op": mod["op"], "value": float(mod["value"]), "expires_at": INF, "defensive": false})
+			mod["applied"] = true
+
+## Ao fim do encontro, gasta um encontro de cada modificador aplicado e remove os bônus esgotados.
+func _expire_event_mods() -> void:
+	for mod in _event_mods:
+		if bool(mod.get("applied", false)):
+			mod["left"] = int(mod["left"]) - 1
+	var spent: Array = []
+	for mod in _event_mods:
+		if int(mod["left"]) <= 0:
+			spent.append(mod["mid"])
+	for hid in _hero_order:
+		_heroes[hid]["effects"] = _heroes[hid]["effects"].filter(func(e): return not spent.has(e.get("mid", -1)))
+	_event_mods = _event_mods.filter(func(mod): return int(mod["left"]) > 0)

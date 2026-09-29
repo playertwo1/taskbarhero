@@ -57,3 +57,19 @@ Fonte dos números: `python tools/argos/run.py --scenario slice_balance` (6 seme
 * **Proposta do Argos:** testar HP ×2 com golpe forte mais leve; manter se o playtest achar a duração boa.
 * **Decisão humana:** pendente.
 
+### [BAL-006] Builds com Lúmen dominam a rota no nível 10
+* **Data:** 2026-09-29
+* **Build Commit:** `cd47758` com alterações locais; entradas identificadas pelo `balance_hash` no relatório.
+* **Métrica observada:** `slice_balance` após a fundação global: melhor taxa de vitória 100% contra mediana de 25% no nível 10. Quatro líderes usam Lúmen; ainda existem 2 caminhos sem Lúmen entre os 7 caminhos com vitória ≥50%.
+* **Hipótese:** a cura de Lúmen converte diretamente o HP acumulado da rota, enquanto Arcano depende de sobrevivência e três combinações Arcano vencem a campanha acima da faixa 9–12. O resultado também pode estar amplificado pela amostra de 6 sementes.
+* **Proposta do Argos:** manter os valores runtime por enquanto; no playtest, comparar taxa de escolha, HP antes do Guardião e mortes por build. Se a dominância se repetir, mover parte da sobrevivência de Lúmen para ferramentas de Controle/Arcano ou reduzir sua cura antes de alterar a escala global.
+* **Decisão humana:** pendente. A exigência de ao menos um caminho sem cura está atendida na simulação; diversidade e sensação ainda precisam de playtest/telemetria.
+
+### [BAL-007] Sacrifício no Poço reduz a consistência de conclusão da run
+* **Data:** 2026-09-29
+* **Build Commit:** `cd47758` com alterações locais; entradas identificadas pelo `balance_hash` no relatório `20260929-172102_cd47758`.
+* **Métrica observada:** `slice_run_layer` executou 192 campanhas sem `BUG`. O Poço apareceu em aproximadamente 100 de cada 100 tentativas que chegaram ao nó. As variantes `base`, `eventos_frequentes` e `poco_curar` escolheram curar em 100% das ofertas; `poco_sacrificar` sacrificou em 100%. Resíduo mediano ficou em 12–13 por tentativa frente à meta hipotética de 5. O Analyst marcou 13 combinações com vitória tardia (acima do nível 12) e uma sem vitória sob sacrifício forçado.
+* **Hipótese:** o custo de HP do sacrifício pode reduzir a sobrevivência mais do que a recompensa rara compensa; as 6 sementes por configuração e a política forçada não descrevem escolha humana nem provam dominância em jogo.
+* **Proposta do Argos:** manter valores runtime; no playtest comparar curar, sacrificar e política livre com as mesmas builds/sementes, acompanhando HP antes do boss, vitórias, raridade recebida e Resíduo. Rever a meta de Resíduo separadamente se a medição real confirmar excedente.
+* **Decisão humana:** pendente. Métricas são HIPÓTESE e não justificam ajuste de números por si só.
+

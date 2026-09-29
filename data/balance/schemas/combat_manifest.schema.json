@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pocket-hero/combat-manifest",
+  "type": "object",
+  "required": ["schema_version", "global_profile", "default_chapter", "chapter_profiles"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "global_profile": {"type": "string", "pattern": "^res://"},
+    "default_chapter": {"type": "string", "minLength": 1},
+    "chapter_profiles": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string", "pattern": "^res://"}}
+  },
+  "additionalProperties": true
+}

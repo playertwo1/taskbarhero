@@ -8,11 +8,11 @@ Roadmap único do projeto: define prioridade, ordem e gates. Detalhes de design 
 
 ## 1. Onde estamos
 
-- **MVP:** concluído e homologado no gate **R19** em 2026-09-27. Não reabrir; o conteúdo legado será substituído pelo slice no `1A-CUT` (seção 4, decisão de 2026-09-29).
+- **MVP:** homologado no gate **R19** em 2026-09-27 e **substituído pelo slice no `1A-CUT`** (2026-09-29): o loop legado foi removido e só existe no git (commit `cd47758`) e em `arquivados/`. O fluxo jogável atual é `TitleScreen → SliceCampaign`.
 - **Fase atual:** expansão de conteúdo, identidade e meta-progressão.
 - **Diagnóstico de 2026-09-29:** a fundação de design está ampla (sistemas, Bastião, Flecha, Árvore, artesãos, itens, economia), mas nenhum número foi validado em jogo. O gargalo agora é **provar os contratos no SLICE-1**, não escrever mais fichas.
-- **Próximo passo:** [SLICE-1](#43-slice-1--vertical-slice-do-jogo-real), começando por 1A (migração do subconjunto para `/data` e combate). SLICE-0 e BALANCE-FOUNDATION-1 estão `PASS` (2026-09-29).
-- **Evidência técnica atual:** `python tools/run_godot_tests.py` — 11/11 cenas PASS em 2026-09-29.
+- **Próximo passo:** [SLICE-1](#43-slice-1--vertical-slice-do-jogo-real): avançar para `1C` (chefes); `1B` está implementado, aguardando revisão dos textos narrativos e validação formal em `1E`. SLICE-0, BALANCE-FOUNDATION-1 e a fundação global de balanceamento estão `PASS`; `1A-1` a `1A-CUT` e `1A-5` feitos, `1A-4` parcial (seção 4.3).
+- **Evidência técnica atual:** `python tools/run_godot_tests.py` — 25/25 cenas PASS em 2026-09-29; Analyst 10 testes OK; validador global `OK`; Argos `slice_quick` e `slice_run_layer` sem `BUG`. A matriz de run mantém achados de balanceamento/pacing em [BALANCE_FINDINGS](docs/08_qa/BALANCE_FINDINGS.md).
 
 ---
 
@@ -94,6 +94,8 @@ Gate PASS: recorte registrado com fontes, IDs e aliases; nenhum item do slice se
 
 **Estado:** `PASS` em 2026-09-29. Contrato em [SLICE_BALANCE_CONTRACT.md](docs/06_balance/SLICE_BALANCE_CONTRACT.md); números seguem HIPÓTESE até o SLICE-1E.
 
+**Fundação global — `PASS` em 2026-09-29:** núcleo compartilhado + overlay por capítulo + override de cenário, validação de referências, hashes de entradas e Argos sem IDs fixos do Capítulo 1. Contrato em [GLOBAL_BALANCE_SYSTEM.md](docs/06_balance/GLOBAL_BALANCE_SYSTEM.md). Este gate aprova a arquitetura e a reprodutibilidade; os números continuam HIPÓTESE.
+
 Integrar ao combate do Pocket Hero **apenas a parte da v0.4 que o recorte do SLICE-0 usa**, com Bastião como referência. Template base: [COMBAT_BALANCE_STANDARD](docs/06_balance/COMBAT_BALANCE_STANDARD.md). O restante do contrato fica para BALANCE-1.
 
 - [x] status canônicos usados pelo slice: ID, unidade, significado, cálculo, limites e mapeamento para os nomes/valores runtime atuais;
@@ -112,11 +114,11 @@ Fluxo: `Hub → party → build → expedição → combate → escolha → even
 
 Cada etapa fecha com teste automatizado novo em `tests/`, a suíte completa passando (`python tools/run_godot_tests.py`) e o jogo rodando com o conteúdo vigente (o legado só existe até o `1A-CUT`).
 
-- **1A — Combate e dados:** migrar o subconjunto v0.4 para `/data` com aliases; combate usa o modelo do BALANCE-FOUNDATION-1; trio com as skills do recorte. Sub-fatias: `1A-1` `CombatMath` (feito), `1A-2` dados e carregadores do slice, `1A-3` rota de 10 encontros e combate, `1A-CUT` remoção do legado com testes reescritos, `1A-4` skills, passivas e Traits, `1A-5` telemetria.
-- **1B — Run:** expedição com escolhas de build, evento e elite; loot do recorte equipável ou reciclável.
+- **1A — Combate e dados:** migrar o subconjunto v0.4 para `/data` com aliases; combate usa o modelo do BALANCE-FOUNDATION-1; trio com as skills do recorte. Sub-fatias: `1A-1` `CombatMath` (feito), `1A-2` dados e carregadores (feito: `content_set: "slice"`, manifesto + núcleo + overlay de capítulo, `BalanceProfiles`; `SliceStats` é compatibilidade), `1A-3` rota de 10 encontros e combate (feito: `route_c1.json`, `ExpeditionRun`), `1A-4` skills, passivas e Traits (parcial: efeitos implementados onde o design dá número; 6 nós com `kind: "none"` — Respiração Controlada, Rastro Aberto, Pressão Coordenada, Foco do Cristal, Fissura Persistente, Feixe Tecido — dependem de valores EM ABERTO, e Ponto de Mira/Caçada Coordenada só mudam escolha de alvo), `1A-5` telemetria (**feito em 2026-09-29**: [SliceTelemetry](scripts/combat/SliceTelemetry.gd) agrega os eventos do `ExpeditionRun`; faltam as métricas sem dado no run, listadas na seção 7 do [contrato](docs/06_balance/SLICE_BALANCE_CONTRACT.md), para `1B`/`1E`), `1A-CUT` remoção do legado (**feito em 2026-09-29**: `TitleScreen → SliceProbe`; histórico no git). Evidência vigente: 25/25 cenas PASS, validador `OK` e Argos sem `BUG`. Perdas assumidas até `1B`/`1D`: save, offline, tracker, XP/ouro contínuos, loot e inventário.
+- **1B — Run:** eventos (framework orientado a dados + 10 eventos, incluindo aleatórios, pessoais e secretos), Reward Choice em elite/mini-boss, loot por seed equipável ou reciclável e save mínimo. Desenho em [SLICE_1B_RUN_SPEC](docs/03_systems/SLICE_1B_RUN_SPEC.md), Plano A em [2026-09-29-slice-1b-nucleo.md](docs/superpowers/plans/2026-09-29-slice-1b-nucleo.md) e Plano B em [2026-09-29-slice-1b-tela-e-argos.md](docs/superpowers/plans/2026-09-29-slice-1b-tela-e-argos.md). **Estado `IMPLEMENTED` (2026-09-29):** núcleo lógico, textos (`DESIGN`, aguardando revisão), tela de campanha/inventário e camada Argos entregues. Cobertura: 25/25 cenas Godot, Analyst 10 testes OK; `slice_quick` e `slice_run_layer` sem `BUG`. Validação visual manual em 432×960 não foi possível neste ambiente; QA mobile formal permanece em `1E`.
 - **1C — Chefes:** mini-boss e Guardião-Cervo com mecânicas distintas de inimigo comum.
 - **1D — Retorno:** Hub, ramo da Árvore, Ferreiro (desmontagem + 1 melhoria), Echo opcional e mudança visual do Refúgio após o boss.
-- **1E — Validação:** QA mobile no emulador, QA visual dos assets novos e medições pendentes do ECON-1 (TTK, vitória na primeira tentativa, pacing, offline).
+- **1E — Validação:** QA mobile no emulador, QA visual dos assets novos e medições pendentes do ECON-1 (TTK, vitória na primeira tentativa, pacing, offline). Inclui validação visual em 432×960 da tela 1B.
 
 Fora do slice: árvore completa (~84 nós), os 8 heróis, artesãos em nível máximo, crafting profundo, affixes aleatórios/reforja, campanhas pessoais completas, Mastery em runtime.
 

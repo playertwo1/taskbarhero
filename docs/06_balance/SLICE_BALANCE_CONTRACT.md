@@ -18,7 +18,7 @@ certainty: HIPOTESE
 
 | | Combate atual (removido no `1A-CUT`) | Slice (v0.4) |
 | --- | --- | --- |
-| Dano | `max(1, ataque − defesa)` ([GameManager.gd](../../scripts/combat/GameManager.gd)) | `ataque × (1 − defesa/(defesa+100))`, mínimo 1 |
+| Dano | `max(1, ataque − defesa)` (`GameManager.gd`, removido no `1A-CUT`) | `ataque × (1 − defesa/(defesa+100))`, mínimo 1 |
 | Crítico | ×2,0 fixo; chance por herói (5% a 20%) | `crit_damage` base ×1,5 por herói; `crit_chance` base 5% |
 | Ritmo | `cd_interval` em segundos | `attack_speed` em golpes/s; intervalo = 1 ÷ `attack_speed` |
 | Nível | +10 HP, +1,5 ATK, +0,5 DEF por nível | interpolação linear até o nível 100 |
@@ -102,7 +102,7 @@ Bastião: HP 160, ATK 10, DEF 18, AS 0,80, crit 3%, crit dmg ×1,5. Geleia de L�
 
 **Método (HIPÓTESE):** herói no nível do conteúdo ([HERO_STATS_BALANCE](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/HERO_STATS_BALANCE.md), interpolação linear); inimigo = `HERO_REFERENCE` do nível × arquétipo × rank ([ENEMY_STATS_BALANCE](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/ENEMY_STATS_BALANCE.md)). O DPS usa o multiplicador sustentado ×1,75 do v0.4, que é regra de balanceamento e **não** existe no runtime.
 
-- **Nível do conteúdo (DECIDIDO):** o `min_level` da fase macro em [stages.json](../../data/stages/stages.json). Os encontros das fases 1 a 5 usam nível 1 a 5 e o Guardião usa o nível 5; a party esperada tem o mesmo nível. Os valores são HIPÓTESE, medidos no `SLICE-1E`.
+- **Nível do conteúdo (DECIDIDO):** o `min_level` da fase macro (`stages.json` legado, removido no `1A-CUT`; os níveis vigentes estão em [route_c1.json](../../data/expedition/route_c1.json)). Os encontros das fases 1 a 5 usam nível 1 a 5 e o Guardião usa o nível 5; a party esperada tem o mesmo nível. Os valores são HIPÓTESE, medidos no `SLICE-1E`.
 - **Dano inimigo (DECIDIDO, HIPÓTESE local):** as tabelas do v0.4 dão 14 a 17 s para um inimigo comum consumir o HP do herói de referência, contra os 25 a 35 s que o próprio v0.4 pede. A meta de 25 a 35 s governa: um único `enemy_damage_scale` = **0,50** multiplica o `attack` dos inimigos do slice (27,9 s no nível 1, 28,1 s no 5, 30,8 s no 50, 34,1 s no 100). As tabelas do v0.4 **não são editadas**; a divergência fica registrada para o `BALANCE-1`.
 - **Escala de party (HIPÓTESE):** HP de elite, mini-boss e boss ×3 (tamanho da party), critério já usado no ECON-1 para o Guardião. Comuns não são escalados.
 
@@ -125,7 +125,7 @@ Resultado de `slice_baseline.py` (party Bastião, Flecha e Íris, sem equipament
 
 > **Atualizado pelo [balanceamento v0.5](BALANCE_V0.5.md):** nível de conteúdo por fase, escala de HP do chefe, golpes telegrafados e demais mudanças; em caso de divergência com este contrato, vale o v0.5 e os valores de `/data`.
 
-- **DECIDIDO:** o jogo é incremental (níveis 1–100). O Guardião do Capítulo 1 deve ser vencido **por volta do nível 10–11**, depois de derrotas e vitórias parciais; vencer no nível 5 não é objetivo. O alvo está em `chapter_targets` de [combat_profiles.json](../../data/balance/combat_profiles.json).
+- **DECIDIDO:** o jogo é incremental (níveis 1–100). O Guardião do Capítulo 1 deve ser vencido **por volta do nível 10–11**, depois de derrotas e vitórias parciais; vencer no nível 5 não é objetivo. O alvo está em `chapter_targets` do [perfil do Capítulo 1](../../data/balance/chapters/chapter_01.json).
 - **DECIDIDO:** HP volta ao máximo no Hub; dentro da expedição existe **fôlego entre encontros**. **HIPÓTESE:** 10% do HP máximo dos vivos ao fim de um encontro em que ninguém caiu (`recovery_between_encounters` no mesmo arquivo).
 - **Medido (Argos, simulação, não playtest):** com fôlego e o Pulso Restaurador experimental reduzido, as 18 combinações de builds vencem a campanha entre os níveis 7 e 14 (mediana perto de 9–12). Relatórios e achados: [BALANCE_FINDINGS](../08_qa/BALANCE_FINDINGS.md) e `tools/argos/reports/`.
 
@@ -166,7 +166,8 @@ Fonte: [BALANCE_TELEMETRY](../../documents/canonical/taskbar_sistema_v0.4/source
 | Economia | Resíduo de Lúmen, Ouro e Fragmentos de Ressonância ganhos e gastos por run |
 
 - O evento base (`combat_event`) e o resultado do encontro seguem o v0.4; os campos de seed e `run_id` entram para reproduzir críticos, procs e loot.
-- **Lacuna atual:** [Telemetry.gd](../../scripts/debug/Telemetry.gd) registra apenas abates, mortes de herói e drops. Os eventos acima são trabalho do `SLICE-1A` a `1E`.
+- **Implementado no `SLICE-1A-5`:** [SliceTelemetry.gd](../../scripts/combat/SliceTelemetry.gd) agrega o fluxo de eventos do `ExpeditionRun`, ligado por `options["telemetry"] = true` (desligado por padrão; o combate nunca o lê; teste em [test_slice_telemetry.gd](../../tests/unit/test_slice_telemetry.gd)). Cobre dano (total, por fonte, por skill, crítico), recebido (total, por fonte, maior golpe), cura, escudo gerado/consumido, `casts` e `hits`, aplicações de debuff, quebras de Stagger (`breaks`, `time_to_break`, `damage_during_break`), Perfect Blocks e resultado por encontro. Danos são os valores dos eventos, sem descontar overkill; `effective_healing` = `healing_done` porque os eventos já trazem a cura efetiva.
+- **Ainda sem dado no run (pendente para `1B`/`1E`):** `cooldown_uptime`, `debuff_uptime`, `stagger_damage` (postura), tempo com *Guarda pronta*, dano evitado, `shield_expired`, `build_id`/`equipment_score` por encontro (só via `telemetry_context`) e toda a economia (Resíduo, Ouro, Fragmentos), que depende do loot do `1B`.
 - Métricas fora do slice: summons, DOT e as de recursos de outros heróis.
 
 ## 8. Rastreio dos números

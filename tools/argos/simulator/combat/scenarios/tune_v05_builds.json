@@ -1,5 +1,7 @@
 {
   "id": "tune_v05_builds",
+  "chapter_id": "CHAPTER_01",
+  "party": ["hero_001", "hero_002", "hero_003"],
   "description": "v0.5: ajuste fino de Guardião e Arcano sobre níveis 1/3/5/7/10 e chefe ×1,5.",
   "seeds": 6,
   "levels": [

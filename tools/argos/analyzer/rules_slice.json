@@ -22,6 +22,7 @@
   "viable_path": {
     "min_route_win_rate": 0.5,
     "max_level": 11,
+    "min_coverage_level": 10,
     "min_paths": 2,
     "min_paths_without": {
       "hero_003": "lumen"

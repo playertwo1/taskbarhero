@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "tools" / "economy"))
 import simulate_chapter1_balance as econ  # noqa: E402  (reuses the ECON-1 parsers)
 
-STAGES_PATH = ROOT / "data" / "stages" / "stages.json"
+ROUTE_PATH = ROOT / "data" / "expedition" / "route_c1.json"
 
 # SLICE_1_SCOPE.md, section 2. Order is the route order.
 SLICE_ROUTE = [
@@ -138,7 +138,7 @@ def main() -> None:
 
     plan = econ.load(econ.PLAN_PATH)
     enemies = {e["identity"]["id"]: e for e in econ.load(econ.ENEMIES_PATH)["enemies"]}
-    stages = econ.load(STAGES_PATH)
+    levels = {n["plan_id"]: int(n["level"]) for n in econ.load(ROUTE_PATH)["nodes"] if n.get("type") == "encounter"}
     plan_by_id = {e["id"]: e for e in plan["encounters"]}
     assert set(SLICE_ROUTE) <= set(plan_by_id), "Slice route references an unknown encounter"
 
@@ -147,8 +147,7 @@ def main() -> None:
     print("| --- | ---: | --- | ---: | --- | ---: | ---: | ---: |")
     for enc_id in SLICE_ROUTE:
         enc = plan_by_id[enc_id]
-        stage = int(enc_id.split("_")[1])
-        level = int(stages[stage - 1]["min_level"])
+        level = levels[enc_id]
         row = encounter_row(enc, enemies, level, args.party_scale)
         main_rank = enc["kind"]
         lo, hi = TARGET_TTK[main_rank]

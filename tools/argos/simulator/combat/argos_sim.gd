@@ -1,13 +1,13 @@
 extends Node
 
+const Profiles := preload("res://scripts/combat/BalanceProfiles.gd")
+
 ## ARGOS-SIM (camada de simulação headless do Argos). Sem IA, sem sprites: roda o ExpeditionRun
-## do slice para cada cenário, verifica oráculos de invariantes em cada execução e grava uma
+## para cada cenário, verifica oráculos de invariantes em cada execução e grava uma
 ## linha JSON por execução. Quem agrega e classifica é tools/argos/analyzer/analyze.py.
 ## Uso: godot --headless --path . res://tools/argos/simulator/combat/ArgosSim.tscn --
 ##      scenario=res://tools/argos/simulator/combat/scenarios/slice_balance.json out=<arquivo.jsonl>
 
-const ROUTE_PATH := "res://data/expedition/route_c1.json"
-const SEGMENTS := {"elite": "c1_2_2_b", "rainha": "c1_3_2_a", "guardiao": "c1_5_2_a"}
 const TELEGRAPH_OVERRIDE := {"skill_bas_007": {"type": "telegraph_on_self"}}
 
 var route: Dictionary
@@ -17,12 +17,18 @@ var skills: Array
 var passives: Array
 var items: Array
 var profiles: Dictionary
+var chapter_config: Dictionary
+var segments: Dictionary
+var party_ids: Array
+var boss_entry_node := ""
 var enemy_rank := {}
 var out_file: FileAccess
 var scenario: Dictionary
 ## Variante ativa (cenário com "variants"): sobrescritas só nesta execução, nunca gravadas em /data.
 var variant_id := ""
 var run_options := {}
+var variant_policy := {}
+var variant_event_rules := {}
 var base_skills: Array
 var base_passives: Array
 var base_damage_scale := 0.0
@@ -53,22 +59,34 @@ func _ready() -> void:
 		push_error("ARGOS: não foi possível abrir a saída")
 		get_tree().quit(2)
 		return
-	route = _json(ROUTE_PATH)
-	heroes = SliceStats.load_rows("res://data/heroes/heroes.json", "slice")
-	enemies = SliceStats.load_rows("res://data/enemies/enemies.json", "slice")
-	skills = SliceStats.load_rows("res://data/skills/skills_slice.json", "slice")
-	passives = SliceStats.load_rows("res://data/skills/passives_slice.json", "slice")
-	items = SliceStats.load_rows("res://data/items/items.json", "slice")
-	profiles = SliceStats.load_profiles()
+	var chapter_id := String(scenario.get("chapter_id", Profiles.default_chapter()))
+	chapter_config = Profiles.chapter_config(chapter_id)
+	if chapter_config.is_empty():
+		push_error("ARGOS: perfil de capítulo não encontrado: %s" % chapter_id)
+		get_tree().quit(2)
+		return
+	var runtime: Dictionary = chapter_config.get("runtime", {})
+	var content_set := String(chapter_config.get("content_set", "slice"))
+	route = _json(String(runtime.get("route", "")))
+	heroes = Profiles.load_rows(String(runtime.get("heroes", "")), content_set)
+	enemies = Profiles.load_rows(String(runtime.get("enemies", "")), content_set)
+	skills = Profiles.load_rows(String(runtime.get("skills", "")), content_set)
+	passives = Profiles.load_rows(String(runtime.get("passives", "")), content_set)
+	items = Profiles.load_rows(String(runtime.get("items", "")), content_set)
+	profiles = Profiles.load_profiles(chapter_id, scenario.get("overrides", {}))
+	var argos_config: Dictionary = chapter_config.get("argos", {})
+	party_ids = scenario.get("party", argos_config.get("default_party", [])).duplicate()
+	segments = scenario.get("segments", argos_config.get("segments", {})).duplicate()
+	boss_entry_node = String(argos_config.get("boss_entry_node", ""))
 	for e in enemies:
 		enemy_rank[e["id"]] = e["rank"]
-	# Cenário pode sobrescrever enemy_damage_scale só nesta execução (nunca grava em /data).
-	if scenario.get("overrides", {}).has("enemy_damage_scale"):
-		profiles["enemy_damage_scale"] = float(scenario["overrides"]["enemy_damage_scale"])
 	base_skills = skills
 	base_passives = passives
 	base_damage_scale = float(profiles["enemy_damage_scale"])
-	_write({"kind": "meta", "scenario": scenario.get("id", ""), "seeds": scenario.get("seeds", 0),
+	_write({"kind": "meta", "scenario": scenario.get("id", ""), "chapter_id": chapter_id,
+		"balance_version": chapter_config.get("balance_version", ""), "resolved_sources": profiles.get("resolved_sources", []),
+		"party": party_ids, "levels": scenario.get("levels", []), "modes": scenario.get("modes", ["route"]),
+		"seeds": scenario.get("seeds", 0),
 		"enemy_damage_scale": profiles["enemy_damage_scale"], "godot": Engine.get_version_info()["string"],
 		"variants": scenario.get("variants", []).map(func(v): return v["id"])})
 	var variants: Array = scenario.get("variants", [{"id": ""}])
@@ -87,7 +105,7 @@ func _run_matrix() -> void:
 				if modes.has("route"):
 					_route_run(build, int(level), s)
 				if modes.has("segments"):
-					for key in SEGMENTS:
+					for key in segments:
 						_segment_run(build, int(level), s, key)
 		if modes.has("campaign"):
 			for s in range(1, int(scenario.get("seeds", 5)) + 1):
@@ -98,12 +116,13 @@ func _run_matrix() -> void:
 func _apply_variant(v: Dictionary) -> void:
 	variant_id = String(v.get("id", ""))
 	run_options = v.get("run_options", {})
+	variant_policy = v.get("campaign_policy", {})
+	variant_event_rules = v.get("event_rules", {})
 	if base_profiles.is_empty():
 		base_profiles = profiles.duplicate(true)
 		base_route = route.duplicate(true)
-	# Perfis voltam ao original e recebem as sobrescritas da variante (o cache é compartilhado).
-	for key in base_profiles:
-		profiles[key] = base_profiles[key].duplicate(true) if base_profiles[key] is Dictionary else base_profiles[key]
+	# Perfis voltam ao original e recebem as sobrescritas da variante.
+	profiles = base_profiles.duplicate(true)
 	for key in v.get("profile_overrides", {}):
 		profiles[key] = v["profile_overrides"][key]
 	profiles["enemy_damage_scale"] = float(v.get("enemy_damage_scale", profiles.get("enemy_damage_scale", base_damage_scale)))
@@ -141,15 +160,22 @@ func _write(record: Dictionary) -> void:
 
 func _combos() -> Array:
 	var opts: Dictionary = scenario["builds"]
-	var out := []
-	for b in opts["hero_001"]:
-		for f in opts["hero_002"]:
-			for i in opts["hero_003"]:
-				out.append({"hero_001": b, "hero_002": f, "hero_003": i})
+	var out: Array = [{}]
+	for hid in party_ids:
+		var expanded: Array = []
+		for partial in out:
+			for build_id in opts.get(hid, []):
+				var combo: Dictionary = partial.duplicate()
+				combo[hid] = build_id
+				expanded.append(combo)
+		out = expanded
 	return out
 
 func _label(build: Dictionary) -> String:
-	var label := "%s/%s/%s" % [build["hero_001"], build["hero_002"], build["hero_003"]]
+	var parts := PackedStringArray()
+	for hid in party_ids:
+		parts.append(String(build.get(hid, "?")))
+	var label := "/".join(parts)
 	return label if variant_id == "" else "%s · %s" % [variant_id, label]
 
 func _hero_row(id: String) -> Dictionary:
@@ -183,20 +209,20 @@ func _options(build: Dictionary, level: int, seed_value: int, equipment: Diction
 			overrides.merge(TELEGRAPH_OVERRIDE)
 	var opts := {"seed": seed_value, "crits": true, "party_level": level, "skills": skills, "builds": builds,
 		"trigger_overrides": overrides, "passives": passives, "skill_ranks": _ranks(build, level), "items": items,
-		"equipment": equipment}
+		"equipment": equipment, "balance_profiles": profiles}
 	opts.merge(run_options, true)
 	return opts
 
 func _single(node_id: String) -> Dictionary:
 	for n in route["nodes"]:
 		if n["id"] == node_id:
-			return {"transition_seconds": route.get("transition_seconds", 0.6), "nodes": [n]}
+			return {"chapter_id": route.get("chapter_id", ""), "transition_seconds": route.get("transition_seconds", 0.6), "nodes": [n]}
 	return {}
 
 func _max_party_hp(level: int) -> float:
 	var total := 0.0
-	for r in heroes:
-		total += float(SliceStats.hero_stats(r, level)["max_hp"])
+	for hid in party_ids:
+		total += float(Profiles.hero_stats(_hero_row(String(hid)), level)["max_hp"])
 	return total
 
 # --- Execuções ------------------------------------------------------------------------------
@@ -206,7 +232,8 @@ func _route_run(build: Dictionary, level: int, seed_value: int) -> void:
 	var run := ExpeditionRun.create(route, heroes, enemies, opts)
 	var events := run.run_to_end(0.25, float(scenario.get("max_time", 3600.0)))
 	var rec := _summarize(run, events, level)
-	rec.merge({"kind": "route", "build": _label(build), "level": level, "seed": seed_value})
+	rec.merge({"kind": "route", "build": _label(build), "build_map": build.duplicate(), "level": level,
+		"seed": seed_value, "boss_entry_node": boss_entry_node})
 	# Oráculo de determinismo: 1 semente por combinação/nível repete com outro passo.
 	if seed_value == 1:
 		var again := ExpeditionRun.create(route, heroes, enemies, opts).run_to_end(5.0, float(scenario.get("max_time", 3600.0)))
@@ -215,16 +242,22 @@ func _route_run(build: Dictionary, level: int, seed_value: int) -> void:
 	_write(rec)
 
 func _segment_run(build: Dictionary, level: int, seed_value: int, key: String) -> void:
-	var run := ExpeditionRun.create(_single(SEGMENTS[key]), heroes, enemies, _options(build, level, seed_value))
+	var single := _single(String(segments[key]))
+	var content_level := int(single.get("nodes", [{}])[0].get("level", level))
+	var run := ExpeditionRun.create(single, heroes, enemies, _options(build, level, seed_value))
 	var events := run.run_to_end(0.25, float(scenario.get("max_time", 3600.0)))
 	var rec := _summarize(run, events, level)
-	rec.merge({"kind": "segment", "segment": key, "build": _label(build), "level": level, "seed": seed_value})
+	rec.merge({"kind": "segment", "segment": key, "build": _label(build), "build_map": build.duplicate(),
+		"level": level, "content_level": content_level, "seed": seed_value})
 	_write(rec)
 
 ## Tentativas sucessivas: HP cheio a cada tentativa (volta ao Hub), XP acumula mesmo em derrota.
 ## Com campaign.loot, os drops (modelo canônico simplificado) ficam no inventário e o Hub equipa
 ## o melhor item por herói e slot antes da tentativa seguinte.
 func _campaign(build: Dictionary, seed_value: int) -> void:
+	if bool(scenario.get("campaign", {}).get("run_layer", false)):
+		_campaign_run_layer(build, seed_value)
+		return
 	var c: Dictionary = scenario.get("campaign", {})
 	var level := int(c.get("start_level", 1))
 	var xp := 0
@@ -239,7 +272,7 @@ func _campaign(build: Dictionary, seed_value: int) -> void:
 	var inventory := []
 	var equipment := {}
 	var totals := {"gold": 0, "residue": 0, "items": 0}
-	var party := ["hero_001", "hero_002", "hero_003"]
+	var party := party_ids
 	var node_level := {}
 	for n in route["nodes"]:
 		node_level[n["id"]] = int(n.get("level", 1))
@@ -276,8 +309,92 @@ func _campaign(build: Dictionary, seed_value: int) -> void:
 		if summary["won"]:
 			won = true
 			break
-	_write({"kind": "campaign", "build": _label(build), "seed": seed_value, "won": won,
+	_write({"kind": "campaign", "build": _label(build), "build_map": build.duplicate(), "seed": seed_value, "won": won,
 		"attempts": attempts.size(), "final_level": level, "history": attempts, "loot": loot != null, "totals": totals})
+
+## Escolha automática do Argos (não é comportamento de jogador): recompensa = melhor raridade/IP; evento = política ou opção 0.
+func _pick(pending: Dictionary, policy: Dictionary) -> int:
+	var options: Array = pending["options"]
+	if String(pending["kind"]) == "reward":
+		if String(policy.get("reward", "best")) != "best":
+			return 0
+		var best := 0
+		for i in options.size():
+			var a: Dictionary = options[i]
+			var b: Dictionary = options[best]
+			if LootRoller.rarity_rank(a["rarity"]) * 1000 + int(a["item_power"]) > LootRoller.rarity_rank(b["rarity"]) * 1000 + int(b["item_power"]):
+				best = i
+		return best
+	var want := String(policy.get(String(pending["id"]), ""))
+	for i in options.size():
+		if String(options[i]["id"]) == want:
+			return i
+	return 0
+
+func _events_director(seed_value: int) -> EventDirector:
+	var catalog := EventDirector.load_catalog()
+	for key in variant_event_rules:
+		catalog["random_rules"][key] = variant_event_rules[key]
+	return EventDirector.create(catalog, seed_value)
+
+## Campanha com o núcleo real do 1B: SliceCampaign em memória, loot/eventos/inventário verdadeiros.
+## Mesmo formato de registro da campanha antiga, mais history[].events para o Analyst.
+func _campaign_run_layer(build: Dictionary, seed_value: int) -> void:
+	var c: Dictionary = scenario.get("campaign", {})
+	var policy: Dictionary = c.get("policy", {}).duplicate()
+	policy.merge(variant_policy, true)
+	var campaign := SliceCampaign.in_memory()
+	campaign.data["party"]["level"] = int(c.get("start_level", 1))
+	var attempts := []
+	var totals := {"gold": 0, "residue": 0, "items": 0}
+	var won := false
+	for attempt in range(1, int(c.get("max_attempts", 10)) + 1):
+		var level := int(campaign.data["party"]["level"])
+		var attempt_seed := seed_value * 1000 + attempt
+		var options := _options(build, level, attempt_seed, campaign.inventory.equipment_for_run())
+		if not variant_event_rules.is_empty():
+			options["events"] = _events_director(attempt_seed)
+		var run := campaign.start_expedition(build, attempt_seed, options)
+		var events: Array = []
+		var guard := 0
+		while run.state != "won" and run.state != "lost" and run.time < float(scenario.get("max_time", 3600.0)) and guard < 100000:
+			guard += 1
+			if run.state == "choice":
+				events.append_array(campaign.choose(run, _pick(run.pending, policy)))
+			else:
+				events.append_array(campaign.step(run, 0.25))
+		var summary := _summarize(run, events, level)
+		var layer := {"offered": {}, "resolved": {}, "loot_by_rarity": {}}
+		var residue := 0
+		var items_dropped := 0
+		for e in events:
+			match String(e["type"]):
+				"event_offered":
+					layer["offered"][e["id"]] = int(layer["offered"].get(e["id"], 0)) + 1
+				"event_resolved":
+					var key := "%s:%s" % [e["id"], e["choice"]]
+					layer["resolved"][key] = int(layer["resolved"].get(key, 0)) + 1
+				"loot_dropped":
+					layer["loot_by_rarity"][e["item"]["rarity"]] = int(layer["loot_by_rarity"].get(e["item"]["rarity"], 0)) + 1
+					items_dropped += 1
+				"material_dropped":
+					residue += int(e["quantity"])
+		campaign.finish_expedition(run)
+		campaign.auto_equip(party_ids)
+		var equipped := 0
+		for hid in campaign.inventory.equipped:
+			equipped += campaign.inventory.equipped[hid].size()
+		totals["residue"] += residue
+		totals["items"] += items_dropped
+		attempts.append({"level": level, "won": summary["won"], "furthest": summary["furthest_node"], "xp": summary["xp"],
+			"violations": summary["violations"], "gold": 0, "residue": residue, "items_dropped": items_dropped,
+			"equipped_after": equipped, "events": layer})
+		if summary["won"]:
+			won = true
+			break
+	_write({"kind": "campaign", "build": _label(build), "build_map": build.duplicate(), "seed": seed_value, "won": won,
+		"attempts": attempts.size(), "final_level": int(campaign.data["party"]["level"]), "history": attempts,
+		"loot": true, "run_layer": true, "totals": totals})
 
 # --- Métricas e oráculos --------------------------------------------------------------------
 

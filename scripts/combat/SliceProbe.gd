@@ -1,15 +1,10 @@
 extends Control
 
-## Tela de sondagem local do slice. Não lê ou altera o save do MVP.
+## Tela de sondagem local do slice. Tela jogável do slice (promovida a fluxo principal no 1A-CUT); ainda não usa save.
 ## A expedição vem do SliceSession e fica registrada no DebugBridge; em DevMode o estado é gravado
 ## em user://argos/slice_state.json a cada mudança de encontro (leitura externa pelo Argos).
 const LEVELS := [1, 3, 5, 7, 10, 15, 20]
-const BUILDS := [
-	{"name": "Ofensivo", "heroes": {"hero_001": "retaliacao", "hero_002": "marca", "hero_003": "arcano"}},
-	{"name": "Controle", "heroes": {"hero_001": "retaliacao_tele", "hero_002": "marca", "hero_003": "controle"}},
-	{"name": "Guardião", "heroes": {"hero_001": "guardiao", "hero_002": "critico", "hero_003": "controle"}},
-	{"name": "Cura", "heroes": {"hero_001": "retaliacao", "hero_002": "critico", "hero_003": "lumen"}},
-]
+const BUILDS := SliceSession.BUILD_PRESETS
 
 var run: ExpeditionRun
 var selected_level := 5
@@ -99,9 +94,9 @@ func _build_ui() -> void:
 	log_label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(log_label)
 	var back := Button.new()
-	back.text = "Voltar ao MVP"
+	back.text = "Voltar ao título"
 	back.custom_minimum_size.y = 50
-	back.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/main/Main.tscn"))
+	back.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/ui/TitleScreen.tscn"))
 	column.add_child(back)
 
 func _cycle_speed() -> void:

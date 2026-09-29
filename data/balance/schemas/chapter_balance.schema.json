@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "pocket-hero/chapter-balance",
+  "type": "object",
+  "required": ["profile_id", "chapter_id", "content_set", "runtime", "argos", "balance_version"],
+  "properties": {
+    "chapter_id": {"type": "string", "minLength": 1},
+    "content_set": {"type": "string", "minLength": 1},
+    "enemy_damage_scale": {"type": "number", "exclusiveMinimum": 0},
+    "party_hp_scale": {"type": ["number", "object"]},
+    "runtime": {
+      "type": "object",
+      "required": ["route", "heroes", "enemies", "skills", "passives", "items"]
+    },
+    "argos": {
+      "type": "object",
+      "required": ["default_party", "segments", "boss_entry_node"]
+    }
+  },
+  "additionalProperties": true
+}

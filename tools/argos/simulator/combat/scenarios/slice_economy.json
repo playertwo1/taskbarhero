@@ -1,5 +1,7 @@
 {
   "id": "slice_economy",
+  "chapter_id": "CHAPTER_01",
+  "party": ["hero_001", "hero_002", "hero_003"],
   "description": "Campanha com loot: drops pelo modelo canônico simplificado entram no inventário e o Hub equipa o melhor item antes da próxima tentativa. Mede ouro, Resíduo, itens e o efeito do equipamento no número de tentativas.",
   "seeds": 6,
   "levels": [5],

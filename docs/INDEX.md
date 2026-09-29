@@ -21,6 +21,7 @@ Abra somente o índice da área necessária. Os índices encaminham para as font
 - [Estado resumido](../PROJECT_STATE.md) — orientação; fontes citadas mantêm autoridade sobre os detalhes.
 - [Roadmap](../ROADMAP.md) — prioridade, fase atual e gates.
 - [Registro de conteúdo](CONTENT_REGISTRY.md) — IDs de design e ponteiros para fontes de conteúdo/runtime.
+- [Sistema global de balanceamento](06_balance/GLOBAL_BALANCE_SYSTEM.md) — precedência núcleo → capítulo → cenário, validação e gates.
 - [Índice de documentos base](../documents/INDEX.md) — guias e originais DOCX.
 - [Índice de bases canônicas importadas](../documents/canonical/INDEX.md) — sistemas v0.4 aprovados como autoridade de design.
 

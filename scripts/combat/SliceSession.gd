@@ -9,6 +9,14 @@ class_name SliceSession
 const ROUTE_PATH := "res://data/expedition/route_c1.json"
 const TELEGRAPH_OVERRIDE := {"skill_bas_007": {"type": "telegraph_on_self"}}
 
+## Builds prontas para a tela e o teste (herói → chave de build; "_tele" liga o gatilho do golpe telegrafado).
+const BUILD_PRESETS := [
+	{"name": "Ofensivo", "heroes": {"hero_001": "retaliacao", "hero_002": "marca", "hero_003": "arcano"}},
+	{"name": "Controle", "heroes": {"hero_001": "retaliacao_tele", "hero_002": "marca", "hero_003": "controle"}},
+	{"name": "Guardião", "heroes": {"hero_001": "guardiao", "hero_002": "critico", "hero_003": "controle"}},
+	{"name": "Cura", "heroes": {"hero_001": "retaliacao", "hero_002": "critico", "hero_003": "lumen"}},
+]
+
 static var _cache: Dictionary = {}
 
 static func data() -> Dictionary:

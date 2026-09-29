@@ -5,33 +5,6 @@ extends Node
 
 const SNAPSHOTS_DIR := "user://snapshots/"
 
-func capture_snapshot(build_hash: String = "local_dev", tag: String = "") -> Dictionary:
-	var snapshot := {
-		"build": build_hash,
-		"timestamp": Time.get_datetime_string_from_system(true),
-		"seed": randi(),
-		"stage": ProgressionManager.current_stage,
-		"time_seconds": Time.get_ticks_msec() / 1000,
-		"level": ProgressionManager.level,
-		"xp": ProgressionManager.xp,
-		"xp_next": ProgressionManager.xp_next,
-		"gold": ProgressionManager.gold,
-		"hero": {
-			"hp": GameManager.hero_current_hp,
-			"max_hp": GameManager.get_total_hero_max_hp(),
-			"attack": GameManager.get_total_hero_attack(),
-			"defense": GameManager.get_total_hero_defense(),
-			"crit": GameManager.get_total_hero_crit(),
-			"lifesteal": GameManager.get_total_hero_lifesteal()
-		},
-		"equipment": LootManager.equipment,
-		"inventory_count": LootManager.inventory.size(),
-		"active_enemy": GameManager.active_enemy.get("id", "none"),
-		"enemy_hp": GameManager.active_enemy_hp,
-		"tag": tag
-	}
-	return snapshot
-
 ## Snapshot da expedição do slice (SliceSession/ExpeditionRun). context: build, nível, seed, tentativa.
 func capture_slice_snapshot(run: ExpeditionRun, context: Dictionary = {}) -> Dictionary:
 	if run == null:

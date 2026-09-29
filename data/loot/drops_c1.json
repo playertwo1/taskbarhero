@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "status": "HIPOTESE",
+  "source": "docs/03_systems/SLICE_1B_RUN_SPEC.md seção 4; chances de CHAPTER_01_ENEMIES_CANONICAL.json; raridades de loot_system_contract_v0.4.json renormalizadas para o recorte",
+  "item_power": {"NORMAL": [1, 18], "ELITE": [10, 24], "MINIBOSS": [16, 28], "BOSS": [22, 32], "EVENT_REWARD": [10, 24]},
+  "equipment_chance": {"NORMAL": 0.10, "ELITE": 0.0, "MINIBOSS": 0.0, "BOSS": 0.0},
+  "rarity": {
+    "NORMAL": {"Comum": 0.633, "Incomum": 0.276, "Raro": 0.091},
+    "ELITE": {"Incomum": 0.4375, "Raro": 0.5625},
+    "MINIBOSS": {"Raro": 1.0},
+    "BOSS": {"Épico": 0.85, "Relíquia": 0.15},
+    "BOSS_FIRST_CLEAR": {"Épico": 1.0},
+    "EVENT_REWARD": {"Incomum": 0.5, "Raro": 0.5}
+  },
+  "reward_choice_options": 3,
+  "relic_item_id": "item_a_005",
+  "materials": {
+    "en_c1_001": [{"id": "MAT_C1_LUMEN_RESIDUE", "chance": 0.65, "min": 1, "max": 1}],
+    "el_c1_001": [{"id": "MAT_C1_LUMEN_RESIDUE", "chance": 1.0, "min": 1, "max": 2}],
+    "mb_c1_001": [{"id": "MAT_C1_LUMEN_RESIDUE", "chance": 1.0, "min": 2, "max": 4}]
+  },
+  "recycle": {"Comum": 1, "Incomum": 2, "Raro": 3, "Épico": 5}
+}

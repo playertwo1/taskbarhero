@@ -7,6 +7,7 @@ Saída em tools/argos/reports/<AAAAMMDD-HHMMSS>_<commit>/ (runs.jsonl fica fora 
 """
 import argparse
 import datetime
+import hashlib
 import json
 import os
 import subprocess
@@ -16,6 +17,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 DEFAULT_GODOT = os.path.join(ROOT, "Godot_v4.7.2-stable_win64.exe", "Godot_v4.7.2-stable_win64_console.exe")
 SCENARIOS = os.path.join(HERE, "simulator", "combat", "scenarios")
+VALIDATOR = os.path.join(ROOT, "tools", "balance", "validate_balance_data.py")
 
 
 def git(*args):
@@ -23,6 +25,27 @@ def git(*args):
         return subprocess.run(["git", *args], cwd=ROOT, capture_output=True, text=True, check=True).stdout.strip()
     except (OSError, subprocess.CalledProcessError):
         return ""
+
+
+def resource_path(value):
+    return os.path.join(ROOT, *value[6:].split("/"))
+
+
+def balance_inputs(scenario_file):
+    manifest_file = os.path.join(ROOT, "data", "balance", "combat_profiles.json")
+    manifest = json.load(open(manifest_file, encoding="utf-8"))
+    scenario = json.load(open(scenario_file, encoding="utf-8"))
+    chapter_id = scenario.get("chapter_id", manifest["default_chapter"])
+    files = [manifest_file, resource_path(manifest["global_profile"]),
+             resource_path(manifest["chapter_profiles"][chapter_id]), scenario_file]
+    hashes = {}
+    combined = hashlib.sha256()
+    for path in files:
+        digest = hashlib.sha256(open(path, "rb").read()).hexdigest()
+        rel = os.path.relpath(path, ROOT).replace(os.sep, "/")
+        hashes[rel] = digest
+        combined.update(rel.encode("utf-8") + b"\0" + digest.encode("ascii") + b"\0")
+    return hashes, combined.hexdigest()
 
 
 def main():
@@ -40,13 +63,19 @@ def main():
     if not os.path.isfile(args.godot):
         sys.exit(f"Godot não encontrado em {args.godot}; use --godot ou a variável GODOT.")
 
+    validation = subprocess.run([sys.executable, VALIDATOR, "--scenario", scenario_file], cwd=ROOT)
+    if validation.returncode:
+        sys.exit("Argos: dados de balanceamento inválidos; simulação cancelada.")
+
     commit = git("rev-parse", "--short", "HEAD") or "sem-git"
     dirty = bool(git("status", "--porcelain", "--untracked-files=no"))
     stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
     out_dir = os.path.join(HERE, "reports", f"{stamp}_{commit}")
     os.makedirs(out_dir, exist_ok=True)
     runs = os.path.join(out_dir, "runs.jsonl")
-    json.dump({"commit": commit, "dirty": dirty, "scenario_file": os.path.relpath(scenario_file, ROOT).replace(os.sep, "/")},
+    inputs, balance_hash = balance_inputs(scenario_file)
+    json.dump({"commit": commit, "dirty": dirty, "scenario_file": os.path.relpath(scenario_file, ROOT).replace(os.sep, "/"),
+               "balance_hash": balance_hash, "balance_inputs": inputs},
               open(os.path.join(out_dir, "meta.json"), "w", encoding="utf-8"), indent=1)
 
     res_path = "res://" + os.path.relpath(scenario_file, ROOT).replace(os.sep, "/")

@@ -82,7 +82,7 @@ Esses intervalos combinam o valor esperado dos rolls normais com quantidades gar
 
 ## Diagnóstico estático do runtime atual
 
-Os dados e fórmulas inspecionados estão em [`stages.json`](../../data/stages/stages.json), [`enemies.json`](../../data/enemies/enemies.json), [`items.json`](../../data/items/items.json), [`ProgressionManager.gd`](../../scripts/progression/ProgressionManager.gd), [`GameManager.gd`](../../scripts/combat/GameManager.gd) e [`LootManager.gd`](../../scripts/loot/LootManager.gd). A estimativa supõe uma primeira passagem pelas cinco fases, todos os kills exigidos, um líder nas fases 4 e 5 e as distribuições de inimigos descritas em `stages.json`.
+Os dados e fórmulas inspecionados são os do runtime legado, removido no `1A-CUT` e recuperável no git a partir do commit `cd47758` (`data/stages/stages.json`, `data/enemies/enemies.json`, `data/items/items.json`, `ProgressionManager.gd`, `GameManager.gd` e `LootManager.gd`). A estimativa supõe uma primeira passagem pelas cinco fases, todos os kills exigidos, um líder nas fases 4 e 5 e as distribuições de inimigos descritas em `stages.json`.
 
 ### Primeira conclusão do Bosque nos dados atuais
 
@@ -126,7 +126,7 @@ O rendimento de material calculado a partir desses drops é apenas um cenário l
 
 ### Simulação de primeira passagem — Monte Carlo v0.1
 
-Foi executada uma simulação Monte Carlo reproduzível de **100.000** primeiras passagens, seed `41783` para combate/recompensas e `41784` para drops. Ela amostra pools e recompensas do conteúdo runtime atual. Cada inimigo comum usa as chances atuais de drop; o Lobo Alfa usa a chance normal por não ter a flag `boss`, e o Guardião-Cervo usa a chance de boss. Os itens foram sorteados pelos pesos existentes. As saídas em Sucata aplicam uma hipótese de rendimento local, agora legada e não compatível com o catálogo v0.4. O script executável é [`simulate_econ1_first_clear.py`](../../tools/economy/simulate_econ1_first_clear.py); execute com `python tools/economy/simulate_econ1_first_clear.py` na raiz do repositório.
+Foi executada uma simulação Monte Carlo reproduzível de **100.000** primeiras passagens, seed `41783` para combate/recompensas e `41784` para drops. Ela amostra pools e recompensas do conteúdo runtime atual. Cada inimigo comum usa as chances atuais de drop; o Lobo Alfa usa a chance normal por não ter a flag `boss`, e o Guardião-Cervo usa a chance de boss. Os itens foram sorteados pelos pesos existentes. As saídas em Sucata aplicam uma hipótese de rendimento local, agora legada e não compatível com o catálogo v0.4. O script executável é [`simulate_econ1_first_clear.py`](../../arquivados/pipelines_legados/simulate_econ1_first_clear.py), arquivado no `1A-CUT` porque depende do runtime legado removido (`data/stages/stages.json` e linhas legadas de inimigos/itens; recuperáveis pelo git); não é mais executável.
 
 | Métrica da primeira passagem | Média / resultado | Intervalo central P10–P90 |
 | --- | ---: | ---: |
