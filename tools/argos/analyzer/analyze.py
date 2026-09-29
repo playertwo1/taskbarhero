@@ -107,6 +107,44 @@ def summarize(runs):
     }
 
 
+def split_label(label):
+    """'variante · b/f/i' → (variante, 'b/f/i'); sem variante → ('', label)."""
+    if " · " in label:
+        v, b = label.split(" · ", 1)
+        return v, b
+    return "", label
+
+
+def variant_rows(summary, heal_build="lumen", max_attempts_ok=5):
+    """Por variante: rota da cura vs. sem cura, e caminhos sem cura que vencem a campanha em até N tentativas."""
+    variants = []
+    for r in summary["route"] + summary["campaign"]:
+        v, _ = split_label(r["build"])
+        if v and v not in variants:
+            variants.append(v)
+    out = []
+    for v in variants:
+        route = [r for r in summary["route"] if split_label(r["build"])[0] == v]
+        camp = [r for r in summary["campaign"] if split_label(r["build"])[0] == v]
+        heal_route = [r["win_rate"] for r in route if split_label(r["build"])[1].split("/")[2] == heal_build]
+        other_route = [r for r in route if split_label(r["build"])[1].split("/")[2] != heal_build]
+        heal_camp = [r for r in camp if split_label(r["build"])[1].split("/")[2] == heal_build]
+        other_camp = [r for r in camp if split_label(r["build"])[1].split("/")[2] != heal_build]
+        good = [r for r in other_camp if r["win_rate"] >= 0.5 and r["median_attempts"] is not None and r["median_attempts"] <= max_attempts_ok]
+        out.append({
+            "variant": v,
+            "heal_route_win": statistics.mean(heal_route) if heal_route else None,
+            "no_heal_route_best": max((r["win_rate"] for r in other_route), default=None),
+            "no_heal_route_viable": sum(1 for r in other_route if r["win_rate"] >= 0.5),
+            "no_heal_combos": len(other_route) or len(other_camp),
+            "heal_attempts": median([r["median_attempts"] for r in heal_camp if r["median_attempts"] is not None]),
+            "no_heal_attempts_best": min((r["median_attempts"] for r in other_camp if r["median_attempts"] is not None), default=None),
+            "no_heal_paths_ok": len(good),
+            "no_heal_paths_ok_list": sorted({split_label(r["build"])[1] for r in good}),
+        })
+    return out
+
+
 def finding(kind, severity, title, metric, rule):
     return {"type": kind, "severity": severity, "title": title, "metric": metric, "rule": rule}
 
@@ -250,6 +288,16 @@ def write_report(out_dir, meta, summary, findings, prev):
                   "| Build | Vence | 1ª tentativa | Tentativas (mediana) | Nível na vitória |", "| --- | ---: | ---: | ---: | ---: |"]
         for r in summary["campaign"]:
             lines.append(f"| {r['build']} | {pct(r['win_rate'])} | {pct(r['first_try'])} | {num(r['median_attempts'], '{:.1f}')} | {num(r['median_win_level'], '{:.1f}')} |")
+    variants = variant_rows(summary)
+    if variants:
+        lines += ["", "## Comparação de variantes (sem cura = Íris fora da build Lúmen)", "",
+                  "| Variante | Rota: cura | Rota: melhor sem cura | Sem cura com rota ≥ 50% | Tentativas: cura | Tentativas: melhor sem cura | Caminhos sem cura em ≤ 5 tentativas |",
+                  "| --- | ---: | ---: | ---: | ---: | ---: | --- |"]
+        for r in variants:
+            paths = f"{r['no_heal_paths_ok']}/{r['no_heal_combos']}"
+            if r["no_heal_paths_ok_list"]:
+                paths += " (" + ", ".join(r["no_heal_paths_ok_list"][:4]) + ("…" if len(r["no_heal_paths_ok_list"]) > 4 else "") + ")"
+            lines.append(f"| {r['variant']} | {pct(r['heal_route_win'])} | {pct(r['no_heal_route_best'])} | {r['no_heal_route_viable']}/{r['no_heal_combos']} | {num(r['heal_attempts'], '{:.1f}')} | {num(r['no_heal_attempts_best'], '{:.1f}')} | {paths} |")
     if summary.get("economy"):
         lines += ["", "## Economia e loot na campanha (modelo canônico simplificado)", "",
                   "| Build | Ouro/tentativa | Resíduo/tentativa | Itens/tentativa | Itens equipados no fim | Resíduo total |",
@@ -278,7 +326,7 @@ def main():
     rules = json.load(open(args.rules, encoding="utf-8"))
     summary = summarize(runs)
     findings = evaluate(summary, rules)
-    data = {"meta": meta, "findings": findings, **summary}
+    data = {"meta": meta, "findings": findings, "variants": variant_rows(summary), **summary}
     prev = previous_summary(args.report_dir, args.previous, meta.get("scenario"))
     json.dump(data, open(os.path.join(args.report_dir, "summary.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     write_report(args.report_dir, meta, summary, findings, prev)

@@ -20,6 +20,12 @@ var profiles: Dictionary
 var enemy_rank := {}
 var out_file: FileAccess
 var scenario: Dictionary
+## Variante ativa (cenário com "variants"): sobrescritas só nesta execução, nunca gravadas em /data.
+var variant_id := ""
+var run_options := {}
+var base_skills: Array
+var base_passives: Array
+var base_damage_scale := 0.0
 
 func _json(path: String) -> Variant:
 	var file := FileAccess.open(path, FileAccess.READ)
@@ -57,8 +63,21 @@ func _ready() -> void:
 	# Cenário pode sobrescrever enemy_damage_scale só nesta execução (nunca grava em /data).
 	if scenario.get("overrides", {}).has("enemy_damage_scale"):
 		profiles["enemy_damage_scale"] = float(scenario["overrides"]["enemy_damage_scale"])
+	base_skills = skills
+	base_passives = passives
+	base_damage_scale = float(profiles["enemy_damage_scale"])
 	_write({"kind": "meta", "scenario": scenario.get("id", ""), "seeds": scenario.get("seeds", 0),
-		"enemy_damage_scale": profiles["enemy_damage_scale"], "godot": Engine.get_version_info()["string"]})
+		"enemy_damage_scale": profiles["enemy_damage_scale"], "godot": Engine.get_version_info()["string"],
+		"variants": scenario.get("variants", []).map(func(v): return v["id"])})
+	var variants: Array = scenario.get("variants", [{"id": ""}])
+	for v in variants:
+		_apply_variant(v)
+		_run_matrix()
+	_apply_variant({"id": ""})
+	out_file.close()
+	get_tree().quit(0)
+
+func _run_matrix() -> void:
 	var modes: Array = scenario.get("modes", ["route"])
 	for build in _combos():
 		for level in scenario.get("levels", [5]):
@@ -71,10 +90,37 @@ func _ready() -> void:
 		if modes.has("campaign"):
 			for s in range(1, int(scenario.get("seeds", 5)) + 1):
 				_campaign(build, s)
-	out_file.close()
-	get_tree().quit(0)
+
+## Aplica uma variante: skill_overrides e passive_overrides usam "campo" ou "índice.campo";
+## run_options entram no ExpeditionRun (ex.: potions); enemy_damage_scale vale só na variante.
+func _apply_variant(v: Dictionary) -> void:
+	variant_id = String(v.get("id", ""))
+	run_options = v.get("run_options", {})
+	profiles["enemy_damage_scale"] = float(v.get("enemy_damage_scale", base_damage_scale))
+	skills = _patched(base_skills, v.get("skill_overrides", {}), "effects")
+	passives = _patched(base_passives, v.get("passive_overrides", {}), "params")
+
+func _patched(rows: Array, overrides: Dictionary, nested: String) -> Array:
+	if overrides.is_empty():
+		return rows
+	var out: Array = []
+	for r in rows:
+		var row: Dictionary = r.duplicate(true)
+		for key in overrides.get(row["id"], {}):
+			var value = overrides[row["id"]][key]
+			var parts := String(key).split(".")
+			if parts.size() == 1 and nested == "params":
+				row["params"][key] = value
+			elif parts.size() == 1:
+				row[key] = value
+			else:
+				row[nested][int(parts[0])][parts[1]] = value
+		out.append(row)
+	return out
 
 func _write(record: Dictionary) -> void:
+	if variant_id != "":
+		record["variant"] = variant_id
 	out_file.store_line(JSON.stringify(record))
 
 func _combos() -> Array:
@@ -87,7 +133,8 @@ func _combos() -> Array:
 	return out
 
 func _label(build: Dictionary) -> String:
-	return "%s/%s/%s" % [build["hero_001"], build["hero_002"], build["hero_003"]]
+	var label := "%s/%s/%s" % [build["hero_001"], build["hero_002"], build["hero_003"]]
+	return label if variant_id == "" else "%s · %s" % [variant_id, label]
 
 func _hero_row(id: String) -> Dictionary:
 	for r in heroes:
@@ -118,9 +165,11 @@ func _options(build: Dictionary, level: int, seed_value: int, equipment: Diction
 		builds[hid] = String(build[hid]).trim_suffix("_tele")
 		if String(build[hid]).ends_with("_tele"):
 			overrides.merge(TELEGRAPH_OVERRIDE)
-	return {"seed": seed_value, "crits": true, "party_level": level, "skills": skills, "builds": builds,
+	var opts := {"seed": seed_value, "crits": true, "party_level": level, "skills": skills, "builds": builds,
 		"trigger_overrides": overrides, "passives": passives, "skill_ranks": _ranks(build, level), "items": items,
 		"equipment": equipment}
+	opts.merge(run_options, true)
+	return opts
 
 func _single(node_id: String) -> Dictionary:
 	for n in route["nodes"]:

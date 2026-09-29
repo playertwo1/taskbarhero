@@ -1,0 +1,35 @@
+{
+  "id": "slice_paths",
+  "description": "Caminhos alternativos à cura (proposta de 2026-09-29). Cada variante só existe na simulação; valores são HIPÓTESE para medir sensibilidade, exceto os ranks R5 das passivas do Bastião, que vêm da ficha.",
+  "seeds": 6,
+  "levels": [5],
+  "builds": {
+    "hero_001": ["guardiao", "retaliacao", "retaliacao_tele"],
+    "hero_002": ["critico", "marca"],
+    "hero_003": ["arcano", "controle", "lumen"]
+  },
+  "modes": ["route", "campaign"],
+  "campaign": {"start_level": 1, "max_attempts": 10, "loot": true},
+  "rank_milestones": [3, 5, 7, 9, 11, 13, 15, 17, 19],
+  "max_time": 3600,
+  "stuck_seconds": 30,
+  "variants": [
+    {"id": "base", "note": "Dados atuais."},
+    {"id": "pocoes", "note": "Alquimista: 3 frascos por expedição; cada um recupera 40% do HP máximo quando um herói cai abaixo de 30%.",
+     "run_options": {"potions": {"count": 3, "heal_fraction": 0.4, "threshold": 0.3}}},
+    {"id": "veu_maior", "note": "Barreira: Véu de Micélio 35% do HP máximo, recarga 12 s.",
+     "skill_overrides": {"skill_iri_002": {"0.fraction": 0.35, "cooldown": 12.0}}},
+    {"id": "cacada_burst", "note": "Caçada: Lança 2,1×, Prisma 2,2× e Marca +10% da Flecha desde o R1.",
+     "skill_overrides": {"skill_iri_001": {"0.coefficient": 2.1}, "skill_iri_005": {"0.coefficient": 2.2}, "skill_fle_006": {"0.owner_bonus": 0.10}}},
+    {"id": "muralha_r5", "note": "Muralha: passivas do Bastião no rank 5 da ficha (Ombro 6%, Escudo Compartilhado 12%, Inabalável 5% por carga).",
+     "passive_overrides": {"passive_bas_ombro_a_ombro": {"value": 0.06}, "passive_bas_escudo_compartilhado": {"fraction": 0.12}, "passive_bas_inabalavel": {"per_stack": 0.05}}},
+    {"id": "folego", "note": "Fôlego: +10% do HP máximo ao fim de um encontro em que ninguém caiu.",
+     "run_options": {"recovery_between_encounters": {"fraction": 0.10, "only_if_no_fall": true}}},
+    {"id": "poco_lumen", "note": "Poço de Lúmen escolhendo recuperar: +35% do HP máximo dos vivos.",
+     "run_options": {"event_heal": {"event_c1_001": 0.35}}},
+    {"id": "combinado", "note": "Poções + Véu maior + Caçada + Muralha R5.",
+     "run_options": {"potions": {"count": 3, "heal_fraction": 0.4, "threshold": 0.3}},
+     "skill_overrides": {"skill_iri_002": {"0.fraction": 0.35, "cooldown": 12.0}, "skill_iri_001": {"0.coefficient": 2.1}, "skill_iri_005": {"0.coefficient": 2.2}, "skill_fle_006": {"0.owner_bonus": 0.10}},
+     "passive_overrides": {"passive_bas_ombro_a_ombro": {"value": 0.06}, "passive_bas_escudo_compartilhado": {"fraction": 0.12}, "passive_bas_inabalavel": {"per_stack": 0.05}}}
+  ]
+}

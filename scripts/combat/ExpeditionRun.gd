@@ -38,6 +38,11 @@ var _taunt: Dictionary = {}
 var _profiles: Dictionary = {}
 var _deferred: Array = []
 var _uid_counter: int = 0
+## Recuperação opcional, desligada por padrão (regra atual: HP só volta no Hub). Usada por cenários do Argos.
+var _potions: Dictionary = {}
+var _recovery: Dictionary = {}
+var _event_heal: Dictionary = {}
+var _fell_this_encounter: bool = false
 
 ## options: seed (int), crits (bool), party_level (int), formation (slot → hero id),
 ## targeting ("threat" ou "front"), skills (linhas de skills_slice.json) e
@@ -45,11 +50,16 @@ var _uid_counter: int = 0
 ## e equipment (hero id → lista de instâncias com id, rarity, item_power, item_level),
 ## skill_ranks (skill id → rank 1–5), trigger_overrides (skill id → gatilho escolhido no Hub)
 ## e passives (linhas de passives_slice.json; sem elas, heróis lutam sem passivas/Traits).
+## Opções de recuperação (HIPÓTESE, desligadas por padrão): potions {count, heal_fraction, threshold},
+## recovery_between_encounters {fraction, only_if_no_fall} e event_heal {id do evento → fração}.
 static func create(route: Dictionary, hero_rows: Array, enemy_rows: Array, options: Dictionary = {}) -> ExpeditionRun:
 	var run := ExpeditionRun.new()
 	run._nodes = route.get("nodes", [])
 	run._transition_seconds = float(route.get("transition_seconds", 0.6))
 	run._crits = bool(options.get("crits", true))
+	run._potions = options.get("potions", {}).duplicate()
+	run._recovery = options.get("recovery_between_encounters", {})
+	run._event_heal = options.get("event_heal", {})
 	run._targeting = String(options.get("targeting", "threat"))
 	run._rng.seed = int(options.get("seed", 1))
 	run._profiles = SliceStats.load_profiles()
@@ -208,6 +218,8 @@ func _advance_node(events: Array) -> void:
 	var node: Dictionary = _nodes[node_index]
 	if node["type"] == "event":
 		events.append({"type": "event_reached", "time": time, "node_id": node["id"]})
+		if _event_heal.has(node["id"]):
+			_recover_party(float(_event_heal[node["id"]]), "event", events)
 		_begin_transition()
 		return
 	_start_encounter(node, events)
@@ -222,6 +234,7 @@ func _start_encounter(node: Dictionary, events: Array) -> void:
 	_enemies = []
 	_deferred = []
 	_uid_counter = 0
+	_fell_this_encounter = false
 	_purge_expired()
 	var level := int(node["level"])
 	for member in node["members"]:
@@ -283,7 +296,19 @@ func _finish_encounter(events: Array) -> void:
 		"type": "encounter_cleared", "time": time, "node_id": _nodes[node_index]["id"],
 		"duration": time - _node_started_at, "party_hp": _party_hp(),
 	})
+	if not _recovery.is_empty() and not (bool(_recovery.get("only_if_no_fall", false)) and _fell_this_encounter):
+		_recover_party(float(_recovery["fraction"]), "between_encounters", events)
 	_begin_transition()
+
+## Recupera uma fração do HP máximo dos heróis vivos (derrotados continuam fora até o Hub).
+func _recover_party(fraction: float, source: String, events: Array) -> void:
+	for hid in _hero_order:
+		var h: Dictionary = _heroes[hid]
+		if h["alive"]:
+			var amount: float = minf(float(h["stats"]["max_hp"]) * fraction, float(h["stats"]["max_hp"]) - float(h["hp"]))
+			if amount > 0.0:
+				h["hp"] = float(h["hp"]) + amount
+				events.append({"type": "recovery", "time": time, "source": source, "target": hid, "amount": amount})
 
 ## Próximo instante com ação até `limit`. Empate: skill pronta, heróis (na ordem), inimigos (na ordem).
 func _next_event(limit: float) -> Dictionary:
@@ -855,7 +880,14 @@ func _enemy_attack(enemy: Dictionary, events: Array, coefficient: float = 1.0, t
 	if blocked:
 		_apply_stagger(enemy, float(pb.get("stagger", 0.0)), events)
 		_on_perfect_block(hero, enemy, events)
+	var potions := int(_potions.get("count", 0))
+	if potions > 0 and float(hero["hp"]) > 0.0 and float(hero["hp"]) <= float(hero["stats"]["max_hp"]) * float(_potions["threshold"]):
+		var healed: float = minf(float(hero["stats"]["max_hp"]) * float(_potions["heal_fraction"]), float(hero["stats"]["max_hp"]) - float(hero["hp"]))
+		hero["hp"] = float(hero["hp"]) + healed
+		_potions["count"] = potions - 1
+		events.append({"type": "potion_used", "time": time, "target": target_id, "amount": healed, "left": potions - 1})
 	if float(hero["hp"]) <= 0.0:
+		_fell_this_encounter = true
 		hero["alive"] = false
 		hero["stance"] = {}
 		events.append({"type": "hero_defeated", "time": time, "id": target_id})
