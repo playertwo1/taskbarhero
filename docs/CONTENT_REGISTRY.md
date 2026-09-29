@@ -20,7 +20,7 @@ Este registro é autoridade para IDs locais do jogo e aponta às fichas de detal
 | Ecos | Um Echo funcional opcional está planejado no design de `SLICE-1`; nenhum Eco tem ficha runtime ou implementação. | `CONCEPT` | [Sistema de Ecos](03_systems/ECHO_SYSTEM.md) · [Catálogo](04_content/echoes/INDEX.md) |
 | Hub | Direção visual escolhida; especificação global de sistema ainda não aprovada. Há uma cena isolada de protótipo de UI, não integrada ao fluxo principal. | `CONCEPT` | [Hub](05_hub/INDEX.md) |
 
-Não confundir catálogo canônico de design com conteúdo atualmente carregado. As diferenças e aliases permanecem no [manifesto de compatibilidade runtime](04_content/LEGACY_RUNTIME_CATALOG.md); não inferir equivalências.
+Linhas do slice em `/data` usam `content_set: "slice"`, `id` em minúsculas igual ao ID de design e o campo `legacy_alias`; ver a [ponte legada](04_content/LEGACY_RUNTIME_CATALOG.md). Não confundir catálogo canônico de design com conteúdo atualmente carregado. As diferenças e aliases permanecem no [manifesto de compatibilidade runtime](04_content/LEGACY_RUNTIME_CATALOG.md); não inferir equivalências.
 
 ## Heróis
 

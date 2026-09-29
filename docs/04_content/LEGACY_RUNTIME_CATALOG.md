@@ -1,6 +1,8 @@
 # Catálogos runtime legados e migração v0.4
 
-**Função:** ponte temporária entre os IDs que o MVP carrega hoje e os IDs dos catálogos canônicos v0.4. Os IDs listados à esquerda continuam em `/data`; não os renomeie até executar a migração prevista na roadmap.
+**Função:** ponte temporária entre os IDs que o MVP carrega hoje e os IDs dos catálogos canônicos v0.4. Os IDs listados à esquerda continuam em `/data`; não os renomeie até o `1A-CUT`, que remove o conteúdo legado (decisão de Rafael, 2026-09-29).
+
+**Alias no slice (`SLICE-1A-2`):** as linhas do slice em `/data` têm `content_set: "slice"`, `id` igual ao ID de design em minúsculas (por exemplo `en_c1_001`), `design_id` e `legacy_alias` com o ID antigo desta tabela, ou `null` quando a entidade é nova. O alias serve para reaproveitar nome e sprite; os stats do slice vêm de `data/balance/combat_profiles.json` e não dos valores legados. Linhas sem `content_set` pertencem ao conjunto legado, e os carregadores só leem o legado por padrão.
 
 ## Inimigos
 

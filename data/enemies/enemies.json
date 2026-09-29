@@ -122,5 +122,201 @@
     "gold_max": 60,
     "weight": 3,
     "boss": true
+  },
+  {
+    "id": "en_c1_001",
+    "design_id": "EN_C1_001",
+    "legacy_alias": "geleia_de_lumen",
+    "name": "Geleia de Lúmen",
+    "content_set": "slice",
+    "rank": "NORMAL",
+    "archetype": "STANDARD",
+    "family_id": "LUMEN_SLIME",
+    "encounter_cost": 1.0,
+    "damage_types": [
+      "PHYSICAL"
+    ],
+    "stagger_profile": "NORMAL_STANDARD"
+  },
+  {
+    "id": "en_c1_002",
+    "design_id": "EN_C1_002",
+    "legacy_alias": "espirito_de_raiz",
+    "name": "Espírito de Raiz",
+    "content_set": "slice",
+    "rank": "NORMAL",
+    "archetype": "CONTROLLER",
+    "family_id": "ROOT_SPIRIT",
+    "encounter_cost": 1.3,
+    "damage_types": [
+      "PHYSICAL"
+    ],
+    "stagger_profile": "NORMAL_CONTROLLER"
+  },
+  {
+    "id": "en_c1_003",
+    "design_id": "EN_C1_003",
+    "legacy_alias": "gremlin_de_folha",
+    "name": "Gremlin de Folhas",
+    "content_set": "slice",
+    "rank": "NORMAL",
+    "archetype": "ASSASSIN",
+    "family_id": "LEAF_GREMLIN",
+    "encounter_cost": 1.25,
+    "damage_types": [
+      "PHYSICAL"
+    ],
+    "stagger_profile": "NORMAL_ASSASSIN"
+  },
+  {
+    "id": "en_c1_004",
+    "design_id": "EN_C1_004",
+    "legacy_alias": "javali_de_musgo",
+    "name": "Javali de Musgo",
+    "content_set": "slice",
+    "rank": "NORMAL",
+    "archetype": "HEAVY",
+    "family_id": "MOSS_BOAR",
+    "encounter_cost": 1.4,
+    "damage_types": [
+      "PHYSICAL"
+    ],
+    "stagger_profile": "NORMAL_HEAVY"
+  },
+  {
+    "id": "en_c1_005",
+    "design_id": "EN_C1_005",
+    "legacy_alias": null,
+    "name": "Mariposa Luminosa",
+    "content_set": "slice",
+    "rank": "NORMAL",
+    "archetype": "SUPPORT",
+    "family_id": "LUMEN_MOTH",
+    "encounter_cost": 1.25,
+    "damage_types": [
+      "PHYSICAL"
+    ],
+    "stagger_profile": "NORMAL_SUPPORT"
+  },
+  {
+    "id": "en_c1_006",
+    "design_id": "EN_C1_006",
+    "legacy_alias": null,
+    "name": "Cogumelo Sonolento",
+    "content_set": "slice",
+    "rank": "NORMAL",
+    "archetype": "CONTROLLER",
+    "family_id": "DROWSY_MUSHROOM",
+    "encounter_cost": 1.3,
+    "damage_types": [
+      "PHYSICAL"
+    ],
+    "stagger_profile": "NORMAL_CONTROLLER"
+  },
+  {
+    "id": "en_c1_007",
+    "design_id": "EN_C1_007",
+    "legacy_alias": null,
+    "name": "Trepa-Cadáver",
+    "content_set": "slice",
+    "rank": "NORMAL",
+    "archetype": "HEAVY",
+    "family_id": "CORPSE_VINE",
+    "encounter_cost": 1.4,
+    "damage_types": [
+      "PHYSICAL"
+    ],
+    "stagger_profile": "NORMAL_HEAVY"
+  },
+  {
+    "id": "en_c1_008",
+    "design_id": "EN_C1_008",
+    "legacy_alias": null,
+    "name": "Caracol Cristalino",
+    "content_set": "slice",
+    "rank": "NORMAL",
+    "archetype": "HEAVY",
+    "family_id": "CRYSTAL_SNAIL",
+    "encounter_cost": 1.4,
+    "damage_types": [
+      "PHYSICAL"
+    ],
+    "stagger_profile": "NORMAL_HEAVY"
+  },
+  {
+    "id": "en_c1_009",
+    "design_id": "EN_C1_009",
+    "legacy_alias": null,
+    "name": "Raposa Oca",
+    "content_set": "slice",
+    "rank": "NORMAL",
+    "archetype": "ASSASSIN",
+    "family_id": "HOLLOW_FOX",
+    "encounter_cost": 1.25,
+    "damage_types": [
+      "PHYSICAL"
+    ],
+    "stagger_profile": "NORMAL_ASSASSIN"
+  },
+  {
+    "id": "en_c1_010",
+    "design_id": "EN_C1_010",
+    "legacy_alias": null,
+    "name": "Sapinho do Lúmen",
+    "content_set": "slice",
+    "rank": "NORMAL",
+    "archetype": "STANDARD",
+    "family_id": "LUMEN_FROG",
+    "encounter_cost": 1.0,
+    "damage_types": [
+      "PHYSICAL"
+    ],
+    "stagger_profile": "NORMAL_STANDARD"
+  },
+  {
+    "id": "el_c1_001",
+    "design_id": "EL_C1_001",
+    "legacy_alias": null,
+    "name": "Geleia Anciã",
+    "content_set": "slice",
+    "rank": "ELITE",
+    "archetype": "STANDARD",
+    "family_id": "LUMEN_SLIME",
+    "encounter_cost": 2.5,
+    "damage_types": [
+      "ARCANE"
+    ],
+    "stagger_profile": "ELITE_STANDARD"
+  },
+  {
+    "id": "mb_c1_001",
+    "design_id": "MB_C1_001",
+    "legacy_alias": null,
+    "name": "Rainha das Geleias",
+    "content_set": "slice",
+    "rank": "MINIBOSS",
+    "archetype": "STANDARD",
+    "family_id": "LUMEN_SLIME_QUEEN",
+    "encounter_cost": 7.0,
+    "damage_types": [
+      "ARCANE"
+    ],
+    "stagger_profile": "MINIBOSS"
+  },
+  {
+    "id": "boss_c1_001",
+    "design_id": "BOSS_C1_001",
+    "legacy_alias": "guardiao_cervo_de_pedra",
+    "name": "Guardião-Cervo de Pedra",
+    "content_set": "slice",
+    "rank": "BOSS",
+    "archetype": "HEAVY",
+    "family_id": "STONE_GUARDIAN_STAG",
+    "encounter_cost": 20.0,
+    "damage_types": [
+      "PHYSICAL",
+      "ARCANE"
+    ],
+    "stagger_profile": "BOSS"
   }
 ]

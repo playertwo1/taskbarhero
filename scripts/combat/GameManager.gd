@@ -225,7 +225,7 @@ func load_enemies_database() -> void:
 	if file != null:
 		var parsed = JSON.parse_string(file.get_as_text())
 		if parsed is Array:
-			enemies_database = parsed
+			enemies_database = SliceStats.filter_rows(parsed, SliceStats.LEGACY)
 
 func start_combat() -> void:
 	if enemies_database.is_empty():

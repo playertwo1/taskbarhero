@@ -129,5 +129,205 @@
     "crit": 0.12,
     "lifesteal": 0.06,
     "weight": 3
+  },
+  {
+    "id": "item_w_001",
+    "design_id": "ITEM_W_001",
+    "name": "Galho de Vigília",
+    "content_set": "slice",
+    "slot": "weapon",
+    "base_rarity": "Comum",
+    "allowed_rarities": [
+      "Comum",
+      "Incomum",
+      "Raro",
+      "Épico"
+    ],
+    "identity": "Ataque básico; template simples do Bosque.",
+    "modifiers": []
+  },
+  {
+    "id": "item_w_002",
+    "design_id": "ITEM_W_002",
+    "name": "Arco de Folha Tensa",
+    "content_set": "slice",
+    "slot": "weapon",
+    "base_rarity": "Incomum",
+    "allowed_rarities": [
+      "Incomum",
+      "Raro",
+      "Épico"
+    ],
+    "identity": "Ataque + crítico; favorece Flecha sem ser exclusivo.",
+    "modifiers": []
+  },
+  {
+    "id": "item_w_003",
+    "design_id": "ITEM_W_003",
+    "name": "Presa do Javali de Musgo",
+    "content_set": "slice",
+    "slot": "weapon",
+    "base_rarity": "Raro",
+    "allowed_rarities": [
+      "Raro",
+      "Épico"
+    ],
+    "identity": "Dano físico + Stagger em golpes pesados.",
+    "modifiers": []
+  },
+  {
+    "id": "item_s_002",
+    "design_id": "ITEM_S_002",
+    "name": "Lanterna de Esporos",
+    "content_set": "slice",
+    "slot": "secondary",
+    "base_rarity": "Incomum",
+    "allowed_rarities": [
+      "Incomum",
+      "Raro",
+      "Épico"
+    ],
+    "identity": "Status Power; melhora zonas/debuffs.",
+    "modifiers": []
+  },
+  {
+    "id": "item_s_003",
+    "design_id": "ITEM_S_003",
+    "name": "Totem da Raiz Antiga",
+    "content_set": "slice",
+    "slot": "secondary",
+    "base_rarity": "Raro",
+    "allowed_rarities": [
+      "Raro",
+      "Épico"
+    ],
+    "identity": "Tenacidade + interação com Root/controle.",
+    "modifiers": []
+  },
+  {
+    "id": "item_s_004",
+    "design_id": "ITEM_S_004",
+    "name": "Farol Prismático",
+    "content_set": "slice",
+    "slot": "secondary",
+    "base_rarity": "Épico",
+    "allowed_rarities": [
+      "Épico"
+    ],
+    "identity": "Arcano + Skill Haste ao acertar múltiplos alvos.",
+    "modifiers": []
+  },
+  {
+    "id": "item_a_001",
+    "design_id": "ITEM_A_001",
+    "name": "Manto de Folhas",
+    "content_set": "slice",
+    "slot": "armor",
+    "base_rarity": "Comum",
+    "allowed_rarities": [
+      "Comum",
+      "Incomum",
+      "Raro",
+      "Épico"
+    ],
+    "identity": "HP leve + movimento.",
+    "modifiers": []
+  },
+  {
+    "id": "item_a_002",
+    "design_id": "ITEM_A_002",
+    "name": "Couraça de Musgo",
+    "content_set": "slice",
+    "slot": "armor",
+    "base_rarity": "Incomum",
+    "allowed_rarities": [
+      "Incomum",
+      "Raro",
+      "Épico"
+    ],
+    "identity": "HP + Defesa.",
+    "modifiers": []
+  },
+  {
+    "id": "item_a_003",
+    "design_id": "ITEM_A_003",
+    "name": "Casco Cristalino",
+    "content_set": "slice",
+    "slot": "armor",
+    "base_rarity": "Raro",
+    "allowed_rarities": [
+      "Raro",
+      "Épico"
+    ],
+    "identity": "Defesa alta; janela defensiva após receber golpe forte.",
+    "modifiers": []
+  },
+  {
+    "id": "item_a_004",
+    "design_id": "ITEM_A_004",
+    "name": "Coração de Pedra",
+    "content_set": "slice",
+    "slot": "armor",
+    "base_rarity": "Épico",
+    "allowed_rarities": [
+      "Épico"
+    ],
+    "identity": "Quanto menor o HP, maior a resistência.",
+    "modifiers": []
+  },
+  {
+    "id": "item_a_005",
+    "design_id": "ITEM_A_005",
+    "name": "Casca do Guardião",
+    "content_set": "slice",
+    "slot": "armor",
+    "base_rarity": "Relíquia",
+    "allowed_rarities": [
+      "Relíquia"
+    ],
+    "identity": "Receber shield gera pequena onda de dano.",
+    "modifiers": []
+  },
+  {
+    "id": "item_r_001",
+    "design_id": "ITEM_R_001",
+    "name": "Gota de Lúmen",
+    "content_set": "slice",
+    "slot": "accessory",
+    "base_rarity": "Comum",
+    "allowed_rarities": [
+      "Comum",
+      "Incomum",
+      "Raro"
+    ],
+    "identity": "Melhora geração de recurso.",
+    "modifiers": []
+  },
+  {
+    "id": "item_r_004",
+    "design_id": "ITEM_R_004",
+    "name": "Olho de Vidro Verde",
+    "content_set": "slice",
+    "slot": "accessory",
+    "base_rarity": "Raro",
+    "allowed_rarities": [
+      "Raro"
+    ],
+    "identity": "Críticos aplicam Marca.",
+    "modifiers": []
+  },
+  {
+    "id": "item_r_005",
+    "design_id": "ITEM_R_005",
+    "name": "Fragmento Prismático",
+    "content_set": "slice",
+    "slot": "accessory",
+    "base_rarity": "Raro",
+    "allowed_rarities": [
+      "Raro",
+      "Épico"
+    ],
+    "identity": "Atingir múltiplos inimigos com magia reduz cooldown.",
+    "modifiers": []
   }
 ]

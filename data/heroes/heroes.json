@@ -1,0 +1,83 @@
+[
+  {
+    "id": "hero_001",
+    "design_id": "HERO_001",
+    "legacy_alias": "bastiao",
+    "name": "Bastião",
+    "content_set": "slice",
+    "role": "Tank / Protector",
+    "base_stats": {
+      "max_hp": [
+        160.0,
+        700.0
+      ],
+      "attack": [
+        10.0,
+        42.0
+      ],
+      "defense": [
+        18.0,
+        80.0
+      ]
+    },
+    "attack_speed": 0.8,
+    "crit_chance": 0.03,
+    "crit_damage": 1.5,
+    "skill_haste": 0.0,
+    "tenacity": 20.0
+  },
+  {
+    "id": "hero_002",
+    "design_id": "HERO_002",
+    "legacy_alias": "flecha",
+    "name": "Flecha",
+    "content_set": "slice",
+    "role": "Ranged DPS",
+    "base_stats": {
+      "max_hp": [
+        100.0,
+        380.0
+      ],
+      "attack": [
+        14.0,
+        60.0
+      ],
+      "defense": [
+        7.0,
+        28.0
+      ]
+    },
+    "attack_speed": 1.2,
+    "crit_chance": 0.1,
+    "crit_damage": 1.6,
+    "skill_haste": 0.0,
+    "tenacity": 0.0
+  },
+  {
+    "id": "hero_003",
+    "design_id": "HERO_003",
+    "legacy_alias": "iris",
+    "name": "Íris",
+    "content_set": "slice",
+    "role": "Mage / Control",
+    "base_stats": {
+      "max_hp": [
+        95.0,
+        360.0
+      ],
+      "attack": [
+        15.0,
+        63.0
+      ],
+      "defense": [
+        6.0,
+        25.0
+      ]
+    },
+    "attack_speed": 0.9,
+    "crit_chance": 0.05,
+    "crit_damage": 1.5,
+    "skill_haste": 15.0,
+    "tenacity": 0.0
+  }
+]

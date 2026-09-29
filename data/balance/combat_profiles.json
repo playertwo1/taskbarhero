@@ -1,0 +1,80 @@
+{
+  "schema_version": "1.0",
+  "status": "HIPOTESE",
+  "source": "docs/06_balance/SLICE_BALANCE_CONTRACT.md",
+  "reference_hero": {
+    "max_hp": [
+      115.0,
+      470.0
+    ],
+    "attack": [
+      12.0,
+      50.0
+    ],
+    "defense": [
+      9.0,
+      36.0
+    ],
+    "attack_speed": 1.0
+  },
+  "archetypes": {
+    "STANDARD": {
+      "max_hp": 0.85,
+      "attack": 0.75,
+      "defense": 0.75,
+      "attack_speed": 1.0
+    },
+    "HEAVY": {
+      "max_hp": 1.4,
+      "attack": 0.85,
+      "defense": 1.25,
+      "attack_speed": 0.7
+    },
+    "ASSASSIN": {
+      "max_hp": 0.55,
+      "attack": 1.15,
+      "defense": 0.5,
+      "attack_speed": 1.25
+    },
+    "CONTROLLER": {
+      "max_hp": 0.75,
+      "attack": 0.65,
+      "defense": 0.8,
+      "attack_speed": 0.8
+    },
+    "SUPPORT": {
+      "max_hp": 0.7,
+      "attack": 0.55,
+      "defense": 0.7,
+      "attack_speed": 0.85
+    }
+  },
+  "ranks": {
+    "NORMAL": {
+      "max_hp": 1.0,
+      "attack": 1.0,
+      "defense": 1.0,
+      "tenacity": 0
+    },
+    "ELITE": {
+      "max_hp": 2.3,
+      "attack": 1.25,
+      "defense": 1.15,
+      "tenacity": 25
+    },
+    "MINIBOSS": {
+      "max_hp": 7.0,
+      "attack": 1.55,
+      "defense": 1.35,
+      "tenacity": 50
+    },
+    "BOSS": {
+      "max_hp": 20.0,
+      "attack": 1.8,
+      "defense": 1.5,
+      "tenacity": 100
+    }
+  },
+  "enemy_damage_scale": 0.5,
+  "party_hp_scale": 3.0
+}
