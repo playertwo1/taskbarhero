@@ -1,6 +1,7 @@
 # Balanceamento — índice
 
 - **Modelo ECON-1:** [economia inicial, custos propostos e diagnóstico estático](ECONOMY_MODEL.md). Valores quantitativos são hipóteses; o documento não altera o runtime.
+- **Balanceamento v0.5 (vigente no slice):** [meta incremental do Capítulo 1, escala de cada sistema, mudanças sobre o v0.4 e resultado medido pelo Argos](BALANCE_V0.5.md).
 - **Contrato de balanceamento do slice:** [status, regras especiais, fórmulas, baselines, budgets e telemetria do recorte do SLICE-1](SLICE_BALANCE_CONTRACT.md), reproduzível com [`slice_baseline.py`](../../tools/balance/slice_baseline.py). Números são hipóteses.
 - **Curvas derivadas do trio e 12 skills candidatas com ranks 1–5:** [base de combate do Capítulo 1](CHAPTER_01_HERO_COMBAT_PROPOSAL.md); não é dado runtime.
 - **Estrutura canônica de balanceamento:** [atributos compartilhados e registros de heróis, inimigos, equipamentos e efeitos](COMBAT_BALANCE_STANDARD.md). Estrutura aprovada para design; números e integração permanecem separados.

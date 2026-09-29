@@ -1,9 +1,8 @@
 {
   "id": "slice_balance",
-  "description": "Matriz completa do slice: 18 combinações de builds, rota nos níveis 5/8/10/12, segmentos isolados e campanha com loot até 14 tentativas (meta de Rafael: vencer o Guardião por volta do nível 10–11).",
+  "description": "Matriz completa do slice (balanceamento v0.5): 18 combinações, rota e segmentos nos níveis 8/10/12, campanha com loot até 16 tentativas. Meta de Rafael: vencer o Guardião por volta do nível 10–11.",
   "seeds": 6,
   "levels": [
-    5,
     8,
     10,
     12
@@ -31,7 +30,7 @@
   ],
   "campaign": {
     "start_level": 1,
-    "max_attempts": 14,
+    "max_attempts": 16,
     "loot": true
   },
   "rank_milestones": [

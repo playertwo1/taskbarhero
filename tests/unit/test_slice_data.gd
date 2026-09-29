@@ -160,7 +160,7 @@ func _test_enemy_derivation() -> void:
 	_check("Guardião nível 5: attack_speed (Heavy)", boss["attack_speed"], 0.7)
 	_check("Guardião nível 5: tenacidade de boss", boss["tenacity"], 100.0)
 	var boss_party := SliceStats.enemy_stats(_row(rows, "boss_c1_001"), 5, true)
-	_check("Guardião nível 5: HP com escala de party ×2 (BOSS)", boss_party["max_hp"], 3621.6162 * 2.0)
+	_check("Guardião nível 5: HP com escala de party ×1,5 (BOSS, v0.5)", boss_party["max_hp"], 3621.6162 * 1.5)
 	var rainha_party := SliceStats.enemy_stats(_row(rows, "mb_c1_001"), 3, true)
 	_check("Rainha nível 3: HP com escala de party ×3", rainha_party["max_hp"], 726.9217 * 3.0)
 	var geleia_party := SliceStats.enemy_stats(_row(rows, "en_c1_001"), 1, true)

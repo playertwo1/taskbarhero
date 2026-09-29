@@ -1,0 +1,24 @@
+{
+  "id": "tune_v05_levels",
+  "description": "v0.5: fases do Capítulo 1 com nível recomendado 1/3/5/7 e Guardião no nível 10; alavancas de dificuldade para a vitória ficar por volta do nível 10–11.",
+  "seeds": 4,
+  "levels": [10],
+  "builds": {
+    "hero_001": ["guardiao", "retaliacao", "retaliacao_tele"],
+    "hero_002": ["critico", "marca"],
+    "hero_003": ["arcano", "controle", "lumen"]
+  },
+  "modes": ["campaign"],
+  "campaign": {"start_level": 1, "max_attempts": 16, "loot": true},
+  "rank_milestones": [3, 5, 7, 9, 11, 13, 15, 17, 19],
+  "max_time": 3600,
+  "stuck_seconds": 30,
+  "variants": [
+    {"id": "v04_niveis_1a5"},
+    {"id": "niv10", "stage_levels": {"1": 1, "2": 3, "3": 5, "4": 7, "5": 10}},
+    {"id": "niv10_dano45", "stage_levels": {"1": 1, "2": 3, "3": 5, "4": 7, "5": 10}, "enemy_damage_scale": 0.45},
+    {"id": "niv10_dano40", "stage_levels": {"1": 1, "2": 3, "3": 5, "4": 7, "5": 10}, "enemy_damage_scale": 0.40},
+    {"id": "niv10_chefe15", "stage_levels": {"1": 1, "2": 3, "3": 5, "4": 7, "5": 10}, "profile_overrides": {"party_hp_scale": {"ELITE": 3.0, "MINIBOSS": 3.0, "BOSS": 1.5}}},
+    {"id": "niv10_dano40_chefe15", "stage_levels": {"1": 1, "2": 3, "3": 5, "4": 7, "5": 10}, "enemy_damage_scale": 0.40, "profile_overrides": {"party_hp_scale": {"ELITE": 3.0, "MINIBOSS": 3.0, "BOSS": 1.5}}}
+  ]
+}

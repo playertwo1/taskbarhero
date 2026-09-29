@@ -16,13 +16,13 @@
         "type": "buff",
         "stat": "damage_taken",
         "op": "ADD_PERCENT",
-        "value": -0.4,
+        "value": -0.5,
         "duration": 6.0,
         "targets": "allies_behind",
         "defensive": true
       }
     ],
-    "source": "docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md, skill 1; gatilho e alcance contra qualquer ataque: HIPÓTESE do SLICE-1A-4a",
+    "source": "docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md, skill 1; gatilho e alcance contra qualquer ataque: HIPÓTESE do SLICE-1A-4a; v0.5: −50% (era −40%) após tune_v05_builds",
     "ranks": {
       "2": {
         "set": {
@@ -139,7 +139,7 @@
     "name": "Fortaleza",
     "content_set": "slice",
     "status": "HIPOTESE",
-    "cooldown": 20.0,
+    "cooldown": 16.0,
     "trigger": {
       "type": "self_hp_below",
       "threshold": 0.7
@@ -149,13 +149,13 @@
         "type": "buff",
         "stat": "damage_taken",
         "op": "ADD_PERCENT",
-        "value": -0.4,
+        "value": -0.5,
         "duration": 5.0,
         "targets": "self",
         "defensive": true
       }
     ],
-    "source": "BASTIAO_GOLDEN_REFERENCE.md, skill 4; gatilho: HIPÓTESE do SLICE-1A-4a",
+    "source": "BASTIAO_GOLDEN_REFERENCE.md, skill 4; gatilho: HIPÓTESE do SLICE-1A-4a; v0.5: −50% e recarga 16 s (era −40% e 20 s) após tune_v05_builds",
     "ranks": {
       "2": {
         "set": {

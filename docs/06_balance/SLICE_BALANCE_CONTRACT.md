@@ -123,6 +123,8 @@ Resultado de `slice_baseline.py` (party Bastião, Flecha e Íris, sem equipament
 
 ### Meta de progressão e recuperação (Rafael, 2026-09-29)
 
+> **Atualizado pelo [balanceamento v0.5](BALANCE_V0.5.md):** nível de conteúdo por fase, escala de HP do chefe, golpes telegrafados e demais mudanças; em caso de divergência com este contrato, vale o v0.5 e os valores de `/data`.
+
 - **DECIDIDO:** o jogo é incremental (níveis 1–100). O Guardião do Capítulo 1 deve ser vencido **por volta do nível 10–11**, depois de derrotas e vitórias parciais; vencer no nível 5 não é objetivo. O alvo está em `chapter_targets` de [combat_profiles.json](../../data/balance/combat_profiles.json).
 - **DECIDIDO:** HP volta ao máximo no Hub; dentro da expedição existe **fôlego entre encontros**. **HIPÓTESE:** 10% do HP máximo dos vivos ao fim de um encontro em que ninguém caiu (`recovery_between_encounters` no mesmo arquivo).
 - **Medido (Argos, simulação, não playtest):** com fôlego e o Pulso Restaurador experimental reduzido, as 18 combinações de builds vencem a campanha entre os níveis 7 e 14 (mediana perto de 9–12). Relatórios e achados: [BALANCE_FINDINGS](../08_qa/BALANCE_FINDINGS.md) e `tools/argos/reports/`.

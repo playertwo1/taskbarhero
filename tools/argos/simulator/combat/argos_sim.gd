@@ -26,6 +26,8 @@ var run_options := {}
 var base_skills: Array
 var base_passives: Array
 var base_damage_scale := 0.0
+var base_profiles := {}
+var base_route := {}
 
 func _json(path: String) -> Variant:
 	var file := FileAccess.open(path, FileAccess.READ)
@@ -96,7 +98,21 @@ func _run_matrix() -> void:
 func _apply_variant(v: Dictionary) -> void:
 	variant_id = String(v.get("id", ""))
 	run_options = v.get("run_options", {})
-	profiles["enemy_damage_scale"] = float(v.get("enemy_damage_scale", base_damage_scale))
+	if base_profiles.is_empty():
+		base_profiles = profiles.duplicate(true)
+		base_route = route.duplicate(true)
+	# Perfis voltam ao original e recebem as sobrescritas da variante (o cache é compartilhado).
+	for key in base_profiles:
+		profiles[key] = base_profiles[key].duplicate(true) if base_profiles[key] is Dictionary else base_profiles[key]
+	for key in v.get("profile_overrides", {}):
+		profiles[key] = v["profile_overrides"][key]
+	profiles["enemy_damage_scale"] = float(v.get("enemy_damage_scale", profiles.get("enemy_damage_scale", base_damage_scale)))
+	# Níveis de conteúdo por fase da rota (ex.: {"1": 1, "5": 10}).
+	route = base_route.duplicate(true)
+	var stage_levels: Dictionary = v.get("stage_levels", {})
+	for n in route["nodes"]:
+		if n.has("level") and n.has("stage") and stage_levels.has(str(int(n["stage"]))):
+			n["level"] = int(stage_levels[str(int(n["stage"]))])
 	skills = _patched(base_skills, v.get("skill_overrides", {}), "effects")
 	passives = _patched(base_passives, v.get("passive_overrides", {}), "params")
 

@@ -79,7 +79,7 @@
   "party_hp_scale": {
     "ELITE": 3.0,
     "MINIBOSS": 3.0,
-    "BOSS": 2.0
+    "BOSS": 1.5
   },
   "stagger": {
     "status": "HIPOTESE",
@@ -156,5 +156,7 @@
         11
       ]
     }
-  }
+  },
+  "balance_version": "0.5",
+  "party_hp_scale_note": "v0.5: chefe ×1,5 (era ×2; ×3 no contrato original). Com o Guardião no nível 10, ×2 levava a vitória ao nível 13; ×1,5 centra a vitória no nível 11 (tune_v05_levels). HIPÓTESE."
 }

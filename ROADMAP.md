@@ -129,6 +129,10 @@ Gate PASS:
 - [ ] retorno ao Hub produz progressão perceptível sem grind artificial;
 - [ ] etapas 1A–1E concluídas com evidência registrada.
 
+### 4.3.1 Balanceamento v0.5 do slice · `IMPLEMENTING`
+
+Meta de Rafael: jogo incremental; Guardião vencido por volta do nível 10–11 com fôlego entre encontros. Estado medido e mudanças em [BALANCE_V0.5](docs/06_balance/BALANCE_V0.5.md); simulação, não playtest. Fecha com playtest no `SLICE-1E`.
+
 ### 4.4 BALANCE-1 — Ajuste iterativo · pós-slice
 
 Completar o contrato de balanceamento fora do recorte: status restantes, tipos de dano e affixes v0.4, stacking/dispel/Tenacidade, DOT/HOT, escala de capítulo/dificuldade e matriz completa de builds e equipamento abaixo/esperado/acima.

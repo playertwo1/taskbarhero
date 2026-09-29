@@ -2,6 +2,11 @@
 
 Registro breve de mudanças estruturais e releases. Detalhes de planejamento continuam no roadmap; histórico de gates concluídos permanece arquivado.
 
+## 2026-09-29 — balanceamento v0.5 e Argos
+
+- `docs/06_balance/BALANCE_V0.5.md`: meta incremental (Guardião do Capítulo 1 por volta do nível 10–11), fôlego entre encontros, fases 1/3/5/7/10, chefe ×1,5, golpes telegrafados, ranks R2–R5, passivas e Traits; o v0.4 canônico não foi alterado.
+- ARGOS-SIM (`tools/argos/`): simulador headless com oráculos, Analyst, cenários e variantes; relatórios medidos em `tools/argos/reports/`.
+
 ## 2026-09-29 — roadmap único
 
 - `ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md` incorporado ao `ROADMAP.md` e removido. Gates e checklists ativos foram para o roadmap; ideias de design sem ficha foram preservadas em `docs/04_content/chapters/chapter_01/DESIGN_SEEDS.md`, `docs/05_hub/HUB_STRUCTURE_SEEDS.md` e `docs/01_world/FUTURE_SEEDS.md`.

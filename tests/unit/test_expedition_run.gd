@@ -116,7 +116,7 @@ func _test_route_integrity() -> void:
 		if p.is_empty() or p["kind"] != n["kind"]:
 			_fail("nó fora do plano ou com tipo diferente: %s" % n["id"])
 	_expect("23 derrotas contando as invocações adiadas", kills == 23)
-	_expect("níveis 1,1,1,2,2,2,3,4,3,5", levels == [1, 1, 1, 2, 2, 2, 3, 4, 3, 5])
+	_expect("níveis v0.5 por fase 1/3/5/7/10: 1,1,1,3,3,3,5,7,5,10", levels == [1, 1, 1, 3, 3, 3, 5, 7, 5, 10])
 	_expect("ordem: elite antes da Rainha, boss por último", encounters[5]["kind"] == "ELITE" and encounters[8]["kind"] == "MINIBOSS" and encounters[9]["kind"] == "BOSS")
 	_expect("Poço de Lúmen entre o encontro 7 e o 8", nodes[7]["id"] == "event_c1_001")
 	_expect("Reserva de Resíduo depois da Rainha e antes do boss", nodes[10]["id"] == "event_c1_reserva_residuo" and nodes[9]["id"] == "c1_3_2_a")

@@ -1,0 +1,129 @@
+{
+  "id": "tune_v05_builds",
+  "description": "v0.5: ajuste fino de Guardião e Arcano sobre níveis 1/3/5/7/10 e chefe ×1,5.",
+  "seeds": 6,
+  "levels": [
+    10
+  ],
+  "builds": {
+    "hero_001": [
+      "guardiao",
+      "retaliacao",
+      "retaliacao_tele"
+    ],
+    "hero_002": [
+      "critico",
+      "marca"
+    ],
+    "hero_003": [
+      "arcano",
+      "controle",
+      "lumen"
+    ]
+  },
+  "modes": [
+    "campaign"
+  ],
+  "campaign": {
+    "start_level": 1,
+    "max_attempts": 16,
+    "loot": true
+  },
+  "rank_milestones": [
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17,
+    19
+  ],
+  "max_time": 3600,
+  "stuck_seconds": 30,
+  "variants": [
+    {
+      "id": "base_v05",
+      "stage_levels": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7,
+        "5": 10
+      },
+      "profile_overrides": {
+        "party_hp_scale": {
+          "ELITE": 3.0,
+          "MINIBOSS": 3.0,
+          "BOSS": 1.5
+        }
+      }
+    },
+    {
+      "id": "ambos",
+      "stage_levels": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7,
+        "5": 10
+      },
+      "profile_overrides": {
+        "party_hp_scale": {
+          "ELITE": 3.0,
+          "MINIBOSS": 3.0,
+          "BOSS": 1.5
+        }
+      },
+      "skill_overrides": {
+        "skill_bas_006": {
+          "0.value": -0.5
+        },
+        "skill_bas_009": {
+          "0.value": -0.5,
+          "cooldown": 16.0
+        },
+        "skill_iri_001": {
+          "0.coefficient": 1.8
+        },
+        "skill_iri_005": {
+          "cooldown": 11.0
+        }
+      }
+    },
+    {
+      "id": "ambos_arcano2",
+      "stage_levels": {
+        "1": 1,
+        "2": 3,
+        "3": 5,
+        "4": 7,
+        "5": 10
+      },
+      "profile_overrides": {
+        "party_hp_scale": {
+          "ELITE": 3.0,
+          "MINIBOSS": 3.0,
+          "BOSS": 1.5
+        }
+      },
+      "skill_overrides": {
+        "skill_bas_006": {
+          "0.value": -0.5
+        },
+        "skill_bas_009": {
+          "0.value": -0.5,
+          "cooldown": 16.0
+        },
+        "skill_iri_001": {
+          "0.coefficient": 2.0
+        },
+        "skill_iri_005": {
+          "0.coefficient": 1.6,
+          "cooldown": 10.0
+        }
+      }
+    }
+  ]
+}

@@ -65,7 +65,7 @@
       "name": "Raiz e emboscada",
       "kind": "NORMAL",
       "stage": 2,
-      "level": 2,
+      "level": 3,
       "members": [
         {
           "enemy_id": "en_c1_002",
@@ -84,7 +84,7 @@
       "name": "Ravina do musgo",
       "kind": "NORMAL",
       "stage": 2,
-      "level": 2,
+      "level": 3,
       "members": [
         {
           "enemy_id": "en_c1_004",
@@ -103,7 +103,7 @@
       "name": "Geleia Anciã",
       "kind": "ELITE",
       "stage": 2,
-      "level": 2,
+      "level": 3,
       "members": [
         {
           "enemy_id": "el_c1_001",
@@ -122,7 +122,7 @@
       "name": "Galeria de raízes",
       "kind": "NORMAL",
       "stage": 3,
-      "level": 3,
+      "level": 5,
       "members": [
         {
           "enemy_id": "en_c1_007",
@@ -147,7 +147,7 @@
       "name": "Caçada cruzada",
       "kind": "NORMAL",
       "stage": 4,
-      "level": 4,
+      "level": 7,
       "members": [
         {
           "enemy_id": "en_c1_009",
@@ -166,7 +166,7 @@
       "name": "Rainha das Geleias",
       "kind": "MINIBOSS",
       "stage": 3,
-      "level": 3,
+      "level": 5,
       "members": [
         {
           "enemy_id": "mb_c1_001",
@@ -192,7 +192,7 @@
       "name": "Guardião-Cervo de Pedra",
       "kind": "BOSS",
       "stage": 5,
-      "level": 5,
+      "level": 10,
       "members": [
         {
           "enemy_id": "boss_c1_001",
@@ -205,5 +205,7 @@
         }
       ]
     }
-  ]
+  ],
+  "balance_version": "0.5",
+  "level_note": "v0.5 (2026-09-29): nível de conteúdo por fase 1/3/5/7 e Guardião 10, para a vitória esperada por volta do nível 10–11 (meta de Rafael). Medido em tools/argos (tune_v05_levels)."
 }

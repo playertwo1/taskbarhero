@@ -42,3 +42,18 @@ Fonte dos números: `python tools/argos/run.py --scenario slice_balance` (6 seme
 * **Hipótese:** a curva linear 1–100 dá ~2,5% de força por nível; o progresso após derrotas precisa vir de ranks, itens e Árvore.
 * **Proposta do Argos:** definir os marcos de rank e o ganho de itens/Árvore antes de ajustar a curva.
 * **Decisão humana:** meta definida (nível 10–11, jogo incremental). Com fôlego, Controle vence em 4–6,5 tentativas (nível 9–12,5), dentro ou perto da meta.
+
+### [BAL-004] Arcano com Guardião vence tarde (v0.5)
+* **Data:** 2026-09-29
+* **Métrica observada:** `slice_balance` v0.5: Guardião/Crítico/Arcano no nível 15 (10 tentativas); demais Arcano 11–13.
+* **Hipótese:** falta de sobrevivência; +30% de dano no Arcano não mudou o nível de vitória (`tune_v05_builds`).
+* **Proposta do Argos:** dar ao Arcano uma resposta defensiva leve (ex.: Prisma com Desequilíbrio aplicando lentidão) ou aceitar como combinação fraca.
+* **Decisão humana:** pendente.
+
+### [BAL-005] Guardião na borda inferior de 120–210 s (v0.5)
+* **Data:** 2026-09-29
+* **Métrica observada:** TTK mediano 120 s no nível 10 (110–133 s) com HP ×1,5.
+* **Hipótese:** a redução de HP que centrou a vitória no nível 11 encurtou a luta.
+* **Proposta do Argos:** testar HP ×2 com golpe forte mais leve; manter se o playtest achar a duração boa.
+* **Decisão humana:** pendente.
+

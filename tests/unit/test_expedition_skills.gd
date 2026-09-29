@@ -122,13 +122,13 @@ func _test_skill_data() -> void:
 			_fail("skill sem status HIPOTESE ou fora do slice: %s" % s["id"])
 	_check("Muralha Viva: cooldown", by_id["skill_bas_006"]["cooldown"], 14.0)
 	_check("Muralha Viva: duração", by_id["skill_bas_006"]["effects"][0]["duration"], 6.0)
-	_check("Muralha Viva: redução", by_id["skill_bas_006"]["effects"][0]["value"], -0.4)
+	_check("Muralha Viva: redução (v0.5)", by_id["skill_bas_006"]["effects"][0]["value"], -0.5)
 	_check("Contra-Golpe: cooldown", by_id["skill_bas_007"]["cooldown"], 8.0)
 	_check("Contra-Golpe: coeficiente", by_id["skill_bas_007"]["effects"][0]["counter_coefficient"], 1.8)
 	_check("Desafio: cooldown", by_id["skill_bas_008"]["cooldown"], 15.0)
 	_check("Desafio: duração", by_id["skill_bas_008"]["effects"][0]["duration"], 4.0)
 	_check("Desafio: dano a aliados", by_id["skill_bas_008"]["effects"][0]["ally_damage_multiplier"], 0.85)
-	_check("Fortaleza: cooldown", by_id["skill_bas_009"]["cooldown"], 20.0)
+	_check("Fortaleza: cooldown (v0.5)", by_id["skill_bas_009"]["cooldown"], 16.0)
 	_check("Fortaleza: duração", by_id["skill_bas_009"]["effects"][0]["duration"], 5.0)
 	var bastiao: Dictionary = {}
 	for r in hero_rows:
@@ -241,14 +241,14 @@ func _test_fortaleza() -> void:
 		if after_cast and e["type"] == "enemy_attack":
 			if e["time"] < cast_time + 5.0 - 0.0001:
 				seen_reduced += 1
-				if absf(e["damage"] - GELEIA_ON_BASTIAO * 0.6) > EPS:
-					_fail("golpe dentro da janela deveria ser ×0,6: %.4f em t=%.2f" % [e["damage"], e["time"]])
-			elif e["time"] < cast_time + 20.0 - 0.0001 and absf(e["damage"] - GELEIA_ON_BASTIAO) <= EPS:
+				if absf(e["damage"] - GELEIA_ON_BASTIAO * 0.5) > EPS:
+					_fail("golpe dentro da janela deveria ser ×0,5: %.4f em t=%.2f" % [e["damage"], e["time"]])
+			elif e["time"] < cast_time + 16.0 - 0.0001 and absf(e["damage"] - GELEIA_ON_BASTIAO) <= EPS:
 				seen_full_after += 1
 	_expect("houve golpes reduzidos durante os 5 s", seen_reduced > 0)
 	_expect("depois dos 5 s o dano volta ao normal", seen_full_after > 0)
 	var casts := _of(events, "skill_cast")
-	_expect("sem nova Fortaleza antes de 20 s", casts.size() == 1 or casts[1]["time"] >= cast_time + 20.0 - 0.0001)
+	_expect("sem nova Fortaleza antes de 16 s", casts.size() == 1 or casts[1]["time"] >= cast_time + 16.0 - 0.0001)
 
 func _behind_setup(skill_ids: Array) -> ExpeditionRun:
 	var trio := [_hero("hero_001", skill_ids, 1.0), _hero("hero_002"), _hero("hero_003")]
@@ -271,12 +271,12 @@ func _test_muralha() -> void:
 			continue
 		if e["target"] == "hero_002":
 			behind_hit += 1
-			if absf(e["damage"] - GELEIA_ON_FLECHA * 0.6) > EPS:
-				_fail("aliado atrás (Flecha) deveria receber ×0,6: %.4f" % e["damage"])
+			if absf(e["damage"] - GELEIA_ON_FLECHA * 0.5) > EPS:
+				_fail("aliado atrás (Flecha) deveria receber ×0,5: %.4f" % e["damage"])
 		elif e["target"] == "hero_003":
 			behind_hit += 1
-			if absf(e["damage"] - GELEIA_ON_IRIS * 0.6) > EPS:
-				_fail("aliado atrás (Íris) deveria receber ×0,6: %.4f" % e["damage"])
+			if absf(e["damage"] - GELEIA_ON_IRIS * 0.5) > EPS:
+				_fail("aliado atrás (Íris) deveria receber ×0,5: %.4f" % e["damage"])
 		elif e["target"] == "hero_001":
 			checked_front += 1
 			if absf(e["damage"] - GELEIA_ON_BASTIAO) > EPS:
