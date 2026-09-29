@@ -18,7 +18,7 @@ Para o conteúdo futuro, TASKBAR Sistema Completo v0.4 é a base canônica aprov
 
 - O [padrão canônico dos heróis](../HERO_STANDARD.md) define seis skills (cinco normais e uma Signature) e seis posições de equipamento (Arma, Secundário, Armadura, dois Acessórios e Echo).
 - `TREE-1`, `CRAFT-1` e `ITEM-1` foram aprovados como design. Seus valores econômicos e simulação seguem para `ECON-1`; o runtime ainda não foi migrado para os novos sistemas.
-- A trilha detalhada de conteúdo está em [`ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md`](../ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md). A prioridade ativa fica sempre no [`ROADMAP.md`](../ROADMAP.md).
+- Prioridade, ordem e gates ficam no roadmap único [`ROADMAP.md`](../ROADMAP.md).
 
 ## Visão futura
 

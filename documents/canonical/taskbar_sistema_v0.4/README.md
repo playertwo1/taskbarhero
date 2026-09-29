@@ -26,7 +26,7 @@ O conteúdo integral e os schemas originais estão preservados nesta pasta. O JS
 1. Esta versão rege o design canônico futuro dos domínios listados no escopo acima e substitui propostas locais incompatíveis de catálogo, raridade, material, loot e balanceamento.
 2. Decisões específicas de Pocket Hero que não conflitam com o pacote continuam válidas, incluindo os seis slots de equipamento definidos em [`HERO_STANDARD.md`](../../../HERO_STANDARD.md) e os artesãos na [especificação de equipamento e crafting](../../../docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
 3. Os arquivos em [`data/`](../../../data/) continuam sendo autoridade exclusiva para o que o MVP carrega hoje. Aprovar este design não renomeia IDs, substitui JSON runtime nem declara sistemas implementados.
-4. A fase [`LOOT-EXPANSION-1`](../../../ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md#23-loot-expansion-1--economia-e-loot-completos) conduz a adaptação, migração de IDs/valores, integração e QA, preservando mapeamentos legados.
+4. A fase [`LOOT-EXPANSION-1`](../../../ROADMAP.md#45-loot-expansion-1--integração-v04-ao-runtime--pós-slice) conduz a adaptação, migração de IDs/valores, integração e QA, preservando mapeamentos legados.
 
 ## Limites de validação
 

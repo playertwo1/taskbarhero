@@ -2,6 +2,12 @@
 
 Registro breve de mudanças estruturais e releases. Detalhes de planejamento continuam no roadmap; histórico de gates concluídos permanece arquivado.
 
+## 2026-09-29 — roadmap único
+
+- `ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md` incorporado ao `ROADMAP.md` e removido. Gates e checklists ativos foram para o roadmap; ideias de design sem ficha foram preservadas em `docs/04_content/chapters/chapter_01/DESIGN_SEEDS.md`, `docs/05_hub/HUB_STRUCTURE_SEEDS.md` e `docs/01_world/FUTURE_SEEDS.md`.
+- Sequência: `SLICE-0` (recorte, com inventário de arte) → `BALANCE-FOUNDATION-1` limitado ao recorte → `SLICE-1` em etapas 1A–1E, cada uma com teste. Decisão de Rafael: o slice migra para `/data` só o subconjunto v0.4 que usa, com aliases. Trilhas de heróis, conteúdo completo e Hub completo pausadas até o slice.
+- A taxonomia antiga de recursos (Lúmen como moeda, Sigilos) não foi transportada: `ECONOMY_MODEL.md` e a base v0.4 são a fonte vigente.
+
 ## 2026-09-29 — limpeza e consolidação
 
 - Adicionada a proposta de Mastery 1–10 da Flecha; roadmap reordenado para BALANCE-FOUNDATION-1 → SLICE-1 antes de retomar fichas de heróis.

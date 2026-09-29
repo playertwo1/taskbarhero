@@ -21,7 +21,7 @@ source: "[3-Taskbar_Hero_Bastiao_Golden_Reference_v0.1.docx](../../documents/3-T
 
 Projeto: Pocket Hero
 Versão: 0.1
-Status do registro de design: `DESIGN`; o status atual e as pendências estão no [roadmap](../../ROADMAP.md#4-hero-001--bastião-golden-reference-de-design).
+Status do registro de design: `DESIGN`; o status atual e as pendências estão no [roadmap](../../ROADMAP.md#3-fundação-concluída).
 Documento-base: padrão canônico + kit de combate + passivas + traits + maestria
 
 Documento de design do Bastião e referência de profundidade para as demais fichas. A implementação é comprovada pelo código, dados e testes do repositório.
@@ -428,7 +428,7 @@ Esse equilíbrio define o personagem.
 | números finais | pendente |
 | balanceamento | pendente |
 
-Status do ciclo de design: `DESIGN`. Para o estado atual e as pendências, consulte o [roadmap](../../ROADMAP.md#4-hero-001--bastião-golden-reference-de-design).
+Status do ciclo de design: `DESIGN`. Para o estado atual e as pendências, consulte o [roadmap](../../ROADMAP.md#3-fundação-concluída).
 
 ## Próximos itens recomendados
 

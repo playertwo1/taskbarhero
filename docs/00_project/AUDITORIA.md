@@ -68,7 +68,7 @@ Fonte autoritativa: [Equipamentos e artesãos — CRAFT-1](../03_systems/EQUIPME
 - Os 15 itens e 11 inimigos atuais em `/data` são conteúdo runtime legado, preservado até migração explícita. Consulte a [ponte de compatibilidade](../04_content/LEGACY_RUNTIME_CATALOG.md); não inferir equivalências.
 - A economia ECON-1 e as decisões anteriores de raridade/material valem como hipóteses/recorte do primeiro slice onde forem compatíveis com v0.4; não definem mais o catálogo global.
 
-Fonte autoritativa: [base canônica v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md), [padrão de balanceamento](../06_balance/COMBAT_BALANCE_STANDARD.md) e [roadmap](../../ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md#23-loot-expansion-1--economia-e-loot-completos). Runtime permanece separado até migração.
+Fonte autoritativa: [base canônica v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md), [padrão de balanceamento](../06_balance/COMBAT_BALANCE_STANDARD.md) e [roadmap](../../ROADMAP.md#42-balance-foundation-1--contrato-de-balanceamento). Runtime permanece separado até migração.
 
 ## Echo no primeiro slice
 

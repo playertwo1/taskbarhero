@@ -10,7 +10,7 @@
 | Contexto consolidado e visão atual registrada | [Project brief](../POCKET_HERO_PROJECT_BRIEF.md) | Contexto resumido; não prova implementação. |
 | Princípios e design incremental | [Guia incremental](INCREMENTAL_DESIGN_GUIDE.md) e [guia completo](../../documents/GUIA_DESIGN_INCREMENTAL_POCKET_HERO.md) | Recomendação de design. |
 | Regras e decisões para agentes | [AGENTS.md](../../AGENTS.md) | Instrução vigente de trabalho. |
-| Próximas entregas e gates | [ROADMAP.md](../../ROADMAP.md) e [Roadmap de Expansão](../../ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md) | Fonte do plano e trilha detalhada de expansão. |
+| Próximas entregas e gates | [ROADMAP.md](../../ROADMAP.md) | Roadmap único: plano, ordem e gates. |
 | IDs, categorias e status de conteúdo | [Registro de conteúdo](../CONTENT_REGISTRY.md) | Fonte dos IDs de design e roteamento de conteúdo. |
 
 As decisões de fundação delegadas estão registradas nas fontes e no [AUDITORIA.md](AUDITORIA.md). `LORE-1` foi concluído para a fundação narrativa; consulte a [Bíblia de Lore](../01_world/LORE_BIBLE.md) para regras globais e o [overview do Capítulo 1](../04_content/chapters/chapter_01/OVERVIEW.md) para conteúdo regional.

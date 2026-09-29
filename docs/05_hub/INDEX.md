@@ -7,4 +7,5 @@ O fluxo principal do MVP não integra um sistema de Hub. Existe uma cena isolada
 - **Artesãos e serviços da cidade:** [equipamentos e artesãos — CRAFT-1 / ITEM-1](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md); Ferreiro atende Arma, Secundário e Armadura; Ourives atende os dois slots de Acessório; Gravadora atende Echo; Alquimista atende materiais, catalisadores, transmutação e consumíveis. A disponibilidade de cada serviço continua condicionada aos gates de conteúdo/economia.
 - **Árvore e meta-progressão:** [Árvore dos Ecos](../03_systems/GLOBAL_RESONANCE_TREE.md); estrutura e catálogo de 30 nós aprovados em design `TREE-1`; valores, economia, interface e runtime continuam pendentes.
 - **Ecos/Codex:** um Echo funcional e opcional está incluído no escopo de design do slice; extração, infusão e Codex completo ficam para depois. Consulte o [Sistema de Ecos](../03_systems/ECHO_SYSTEM.md).
-- **Prioridade e gates:** [roadmap pós-MVP](../../ROADMAP.md), trilhas BUILD/ITEM e ECHO/HUB.
+- **Prioridade e gates:** [roadmap](../../ROADMAP.md) — SLICE-0/SLICE-1 e trilha HUB-1 pausada.
+- **Estrutura proposta do Refúgio:** [núcleo, estabelecimentos e regra de desbloqueio](HUB_STRUCTURE_SEEDS.md) — `CONCEPT`, sem aprovação de layout.

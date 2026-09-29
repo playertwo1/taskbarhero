@@ -1,285 +1,197 @@
 # ROADMAP — Pocket Hero
 
-**Status atualizado em 2026-09-28**  
-**Engine:** Godot 4.7.2 Standard  
-**Plataforma inicial:** Android
+**Status atualizado em 2026-09-29** · **Engine:** Godot 4.7.2 Standard · **Plataforma inicial:** Android
 
-## 1. Estado atual
-
-O MVP do Pocket Hero foi concluído e homologado no gate **R19 em 2026-09-27**. O histórico das fases concluídas, incluindo evidências e checklists, permanece em [`arquivados/ROADMAP_CONCLUIDO.md`](arquivados/ROADMAP_CONCLUIDO.md).
-
-O projeto entrou na fase de **expansão de conteúdo, identidade e meta-progressão**, sem reabrir a homologação do MVP.
-
-A trilha detalhada de design fica em:
-
-[`ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md`](ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md)
+Roadmap único do projeto: define prioridade, ordem e gates. Detalhes de design ficam nas fontes linkadas em cada fase (um fato → uma fonte). O histórico do MVP está em [`arquivados/ROADMAP_CONCLUIDO.md`](arquivados/ROADMAP_CONCLUIDO.md).
 
 ---
 
-## 2. ART-0 — Golden References visuais
+## 1. Onde estamos
 
-Os quatro Golden foram aprovados por Rafael em 2026-09-27. **ART-0 está PASS para produção.**
-
-- [x] **GOLDEN HERO VISUAL** — Bastião v002 aprovado; hash fixado; folha completa/QA pendente.
-- [x] **GOLDEN ENEMY** — Geleia 64×64 aprovada; hash fixado; folha completa/QA pendente.
-- [x] **GOLDEN BOSS** — Guardião-Cervo v002 aprovado; hash fixado; folha completa/QA pendente.
-- [x] **GOLDEN ANIMATION** — idle da Geleia, 4 quadros a 160 ms, aprovado; release/QA pendente.
-
-As nove folhas animadas e quatro camadas de ambiente já foram substituídas nos caminhos usados pelo projeto e o lint técnico passou. QA visual independente e revisão mobile continuam como aceite de release pendente.
-
-**Importante:** o Golden visual do Bastião e o Golden de **design de herói** são contratos diferentes. Um controla direção artística; o outro controla anatomia, skills, passivas, Traits, Mastery e lore.
+- **MVP:** concluído e homologado no gate **R19** em 2026-09-27. Não reabrir.
+- **Fase atual:** expansão de conteúdo, identidade e meta-progressão.
+- **Diagnóstico de 2026-09-29:** a fundação de design está ampla (sistemas, Bastião, Flecha, Árvore, artesãos, itens, economia), mas nenhum número foi validado em jogo. O gargalo agora é **provar os contratos no SLICE-1**, não escrever mais fichas.
+- **Próximo passo:** [SLICE-0 — recorte do slice](#41-slice-0--recorte-do-slice), seguido de BALANCE-FOUNDATION-1 limitado a esse recorte.
+- **Evidência técnica atual:** `python tools/run_godot_tests.py` — 11/11 cenas PASS em 2026-09-29.
 
 ---
 
-## 3. DESIGN-EXPANSION — Nova base canônica
+## 2. Princípios e controle de escopo
 
-A expansão deixa de trabalhar com o rascunho antigo de **5 skills por herói**.
+- Preservar o MVP homologado e os Golden References aprovados; mudanças canônicas novas orientam **design futuro** e não alteram código homologado sem tarefa explícita de migração.
+- Bosque de Lúmen continua sendo o Capítulo 1; não iniciar capítulos futuros antes de validar o loop.
+- Sem backend, contas, multiplayer, cloud save ou monetização.
+- Números de balanceamento são **HIPÓTESE** até simulação e playtest.
+- Evoluir por gates pequenos; cada fase fecha com evidência, não com documento.
 
-O padrão futuro passa a ser:
+Antes de adicionar um sistema, perguntar: melhora o core loop? cria decisão? reforça progressão? reforça lore? interage com sistemas existentes? Se todas forem "não", não priorizar. O objetivo é poucos sistemas conversando entre si:
 
-- **8 heróis jogáveis**;
-- party de **3 heróis ativos**;
-- **1 ataque básico por herói**;
-- **6 skills por herói no total**, sendo 5 normais e 1 Signature;
-- **16 passivas por herói**;
-- **3 Traits por herói**;
-- **3 caminhos principais de build**;
-- **2 slots de skill em combate**;
-- level **1–100**;
-- **Mastery 1–10**;
-- **6 slots de equipamento: 5 convencionais + 1 Echo**;
-- **5 missões pessoais por herói**;
-- **4 estágios visuais**.
+`herói ↔ skill ↔ passiva ↔ Trait ↔ item ↔ Echo ↔ party ↔ inimigo ↔ evento ↔ lore ↔ Árvore dos Ecos ↔ artesãos ↔ Hub`
 
-Totais de design para o roster completo:
-
-- 8 ataques básicos;
-- 48 skills ativas;
-- 128 passivas;
-- 24 Traits.
-
-Os números de balanceamento continuam como hipóteses até playtest/simulação.
+Fantasia, core loop e pilares: [`GAME_PILLARS.md`](docs/00_project/GAME_PILLARS.md) e [`CORE_LOOP.md`](docs/00_project/CORE_LOOP.md).
 
 ---
 
-## 4. HERO-001 — Bastião Golden Reference de design
+## 3. Fundação concluída
 
-Bastião passa a ser a referência estrutural para os sete heróis seguintes.
+Gates `PASS` em design. Nenhum deles aprova runtime, números finais ou balanceamento.
 
-### Concluído em design
-
-- [x] identidade Tank / Protector;
-- [x] Guarda, Perfect Block e Desequilíbrio;
-- [x] ataque básico;
-- [x] 6 skills no total, incluindo a Signature;
-- [x] 16 passivas;
-- [x] 3 branches e 3 Capstones;
-- [x] 3 Traits;
-- [x] builds Guardião / Retaliação / Controle;
-- [x] Mastery 1–10;
-- [x] progressão visual;
-- [x] equipamentos/Echos iniciais;
-- [x] lore central;
-- [x] campanha pessoal com 5 missões.
-
-### Ainda pendente
-
-- [ ] números finais;
-- [ ] diálogos completos;
-- [ ] encounters das missões;
-- [ ] efeitos/sprites finais;
-- [ ] implementação;
-- [ ] balanceamento e QA.
-
-**Status do ciclo:** `DESIGN` — consulte esta seção e a ficha Golden para o escopo documentado e suas pendências.
+| Fase | Gate | Escopo aprovado | Fonte |
+| --- | --- | --- | --- |
+| **ART-0** | PASS 2026-09-27 | 4 Golden visuais (Bastião v002, Geleia, Guardião-Cervo v002, idle da Geleia). Pendente: QA visual independente e revisão mobile para release. | [Golden](docs/art/golden/README.md) · [inventário](docs/art/MVP_SPRITE_INVENTORY.md) |
+| **SYNC-0** | PASS | Contratos de design importados e indexados. | [docs/INDEX.md](docs/INDEX.md) |
+| **DESIGN-1** | PASS 2026-09-28 | Party 3 de 8; separação run / herói / equipamento / conta; saídas da expedição; Echo opcional no slice. | [CORE_LOOP](docs/00_project/CORE_LOOP.md) · [skills](docs/03_systems/SKILL_SYSTEM.md) |
+| **HERO-STD** | APPROVED | Anatomia canônica do herói (1 básico + 6 skills, 16 passivas, 3 Traits, Mastery 1–10, 6 slots, 5 missões, 4 formas). | [HERO_STANDARD.md](HERO_STANDARD.md) |
+| **LORE-1** | PASS 2026-09-28 | Bíblia de Lore com mistérios centrais em aberto. | [LORE_BIBLE](docs/01_world/LORE_BIBLE.md) |
+| **HERO-001 Bastião** | DESIGN completo | Golden Reference de design: kit, passivas, Traits, Mastery, lore e 5 missões. Pendente: números, diálogos, encounters, sprites finais, implementação. | [Golden Reference](docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md) |
+| **TREE-1** | PASS 2026-09-28 | 30 nós em 7 ramos, pré-requisitos e custos relativos. Alvo posterior ~84 nós. | [Árvore dos Ecos](docs/03_systems/GLOBAL_RESONANCE_TREE.md) |
+| **CRAFT-1** | PASS 2026-09-28 | Quatro artesãos (Ferreiro, Alquimista, Gravadora de Ecos, Ourives), serviço mínimo, fonte/sink e ordem de abertura. | [Equipamento e crafting](docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md) |
+| **ITEM-1** | PASS 2026-09-28 | 6 slots, 6 raridades v0.4, catálogo de 30 itens; 15 itens runtime como legado. | [Equipamento](docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md) · [itens](docs/04_content/items/INDEX.md) · [ponte legada](docs/04_content/LEGACY_RUNTIME_CATALOG.md) |
+| **LOOT v0.4** | APPROVED como cânone | Base de combate, loot, inimigos, materiais e economia. Integração ao runtime em LOOT-EXPANSION-1. | [TASKBAR v0.4](documents/canonical/taskbar_sistema_v0.4/README.md) |
 
 ---
 
-## 5. META-1 — Árvore dos Ecos
+## 4. Sequência ativa
 
-A referência de Rune Tree global é adaptada ao universo como **Árvore dos Ecos / Árvore Global de Ressonância** no Refúgio da Vigília.
+A ordem é esta. Não pular etapas: cada uma entrega o que a seguinte consome.
 
-### Estrutura
+**DECIDIDO (Rafael, 2026-09-29) — estratégia de runtime do slice:** o SLICE-1 migra para `/data` **somente o subconjunto v0.4 que usa**, com aliases dos IDs runtime atuais registrados no [registro de conteúdo](docs/CONTENT_REGISTRY.md). Não haverá arquivos de dados paralelos. O MVP homologado continua jogável e com testes passando a cada etapa; LOOT-EXPANSION-1 completa a migração depois do slice.
 
-Sete ramos:
+### 4.0 ECON-1 — Economia mínima · `DESIGN` em andamento
 
-1. Vigília;
-2. Formação;
-3. Fortuna;
-4. Oficina;
-5. Alquimia;
-6. Jornada;
-7. Memória.
+Feito: [modelo econômico](docs/06_balance/ECONOMY_MODEL.md), [15 encontros / 32 derrotas e proposta do Guardião](docs/04_content/chapters/chapter_01/ENCOUNTERS.md), [plano estruturado](docs/04_content/chapters/chapter_01/encounter_plan.json) e [simulação reproduzível](tools/economy/simulate_chapter1_balance.py) de cobertura, budgets, rendimento e TTK teórico.
 
-### Escopo
+O que falta depende de jogo real e **fecha no SLICE-1E**: combate, taxa de vitória na primeira tentativa, pacing, teto e conversão offline.
 
-- [x] conceito geral definido;
-- [x] integração com Hub/lore definida;
-- [x] selecionar 30 nós e registrar pré-requisitos;
-- [x] definir faixas relativas de custo;
-- [x] criar diagrama de dependências e princípio de expansão da UI;
-- [ ] desenhar/prototipar a UI detalhada em `HUB-1`/`SLICE-1`;
-- [ ] expandir apenas depois do slice validado.
+Gate PASS:
+- [x] árvore, Ferreiro, Alquimista e loot têm sinks definidos; nenhum recurso sem função;
+- [x] custos principais simuláveis;
+- [x] primeira expedição offline termina no objetivo/derrota sem iniciar outra;
+- [x] melhoria do Ferreiro demonstrável com fonte não repetível de Resíduo de Lúmen, sem ser requisito para vencer;
+- [ ] TTK, vitória na primeira tentativa e pacing medidos no SLICE-1E;
+- [ ] teto numérico e conversão de tempo offline medidos no SLICE-1E.
 
-Alvo posterior: aproximadamente **84 nós**, sem obrigar essa quantidade no primeiro vertical slice.
+### 4.1 SLICE-0 — Recorte do slice
 
----
+**Estado:** próximo passo.
 
-## 6. EQUIP-1 — Equipamentos e artesãos da cidade
+Escolher subconjuntos de fontes já aprovadas, sem criar conteúdo novo. O resultado é a lista fechada que o BALANCE-FOUNDATION-1 e o SLICE-1 consomem.
 
-O sistema não utilizará um Cube abstrato como centro do crafting.
+- [ ] trio (Bastião, Flecha, Íris): skills, passivas e Traits do slice, garantindo pelo menos duas builds distintas;
+- [ ] subset de equipamentos cobrindo os principais slots e subset de raridades v0.4;
+- [ ] subset de inimigos, 1 elite, 1 mini-boss e as fases do Guardião-Cervo a implementar ([ENCOUNTERS](docs/04_content/chapters/chapter_01/ENCOUNTERS.md) · [sementes](docs/04_content/chapters/chapter_01/DESIGN_SEEDS.md));
+- [ ] 1 evento de expedição com escolha real;
+- [ ] 1 Echo funcional opcional com recompensa determinística ([Sistema de Ecos](docs/03_systems/ECHO_SYSTEM.md));
+- [ ] ramo pequeno da Árvore dos Ecos e o serviço do Ferreiro (desmontagem + 1 melhoria);
+- [ ] mudança visual do Refúgio após o boss e efeito do Fragmento do Coração Verde ([Hub](docs/05_hub/HUB_STRUCTURE_SEEDS.md) · [direção visual](docs/05_hub/HUB_VISUAL_DIRECTION.md));
+- [ ] lista de IDs v0.4 que entram em `/data` e seus aliases com os IDs runtime atuais;
+- [ ] **inventário de arte do recorte:** para cada entidade, efeito e tela do slice, indicar se já existe folha `v002`/Golden utilizável ou se precisa de contrato novo ([inventário MVP](docs/art/MVP_SPRITE_INVENTORY.md) · [conceitos](docs/art/conceitos/README.md)); assets novos seguem contrato → QA técnico → auditoria visual independente, e o primeiro asset novo passa o gate antes dos demais;
+- [ ] atualizar o [overview do Capítulo 1](docs/04_content/chapters/chapter_01/OVERVIEW.md) ao padrão de 6 skills por herói.
 
-As funções são distribuídas pelo Refúgio da Vigília:
+Gate PASS: recorte registrado com fontes, IDs e aliases; nenhum item do slice sem fonte aprovada; lacunas de arte listadas com contrato ou decisão de reaproveitamento.
 
-- **Ferreiro** — Arma, Secundário e Armadura; desmontagem e melhoria conforme os gates aprovados;
-- **Alquimista** — materiais, catalisadores, transmutação e consumíveis;
-- **Gravadora de Ecos** — slot e catálogo independente de Echo;
-- **Ourives** — Acessório I e II, com especialização de build.
+### 4.2 BALANCE-FOUNDATION-1 — Contrato de balanceamento
 
-A ordem, o mínimo de serviço por artesão e o que fica fora do slice estão aprovados em [CRAFT-1](docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md). Reforja, fabricação livre, sockets e outros serviços listados acima são possibilidades futuras, não requisitos do primeiro slice.
+Integrar ao combate do Pocket Hero **apenas a parte da v0.4 que o recorte do SLICE-0 usa**, com Bastião como referência. Template base: [COMBAT_BALANCE_STANDARD](docs/06_balance/COMBAT_BALANCE_STANDARD.md). O restante do contrato fica para BALANCE-1.
 
-### Equipamento
+- [ ] status canônicos usados pelo slice: ID, unidade, significado, cálculo, limites e mapeamento para os nomes/valores runtime atuais;
+- [ ] como Guarda, Perfect Block, Desequilíbrio/Stagger e Marca entram no pipeline compartilhado;
+- [ ] fórmulas de dano, crítico, defesa/penetração e cura/escudo, com caps, ordem e exemplos calculados contra o combate atual;
+- [ ] baseline do trio (Bastião primeiro) e dos inimigos, elite, mini-boss e boss do recorte, dentro dos budgets v0.4 ou com justificativa;
+- [ ] budgets dos slots e raridades do recorte;
+- [ ] métricas mínimas de telemetria para o slice: dano, cura, TTK, mortes, uso de skills e recursos ganhos/gastos;
+- [ ] cada número rastreado como `DECIDIDO`, `HIPÓTESE` ou `EM ABERTO`, com fonte e método.
 
-- [x] seis slots canônicos definidos em design (cinco convencionais + Echo), com escopo do primeiro catálogo registrado;
-- [x] raridades canônicas de design seguem v0.4; subset do slice e migração das quatro raridades runtime legadas seguem os gates de `SLICE-1`;
-- [x] contrato de design de item e fronteira sem migração runtime documentados;
-- [x] catálogo canônico v0.4 de 30 itens definido; os 15 registros runtime anteriores estão mapeados como legados;
-- [x] Item Power separado conceitualmente de raridade; números e fórmula seguem para `ECON-1`;
-- [x] affixes aleatórios e reforja adiados para depois do slice;
-- [ ] selecionar subset para o vertical slice;
-- [ ] implementar primeiro serviço do Ferreiro.
+Gate PASS: tudo que o slice usa tem definição única e fórmula calculável à mão; heróis e inimigos do recorte usam o mesmo modelo de status/modificadores; baselines prontos para teste. O PASS **não** declara o jogo balanceado.
 
-Os serviços da cidade devem aparecer gradualmente conforme o Hub é reconstruído.
+### 4.3 SLICE-1 — Vertical slice do jogo real
 
----
+Fluxo: `Hub → party → build → expedição → combate → escolha → evento → elite → mini-boss → boss → retorno → Árvore/Ferreiro → evolução do Hub`
 
-## 7. LORE-1 — Fundação narrativa
+Cada etapa fecha com teste automatizado novo em `tests/`, a suíte completa passando (`python tools/run_godot_tests.py`) e o MVP ainda jogável.
 
-**Concluído:** a [Bíblia de Lore](docs/01_world/LORE_BIBLE.md) consolida as regras globais e mantém as causas e mistérios principais em aberto. A lore individual do Bastião está na seção [decisões atuais](docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md#lore-pessoal-do-bastiao-decisoes-atuais); diálogos e implementação permanecem trabalho futuro.
+- **1A — Combate e dados:** migrar o subconjunto v0.4 para `/data` com aliases; combate usa o modelo do BALANCE-FOUNDATION-1; trio com as skills do recorte.
+- **1B — Run:** expedição com escolhas de build, evento e elite; loot do recorte equipável ou reciclável.
+- **1C — Chefes:** mini-boss e Guardião-Cervo com mecânicas distintas de inimigo comum.
+- **1D — Retorno:** Hub, ramo da Árvore, Ferreiro (desmontagem + 1 melhoria), Echo opcional e mudança visual do Refúgio após o boss.
+- **1E — Validação:** QA mobile no emulador, QA visual dos assets novos e medições pendentes do ECON-1 (TTK, vitória na primeira tentativa, pacing, offline).
 
----
+Fora do slice: árvore completa (~84 nós), os 8 heróis, artesãos em nível máximo, crafting profundo, affixes aleatórios/reforja, campanhas pessoais completas, Mastery em runtime.
 
-## 8. CONTENT-1 — Capítulo 1: Bosque de Lúmen
+Gate PASS:
+- [ ] loop completo jogável do início ao fim;
+- [ ] decisões da run influenciam a build; pelo menos duas builds claramente diferentes;
+- [ ] progressão do herói e progressão global compreensíveis e distintas;
+- [ ] equipamento ganho pode ser usado ou reciclado com decisão real;
+- [ ] boss com mecânica distinta de inimigo comum;
+- [ ] retorno ao Hub produz progressão perceptível sem grind artificial;
+- [ ] etapas 1A–1E concluídas com evidência registrada.
 
-O Capítulo 1 continua sendo o **Bosque de Lúmen**, com dez subfases. Bestiário, itens, materiais e loot seguem a base canônica v0.4. Uma proposta de quinze encontros mistos, quantidades, custos locais e padrões do boss final está em [ENCOUNTERS.md](docs/04_content/chapters/chapter_01/ENCOUNTERS.md), com formações em [encounter_plan.json](docs/04_content/chapters/chapter_01/encounter_plan.json). É design para validação, não dado runtime.
+### 4.4 BALANCE-1 — Ajuste iterativo · pós-slice
 
-O overview atual do capítulo lista 15 conceitos de skills normais — cinco para cada herói inicial — e não inclui as Signature Skills. É um catálogo parcial, não uma alternativa à meta canônica de seis skills por herói.
+Completar o contrato de balanceamento fora do recorte: status restantes, tipos de dano e affixes v0.4, stacking/dispel/Tenacidade, DOT/HOT, escala de capítulo/dificuldade e matriz completa de builds e equipamento abaixo/esperado/acima.
 
-### Próximas correções
+Medir TTK, duração da run, dano por herói, uso e escolha de skills/itens, dano recebido, mortes, recursos ganhos/gastos, builds dominantes e opções nunca escolhidas. ARGOS simula inflação, TTK, drops, builds quebradas e combinações impossíveis ou triviais.
 
-- [ ] atualizar o Capítulo 1 para o novo padrão de heróis;
-- [ ] decidir qual subset de skills/passivas/Traits aparece no slice;
-- [x] reconciliar o catálogo de 30 itens com o sistema canônico de slots; a seleção do slice segue para `SLICE-1`;
-- [x] detalhar encontros e padrões propostos de chefes; validar taxa de vitória inicial e combate implementado em `SLICE-1`;
-- [ ] introduzir no conteúdo um Echo funcional opcional, com recompensa determinística e função registrada no [Sistema de Ecos](docs/03_systems/ECHO_SYSTEM.md);
-- [ ] definir como o Fragmento do Coração Verde altera visualmente o Hub.
+### 4.5 LOOT-EXPANSION-1 — Integração v0.4 ao runtime · pós-slice
 
----
+Completa a migração iniciada no SLICE-1A.
 
-## 9. SLICE-1 — Próximo vertical slice
+- [ ] integrar `ENEMY_CANONICAL_SCHEMA` e os 17 inimigos canônicos, com aliases dos IDs runtime;
+- [ ] adotar os 30 itens, 7 materiais e 6 raridades, compatíveis com os 6 slots;
+- [ ] integrar o Drop Resolver e os mecanismos canônicos (Smart Loot, Duplicate Protection, Slot Pity, Quality Floor, Reward Choice, Boss Fragments, Bestiário), calibrados por simulação;
+- [ ] persistência e idempotência de first clear/pity, seed reproduzível, save migration, overflow e telemetria local;
+- [ ] tabelas humanas como vistas derivadas de uma única fonte de dados;
+- [ ] schemas, validação, cenários de QA e critérios de aceite antes do runtime.
 
-Fluxo-alvo:
-
-`Hub → party → build → expedição → combate → escolha → evento → elite → mini-boss → boss → retorno → Árvore/Ferreiro → evolução do Hub`
-
-### Conteúdo mínimo
-
-- [ ] 3 heróis funcionais;
-- [ ] Bastião como referência estrutural;
-- [ ] pelo menos duas builds claramente distintas;
-- [ ] subset de equipamentos;
-- [ ] 1 Echo funcional opcional para completar o slice, sem ser necessário para vencer;
-- [ ] 1 elite;
-- [ ] 1 evento;
-- [ ] 1 mini-boss;
-- [ ] Guardião-Cervo;
-- [ ] pequeno ramo funcional da Árvore dos Ecos;
-- [ ] Ferreiro com desmontagem + 1 melhoria;
-- [ ] retorno ao Hub com progressão perceptível;
-- [ ] mudança visual do Refúgio após o boss.
-
-**DECISÃO de DESIGN-1:** incluir um Echo funcional opcional, como recompensa determinística que conecta loot, build e lore. Não será obrigatório para vencer; escopo restrito e exemplo aprovado estão no [Sistema de Ecos](docs/03_systems/ECHO_SYSTEM.md).
+Gate PASS: fonte única sem colisão de IDs; fonte e sink para cada recompensa; resolver determinístico por estado e seed; pity dentro dos budgets; simulações de primeira conclusão e repetição; save/overflow/telemetria verificáveis; MVP não alterado retroativamente.
 
 ---
 
-## 10. Próxima ordem de execução
+## 5. Trilhas pausadas até o slice
 
-1. [x] **SYNC-0** — colocar no repositório os novos contratos de design e atualizar índices;
-2. [x] **DESIGN-1** — fechar a fundação e a separação entre **run / herói / equipamento / conta**;
-3. [x] **LORE-1** — criar a Bíblia de Lore, reconciliada com o Capítulo 1 e a lore canônica do Bastião;
-4. [x] registrar Bastião como Golden Reference de design;
-5. [x] **TREE-1** — definir os ~30 nós do MVP da Árvore dos Ecos;
-6. [x] **CRAFT-1** — definir função, fonte/sink e ordem de desbloqueio dos quatro artesãos;
-7. [x] **ITEM-1** — reconciliar slots, raridades, contrato de item e catálogo de 30;
-8. **ECON-1 — em andamento:** [modelo econômico](docs/06_balance/ECONOMY_MODEL.md), [15 encontros mistos/32 derrotas e proposta do Guardião](docs/04_content/chapters/chapter_01/ENCOUNTERS.md), [plano estruturado](docs/04_content/chapters/chapter_01/encounter_plan.json) e [simulação reproduzível](tools/economy/simulate_chapter1_balance.py). A simulação verifica cobertura do bestiário, encounter budgets, rendimento de materiais/Ouro e TTK teórico. Falta validar combate, taxa de vitória na primeira tentativa e pacing em `SLICE-1`, além do teto/conversão offline, antes do gate `PASS`;
-9. validar e consolidar no Bosque de Lúmen os marcos econômicos após o gate `ECON-1`;
-10. **próximo:** executar **[BALANCE-FOUNDATION-1](ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md#20-balance-foundation-1--contrato-canonico-de-balanceamento)** para consolidar o contrato comum de atributos e registros de heróis, inimigos, equipamentos e efeitos;
-11. preparar e executar `SLICE-1` com as regras e métricas aprovadas, fechando também a validação pendente de `ECON-1`;
-12. **HERO-002 — Flecha pausada após Mastery:** identidade, seis skills, três builds, 16 passivas e três Traits recomendados e proposta de Mastery documentados em [ficha do herói](docs/02_heroes/hero_002_flecha.md), [skills](docs/04_content/skills/FLECHA_SKILLS.md), [passivas](docs/02_heroes/hero_002_flecha_passives.md), [Traits](docs/02_heroes/hero_002_flecha_traits.md) e [Mastery 1–10](docs/02_heroes/hero_002_flecha_mastery.md). Lore pessoal, itens/Ecos e balanceamento retomam depois do primeiro slice, com os contratos validados;
-13. depois do primeiro slice, usar ARGOS e telemetria em **BALANCE-1** para ajuste iterativo.
+Retomar depois do SLICE-1, usando os contratos validados.
 
-**Reordenação de 2026-09-29 (Rafael):** o design de fichas foi pausado para validar os contratos existentes em jogo antes de ampliar documentação sem playtest. Não iniciar produção massiva dos 7 heróis restantes ou da árvore completa antes de os contratos acima passarem pelo slice.
+- **HERO-002 Flecha:** identidade, 6 skills, 3 builds, 16 passivas, 3 Traits e Mastery 1–10 em [ficha](docs/02_heroes/hero_002_flecha.md) · [skills](docs/04_content/skills/FLECHA_SKILLS.md) · [passivas](docs/02_heroes/hero_002_flecha_passives.md) · [Traits](docs/02_heroes/hero_002_flecha_traits.md) · [Mastery](docs/02_heroes/hero_002_flecha_mastery.md). Faltam lore + 5 missões e equipamentos/Ecos de referência.
+- **HERO-1 roster:** Íris, Brasa, Véu, Orvalho, Forja e Sino no padrão canônico. Os nomes de skills propostos estão no [HERO_STANDARD](HERO_STANDARD.md). Gate: 8 heróis documentados, 48 skills, 128 passivas, 24 Traits, Mastery e 5 missões por herói, 2+ sinergias por herói, nenhum herói substituindo outro.
+- **Conteúdo do Capítulo 1 completo:** 10 subfases, 10–15 eventos, eventos pessoais, 3 elites com modificadores, 3 mini-bosses e segredos ([sementes](docs/04_content/chapters/chapter_01/DESIGN_SEEDS.md)).
+- **HUB-1 completo:** layout do Refúgio, ordem de abertura de todos os estabelecimentos e UI detalhada da Árvore ([estrutura proposta](docs/05_hub/HUB_STRUCTURE_SEEDS.md)).
+- **Expansão da Árvore dos Ecos** além dos 30 nós.
+- **Relações entre heróis e regiões futuras:** apenas sementes ([FUTURE_SEEDS](docs/01_world/FUTURE_SEEDS.md)).
 
 ---
 
-## 11. Pendências registradas de setup
+## 6. Pendências de setup
 
-Estas pendências permanecem anotadas no marco SETUP-01 e não reabrem a homologação do MVP:
+Anotadas no marco SETUP-01; não reabrem o MVP.
 
-- [ ] **ADB / S25 Ultra** — conexão física adiada em 2026-09-27; emulador Android Studio usado em R17–R19.
-- [ ] **Aseprite 1.3.10+** — Aseprite 1.3.7 operacional; alvo do setup ainda não atingido.
+- [ ] **ADB / S25 Ultra:** conexão física adiada em 2026-09-27; emulador Android Studio usado em R17–R19.
+- [ ] **Aseprite 1.3.10+:** 1.3.7 operacional; alvo ainda não atingido.
 
 ---
 
-## 12. Trabalho futuro
+## 7. Trabalho futuro
 
 ### ARGOS — Autonomous Playtester
 
-Os hooks da v0.0 foram concluídos e permanecem planejadas:
+Hooks da v0.0 concluídos.
 
 | Versão | Escopo | Entrega / gate | Estado |
 | --- | --- | --- | --- |
-| **v0.1 — Foundation** | GdUnit4, Maestro MCP e perfis Beginner/Chaos. | APK testado por jornadas Android; pelo menos 10 regressões críticas. | PENDENTE |
-| **v0.2 — Visual** | Fallback CLI Android, screenshots e regressão visual. | Detectar botões inacessíveis e HUD quebrado. | PENDENTE |
-| **v0.3 — Scale** | Simulador headless (10k–100k execuções) e Argos Analyst. | Relatórios de inflação, drops, TTK e economia da Árvore/artesãos. | PENDENTE |
+| **v0.1 — Foundation** | GdUnit4, Maestro MCP, perfis Beginner/Chaos. | APK testado por jornadas Android; 10+ regressões críticas. | PENDENTE |
+| **v0.2 — Visual** | Fallback CLI Android, screenshots, regressão visual. | Detectar botões inacessíveis e HUD quebrado. | PENDENTE |
+| **v0.3 — Scale** | Simulador headless (10k–100k execuções) e Argos Analyst. | Relatórios de inflação, drops, TTK e economia. | PENDENTE |
 | **v0.4 — Learning** | Godot RL Agents. | Experimento de estratégias emergentes/exploits. | EXPERIMENTAL |
-| **v1.0 — Autonomous QA** | Pipeline build → test → report → fix → retest. | Ciclo validado em CI. | PENDENTE |
-
-### Base canônica de combate e loot v0.4
-
-Rafael aprovou [TASKBAR Sistema Completo v0.4](documents/canonical/taskbar_sistema_v0.4/README.md) como fonte canônica de design para combate, balanceamento, inimigos, equipamentos, materiais, raridades, loot e economia. `BALANCE-FOUNDATION-1` e [LOOT-EXPANSION-1](ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md#23-loot-expansion-1--economia-e-loot-completos) cuidam da adaptação ao runtime e validação; os dados atuais do MVP permanecem como implementação observada até a migração.
+| **v1.0 — Autonomous QA** | build → test → report → fix → retest. | Ciclo validado em CI. | PENDENTE |
 
 ### Overlay Android
 
-Continua pós-MVP e fora da arquitetura central até priorização explícita.
-
-Escopo previsto:
-
-- Android Build Template + Gradle;
-- plugin Kotlin e lifecycle/service;
-- permissão `TYPE_APPLICATION_OVERLAY`;
-- interação/touch passthrough;
-- consumo de bateria e restrições de background.
+Pós-MVP e fora da arquitetura central até priorização explícita: Android Build Template + Gradle, plugin Kotlin e service, permissão `TYPE_APPLICATION_OVERLAY`, touch passthrough, bateria e restrições de background.
 
 ---
 
-## 13. Limites de escopo
+## 8. Referências
 
-- preservar o MVP homologado;
-- preservar Golden References aprovados;
-- não adicionar backend, contas, multiplayer, cloud save ou monetização sem necessidade concreta;
-- não congelar números de economia/balanceamento antes de simulação e playtest;
-- sistemas novos precisam conversar com gameplay, progressão ou lore;
-- evitar quantidade sem função;
-- mudanças canônicas novas orientam **design futuro** e não alteram silenciosamente código homologado.
-
----
-
-## 14. Referências
-
-- [`ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md`](ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md)
-- [Documentos do projeto](documents/INDEX.md)
-- [Resumo consolidado](docs/POCKET_HERO_PROJECT_BRIEF.md)
-- [Golden References e ART-0](docs/art/golden/README.md)
-- [Inventário de sprites do MVP](docs/art/MVP_SPRITE_INVENTORY.md)
-- [Histórico das fases concluídas](arquivados/ROADMAP_CONCLUIDO.md)
+- [Documentos do projeto](documents/INDEX.md) · [índice de docs](docs/INDEX.md) · [registro de conteúdo](docs/CONTENT_REGISTRY.md)
+- [Resumo consolidado](docs/POCKET_HERO_PROJECT_BRIEF.md) · [estado do projeto](PROJECT_STATE.md)
+- [Histórico das fases concluídas](arquivados/ROADMAP_CONCLUIDO.md) · [CHANGELOG](CHANGELOG.md)
