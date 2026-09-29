@@ -5,9 +5,10 @@ Esta pasta preserva os materiais enviados para orientar a próxima etapa de bala
 ## Arquivos
 
 - [`BALANCE_MASTER_v0.2.md`](BALANCE_MASTER_v0.2.md) — índice e contratos resumidos do pacote v0.2.
-- [`STATUS_SYSTEM_BASE_v1.0.md`](STATUS_SYSTEM_BASE_v1.0.md) — proposta detalhada para atributos e modificadores compartilhados.
 - [`TASKBAR_BALANCE_PACK_v0.1.zip`](TASKBAR_BALANCE_PACK_v0.1.zip) — arquivo original recebido.
-- [`pack_v0.1/TASKBAR_BALANCE_PACK_v0.1/`](pack_v0.1/TASKBAR_BALANCE_PACK_v0.1/) — conteúdo extraído do ZIP: baseline de heróis, inimigos, equipamentos, stat budgets, efeitos, fórmulas, dificuldade e checklist de QA.
+- [`pack_v0.1/TASKBAR_BALANCE_PACK_v0.1/`](pack_v0.1/TASKBAR_BALANCE_PACK_v0.1/) — mantém somente os arquivos que diferem da base canônica (`README.md` e `BALANCE_MASTER.md`).
+
+**Deduplicação (2026-09-29):** dez arquivos do ZIP v0.1 e o antigo `STATUS_SYSTEM_BASE_v1.0.md` eram idênticos byte a byte às cópias da [base canônica v0.4](../../canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/) e foram removidos daqui para manter uma única fonte: `STATUS_SYSTEM_BASE.md`, `COMBAT_FORMULAS.md`, `STAT_BUDGETS.md`, `HERO_STATS_BALANCE.md`, `ENEMY_STATS_BALANCE.md`, `EQUIPMENT_BALANCE.md`, `BUFF_DEBUFF_BALANCE.md`, `DIFFICULTY_SCALING.md`, `BALANCE_QA_CHECKLIST.md` e `balance_baseline_v0.1.json`. Leia-os na pasta canônica.
 
 ## Precedência e adaptação
 

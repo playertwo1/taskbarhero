@@ -79,7 +79,7 @@ Theia
 Daedalus
   ↓
 ART_DIRECTION.md
-SPRITE_STANDARD.md
+ANIMATION_STANDARD.md
 PALETTE.md
 ASSET_MANIFEST.yaml
   ↓
@@ -191,9 +191,9 @@ Dimensões sugeridas:
 ```text
 docs/art/
 ├── ART_DIRECTION.md
-├── SPRITE_STANDARD.md
+├── ANIMATION_STANDARD.md
 ├── PALETTE.md
-├── QA_CHECKLIST.md
+├── QA_SPRITES.md
 └── ASSET_MANIFEST.yaml
 
 assets/

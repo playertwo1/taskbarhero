@@ -78,7 +78,7 @@ As regras já escolhidas para slots, loadout, desbloqueio, evolução e ativaç�
 
 - Estes pilares não autorizam por si só mecânicas, fórmulas, raridades, monetização ou roadmap não registrados. As decisões aprovadas estão nas fontes de sistema e no [AUDITORIA.md](AUDITORIA.md).
 - Não introduzir prestígio/ascensão, moeda, automação ou sistema apenas porque um pilar parece sugeri-lo: documentar sua função e seguir o gate correspondente. Os Fragmentos de Ressonância, por exemplo, foram aprovados especificamente para a Árvore dos Ecos com fonte/sink previstos; seus valores ficam para ECON-1.
-- Para princípios incrementais detalhados, consulte o [guia resumido](../design/INCREMENTAL_DESIGN_GUIDE.md) e o [guia completo](../../documents/GUIA_DESIGN_INCREMENTAL_POCKET_HERO.md). Eles são recomendações, não fontes runtime.
+- Para princípios incrementais detalhados, consulte o [guia resumido](INCREMENTAL_DESIGN_GUIDE.md) e o [guia completo](../../documents/GUIA_DESIGN_INCREMENTAL_POCKET_HERO.md). Eles são recomendações, não fontes runtime.
 
 ## Decisões em aberto
 

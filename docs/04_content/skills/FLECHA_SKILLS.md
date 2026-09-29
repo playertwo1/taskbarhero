@@ -110,7 +110,7 @@ São combinações iniciais para orientar passivas e Traits; não são loadouts 
 | Marca | Maximizar o tempo e a colaboração sobre uma presa. | Marca do Caçador + Rajada |
 | Velocidade | Manter pressão e alternar alvos com agilidade. | Rajada + Ricochete |
 
-Chuva de Flechas pode substituir uma das duas skills quando estiver desbloqueada. Passivas, Traits e sinergias de equipamento/Echo ainda precisam de fichas próprias.
+Chuva de Flechas pode substituir uma das duas skills quando estiver desbloqueada. As passivas estão em [hero_002_flecha_passives.md](../../02_heroes/hero_002_flecha_passives.md); as propostas de Trait estão em [hero_002_flecha_traits.md](../../02_heroes/hero_002_flecha_traits.md). Sinergias de equipamento/Echo ainda precisam de ficha própria.
 
 ## Pendências de design
 
@@ -118,7 +118,7 @@ Chuva de Flechas pode substituir uma das duas skills quando estiver desbloqueada
 - Gatilhos automáticos, limites configuráveis e regras detalhadas de alvo.
 - Cooldowns, duração, quantidade de disparos, alcance e valores por rank.
 - Regra exata de acerto crítico e interação entre Marca, Olho Aguçado e skills.
-- 16 passivas, 3 Traits e Mastery 1–10.
+- Validar os modificadores de skill da [Mastery 1–10](../../02_heroes/hero_002_flecha_mastery.md).
 - Integração das skills com as builds, equipamentos, Echo e missões pessoais.
 - Revisão contra o combate automático e validação em SLICE-1.
 

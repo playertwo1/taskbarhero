@@ -7,7 +7,7 @@
 ## 1. Direção existente que continua valendo
 
 - **DECIDIDO:** usar identidade própria de dark fantasy, pixel art legível em escala mobile, iluminação principal no alto à esquerda e silhuetas reconhecíveis. A referência visual funcional são os Golden registrados em [`golden/README.md`](./golden/README.md); não copiar arte, poses, personagens, UI ou símbolos distintivos de referências externas.
-- **DECIDIDO:** sprites animados seguem os contratos por entidade e os padrões em [`ART_DIRECTION.md`](./ART_DIRECTION.md), [`SPRITE_STYLE_GUIDE.md`](./SPRITE_STYLE_GUIDE.md), [`SPRITE_STANDARD.md`](./SPRITE_STANDARD.md) e [`ANIMATION_STANDARD.md`](./ANIMATION_STANDARD.md). O canvas não é universal: vale o contrato de cada asset.
+- **DECIDIDO:** sprites animados seguem os contratos por entidade e os padrões em [`ART_DIRECTION.md`](./ART_DIRECTION.md), [`SPRITE_STYLE_GUIDE.md`](./SPRITE_STYLE_GUIDE.md) e [`ANIMATION_STANDARD.md`](./ANIMATION_STANDARD.md). O canvas não é universal: vale o contrato de cada asset.
 - **DECIDIDO:** novos assets usam apenas as cores e subconjuntos definidos em [`PALETTE.md`](./PALETTE.md), conforme o contrato.
 - **DECIDIDO por Rafael em 2026-09-28:** ícones de itens em 32×32, exibidos na grade visual do inventário. Moldura, raridade e seleção continuam elementos separados da imagem do ícone. A validação mobile ainda está pendente; não reduzir o asset aprovado para 24×24 sem revisão explícita.
 - **STATUS REGISTRADO em 2026-09-28:** Rafael escolheu a opção de grade visual e autorizou a criação dos 30 ícones. Os 15 itens candidatos do Capítulo 1 permanecem apenas no catálogo visual e não entram no loot ou gameplay.

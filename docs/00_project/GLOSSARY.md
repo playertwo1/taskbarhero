@@ -10,7 +10,7 @@ status: DESIGN
 |---|---|---|
 | **Pocket Hero** | Nome do jogo. `taskbarhero` é o nome do repositório. | **DECIDIDO** — [guia de IA](../../documents/AI_PROJECT_GUIDE.md). |
 | **MVP** | Primeira entrega Android como aplicativo normal, limitada ao escopo homologado no roadmap. | **DECIDIDO** — [roadmap](../../ROADMAP.md). |
-| **Combate automático** | Combate em que as ações ordinárias da party são executadas pelo sistema; o jogador não precisa tocar repetidamente para cada ataque. | **DECIDIDO** como identidade geral; detalhes de controle são **EM ABERTO** — [guia incremental](../design/INCREMENTAL_DESIGN_GUIDE.md). |
+| **Combate automático** | Combate em que as ações ordinárias da party são executadas pelo sistema; o jogador não precisa tocar repetidamente para cada ataque. | **DECIDIDO** como identidade geral; detalhes de controle são **EM ABERTO** — [guia incremental](INCREMENTAL_DESIGN_GUIDE.md). |
 | **Party** | Grupo de três heróis escolhidos entre os desbloqueados antes de iniciar uma expedição. | **DECIDIDO** — [pilares de design](GAME_PILLARS.md) e [índice de heróis](../02_heroes/INDEX.md). |
 | **Build** | Combinação de escolhas de herói, skills e equipamento que busca uma resposta a objetivo ou desafio. | **DECIDIDO por delegação explícita de Rafael em 2026-09-28** — [Pilares de design](GAME_PILLARS.md); regras de cada build pertencem à ficha/sistema correspondente. |
 | **Fase macro** | Uma das cinco grandes etapas de progressão do Bosque que já existem no MVP. | **DECIDIDO** — [overview do Capítulo 1](../04_content/chapters/chapter_01/OVERVIEW.md). |

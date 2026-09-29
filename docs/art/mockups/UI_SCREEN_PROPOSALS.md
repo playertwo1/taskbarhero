@@ -24,7 +24,7 @@ Este documento detalha **3 opções de interface mobile** para cada uma das 4 te
 
 As opções antigas abaixo permanecem como histórico de exploração, não como direção selecionada. A árvore não é o tema visual principal do Hub; Lúmen aparece como luz/energia localizada. A base horizontal foi recomposta em estudo vertical; a entrega de produção deverá usar módulos/quads separados e props animados apenas quando fizer sentido.
 
-- Comparativo histórico das primeiras opções: [`hub_3_options_comparison.png`](./hub_3_options_comparison.png)
+- Comparativo histórico das primeiras opções: `hub_3_options_comparison.png` (removido em 2026-09-29; disponível no histórico do git, commit `10e67b6`)
 - Conceitos v001 e v002: [Praça/Porta/Terraços](./hub_environment_concepts_v001/README.md) · [Encruzilhada/Pátio/Rua](./hub_environment_concepts_v002/README.md)
 - Variação escolhida com party e artesãos: [conceito v003](./hub_environment_concepts_v003/README.md)
 

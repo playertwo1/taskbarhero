@@ -10,6 +10,21 @@ O contrato individual é a autoridade para tamanho, frames, fps e duração de c
 - Pivot, baseline e orientação permanecem estáveis entre frames; deslocamento intencional do corpo não pode virar jitter do canvas.
 - Sem interpolação, antialiasing ou escala fracionária. No Godot, importar com filtro nearest.
 
+## Defaults técnicos (herdados do padrão R7)
+
+Valem quando o contrato do asset não declarar outro valor.
+
+| Canvas | Margem mínima | Baseline do solo |
+| --- | --- | --- |
+| 32×32 | 2 px laterais e topo | `Y = 29` |
+| 48×48 | 3–4 px | `Y = 44` |
+| 64×64 | 3–4 px | `Y = 60` |
+
+- **Pivot:** interseção do centro horizontal (`X = largura / 2`) com a baseline.
+- **Mínimo por combatente:** `idle` 4 frames (~160 ms, loop), `attack` 4–6 (90–110 ms), `hit` 2 (~80 ms), `death` 4–6 (~120 ms, congela no último frame).
+- **Naming:** `assets/sprites/<categoria>/<entidade>/<entidade>_<animacao|sheet>_v<versao>.<ext>`, com `.json` de tags/durações exportado pelo Aseprite (`--data`).
+- **Import Godot:** compress mode Lossless, texture filter Nearest, sem compressão que borre alpha.
+
 ## Timing
 
 Registre por tag o número exato de frames, FPS e/ou duração por frame em milissegundos. Não declarar fps e duração inconsistentes. Idle normalmente faz loop; ataques, hit e death são one-shot, salvo decisão documentada no contrato.

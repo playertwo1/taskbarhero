@@ -7,7 +7,7 @@
 - **Fonte canônica de combate e loot:** [TASKBAR Sistema Completo v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md), aprovado para design; integração e validação/runtime seguem a roadmap.
 - **Números runtime:** [`data/items/items.json`](../../data/items/items.json), [`data/enemies/enemies.json`](../../data/enemies/enemies.json) e [`data/stages/stages.json`](../../data/stages/stages.json). Os arquivos de dados prevalecem sobre texto de conceito.
 - **Regras/metodologia:** [guia avançado de economia, pacing e balanceamento](../../documents/GUIA_AVANCADO_ECONOMIA_PACING_BALANCEAMENTO_POCKET_HERO.md).
-- **Achados registrados:** [balance findings](../qa/BALANCE_FINDINGS.md).
-- **Próximas simulações/telemetria:** [modelo ECON-1](ECONOMY_MODEL.md), roadmap e [arquitetura ARGOS](../qa/ARGOS_ARCHITECTURE.md).
+- **Achados registrados:** [balance findings](../08_qa/BALANCE_FINDINGS.md).
+- **Próximas simulações/telemetria:** [modelo ECON-1](ECONOMY_MODEL.md), roadmap e [arquitetura ARGOS](../08_qa/ARGOS_ARCHITECTURE.md).
 
 Não há uma fórmula de dano canônica separada ainda. Registrar hipótese, fórmula, fontes, saídas e método de medição antes de congelar novos números.
