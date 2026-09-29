@@ -213,7 +213,7 @@ Fluxo-alvo:
 7. [x] **ITEM-1** — reconciliar slots, raridades, contrato de item e catálogo de 30;
 8. **ECON-1 — em andamento:** [modelo econômico](docs/06_balance/ECONOMY_MODEL.md), [15 encontros mistos/32 derrotas e proposta do Guardião](docs/04_content/chapters/chapter_01/ENCOUNTERS.md), [plano estruturado](docs/04_content/chapters/chapter_01/encounter_plan.json) e [simulação reproduzível](tools/economy/simulate_chapter1_balance.py). A simulação verifica cobertura do bestiário, encounter budgets, rendimento de materiais/Ouro e TTK teórico. Falta validar combate, taxa de vitória na primeira tentativa e pacing em `SLICE-1`, além do teto/conversão offline, antes do gate `PASS`;
 9. validar e consolidar no Bosque de Lúmen os marcos econômicos após o gate `ECON-1`;
-10. iniciar **Flecha** como segundo herói completo seguindo o padrão do Bastião;
+10. **HERO-002 — Flecha em andamento:** identidade, seis skills, builds iniciais e 16 passivas conceituadas em [ficha do herói](docs/02_heroes/hero_002_flecha.md), [skills](docs/04_content/skills/FLECHA_SKILLS.md) e [passivas](docs/02_heroes/hero_002_flecha_passives.md). Faltam Traits, Mastery, lore pessoal, itens/Ecos e balanceamento;
 11. executar **[BALANCE-FOUNDATION-1](ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md#20-balance-foundation-1--contrato-canonico-de-balanceamento)** para consolidar o contrato comum de atributos e registros de heróis, inimigos, equipamentos e efeitos;
 12. preparar `SLICE-1` com as regras e métricas aprovadas;
 13. depois do primeiro slice, usar ARGOS e telemetria em **BALANCE-1** para ajuste iterativo.

@@ -5,6 +5,7 @@ Este índice reúne documentos históricos úteis, versões substituídas e etap
 ## Roadmap e design antigo
 
 - [ROADMAP_CONCLUIDO.md](ROADMAP_CONCLUIDO.md) — histórico das etapas concluídas do MVP.
+- [FLECHA_SKILLS_LEGADO.md](FLECHA_SKILLS_LEGADO.md) — cinco conceitos e IDs de skill substituídos pela lista canônica mais recente.
 - [HERO_001_BASTIAO_LEGADO.md](heroes/HERO_001_BASTIAO_LEGADO.md) — ficha antiga detalhada, substituída pela [Golden Reference ativa](../docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md).
 - [BASTIAO_HERO_LEGADO.md](heroes/BASTIAO_HERO_LEGADO.md) — perfil de design anterior preservado como histórico.
 

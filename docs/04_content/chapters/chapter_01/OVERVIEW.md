@@ -76,7 +76,7 @@ O Capítulo 1 canônico tem três minichefes e o Guardião-Cervo de Pedra como b
 
 ## Skills dos heróis — catálogo inicial
 
-O catálogo deste overview contém **15 conceitos de skills normais: cinco para cada um dos três heróis listados**. É uma seleção parcial e não representa o total canônico por herói, pois as Signature Skills não estão incluídas. São conceitos automáticos e legíveis; não significam que todas serão equipadas ao mesmo tempo. A contagem atual e a meta para o roster completo estão no [registro central](../../../CONTENT_REGISTRY.md). O [Sistema de skills](../../../03_systems/SKILL_SYSTEM.md) e o [padrão canônico dos heróis](../../../../HERO_STANDARD.md) definem slots, Signature Skills e ranks. A distribuição das skills por tier, efeitos dos ranks, cooldowns, potência, duração e alvos continuam **EM ABERTO** e precisam de validação de design. Nenhuma skill deve exigir toques repetitivos.
+Este overview mantém conceitos preliminares de skills do capítulo. A lista canônica da Flecha foi atualizada para corresponder a HERO_STANDARD.md e está em uma [ficha individual](../../skills/FLECHA_SKILLS.md); os cinco IDs/conceitos anteriores foram preservados como históricos em [arquivados](../../../../arquivados/FLECHA_SKILLS_LEGADO.md). Os conceitos de Bastião e Íris continuam parciais, sem Signature Skills. Tiers, gatilhos, cooldowns, potência, duração e alvos dependem dos respectivos gates de design e balanceamento.
 
 | Herói | Skill | Efeito pretendido | Sinergia/uso |
 | --- | --- | --- | --- |
@@ -85,18 +85,14 @@ O catálogo deste overview contém **15 conceitos de skills normais: cinco para 
 |  | **Desafio do Guardião** | Atrai para Bastião um ataque que atingiria um aliado mais frágil. | Protege a retaguarda de investidas do Lobo de Sombra e ataques de chefe. |
 |  | **Trama de Escudos** | Uma proteção aplicada a um aliado deixa uma proteção menor nos demais. | Combina sobrevivência da party com a skill Amparo de Raiz; pode ser escolha de defesa em área. |
 |  | **Voto da Clareira** | Depois de resistir a uma sequência de golpes, Bastião fortalece a próxima defesa ou contra-ofensiva da party. | Recompensa sobreviver à janela de pressão sem tornar a luta passiva. |
-| **Flecha** | **Marca da Caçada** | Marca o alvo prioritário; a party recebe uma oportunidade de dano coordenado. | Cria alvo comum e prepara skills/itens da Íris. |
-|  | **Tiro de Ruptura** | Disparo concentrado que aproveita a marca ou uma postura defensiva aberta. | Resposta a inimigos controladores, elites e minichefes do bestiário v0.4. |
-|  | **Rajada da Copa** | Dispara uma sequência curta contra um único alvo, com ataques individuais legíveis. | Pressiona janelas de vulnerabilidade de elite e boss sem exigir vários inimigos simultâneos. |
-|  | **Flecha de Execução** | Prioriza um alvo ferido e ganha força quando ele se aproxima da derrota. | Acelera a limpeza de inimigos frágeis; a condição exata não está definida. |
-|  | **Passo do Rastro** | Após esquivar de um golpe anunciado, dispara um contra-ataque. | Cria uma opção mais arriscada/ofensiva contra Javali, Lobo de Sombra e chefe. |
+| **Flecha** | [Catálogo canônico — seis skills](../../skills/FLECHA_SKILLS.md) | A lista e a intenção ficam na ficha individual. | Marca, precisão/crítico, sequência e cobertura de área. |
 | **Íris** | **Lança de Lúmen** | Ataque mágico concentrado com bônus contra o alvo marcado ou exposto. | Converte setup da Flecha/Bastião em dano de chefe. |
 |  | **Véu de Micélio** | Aplica uma proteção curta à party, acionada por uma condição visível de perigo. | Sustenta lutas longas e oferece uma rota defensiva. |
 |  | **Fratura Arcana** | Enfraquece temporariamente a defesa de um inimigo protegido. | Resposta a inimigos protegidos, elites e minichefes do bestiário v0.4; prepara dano dos outros heróis. |
 |  | **Pulso Restaurador** | Recupera um aliado em condição crítica. | Opção de recuperação direta, distinta do escudo do Véu de Micélio. |
 |  | **Prisma de Retorno** | Um ataque mágico bem-sucedido contra alvo marcado deixa energia para um disparo seguinte mais forte. | Liga setup da Flecha à magia da Íris; cria sequência, sem recurso/moeda manual. |
 
-**Recomendação de implementação:** manter as 15 skills atualmente catalogadas como conceitos de design e testar primeiro uma skill automática por herói. Expandir até a meta registrada no [CONTENT_REGISTRY](../../../CONTENT_REGISTRY.md) após reconciliar listas e fichas. Liberar skills adicionais nos tiers do padrão canônico, seguindo o desbloqueio por nível já decidido. Não criar árvore extensa, energia ou custo de skill sem demonstrar que acrescentam decisões úteis.
+**Recomendação de implementação:** testar primeiro uma skill automática por herói. Expandir até a meta registrada no [CONTENT_REGISTRY](../../../CONTENT_REGISTRY.md) após reconciliar listas e fichas. Liberar skills adicionais nos tiers do padrão canônico, seguindo o desbloqueio por nível já decidido. Não criar árvore extensa, energia ou custo de skill sem demonstrar que acrescentam decisões úteis.
 
 ## Equipamentos — catálogo total de 30 itens
 

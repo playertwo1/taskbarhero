@@ -11,7 +11,7 @@ Este registro é autoridade para IDs locais do jogo e aponta às fichas de detal
 | Tipo | Catálogo registrado | Estado resumido | Fonte de detalhe/runtime |
 | --- | --- | --- | --- |
 | Heróis | 8 cenas Godot estão presentes; conclusão de design varia por herói. Presença de cena não significa conformidade completa ao padrão. | Runtime: `IMPLEMENTED`; design: ver ficha | [Heróis](02_heroes/INDEX.md) e [Padrão Canônico](../HERO_STANDARD.md) |
-| Skills | 15 skills normais fichadas para Bastião, Flecha e Íris; o roster completo requer 48 skills: cinco normais e uma Signature por cada um dos oito heróis. As outras 33 ainda não estão catalogadas. | `DESIGN` | [Skills](04_content/skills/INDEX.md) |
+| Skills | 16 skills canônicas conceituadas para Bastião, Flecha e Íris: 15 normais e a Signature da Flecha. O roster completo requer 48; as outras 32 ainda não estão catalogadas. | `DESIGN` | [Skills](04_content/skills/INDEX.md) |
 | Inimigos do Capítulo 1 | 17 canônicos: 10 normais, 3 elites, 3 minichefes e 1 boss; runtime atual contém 11 entidades legadas. | Design: `APPROVED`; runtime: em migração futura | [Catálogo canônico](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json) · [Aliases](04_content/LEGACY_RUNTIME_CATALOG.md) |
 | Equipamentos do Capítulo 1 | 30 canônicos; runtime atual contém 15 registros legados. | Design: `APPROVED`; runtime: em migração futura | [Catálogo canônico](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md) · [Aliases](04_content/LEGACY_RUNTIME_CATALOG.md) |
 | Materiais do Capítulo 1 | 7 no catálogo canônico. | Design: `APPROVED`; uso/runtime conforme fases de economia | [Catálogo canônico](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_MATERIAL_CATALOG.md) |
@@ -29,7 +29,7 @@ Não confundir catálogo canônico de design com conteúdo atualmente carregado.
 | ID | Nome | Ciclo registrado na ficha | Cena Godot | Fonte de design |
 | --- | --- | --- | --- | --- |
 | `HERO_001` | Bastião | `DESIGN` | Presente | [Golden Reference](02_heroes/BASTIAO_GOLDEN_REFERENCE.md) · [ponteiro de compatibilidade](02_heroes/hero_001_bastiao.md) |
-| `HERO_002` | Flecha | `IMPLEMENTED` | Presente | [Ficha](02_heroes/hero_002_flecha.md) |
+| `HERO_002` | Flecha | `DESIGN` | Presente; runtime MVP implementado | [Ficha](02_heroes/hero_002_flecha.md) |
 | `HERO_003` | Íris | `IMPLEMENTED` | Presente | [Ficha](02_heroes/hero_003_iris.md) |
 | `HERO_004` | Brasa | `APPROVED` | Presente | [Ficha](02_heroes/hero_004_brasa.md) |
 | `HERO_005` | Véu | `APPROVED` | Presente | [Ficha](02_heroes/hero_005_veu.md) |
@@ -39,7 +39,7 @@ Não confundir catálogo canônico de design com conteúdo atualmente carregado.
 
 ## Skills
 
-O ID segue a ordem do catálogo de design no overview; números, gatilhos e regras runtime ainda não existem em `/data/skills/`. O padrão de 48 skills (cinco normais e uma Signature por herói) vem do [HERO_STANDARD](../HERO_STANDARD.md); só as 15 skills normais listadas abaixo têm ficha de conceito até agora, sem as Signature Skills.
+IDs e status são registrados aqui. O padrão de 48 skills (cinco normais e uma Signature por herói) vem de [HERO_STANDARD](../HERO_STANDARD.md). Não há skills runtime em `/data/skills/`; números, gatilhos e regras de runtime continuam em aberto.
 
 | ID | Nome | Status | Fonte |
 | --- | --- | --- | --- |
@@ -48,11 +48,17 @@ O ID segue a ordem do catálogo de design no overview; números, gatilhos e regr
 | `SKILL_BAS_003` | Desafio do Guardião | `DESIGN` | idem |
 | `SKILL_BAS_004` | Trama de Escudos | `DESIGN` | idem |
 | `SKILL_BAS_005` | Voto da Clareira | `DESIGN` | idem |
-| `SKILL_FLE_001` | Marca da Caçada | `DESIGN` | idem |
-| `SKILL_FLE_002` | Tiro de Ruptura | `DESIGN` | idem |
-| `SKILL_FLE_003` | Rajada da Copa | `DESIGN` | idem |
-| `SKILL_FLE_004` | Flecha de Execução | `DESIGN` | idem |
-| `SKILL_FLE_005` | Passo do Rastro | `DESIGN` | idem |
+| `SKILL_FLE_001` | Marca da Caçada (conceito anterior) | `DEPRECATED` | [Histórico](../arquivados/FLECHA_SKILLS_LEGADO.md) |
+| `SKILL_FLE_002` | Tiro de Ruptura (conceito anterior) | `DEPRECATED` | idem |
+| `SKILL_FLE_003` | Rajada da Copa (conceito anterior) | `DEPRECATED` | idem |
+| `SKILL_FLE_004` | Flecha de Execução (conceito anterior) | `DEPRECATED` | idem |
+| `SKILL_FLE_005` | Passo do Rastro (conceito anterior) | `DEPRECATED` | idem |
+| `SKILL_FLE_006` | Marca do Caçador | `DESIGN` | [Skills canônicas da Flecha](04_content/skills/FLECHA_SKILLS.md) |
+| `SKILL_FLE_007` | Flecha Perfurante | `DESIGN` | idem |
+| `SKILL_FLE_008` | Olho Aguçado | `DESIGN` | idem |
+| `SKILL_FLE_009` | Rajada | `DESIGN` | idem |
+| `SKILL_FLE_010` | Ricochete | `DESIGN` | idem |
+| `SKILL_FLE_011` | Chuva de Flechas (Signature) | `DESIGN` | idem |
 | `SKILL_IRI_001` | Lança de Lúmen | `DESIGN` | idem |
 | `SKILL_IRI_002` | Véu de Micélio | `DESIGN` | idem |
 | `SKILL_IRI_003` | Fratura Arcana | `DESIGN` | idem |

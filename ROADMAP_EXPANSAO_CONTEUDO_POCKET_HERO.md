@@ -1362,9 +1362,10 @@ Essa interação deve ser o principal diferencial do Pocket Hero.
 
 Depois de registrar Bastião como referência:
 
-- [ ] iniciar **Flecha** seguindo exatamente o mesmo contrato;
-- [ ] 6 skills;
-- [ ] 16 passivas;
+- [x] confirmar a lista canônica de skills de Flecha conforme HERO_STANDARD.md; preservar os cinco conceitos/IDs anteriores como DEPRECATED no arquivo histórico;
+- [x] registrar as seis skills canônicas e seus conceitos/ranks qualitativos em [FLECHA_SKILLS.md](docs/04_content/skills/FLECHA_SKILLS.md); tiers e números permanecem em aberto;
+- [x] registrar identidade, ataque básico, builds iniciais e fraqueza como propostas, separando hipóteses de decisões aprovadas;
+- [x] conceituar as 16 passivas nas três builds e na identidade central, sem congelar números;
 - [ ] 3 Traits;
 - [ ] Mastery 1–10;
 - [ ] lore + 5 missões;

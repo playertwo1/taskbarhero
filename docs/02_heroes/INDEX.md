@@ -14,7 +14,7 @@ O roster completo do Pocket Hero é composto por **8 heróis**, sendo que qualqu
 | ID de design | Nome | Função central | Mecânica chave | Ficha de detalhe |
 | --- | --- | --- | --- | --- |
 | `HERO_001` | **Bastião** | Tanque / Proteção | Escudo / Guarda (Defesa e Retaliação) | [Golden Reference de design](BASTIAO_GOLDEN_REFERENCE.md) / [Ficha resumida](hero_001_bastiao.md) |
-| `HERO_002` | **Flecha** | Ranged DPS | Marca da Caçada / Crítico contínuo | [hero_002_flecha.md](hero_002_flecha.md) |
+| `HERO_002` | **Flecha** | Ranged DPS | Marca do Caçador / precisão e críticos | [Ficha](hero_002_flecha.md) · [Skills](../04_content/skills/FLECHA_SKILLS.md) · [Passivas](hero_002_flecha_passives.md) |
 | `HERO_003` | **Íris** | Maga / AoE | Feixes de Lúmen / Controle arcano | [hero_003_iris.md](hero_003_iris.md) |
 | `HERO_004` | **Brasa** | Bruiser / Berserker | Fúria / Dano em baixo HP | [hero_004_brasa.md](hero_004_brasa.md) |
 | `HERO_005` | **Véu** | Assassino / Backline Killer | Exposição / Execução | [hero_005_veu.md](hero_005_veu.md) |
