@@ -31,6 +31,7 @@ func _ready() -> void:
 	_test_stagger_break()
 	_test_telegraph_and_counter()
 	_test_phase_spawn()
+	_test_queen_add_waves()
 	_test_guardian_memory_fragments()
 	_test_skill_ranks()
 	_test_prepared_targets()
@@ -159,6 +160,30 @@ func _test_phase_spawn() -> void:
 	var after: Array = _of(events, "hero_attack").filter(func(e): return float(e["time"]) > float(phase[0]["time"]) + EPS)
 	_expect("Bastião passa a bater no add", not after.is_empty() and String(after[0]["target"]).begins_with("en_c1_001"))
 	_expect("encontro só termina com todos derrotados", _of(events, "enemy_defeated").size() == 3 and _of(events, "expedition_won").size() == 1)
+
+func _test_queen_add_waves() -> void:
+	print("\n>>> 4a. DUAS ONDAS DA RAINHA DAS GELEIAS")
+	var queen: Dictionary = {}
+	for row in enemy_rows:
+		if String(row["id"]) == "mb_c1_001":
+			queen = row.duplicate(true)
+			queen["id"] = "t_queen"
+			break
+	var events := _run([_bastiao()], [
+		{"enemy_id": "t_queen", "count": 1},
+		{"enemy_id": "en_c1_001", "count": 2, "deferred": true},
+	], [queen]).run_to_end(0.25)
+	var phases := _of(events, "boss_phase")
+	var spawns := _of(events, "enemy_spawned")
+	var first_add_defeated_at := INF
+	for event in _of(events, "enemy_defeated"):
+		if String(event["id"]) == "en_c1_001":
+			first_add_defeated_at = minf(first_add_defeated_at, float(event["time"]))
+	_expect("a Rainha atravessa suas duas fases", phases.size() == 2)
+	_expect("um add surge em cada limiar", spawns.size() == 2 and phases.size() == 2 and absf(float(spawns[0]["time"]) - float(phases[0]["time"])) < EPS and absf(float(spawns[1]["time"]) - float(phases[1]["time"])) < EPS)
+	_expect("a primeira onda termina antes da segunda", first_add_defeated_at < float(phases[1]["time"]))
+	_expect("Rainha e os dois adds são derrotados", _of(events, "enemy_defeated").size() == 3 and _of(events, "expedition_won").size() == 1)
+	_expect("onda real mantém o ataque telegrafado", not _of(events, "telegraph_started").is_empty())
 
 func _test_guardian_memory_fragments() -> void:
 	print("\n>>> 4b. FASE DA MEMÓRIA DO GUARDIÃO")
