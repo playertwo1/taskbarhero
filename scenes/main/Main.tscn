@@ -198,6 +198,12 @@ layout_mode = 2
 size_flags_vertical = 3
 script = ExtResource("2")
 
+[node name="SliceProbeButton" type="Button" parent="Root/Content"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleButton")
+text = "Testar expedição do slice"
+
 [node name="OfflineModal" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 1

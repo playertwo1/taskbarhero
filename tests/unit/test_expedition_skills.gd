@@ -33,6 +33,8 @@ func _ready() -> void:
 	_test_fortaleza()
 	_test_muralha()
 	_test_desafio()
+	_test_iris_heal_and_shield()
+	_test_stat_buff()
 	_test_determinism_with_skills()
 	_report_builds()
 
@@ -111,7 +113,7 @@ func _test_skill_data() -> void:
 	var by_id := {}
 	for s in skill_rows:
 		by_id[s["id"]] = s
-	_expect("4 skills do slice", skill_rows.size() == 4)
+	_expect("13 skills do trio, incluindo cura experimental", skill_rows.size() == 13)
 	for s in skill_rows:
 		if s["status"] != "HIPOTESE" or s["content_set"] != "slice":
 			_fail("skill sem status HIPOTESE ou fora do slice: %s" % s["id"])
@@ -135,6 +137,35 @@ func _test_skill_data() -> void:
 		for id in build["skills"]:
 			if not by_id.has(id):
 				_fail("build aponta para skill inexistente: %s" % id)
+	for hero in hero_rows:
+		for build in hero.get("builds", {}).values():
+			_expect("loadout de duas skills: %s" % build["name"], build["skills"].size() == 2)
+			for id in build["skills"]:
+				_expect("skill existente: %s" % id, by_id.has(id))
+
+func _test_iris_heal_and_shield() -> void:
+	var iris := _hero("hero_003", ["skill_iri_004", "skill_iri_002"], 15.0)
+	var run := _run([iris], [{"enemy_id": "en_c1_001", "count": 3}], {"hero_003": "t"})
+	var events := run.run_to_end(0.25)
+	var heals := _of(events, "healing")
+	var shields := _of(events, "shield_granted")
+	_expect("Íris conjura cura durante o combate", not heals.is_empty())
+	_expect("Íris cria escudo temporário", not shields.is_empty())
+	for e in heals:
+		_expect("cura respeita HP máximo", float(e["amount"]) <= 30.0 + EPS)
+	var absorb := _of(events, "shield_absorbed")
+	_expect("escudo absorve dano sem curar HP entre encontros", not absorb.is_empty())
+
+# Buff FLAT de ATK entra no golpe básico: (14 + 10) × (1 − 6,75/106,75) = 22,4824.
+func _test_stat_buff() -> void:
+	print("
+>>> BUFF DE STATUS NO ATAQUE")
+	var buff := {"id": "t_buff", "hero": "hero_002", "cooldown": 99.0, "trigger": {"type": "enemies_alive"},
+		"effects": [{"type": "buff", "stat": "attack", "op": "FLAT", "value": 10.0, "duration": 30.0, "targets": "self"}]}
+	var flecha := _hero("hero_002", ["t_buff"], 14.0)
+	var run := _run([flecha], [{"enemy_id": "en_c1_001", "count": 1}], {"hero_002": "t"}, [buff])
+	var hits := _of(run.run_to_end(0.25), "hero_attack")
+	_check("golpe com buff de ATK", float(_elem(hits, 0, "hero_attack").get("damage", 0.0)), 22.4824)
 
 # Flecha bate primeiro (t = 0,8333), e a Geleia ataca em t = 1,0: só a Flecha tem ameaça.
 func _test_first_target_by_threat() -> void:

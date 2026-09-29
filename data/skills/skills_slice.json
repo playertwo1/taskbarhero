@@ -89,5 +89,14 @@
       }
     ],
     "source": "BASTIAO_GOLDEN_REFERENCE.md, skill 4; gatilho: HIPÓTESE do SLICE-1A-4a"
-  }
+  },
+  {"id":"skill_fle_006","design_id":"SKILL_FLE_006","hero":"hero_002","name":"Marca","content_set":"slice","status":"HIPOTESE","cooldown":12.0,"trigger":{"type":"enemy_unmarked"},"effects":[{"type":"mark","duration":6.0}],"source":"docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md"},
+  {"id":"skill_fle_007","design_id":"SKILL_FLE_007","hero":"hero_002","name":"Flecha Perfurante","content_set":"slice","status":"HIPOTESE","cooldown":12.0,"trigger":{"type":"enemies_alive"},"effects":[{"type":"attack","coefficient":1.45,"second_coefficient":0.65}],"source":"docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md"},
+  {"id":"skill_fle_008","design_id":"SKILL_FLE_008","hero":"hero_002","name":"Olho Aguçado","content_set":"slice","status":"HIPOTESE","cooldown":18.0,"trigger":{"type":"enemies_alive"},"effects":[{"type":"buff","stat":"crit_chance","op":"FLAT","value":0.08,"duration":5.0,"targets":"self"}],"source":"docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md"},
+  {"id":"skill_fle_009","design_id":"SKILL_FLE_009","hero":"hero_002","name":"Rajada","content_set":"slice","status":"HIPOTESE","cooldown":14.0,"trigger":{"type":"enemies_alive"},"effects":[{"type":"attack","coefficient":0.55,"hits":3}],"source":"docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md"},
+  {"id":"skill_iri_001","design_id":"SKILL_IRI_001","hero":"hero_003","name":"Lança de Lúmen","content_set":"slice","status":"HIPOTESE","cooldown":10.0,"trigger":{"type":"enemies_alive"},"effects":[{"type":"attack","coefficient":1.55}],"source":"docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md"},
+  {"id":"skill_iri_005","design_id":"SKILL_IRI_005","hero":"hero_003","name":"Prisma de Retorno","content_set":"slice","status":"HIPOTESE","cooldown":14.0,"trigger":{"type":"enemy_marked"},"effects":[{"type":"attack","coefficient":1.40}],"source":"docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md"},
+  {"id":"skill_iri_003","design_id":"SKILL_IRI_003","hero":"hero_003","name":"Fratura Arcana","content_set":"slice","status":"HIPOTESE","cooldown":15.0,"trigger":{"type":"enemies_alive"},"effects":[{"type":"attack","coefficient":0.90},{"type":"enemy_debuff","stat":"defense","value":-0.15,"duration":5.0}],"source":"docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md"},
+  {"id":"skill_iri_002","design_id":"SKILL_IRI_002","hero":"hero_003","name":"Véu de Micélio","content_set":"slice","status":"HIPOTESE","cooldown":15.0,"trigger":{"type":"ally_hp_below","threshold":0.7},"effects":[{"type":"shield","fraction":0.20,"duration":6.0}],"source":"docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md"},
+  {"id":"skill_iri_004","design_id":"SKILL_IRI_004","hero":"hero_003","name":"Pulso Restaurador","content_set":"slice","status":"HIPOTESE","cooldown":10.0,"trigger":{"type":"ally_hp_below","threshold":0.85},"effects":[{"type":"heal","coefficient":2.0,"threshold":0.85}],"source":"Revisão experimental solicitada por Rafael em 2026-09-29; coeficiente e cooldown são hipótese para simulação"}
 ]

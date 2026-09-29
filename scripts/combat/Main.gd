@@ -15,6 +15,7 @@ extends Control
 @onready var party_button: Button = $Root/Content/ActionRow/PartyButton
 @onready var inventory_button: Button = $Root/Content/ActionRow/InventoryButton
 @onready var tracker_button: Button = $Root/Content/ActionRow/TrackerButton
+@onready var slice_probe_button: Button = $Root/Content/SliceProbeButton
 @onready var inventory_screen: Control = $InventoryScreen
 @onready var party_screen: Control = $PartyScreen
 @onready var offline_modal: Control = $OfflineModal
@@ -47,6 +48,7 @@ func _ready() -> void:
 	party_button.pressed.connect(_on_party_button_pressed)
 	party_screen.party_updated.connect(_on_party_updated)
 	tracker_button.pressed.connect(_on_tracker_button_pressed)
+	slice_probe_button.pressed.connect(func(): get_tree().change_scene_to_file("res://scenes/slice/SliceProbe.tscn"))
 	inventory_button.pressed.connect(_on_inventory_button_pressed)
 	inventory_screen.connect("item_equipped", _on_inventory_item_equipped)
 	tracker_close_button.pressed.connect(_on_tracker_close_pressed)

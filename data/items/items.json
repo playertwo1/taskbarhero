@@ -39,7 +39,7 @@
     "slot": "weapon",
     "rarity": "Lendário",
     "attack": 18,
-    "crit": 0.10,
+    "crit": 0.1,
     "weight": 3
   },
   {
@@ -144,7 +144,14 @@
       "Épico"
     ],
     "identity": "Ataque básico; template simples do Bosque.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_001"
+    ],
+    "stat_weights": {
+      "attack": 0.7,
+      "defense": 0.3
+    }
   },
   {
     "id": "item_w_002",
@@ -159,7 +166,14 @@
       "Épico"
     ],
     "identity": "Ataque + crítico; favorece Flecha sem ser exclusivo.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_002"
+    ],
+    "stat_weights": {
+      "attack": 0.65,
+      "crit_chance": 0.35
+    }
   },
   {
     "id": "item_w_003",
@@ -173,7 +187,14 @@
       "Épico"
     ],
     "identity": "Dano físico + Stagger em golpes pesados.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_001"
+    ],
+    "stat_weights": {
+      "attack": 0.6,
+      "defense": 0.4
+    }
   },
   {
     "id": "item_s_002",
@@ -188,7 +209,14 @@
       "Épico"
     ],
     "identity": "Status Power; melhora zonas/debuffs.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_003"
+    ],
+    "stat_weights": {
+      "attack": 0.35,
+      "skill_haste": 0.65
+    }
   },
   {
     "id": "item_s_003",
@@ -202,7 +230,16 @@
       "Épico"
     ],
     "identity": "Tenacidade + interação com Root/controle.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_001",
+      "hero_002",
+      "hero_003"
+    ],
+    "stat_weights": {
+      "defense": 0.4,
+      "tenacity": 0.6
+    }
   },
   {
     "id": "item_s_004",
@@ -215,7 +252,14 @@
       "Épico"
     ],
     "identity": "Arcano + Skill Haste ao acertar múltiplos alvos.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_003"
+    ],
+    "stat_weights": {
+      "attack": 0.5,
+      "skill_haste": 0.5
+    }
   },
   {
     "id": "item_a_001",
@@ -231,7 +275,16 @@
       "Épico"
     ],
     "identity": "HP leve + movimento.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_001",
+      "hero_002",
+      "hero_003"
+    ],
+    "stat_weights": {
+      "max_hp": 0.7,
+      "defense": 0.3
+    }
   },
   {
     "id": "item_a_002",
@@ -246,7 +299,16 @@
       "Épico"
     ],
     "identity": "HP + Defesa.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_001",
+      "hero_002",
+      "hero_003"
+    ],
+    "stat_weights": {
+      "max_hp": 0.6,
+      "defense": 0.4
+    }
   },
   {
     "id": "item_a_003",
@@ -260,7 +322,16 @@
       "Épico"
     ],
     "identity": "Defesa alta; janela defensiva após receber golpe forte.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_001",
+      "hero_002",
+      "hero_003"
+    ],
+    "stat_weights": {
+      "max_hp": 0.3,
+      "defense": 0.7
+    }
   },
   {
     "id": "item_a_004",
@@ -273,7 +344,14 @@
       "Épico"
     ],
     "identity": "Quanto menor o HP, maior a resistência.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_001"
+    ],
+    "stat_weights": {
+      "max_hp": 0.5,
+      "defense": 0.5
+    }
   },
   {
     "id": "item_a_005",
@@ -286,7 +364,14 @@
       "Relíquia"
     ],
     "identity": "Receber shield gera pequena onda de dano.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_001"
+    ],
+    "stat_weights": {
+      "max_hp": 0.55,
+      "defense": 0.45
+    }
   },
   {
     "id": "item_r_001",
@@ -301,7 +386,16 @@
       "Raro"
     ],
     "identity": "Melhora geração de recurso.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_001",
+      "hero_002",
+      "hero_003"
+    ],
+    "stat_weights": {
+      "max_hp": 0.5,
+      "skill_haste": 0.5
+    }
   },
   {
     "id": "item_r_004",
@@ -314,7 +408,14 @@
       "Raro"
     ],
     "identity": "Críticos aplicam Marca.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_002"
+    ],
+    "stat_weights": {
+      "attack": 0.4,
+      "crit_chance": 0.6
+    }
   },
   {
     "id": "item_r_005",
@@ -328,6 +429,105 @@
       "Épico"
     ],
     "identity": "Atingir múltiplos inimigos com magia reduz cooldown.",
-    "modifiers": []
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_003"
+    ],
+    "stat_weights": {
+      "attack": 0.3,
+      "skill_haste": 0.7
+    }
+  },
+  {
+    "id": "item_w_006",
+    "design_id": "ITEM_W_006",
+    "name": "Cajado Prismático",
+    "content_set": "slice",
+    "slot": "weapon",
+    "base_rarity": "Comum",
+    "allowed_rarities": [
+      "Comum",
+      "Incomum",
+      "Raro",
+      "Épico"
+    ],
+    "identity": "Cajado da Íris; ataque arcano, área e recarga conforme raridade.",
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_003"
+    ],
+    "stat_weights": {
+      "attack": 0.7,
+      "skill_haste": 0.3
+    }
+  },
+  {
+    "id": "item_s_001",
+    "design_id": "ITEM_S_001",
+    "name": "Broquel de Casca",
+    "content_set": "slice",
+    "slot": "secondary",
+    "base_rarity": "Comum",
+    "allowed_rarities": [
+      "Comum",
+      "Incomum",
+      "Raro",
+      "Épico"
+    ],
+    "identity": "Defesa + geração moderada de shield.",
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_001"
+    ],
+    "stat_weights": {
+      "max_hp": 0.45,
+      "defense": 0.55
+    }
+  },
+  {
+    "id": "item_s_006",
+    "design_id": "ITEM_S_006",
+    "name": "Aljava da Trilha",
+    "content_set": "slice",
+    "slot": "secondary",
+    "base_rarity": "Comum",
+    "allowed_rarities": [
+      "Comum",
+      "Incomum",
+      "Raro",
+      "Épico"
+    ],
+    "identity": "Secundário da Flecha; ataques e Marca.",
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_002"
+    ],
+    "stat_weights": {
+      "attack": 0.65,
+      "crit_chance": 0.35
+    }
+  },
+  {
+    "id": "item_s_007",
+    "design_id": "ITEM_S_007",
+    "name": "Foco de Micélio",
+    "content_set": "slice",
+    "slot": "secondary",
+    "base_rarity": "Comum",
+    "allowed_rarities": [
+      "Comum",
+      "Incomum",
+      "Raro",
+      "Épico"
+    ],
+    "identity": "Secundário da Íris; Skill Haste e escudo.",
+    "modifiers": [],
+    "compatible_heroes": [
+      "hero_003"
+    ],
+    "stat_weights": {
+      "max_hp": 0.55,
+      "skill_haste": 0.45
+    }
   }
 ]

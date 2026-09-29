@@ -37,7 +37,8 @@ var _taunt: Dictionary = {}
 
 ## options: seed (int), crits (bool), party_level (int), formation (slot → hero id),
 ## targeting ("threat" ou "front"), skills (linhas de skills_slice.json) e
-## builds (hero id → chave de build em row["builds"]).
+## builds (hero id → chave de build em row["builds"]), items (linhas do catálogo)
+## e equipment (hero id → lista de instâncias com id, rarity, item_power, item_level).
 static func create(route: Dictionary, hero_rows: Array, enemy_rows: Array, options: Dictionary = {}) -> ExpeditionRun:
 	var run := ExpeditionRun.new()
 	run._nodes = route.get("nodes", [])
@@ -52,6 +53,8 @@ static func create(route: Dictionary, hero_rows: Array, enemy_rows: Array, optio
 	for s in options.get("skills", []):
 		skills_by_id[s["id"]] = s
 	var builds: Dictionary = options.get("builds", {})
+	var equipment: Dictionary = options.get("equipment", {})
+	var item_rows: Array = options.get("items", [])
 	var by_id := {}
 	for row in hero_rows:
 		by_id[row["id"]] = row
@@ -67,6 +70,7 @@ static func create(route: Dictionary, hero_rows: Array, enemy_rows: Array, optio
 	for hid in order:
 		var row: Dictionary = by_id[hid]
 		var stats := SliceStats.hero_stats(row, level)
+		stats = SliceItemStats.equip(stats, hid, equipment.get(hid, []), item_rows)
 		var skills: Array = []
 		if builds.has(hid) and row.has("builds") and row["builds"].has(builds[hid]):
 			for sid in row["builds"][builds[hid]]["skills"]:
@@ -171,6 +175,7 @@ func _start_encounter(node: Dictionary, events: Array) -> void:
 				"uid": "%s#%d" % [row["id"], index], "id": row["id"], "stats": stats,
 				"hp": float(stats["max_hp"]), "alive": true, "threat": {}, "target": "",
 				"next_at": time + CombatMath.attack_interval(float(stats["attack_speed"])),
+				"marked_until": 0.0, "defense_debuff_until": 0.0, "defense_debuff": 0.0,
 			})
 			index += 1
 	for hid in _hero_order:
@@ -276,12 +281,27 @@ func _damage_taken_multiplier(hero: Dictionary, extra_reduction: float = 0.0) ->
 		mods.append({"op": "ADD_PERCENT", "value": -extra_reduction, "source_type": "SKILL", "source_id": "stance"})
 	return CombatMath.resolve_stat(1.0, mods, DAMAGE_TAKEN_FLOOR)
 
+## Status final do herói com buffs ativos (pipeline do contrato). damage_taken e shield têm regras próprias.
+func _stat(hero: Dictionary, stat: String) -> float:
+	var mods: Array = []
+	for e in _active_effects(hero):
+		if e["stat"] == stat and e.has("op"):
+			mods.append({"op": e["op"], "value": e["value"], "source_type": "SKILL", "source_id": e["source"]})
+	var base := float(hero["stats"][stat])
+	return base if mods.is_empty() else CombatMath.resolve_stat(base, mods, 0.0)
+
 # --- Skills ----------------------------------------------------------------------------------
 
 func _trigger_ok(hero: Dictionary, trigger: Dictionary) -> bool:
 	match String(trigger.get("type", "")):
 		"enemies_alive":
 			return not _first_alive_enemy().is_empty()
+		"enemy_unmarked":
+			return float(_first_alive_enemy().get("marked_until", 0.0)) <= time + EPS
+		"enemy_marked":
+			return float(_first_alive_enemy().get("marked_until", 0.0)) > time + EPS
+		"ally_hp_below":
+			return not _lowest_hp_ally(float(trigger["threshold"])).is_empty()
 		"self_hp_below":
 			return float(hero["hp"]) <= float(hero["stats"]["max_hp"]) * float(trigger["threshold"]) + EPS
 		"ally_behind_hp_below":
@@ -297,6 +317,19 @@ func _trigger_ok(hero: Dictionary, trigger: Dictionary) -> bool:
 					return true
 			return false
 	return false
+
+func _lowest_hp_ally(threshold: float) -> Dictionary:
+	var result: Dictionary = {}
+	var lowest := threshold
+	for hid in _hero_order:
+		var h: Dictionary = _heroes[hid]
+		if not h["alive"]:
+			continue
+		var ratio: float = float(h["hp"]) / float(h["stats"]["max_hp"])
+		if ratio <= lowest:
+			lowest = ratio
+			result = h
+	return result
 
 func _evaluate_skills(events: Array) -> void:
 	if _first_alive_enemy().is_empty():
@@ -315,6 +348,37 @@ func _cast(hero: Dictionary, sk: Dictionary, events: Array) -> void:
 	events.append({"type": "skill_cast", "time": time, "hero": hero["id"], "skill": def["id"]})
 	for fx in def["effects"]:
 		match String(fx["type"]):
+			"mark":
+				var target := _first_alive_enemy()
+				if not target.is_empty():
+					target["marked_until"] = time + float(fx["duration"])
+					events.append({"type": "enemy_marked", "time": time, "target": target["uid"]})
+			"attack":
+				for hit in int(fx.get("hits", 1)):
+					var target := _first_alive_enemy()
+					if target.is_empty():
+						break
+					_skill_hit(hero, target, float(fx["coefficient"]), def["id"], events)
+				if fx.has("second_coefficient"):
+					var second := _second_alive_enemy()
+					if not second.is_empty():
+						_skill_hit(hero, second, float(fx["second_coefficient"]), def["id"], events)
+			"enemy_debuff":
+				var target := _first_alive_enemy()
+				if not target.is_empty():
+					target["defense_debuff"] = float(fx["value"])
+					target["defense_debuff_until"] = time + float(fx["duration"])
+			"shield":
+				var ally := _lowest_hp_ally(0.7)
+				if not ally.is_empty():
+					ally["effects"].append({"source": def["id"], "stat": "shield", "value": float(ally["stats"]["max_hp"]) * float(fx["fraction"]), "expires_at": time + float(fx["duration"])})
+					events.append({"type": "shield_granted", "time": time, "hero": ally["id"], "amount": float(ally["stats"]["max_hp"]) * float(fx["fraction"])})
+			"heal":
+				var ally := _lowest_hp_ally(float(fx.get("threshold", 1.0)))
+				if not ally.is_empty():
+					var amount: float = minf(_stat(hero, "attack") * float(fx["coefficient"]), float(ally["stats"]["max_hp"]) - float(ally["hp"]))
+					ally["hp"] = float(ally["hp"]) + amount
+					events.append({"type": "healing", "time": time, "source": hero["id"], "target": ally["id"], "amount": amount})
 			"buff":
 				var targets: Array = []
 				if fx["targets"] == "self":
@@ -337,6 +401,27 @@ func _cast(hero: Dictionary, sk: Dictionary, events: Array) -> void:
 			"taunt":
 				_taunt = {"hero": hero["id"], "until": time + float(fx["duration"]), "ally_multiplier": float(fx["ally_damage_multiplier"])}
 
+func _second_alive_enemy() -> Dictionary:
+	var seen := false
+	for e in _enemies:
+		if not e["alive"]:
+			continue
+		if seen:
+			return e
+		seen = true
+	return {}
+
+func _enemy_defense(enemy: Dictionary) -> float:
+	var defense: float = float(enemy["stats"]["defense"])
+	if float(enemy["defense_debuff_until"]) > time + EPS:
+		defense *= 1.0 + float(enemy["defense_debuff"])
+	return defense
+
+func _skill_hit(hero: Dictionary, enemy: Dictionary, coefficient: float, skill_id: String, events: Array) -> void:
+	var damage := CombatMath.hit_damage(_stat(hero, "attack") * coefficient, _enemy_defense(enemy))
+	events.append({"type": "skill_damage", "time": time, "source": hero["id"], "skill": skill_id, "target": enemy["uid"], "damage": damage})
+	_damage_enemy(enemy, damage, hero, events)
+
 # --- Ataques ---------------------------------------------------------------------------------
 
 ## Aplica dano a um inimigo, gera ameaça para o herói e trata a derrota. Devolve true se morreu.
@@ -357,13 +442,12 @@ func _hero_attack(hero: Dictionary, events: Array) -> void:
 	var enemy := _first_alive_enemy()
 	if enemy.is_empty():
 		return
-	var stats: Dictionary = hero["stats"]
 	var is_crit := false
 	if _crits:
-		is_crit = _rng.randf() < clampf(float(stats["crit_chance"]), 0.0, CombatMath.CRIT_CHANCE_CAP)
-	var raw := CombatMath.apply_crit(float(stats["attack"]), is_crit, float(stats["crit_damage"]))
-	var damage := CombatMath.hit_damage(raw, float(enemy["stats"]["defense"]))
-	hero["next_at"] = float(hero["next_at"]) + CombatMath.attack_interval(float(stats["attack_speed"]))
+		is_crit = _rng.randf() < clampf(_stat(hero, "crit_chance"), 0.0, CombatMath.CRIT_CHANCE_CAP)
+	var raw := CombatMath.apply_crit(_stat(hero, "attack"), is_crit, _stat(hero, "crit_damage"))
+	var damage := CombatMath.hit_damage(raw, _enemy_defense(enemy))
+	hero["next_at"] = float(hero["next_at"]) + CombatMath.attack_interval(_stat(hero, "attack_speed"))
 	events.append({"type": "hero_attack", "time": time, "source": hero["id"], "target": enemy["uid"], "damage": damage, "crit": is_crit})
 	_damage_enemy(enemy, damage, hero, events)
 
@@ -388,10 +472,17 @@ func _enemy_attack(enemy: Dictionary, events: Array) -> void:
 		raw *= float(_taunt["ally_multiplier"])
 	var stance_hit := _stance_active(hero)
 	var reduction := float(hero["stance"]["reduction"]) if stance_hit else 0.0
-	var damage := CombatMath.hit_damage(raw, float(hero["stats"]["defense"]), 0.0, _damage_taken_multiplier(hero, reduction))
-	hero["hp"] = maxf(0.0, float(hero["hp"]) - damage)
+	var damage := CombatMath.hit_damage(raw, _stat(hero, "defense"), 0.0, _damage_taken_multiplier(hero, reduction))
+	var remaining := damage
+	for effect in _active_effects(hero):
+		if effect["stat"] == "shield" and remaining > 0.0:
+			var absorbed: float = minf(remaining, float(effect["value"]))
+			effect["value"] = float(effect["value"]) - absorbed
+			remaining -= absorbed
+			events.append({"type": "shield_absorbed", "time": time, "hero": target_id, "amount": absorbed})
+	hero["hp"] = maxf(0.0, float(hero["hp"]) - remaining)
 	enemy["next_at"] = float(enemy["next_at"]) + CombatMath.attack_interval(float(enemy["stats"]["attack_speed"]))
-	events.append({"type": "enemy_attack", "time": time, "source": enemy["uid"], "target": target_id, "damage": damage})
+	events.append({"type": "enemy_attack", "time": time, "source": enemy["uid"], "target": target_id, "damage": remaining})
 	if float(hero["hp"]) <= 0.0:
 		hero["alive"] = false
 		hero["stance"] = {}
@@ -401,7 +492,7 @@ func _enemy_attack(enemy: Dictionary, events: Array) -> void:
 			events.append({"type": "expedition_lost", "time": time, "node_id": _nodes[node_index]["id"]})
 			return
 	elif stance_hit:
-		var counter := CombatMath.hit_damage(float(hero["stance"]["coefficient"]) * float(hero["stats"]["attack"]), float(enemy["stats"]["defense"]))
+		var counter := CombatMath.hit_damage(float(hero["stance"]["coefficient"]) * _stat(hero, "attack"), float(enemy["stats"]["defense"]))
 		events.append({"type": "counter_attack", "time": time, "source": hero["id"], "target": enemy["uid"], "damage": counter})
 		_damage_enemy(enemy, counter, hero, events)
 		# A postura é consumida pelo contra-ataque; a ameaça acima ainda usou o ×1,5 da postura ativa.

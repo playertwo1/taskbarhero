@@ -87,7 +87,7 @@ func _test_enemy_rows() -> void:
 func _test_item_rows() -> void:
 	print("\n>>> 2. ITENS DO SLICE")
 	var rows: Array = SliceStats.load_rows(ITEMS_PATH, "slice")
-	_expect("14 itens do slice", rows.size() == 14)
+	_expect("18 itens do slice", rows.size() == 18)
 	var slots := {}
 	var ids := {}
 	for r in rows:
@@ -103,7 +103,7 @@ func _test_item_rows() -> void:
 		if r["id"] != String(r["design_id"]).to_lower():
 			_fail("id do slice deve ser o design_id em minúsculas: %s" % r["id"])
 	_expect("IDs únicos", ids.size() == rows.size())
-	_expect("slots: 3 armas, 3 secundários, 5 armaduras, 3 acessórios", slots.get("weapon", 0) == 3 and slots.get("secondary", 0) == 3 and slots.get("armor", 0) == 5 and slots.get("accessory", 0) == 3)
+	_expect("slots: 4 armas, 6 secundários, 5 armaduras, 3 acessórios", slots.get("weapon", 0) == 4 and slots.get("secondary", 0) == 6 and slots.get("armor", 0) == 5 and slots.get("accessory", 0) == 3)
 	_expect("Casca do Guardião é Relíquia", _row(rows, "item_a_005").get("base_rarity", "") == "Relíquia")
 	_expect("Arco de Folha Tensa é arma Incomum", _row(rows, "item_w_002").get("slot", "") == "weapon" and _row(rows, "item_w_002").get("base_rarity", "") == "Incomum")
 	for excluded in ["item_e_001", "item_e_005"]:

@@ -67,7 +67,11 @@
     "crit_chance": 0.1,
     "crit_damage": 1.6,
     "skill_haste": 0.0,
-    "tenacity": 0.0
+    "tenacity": 0.0,
+    "builds": {
+      "critico": {"name": "Crítico", "skills": ["skill_fle_008", "skill_fle_007"]},
+      "marca": {"name": "Marca", "skills": ["skill_fle_006", "skill_fle_009"]}
+    }
   },
   {
     "id": "hero_003",
@@ -94,6 +98,11 @@
     "crit_chance": 0.05,
     "crit_damage": 1.5,
     "skill_haste": 15.0,
-    "tenacity": 0.0
+    "tenacity": 0.0,
+    "builds": {
+      "arcano": {"name": "Arcano", "skills": ["skill_iri_001", "skill_iri_005"]},
+      "controle": {"name": "Controle", "skills": ["skill_iri_003", "skill_iri_002"]},
+      "lumen": {"name": "Lúmen", "skills": ["skill_iri_004", "skill_iri_002"]}
+    }
   }
 ]
