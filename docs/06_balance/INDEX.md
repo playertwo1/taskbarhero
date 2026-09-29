@@ -1,6 +1,7 @@
 # Balanceamento — índice
 
 - **Modelo ECON-1:** [economia inicial, custos propostos e diagnóstico estático](ECONOMY_MODEL.md). Valores quantitativos são hipóteses; o documento não altera o runtime.
+- **Contrato de balanceamento do slice:** [status, regras especiais, fórmulas, baselines, budgets e telemetria do recorte do SLICE-1](SLICE_BALANCE_CONTRACT.md), reproduzível com [`slice_baseline.py`](../../tools/balance/slice_baseline.py). Números são hipóteses.
 - **Estrutura canônica de balanceamento:** [atributos compartilhados e registros de heróis, inimigos, equipamentos e efeitos](COMBAT_BALANCE_STANDARD.md). Estrutura aprovada para design; números e integração permanecem separados.
 - **Simulações reproduzíveis:** [baseline do runtime legado](../../tools/economy/simulate_econ1_first_clear.py) e [encontros, materiais, Ferreiro e TTK do Capítulo 1](../../tools/economy/simulate_chapter1_balance.py).
 - **Materiais importados:** [Balance Pack v0.1/v0.2 e regras de adaptação](../../documents/references/balance_pack_v0.1/README.md); referência, não fonte canônica de números.

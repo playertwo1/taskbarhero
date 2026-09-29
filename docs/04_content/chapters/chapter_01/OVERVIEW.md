@@ -76,16 +76,14 @@ O Capítulo 1 canônico tem três minichefes e o Guardião-Cervo de Pedra como b
 
 ## Skills dos heróis — catálogo inicial
 
-Este overview mantém conceitos preliminares de skills do capítulo. A lista canônica da Flecha foi atualizada para corresponder a HERO_STANDARD.md e está em uma [ficha individual](../../skills/FLECHA_SKILLS.md); os cinco IDs/conceitos anteriores foram preservados como históricos em [arquivados](../../../../arquivados/FLECHA_SKILLS_LEGADO.md). Os conceitos de Bastião e Íris continuam parciais, sem Signature Skills. Tiers, gatilhos, cooldowns, potência, duração e alvos dependem dos respectivos gates de design e balanceamento.
+Este overview aponta para a fonte de skills de cada herói inicial; não mantém uma lista própria. Tiers, gatilhos, cooldowns, potência, duração e alvos dependem dos respectivos gates de design e balanceamento. O recorte usado no `SLICE-1` está em [SLICE_1_SCOPE.md](SLICE_1_SCOPE.md).
+
+- **Bastião:** seis skills do [Golden Reference](../../../02_heroes/BASTIAO_GOLDEN_REFERENCE.md) (Muralha Viva, Contra-Golpe, Desafio, Fortaleza, Impacto de Escudo e a Signature Último Bastião). Os cinco conceitos anteriores (Amparo de Raiz, Contra-golpe de Casca, Desafio do Guardião, Trama de Escudos e Voto da Clareira) estão `DEPRECATED` no [registro](../../../CONTENT_REGISTRY.md) e não orientam conteúdo novo.
+- **Flecha:** seis skills na [ficha individual](../../skills/FLECHA_SKILLS.md); os cinco conceitos anteriores estão preservados como históricos em [arquivados](../../../../arquivados/FLECHA_SKILLS_LEGADO.md).
+- **Íris:** cinco conceitos abaixo, ainda sem Signature; o [kit mínimo do slice](../../../02_heroes/hero_003_iris_slice_kit.md) mapeia quatro deles para as builds Arcano e Controle.
 
 | Herói | Skill | Efeito pretendido | Sinergia/uso |
 | --- | --- | --- | --- |
-| **Bastião** | **Amparo de Raiz** | Quando um aliado fica em risco, concede proteção temporária a ele. | Ajuda a party a atravessar investidas do Javali, Alfa e Guardião. |
-|  | **Contra-golpe de Casca** | Após defender um golpe anunciado, responde e reduz a guarda do inimigo por uma janela curta. | Abre oportunidade para Flecha e Íris; contra ameaças defensivas e elites do bestiário v0.4. |
-|  | **Desafio do Guardião** | Atrai para Bastião um ataque que atingiria um aliado mais frágil. | Protege a retaguarda de investidas do Lobo de Sombra e ataques de chefe. |
-|  | **Trama de Escudos** | Uma proteção aplicada a um aliado deixa uma proteção menor nos demais. | Combina sobrevivência da party com a skill Amparo de Raiz; pode ser escolha de defesa em área. |
-|  | **Voto da Clareira** | Depois de resistir a uma sequência de golpes, Bastião fortalece a próxima defesa ou contra-ofensiva da party. | Recompensa sobreviver à janela de pressão sem tornar a luta passiva. |
-| **Flecha** | [Catálogo canônico — seis skills](../../skills/FLECHA_SKILLS.md) | A lista e a intenção ficam na ficha individual. | Marca, precisão/crítico, sequência e cobertura de área. |
 | **Íris** | **Lança de Lúmen** | Ataque mágico concentrado com bônus contra o alvo marcado ou exposto. | Converte setup da Flecha/Bastião em dano de chefe. |
 |  | **Véu de Micélio** | Aplica uma proteção curta à party, acionada por uma condição visível de perigo. | Sustenta lutas longas e oferece uma rota defensiva. |
 |  | **Fratura Arcana** | Enfraquece temporariamente a defesa de um inimigo protegido. | Resposta a inimigos protegidos, elites e minichefes do bestiário v0.4; prepara dano dos outros heróis. |

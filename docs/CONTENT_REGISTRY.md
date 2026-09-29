@@ -4,14 +4,14 @@ Este registro é autoridade para IDs locais do jogo e aponta às fichas de detal
 
 **Status permitidos:** `CONCEPT`, `DESIGN`, `APPROVED`, `IMPLEMENTING`, `IMPLEMENTED`, `QA`, `PASS`, `DEPRECATED`. `HIPÓTESE` e `EM ABERTO` descrevem certeza de conteúdo, não são status de ciclo.
 
-**Convenções locais:** `HERO_###`; `SKILL_<herói>_###`; `TREE_<ramo>_###`; `CHAPTER_##`; `STAGE_01_##`. **Convenções canônicas v0.4:** `EN_C1_###`, `EL_C1_###`, `MB_C1_###`, `BOSS_C1_###`; `ITEM_W_###`, `ITEM_S_###`, `ITEM_A_###`, `ITEM_R_###`, `ITEM_E_###`; `MAT_C1_<NOME>`. IDs são persistentes: não reutilizar nem renumerar. Consulte [a ponte de compatibilidade runtime](04_content/LEGACY_RUNTIME_CATALOG.md) antes de qualquer migração.
+**Convenções locais:** `HERO_###`; `SKILL_<herói>_###`; `TREE_<ramo>_###`; `CHAPTER_##`; `STAGE_01_##`; `PASS_<herói>_###` e `TRAIT_<herói>_###` (passivas e Traits, registrados somente quando a ficha do nó existir; hoje só os da [Íris no slice](02_heroes/hero_003_iris_slice_kit.md)); `EVENT_C1_###` (eventos de expedição; hoje `EVENT_C1_001` Poço de Lúmen, ver o [recorte do slice](04_content/chapters/chapter_01/SLICE_1_SCOPE.md)). **Convenções canônicas v0.4:** `EN_C1_###`, `EL_C1_###`, `MB_C1_###`, `BOSS_C1_###`; `ITEM_W_###`, `ITEM_S_###`, `ITEM_A_###`, `ITEM_R_###`, `ITEM_E_###`; `MAT_C1_<NOME>`. IDs são persistentes: não reutilizar nem renumerar. Consulte [a ponte de compatibilidade runtime](04_content/LEGACY_RUNTIME_CATALOG.md) antes de qualquer migração.
 
 ## Contagem atual e fonte de detalhe
 
 | Tipo | Catálogo registrado | Estado resumido | Fonte de detalhe/runtime |
 | --- | --- | --- | --- |
 | Heróis | 8 cenas Godot estão presentes; conclusão de design varia por herói. Presença de cena não significa conformidade completa ao padrão. | Runtime: `IMPLEMENTED`; design: ver ficha | [Heróis](02_heroes/INDEX.md) e [Padrão Canônico](../HERO_STANDARD.md) |
-| Skills | 16 skills canônicas conceituadas para Bastião, Flecha e Íris: 15 normais e a Signature da Flecha. O roster completo requer 48; as outras 32 ainda não estão catalogadas. | `DESIGN` | [Skills](04_content/skills/INDEX.md) |
+| Skills | 17 skills vigentes conceituadas para Bastião, Flecha e Íris: Bastião com as 6 do Golden Reference (5 normais e a Signature), Flecha com 6 (5 normais e a Signature) e Íris com 5 normais; os 5 conceitos anteriores do Bastião e os 5 da Flecha estão `DEPRECATED`. O roster completo requer 48; as outras 31 ainda não estão catalogadas. | `DESIGN` | [Skills](04_content/skills/INDEX.md) |
 | Inimigos do Capítulo 1 | 17 canônicos: 10 normais, 3 elites, 3 minichefes e 1 boss; runtime atual contém 11 entidades legadas. | Design: `APPROVED`; runtime: em migração futura | [Catálogo canônico](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json) · [Aliases](04_content/LEGACY_RUNTIME_CATALOG.md) |
 | Equipamentos do Capítulo 1 | 30 canônicos; runtime atual contém 15 registros legados. | Design: `APPROVED`; runtime: em migração futura | [Catálogo canônico](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md) · [Aliases](04_content/LEGACY_RUNTIME_CATALOG.md) |
 | Materiais do Capítulo 1 | 7 no catálogo canônico. | Design: `APPROVED`; uso/runtime conforme fases de economia | [Catálogo canônico](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_MATERIAL_CATALOG.md) |
@@ -43,11 +43,17 @@ IDs e status são registrados aqui. O padrão de 48 skills (cinco normais e uma 
 
 | ID | Nome | Status | Fonte |
 | --- | --- | --- | --- |
-| `SKILL_BAS_001` | Amparo de Raiz | `DESIGN` | [Skills do Capítulo 1](04_content/chapters/chapter_01/OVERVIEW.md) |
-| `SKILL_BAS_002` | Contra-golpe de Casca | `DESIGN` | idem |
-| `SKILL_BAS_003` | Desafio do Guardião | `DESIGN` | idem |
-| `SKILL_BAS_004` | Trama de Escudos | `DESIGN` | idem |
-| `SKILL_BAS_005` | Voto da Clareira | `DESIGN` | idem |
+| `SKILL_BAS_001` | Amparo de Raiz (conceito anterior) | `DEPRECATED` | [Skills do Capítulo 1](04_content/chapters/chapter_01/OVERVIEW.md) |
+| `SKILL_BAS_002` | Contra-golpe de Casca (conceito anterior) | `DEPRECATED` | idem |
+| `SKILL_BAS_003` | Desafio do Guardião (conceito anterior) | `DEPRECATED` | idem |
+| `SKILL_BAS_004` | Trama de Escudos (conceito anterior) | `DEPRECATED` | idem |
+| `SKILL_BAS_005` | Voto da Clareira (conceito anterior) | `DEPRECATED` | idem |
+| `SKILL_BAS_006` | Muralha Viva | `DESIGN` | [Golden Reference](02_heroes/BASTIAO_GOLDEN_REFERENCE.md) |
+| `SKILL_BAS_007` | Contra-Golpe | `DESIGN` | idem |
+| `SKILL_BAS_008` | Desafio | `DESIGN` | idem |
+| `SKILL_BAS_009` | Fortaleza | `DESIGN` | idem |
+| `SKILL_BAS_010` | Impacto de Escudo | `DESIGN` | idem |
+| `SKILL_BAS_011` | Último Bastião (Signature) | `DESIGN` | idem |
 | `SKILL_FLE_001` | Marca da Caçada (conceito anterior) | `DEPRECATED` | [Histórico](../arquivados/FLECHA_SKILLS_LEGADO.md) |
 | `SKILL_FLE_002` | Tiro de Ruptura (conceito anterior) | `DEPRECATED` | idem |
 | `SKILL_FLE_003` | Rajada da Copa (conceito anterior) | `DEPRECATED` | idem |

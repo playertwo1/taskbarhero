@@ -15,7 +15,7 @@ O roster completo do Pocket Hero é composto por **8 heróis**, sendo que qualqu
 | --- | --- | --- | --- | --- |
 | `HERO_001` | **Bastião** | Tanque / Proteção | Escudo / Guarda (Defesa e Retaliação) | [Golden Reference de design](BASTIAO_GOLDEN_REFERENCE.md) · [Passivas](hero_001_bastiao_passives.md) · [Traits](hero_001_bastiao_traits.md) · [Mastery](hero_001_bastiao_mastery.md) · [Ficha resumida](hero_001_bastiao.md) |
 | `HERO_002` | **Flecha** | Ranged DPS | Marca do Caçador / precisão e críticos | [Ficha](hero_002_flecha.md) · [Skills](../04_content/skills/FLECHA_SKILLS.md) · [Passivas](hero_002_flecha_passives.md) · [Traits](hero_002_flecha_traits.md) · [Mastery](hero_002_flecha_mastery.md) |
-| `HERO_003` | **Íris** | Maga / AoE | Feixes de Lúmen / Controle arcano | [hero_003_iris.md](hero_003_iris.md) |
+| `HERO_003` | **Íris** | Maga / AoE | Feixes de Lúmen / Controle arcano | [hero_003_iris.md](hero_003_iris.md) · [Kit mínimo do slice](hero_003_iris_slice_kit.md) |
 | `HERO_004` | **Brasa** | Bruiser / Berserker | Fúria / Dano em baixo HP | [hero_004_brasa.md](hero_004_brasa.md) |
 | `HERO_005` | **Véu** | Assassino / Backline Killer | Exposição / Execução | [hero_005_veu.md](hero_005_veu.md) |
 | `HERO_006` | **Orvalho** | Healer / Regeneração | Sementes / Florescimento em jardim | [hero_006_orvalho.md](hero_006_orvalho.md) |

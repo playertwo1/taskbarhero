@@ -11,7 +11,7 @@ Roadmap único do projeto: define prioridade, ordem e gates. Detalhes de design 
 - **MVP:** concluído e homologado no gate **R19** em 2026-09-27. Não reabrir.
 - **Fase atual:** expansão de conteúdo, identidade e meta-progressão.
 - **Diagnóstico de 2026-09-29:** a fundação de design está ampla (sistemas, Bastião, Flecha, Árvore, artesãos, itens, economia), mas nenhum número foi validado em jogo. O gargalo agora é **provar os contratos no SLICE-1**, não escrever mais fichas.
-- **Próximo passo:** [SLICE-0 — recorte do slice](#41-slice-0--recorte-do-slice), seguido de BALANCE-FOUNDATION-1 limitado a esse recorte.
+- **Próximo passo:** [SLICE-1](#43-slice-1--vertical-slice-do-jogo-real), começando por 1A (migração do subconjunto para `/data` e combate). SLICE-0 e BALANCE-FOUNDATION-1 estão `PASS` (2026-09-29).
 - **Evidência técnica atual:** `python tools/run_godot_tests.py` — 11/11 cenas PASS em 2026-09-29.
 
 ---
@@ -71,36 +71,38 @@ Gate PASS:
 - [ ] TTK, vitória na primeira tentativa e pacing medidos no SLICE-1E;
 - [ ] teto numérico e conversão de tempo offline medidos no SLICE-1E.
 
-### 4.1 SLICE-0 — Recorte do slice
+### 4.1 SLICE-0 — Recorte do slice · `PASS`
 
-**Estado:** próximo passo.
+**Estado:** `PASS` em 2026-09-29. Recorte registrado em [SLICE_1_SCOPE.md](docs/04_content/chapters/chapter_01/SLICE_1_SCOPE.md); decisões abertas ficam listadas lá, com dono.
 
 Escolher subconjuntos de fontes já aprovadas, sem criar conteúdo novo. O resultado é a lista fechada que o BALANCE-FOUNDATION-1 e o SLICE-1 consomem.
 
-- [ ] trio (Bastião, Flecha, Íris): skills, passivas e Traits do slice, garantindo pelo menos duas builds distintas;
-- [ ] subset de equipamentos cobrindo os principais slots e subset de raridades v0.4;
-- [ ] subset de inimigos, 1 elite, 1 mini-boss e as fases do Guardião-Cervo a implementar ([ENCOUNTERS](docs/04_content/chapters/chapter_01/ENCOUNTERS.md) · [sementes](docs/04_content/chapters/chapter_01/DESIGN_SEEDS.md));
-- [ ] 1 evento de expedição com escolha real;
-- [ ] 1 Echo funcional opcional com recompensa determinística ([Sistema de Ecos](docs/03_systems/ECHO_SYSTEM.md));
-- [ ] ramo pequeno da Árvore dos Ecos e o serviço do Ferreiro (desmontagem + 1 melhoria);
-- [ ] mudança visual do Refúgio após o boss e efeito do Fragmento do Coração Verde ([Hub](docs/05_hub/HUB_STRUCTURE_SEEDS.md) · [direção visual](docs/05_hub/HUB_VISUAL_DIRECTION.md));
-- [ ] lista de IDs v0.4 que entram em `/data` e seus aliases com os IDs runtime atuais;
-- [ ] **inventário de arte do recorte:** para cada entidade, efeito e tela do slice, indicar se já existe folha `v002`/Golden utilizável ou se precisa de contrato novo ([inventário MVP](docs/art/MVP_SPRITE_INVENTORY.md) · [conceitos](docs/art/conceitos/README.md)); assets novos seguem contrato → QA técnico → auditoria visual independente, e o primeiro asset novo passa o gate antes dos demais;
-- [ ] atualizar o [overview do Capítulo 1](docs/04_content/chapters/chapter_01/OVERVIEW.md) ao padrão de 6 skills por herói.
+- [x] trio (Bastião, Flecha, Íris): skills, passivas e Traits do slice, garantindo pelo menos duas builds distintas;
+- [x] subset de equipamentos cobrindo os principais slots e subset de raridades v0.4;
+- [x] subset de inimigos, 1 elite, 1 mini-boss e as fases do Guardião-Cervo a implementar ([ENCOUNTERS](docs/04_content/chapters/chapter_01/ENCOUNTERS.md) · [sementes](docs/04_content/chapters/chapter_01/DESIGN_SEEDS.md));
+- [x] 1 evento de expedição com escolha real;
+- [x] 1 Echo funcional opcional com recompensa determinística ([Sistema de Ecos](docs/03_systems/ECHO_SYSTEM.md));
+- [x] ramo pequeno da Árvore dos Ecos e o serviço do Ferreiro (desmontagem + 1 melhoria);
+- [x] mudança visual do Refúgio após o boss e efeito do Fragmento do Coração Verde ([Hub](docs/05_hub/HUB_STRUCTURE_SEEDS.md) · [direção visual](docs/05_hub/HUB_VISUAL_DIRECTION.md));
+- [x] lista de IDs v0.4 que entram em `/data` e seus aliases com os IDs runtime atuais;
+- [x] **inventário de arte do recorte:** para cada entidade, efeito e tela do slice, indicar se já existe folha `v002`/Golden utilizável ou se precisa de contrato novo ([inventário MVP](docs/art/MVP_SPRITE_INVENTORY.md) · [conceitos](docs/art/conceitos/README.md)); assets novos seguem contrato → QA técnico → auditoria visual independente, e o primeiro asset novo passa o gate antes dos demais;
+- [x] atualizar o [overview do Capítulo 1](docs/04_content/chapters/chapter_01/OVERVIEW.md) ao padrão de 6 skills por herói.
 
 Gate PASS: recorte registrado com fontes, IDs e aliases; nenhum item do slice sem fonte aprovada; lacunas de arte listadas com contrato ou decisão de reaproveitamento.
 
-### 4.2 BALANCE-FOUNDATION-1 — Contrato de balanceamento
+### 4.2 BALANCE-FOUNDATION-1 — Contrato de balanceamento · `PASS`
+
+**Estado:** `PASS` em 2026-09-29. Contrato em [SLICE_BALANCE_CONTRACT.md](docs/06_balance/SLICE_BALANCE_CONTRACT.md); números seguem HIPÓTESE até o SLICE-1E.
 
 Integrar ao combate do Pocket Hero **apenas a parte da v0.4 que o recorte do SLICE-0 usa**, com Bastião como referência. Template base: [COMBAT_BALANCE_STANDARD](docs/06_balance/COMBAT_BALANCE_STANDARD.md). O restante do contrato fica para BALANCE-1.
 
-- [ ] status canônicos usados pelo slice: ID, unidade, significado, cálculo, limites e mapeamento para os nomes/valores runtime atuais;
-- [ ] como Guarda, Perfect Block, Desequilíbrio/Stagger e Marca entram no pipeline compartilhado;
-- [ ] fórmulas de dano, crítico, defesa/penetração e cura/escudo, com caps, ordem e exemplos calculados contra o combate atual;
-- [ ] baseline do trio (Bastião primeiro) e dos inimigos, elite, mini-boss e boss do recorte, dentro dos budgets v0.4 ou com justificativa;
-- [ ] budgets dos slots e raridades do recorte;
-- [ ] métricas mínimas de telemetria para o slice: dano, cura, TTK, mortes, uso de skills e recursos ganhos/gastos;
-- [ ] cada número rastreado como `DECIDIDO`, `HIPÓTESE` ou `EM ABERTO`, com fonte e método.
+- [x] status canônicos usados pelo slice: ID, unidade, significado, cálculo, limites e mapeamento para os nomes/valores runtime atuais;
+- [x] como Guarda, Perfect Block, Desequilíbrio/Stagger e Marca entram no pipeline compartilhado;
+- [x] fórmulas de dano, crítico, defesa/penetração e cura/escudo, com caps, ordem e exemplos calculados contra o combate atual;
+- [x] baseline do trio (Bastião primeiro) e dos inimigos, elite, mini-boss e boss do recorte, dentro dos budgets v0.4 ou com justificativa;
+- [x] budgets dos slots e raridades do recorte;
+- [x] métricas mínimas de telemetria para o slice: dano, cura, TTK, mortes, uso de skills e recursos ganhos/gastos;
+- [x] cada número rastreado como `DECIDIDO`, `HIPÓTESE` ou `EM ABERTO`, com fonte e método.
 
 Gate PASS: tudo que o slice usa tem definição única e fórmula calculável à mão; heróis e inimigos do recorte usam o mesmo modelo de status/modificadores; baselines prontos para teste. O PASS **não** declara o jogo balanceado.
 
