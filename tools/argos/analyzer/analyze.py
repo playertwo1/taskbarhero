@@ -81,7 +81,19 @@ def summarize(runs):
             "hp_left_pct": median([list(r["nodes"].values())[0]["party_hp_pct"] for r in wins if r["nodes"]]),
         })
     camp_rows = []
+    econ_rows = []
     for build, cs in sorted(campaign.items()):
+        looted = [c for c in cs if c.get("loot")]
+        if looted:
+            hist = [h for c in looted for h in c["history"]]
+            econ_rows.append({
+                "build": build,
+                "gold_per_attempt": median([h["gold"] for h in hist]),
+                "residue_per_attempt": median([h["residue"] for h in hist]),
+                "items_per_attempt": median([h["items_dropped"] for h in hist]),
+                "equipped_at_end": median([c["history"][-1]["equipped_after"] for c in looted]),
+                "residue_total": median([c["totals"]["residue"] for c in looted]),
+            })
         won = [c for c in cs if c["won"]]
         camp_rows.append({
             "build": build, "campaigns": len(cs), "win_rate": len(won) / len(cs),
@@ -90,7 +102,7 @@ def summarize(runs):
             "median_win_level": median([c["history"][-1]["level"] for c in won]),
         })
     return {
-        "route": route_rows, "segments": seg_rows, "campaign": camp_rows,
+        "route": route_rows, "segments": seg_rows, "campaign": camp_rows, "economy": econ_rows,
         "violations": dict(violations), "violation_examples": violation_examples,
     }
 
@@ -117,6 +129,8 @@ def evaluate(summary, rules):
                                     f"{len(out)}/{len(rows)} combinações vencedoras fora; mediana {median(ttks):.0f} s; pior {worst['build']} nível {worst['level']}: {worst['ttk']:.0f} s",
                                     rng["source"]))
 
+    if not summary["route"]:
+        return _campaign_and_economy(summary, rules, findings)
     vp = rules["viable_path"]
     viable = sorted({r["build"] for r in summary["route"] if r["level"] <= vp["max_level"] and r["win_rate"] >= vp["min_route_win_rate"]})
     excluded_hero, excluded_build = next(iter(vp["min_paths_without"].items()))
@@ -148,6 +162,10 @@ def evaluate(summary, rules):
         findings.append(finding("INFO", "INFO", f"Referência de primeira tentativa no nível {ref['level']}",
                                 f"melhor combinação {best:.0%} (meta humana {ref['min']:.0%}–{ref['max']:.0%})", ref["source"]))
 
+    return _campaign_and_economy(summary, rules, findings)
+
+
+def _campaign_and_economy(summary, rules, findings):
     cr = rules["campaign"]
     for r in summary["campaign"]:
         if r["win_rate"] == 0:
@@ -162,22 +180,32 @@ def evaluate(summary, rules):
     if never:
         findings.append(finding("PACING", "MEDIUM", "Combinações que nunca vencem na campanha",
                                 f"{len(never)}: {', '.join(never)}", cr["source"]))
+    er = rules.get("economy")
+    if er and summary.get("economy"):
+        low = [r for r in summary["economy"] if r["residue_per_attempt"] is not None and r["residue_per_attempt"] < er["residue_per_attempt_min"]]
+        if low:
+            findings.append(finding("ECONOMY", "MEDIUM", "Resíduo de Lúmen abaixo de um Reforço +1 por tentativa",
+                                    f"{len(low)}/{len(summary['economy'])} combinações; mediana mínima {min(r['residue_per_attempt'] for r in low)} (meta ≥ {er['residue_per_attempt_min']})",
+                                    er["source"]))
+        items = [r["items_per_attempt"] for r in summary["economy"] if r["items_per_attempt"] is not None]
+        if items:
+            findings.append(finding("INFO", "INFO", "Itens por tentativa",
+                                    f"mediana {median(items):.1f} item(ns) por tentativa entre combinações", er["source"]))
     findings.sort(key=lambda f: SEVERITY_ORDER[f["severity"]])
     return findings
 
 
-def previous_summary(current_dir, explicit):
+def previous_summary(current_dir, explicit, scenario):
     if explicit:
         path = os.path.join(explicit, "summary.json")
         return json.load(open(path, encoding="utf-8")) if os.path.exists(path) else None
     if not os.path.isdir(REPORTS):
         return None
     current = os.path.basename(os.path.normpath(current_dir))
-    scenario = json.load(open(os.path.join(current_dir, "summary.json"), encoding="utf-8"))["meta"].get("scenario") if os.path.exists(os.path.join(current_dir, "summary.json")) else None
     candidates = sorted(d for d in os.listdir(REPORTS) if d < current and os.path.exists(os.path.join(REPORTS, d, "summary.json")))
     for d in reversed(candidates):
         data = json.load(open(os.path.join(REPORTS, d, "summary.json"), encoding="utf-8"))
-        if scenario is None or data["meta"].get("scenario") == scenario:
+        if data["meta"].get("scenario") == scenario:
             data["_dir"] = d
             return data
     return None
@@ -222,6 +250,12 @@ def write_report(out_dir, meta, summary, findings, prev):
                   "| Build | Vence | 1ª tentativa | Tentativas (mediana) | Nível na vitória |", "| --- | ---: | ---: | ---: | ---: |"]
         for r in summary["campaign"]:
             lines.append(f"| {r['build']} | {pct(r['win_rate'])} | {pct(r['first_try'])} | {num(r['median_attempts'], '{:.1f}')} | {num(r['median_win_level'], '{:.1f}')} |")
+    if summary.get("economy"):
+        lines += ["", "## Economia e loot na campanha (modelo canônico simplificado)", "",
+                  "| Build | Ouro/tentativa | Resíduo/tentativa | Itens/tentativa | Itens equipados no fim | Resíduo total |",
+                  "| --- | ---: | ---: | ---: | ---: | ---: |"]
+        for r in summary["economy"]:
+            lines.append(f"| {r['build']} | {num(r['gold_per_attempt'])} | {num(r['residue_per_attempt'], '{:.1f}')} | {num(r['items_per_attempt'], '{:.1f}')} | {num(r['equipped_at_end'])} | {num(r['residue_total'])} |")
     if prev:
         lines += ["", f"Comparação com `{prev.get('_dir', 'anterior')}`."]
     open(os.path.join(out_dir, "REPORT.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
@@ -245,7 +279,7 @@ def main():
     summary = summarize(runs)
     findings = evaluate(summary, rules)
     data = {"meta": meta, "findings": findings, **summary}
-    prev = previous_summary(args.report_dir, args.previous)
+    prev = previous_summary(args.report_dir, args.previous, meta.get("scenario"))
     json.dump(data, open(os.path.join(args.report_dir, "summary.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     write_report(args.report_dir, meta, summary, findings, prev)
     bugs = [f for f in findings if f["type"] == "BUG"]

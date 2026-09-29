@@ -17,6 +17,10 @@
   },
   "dominance": {"win_rate_gap": 0.5, "source": "Perfil optimizer do Argos: build dominante elimina escolhas"},
   "first_try_reference": {"level": 5, "min": 0.4, "max": 0.6, "source": "ENCOUNTERS.md: 40–60% na primeira tentativa é meta de teste humano; aqui só referência"},
+  "economy": {
+    "residue_per_attempt_min": 5,
+    "source": "SLICE_1_SCOPE.md seção 3: mínimo de 5 Resíduos antes do boss = um Reforço +1 (HIPÓTESE)"
+  },
   "campaign": {
     "median_attempts_min": 2,
     "median_attempts_max": 5,

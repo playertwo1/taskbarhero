@@ -111,7 +111,7 @@ func _ranks(build: Dictionary, level: int) -> Dictionary:
 		ranks[ids[1]] = mini(cap, 1 + maxi(0, points - (cap - 1)))
 	return ranks
 
-func _options(build: Dictionary, level: int, seed_value: int) -> Dictionary:
+func _options(build: Dictionary, level: int, seed_value: int, equipment: Dictionary = {}) -> Dictionary:
 	var builds := {}
 	var overrides := {}
 	for hid in build:
@@ -119,7 +119,8 @@ func _options(build: Dictionary, level: int, seed_value: int) -> Dictionary:
 		if String(build[hid]).ends_with("_tele"):
 			overrides.merge(TELEGRAPH_OVERRIDE)
 	return {"seed": seed_value, "crits": true, "party_level": level, "skills": skills, "builds": builds,
-		"trigger_overrides": overrides, "passives": passives, "skill_ranks": _ranks(build, level), "items": items}
+		"trigger_overrides": overrides, "passives": passives, "skill_ranks": _ranks(build, level), "items": items,
+		"equipment": equipment}
 
 func _single(node_id: String) -> Dictionary:
 	for n in route["nodes"]:
@@ -156,17 +157,53 @@ func _segment_run(build: Dictionary, level: int, seed_value: int, key: String) -
 	_write(rec)
 
 ## Tentativas sucessivas: HP cheio a cada tentativa (volta ao Hub), XP acumula mesmo em derrota.
+## Com campaign.loot, os drops (modelo canônico simplificado) ficam no inventário e o Hub equipa
+## o melhor item por herói e slot antes da tentativa seguinte.
 func _campaign(build: Dictionary, seed_value: int) -> void:
 	var c: Dictionary = scenario.get("campaign", {})
 	var level := int(c.get("start_level", 1))
 	var xp := 0
 	var attempts := []
 	var won := false
+	var loot: RefCounted = null
+	if bool(c.get("loot", false)):
+		loot = load("res://tools/argos/simulator/loot/argos_loot.gd").new(items, seed_value * 7919)
+		if not loot.is_ready():
+			push_error("ARGOS: fontes canônicas de loot indisponíveis")
+			loot = null
+	var inventory := []
+	var equipment := {}
+	var totals := {"gold": 0, "residue": 0, "items": 0}
+	var party := ["hero_001", "hero_002", "hero_003"]
+	var node_level := {}
+	for n in route["nodes"]:
+		node_level[n["id"]] = int(n.get("level", 1))
 	for attempt in range(1, int(c.get("max_attempts", 10)) + 1):
-		var run := ExpeditionRun.create(route, heroes, enemies, _options(build, level, seed_value * 1000 + attempt))
+		var run := ExpeditionRun.create(route, heroes, enemies, _options(build, level, seed_value * 1000 + attempt, equipment))
 		var events := run.run_to_end(0.25, float(scenario.get("max_time", 3600.0)))
 		var summary := _summarize(run, events, level)
-		attempts.append({"level": level, "won": summary["won"], "furthest": summary["furthest_node"], "xp": summary["xp"], "violations": summary["violations"]})
+		var gained := {"gold": 0, "residue": 0, "items": 0}
+		if loot != null:
+			var current := ""
+			for e in events:
+				if e["type"] == "encounter_started":
+					current = e["node_id"]
+				elif e["type"] == "enemy_defeated":
+					var drop: Dictionary = loot.roll_enemy(e["id"], int(node_level.get(current, 1)), party)
+					gained["gold"] += int(drop["gold"])
+					gained["residue"] += int(drop["residue"])
+					if not drop["item"].is_empty():
+						inventory.append(drop["item"])
+						gained["items"] += 1
+			equipment = loot.best_loadout(inventory, party)
+			for k in totals:
+				totals[k] += int(gained[k])
+		var equipped := 0
+		for hid in equipment:
+			equipped += equipment[hid].size()
+		attempts.append({"level": level, "won": summary["won"], "furthest": summary["furthest_node"], "xp": summary["xp"],
+			"violations": summary["violations"], "gold": gained["gold"], "residue": gained["residue"],
+			"items_dropped": gained["items"], "equipped_after": equipped})
 		xp += int(summary["xp"])
 		while level < int(profiles["xp"]["max_level"]) and xp >= ExpeditionRun.xp_to_next(level, profiles):
 			xp -= ExpeditionRun.xp_to_next(level, profiles)
@@ -175,7 +212,7 @@ func _campaign(build: Dictionary, seed_value: int) -> void:
 			won = true
 			break
 	_write({"kind": "campaign", "build": _label(build), "seed": seed_value, "won": won,
-		"attempts": attempts.size(), "final_level": level, "history": attempts})
+		"attempts": attempts.size(), "final_level": level, "history": attempts, "loot": loot != null, "totals": totals})
 
 # --- Métricas e oráculos --------------------------------------------------------------------
 

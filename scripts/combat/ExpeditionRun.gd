@@ -178,11 +178,19 @@ func snapshot() -> Dictionary:
 	var enemies: Array = []
 	for e in _enemies:
 		if e["alive"]:
-			enemies.append({"uid": e["uid"], "hp": e["hp"], "threat": e["threat"].duplicate(), "target": e["target"]})
+			enemies.append({
+				"uid": e["uid"], "id": e["id"], "hp": e["hp"], "max_hp": float(e["stats"]["max_hp"]),
+				"threat": e["threat"].duplicate(), "target": e["target"],
+				"telegraph": float(e["telegraph_until"]) > time, "broken": float(e["broken_until"]) > time,
+			})
+	var party: Array = []
+	for hid in _hero_order:
+		var h: Dictionary = _heroes[hid]
+		party.append({"id": hid, "hp": float(h["hp"]), "max_hp": float(h["stats"]["max_hp"]), "alive": bool(h["alive"])})
 	return {
 		"state": state, "time": time, "node_index": node_index,
 		"node_id": _nodes[node_index]["id"] if node_index >= 0 and node_index < _nodes.size() else "",
-		"party_hp": _party_hp(), "enemies": enemies,
+		"party_hp": _party_hp(), "party": party, "enemies": enemies,
 	}
 
 func _party_hp() -> Dictionary:

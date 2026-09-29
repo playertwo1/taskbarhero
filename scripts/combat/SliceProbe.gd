@@ -1,16 +1,13 @@
 extends Control
 
 ## Tela de sondagem local do slice. Não lê ou altera o save do MVP.
-const ROUTE_PATH := "res://data/expedition/route_c1.json"
-const HEROES_PATH := "res://data/heroes/heroes.json"
-const ENEMIES_PATH := "res://data/enemies/enemies.json"
-const SKILLS_PATH := "res://data/skills/skills_slice.json"
-const ITEMS_PATH := "res://data/items/items.json"
+## A expedição vem do SliceSession e fica registrada no DebugBridge; em DevMode o estado é gravado
+## em user://argos/slice_state.json a cada mudança de encontro (leitura externa pelo Argos).
 const LEVELS := [1, 3, 5, 7, 10, 15, 20]
 const BUILDS := [
-	{"name": "Ofensivo", "heroes": {"hero_001": "retaliacao", "hero_002": "critico", "hero_003": "arcano"}},
-	{"name": "Controle", "heroes": {"hero_001": "guardiao", "hero_002": "marca", "hero_003": "controle"}},
-	{"name": "Misto", "heroes": {"hero_001": "guardiao", "hero_002": "marca", "hero_003": "arcano"}},
+	{"name": "Ofensivo", "heroes": {"hero_001": "retaliacao", "hero_002": "marca", "hero_003": "arcano"}},
+	{"name": "Controle", "heroes": {"hero_001": "retaliacao_tele", "hero_002": "marca", "hero_003": "controle"}},
+	{"name": "Guardião", "heroes": {"hero_001": "guardiao", "hero_002": "critico", "hero_003": "controle"}},
 	{"name": "Cura", "heroes": {"hero_001": "retaliacao", "hero_002": "critico", "hero_003": "lumen"}},
 ]
 
@@ -20,31 +17,19 @@ var selected_build := 0
 var selected_gear := 0
 var attempt := 0
 var speed := 4.0
-var hero_rows: Array = []
-var enemy_rows: Array = []
-var skill_rows: Array = []
-var item_rows: Array = []
-var route: Dictionary = {}
 var hp_label: Label
 var encounter_label: Label
 var result_label: Label
 var log_label: Label
 var speed_button: Button
 
-func _load_json(path: String) -> Variant:
-	var file := FileAccess.open(path, FileAccess.READ)
-	return null if file == null else JSON.parse_string(file.get_as_text())
+func _data_ok() -> bool:
+	var d := SliceSession.data()
+	return d["route"] is Dictionary and not d["route"].is_empty() and d["heroes"].size() == 3 and not d["enemies"].is_empty()
 
 func _ready() -> void:
-	var loaded = _load_json(ROUTE_PATH)
-	if loaded is Dictionary:
-		route = loaded
-	hero_rows = SliceStats.load_rows(HEROES_PATH, "slice")
-	enemy_rows = SliceStats.load_rows(ENEMIES_PATH, "slice")
-	skill_rows = SliceStats.load_rows(SKILLS_PATH, "slice")
-	item_rows = SliceStats.load_rows(ITEMS_PATH, "slice")
 	_build_ui()
-	if route.is_empty() or hero_rows.size() != 3 or enemy_rows.is_empty():
+	if not _data_ok():
 		result_label.text = "Dados do slice indisponíveis"
 	else:
 		_start_run()
@@ -124,14 +109,13 @@ func _cycle_speed() -> void:
 	speed_button.text = "Vel. ×%d" % int(speed)
 
 func _start_run() -> void:
-	if route.is_empty() or hero_rows.size() != 3:
+	if not _data_ok():
 		return
 	attempt += 1
-	run = ExpeditionRun.create(route, hero_rows, enemy_rows, {
-		"seed": attempt, "crits": true, "party_level": selected_level,
-		"skills": skill_rows, "builds": BUILDS[selected_build]["heroes"],
-		"items": item_rows, "equipment": _equipment(),
-	})
+	var build: Dictionary = BUILDS[selected_build]["heroes"]
+	run = SliceSession.create_run(build, selected_level, attempt, {"equipment": _equipment()})
+	DebugBridge.register_slice_run(run, {"build": build, "level": selected_level, "seed": attempt, "attempt": attempt, "gear": selected_gear, "source": "slice_probe"})
+	StateExporter.write_slice_state(DebugBridge.slice_snapshot())
 	result_label.text = "Tentativa %d · %s · nível %d · itens %d" % [attempt, BUILDS[selected_build]["name"], selected_level, selected_gear]
 	log_label.text = ""
 	_update_status()
@@ -168,6 +152,10 @@ func _process(delta: float) -> void:
 			"expedition_lost": result_label.text += "\nDERROTA em %s" % event["node_id"]
 	if not lines.is_empty():
 		log_label.text = "\n".join(lines)
+	for event in events:
+		if event["type"] in ["encounter_started", "encounter_cleared", "hero_defeated", "expedition_won", "expedition_lost"]:
+			StateExporter.write_slice_state(DebugBridge.slice_snapshot())
+			break
 	_update_status()
 
 func _update_status() -> void:
