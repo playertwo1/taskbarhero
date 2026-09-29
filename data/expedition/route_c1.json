@@ -1,0 +1,209 @@
+{
+  "schema_version": "1.0",
+  "chapter_id": "CHAPTER_01",
+  "status": "HIPOTESE",
+  "source": "docs/04_content/chapters/chapter_01/SLICE_1_SCOPE.md (seção 2) e encounter_plan.json",
+  "transition_seconds": 0.6,
+  "nodes": [
+    {
+      "type": "encounter",
+      "id": "c1_1_1_a",
+      "plan_id": "C1_1_1_A",
+      "name": "Primeira luz",
+      "kind": "NORMAL",
+      "stage": 1,
+      "level": 1,
+      "members": [
+        {
+          "enemy_id": "en_c1_001",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "encounter",
+      "id": "c1_1_2_a",
+      "plan_id": "C1_1_2_A",
+      "name": "Vigia da trilha",
+      "kind": "NORMAL",
+      "stage": 1,
+      "level": 1,
+      "members": [
+        {
+          "enemy_id": "en_c1_010",
+          "count": 1
+        },
+        {
+          "enemy_id": "en_c1_001",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "type": "encounter",
+      "id": "c1_1_2_b",
+      "plan_id": "C1_1_2_B",
+      "name": "Sinalizador tomado",
+      "kind": "NORMAL",
+      "stage": 1,
+      "level": 1,
+      "members": [
+        {
+          "enemy_id": "en_c1_005",
+          "count": 1
+        },
+        {
+          "enemy_id": "en_c1_001",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "encounter",
+      "id": "c1_2_1_a",
+      "plan_id": "C1_2_1_A",
+      "name": "Raiz e emboscada",
+      "kind": "NORMAL",
+      "stage": 2,
+      "level": 2,
+      "members": [
+        {
+          "enemy_id": "en_c1_002",
+          "count": 1
+        },
+        {
+          "enemy_id": "en_c1_003",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "type": "encounter",
+      "id": "c1_2_2_a",
+      "plan_id": "C1_2_2_A",
+      "name": "Ravina do musgo",
+      "kind": "NORMAL",
+      "stage": 2,
+      "level": 2,
+      "members": [
+        {
+          "enemy_id": "en_c1_004",
+          "count": 1
+        },
+        {
+          "enemy_id": "en_c1_006",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "type": "encounter",
+      "id": "c1_2_2_b",
+      "plan_id": "C1_2_2_B",
+      "name": "Geleia Anciã",
+      "kind": "ELITE",
+      "stage": 2,
+      "level": 2,
+      "members": [
+        {
+          "enemy_id": "el_c1_001",
+          "count": 1
+        },
+        {
+          "enemy_id": "en_c1_001",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "type": "encounter",
+      "id": "c1_3_1_a",
+      "plan_id": "C1_3_1_A",
+      "name": "Galeria de raízes",
+      "kind": "NORMAL",
+      "stage": 3,
+      "level": 3,
+      "members": [
+        {
+          "enemy_id": "en_c1_007",
+          "count": 1
+        },
+        {
+          "enemy_id": "en_c1_008",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "id": "event_c1_001",
+      "name": "Poço de Lúmen",
+      "stage": 3
+    },
+    {
+      "type": "encounter",
+      "id": "c1_4_1_a",
+      "plan_id": "C1_4_1_A",
+      "name": "Caçada cruzada",
+      "kind": "NORMAL",
+      "stage": 4,
+      "level": 4,
+      "members": [
+        {
+          "enemy_id": "en_c1_009",
+          "count": 1
+        },
+        {
+          "enemy_id": "en_c1_003",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "type": "encounter",
+      "id": "c1_3_2_a",
+      "plan_id": "C1_3_2_A",
+      "name": "Rainha das Geleias",
+      "kind": "MINIBOSS",
+      "stage": 3,
+      "level": 3,
+      "members": [
+        {
+          "enemy_id": "mb_c1_001",
+          "count": 1
+        },
+        {
+          "enemy_id": "en_c1_001",
+          "count": 2,
+          "deferred": true
+        }
+      ]
+    },
+    {
+      "type": "event",
+      "id": "event_c1_reserva_residuo",
+      "name": "Reserva de Resíduo",
+      "stage": 3
+    },
+    {
+      "type": "encounter",
+      "id": "c1_5_2_a",
+      "plan_id": "C1_5_2_A",
+      "name": "Guardião-Cervo de Pedra",
+      "kind": "BOSS",
+      "stage": 5,
+      "level": 5,
+      "members": [
+        {
+          "enemy_id": "boss_c1_001",
+          "count": 1
+        },
+        {
+          "enemy_id": "en_c1_001",
+          "count": 1,
+          "deferred": true
+        }
+      ]
+    }
+  ]
+}
