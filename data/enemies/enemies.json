@@ -286,7 +286,21 @@
     "damage_types": [
       "ARCANE"
     ],
-    "stagger_profile": "ELITE_STANDARD"
+    "stagger_profile": "ELITE_STANDARD",
+    "mechanics": {
+      "status": "HIPOTESE",
+      "source": "BOSS_RULES.md seção 9 (dano alto precisa de telegraph); padrão do slice: golpe forte telegrafado na linha de frente; números são hipótese",
+      "basic_coefficient": 0.6,
+      "telegraph": {
+        "id": "esmagamento_gelatinoso",
+        "every": 3,
+        "windup": 1.5,
+        "coefficient": 2.2,
+        "target": "front",
+        "exposed_duration": 3.0,
+        "exposed_vulnerability": 0.15
+      }
+    }
   },
   {
     "id": "mb_c1_001",
@@ -301,7 +315,33 @@
     "damage_types": [
       "ARCANE"
     ],
-    "stagger_profile": "MINIBOSS"
+    "stagger_profile": "MINIBOSS",
+    "mechanics": {
+      "status": "HIPOTESE",
+      "source": "ENCOUNTERS.md; BOSS_RULES.md seção 8 (adds como mecânica central reduzem o dano próprio); limiares e coeficiente são hipótese",
+      "basic_coefficient": 0.6,
+      "telegraph": {
+        "id": "onda_real",
+        "every": 4,
+        "windup": 1.5,
+        "coefficient": 2.0,
+        "target": "front",
+        "exposed_duration": 3.0,
+        "exposed_vulnerability": 0.15
+      },
+      "phases": [
+        {
+          "hp_below": 0.66,
+          "spawn_deferred": true,
+          "spawn_count": 1
+        },
+        {
+          "hp_below": 0.33,
+          "spawn_deferred": true,
+          "spawn_count": 1
+        }
+      ]
+    }
   },
   {
     "id": "boss_c1_001",
@@ -317,6 +357,30 @@
       "PHYSICAL",
       "ARCANE"
     ],
-    "stagger_profile": "BOSS"
+    "stagger_profile": "BOSS",
+    "mechanics": {
+      "status": "HIPOTESE",
+      "source": "ENCOUNTERS.md (3 fases, golpe telegrafado, janela após errar, add na fase 2); números são hipótese",
+      "basic_coefficient": 0.6,
+      "telegraph": {
+        "id": "golpe_de_casco",
+        "every": 3,
+        "windup": 1.5,
+        "coefficient": 2.4,
+        "target": "front",
+        "exposed_duration": 3.0,
+        "exposed_vulnerability": 0.15
+      },
+      "phases": [
+        {
+          "hp_below": 0.7,
+          "spawn_deferred": true
+        },
+        {
+          "hp_below": 0.35,
+          "telegraph_every": 2
+        }
+      ]
+    }
   }
 ]

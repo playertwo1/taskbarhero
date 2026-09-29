@@ -42,7 +42,7 @@ static func load_profiles() -> Dictionary:
 	return _profiles_cache
 
 ## Stats de inimigo no nível do conteúdo: HERO_REFERENCE × arquétipo × rank.
-## O ataque já inclui enemy_damage_scale. party_scaled aplica o ×3 de HP a elite, mini-boss e boss.
+## O ataque já inclui enemy_damage_scale. party_scaled aplica a escala de HP da party (party_hp_scale) a elite, mini-boss e boss.
 static func enemy_stats(row: Dictionary, level: int, party_scaled: bool = false) -> Dictionary:
 	var profiles := load_profiles()
 	var ref: Dictionary = profiles["reference_hero"]
@@ -50,7 +50,7 @@ static func enemy_stats(row: Dictionary, level: int, party_scaled: bool = false)
 	var rank: Dictionary = profiles["ranks"][row["rank"]]
 	var max_hp: float = CombatMath.level_value(ref["max_hp"][0], ref["max_hp"][1], level) * float(arch["max_hp"]) * float(rank["max_hp"])
 	if party_scaled and row["rank"] != "NORMAL":
-		max_hp *= float(profiles["party_hp_scale"])
+		max_hp *= party_hp_scale(profiles, row["rank"])
 	var attack: float = CombatMath.level_value(ref["attack"][0], ref["attack"][1], level) * float(arch["attack"]) * float(rank["attack"]) * float(profiles["enemy_damage_scale"])
 	var defense: float = CombatMath.level_value(ref["defense"][0], ref["defense"][1], level) * float(arch["defense"]) * float(rank["defense"])
 	return {
@@ -60,6 +60,13 @@ static func enemy_stats(row: Dictionary, level: int, party_scaled: bool = false)
 		"attack_speed": float(ref["attack_speed"]) * float(arch["attack_speed"]),
 		"tenacity": float(rank["tenacity"]),
 	}
+
+## Escala de HP pela party: número único (legado do contrato) ou mapa por rank.
+static func party_hp_scale(profiles: Dictionary, rank: String) -> float:
+	var scale = profiles.get("party_hp_scale", 1.0)
+	if scale is Dictionary:
+		return float(scale.get(rank, 1.0))
+	return float(scale)
 
 ## Stats de herói no nível: interpolação linear de HP, ATK e DEF; os demais não crescem por nível.
 static func hero_stats(row: Dictionary, level: int) -> Dictionary:

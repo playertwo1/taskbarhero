@@ -40,9 +40,11 @@ def main():
                 capture_output=True, text=True, encoding="utf-8", errors="replace",
                 timeout=args.timeout,
             )
-            ok = result.returncode == 0
-            detail = "" if ok else f"exit {result.returncode}"
             log = result.stdout + result.stderr
+            # Erro de parse/compilação pode sair com código 0; trate como falha.
+            script_error = "SCRIPT ERROR" in log
+            ok = result.returncode == 0 and not script_error
+            detail = "" if ok else ("SCRIPT ERROR" if script_error else f"exit {result.returncode}")
         except subprocess.TimeoutExpired:
             ok, detail, log = False, f"timeout {args.timeout}s", ""
         print(f"[{'PASS' if ok else 'FAIL'}] {scene} {detail}".rstrip())

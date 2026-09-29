@@ -70,6 +70,9 @@ func _hero(id: String, skills: Array = [], attack: float = -1.0) -> Dictionary:
 	for r in hero_rows:
 		if r["id"] == id:
 			var copy: Dictionary = r.duplicate(true)
+			# Contas à mão do 1A-3/1A-4a: sem Perfect Block e sem Stagger (testados em test_expedition_mechanics).
+			copy.erase("perfect_block")
+			copy.erase("basic_stagger")
 			if attack > 0.0:
 				copy["base_stats"]["attack"] = [attack, attack]
 			copy["builds"] = {"t": {"name": "teste", "skills": skills}}
@@ -203,7 +206,8 @@ func _test_counter_stance() -> void:
 	_check("golpe recebido na postura: 3,8136 × 0,3", _elem(attacks, 0, "enemy_attack").get("damage", -1.0), GELEIA_ON_BASTIAO * 0.3)
 	_check("contra-ataque: 18 contra a defesa da Geleia", _elem(counters, 0, "counter_attack").get("damage", -1.0), 18.0 * (1.0 - 6.75 / 106.75))
 	_check("o contra-ataque acontece no mesmo instante do golpe", _elem(counters, 0, "counter_attack").get("time", -1.0), _elem(attacks, 0, "enemy_attack").get("time", -2.0))
-	_check("sem postura, o golpe seguinte é integral", _elem(attacks, 1, "enemy_attack").get("damage", -1.0), GELEIA_ON_BASTIAO)
+	# O revide aplica Desequilíbrio (CHAPTER_01_HERO_COMBAT_PROPOSAL.md): −10% no golpe seguinte.
+	_check("sem postura, o golpe seguinte só tem o Desequilíbrio (× 0,9)", _elem(attacks, 1, "enemy_attack").get("damage", -1.0), GELEIA_ON_BASTIAO * 0.9)
 	# A segunda postura abre em t = 8,0 e já absorve o golpe desse mesmo instante (a skill vem antes do ataque).
 	var at_eight := attacks.filter(func(e): return absf(e["time"] - 8.0) < 0.0001)
 	_check("a segunda postura reduz o golpe de t = 8", _elem(at_eight, 0, "enemy_attack em t=8").get("damage", -1.0), GELEIA_ON_BASTIAO * 0.3)

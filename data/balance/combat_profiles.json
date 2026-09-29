@@ -76,5 +76,69 @@
     }
   },
   "enemy_damage_scale": 0.5,
-  "party_hp_scale": 3.0
+  "party_hp_scale": {
+    "ELITE": 3.0,
+    "MINIBOSS": 3.0,
+    "BOSS": 2.0
+  },
+  "stagger": {
+    "status": "HIPOTESE",
+    "source": "STAGGER_SYSTEM.md e BOSS_RULES.md do v0.4; valores no meio das faixas canônicas",
+    "recovery_delay": 3.0,
+    "recovery_per_second": 0.1,
+    "ranks": {
+      "NORMAL": {
+        "posture": 100.0,
+        "break_duration": 2.0,
+        "vulnerability": 0.15,
+        "immunity": 2.0
+      },
+      "ELITE": {
+        "posture": 180.0,
+        "break_duration": 1.75,
+        "vulnerability": 0.15,
+        "immunity": 2.0
+      },
+      "MINIBOSS": {
+        "posture": 350.0,
+        "break_duration": 1.4,
+        "vulnerability": 0.15,
+        "immunity": 3.0
+      },
+      "BOSS": {
+        "posture": 600.0,
+        "break_duration": 1.1,
+        "vulnerability": 0.1,
+        "immunity": 4.0
+      }
+    }
+  },
+  "imbalance": {
+    "status": "HIPOTESE",
+    "source": "SLICE_BALANCE_CONTRACT.md, seção 3: damage_bonus −10%; conversão do −20% de resistência a stagger EM ABERTO, aqui +20% de stagger recebido",
+    "damage_bonus": -0.1,
+    "stagger_taken_bonus": 0.2,
+    "duration": 4.0
+  },
+  "skill_rank": {
+    "status": "HIPOTESE",
+    "source": "SKILL_SYSTEM.md (até 5 ranks); efeitos de R2–R5 por skill em skills_slice.json, conforme CHAPTER_01_HERO_COMBAT_PROPOSAL.md; marcos de obtenção EM ABERTO",
+    "max": 5
+  },
+  "xp": {
+    "status": "HIPOTESE",
+    "source": "ECONOMY_MODEL.md, finding 1: primeira conclusão leva a party ao nível 6; curva igual à do runtime atual (ProgressionManager)",
+    "by_rank": {
+      "NORMAL": 6,
+      "ELITE": 25,
+      "MINIBOSS": 45,
+      "BOSS": 80
+    },
+    "curve": {
+      "base": 25.0,
+      "growth": 1.15,
+      "per_level": 5.0
+    },
+    "max_level": 100
+  }
 }

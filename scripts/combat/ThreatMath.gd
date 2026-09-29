@@ -5,6 +5,9 @@ class_name ThreatMath
 ## 1 de dano efetivo gera 1 de ameaça; o ×1,5 do Bastião é aplicado por quem chama.
 
 const SWITCH_THRESHOLD := 1.15
+## Seção 3: 1 cura efetiva = 0,5 de ameaça; 1 de escudo consumido = 0,5 para quem criou o escudo.
+const HEAL_THREAT := 0.5
+const SHIELD_THREAT := 0.5
 
 ## threat: id → ameaça; order: ids do front ao back; alive: id → vivo.
 ## forced: alvo de uma provocação ativa (vence a tabela, se estiver vivo).

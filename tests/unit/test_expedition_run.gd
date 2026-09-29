@@ -60,6 +60,9 @@ func _hero(id: String, hp: float = -1.0, attack: float = -1.0) -> Dictionary:
 	for r in hero_rows:
 		if r["id"] == id:
 			var copy: Dictionary = r.duplicate(true)
+			# Contas à mão do 1A-3/1A-4a: sem Perfect Block e sem Stagger (testados em test_expedition_mechanics).
+			copy.erase("perfect_block")
+			copy.erase("basic_stagger")
 			if hp > 0.0:
 				copy["base_stats"]["max_hp"] = [hp, hp]
 			if attack > 0.0:
