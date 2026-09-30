@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuc3x521pl6h"
-path="res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"
+uid="uid://b2csp3j0banq2"
+path="res://.godot/imported/ITEM_R_002_esporo_sonolento_64x64.png-221acdf0ac86add1b6884df645b09a3f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/art/references/hub_lanterna_mae_glow_concept_v001.png"
-dest_files=["res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"]
+source_file="res://assets/sprites/items/icons_64/ITEM_R_002_esporo_sonolento_64x64.png"
+dest_files=["res://.godot/imported/ITEM_R_002_esporo_sonolento_64x64.png-221acdf0ac86add1b6884df645b09a3f.ctex"]
 
 [params]
 

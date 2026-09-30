@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuc3x521pl6h"
-path="res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"
+uid="uid://bgwq62vijq734"
+path="res://.godot/imported/mob_trepa_cadaver_96x96.png-5593e759e85f527b1353cb887f28e356.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/art/references/hub_lanterna_mae_glow_concept_v001.png"
-dest_files=["res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"]
+source_file="res://assets/sprites/enemies/highres/mob_trepa_cadaver_96x96.png"
+dest_files=["res://.godot/imported/mob_trepa_cadaver_96x96.png-5593e759e85f527b1353cb887f28e356.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuc3x521pl6h"
-path="res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"
+uid="uid://cqo282lxug76c"
+path="res://.godot/imported/hero_bastiao_96x96.png-825393f5e3fbf71835a5e9dbaaab33c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/art/references/hub_lanterna_mae_glow_concept_v001.png"
-dest_files=["res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"]
+source_file="res://assets/sprites/heroes/bastiao/hero_bastiao_96x96.png"
+dest_files=["res://.godot/imported/hero_bastiao_96x96.png-825393f5e3fbf71835a5e9dbaaab33c9.ctex"]
 
 [params]
 

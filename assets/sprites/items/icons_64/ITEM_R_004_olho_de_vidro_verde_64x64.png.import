@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuc3x521pl6h"
-path="res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"
+uid="uid://dca420cxa07vs"
+path="res://.godot/imported/ITEM_R_004_olho_de_vidro_verde_64x64.png-2180466e23907d8979c8de99cfad94cf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/art/references/hub_lanterna_mae_glow_concept_v001.png"
-dest_files=["res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"]
+source_file="res://assets/sprites/items/icons_64/ITEM_R_004_olho_de_vidro_verde_64x64.png"
+dest_files=["res://.godot/imported/ITEM_R_004_olho_de_vidro_verde_64x64.png-2180466e23907d8979c8de99cfad94cf.ctex"]
 
 [params]
 

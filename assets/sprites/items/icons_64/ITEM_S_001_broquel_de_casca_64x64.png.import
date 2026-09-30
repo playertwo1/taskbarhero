@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuc3x521pl6h"
-path="res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"
+uid="uid://b3ueuh3tagcii"
+path="res://.godot/imported/ITEM_S_001_broquel_de_casca_64x64.png-11bea0e1d9026ff8d9b4251b278e5cb5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/art/references/hub_lanterna_mae_glow_concept_v001.png"
-dest_files=["res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"]
+source_file="res://assets/sprites/items/icons_64/ITEM_S_001_broquel_de_casca_64x64.png"
+dest_files=["res://.godot/imported/ITEM_S_001_broquel_de_casca_64x64.png-11bea0e1d9026ff8d9b4251b278e5cb5.ctex"]
 
 [params]
 

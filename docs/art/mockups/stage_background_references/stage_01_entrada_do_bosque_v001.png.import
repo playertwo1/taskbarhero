@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuc3x521pl6h"
-path="res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"
+uid="uid://bsxcondib6kb3"
+path="res://.godot/imported/stage_01_entrada_do_bosque_v001.png-7648c699cc701a429e3dcfc768125fb3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/art/references/hub_lanterna_mae_glow_concept_v001.png"
-dest_files=["res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"]
+source_file="res://docs/art/mockups/stage_background_references/stage_01_entrada_do_bosque_v001.png"
+dest_files=["res://.godot/imported/stage_01_entrada_do_bosque_v001.png-7648c699cc701a429e3dcfc768125fb3.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuc3x521pl6h"
-path="res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"
+uid="uid://dcj1hrvwwuxyo"
+path="res://.godot/imported/hero_sino_96x96.png-464a770e2e27628dcc5ec3c7adea9cc7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/art/references/hub_lanterna_mae_glow_concept_v001.png"
-dest_files=["res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"]
+source_file="res://assets/sprites/heroes/sino/hero_sino_96x96.png"
+dest_files=["res://.godot/imported/hero_sino_96x96.png-464a770e2e27628dcc5ec3c7adea9cc7.ctex"]
 
 [params]
 

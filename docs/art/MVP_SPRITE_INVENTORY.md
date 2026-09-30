@@ -72,3 +72,20 @@ Localizados em `assets/sprites/environment/bosque_lumen/`:
 
 1. Auditoria visual independente e revisão mobile dos novos lotes integrados.
 2. Homologação das proporções e composições na cena de combate do Godot.
+
+## 8. Padrão de Alta Densidade (Aprovado em 2026-09-30 por Rafael)
+
+Para conferir fidelidade às referências conceituais e eliminar mixels na proporção de entidades maiores, Rafael aprovou o Padrão de Alta Densidade com hierarquia escalonada:
+
+- **Heróis (8):** 96×96 com baseline $Y=94\text{--}96$ em `assets/sprites/heroes/<heroi>/hero_<heroi>_96x96.png` e `work/art_pipeline/<heroi>/`.
+- **Inimigos Pequenos (2):** 64×64 (Gremlin de Folhas, Sapinho de Lúmen) em `assets/sprites/enemies/highres/` e `work/art_pipeline/enemies/`.
+- **Inimigos Normais (8):** 96×96 (Geleia de Lúmen, Espírito de Raiz, Javali de Musgo, Mariposa Luminosa, Cogumelo Sonolento, Trepa-Cadáver, Caracol Cristalino, Raposa Oca) em `assets/sprites/enemies/highres/` e `work/art_pipeline/enemies/`.
+- **Elites (3):** 128×128 (Geleia Anciã, Javali Cicatrizado, Gremlin Espinhento) em `assets/sprites/enemies/highres/` e `work/art_pipeline/enemies/`.
+- **Mini-chefes (3):** 160×160 (Rainha das Geleias, Javali da Ponte, O Espinheiro) em `assets/sprites/enemies/highres/` e `work/art_pipeline/enemies/`.
+- **Chefe Supremo (1):** 224×224 (Guardião-Cervo de Pedra) em `assets/sprites/enemies/highres/` e `work/art_pipeline/enemies/`.
+- **Ícones de Itens v0.4 (30):** 64×64 em `assets/sprites/items/icons_64/` e `work/art_pipeline/items_64/`.
+- **Painéis do Hub / Refúgio (5):** 256×256+ (Árvore dos Ecos, Ferreiro de Lúmen, Refúgio Pós-Boss, Lanterna-Mãe Módulos, Retrato Mobile) em `assets/sprites/hub/` e `work/art_pipeline/hub/`.
+- **UI Kit & Tema:** `assets/sprites/ui/ui_kit/` e `assets/ui/pocket_hero_theme.tres`.
+
+Relatório completo de especificações e paletas: [`docs/art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md`](RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md).
+

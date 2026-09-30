@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuc3x521pl6h"
-path="res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"
+uid="uid://cwcq7p30bqkpm"
+path="res://.godot/imported/ITEM_A_001_manto_de_folhas_64x64.png-3a39988afedfff4894141bc50efe0a6b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/art/references/hub_lanterna_mae_glow_concept_v001.png"
-dest_files=["res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"]
+source_file="res://assets/sprites/items/icons_64/ITEM_A_001_manto_de_folhas_64x64.png"
+dest_files=["res://.godot/imported/ITEM_A_001_manto_de_folhas_64x64.png-3a39988afedfff4894141bc50efe0a6b.ctex"]
 
 [params]
 

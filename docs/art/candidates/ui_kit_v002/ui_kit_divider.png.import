@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuc3x521pl6h"
-path="res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"
+uid="uid://dg71rht2amuwo"
+path="res://.godot/imported/ui_kit_divider.png-6d6a882f01c704badf0c9bacd175f14c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/art/references/hub_lanterna_mae_glow_concept_v001.png"
-dest_files=["res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"]
+source_file="res://docs/art/candidates/ui_kit_v002/ui_kit_divider.png"
+dest_files=["res://.godot/imported/ui_kit_divider.png-6d6a882f01c704badf0c9bacd175f14c.ctex"]
 
 [params]
 

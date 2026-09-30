@@ -17,8 +17,12 @@ O conteúdo de arte existente permanece em [`docs/art/`](../art/), sua localiza�
 - **Base visual escolhida para o Hub:** [composição original com party e serviços](../art/mockups/hub_environment_concepts_v003/07_refugio_party_e_servicos.png) · [estudo retrato mobile](../art/mockups/hub_environment_concepts_v004/08_refugio_mobile_retrato.png) · [direção e requisitos modulares](../05_hub/HUB_VISUAL_DIRECTION.md)
 - [Referências visuais SLICE-1D: Árvore, Ferreiro e Refúgio pós-boss](../art/mockups/slice_1d_references/README.md) — conceitos exploratórios de UI e cenário, não assets finais.
 - [Referências visuais SLICE-1E](../art/mockups/slice_1e_references/README.md) — mapa das referências atuais por tela e conceitos novos para Hub, Expedição, Loadout, combate, escolhas, resultado e Inventário/Echo.
+- [Referências conceituais de fundo das cinco fases do Capítulo 1](../art/mockups/stage_background_references/README.md) — estudos panorâmicos exploratórios, não fundos finais nem assets de runtime.
 - [Fila de produção de sprites do SLICE-1](../art/SPRITE_PRODUCTION_BACKLOG.md) — liga cada imagem ao pacote, contrato e peças específicas a produzir, com dependências e ordem do roadmap.
 - [Triagem visual preliminar dos assets do Capítulo 1 — 2026-09-28](../art/QA_VISUAL_PRELIMINAR_2026-09-28.md) — achados iniciais; não fecha o gate de release.
-- **Sprites finais importados pelo jogo:** [`assets/sprites/`](../../assets/sprites/).
+- **Relatório Geral de Produção — Padrão de Alta Densidade (2026-09-30):** [`RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md`](../art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md) — consolida os 8 heróis (96×96), 17 entidades do bestiário do Cap. 1 (64px a 224px), 30 itens v0.4 (64×64), painéis do Hub (256×256+), tema AMOLED e arena visual de combate.
+- **Sprites finais importados pelo jogo:** [`assets/sprites/`](../../assets/sprites/) (incluindo `assets/sprites/heroes/`, `assets/sprites/enemies/highres/`, `assets/sprites/items/icons_64/`, `assets/sprites/hub/` e `assets/sprites/ui/ui_kit/`).
+- **Arquivos master do pipeline:** [`work/art_pipeline/`](../../work/art_pipeline/).
 
 Contrato → conceito → referência aprovada → pixel cleanup → QA técnico → auditoria visual independente → integração → QA mobile. A existência de um conceito não significa aprovação do asset.
+

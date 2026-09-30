@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuc3x521pl6h"
-path="res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"
+uid="uid://ddp8nd0kco6pg"
+path="res://.godot/imported/03_refugio_pos_boss_v003.png-50e0aa9d65ccdc7742c3c4d2e2bc465a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/art/references/hub_lanterna_mae_glow_concept_v001.png"
-dest_files=["res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"]
+source_file="res://docs/art/mockups/slice_1d_references/03_refugio_pos_boss_v003.png"
+dest_files=["res://.godot/imported/03_refugio_pos_boss_v003.png-50e0aa9d65ccdc7742c3c4d2e2bc465a.ctex"]
 
 [params]
 

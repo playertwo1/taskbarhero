@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuc3x521pl6h"
-path="res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"
+uid="uid://cip7vqqdbludi"
+path="res://.godot/imported/hero_flecha_96x96.png-f1cc9e7861c9f3c2f7fe319275cf41c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/art/references/hub_lanterna_mae_glow_concept_v001.png"
-dest_files=["res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"]
+source_file="res://assets/sprites/heroes/flecha/hero_flecha_96x96.png"
+dest_files=["res://.godot/imported/hero_flecha_96x96.png-f1cc9e7861c9f3c2f7fe319275cf41c3.ctex"]
 
 [params]
 

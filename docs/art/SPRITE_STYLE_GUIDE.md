@@ -97,19 +97,21 @@ Aseprite cleanup
 
 ---
 
-## 6. Tamanhos finais
+## 6. Tamanhos finais (Padrão Alta Densidade — Decidido por Rafael em 2026-09-30)
 
-| Tipo | Canvas final |
-|---|---:|
-| Ícone pequeno | 16×16 ou 24×24 |
-| Criatura pequena | 32×32 |
-| Herói | 48×48 |
-| Inimigo normal | 48×48 |
-| Elite | 48×48 ou 64×64 |
-| Boss | 64×64 |
-| Boss excepcional | 96×96 com justificativa |
-
-Default MVP: **48×48**.
+| Elemento | Resolução canônica | Função / Observação |
+|---|---:|---|
+| **Heróis** | **96×96** | Padrão canônico de alta densidade; baseline proporcional ao chão de combate |
+| **Inimigos pequenos** | **64×64** | Gremlins, criaturinhas e minions menores |
+| **Inimigos normais** | **96×96** | Mobs comuns com mesma densidade de pixel do herói |
+| **Elites** | **128×128** | Inimigos avançados com presença de combate destacada |
+| **Mini-chefes** | **128–192px** | Subchefes de clareira e eventos especiais |
+| **Chefes** | **192–256px** | Chefes de capítulo com grande escala e impacto visual |
+| **Chefes excepcionais / Colossais** | **256–384px** | Encontros de clímax e chefes titânicos |
+| **Ícones de itens** | **64×64** | Equipamentos, materiais e consumíveis (UI mobile legível) |
+| **Ícones de skills** | **64×64** | Habilidades ativas e passivas |
+| **Retratos / UI** | **256×256+** | Diálogos, cartões de herói e ilustrações de serviço |
+| **Arquivo Master / Conceito** | **1024×1024** | Matriz de geração ComfyUI / alta resolução antes do downscale |
 
 ---
 

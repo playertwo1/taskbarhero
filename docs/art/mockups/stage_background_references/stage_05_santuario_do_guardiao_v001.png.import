@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfuc3x521pl6h"
-path="res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"
+uid="uid://bu8me187xyfvo"
+path="res://.godot/imported/stage_05_santuario_do_guardiao_v001.png-66a684227a10451d9478005e998e4ec1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://docs/art/references/hub_lanterna_mae_glow_concept_v001.png"
-dest_files=["res://.godot/imported/hub_lanterna_mae_glow_concept_v001.png-757540bed749b857de2b1624e858ac06.ctex"]
+source_file="res://docs/art/mockups/stage_background_references/stage_05_santuario_do_guardiao_v001.png"
+dest_files=["res://.godot/imported/stage_05_santuario_do_guardiao_v001.png-66a684227a10451d9478005e998e4ec1.ctex"]
 
 [params]
 
