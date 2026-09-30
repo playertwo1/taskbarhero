@@ -70,6 +70,8 @@ func _test_lock_and_equipment() -> void:
 	c.finish_expedition(run)
 	_expect("terminar destrava", not c.inventory.locked)
 	var fresh := c.inventory.add_item(LootRoller.make_instance("item_a_001", "Comum", 5, 1))
+	_expect("reciclar sem o nó Desmontagem é recusado", c.recycle(fresh)["error"] == "service")
+	c.data["tree_nodes"] = ["TREE_VIG_002", "TREE_VIG_005", "TREE_OFI_001", "TREE_OFI_002", "TREE_OFI_003"]  # Ferreiro aberto
 	var res := c.recycle(fresh)
 	_expect("reciclar via campanha rende Resíduo e grava", res["ok"] and int(SliceSave.read(PATH)["data"]["inventory"]["materials"]["MAT_C1_LUMEN_RESIDUE"]) >= 1)
 

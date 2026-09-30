@@ -1,0 +1,14 @@
+{
+  "schema_version": "1.0",
+  "status": "HIPOTESE",
+  "source": "docs/04_content/chapters/chapter_01/SLICE_1_SCOPE.md (seção 6) e docs/03_systems/GLOBAL_RESONANCE_TREE.md",
+  "costs": {"free": 0, "low": 2, "medium": 4, "high": 7, "keystone": 12},
+  "nodes": [
+    {"id": "TREE_VIG_001", "name": "Semente da Vigília", "tier": "free", "requires": [], "effect": "root"},
+    {"id": "TREE_VIG_002", "name": "Pulso Vital", "tier": "low", "requires": ["TREE_VIG_001"], "effect": "none"},
+    {"id": "TREE_VIG_005", "name": "Ressonância Estável", "tier": "keystone", "requires": ["TREE_VIG_002"], "effect": "none"},
+    {"id": "TREE_OFI_001", "name": "Forja Reerguida", "tier": "medium", "requires": ["TREE_VIG_005"], "effect": "blacksmith"},
+    {"id": "TREE_OFI_002", "name": "Desmontagem Protegida", "tier": "low", "requires": ["TREE_OFI_001"], "effect": "disassemble"},
+    {"id": "TREE_OFI_003", "name": "Aprimoramento Controlado", "tier": "medium", "requires": ["TREE_OFI_002"], "effect": "upgrade"}
+  ]
+}

@@ -147,7 +147,7 @@ Contratos e regras em [MVP_SPRITE_INVENTORY](../../../art/MVP_SPRITE_INVENTORY.m
 | Ícones de itens | nenhum (os 30 existentes são dos itens legados ou candidatos com outros nomes) | **14** |
 | Ícones de skills | Íris: Lança de Lúmen, Véu de Micélio, Fratura Arcana, Prisma de Retorno | **8:** as 4 de Bastião e as 4 de Flecha (os ícones atuais são dos conceitos antigos) |
 | Efeitos | nenhum (`assets/sprites/effects/` está vazio) | efeitos das skills, feedback de Perfect Block, cena do Poço de Lúmen |
-| Ambiente | Bosque de Lúmen (4 camadas), ícones de fase, santuário do Guardião | camada da Lanterna-Mãe no Refúgio |
+| Ambiente | Bosque de Lúmen (4 camadas), ícones de fase, santuário do Guardião | camada da Lanterna-Mãe no Refúgio — [contrato `DESIGN`](../../../art/contracts/hub_environment/hub_lanterna_mae_pos_boss.yaml) (2026-09-29); produção depende da cena base do Refúgio |
 
 - **DECIDIDO:** os 8 ícones de skills de Bastião e Flecha ganham contrato novo; nenhum ícone de conceito `DEPRECATED` é reaproveitado por semelhança.
 - **DECIDIDO:** o primeiro asset novo a passar pelo gate de arte é a **Geleia Anciã**; os demais 7 inimigos, a Rainha e os ícones só começam depois do PASS dele.

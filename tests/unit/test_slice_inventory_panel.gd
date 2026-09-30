@@ -12,6 +12,7 @@ func _expect(label: String, cond: bool) -> void:
 func _ready() -> void:
 	print("--- TESTE SLICE INVENTORY PANEL (SLICE-1B Plano B) ---")
 	var c := SliceCampaign.in_memory()
+	c.data["tree_nodes"] = ["TREE_VIG_002", "TREE_VIG_005", "TREE_OFI_001", "TREE_OFI_002", "TREE_OFI_003"]  # Ferreiro aberto
 	var sword := c.inventory.add_item(LootRoller.make_instance("item_w_001", "Comum", 10, 3))
 	var armor := c.inventory.add_item(LootRoller.make_instance("item_a_001", "Incomum", 12, 3))
 	var relic := c.inventory.add_item(LootRoller.make_instance("item_a_005", "Relíquia", 25, 3))

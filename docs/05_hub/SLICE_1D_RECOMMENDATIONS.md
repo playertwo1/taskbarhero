@@ -42,7 +42,7 @@ Rafael autorizou testar e implementar esta recomendação em 2026-09-29. O Echo 
 
 ## Estado das decisões (2026-09-29)
 
-- **Árvore:** Rafael pediu a simulação de 32 Fragmentos. O resultado favorece essa hipótese para abrir o Ferreiro antes do Guardião, mas a rota ainda precisa de marcos ordenados e a economia completa precisa cobrir persistência, respec e gastos concorrentes antes de gravar recompensas no runtime.
+- **Árvore (2026-09-29):** Rafael aprovou os 32 Fragmentos (4/6/7/7/8) para o runtime do slice; marcos em `route_c1.json`, nós em `data/progression/resonance_tree_slice.json`. Continua `HIPÓTESE` até o playtest do 1E. Histórico: Rafael pediu a simulação de 32 Fragmentos. O resultado favorece essa hipótese para abrir o Ferreiro antes do Guardião, mas a rota ainda precisa de marcos ordenados e a economia completa precisa cobrir persistência, respec e gastos concorrentes antes de gravar recompensas no runtime.
 - **Echo:** adaptação condicional implementada e coberta pelos testes Godot focados; o playtest ainda deve validar sua utilidade e leitura.
 - **ID:** `ECHO_C1_001` / `echo_c1_001` registrado para o Echo do slice.
 

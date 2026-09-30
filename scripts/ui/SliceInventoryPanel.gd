@@ -130,18 +130,13 @@ func _row(inst: Dictionary, owner_id: String) -> Control:
 		unequip.custom_minimum_size.y = 50
 		unequip.pressed.connect(func(): unequip_item(uid))
 		actions.add_child(unequip)
-	var recycle := Button.new()
-	recycle.text = "Reciclar"
-	recycle.custom_minimum_size.y = 50
-	recycle.disabled = owner_id != "" or campaign.inventory.locked
-	recycle.pressed.connect(func(): recycle_item(uid))
-	actions.add_child(recycle)
 	box.add_child(actions)
 	return box
 
 func _report(error: String) -> void:
 	var texts := {"locked": "Não é possível mudar o equipamento durante uma expedição.", "incompatible": "Esse item não serve para esse herói.",
-		"unknown": "Item não encontrado.", "equipped": "Desequipe o item antes de reciclar.", "not_recyclable": "Esse item não pode ser reciclado."}
+		"unknown": "Item não encontrado.", "equipped": "Desequipe o item antes de reciclar.", "not_recyclable": "Esse item não pode ser reciclado.",
+		"service": "A desmontagem fica no Ferreiro, depois de restaurá-lo na Árvore dos Ecos.", "favorite": "Item favorito não pode ser desmontado."}
 	_message.text = String(texts.get(error, ""))
 
 func equip_item(uid: int, hero_id: String) -> String:

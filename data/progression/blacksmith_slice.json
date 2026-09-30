@@ -1,0 +1,12 @@
+{
+  "schema_version": "1.0",
+  "status": "HIPOTESE",
+  "source": "docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md e docs/04_content/chapters/chapter_01/encounter_plan.json (first_blacksmith_upgrade_per_item)",
+  "reinforce": {
+    "max_level": 1,
+    "material_id": "MAT_C1_LUMEN_RESIDUE",
+    "material_quantity": 5,
+    "stat_bonus": 0.02,
+    "slots": ["weapon", "secondary", "armor"]
+  }
+}

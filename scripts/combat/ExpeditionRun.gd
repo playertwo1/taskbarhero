@@ -374,6 +374,7 @@ func _finish_encounter(events: Array) -> void:
 		"type": "encounter_cleared", "time": time, "node_id": _nodes[node_index]["id"],
 		"duration": time - _node_started_at, "party_hp": _party_hp(),
 		"first_clear_echo": String(_nodes[node_index].get("first_clear_echo", "")),
+		"fragment_reward": int(_nodes[node_index].get("fragment_reward", 0)),
 	})
 	var last_node := node_index >= _nodes.size() - 1
 	if not last_node and not _recovery.is_empty() and not (bool(_recovery.get("only_if_no_fall", false)) and _fell_this_encounter):

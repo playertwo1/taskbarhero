@@ -1,0 +1,106 @@
+{
+  "contract_version": "1.0.0",
+  "category": "hub_environment_overlay",
+  "asset_id": "hub_lanterna_mae_pos_boss",
+  "status": "DESIGN",
+  "source_of_truth": {
+    "scope": "docs/04_content/chapters/chapter_01/SLICE_1_SCOPE.md (seção 7)",
+    "direction": "docs/05_hub/HUB_VISUAL_DIRECTION.md",
+    "reference_concept": "docs/art/mockups/slice_1d_references/03_refugio_pos_boss.png",
+    "note": "O conceito é referência de composição e cor; não é sprite, não define coordenadas e não é aprovação."
+  },
+  "purpose": "Camada visual exibida no Refúgio depois do primeiro clear do Guardião-Cervo (data.boss_cleared): Lúmen verde na Lanterna-Mãe e um toque de vegetação na praça. Sem efeito numérico.",
+  "hard_limits": [
+    "não adicionar região, estrutura, árvore, serviço, NPC ou marco novo ao mapa",
+    "não implicar a Árvore dos Ecos como centro do Refúgio",
+    "não alterar o layout base nem a posição de serviços interativos",
+    "não codificar nenhuma vantagem ou estado de gameplay: a camada é cosmética",
+    "texto e tipografia nunca entram no asset; qualquer rótulo é feito na UI"
+  ],
+  "dependencies": {
+    "blocking": "O slice ainda não tem cena de Refúgio com a Lanterna-Mãe modular. As posições (pivô/âncora) dos módulos abaixo ficam EM ABERTO até o protótipo do Refúgio existir; a produção só começa depois disso.",
+    "reuse": "Bastião, Flecha e Íris não fazem parte deste asset."
+  },
+  "canvas": {
+    "viewport": [432, 960],
+    "note": "Os módulos são peças separadas posicionadas sobre o Refúgio em 432x960; não entregar uma imagem única de tela cheia.",
+    "pivot_rule": "Pivô em baixo-centro de cada peça (baseline_y = altura da peça), salvo o brilho, com pivô no centro."
+  },
+  "modules": [
+    {
+      "id": "lantern_glow",
+      "role": "Brilho de Lúmen ao redor da Lanterna-Mãe.",
+      "size": [96, 96],
+      "animation": {"frames": 6, "fps": 6, "loop": true, "note": "Pulsação suave; sem movimento brusco."},
+      "pivot": [48, 48]
+    },
+    {
+      "id": "lantern_core",
+      "role": "Chama/cristal verde dentro da lanterna, sobreposta ao módulo existente.",
+      "size": [32, 48],
+      "animation": {"frames": 4, "fps": 6, "loop": true},
+      "pivot": [16, 48]
+    },
+    {
+      "id": "plaza_vegetation_a",
+      "role": "Tufo pequeno de musgo e folhas nas frestas da praça.",
+      "size": [48, 24],
+      "animation": {"frames": 1},
+      "pivot": [24, 24]
+    },
+    {
+      "id": "plaza_vegetation_b",
+      "role": "Variação do tufo, para não repetir a mesma peça.",
+      "size": [48, 24],
+      "animation": {"frames": 1},
+      "pivot": [24, 24]
+    },
+    {
+      "id": "plaza_sprout",
+      "role": "Broto isolado perto da base da Lanterna-Mãe.",
+      "size": [24, 32],
+      "animation": {"frames": 2, "fps": 2, "loop": true, "note": "Balanço mínimo."},
+      "pivot": [12, 32]
+    }
+  ],
+  "style": "dark_fantasy_pixel_art",
+  "light_direction": "top-left",
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": ["lumen", "forest", "neutral_stone"],
+    "max_colors": 16,
+    "note": "Verde-azulado de Lúmen fica restrito ao brilho e à lanterna; vegetação usa forest. Sem cores fora da TY40."
+  },
+  "export": {
+    "format": "png",
+    "color_depth": "rgba_32",
+    "transparent_background": true,
+    "sheets": "uma folha horizontal por módulo animado, quadros lado a lado; módulo estático é um PNG único",
+    "binary_alpha": {"applies_to": "todos os módulos exceto lantern_glow", "note": "lantern_glow pode usar apenas dois níveis de alpha declarados no manifesto, se a auditoria aprovar; caso contrário, alpha binário."}
+  },
+  "acceptance_criteria": {
+    "technical": [
+      "tamanhos exatos por módulo conforme a lista",
+      "só cores dos subconjuntos declarados da TY40; máximo de 16 cores por módulo",
+      "alpha binário (exceção de lantern_glow acima)",
+      "quadros de animação com o mesmo tamanho e mesmo pivô",
+      "validar com tools/sprite_lint.py",
+      "manifesto em docs/art/manifests/ com prompts, seeds e ferramentas"
+    ],
+    "visual": [
+      "leitura a 1x em 432x960 sem esconder a lanterna nem serviços interativos",
+      "o brilho lê como Lúmen, não como fogo nem como item coletável",
+      "a vegetação sugere recuperação discreta, não invasão",
+      "coerência com Refúgio pré-boss: a camada só acrescenta, nunca substitui peças"
+    ],
+    "process": [
+      "contrato → conceito aprovado → pixel cleanup → QA técnico → auditoria visual independente → integração → QA mobile",
+      "primeiro módulo a passar o gate: lantern_glow; os demais só começam depois do PASS dele",
+      "auditor visual diferente do produtor"
+    ]
+  },
+  "integration": {
+    "trigger": "data.boss_cleared == true no save; sem outro gatilho",
+    "fallback": "sem a camada, o Refúgio funciona igual; nenhum código depende da arte"
+  }
+}

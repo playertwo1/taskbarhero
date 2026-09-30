@@ -18,6 +18,7 @@ Este arquivo não duplica contagens ou checklists. Use os caminhos abaixo para i
 
 - Heróis/runtime: [`scenes/heroes/`](scenes/heroes/) e [`data/heroes/heroes.json`](data/heroes/heroes.json).
 - Fluxo jogável: [`scenes/ui/TitleScreen.tscn`](scenes/ui/TitleScreen.tscn) → [`scenes/slice/SliceCampaign.tscn`](scenes/slice/SliceCampaign.tscn); tela em [`scripts/ui/SliceCampaignScreen.gd`](scripts/ui/SliceCampaignScreen.gd), combate em [`scripts/combat/ExpeditionRun.gd`](scripts/combat/ExpeditionRun.gd) e camada de campanha em [`scripts/run/`](scripts/run/).
+- Progressão do Refúgio (1D): [`data/progression/`](data/progression/) (Árvore de 6 nós e regras do Ferreiro), [`scripts/run/ResonanceTree.gd`](scripts/run/ResonanceTree.gd) e painéis em [`scripts/ui/`](scripts/ui/) (`ResonanceTreePanel`, `BlacksmithPanel`). Marcos de Fragmentos ficam em `route_c1.json`.
 - Itens/runtime: [`data/items/items.json`](data/items/items.json).
 - Inimigos/runtime: [`data/enemies/enemies.json`](data/enemies/enemies.json).
 - Rota/runtime: [`data/expedition/route_c1.json`](data/expedition/route_c1.json) (o legado `stages.json` foi removido no `1A-CUT`).

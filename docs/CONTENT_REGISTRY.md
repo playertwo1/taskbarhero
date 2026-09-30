@@ -106,6 +106,7 @@ Não há IDs individuais de Eco registrados ainda. Registrar somente quando exis
 | ID | Nome | Status | Fonte |
 | --- | --- | --- | --- |
 | `ECHO_C1_001` | A Sentinela que Ficou | `IMPLEMENTED` | [Ficha](04_content/echoes/echo_c1_001_a_sentinela_que_ficou.md) |
+| `TREE_VIG_001/002/005`, `TREE_OFI_001/002/003` | Nós da Árvore no slice; custos e serviços do Ferreiro | `IMPLEMENTED` (números `HIPÓTESE`) | [Árvore](../data/progression/resonance_tree_slice.json) · [Ferreiro](../data/progression/blacksmith_slice.json) |
 
 ## Árvore dos Ecos
 

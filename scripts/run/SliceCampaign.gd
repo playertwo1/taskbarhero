@@ -10,6 +10,8 @@ var inventory: SliceInventory
 var save_blocked: bool = false
 var save_error: String = ""
 var telemetry: SliceTelemetry = null
+var tree: ResonanceTree = ResonanceTree.load_default()
+var blacksmith_rule: Dictionary = SliceCampaign._load_blacksmith()
 
 var _tables: Dictionary = {}
 var _rows: Array = []
@@ -17,6 +19,7 @@ var _profiles: Dictionary = {}
 var _levels_gained: int = 0
 var _items_gained: int = 0
 var _residue_gained: int = 0
+var _fragments_gained: int = 0
 
 static func _base(path: String) -> SliceCampaign:
 	var c := SliceCampaign.new()
@@ -64,6 +67,7 @@ func start_expedition(build: Dictionary, seed_value: int, extra_options: Diction
 	_levels_gained = 0
 	_items_gained = 0
 	_residue_gained = 0
+	_fragments_gained = 0
 	var extra := {
 		"loot": LootRoller.create(_tables, _rows, seed_value),
 		"events": EventDirector.create(EventDirector.load_catalog(), seed_value),
@@ -94,6 +98,11 @@ func _apply(events: Array) -> void:
 	for ev in events:
 		match String(ev["type"]):
 			"encounter_cleared":
+				var paid := ResonanceTree.award_milestone(data, String(ev.get("node_id", "")), int(ev.get("fragment_reward", 0)))
+				if paid > 0:
+					_fragments_gained += paid
+					changed = true
+					generated_events.append({"type": "fragments_gained", "time": float(ev.get("time", 0.0)), "amount": paid})
 				var echo_id := String(ev.get("first_clear_echo", ""))
 				if inventory.grant_echo(echo_id):
 					changed = true
@@ -130,7 +139,7 @@ func finish_expedition(run: ExpeditionRun) -> Dictionary:
 	if won:
 		data["boss_cleared"] = true
 	_save()
-	return {"won": won, "levels_gained": _levels_gained, "items": _items_gained, "residue": _residue_gained}
+	return {"won": won, "levels_gained": _levels_gained, "items": _items_gained, "residue": _residue_gained, "fragments": _fragments_gained}
 
 func equip(hero_id: String, uid: int) -> String:
 	var err := inventory.equip(hero_id, uid)
@@ -150,7 +159,39 @@ func equip_echo(echo_id: String) -> String:
 		_save()
 	return err
 
+static func _load_blacksmith() -> Dictionary:
+	var file := FileAccess.open("res://data/progression/blacksmith_slice.json", FileAccess.READ)
+	var parsed = JSON.parse_string(file.get_as_text()) if file != null else null
+	return parsed["reinforce"] if parsed is Dictionary else {}
+
+## Serviços do Ferreiro dependem dos nós da Oficina comprados na Árvore.
+func blacksmith_open() -> bool:
+	return tree.has_effect(data, "blacksmith")
+
+func can_disassemble() -> bool:
+	return tree.has_effect(data, "disassemble")
+
+func can_reinforce() -> bool:
+	return tree.has_effect(data, "upgrade")
+
+func set_favorite(uid: int, value: bool) -> String:
+	var err := inventory.set_favorite(uid, value)
+	if err == "":
+		_save()
+	return err
+
+## Reforço +1 (Aprimoramento Controlado). Erro "service" enquanto o nó não foi comprado.
+func reinforce(uid: int) -> String:
+	if not can_reinforce():
+		return "service"
+	var err := inventory.reinforce(uid, blacksmith_rule)
+	if err == "":
+		_save()
+	return err
+
 func recycle(uid: int) -> Dictionary:
+	if not can_disassemble():
+		return {"ok": false, "error": "service", "residue": 0}
 	var inst := inventory.find(uid)
 	var res := inventory.recycle(uid)
 	if res["ok"]:
@@ -158,3 +199,9 @@ func recycle(uid: int) -> Dictionary:
 		if telemetry != null:
 			telemetry.record_recycle(String(inst["rarity"]), int(res["residue"]))
 	return res
+
+func buy_tree_node(id: String) -> String:
+	var err := tree.buy(data, id)
+	if err == "":
+		_save()
+	return err

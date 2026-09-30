@@ -104,12 +104,42 @@ func recycle(uid: int) -> Dictionary:
 		return {"ok": false, "error": "unknown", "residue": 0}
 	if _owner_of(uid) != "":
 		return {"ok": false, "error": "equipped", "residue": 0}
+	if bool(inst.get("favorite", false)):
+		return {"ok": false, "error": "favorite", "residue": 0}
 	if not _recycle.has(inst["rarity"]):
 		return {"ok": false, "error": "not_recyclable", "residue": 0}
 	var residue := int(_recycle[inst["rarity"]])
 	items.erase(inst)
 	add_materials({RESIDUE: residue})
 	return {"ok": true, "error": "", "residue": residue}
+
+## Favorito protege o item contra desmontagem (Ferreiro).
+func set_favorite(uid: int, value: bool) -> String:
+	var inst := find(uid)
+	if inst.is_empty():
+		return "unknown"
+	inst["favorite"] = value
+	return ""
+
+## Reforço do Ferreiro: sobe `reinforce` até max_level gastando material. Não muda Item Power.
+## Erros: locked, unknown, ineligible, maxed, materials.
+func reinforce(uid: int, rule: Dictionary) -> String:
+	if locked:
+		return "locked"
+	var inst := find(uid)
+	if inst.is_empty() or not _rows.has(inst["id"]):
+		return "unknown"
+	if not rule["slots"].has(_slot(inst)):
+		return "ineligible"
+	if int(inst.get("reinforce", 0)) >= int(rule["max_level"]):
+		return "maxed"
+	var material := String(rule["material_id"])
+	var cost := int(rule["material_quantity"])
+	if int(materials.get(material, 0)) < cost:
+		return "materials"
+	materials[material] = int(materials[material]) - cost
+	inst["reinforce"] = int(inst.get("reinforce", 0)) + 1
+	return ""
 
 ## Instâncias equipadas no formato de SliceItemStats.equip (id, rarity, item_power, item_level).
 func equipment_for_run() -> Dictionary:
@@ -119,7 +149,7 @@ func equipment_for_run() -> Dictionary:
 		for uid in equipped[hero_id]:
 			var inst := find(int(uid))
 			if not inst.is_empty():
-				list.append({"id": inst["id"], "rarity": inst["rarity"], "item_power": inst["item_power"], "item_level": inst["item_level"]})
+				list.append({"id": inst["id"], "rarity": inst["rarity"], "item_power": inst["item_power"], "item_level": inst["item_level"], "reinforce": int(inst.get("reinforce", 0))})
 		if not list.is_empty():
 			out[hero_id] = list
 	return out
@@ -163,6 +193,8 @@ static func from_dict(d: Dictionary, item_rows: Array, recycle: Dictionary) -> S
 		var stored: Dictionary = inst.duplicate(true)
 		for key in ["uid", "item_power", "item_level"]:
 			stored[key] = int(stored[key])
+		if stored.has("reinforce"):
+			stored["reinforce"] = int(stored["reinforce"])
 		inv.items.append(stored)
 	for hero_id in d.get("equipped", {}):
 		var list: Array = []

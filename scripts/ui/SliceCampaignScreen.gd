@@ -3,7 +3,7 @@ class_name SliceCampaignScreen
 
 ## Fluxo jogável do slice (SLICE-1B Plano B): Preparação → Expedição → Resultado, com inventário.
 ## Montada em código (como o SliceProbe). Toda regra vem do núcleo; aqui só há apresentação.
-## O Hub visual, o Ferreiro e a Árvore são do 1D e não entram.
+## 1D: a preparação é o Refúgio provisório, com Árvore dos Ecos e Ferreiro (sem arte própria ainda).
 
 const HERO_NAMES := {"hero_001": "Bastião", "hero_002": "Flecha", "hero_003": "Íris"}
 const SAVE_PATH := "user://slice_save.json"
@@ -29,7 +29,8 @@ var _choice_box: VBoxContainer
 var _prep_info: Label
 var _result_label: Label
 var _speed_button: Button
-var _panel: SliceInventoryPanel
+var _panel: Control
+var _blacksmith_button: Button
 
 func _ready() -> void:
 	campaign = SliceCampaign.open(save_path)
@@ -102,6 +103,9 @@ func _build_prep() -> void:
 	_prep_box.add_child(picker)
 	_prep_box.add_child(_button("Iniciar expedição", func(): start_expedition(_preset)))
 	_prep_box.add_child(_button("Inventário", _open_inventory))
+	_prep_box.add_child(_button("Árvore dos Ecos", _open_tree))
+	_blacksmith_button = _button("Ferreiro", _open_blacksmith)
+	_prep_box.add_child(_blacksmith_button)
 	if OS.is_debug_build():
 		_prep_box.add_child(_button("Sondagem (dev)", func(): get_tree().change_scene_to_file("res://scenes/slice/SliceProbe.tscn")))
 		_prep_box.add_child(_button("Voltar ao título", func(): get_tree().change_scene_to_file("res://scenes/ui/TitleScreen.tscn")))
@@ -134,11 +138,12 @@ func _show(new_mode: String) -> void:
 	if mode == "prep":
 		var party: Dictionary = campaign.data["party"]
 		_prep_info.text = "Nível do trio: %d · XP: %d\n%s" % [int(party["level"]), int(party["xp"]), summary_line()]
+		_blacksmith_button.visible = campaign.blacksmith_open()
 	if mode == "result":
 		_result_label.text = _result
 
 func summary_line() -> String:
-	return "Itens: %d · Resíduo de Lúmen: %d%s" % [campaign.inventory.items.size(), int(campaign.inventory.materials.get(SliceInventory.RESIDUE, 0)),
+	return "Itens: %d · Resíduo de Lúmen: %d · Fragmentos: %d%s" % [campaign.inventory.items.size(), int(campaign.inventory.materials.get(SliceInventory.RESIDUE, 0)), int(campaign.data["fragments"]),
 		"\nAviso: o save não pôde ser lido (%s); nada será gravado." % campaign.save_error if campaign.save_blocked else ""]
 
 func _cycle_speed() -> void:
@@ -151,6 +156,23 @@ func _open_inventory() -> void:
 	_panel.setup(campaign, HERO_NAMES)
 	_panel.closed.connect(func():
 		_panel.queue_free()
+		_show(mode))
+
+func _open_tree() -> void:
+	var panel := ResonanceTreePanel.new()
+	_open_overlay(panel)
+	panel.setup(campaign)
+
+func _open_blacksmith() -> void:
+	var panel := BlacksmithPanel.new()
+	_open_overlay(panel)
+	panel.setup(campaign, HERO_NAMES)
+
+func _open_overlay(panel: Control) -> void:
+	_panel = panel
+	add_child(panel)
+	panel.closed.connect(func():
+		panel.queue_free()
 		_show(mode))
 
 func start_expedition(preset_index: int) -> void:
@@ -203,9 +225,9 @@ func result_text() -> String:
 
 func _finish() -> void:
 	var summary := campaign.finish_expedition(run)
-	_result = "%s\nNíveis ganhos: %d · Itens: %d · Resíduo: %d\n%s" % [
+	_result = "%s\nNíveis ganhos: %d · Itens: %d · Resíduo: %d · Fragmentos: %d\n%s" % [
 		"Vitória! O Guardião-Cervo foi vencido." if summary["won"] else "Derrota. A party volta ao Refúgio para tentar de novo.",
-		int(summary["levels_gained"]), int(summary["items"]), int(summary["residue"]), summary_line()]
+		int(summary["levels_gained"]), int(summary["items"]), int(summary["residue"]), int(summary["fragments"]), summary_line()]
 	_show("result")
 
 func _refresh_run() -> void:

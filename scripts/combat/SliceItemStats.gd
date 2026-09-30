@@ -32,7 +32,8 @@ static func roll(row: Dictionary, rarity: String, item_power: int, item_level: i
 		"reserved_bp": gross - available,
 	}
 
-static func equip(base: Dictionary, hero_id: String, instances: Array, rows: Array) -> Dictionary:
+## Reforço (Ferreiro): cada nível soma `stat_bonus` (fração) aos afixos-base do item.
+static func equip(base: Dictionary, hero_id: String, instances: Array, rows: Array, reinforce_bonus: float = 0.02) -> Dictionary:
 	var stats := base.duplicate(true)
 	var by_id := {}
 	for row in rows:
@@ -52,7 +53,8 @@ static func equip(base: Dictionary, hero_id: String, instances: Array, rows: Arr
 		if bonus.is_empty():
 			continue
 		slots[slot] = int(slots.get(slot, 0)) + 1
+		var scale := 1.0 + reinforce_bonus * int(instance.get("reinforce", 0))
 		for stat in ["attack", "max_hp", "defense", "crit_chance", "skill_haste", "tenacity"]:
-			stats[stat] = float(stats[stat]) + float(bonus[stat])
-		stats["attack_speed"] = float(stats["attack_speed"]) * (1.0 + float(bonus["attack_speed"]))
+			stats[stat] = float(stats[stat]) + float(bonus[stat]) * scale
+		stats["attack_speed"] = float(stats["attack_speed"]) * (1.0 + float(bonus["attack_speed"]) * scale)
 	return stats

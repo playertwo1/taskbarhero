@@ -2,6 +2,14 @@
 
 Registro breve de mudanças estruturais e releases. Detalhes de planejamento continuam no roadmap; histórico de gates concluídos permanece arquivado.
 
+## 2026-09-29 — 1D: Fragmentos, Árvore, Ferreiro e painéis
+
+- Fragmentos de Ressonância: 32 únicos (4/6/7/7/8) como `fragment_reward` em cinco marcos de `route_c1.json`, pagos uma vez e salvos. `data/progression/resonance_tree_slice.json` e `ResonanceTree` cobrem os 6 nós da Oficina.
+- Ferreiro: desmontagem atrás de `TREE_OFI_002` (favoritos protegidos) e Reforço +1 atrás de `TREE_OFI_003` (5 Resíduos, +2% dos afixos-base, uma vez por item). O Ouro do custo proposto ficou fora, porque o slice não tem Ouro.
+- Telas provisórias `ResonanceTreePanel` e `BlacksmithPanel` na preparação da campanha; "Reciclar" saiu do inventário.
+- Contrato de arte `DESIGN` da camada da Lanterna-Mãe pós-boss (`docs/art/contracts/hub_environment/`).
+- Evidência: 27/28 cenas Godot (exceção aceita: seed 101), validador `OK`, Analyst OK, `slice_quick` e `slice_run_layer` sem `BUG`. Pulso Vital sem efeito (EM ABERTO). Validação visual em 432×960 fica para o 1E.
+
 ## 2026-09-29 — 1B tela, textos e Argos
 
 - Novo fluxo `TitleScreen → SliceCampaign`: preparação, run jogável com eventos e escolhas, tela de inventário para equipar/reciclar e resultado com save mínimo.

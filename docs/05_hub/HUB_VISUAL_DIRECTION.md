@@ -26,6 +26,10 @@ Ela define o ponto de partida visual: pátio neutro de pedra e madeira, portão 
 - A forja do Ferreiro é o primeiro serviço visual ativo. A bancada do Alquimista e fachadas simples dos serviços futuros podem aparecer no layout; sua presença visual não declara esses sistemas implementados nem desbloqueados.
 - Identidade, nome, roupa e aparência final dos NPCs artesãos continuam a depender de seus próprios contratos/conceitos.
 
+## Camada pós-boss
+
+O contrato da camada visual de Lanterna-Mãe e vegetação depois do primeiro clear do Guardião está em [`hub_lanterna_mae_pos_boss.yaml`](../art/contracts/hub_environment/hub_lanterna_mae_pos_boss.yaml) (`DESIGN`). Ele fixa módulos, tamanhos, paleta e gate; as posições aguardam a cena base do Refúgio.
+
 ## Limites antes da produção
 
 A imagem escolhida é uma referência de composição gerada para exploração. Antes da integração, criar contrato específico de cenário/hub, planejar as peças modulares e seus encaixes, aplicar o fluxo de [`ASSET_VISUAL_BLUEPRINT.md`](../art/ASSET_VISUAL_BLUEPRINT.md), [`SPRITE_STYLE_GUIDE.md`](../art/SPRITE_STYLE_GUIDE.md) e [`PALETTE.md`](../art/PALETTE.md), então fazer pixel cleanup, QA técnico, auditoria visual e validação mobile. Não usar o PNG conceitual diretamente como sprite final ou Golden.

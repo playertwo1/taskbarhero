@@ -7,7 +7,7 @@ class_name SliceSave
 const VERSION := 1
 
 static func default_data() -> Dictionary:
-	return {"version": VERSION, "inventory": {}, "party": {"level": 1, "xp": 0}, "boss_cleared": false, "flags": {}, "lore": []}
+	return {"version": VERSION, "inventory": {}, "party": {"level": 1, "xp": 0}, "boss_cleared": false, "flags": {}, "lore": [], "fragments": 0, "tree_nodes": [], "milestones": []}
 
 static func read(path: String) -> Dictionary:
 	if not FileAccess.file_exists(path):
@@ -23,6 +23,9 @@ static func read(path: String) -> Dictionary:
 	var data := default_data()
 	data.merge(parsed, true)
 	data["party"] = {"level": int(data["party"]["level"]), "xp": int(data["party"]["xp"])}
+	data["fragments"] = int(data["fragments"])
+	data["tree_nodes"] = Array(data["tree_nodes"])
+	data["milestones"] = Array(data["milestones"])
 	return {"ok": true, "error": "", "data": data}
 
 ## Escreve em arquivo temporário e renomeia, para não deixar o save pela metade.

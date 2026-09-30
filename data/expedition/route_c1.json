@@ -56,7 +56,8 @@
           "enemy_id": "en_c1_001",
           "count": 2
         }
-      ]
+      ],
+      "fragment_reward": 4
     },
     {
       "type": "encounter",
@@ -114,7 +115,8 @@
           "enemy_id": "en_c1_001",
           "count": 2
         }
-      ]
+      ],
+      "fragment_reward": 6
     },
     {
       "type": "encounter",
@@ -158,7 +160,8 @@
           "enemy_id": "en_c1_003",
           "count": 1
         }
-      ]
+      ],
+      "fragment_reward": 7
     },
     {
       "type": "encounter",
@@ -178,7 +181,8 @@
           "count": 2,
           "deferred": true
         }
-      ]
+      ],
+      "fragment_reward": 7
     },
     {
       "type": "event",
@@ -204,7 +208,8 @@
           "count": 1,
           "deferred": true
         }
-      ]
+      ],
+      "fragment_reward": 8
     }
   ],
   "balance_version": "0.5",
