@@ -12,4 +12,4 @@
 
 Testes sob `tests/` documentam evidência executável; planos e checklists em docs não equivalem a um teste executado ou a `PASS`.
 
-**Última evidência registrada (2026-09-29):** 27/28 cenas Godot (a falha é `TestExpeditionChoices`, seed 101, exceção aceita por Rafael no gate 1C); novas cenas do 1D: `TestResonanceTree`, `TestBlacksmith`, `TestHubPanels`; 10 testes do Analyst; `slice_quick` e `slice_run_layer` sem `BUG` (192 execuções no cenário de campanha). O Argos determinístico não substitui playtest; achados de balanceamento e pacing permanecem em [BALANCE_FINDINGS.md](BALANCE_FINDINGS.md).
+**Última evidência registrada (2026-09-29):** 27/28 cenas Godot (a falha é `TestExpeditionChoices`, seed 101, exceção aceita por Rafael no gate 1C); novas cenas: `TestResonanceTree`, `TestBlacksmith`, `TestHubPanels`, `TestRunSpeedControls`, `TestLoadoutBuilds` (29/30 no total); 10 testes do Analyst; `slice_quick` e `slice_run_layer` sem `BUG` (192 execuções no cenário de campanha). O Argos determinístico não substitui playtest; achados de balanceamento e pacing permanecem em [BALANCE_FINDINGS.md](BALANCE_FINDINGS.md).

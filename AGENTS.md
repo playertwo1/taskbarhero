@@ -45,6 +45,7 @@ Para tarefas de visão, arquitetura documental ou fundação do jogo, consulte [
 - Conteúdo: [`docs/04_content/INDEX.md`](docs/04_content/INDEX.md), com índices próprios para [skills](docs/04_content/skills/INDEX.md), [itens](docs/04_content/items/INDEX.md), [inimigos](docs/04_content/enemies/INDEX.md), [Ecos](docs/04_content/echoes/INDEX.md) e [capítulos](docs/04_content/chapters/INDEX.md)
 - Hub: [`docs/05_hub/INDEX.md`](docs/05_hub/INDEX.md)
 - Balanceamento: [`docs/06_balance/INDEX.md`](docs/06_balance/INDEX.md)
+- UI: [`docs/09_ui/INDEX.md`](docs/09_ui/INDEX.md) — contratos de tela do slice (UX e arte) e [convenções](docs/09_ui/SCREEN_CONVENTIONS.md)
 - Arte: [`docs/07_art/INDEX.md`](docs/07_art/INDEX.md); para [conceitos e prompts de sprites](docs/art/conceitos/README.md), siga o índice por categoria.
 - QA: [`docs/08_qa/INDEX.md`](docs/08_qa/INDEX.md)
 
