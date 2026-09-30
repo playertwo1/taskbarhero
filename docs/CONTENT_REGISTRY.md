@@ -121,3 +121,22 @@ Os IDs de nó abaixo identificam o catálogo de design e ainda não existem como
 | Alquimia | `TREE_ALQ_001`–`TREE_ALQ_004` · idem | `APPROVED` para design |
 | Jornada | `TREE_JOR_001`–`TREE_JOR_003` · idem | `APPROVED` para design |
 | Memória | `TREE_MEM_001`–`TREE_MEM_003` · idem | `APPROVED` para design |
+
+## Arte e Sprites em Alta Densidade (2026-09-30)
+
+Padrão aprovado por Rafael em 2026-09-30, com paleta TY High Fantasy 40, transparência binária e ausência de mixels.
+
+| Categoria | Resolução Canônica | Quantidade | Destino no Projeto | Origem Pipeline |
+| --- | ---:| ---:| --- | --- |
+| Heróis | 96×96 | 8 heróis | `assets/sprites/heroes/<heroi>/hero_<heroi>_96x96.png` | `work/art_pipeline/<heroi>/` |
+| Inimigos Pequenos | 64×64 | 2 mobs | `assets/sprites/enemies/highres/` | `work/art_pipeline/enemies/` |
+| Inimigos Normais | 96×96 | 8 mobs | `assets/sprites/enemies/highres/` | `work/art_pipeline/enemies/` |
+| Elites | 128×128 | 3 mobs | `assets/sprites/enemies/highres/` | `work/art_pipeline/enemies/` |
+| Mini-chefes | 160×160 | 3 chefes | `assets/sprites/enemies/highres/` | `work/art_pipeline/enemies/` |
+| Chefe Supremo | 224×224 | 1 boss | `assets/sprites/enemies/highres/` | `work/art_pipeline/enemies/` |
+| Ícones de Itens v0.4 | 64×64 | 30 itens | `assets/sprites/items/icons_64/` | `work/art_pipeline/items_64/` |
+| Painéis do Hub | 256×256+ | 5 painéis | `assets/sprites/hub/` | `work/art_pipeline/hub/` |
+| UI Kit e Tema | 9-slice / AMOLED | 1 kit | `assets/sprites/ui/ui_kit/` · `assets/ui/pocket_hero_theme.tres` | `ui_kit_v003` |
+
+Relatório completo de inventário e especificações: [`docs/art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md`](art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md) e [Inventário de Sprites](art/MVP_SPRITE_INVENTORY.md).
+

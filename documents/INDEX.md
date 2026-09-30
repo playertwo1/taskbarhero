@@ -3,7 +3,7 @@ document_type: project-document-index
 project_id: pocket-hero
 repository: playertwo1/taskbarhero
 language: pt-BR
-last_reviewed: 2026-09-28
+last_reviewed: 2026-09-30
 ---
 
 # Pocket Hero — índice de documentos
@@ -34,6 +34,8 @@ Os DOCX são preservados como fontes originais. As versões Markdown facilitam b
 | Equipamentos, crafting e artesãos da cidade (proposta v0.1) | [`../docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md`](../docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md) | [`1-Taskbar_Equipamentos_e_Artesaos_da_Cidade_v0.1.docx`](./1-Taskbar_Equipamentos_e_Artesaos_da_Cidade_v0.1.docx) |
 | Árvore global de ressonância / Árvore dos Ecos (proposta v0.1) | [`../docs/03_systems/GLOBAL_RESONANCE_TREE.md`](../docs/03_systems/GLOBAL_RESONANCE_TREE.md) | [`2-Taskbar_Arvore_Global_de_Ressonancia_v0.1.docx`](./2-Taskbar_Arvore_Global_de_Ressonancia_v0.1.docx) |
 | Bastião como modelo de design para os heróis (referência v0.1) | [`../docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md`](../docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md) | [`3-Taskbar_Hero_Bastiao_Golden_Reference_v0.1.docx`](./3-Taskbar_Hero_Bastiao_Golden_Reference_v0.1.docx) |
+| Roteiro futuro de arquitetura, builds e progressão dos oito heróis (proposta de design; reconciliar com `HERO_STANDARD`) | — | [`HERO_SYSTEMS_Roadmap_Canonica.docx`](./HERO_SYSTEMS_Roadmap_Canonica.docx) |
+| Crafting profundo, artesãos e affixes (proposta v2; reconciliar com `CRAFT-1`, `ITEM-1` e v0.4) | — | [`TASKBAR_Artesaos_Crafting_Affixes_v2.docx`](./TASKBAR_Artesaos_Crafting_Affixes_v2.docx) |
 | Referências importadas de balanceamento (Balance Pack v0.1/v0.2) | [`references/balance_pack_v0.1/README.md`](./references/balance_pack_v0.1/README.md) | [`references/balance_pack_v0.1/TASKBAR_BALANCE_PACK_v0.1.zip`](./references/balance_pack_v0.1/TASKBAR_BALANCE_PACK_v0.1.zip) |
 | Base canônica de combate, balanceamento e loot v0.4 | [`canonical/taskbar_sistema_v0.4/README.md`](./canonical/taskbar_sistema_v0.4/README.md) | [`canonical/taskbar_sistema_v0.4/TASKBAR_SISTEMA_COMPLETO_v0.4.zip`](./canonical/taskbar_sistema_v0.4/TASKBAR_SISTEMA_COMPLETO_v0.4.zip) |
 
