@@ -41,3 +41,6 @@ tools/daedalus/comfyui/custom_nodes/
 
 # Área de trabalho local de arte (rascunhos, fontes intermediárias, capturas)
 /work/
+
+# Repositório aninhado local
+/tools/daedalus/pixel-mcp/
