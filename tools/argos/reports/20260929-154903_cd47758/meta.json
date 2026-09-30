@@ -1,0 +1,12 @@
+{
+ "commit": "cd47758",
+ "dirty": true,
+ "scenario_file": "tools/argos/simulator/combat/scenarios/slice_balance.json",
+ "balance_hash": "1a4fc7e79818ed7ee7f73ea254ee9d552eb2827f41464bca79bf282111e947aa",
+ "balance_inputs": {
+  "data/balance/combat_profiles.json": "9c4ffbdd416f024273253c789e1b713a88d9c269f872ee8f1ac6498c2f6fea1f",
+  "data/balance/combat_core.json": "a0576ea3af3d74e111950e19d1b12006724e8a53e0bf6381fabe95ef677266c4",
+  "data/balance/chapters/chapter_01.json": "e79ffe1a211f50e2716e50fd54561b0bd7f21eee8e89d362aee7f1c0e0ceae5c",
+  "tools/argos/simulator/combat/scenarios/slice_balance.json": "478eba100a1b2ac8e2f71c6c8f93f8c57978b21f25486ad2e2ce4c6dcd9db543"
+ }
+}

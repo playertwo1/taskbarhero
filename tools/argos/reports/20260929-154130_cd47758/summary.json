@@ -1,0 +1,179 @@
+{
+ "meta": {
+  "balance_version": "0.5",
+  "chapter_id": "CHAPTER_01",
+  "enemy_damage_scale": 0.5,
+  "godot": "4.7.2-stable (official)",
+  "kind": "meta",
+  "levels": [
+   5.0
+  ],
+  "modes": [
+   "route",
+   "segments"
+  ],
+  "party": [
+   "hero_001",
+   "hero_002",
+   "hero_003"
+  ],
+  "resolved_sources": [
+   "res://data/balance/combat_core.json",
+   "res://data/balance/chapters/chapter_01.json"
+  ],
+  "scenario": "slice_quick",
+  "seeds": 4.0,
+  "variants": [],
+  "commit": "cd47758",
+  "dirty": true,
+  "scenario_file": "tools/argos/simulator/combat/scenarios/slice_quick.json",
+  "balance_hash": "88311ed20a457882c3efb9646d2b5afc5599af2037fd3fc0ab8b1553a9d55095",
+  "balance_inputs": {
+   "data/balance/combat_profiles.json": "9c4ffbdd416f024273253c789e1b713a88d9c269f872ee8f1ac6498c2f6fea1f",
+   "data/balance/combat_core.json": "f644a795fee4e28d7e5b7a5d3e880812f3169e9bedb144e9a5619043a787291a",
+   "data/balance/chapters/chapter_01.json": "60ff0d5e14bf7a98ad41a015833f59b5536e70c9ed72e406590084cd6b736c4d",
+   "tools/argos/simulator/combat/scenarios/slice_quick.json": "ab74abd8b9bab578f1dc011078426589cf9bb1c3665ccd12e47b18bd1a7bc956"
+  }
+ },
+ "findings": [
+  {
+   "type": "INFO",
+   "severity": "INFO",
+   "title": "Regra de caminhos não avaliada",
+   "metric": "níveis cobertos: [5]; requer ao menos nível 10",
+   "rule": "Pedido de Rafael (2026-09-29): mais de um caminho viável, sem depender da cura; vitória esperada por volta do nível 10–11"
+  }
+ ],
+ "variants": [],
+ "route": [
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 5,
+   "runs": 4,
+   "build_map": {
+    "hero_001": "retaliacao_tele",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 39.42153338444325,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 5,
+   "runs": 4,
+   "build_map": {
+    "hero_001": "retaliacao_tele",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 54.6983620626125,
+   "healing": 0.0
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 5,
+   "runs": 4,
+   "build_map": {
+    "hero_001": "retaliacao_tele",
+    "hero_002": "marca",
+    "hero_003": "lumen"
+   },
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 48.4342221306245,
+   "healing": 76.22727272727269
+  }
+ ],
+ "segments": [
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 5,
+   "segment": "elite",
+   "runs": 4,
+   "win_rate": 1.0,
+   "ttk": 17.0289855072464,
+   "hp_left_pct": 66.74044974339655
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 4,
+   "win_rate": 0.0,
+   "ttk": null,
+   "hp_left_pct": null
+  },
+  {
+   "build": "retaliacao_tele/marca/arcano",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 4,
+   "win_rate": 1.0,
+   "ttk": 45.15,
+   "hp_left_pct": 61.3813781110403
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 5,
+   "segment": "elite",
+   "runs": 4,
+   "win_rate": 1.0,
+   "ttk": 18.3333333333333,
+   "hp_left_pct": 71.4727322976569
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 4,
+   "win_rate": 0.5,
+   "ttk": 170.0694444444445,
+   "hp_left_pct": 3.74739398328957
+  },
+  {
+   "build": "retaliacao_tele/marca/controle",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 4,
+   "win_rate": 1.0,
+   "ttk": 48.81944444444445,
+   "hp_left_pct": 71.61779348315491
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 5,
+   "segment": "elite",
+   "runs": 4,
+   "win_rate": 1.0,
+   "ttk": 18.81944444444445,
+   "hp_left_pct": 70.22017457194184
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 5,
+   "segment": "guardiao",
+   "runs": 4,
+   "win_rate": 1.0,
+   "ttk": 133.888888888889,
+   "hp_left_pct": 28.7923967200209
+  },
+  {
+   "build": "retaliacao_tele/marca/lumen",
+   "level": 5,
+   "segment": "rainha",
+   "runs": 4,
+   "win_rate": 1.0,
+   "ttk": 50.8333333333334,
+   "hp_left_pct": 71.56938672202665
+  }
+ ],
+ "campaign": [],
+ "economy": [],
+ "violations": {},
+ "violation_examples": {}
+}

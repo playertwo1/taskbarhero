@@ -1,0 +1,1319 @@
+{
+ "meta": {
+  "balance_version": "0.5",
+  "chapter_id": "CHAPTER_01",
+  "enemy_damage_scale": 0.5,
+  "godot": "4.7.2-stable (official)",
+  "kind": "meta",
+  "levels": [
+   5.0
+  ],
+  "modes": [
+   "campaign"
+  ],
+  "party": [
+   "hero_001",
+   "hero_002",
+   "hero_003"
+  ],
+  "resolved_sources": [
+   "res://data/balance/combat_core.json",
+   "res://data/balance/chapters/chapter_01.json"
+  ],
+  "scenario": "slice_run_layer",
+  "seeds": 6.0,
+  "variants": [
+   "base",
+   "poco_curar",
+   "poco_sacrificar",
+   "eventos_frequentes"
+  ],
+  "commit": "8d8c473",
+  "dirty": true,
+  "scenario_file": "tools/argos/simulator/combat/scenarios/slice_run_layer.json",
+  "balance_hash": "b46e8f30544668cc36e54c3e6a8a54a529d492b13a4f79b605a04d16315b6113",
+  "balance_inputs": {
+   "data/balance/combat_profiles.json": "ada496afa42f8db9ef7aaca84c7edf668432451fe88c57e1c864dd89fca1deac",
+   "data/balance/combat_core.json": "0c65f7c5434be191f1070a1d1d4b890686f4cee50024875c5de14d2a723cb80c",
+   "data/balance/chapters/chapter_01.json": "127bdb44a129f8e324b3097ca47dc008eb31a194c05082d5e15f89ffbed60167",
+   "tools/argos/simulator/combat/scenarios/slice_run_layer.json": "f2c2291dd457eaaa85cb235ff056de96b828758b02187bfe2ba9076875fe0ffc"
+  }
+ },
+ "findings": [
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: base · guardiao/critico/arcano",
+   "metric": "nível 14.0 (meta 9–12), 8.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: base · guardiao/marca/arcano",
+   "metric": "nível 13.5 (meta 9–12), 7.5 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: base · retaliacao/critico/arcano",
+   "metric": "nível 13.0 (meta 9–12), 8.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: base · retaliacao/marca/arcano",
+   "metric": "nível 12.5 (meta 9–12), 6.5 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: eventos_frequentes · guardiao/critico/arcano",
+   "metric": "nível 14.0 (meta 9–12), 8.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: eventos_frequentes · guardiao/marca/arcano",
+   "metric": "nível 13.0 (meta 9–12), 7.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: eventos_frequentes · retaliacao/critico/arcano",
+   "metric": "nível 13.0 (meta 9–12), 8.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: eventos_frequentes · retaliacao/marca/arcano",
+   "metric": "nível 12.5 (meta 9–12), 6.5 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: poco_curar · guardiao/critico/arcano",
+   "metric": "nível 14.0 (meta 9–12), 8.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: poco_curar · guardiao/marca/arcano",
+   "metric": "nível 13.5 (meta 9–12), 7.5 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: poco_curar · retaliacao/critico/arcano",
+   "metric": "nível 13.0 (meta 9–12), 8.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: poco_curar · retaliacao/marca/arcano",
+   "metric": "nível 12.5 (meta 9–12), 6.5 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: poco_sacrificar · guardiao/critico/arcano",
+   "metric": "nível 15.0 (meta 9–12), 10.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: poco_sacrificar · guardiao/critico/controle",
+   "metric": "nível 13.0 (meta 9–12), 8.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: poco_sacrificar · guardiao/marca/arcano",
+   "metric": "nível 15.0 (meta 9–12), 10.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: poco_sacrificar · guardiao/marca/controle",
+   "metric": "nível 13.0 (meta 9–12), 7.5 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: poco_sacrificar · retaliacao/critico/controle",
+   "metric": "nível 13.0 (meta 9–12), 8.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: poco_sacrificar · retaliacao/marca/arcano",
+   "metric": "nível 14.0 (meta 9–12), 9.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Vence tarde demais: poco_sacrificar · retaliacao/marca/controle",
+   "metric": "nível 13.0 (meta 9–12), 8.0 tentativas",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "PACING",
+   "severity": "MEDIUM",
+   "title": "Combinações que nunca vencem na campanha",
+   "metric": "1: poco_sacrificar · retaliacao/critico/arcano",
+   "rule": "Rafael, 2026-09-29: jogo incremental; o Guardião deve ser vencido por volta do nível 10–11 após derrotas e vitórias parciais (faixa 9–12 e 3–8 tentativas são tolerância HIPÓTESE)"
+  },
+  {
+   "type": "INFO",
+   "severity": "INFO",
+   "title": "Itens por tentativa",
+   "metric": "mediana 4.5 item(ns) por tentativa entre combinações",
+   "rule": "SLICE_1_SCOPE.md seção 3: mínimo de 5 Resíduos antes do boss = um Reforço +1 (HIPÓTESE)"
+  }
+ ],
+ "variants": [
+  {
+   "variant": "base",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 8,
+   "heal_attempts": null,
+   "no_heal_attempts_best": 5.0,
+   "no_heal_paths_ok": 1,
+   "no_heal_paths_ok_list": [
+    "retaliacao/marca/controle"
+   ]
+  },
+  {
+   "variant": "eventos_frequentes",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 8,
+   "heal_attempts": null,
+   "no_heal_attempts_best": 5.5,
+   "no_heal_paths_ok": 0,
+   "no_heal_paths_ok_list": []
+  },
+  {
+   "variant": "poco_curar",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 8,
+   "heal_attempts": null,
+   "no_heal_attempts_best": 5.0,
+   "no_heal_paths_ok": 1,
+   "no_heal_paths_ok_list": [
+    "retaliacao/marca/controle"
+   ]
+  },
+  {
+   "variant": "poco_sacrificar",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 8,
+   "heal_attempts": null,
+   "no_heal_attempts_best": 7.5,
+   "no_heal_paths_ok": 0,
+   "no_heal_paths_ok_list": []
+  }
+ ],
+ "route": [],
+ "segments": [],
+ "campaign": [
+  {
+   "build": "base · guardiao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "critico",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 8.0,
+   "median_win_level": 14.0
+  },
+  {
+   "build": "base · guardiao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "critico",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "base · guardiao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 7.5,
+   "median_win_level": 13.5
+  },
+  {
+   "build": "base · guardiao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "base · retaliacao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "critico",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 8.0,
+   "median_win_level": 13.0
+  },
+  {
+   "build": "base · retaliacao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "critico",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "base · retaliacao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.5,
+   "median_win_level": 12.5
+  },
+  {
+   "build": "base · retaliacao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0
+  },
+  {
+   "build": "eventos_frequentes · guardiao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "critico",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 8.0,
+   "median_win_level": 14.0
+  },
+  {
+   "build": "eventos_frequentes · guardiao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "critico",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "eventos_frequentes · guardiao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 7.0,
+   "median_win_level": 13.0
+  },
+  {
+   "build": "eventos_frequentes · guardiao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 11.0
+  },
+  {
+   "build": "eventos_frequentes · retaliacao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "critico",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 8.0,
+   "median_win_level": 13.0
+  },
+  {
+   "build": "eventos_frequentes · retaliacao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "critico",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "eventos_frequentes · retaliacao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.5,
+   "median_win_level": 12.5
+  },
+  {
+   "build": "eventos_frequentes · retaliacao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 5.5,
+   "median_win_level": 11.0
+  },
+  {
+   "build": "poco_curar · guardiao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "critico",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 8.0,
+   "median_win_level": 14.0
+  },
+  {
+   "build": "poco_curar · guardiao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "critico",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "poco_curar · guardiao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 7.5,
+   "median_win_level": 13.5
+  },
+  {
+   "build": "poco_curar · guardiao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "poco_curar · retaliacao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "critico",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 8.0,
+   "median_win_level": 13.0
+  },
+  {
+   "build": "poco_curar · retaliacao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "critico",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.0,
+   "median_win_level": 12.0
+  },
+  {
+   "build": "poco_curar · retaliacao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.5,
+   "median_win_level": 12.5
+  },
+  {
+   "build": "poco_curar · retaliacao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0
+  },
+  {
+   "build": "poco_sacrificar · guardiao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 0.16666666666666666,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "critico",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 10,
+   "median_win_level": 15
+  },
+  {
+   "build": "poco_sacrificar · guardiao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "critico",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 8.0,
+   "median_win_level": 13.0
+  },
+  {
+   "build": "poco_sacrificar · guardiao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 0.6666666666666666,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 10.0,
+   "median_win_level": 15.0
+  },
+  {
+   "build": "poco_sacrificar · guardiao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 7.5,
+   "median_win_level": 13.0
+  },
+  {
+   "build": "poco_sacrificar · retaliacao/critico/arcano",
+   "campaigns": 6,
+   "win_rate": 0.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "critico",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": null,
+   "median_win_level": null
+  },
+  {
+   "build": "poco_sacrificar · retaliacao/critico/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "critico",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 8.0,
+   "median_win_level": 13.0
+  },
+  {
+   "build": "poco_sacrificar · retaliacao/marca/arcano",
+   "campaigns": 6,
+   "win_rate": 0.16666666666666666,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 9,
+   "median_win_level": 14
+  },
+  {
+   "build": "poco_sacrificar · retaliacao/marca/controle",
+   "campaigns": 6,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 8.0,
+   "median_win_level": 13.0
+  }
+ ],
+ "economy": [
+  {
+   "build": "base · guardiao/critico/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 14.0,
+   "residue_total": 100.5
+  },
+  {
+   "build": "base · guardiao/critico/controle",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.5,
+   "residue_total": 77.5
+  },
+  {
+   "build": "base · guardiao/marca/arcano",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 14.0,
+   "residue_total": 97.5
+  },
+  {
+   "build": "base · guardiao/marca/controle",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.0,
+   "residue_total": 77.5
+  },
+  {
+   "build": "base · retaliacao/critico/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 14.0,
+   "residue_total": 97.0
+  },
+  {
+   "build": "base · retaliacao/critico/controle",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 13.0,
+   "residue_total": 78.5
+  },
+  {
+   "build": "base · retaliacao/marca/arcano",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 13.5,
+   "residue_total": 83.0
+  },
+  {
+   "build": "base · retaliacao/marca/controle",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.5,
+   "residue_total": 63.0
+  },
+  {
+   "build": "eventos_frequentes · guardiao/critico/arcano",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 14.0,
+   "residue_total": 100.5
+  },
+  {
+   "build": "eventos_frequentes · guardiao/critico/controle",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 13.0,
+   "residue_total": 78.5
+  },
+  {
+   "build": "eventos_frequentes · guardiao/marca/arcano",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 13.0,
+   "residue_total": 88.0
+  },
+  {
+   "build": "eventos_frequentes · guardiao/marca/controle",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 13.0,
+   "residue_total": 70.0
+  },
+  {
+   "build": "eventos_frequentes · retaliacao/critico/arcano",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 13.0,
+   "residue_total": 96.0
+  },
+  {
+   "build": "eventos_frequentes · retaliacao/critico/controle",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 12.5,
+   "residue_total": 76.0
+  },
+  {
+   "build": "eventos_frequentes · retaliacao/marca/arcano",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 13.0,
+   "residue_total": 81.5
+  },
+  {
+   "build": "eventos_frequentes · retaliacao/marca/controle",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 12.5,
+   "residue_total": 70.0
+  },
+  {
+   "build": "poco_curar · guardiao/critico/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 14.0,
+   "residue_total": 100.5
+  },
+  {
+   "build": "poco_curar · guardiao/critico/controle",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.5,
+   "residue_total": 77.5
+  },
+  {
+   "build": "poco_curar · guardiao/marca/arcano",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 14.0,
+   "residue_total": 97.5
+  },
+  {
+   "build": "poco_curar · guardiao/marca/controle",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.0,
+   "residue_total": 77.5
+  },
+  {
+   "build": "poco_curar · retaliacao/critico/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 14.0,
+   "residue_total": 97.0
+  },
+  {
+   "build": "poco_curar · retaliacao/critico/controle",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 13.0,
+   "residue_total": 78.5
+  },
+  {
+   "build": "poco_curar · retaliacao/marca/arcano",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 13.5,
+   "residue_total": 83.0
+  },
+  {
+   "build": "poco_curar · retaliacao/marca/controle",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.5,
+   "residue_total": 63.0
+  },
+  {
+   "build": "poco_sacrificar · guardiao/critico/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 15.0,
+   "residue_total": 119.0
+  },
+  {
+   "build": "poco_sacrificar · guardiao/critico/controle",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.5,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 14.0,
+   "residue_total": 100.0
+  },
+  {
+   "build": "poco_sacrificar · guardiao/marca/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 15.0,
+   "residue_total": 124.5
+  },
+  {
+   "build": "poco_sacrificar · guardiao/marca/controle",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 5,
+   "equipped_at_end": 14.0,
+   "residue_total": 96.5
+  },
+  {
+   "build": "poco_sacrificar · retaliacao/critico/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 15.0,
+   "residue_total": 120.0
+  },
+  {
+   "build": "poco_sacrificar · retaliacao/critico/controle",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.5,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 14.0,
+   "residue_total": 96.5
+  },
+  {
+   "build": "poco_sacrificar · retaliacao/marca/arcano",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 12,
+   "items_per_attempt": 5,
+   "equipped_at_end": 15.0,
+   "residue_total": 118.5
+  },
+  {
+   "build": "poco_sacrificar · retaliacao/marca/controle",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 14.0,
+   "residue_total": 99.0
+  }
+ ],
+ "violations": {},
+ "violation_examples": {},
+ "run_layer": {
+  "events": [
+   {
+    "variant": "base",
+    "event": "event_c1_001",
+    "offered": 313,
+    "choices": {
+     "heal": 313
+    },
+    "per_100_attempts": 100.0
+   },
+   {
+    "variant": "base",
+    "event": "event_c1_arvore_cantante",
+    "offered": 11,
+    "choices": {
+     "touch": 11
+    },
+    "per_100_attempts": 3.5143769968051117
+   },
+   {
+    "variant": "base",
+    "event": "event_c1_criatura_ferida",
+    "offered": 42,
+    "choices": {
+     "save": 42
+    },
+    "per_100_attempts": 13.418530351437699
+   },
+   {
+    "variant": "base",
+    "event": "event_c1_cristal_partido",
+    "offered": 35,
+    "choices": {
+     "absorb": 35
+    },
+    "per_100_attempts": 11.182108626198083
+   },
+   {
+    "variant": "base",
+    "event": "event_c1_eco_percebido",
+    "offered": 50,
+    "choices": {
+     "react": 50
+    },
+    "per_100_attempts": 15.97444089456869
+   },
+   {
+    "variant": "base",
+    "event": "event_c1_memorial",
+    "offered": 14,
+    "choices": {
+     "honor_hero_001": 14
+    },
+    "per_100_attempts": 4.472843450479234
+   },
+   {
+    "variant": "base",
+    "event": "event_c1_observador",
+    "offered": 12,
+    "choices": {
+     "witness": 12
+    },
+    "per_100_attempts": 3.8338658146964857
+   },
+   {
+    "variant": "base",
+    "event": "event_c1_raiz_oca",
+    "offered": 28,
+    "choices": {
+     "open": 28
+    },
+    "per_100_attempts": 8.945686900958467
+   },
+   {
+    "variant": "base",
+    "event": "event_c1_rastro_cacada",
+    "offered": 32,
+    "choices": {
+     "follow": 32
+    },
+    "per_100_attempts": 10.223642172523961
+   },
+   {
+    "variant": "base",
+    "event": "event_c1_reserva_residuo",
+    "offered": 308,
+    "choices": {
+     "collect": 308
+    },
+    "per_100_attempts": 98.40255591054313
+   },
+   {
+    "variant": "base",
+    "event": "event_c1_sobrevivente",
+    "offered": 33,
+    "choices": {
+     "protect": 33
+    },
+    "per_100_attempts": 10.543130990415335
+   },
+   {
+    "variant": "eventos_frequentes",
+    "event": "event_c1_001",
+    "offered": 316,
+    "choices": {
+     "heal": 316
+    },
+    "per_100_attempts": 100.0
+   },
+   {
+    "variant": "eventos_frequentes",
+    "event": "event_c1_arvore_cantante",
+    "offered": 82,
+    "choices": {
+     "touch": 82
+    },
+    "per_100_attempts": 25.949367088607595
+   },
+   {
+    "variant": "eventos_frequentes",
+    "event": "event_c1_criatura_ferida",
+    "offered": 87,
+    "choices": {
+     "save": 87
+    },
+    "per_100_attempts": 27.531645569620252
+   },
+   {
+    "variant": "eventos_frequentes",
+    "event": "event_c1_cristal_partido",
+    "offered": 93,
+    "choices": {
+     "absorb": 93
+    },
+    "per_100_attempts": 29.430379746835442
+   },
+   {
+    "variant": "eventos_frequentes",
+    "event": "event_c1_eco_percebido",
+    "offered": 86,
+    "choices": {
+     "react": 86
+    },
+    "per_100_attempts": 27.21518987341772
+   },
+   {
+    "variant": "eventos_frequentes",
+    "event": "event_c1_memorial",
+    "offered": 34,
+    "choices": {
+     "honor_hero_001": 34
+    },
+    "per_100_attempts": 10.759493670886076
+   },
+   {
+    "variant": "eventos_frequentes",
+    "event": "event_c1_raiz_oca",
+    "offered": 57,
+    "choices": {
+     "open": 57
+    },
+    "per_100_attempts": 18.037974683544302
+   },
+   {
+    "variant": "eventos_frequentes",
+    "event": "event_c1_rastro_cacada",
+    "offered": 99,
+    "choices": {
+     "follow": 99
+    },
+    "per_100_attempts": 31.329113924050635
+   },
+   {
+    "variant": "eventos_frequentes",
+    "event": "event_c1_reserva_residuo",
+    "offered": 311,
+    "choices": {
+     "collect": 311
+    },
+    "per_100_attempts": 98.41772151898734
+   },
+   {
+    "variant": "eventos_frequentes",
+    "event": "event_c1_sobrevivente",
+    "offered": 75,
+    "choices": {
+     "protect": 75
+    },
+    "per_100_attempts": 23.734177215189874
+   },
+   {
+    "variant": "poco_curar",
+    "event": "event_c1_001",
+    "offered": 313,
+    "choices": {
+     "heal": 313
+    },
+    "per_100_attempts": 100.0
+   },
+   {
+    "variant": "poco_curar",
+    "event": "event_c1_arvore_cantante",
+    "offered": 11,
+    "choices": {
+     "touch": 11
+    },
+    "per_100_attempts": 3.5143769968051117
+   },
+   {
+    "variant": "poco_curar",
+    "event": "event_c1_criatura_ferida",
+    "offered": 42,
+    "choices": {
+     "save": 42
+    },
+    "per_100_attempts": 13.418530351437699
+   },
+   {
+    "variant": "poco_curar",
+    "event": "event_c1_cristal_partido",
+    "offered": 35,
+    "choices": {
+     "absorb": 35
+    },
+    "per_100_attempts": 11.182108626198083
+   },
+   {
+    "variant": "poco_curar",
+    "event": "event_c1_eco_percebido",
+    "offered": 50,
+    "choices": {
+     "react": 50
+    },
+    "per_100_attempts": 15.97444089456869
+   },
+   {
+    "variant": "poco_curar",
+    "event": "event_c1_memorial",
+    "offered": 14,
+    "choices": {
+     "honor_hero_001": 14
+    },
+    "per_100_attempts": 4.472843450479234
+   },
+   {
+    "variant": "poco_curar",
+    "event": "event_c1_observador",
+    "offered": 12,
+    "choices": {
+     "witness": 12
+    },
+    "per_100_attempts": 3.8338658146964857
+   },
+   {
+    "variant": "poco_curar",
+    "event": "event_c1_raiz_oca",
+    "offered": 28,
+    "choices": {
+     "open": 28
+    },
+    "per_100_attempts": 8.945686900958467
+   },
+   {
+    "variant": "poco_curar",
+    "event": "event_c1_rastro_cacada",
+    "offered": 32,
+    "choices": {
+     "follow": 32
+    },
+    "per_100_attempts": 10.223642172523961
+   },
+   {
+    "variant": "poco_curar",
+    "event": "event_c1_reserva_residuo",
+    "offered": 308,
+    "choices": {
+     "collect": 308
+    },
+    "per_100_attempts": 98.40255591054313
+   },
+   {
+    "variant": "poco_curar",
+    "event": "event_c1_sobrevivente",
+    "offered": 33,
+    "choices": {
+     "protect": 33
+    },
+    "per_100_attempts": 10.543130990415335
+   },
+   {
+    "variant": "poco_sacrificar",
+    "event": "event_c1_001",
+    "offered": 428,
+    "choices": {
+     "sacrifice": 428
+    },
+    "per_100_attempts": 100.0
+   },
+   {
+    "variant": "poco_sacrificar",
+    "event": "event_c1_arvore_cantante",
+    "offered": 25,
+    "choices": {
+     "touch": 25
+    },
+    "per_100_attempts": 5.841121495327103
+   },
+   {
+    "variant": "poco_sacrificar",
+    "event": "event_c1_criatura_ferida",
+    "offered": 59,
+    "choices": {
+     "save": 59
+    },
+    "per_100_attempts": 13.785046728971963
+   },
+   {
+    "variant": "poco_sacrificar",
+    "event": "event_c1_cristal_partido",
+    "offered": 40,
+    "choices": {
+     "absorb": 40
+    },
+    "per_100_attempts": 9.345794392523365
+   },
+   {
+    "variant": "poco_sacrificar",
+    "event": "event_c1_eco_percebido",
+    "offered": 67,
+    "choices": {
+     "react": 67
+    },
+    "per_100_attempts": 15.654205607476635
+   },
+   {
+    "variant": "poco_sacrificar",
+    "event": "event_c1_memorial",
+    "offered": 36,
+    "choices": {
+     "honor_hero_001": 36
+    },
+    "per_100_attempts": 8.411214953271028
+   },
+   {
+    "variant": "poco_sacrificar",
+    "event": "event_c1_observador",
+    "offered": 15,
+    "choices": {
+     "witness": 15
+    },
+    "per_100_attempts": 3.5046728971962615
+   },
+   {
+    "variant": "poco_sacrificar",
+    "event": "event_c1_raiz_oca",
+    "offered": 49,
+    "choices": {
+     "open": 49
+    },
+    "per_100_attempts": 11.448598130841122
+   },
+   {
+    "variant": "poco_sacrificar",
+    "event": "event_c1_rastro_cacada",
+    "offered": 51,
+    "choices": {
+     "follow": 51
+    },
+    "per_100_attempts": 11.91588785046729
+   },
+   {
+    "variant": "poco_sacrificar",
+    "event": "event_c1_reserva_residuo",
+    "offered": 368,
+    "choices": {
+     "collect": 368
+    },
+    "per_100_attempts": 85.98130841121495
+   },
+   {
+    "variant": "poco_sacrificar",
+    "event": "event_c1_sobrevivente",
+    "offered": 44,
+    "choices": {
+     "protect": 44
+    },
+    "per_100_attempts": 10.280373831775702
+   }
+  ],
+  "loot_by_rarity": {
+   "Comum": 1805,
+   "Incomum": 1040,
+   "Raro": 3286,
+   "Relíquia": 174,
+   "Épico": 174
+  }
+ }
+}
