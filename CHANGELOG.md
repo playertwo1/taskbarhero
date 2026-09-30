@@ -2,6 +2,12 @@
 
 Registro breve de mudanças estruturais e releases. Detalhes de planejamento continuam no roadmap; histórico de gates concluídos permanece arquivado.
 
+## 2026-09-29 — contratos de tela do slice
+
+- Novo `docs/09_ui/`: [convenções](docs/09_ui/SCREEN_CONVENTIONS.md), [índice](docs/09_ui/INDEX.md) e 11 contratos de UX (`UI_S01` a `UI_S11`), cada um com contrato de arte em `docs/art/contracts/screens/` e um `ui_kit` compartilhado. Todos `DESIGN`, aguardando revisão de Rafael.
+- QA no emulador Pixel 9 (1080×2424) achou fundo de painel translúcido deixando a tela de baixo aparecer; os três painéis agora são opacos.
+- BAL-009 registra o `slice_balance` do início do 1E (Arcano tardio, dominância de Lúmen, Guardião sem folga).
+
 ## 2026-09-29 — 1D: Fragmentos, Árvore, Ferreiro e painéis
 
 - Fragmentos de Ressonância: 32 únicos (4/6/7/7/8) como `fragment_reward` em cinco marcos de `route_c1.json`, pagos uma vez e salvos. `data/progression/resonance_tree_slice.json` e `ResonanceTree` cobrem os 6 nós da Oficina.

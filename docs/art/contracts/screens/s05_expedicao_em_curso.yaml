@@ -1,0 +1,104 @@
+{
+  "contract_version": "1.0.0",
+  "category": "ui_screen",
+  "screen_id": "UI_S05",
+  "screen": "Expedição em curso",
+  "status": "DESIGN",
+  "ux_contract": "docs/09_ui/screens/s05_expedicao_em_curso.md",
+  "canvas": {
+    "viewport": [
+      432,
+      960
+    ],
+    "orientation": "portrait",
+    "safe_area": "ver docs/09_ui/SCREEN_CONVENTIONS.md"
+  },
+  "style": "dark_fantasy_pixel_art",
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "neutral_stone",
+      "wood",
+      "lumen"
+    ],
+    "max_colors": 16,
+    "note": "Subconjuntos da UI a confirmar por tela; sem cores fora da TY40."
+  },
+  "pieces": [
+    {
+      "id": "background",
+      "role": "Fundo da tela em 432x960; cena modular quando a tela é diegética, cor sólida opaca quando é painel.",
+      "size": [
+        432,
+        960
+      ],
+      "status": "existing",
+      "path": "assets/sprites/environment/bosque_lumen/"
+    },
+    {
+      "id": "hero_sprites",
+      "role": "Bastião, Flecha e Íris.",
+      "status": "existing"
+    },
+    {
+      "id": "enemy_sprites_existing",
+      "role": "Geleia, Espírito de Raiz, Gremlin, Javali de Musgo e Guardião-Cervo.",
+      "status": "existing"
+    },
+    {
+      "id": "enemy_sprites_new",
+      "role": "8 inimigos sem folha (Sapinho, Mariposa, Cogumelo, Trepa-Cadáver, Caracol, Raposa Oca, Geleia Anciã, Rainha das Geleias).",
+      "status": "new"
+    },
+    {
+      "id": "hp_bar",
+      "role": "Barra de HP de herói e de inimigo.",
+      "size": [
+        48,
+        6
+      ],
+      "status": "new"
+    },
+    {
+      "id": "telegraph_marker",
+      "role": "Aviso de ataque do chefe.",
+      "size": [
+        32,
+        32
+      ],
+      "status": "new"
+    },
+    {
+      "id": "skill_effects",
+      "role": "Efeitos das skills e feedback de Perfect Block.",
+      "status": "new"
+    }
+  ],
+  "export": {
+    "format": "png",
+    "color_depth": "rgba_32",
+    "transparent_background": true,
+    "binary_alpha": true,
+    "text_in_assets": false,
+    "note": "Nenhum texto entra no asset; rótulos são da UI real."
+  },
+  "acceptance_criteria": {
+    "technical": [
+      "tamanhos exatos por peça",
+      "só cores da TY40 declaradas",
+      "alpha binário",
+      "validar com tools/sprite_lint.py",
+      "manifesto em docs/art/manifests/"
+    ],
+    "visual": [
+      "legível a 1x em 432x960 e em 1080x2424",
+      "contraste do texto sobre o fundo adequado em qualquer estado",
+      "estados distinguíveis sem depender só de cor"
+    ],
+    "process": [
+      "contrato → conceito aprovado → pixel cleanup → QA técnico → auditoria visual independente → integração → QA mobile",
+      "peças 'shared' (ui_kit) são produzidas uma vez e reutilizadas",
+      "peças 'existing' não são refeitas"
+    ]
+  }
+}

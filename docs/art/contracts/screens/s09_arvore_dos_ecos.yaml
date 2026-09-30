@@ -1,0 +1,111 @@
+{
+  "contract_version": "1.0.0",
+  "category": "ui_screen",
+  "screen_id": "UI_S09",
+  "screen": "Árvore dos Ecos",
+  "status": "DESIGN",
+  "ux_contract": "docs/09_ui/screens/s09_arvore_dos_ecos.md",
+  "canvas": {
+    "viewport": [
+      432,
+      960
+    ],
+    "orientation": "portrait",
+    "safe_area": "ver docs/09_ui/SCREEN_CONVENTIONS.md"
+  },
+  "style": "dark_fantasy_pixel_art",
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "neutral_stone",
+      "wood",
+      "lumen"
+    ],
+    "max_colors": 16,
+    "note": "Subconjuntos da UI a confirmar por tela; sem cores fora da TY40."
+  },
+  "pieces": [
+    {
+      "id": "background",
+      "role": "Fundo da tela em 432x960; cena modular quando a tela é diegética, cor sólida opaca quando é painel.",
+      "size": [
+        432,
+        960
+      ],
+      "status": "new",
+      "note": "Referência: docs/art/mockups/slice_1d_references/01_arvore_dos_ecos.png"
+    },
+    {
+      "id": "node_frame",
+      "role": "Nó em 4 estados (ativo, disponível, caro, bloqueado).",
+      "size": [
+        56,
+        56
+      ],
+      "status": "new"
+    },
+    {
+      "id": "node_icons",
+      "role": "Um ícone por nó do slice.",
+      "size": [
+        24,
+        24
+      ],
+      "status": "new"
+    },
+    {
+      "id": "link_line",
+      "role": "Ligação entre nós, ativa/inativa.",
+      "size": [
+        8,
+        32
+      ],
+      "status": "new"
+    },
+    {
+      "id": "fragment_icon",
+      "role": "Ícone de Fragmento de Ressonância.",
+      "size": [
+        16,
+        16
+      ],
+      "status": "new"
+    },
+    {
+      "id": "button_states",
+      "role": "Botão primário/secundário/desabilitado em 9-slice, mesmas peças em todas as telas.",
+      "size": [
+        48,
+        48
+      ],
+      "shared": "ui_kit"
+    }
+  ],
+  "export": {
+    "format": "png",
+    "color_depth": "rgba_32",
+    "transparent_background": true,
+    "binary_alpha": true,
+    "text_in_assets": false,
+    "note": "Nenhum texto entra no asset; rótulos são da UI real."
+  },
+  "acceptance_criteria": {
+    "technical": [
+      "tamanhos exatos por peça",
+      "só cores da TY40 declaradas",
+      "alpha binário",
+      "validar com tools/sprite_lint.py",
+      "manifesto em docs/art/manifests/"
+    ],
+    "visual": [
+      "legível a 1x em 432x960 e em 1080x2424",
+      "contraste do texto sobre o fundo adequado em qualquer estado",
+      "estados distinguíveis sem depender só de cor"
+    ],
+    "process": [
+      "contrato → conceito aprovado → pixel cleanup → QA técnico → auditoria visual independente → integração → QA mobile",
+      "peças 'shared' (ui_kit) são produzidas uma vez e reutilizadas",
+      "peças 'existing' não são refeitas"
+    ]
+  }
+}

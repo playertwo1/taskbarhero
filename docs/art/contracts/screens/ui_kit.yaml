@@ -1,0 +1,25 @@
+{
+  "contract_version": "1.0.0",
+  "category": "ui_kit",
+  "asset_id": "ui_kit",
+  "status": "DESIGN",
+  "ux_contract": "docs/09_ui/SCREEN_CONVENTIONS.md",
+  "purpose": "Peças de interface compartilhadas por todas as telas do slice. Primeiro asset de UI a passar o gate; as telas só recebem arte depois do PASS dele.",
+  "style": "dark_fantasy_pixel_art",
+  "palette": {"master": "TY_HIGH_FANTASY_40", "subsets": ["neutral_stone", "wood", "lumen"], "max_colors": 16},
+  "pieces": [
+    {"id": "button_primary", "role": "Botão primário 9-slice: normal, pressionado, desabilitado.", "size": [48, 48], "states": 3},
+    {"id": "button_secondary", "role": "Botão secundário 9-slice: normal, pressionado, desabilitado.", "size": [48, 48], "states": 3},
+    {"id": "panel_frame", "role": "Moldura de painel opaco 9-slice.", "size": [48, 48]},
+    {"id": "divider", "role": "Divisor e cabeçalho de lista.", "size": [432, 8]},
+    {"id": "icon_fragment", "role": "Fragmento de Ressonância.", "size": [16, 16]},
+    {"id": "icon_residue", "role": "Resíduo de Lúmen.", "size": [16, 16]},
+    {"id": "icon_xp", "role": "XP.", "size": [16, 16]}
+  ],
+  "export": {"format": "png", "color_depth": "rgba_32", "transparent_background": true, "binary_alpha": true, "text_in_assets": false},
+  "acceptance_criteria": {
+    "technical": ["tamanhos exatos", "só cores da TY40 declaradas", "alpha binário", "9-slice sem costuras visíveis em 432x960 e 1080x2424", "validar com tools/sprite_lint.py"],
+    "visual": ["botão desabilitado distinto sem depender só de cor", "alvo tocável mínimo de 48 dp respeitado pelo 9-slice"],
+    "process": ["contrato → conceito → pixel cleanup → QA técnico → auditoria visual independente → integração → QA mobile"]
+  }
+}

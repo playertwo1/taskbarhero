@@ -30,7 +30,7 @@ func _build() -> void:
 		child.queue_free()
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	var background := ColorRect.new()
-	background.color = Color(0.03, 0.04, 0.05, 0.96)
+	background.color = Color(0.03, 0.04, 0.05, 1.0)
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
 	add_child(background)
 	var scroll := ScrollContainer.new()

@@ -13,6 +13,7 @@ Abra somente o índice da área necessária. Os índices encaminham para as font
 | Balanceamento | Estrutura compartilhada, fórmulas, curvas, economia e simulação. | [06 — Balanceamento](06_balance/INDEX.md) |
 | Arte | Direção, contratos, conceitos, assets e QA visual. | [07 — Arte](07_art/INDEX.md) |
 | QA | Estratégia e evidências de validação. | [08 — QA](08_qa/INDEX.md) |
+| UI | Contratos de tela do slice: UX e arte. | [09 — UI](09_ui/INDEX.md) |
 
 ## Leituras centrais
 

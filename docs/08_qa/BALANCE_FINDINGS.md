@@ -90,3 +90,11 @@ Fonte dos números: `python tools/argos/run.py --scenario slice_balance` (6 seme
 * **Limites:** as simulações são determinísticas, usam escolhas automatizadas e seis seeds por célula no Argos. Não substituem playtest nem tornam a seed 101 um requisito de vitória garantida. A expectativa do teste de first clear não representa a taxa de primeira tentativa registrada; Rafael aceitou essa diferença como exceção do gate 1C.
 * **Decisão humana:** Rafael aceitou a expectativa fixa de vitória da seed 101 como exceção para fechar 1C (2026-09-29). O teste permanece inalterado e a suíte segue registrada em 24/25; decidir no playtest `1E` se a luta precisa de mais balanceamento.
 
+### [BAL-009] Arcano tardio e Guardião sem folga após o 1D (início do 1E)
+* **Data:** 2026-09-29
+* **Build Commit:** `4c14e22` com alterações locais; relatório [`slice_balance`](../../tools/argos/reports/20260929-224410_4c14e22/REPORT.md), 1.404 execuções, 0 `BUG`, 12 achados.
+* **Métrica observada:** (1) as sete builds com Íris no Arcano que vencem a campanha só o fazem entre os níveis 13 e 15,5, com 7 a 10,5 tentativas (meta 9–12 e 3–8); (2) dominância `HIGH` nos níveis 10 e 12, com melhor build a 100% contra mediana de 0% (nível 10) e 50% (nível 12); (3) 6 caminhos viáveis no nível 10, só 2 sem Lúmen; (4) com HP cheio no nível 10, as builds Lúmen vencem o Guardião com 24% de HP restante e TTK mediano de 126–164 s; (5) mediana de 4 itens por tentativa. Esta rodada já inclui Fragmentos e Ferreiro, mas o simulador não compra nós nem reforça itens: o efeito do 1D sobre o combate não foi medido.
+* **Hipótese:** o Arcano depende de sobrevivência que a rota não entrega sem a cura de Lúmen; a diferença de dominância é amplificada pelas 6 sementes por célula. O Reforço +1 (+2% dos afixos-base) provavelmente não move esses números.
+* **Proposta do Argos:** não alterar valores agora. No playtest, comparar taxa de escolha por build, HP antes do Guardião e mortes por fase; se o Arcano continuar tardio, mover sobrevivência para Arcano/Controle em vez de reduzir Lúmen. Adicionar ao simulador a compra da Árvore e o Reforço para medir o efeito real do 1D.
+* **Decisão humana:** pendente.
+

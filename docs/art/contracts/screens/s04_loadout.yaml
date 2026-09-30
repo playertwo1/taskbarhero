@@ -1,0 +1,112 @@
+{
+  "contract_version": "1.0.0",
+  "category": "ui_screen",
+  "screen_id": "UI_S04",
+  "screen": "Loadout da party",
+  "status": "DESIGN",
+  "ux_contract": "docs/09_ui/screens/s04_loadout.md",
+  "canvas": {
+    "viewport": [
+      432,
+      960
+    ],
+    "orientation": "portrait",
+    "safe_area": "ver docs/09_ui/SCREEN_CONVENTIONS.md"
+  },
+  "style": "dark_fantasy_pixel_art",
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": [
+      "neutral_stone",
+      "wood",
+      "lumen"
+    ],
+    "max_colors": 16,
+    "note": "Subconjuntos da UI a confirmar por tela; sem cores fora da TY40."
+  },
+  "pieces": [
+    {
+      "id": "background",
+      "role": "Fundo da tela em 432x960; cena modular quando a tela é diegética, cor sólida opaca quando é painel.",
+      "size": [
+        432,
+        960
+      ],
+      "status": "new",
+      "note": "Painel opaco escuro."
+    },
+    {
+      "id": "hero_portraits",
+      "role": "Retratos de Bastião, Flecha e Íris derivados das folhas aprovadas.",
+      "size": [
+        64,
+        64
+      ],
+      "status": "new"
+    },
+    {
+      "id": "skill_icons_bastiao_flecha",
+      "role": "8 ícones de skills novos.",
+      "size": [
+        32,
+        32
+      ],
+      "status": "new",
+      "path": "docs/art/contracts/skill_icons/"
+    },
+    {
+      "id": "skill_icons_iris",
+      "role": "4 ícones de skills da Íris.",
+      "size": [
+        32,
+        32
+      ],
+      "status": "existing"
+    },
+    {
+      "id": "slot_frame",
+      "role": "Moldura de slot vazio/preenchido.",
+      "size": [
+        40,
+        40
+      ],
+      "status": "new"
+    },
+    {
+      "id": "button_states",
+      "role": "Botão primário/secundário/desabilitado em 9-slice, mesmas peças em todas as telas.",
+      "size": [
+        48,
+        48
+      ],
+      "shared": "ui_kit"
+    }
+  ],
+  "export": {
+    "format": "png",
+    "color_depth": "rgba_32",
+    "transparent_background": true,
+    "binary_alpha": true,
+    "text_in_assets": false,
+    "note": "Nenhum texto entra no asset; rótulos são da UI real."
+  },
+  "acceptance_criteria": {
+    "technical": [
+      "tamanhos exatos por peça",
+      "só cores da TY40 declaradas",
+      "alpha binário",
+      "validar com tools/sprite_lint.py",
+      "manifesto em docs/art/manifests/"
+    ],
+    "visual": [
+      "legível a 1x em 432x960 e em 1080x2424",
+      "contraste do texto sobre o fundo adequado em qualquer estado",
+      "estados distinguíveis sem depender só de cor"
+    ],
+    "process": [
+      "contrato → conceito aprovado → pixel cleanup → QA técnico → auditoria visual independente → integração → QA mobile",
+      "peças 'shared' (ui_kit) são produzidas uma vez e reutilizadas",
+      "peças 'existing' não são refeitas"
+    ]
+  }
+}
