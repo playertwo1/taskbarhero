@@ -81,3 +81,11 @@ Fonte dos números: `python tools/argos/run.py --scenario slice_balance` (6 seme
 * **Recomendação:** preferir a cadência a cada 3 ataques, preservando os três alvos sequenciais e os ataques do Guardião. Manter a falha da seed 101 visível; não enfraquecer nem reescrever o teste para fazê-lo passar.
 * **Decisão humana:** Rafael adotou a recomendação em 2026-09-29; `telegraph_every` foi ajustado para 3 em [`enemies.json`](../../data/enemies/enemies.json). A hipótese de balanceamento permanece sujeita a playtest.
 
+### Evidência complementar — campanha completa com progressão (2026-09-29)
+
+* **Relatório:** [`slice_balance`, commit `7c2d173`](../../tools/argos/reports/20260929-210328_7c2d173/REPORT.md) — 1.404 execuções, 18 builds, seis seeds por célula, 0 `BUG`.
+* **Métrica observada:** todas as 18 builds concluíram a campanha após progressão; medianas de 4–10 tentativas e vitória entre os níveis 9 e 15,5. A build `guardiao/critico/controle` no nível 12 venceu 50% das rotas na primeira tentativa. Com HP cheio, o encontro isolado contra o Guardião venceu em 100% das seis seeds nessa mesma build.
+* **Relação com a regressão fixa:** a derrota da seed 101 na run completa sem equipamento inicial é compatível com a taxa de 50% observada para essa build. A campanha com retornos ao Hub, XP e equipamento vence; a seed fixa não demonstra que a rota seja impossível.
+* **Cadência:** na comparação em memória de 24 seeds (101–124), cadência 3 venceu 7 e cadência 4 venceu 10; 9 seeds favoreceram a 4, 6 favoreceram a 3 e 8 perderam nas duas. Em outra amostra de 100 seeds, os resultados agregados foram 48/100 para 3 e 46/100 para 4. A diferença não aponta uma vantagem consistente da cadência 4; manter 3 conforme decisão de Rafael.
+* **Limites:** as simulações são determinísticas, usam escolhas automatizadas e seis seeds por célula no Argos. Não substituem playtest nem tornam a seed 101 um requisito de vitória garantida. A expectativa do teste de primeira clear continua incompatível com a taxa de primeira tentativa registrada e precisa ser resolvida antes de fechar o gate técnico, sem enfraquecer o teste ou alterar dados para forçá-lo.
+
