@@ -32,6 +32,7 @@ func _ready() -> void:
 	_test_counter_stance()
 	_test_fortaleza()
 	_test_muralha()
+	_test_muralha_echo()
 	_test_desafio()
 	_test_iris_heal_and_shield()
 	_test_stat_buff()
@@ -82,9 +83,10 @@ func _hero(id: String, skills: Array = [], attack: float = -1.0) -> Dictionary:
 func _route(members: Array) -> Dictionary:
 	return {"transition_seconds": 0.6, "nodes": [{"type": "encounter", "id": "n", "kind": "NORMAL", "stage": 1, "level": 1, "members": members}]}
 
-func _run(heroes: Array, members: Array, builds: Dictionary = {}, extra_skills: Array = [], targeting: String = "threat") -> ExpeditionRun:
+func _run(heroes: Array, members: Array, builds: Dictionary = {}, extra_skills: Array = [], targeting: String = "threat", echo_id: String = "") -> ExpeditionRun:
 	return ExpeditionRun.create(_route(members), heroes, enemy_rows, {
 		"seed": 1, "crits": false, "party_level": 1, "builds": builds, "targeting": targeting, "skills": skill_rows + extra_skills,
+		"equipped_echo": echo_id,
 	})
 
 ## Elemento do array ou {} (com falha explícita), para um índice ausente não passar em silêncio.
@@ -285,6 +287,43 @@ func _test_muralha() -> void:
 	var later := events.filter(func(e): return e["type"] == "enemy_attack" and e["time"] >= cast_time + 6.0 and e["target"] == "hero_002")
 	if not later.is_empty():
 		_check("depois de 6 s a Flecha volta a receber o golpe integral", later[0]["damage"], GELEIA_ON_FLECHA)
+
+func _test_muralha_echo() -> void:
+	print("\n>>> 7A. ECHO A SENTINELA QUE FICOU")
+	var trio := [_hero("hero_001", ["skill_bas_006"]), _hero("hero_002"), _hero("hero_003")]
+	var lowest_bastiao := _run(trio, [{"enemy_id": "en_c1_001", "count": 1}], {"hero_001": "t"}, [], "front", "echo_c1_001")
+	lowest_bastiao._heroes["hero_001"]["hp"] = float(lowest_bastiao._heroes["hero_001"]["stats"]["max_hp"]) * 0.5
+	lowest_bastiao._heroes["hero_002"]["hp"] = float(lowest_bastiao._heroes["hero_002"]["stats"]["max_hp"]) * 0.6
+	var protected_events := lowest_bastiao.step(2.0)
+	var protected_hits := _of(protected_events, "enemy_attack").filter(func(e): return e["target"] == "hero_001")
+	_expect("Echo protege Bastião quando ele tem o menor HP percentual", not protected_hits.is_empty())
+	if not protected_hits.is_empty():
+		_check("Echo reutiliza redução de 50% da Muralha", float(protected_hits[0]["damage"]), GELEIA_ON_BASTIAO * 0.5)
+	var no_echo := _run(trio, [{"enemy_id": "en_c1_001", "count": 1}], {"hero_001": "t"}, [], "front")
+	no_echo._heroes["hero_001"]["hp"] = float(no_echo._heroes["hero_001"]["stats"]["max_hp"]) * 0.5
+	no_echo._heroes["hero_002"]["hp"] = float(no_echo._heroes["hero_002"]["stats"]["max_hp"]) * 0.6
+	var unprotected_events := no_echo.step(2.0)
+	var unprotected_hits := _of(unprotected_events, "enemy_attack").filter(func(e): return e["target"] == "hero_001")
+	_expect("sem Echo, Muralha continua sem proteger o Bastião", not unprotected_hits.is_empty())
+	if not unprotected_hits.is_empty():
+		_check("sem Echo o dano do Bastião permanece integral", float(unprotected_hits[0]["damage"]), GELEIA_ON_BASTIAO)
+	var other_lower := _run(trio, [{"enemy_id": "en_c1_001", "count": 1}], {"hero_001": "t"}, [], "front", "echo_c1_001")
+	other_lower._heroes["hero_001"]["hp"] = float(other_lower._heroes["hero_001"]["stats"]["max_hp"]) * 0.6
+	other_lower._heroes["hero_002"]["hp"] = float(other_lower._heroes["hero_002"]["stats"]["max_hp"]) * 0.5
+	other_lower._heroes["hero_003"]["hp"] = float(other_lower._heroes["hero_003"]["stats"]["max_hp"]) * 0.7
+	var other_events := other_lower.step(2.0)
+	var other_hits := _of(other_events, "enemy_attack").filter(func(e): return e["target"] == "hero_001")
+	_expect("Echo não protege Bastião quando outro herói tem menos HP percentual", not other_hits.is_empty())
+	if not other_hits.is_empty():
+		_check("sem ser o menor HP, Bastião recebe dano integral", float(other_hits[0]["damage"]), GELEIA_ON_BASTIAO)
+	var tied := _run(trio, [{"enemy_id": "en_c1_001", "count": 1}], {"hero_001": "t"}, [], "front", "echo_c1_001")
+	tied._heroes["hero_001"]["hp"] = float(tied._heroes["hero_001"]["stats"]["max_hp"]) * 0.5
+	tied._heroes["hero_002"]["hp"] = float(tied._heroes["hero_002"]["stats"]["max_hp"]) * 0.5
+	var tied_events := tied.step(2.0)
+	var tied_hits := _of(tied_events, "enemy_attack").filter(func(e): return e["target"] == "hero_001")
+	_expect("empate de HP favorece primeiro herói na formação", not tied_hits.is_empty())
+	if not tied_hits.is_empty():
+		_check("Bastião recebe proteção no empate pela ordem", float(tied_hits[0]["damage"]), GELEIA_ON_BASTIAO * 0.5)
 
 func _test_desafio() -> void:
 	print("\n>>> 8. DESAFIO")

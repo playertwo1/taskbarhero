@@ -4,7 +4,7 @@ Este registro é autoridade para IDs locais do jogo e aponta às fichas de detal
 
 **Status permitidos:** `CONCEPT`, `DESIGN`, `APPROVED`, `IMPLEMENTING`, `IMPLEMENTED`, `QA`, `PASS`, `DEPRECATED`. `HIPÓTESE` e `EM ABERTO` descrevem certeza de conteúdo, não são status de ciclo.
 
-**Convenções locais:** `HERO_###`; `SKILL_<herói>_###`; `TREE_<ramo>_###`; `CHAPTER_##`; `STAGE_01_##`; `PASS_<herói>_###` e `TRAIT_<herói>_###` (passivas e Traits, registrados somente quando a ficha do nó existir; hoje só os da [Íris no slice](02_heroes/hero_003_iris_slice_kit.md)); `EVENT_C1_###` (eventos de expedição; hoje `EVENT_C1_001` Poço de Lúmen, ver o [recorte do slice](04_content/chapters/chapter_01/SLICE_1_SCOPE.md)). **Convenções canônicas v0.4:** `EN_C1_###`, `EL_C1_###`, `MB_C1_###`, `BOSS_C1_###`; `ITEM_W_###`, `ITEM_S_###`, `ITEM_A_###`, `ITEM_R_###`, `ITEM_E_###`; `MAT_C1_<NOME>`. IDs são persistentes: não reutilizar nem renumerar. Consulte [a ponte de compatibilidade runtime](04_content/LEGACY_RUNTIME_CATALOG.md) antes de qualquer migração.
+**Convenções locais:** `HERO_###`; `SKILL_<herói>_###`; `TREE_<ramo>_###`; `ECHO_C1_###`; `CHAPTER_##`; `STAGE_01_##`; `PASS_<herói>_###` e `TRAIT_<herói>_###` (passivas e Traits, registrados somente quando a ficha do nó existir; hoje só os da [Íris no slice](02_heroes/hero_003_iris_slice_kit.md)); `EVENT_C1_###` (eventos de expedição; hoje `EVENT_C1_001` Poço de Lúmen, ver o [recorte do slice](04_content/chapters/chapter_01/SLICE_1_SCOPE.md)). **Convenções canônicas v0.4:** `EN_C1_###`, `EL_C1_###`, `MB_C1_###`, `BOSS_C1_###`; `ITEM_W_###`, `ITEM_S_###`, `ITEM_A_###`, `ITEM_R_###`, `ITEM_E_###`; `MAT_C1_<NOME>`. IDs são persistentes: não reutilizar nem renumerar. Consulte [a ponte de compatibilidade runtime](04_content/LEGACY_RUNTIME_CATALOG.md) antes de qualquer migração.
 
 ## Contagem atual e fonte de detalhe
 
@@ -21,7 +21,7 @@ Este registro é autoridade para IDs locais do jogo e aponta às fichas de detal
 | Sistema de combate e loot | Regras e contratos da versão canônica v0.4. | Design: `APPROVED`; implementação: conferir runtime e roadmap | [Índice canônico](../documents/canonical/taskbar_sistema_v0.4/README.md) |
 | Perfis de balanceamento | Núcleo compartilhado, manifesto e overlay do Capítulo 1; valores locais e globais separados. | Arquitetura: `PASS`; números: `HIPÓTESE` | [Sistema global](06_balance/GLOBAL_BALANCE_SYSTEM.md) · [Manifesto](../data/balance/combat_profiles.json) · [Capítulo 1](../data/balance/chapters/chapter_01.json) |
 | Subfases | Dez propostas; o jogo runtime tem cinco fases macro. | `DESIGN` | [Capítulos](04_content/chapters/INDEX.md) |
-| Ecos | Um Echo funcional opcional está planejado no design de `SLICE-1`; nenhum Eco tem ficha runtime ou implementação. | `CONCEPT` | [Sistema de Ecos](03_systems/ECHO_SYSTEM.md) · [Catálogo](04_content/echoes/INDEX.md) |
+| Ecos | `ECHO_C1_001` está implementado para o `SLICE-1`; catálogo adicional continua fora do slice. | `IMPLEMENTED` | [Ficha](04_content/echoes/echo_c1_001_a_sentinela_que_ficou.md) · [Sistema](03_systems/ECHO_SYSTEM.md) |
 | Hub | Direção visual escolhida; especificação global de sistema ainda não aprovada. Há uma cena isolada de protótipo de UI, não integrada ao fluxo principal. | `CONCEPT` | [Hub](05_hub/INDEX.md) |
 
 Linhas do slice em `/data` usam `content_set: "slice"`, `id` em minúsculas igual ao ID de design e o campo `legacy_alias`; ver a [ponte legada](04_content/LEGACY_RUNTIME_CATALOG.md). Não confundir catálogo canônico de design com conteúdo atualmente carregado. As diferenças e aliases permanecem no [manifesto de compatibilidade runtime](04_content/LEGACY_RUNTIME_CATALOG.md); não inferir equivalências.
@@ -100,6 +100,12 @@ O [catálogo canônico v0.4 adaptado](../documents/canonical/taskbar_sistema_v0.
 | `STAGE_01_10` | Coração do Santuário | 5 — Santuário do Guardião | `DESIGN` | idem |
 
 Não há IDs individuais de Eco registrados ainda. Registrar somente quando existirem entidades nomeadas e seus documentos de design; não reservar ou reutilizar números por contagem-alvo.
+
+## Ecos
+
+| ID | Nome | Status | Fonte |
+| --- | --- | --- | --- |
+| `ECHO_C1_001` | A Sentinela que Ficou | `IMPLEMENTED` | [Ficha](04_content/echoes/echo_c1_001_a_sentinela_que_ficou.md) |
 
 ## Árvore dos Ecos
 

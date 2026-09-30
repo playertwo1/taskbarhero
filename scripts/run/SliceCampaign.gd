@@ -70,6 +70,7 @@ func start_expedition(build: Dictionary, seed_value: int, extra_options: Diction
 		"flags": data["flags"],
 		"first_clear": not bool(data["boss_cleared"]),
 		"equipment": inventory.equipment_for_run(),
+		"equipped_echo": inventory.equipped_echo,
 	}
 	extra.merge(extra_options, true)
 	var run := SliceSession.create_run(build, int(data["party"]["level"]), seed_value, extra)
@@ -89,8 +90,14 @@ func choose(run: ExpeditionRun, index: int) -> Array:
 
 func _apply(events: Array) -> void:
 	var changed := false
+	var generated_events: Array = []
 	for ev in events:
 		match String(ev["type"]):
+			"encounter_cleared":
+				var echo_id := String(ev.get("first_clear_echo", ""))
+				if inventory.grant_echo(echo_id):
+					changed = true
+					generated_events.append({"type": "echo_obtained", "time": float(ev.get("time", 0.0)), "id": echo_id})
 			"loot_dropped":
 				inventory.add_item(ev["item"])
 				_items_gained += 1
@@ -115,6 +122,7 @@ func _apply(events: Array) -> void:
 				changed = true
 	if changed:
 		_save()
+	events.append_array(generated_events)
 
 func finish_expedition(run: ExpeditionRun) -> Dictionary:
 	inventory.locked = false
@@ -132,6 +140,12 @@ func equip(hero_id: String, uid: int) -> String:
 
 func unequip(uid: int) -> String:
 	var err := inventory.unequip(uid)
+	if err == "":
+		_save()
+	return err
+
+func equip_echo(echo_id: String) -> String:
+	var err := inventory.equip_echo(echo_id)
 	if err == "":
 		_save()
 	return err

@@ -1,7 +1,7 @@
 # Ecos — índice
 
-O escopo de design do `SLICE-1` inclui um Echo funcional, opcional para completar o capítulo: **A Sentinela que Ficou**, conforme o [Sistema de Ecos](../../03_systems/ECHO_SYSTEM.md). Ainda não há ficha runtime ou implementação. O **Eco Corrompido** continua apenas como proposta de endgame no [brief do projeto](../../../docs/POCKET_HERO_PROJECT_BRIEF.md).
+O `SLICE-1` implementa um Echo funcional, opcional para completar o capítulo: **A Sentinela que Ficou** ([ficha](echo_c1_001_a_sentinela_que_ficou.md)), conforme o [Sistema de Ecos](../../03_systems/ECHO_SYSTEM.md). O **Eco Corrompido** continua apenas como proposta de endgame no [brief do projeto](../../../docs/POCKET_HERO_PROJECT_BRIEF.md).
 
-**Estado do catálogo:** `CONCEPT`. Não atribua os demais Ecos citados como possibilidade no modelo a conteúdo aprovado; nomes, IDs, quantidade e funções adicionais aguardam `ECHO-1`. Criar a ficha individual do Echo do slice nessa etapa, após validar sua interação com os sistemas de herói/equipamento.
+**Estado do catálogo do slice:** `IMPLEMENTED` para `ECHO_C1_001`; demais Ecos seguem `CONCEPT` até `ECHO-1`. Não atribua nomes, IDs, quantidade ou funções adicionais a conteúdo aprovado.
 
-Para a decisão inicial do Echo do slice, veja também as [recomendações de SLICE-1D](../../05_hub/SLICE_1D_RECOMMENDATIONS.md). O ID ali é apenas candidato e ainda não foi registrado.
+Para a hipótese de orçamento de Fragmentos, veja as [recomendações de SLICE-1D](../../05_hub/SLICE_1D_RECOMMENDATIONS.md).

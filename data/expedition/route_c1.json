@@ -104,6 +104,7 @@
       "kind": "ELITE",
       "stage": 2,
       "level": 3,
+      "first_clear_echo": "echo_c1_001",
       "members": [
         {
           "enemy_id": "el_c1_001",

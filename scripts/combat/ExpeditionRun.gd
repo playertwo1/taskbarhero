@@ -53,6 +53,7 @@ var _flags: Dictionary = {}
 var _first_clear: bool = false
 var _party_level: int = 1
 var _equipped_list: Array = []
+var _equipped_echo: String = ""
 var _event_mods: Array = []
 var _mod_uid: int = 0
 
@@ -80,6 +81,7 @@ static func create(route: Dictionary, hero_rows: Array, enemy_rows: Array, optio
 	run._flags = options.get("flags", {}).duplicate()
 	run._first_clear = bool(options.get("first_clear", false))
 	run._party_level = int(options.get("party_level", 1))
+	run._equipped_echo = String(options.get("equipped_echo", ""))
 	for hero_gear in options.get("equipment", {}).values():
 		run._equipped_list.append_array(hero_gear)
 	var chapter_id := String(route.get("chapter_id", ""))
@@ -371,6 +373,7 @@ func _finish_encounter(events: Array) -> void:
 	events.append({
 		"type": "encounter_cleared", "time": time, "node_id": _nodes[node_index]["id"],
 		"duration": time - _node_started_at, "party_hp": _party_hp(),
+		"first_clear_echo": String(_nodes[node_index].get("first_clear_echo", "")),
 	})
 	var last_node := node_index >= _nodes.size() - 1
 	if not last_node and not _recovery.is_empty() and not (bool(_recovery.get("only_if_no_fall", false)) and _fell_this_encounter):
@@ -611,6 +614,20 @@ func _lowest_hp_ally(threshold: float, exclude: String = "") -> Dictionary:
 			result = h
 	return result
 
+## Menor porcentagem de HP entre heróis vivos; empate mantém o primeiro da formação.
+func _lowest_hp_hero_id() -> String:
+	var result := ""
+	var lowest_ratio: float = INF
+	for hid in _hero_order:
+		var hero: Dictionary = _heroes[hid]
+		if not hero["alive"]:
+			continue
+		var ratio := float(hero["hp"]) / float(hero["stats"]["max_hp"])
+		if ratio < lowest_ratio - EPS:
+			lowest_ratio = ratio
+			result = String(hid)
+	return result
+
 func _evaluate_skills(events: Array) -> void:
 	if _first_alive_enemy().is_empty():
 		return
@@ -689,6 +706,11 @@ func _cast(hero: Dictionary, sk: Dictionary, events: Array) -> void:
 							targets.append(_heroes[hid])
 				for t in targets:
 					t["effects"].append({
+						"source": def["id"], "stat": fx["stat"], "op": fx["op"], "value": float(fx["value"]),
+						"expires_at": time + float(fx["duration"]), "defensive": bool(fx.get("defensive", false)),
+					})
+				if _equipped_echo == "echo_c1_001" and String(def["id"]) == "skill_bas_006" and _lowest_hp_hero_id() == String(hero["id"]):
+					hero["effects"].append({
 						"source": def["id"], "stat": fx["stat"], "op": fx["op"], "value": float(fx["value"]),
 						"expires_at": time + float(fx["duration"]), "defensive": bool(fx.get("defensive", false)),
 					})

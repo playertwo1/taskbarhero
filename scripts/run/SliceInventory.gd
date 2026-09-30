@@ -5,10 +5,13 @@ class_name SliceInventory
 ## O loadout trava durante a expedição (locked); loot novo entra mesmo travado (RUN_META_PROGRESSION).
 
 const RESIDUE := "MAT_C1_LUMEN_RESIDUE"
+const ECHO_SENTINEL := "echo_c1_001"
 
 var items: Array = []
 var equipped: Dictionary = {}
 var materials: Dictionary = {}
+var echoes: Array = []
+var equipped_echo: String = ""
 var locked: bool = false
 
 var _rows: Dictionary = {}
@@ -32,6 +35,20 @@ func add_item(inst: Dictionary) -> int:
 func add_materials(m: Dictionary) -> void:
 	for id in m:
 		materials[id] = int(materials.get(id, 0)) + int(m[id])
+
+func grant_echo(echo_id: String) -> bool:
+	if echo_id.is_empty() or echoes.has(echo_id):
+		return false
+	echoes.append(echo_id)
+	return true
+
+func equip_echo(echo_id: String) -> String:
+	if locked:
+		return "locked"
+	if not echo_id.is_empty() and not echoes.has(echo_id):
+		return "unknown"
+	equipped_echo = echo_id
+	return ""
 
 func find(uid: int) -> Dictionary:
 	for inst in items:
@@ -137,7 +154,8 @@ func auto_equip(hero_ids: Array) -> void:
 			equipped[hero_id] = chosen
 
 func to_dict() -> Dictionary:
-	return {"items": items.duplicate(true), "equipped": equipped.duplicate(true), "materials": materials.duplicate(true), "next_uid": _next_uid}
+	return {"items": items.duplicate(true), "equipped": equipped.duplicate(true), "materials": materials.duplicate(true),
+		"echoes": echoes.duplicate(), "equipped_echo": equipped_echo, "next_uid": _next_uid}
 
 static func from_dict(d: Dictionary, item_rows: Array, recycle: Dictionary) -> SliceInventory:
 	var inv := create(item_rows, recycle)
@@ -153,5 +171,12 @@ static func from_dict(d: Dictionary, item_rows: Array, recycle: Dictionary) -> S
 		inv.equipped[hero_id] = list
 	for id in d.get("materials", {}):
 		inv.materials[id] = int(d["materials"][id])
+	for echo_id in d.get("echoes", []):
+		var id := String(echo_id)
+		if not id.is_empty() and not inv.echoes.has(id):
+			inv.echoes.append(id)
+	var equipped_echo := String(d.get("equipped_echo", ""))
+	if inv.echoes.has(equipped_echo):
+		inv.equipped_echo = equipped_echo
 	inv._next_uid = int(d.get("next_uid", 1))
 	return inv

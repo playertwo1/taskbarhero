@@ -12,6 +12,8 @@ var hero_names: Dictionary = {}
 var _item_rows: Dictionary = {}
 var _list: VBoxContainer
 var _summary: Label
+var _echo_status: Label
+var _echo_button: Button
 var _message: Label
 
 func setup(new_campaign: SliceCampaign, names: Dictionary) -> void:
@@ -48,6 +50,12 @@ func _build() -> void:
 	column.add_child(title)
 	_summary = Label.new()
 	column.add_child(_summary)
+	_echo_status = Label.new()
+	column.add_child(_echo_status)
+	_echo_button = Button.new()
+	_echo_button.custom_minimum_size.y = 50
+	_echo_button.pressed.connect(_toggle_echo)
+	column.add_child(_echo_button)
 	_message = Label.new()
 	_message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(_message)
@@ -73,6 +81,11 @@ func summary_text() -> String:
 
 func refresh() -> void:
 	_summary.text = summary_text()
+	var owns_echo := campaign.inventory.echoes.has(SliceInventory.ECHO_SENTINEL)
+	_echo_status.text = "Echo: A Sentinela que Ficou%s" % (" · equipado" if campaign.inventory.equipped_echo == SliceInventory.ECHO_SENTINEL else "") if owns_echo else "Nenhum Echo recuperado."
+	_echo_button.visible = owns_echo
+	_echo_button.disabled = campaign.inventory.locked
+	_echo_button.text = "Desequipar Echo" if campaign.inventory.equipped_echo == SliceInventory.ECHO_SENTINEL else "Equipar A Sentinela que Ficou"
 	for child in _list.get_children():
 		child.queue_free()
 	var owner_of := {}
@@ -81,6 +94,14 @@ func refresh() -> void:
 			owner_of[int(uid)] = String(hero_id)
 	for inst in campaign.inventory.items:
 		_list.add_child(_row(inst, String(owner_of.get(int(inst["uid"]), ""))))
+
+func _toggle_echo() -> void:
+	var next_echo := "" if campaign.inventory.equipped_echo == SliceInventory.ECHO_SENTINEL else SliceInventory.ECHO_SENTINEL
+	var err := campaign.equip_echo(next_echo)
+	_report(err)
+	refresh()
+	if err == "":
+		changed.emit()
 
 func _row(inst: Dictionary, owner_id: String) -> Control:
 	var box := VBoxContainer.new()

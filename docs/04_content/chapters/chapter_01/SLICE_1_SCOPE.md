@@ -92,8 +92,8 @@ São **18 templates** de equipamento no recorte (fora o Echo), incluindo os novo
 **DECIDIDO:** é o único Echo do slice ([Sistema de Ecos](../../../03_systems/ECHO_SYSTEM.md)). Modifica **Muralha Viva** para também proteger o aliado com menor HP mesmo ligeiramente fora da área ([Golden Reference](../../../02_heroes/BASTIAO_GOLDEN_REFERENCE.md), seção do Echo). Ocupa o slot Echo dedicado, não é necessário para vencer e só é equipado ou trocado no Hub.
 
 - **Entrega (DECIDIDO):** recompensa determinística na **primeira vitória sobre a Geleia Anciã** (encontro 6), para poder ser equipada no Hub e usada contra a Rainha e o boss.
-- **Sem ID registrado.** O [registro](../../../CONTENT_REGISTRY.md) só reserva ID de Echo depois da ficha, que fica para o `ECHO-1`.
-- **Direção escolhida para o protótipo (Rafael, 2026-09-29; HIPÓTESE até playtest):** para a formação padrão de três heróis, o Echo também pode proteger Bastião quando ele tiver a menor porcentagem de HP da party; empate segue a ordem da formação. Preserva os valores e a duração de Muralha Viva e não cria regra de alcance. A interpretação inclui o próprio portador como alvo elegível. Validar a interação em jogo; ver [recomendações SLICE-1D](../../../05_hub/SLICE_1D_RECOMMENDATIONS.md). O ID continua sem registro.
+- **ID e implementação:** `ECHO_C1_001` / `echo_c1_001`; ver a [ficha do Echo](../../echoes/echo_c1_001_a_sentinela_que_ficou.md) e o [registro](../../../CONTENT_REGISTRY.md).
+- **Regra de alvo:** a adaptação escolhida por Rafael está implementada e coberta por testes; permanece `HIPÓTESE` até playtest. A regra completa está na [ficha do Echo](../../echoes/echo_c1_001_a_sentinela_que_ficou.md).
 
 ## 6. Árvore dos Ecos — ramo da Oficina, 6 nós
 

@@ -48,6 +48,16 @@ func _ready() -> void:
 	_expect("o log tem linhas de encontro", screen.log_lines().any(func(l): return String(l).begins_with("Encontro")))
 	var reloaded := SliceCampaign.open(PATH)
 	_expect("reabrir o save preserva os itens", reloaded.inventory.items.size() == screen.campaign.inventory.items.size())
+	screen.campaign.inventory.grant_echo(SliceInventory.ECHO_SENTINEL)
+	screen._open_inventory()
+	var echo_button: Button = screen._panel.find_child("Button", true, false)
+	for node in screen._panel.find_children("*", "Button", true, false):
+		if String(node.text).contains("Sentinela"):
+			echo_button = node
+	_expect("inventário mostra opção de equipar o Echo obtido", echo_button != null and echo_button.text.contains("Equipar"))
+	if echo_button != null:
+		echo_button.pressed.emit()
+	_expect("botão do inventário equipa A Sentinela que Ficou", screen.campaign.inventory.equipped_echo == SliceInventory.ECHO_SENTINEL)
 	screen.queue_free()
 	_cleanup()
 

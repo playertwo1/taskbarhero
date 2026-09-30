@@ -6,7 +6,7 @@ certainty: HIPOTESE
 
 # Recomendações para o SLICE-1D
 
-Este documento propõe decisões para iniciar o retorno ao Refúgio. As propostas não aprovam valores runtime, não alteram o recorte e não liberam implementação. Depois da revisão de Rafael, cada decisão aceita deve ser incorporada à sua fonte de autoridade: economia em [`ECONOMY_MODEL.md`](../06_balance/ECONOMY_MODEL.md), regras gerais de Echo em [`ECHO_SYSTEM.md`](../03_systems/ECHO_SYSTEM.md), recorte do capítulo em [`SLICE_1_SCOPE.md`](../04_content/chapters/chapter_01/SLICE_1_SCOPE.md) e IDs no [`CONTENT_REGISTRY.md`](../CONTENT_REGISTRY.md).
+Este documento registra as decisões e as hipóteses adotadas para iniciar o retorno ao Refúgio. O Echo escolhido já foi implementado; a hipótese de economia continua sem aprovação para runtime. Fontes de autoridade: economia em [`ECONOMY_MODEL.md`](../06_balance/ECONOMY_MODEL.md), regras gerais de Echo em [`ECHO_SYSTEM.md`](../03_systems/ECHO_SYSTEM.md), recorte do capítulo em [`SLICE_1_SCOPE.md`](../04_content/chapters/chapter_01/SLICE_1_SCOPE.md) e IDs no [`CONTENT_REGISTRY.md`](../CONTENT_REGISTRY.md).
 
 ## 1. Árvore dos Ecos e Ferreiro
 
@@ -38,12 +38,12 @@ Para preservar o comportamento atual da skill e evitar criar um sistema de alcan
 
 Rafael escolheu seguir esta adaptação para o protótipo em 2026-09-29. A regra fica registrada como direção de design para validação em jogo: ainda é `HIPÓTESE` até a interação ser implementada e jogada. Ela interpreta “aliado” como um membro ativo da party, incluindo Bastião; não altera números, duração nem o contrato atual de alvos da skill.
 
-Como candidato de nomenclatura, usar design ID `ECHO_C1_001` e runtime ID `echo_c1_001`. Não registrar esses IDs nem criar dados runtime até a aprovação da ficha e da convenção de IDs.
+Rafael autorizou testar e implementar esta recomendação em 2026-09-29. O Echo está registrado como `ECHO_C1_001` / `echo_c1_001`; ficha e evidência em [conteúdo](../04_content/echoes/echo_c1_001_a_sentinela_que_ficou.md). A regra continua `HIPÓTESE` até playtest.
 
 ## Estado das decisões (2026-09-29)
 
-- **Árvore:** Rafael pediu a simulação de 32 Fragmentos. O resultado aritmético favorece a hipótese de 32 para abrir o Ferreiro antes do Guardião; a distribuição continua `HIPÓTESE`, aguardando validação mais completa e aprovação antes de entrar no runtime.
-- **Echo:** Rafael escolheu a adaptação condicional do Bastião como direção para o protótipo. Validar a ficha e a interação em jogo antes de implementar.
-- **ID:** o candidato `ECHO_C1_001` / `echo_c1_001` continua sem aprovação e sem registro.
+- **Árvore:** Rafael pediu a simulação de 32 Fragmentos. O resultado favorece essa hipótese para abrir o Ferreiro antes do Guardião, mas a rota ainda precisa de marcos ordenados e a economia completa precisa cobrir persistência, respec e gastos concorrentes antes de gravar recompensas no runtime.
+- **Echo:** adaptação condicional implementada e coberta pelos testes Godot focados; o playtest ainda deve validar sua utilidade e leitura.
+- **ID:** `ECHO_C1_001` / `echo_c1_001` registrado para o Echo do slice.
 
 Nenhuma dessas escolhas deve alterar o balanceamento do Guardião antes do playtest acordado por Rafael.

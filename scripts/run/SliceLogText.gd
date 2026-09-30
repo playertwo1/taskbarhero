@@ -35,6 +35,8 @@ static func line(ev: Dictionary, ctx: Dictionary) -> String:
 			return "Encontro: %s" % ctx.get("node_names", {}).get(ev["node_id"], ev["node_id"])
 		"encounter_cleared":
 			return "Vitória em %.1f s." % float(ev["duration"])
+		"echo_obtained":
+			return "Echo obtido: A Sentinela que Ficou."
 		"hero_defeated":
 			return "%s caiu." % _hero(String(ev["id"]), ctx)
 		"telegraph_started":
