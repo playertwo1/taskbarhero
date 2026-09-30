@@ -4,6 +4,7 @@ Registro breve de mudanças estruturais e releases. Detalhes de planejamento con
 
 ## 2026-09-29 — BAL-009 decidido e Argos com economia do 1D
 
+- Novo [roteiro de playtest do 1E](docs/08_qa/PLAYTEST_1E.md): 8 perguntas, registro por tentativa e regras de retorno ao balanceamento. Limitações registradas: build de debug usa semente fixa e a telemetria não liga na campanha do aplicativo.
 - Rafael decidiu esperar o playtest para o BAL-009: nenhum valor de balanceamento mudou.
 - `slice_run_layer` ganhou a variante `com_arvore_e_ferreiro` (compra da Árvore e Reforço +1 entre tentativas). Resultado: sem diferença mensurável contra a base (6,48 contra 6,52 tentativas; 47/48 contra 48/48 vitórias). Achados e ressalvas em [BAL-009](docs/08_qa/BALANCE_FINDINGS.md).
 
