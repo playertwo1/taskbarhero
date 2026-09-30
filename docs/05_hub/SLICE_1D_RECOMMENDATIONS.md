@@ -20,7 +20,7 @@ A rota do slice precisa de 24 Fragmentos para abrir `TREE_VIG_002` → `TREE_VIG
 
 Para a primeira hipótese implementável, manter os custos dos nós e testar **32 Fragmentos únicos no Capítulo 1**, distribuídos como **4 / 6 / 7 / 7 / 8** pelas cinco macrofases. Assim, os quatro marcos anteriores ao Guardião somam 24: uma derrota no primeiro confronto ainda permite restaurar o Ferreiro, desmontar e comprar o Reforço +1 antes da próxima tentativa. A primeira vitória contra o Guardião concede os 8 restantes.
 
-Essa proposta aumenta em 8 o orçamento atual. Antes de gravá-la em `/data`, comparar em simulação a proposta atual de 24 com esta de 32, incluindo derrotas após cada macrofase, respec sem custo dos nós numéricos e proteção contra prêmio duplicado em retries/save. Se Rafael preferir manter 24, a consequência explícita é que a rota completa do Ferreiro só fica disponível após a primeira vitória sobre o Guardião; o serviço não ajuda a preparar uma nova tentativa contra ele.
+Essa proposta aumenta em 8 o orçamento atual. A comparação aritmética está registrada no [modelo econômico](../06_balance/ECONOMY_MODEL.md): com recompensas únicas, 32 libera a rota completa depois da quarta macrofase; 24 só a libera após a recompensa do Guardião. A simulação ainda não modela persistência/save, gastos concorrentes nem respec. Os números seguem como `HIPÓTESE`; não foram gravados em `/data` nem aprovados como balanceados.
 
 ## 2. Echo — A Sentinela que Ficou
 
@@ -36,14 +36,14 @@ Muralha Viva usa atualmente `targets: "allies_behind"`. Com Bastião na frente e
 
 Para preservar o comportamento atual da skill e evitar criar um sistema de alcance no 1D, tratar como elegível para o Echo o herói ativo que ficou fora da lista normal de Muralha Viva. Na formação padrão, esse herói é Bastião. O Echo aplica a ele o mesmo efeito defensivo e a mesma duração já definidos para Muralha Viva **somente quando sua porcentagem de HP for a menor da party**. Empates seguem a ordem da formação. Assim, o Echo acrescenta proteção ao herói que normalmente fica fora do conjunto de aliados protegidos, sem inventar novos números.
 
-Essa é uma interpretação de design, ainda `HIPÓTESE`: a ficha original diz “aliado”, o que pode excluir o próprio Bastião. Se Rafael quiser manter essa leitura estrita, a alternativa é adiar o Echo até existir um contrato de alcance que deixe outro herói fora da área normal.
+Rafael escolheu seguir esta adaptação para o protótipo em 2026-09-29. A regra fica registrada como direção de design para validação em jogo: ainda é `HIPÓTESE` até a interação ser implementada e jogada. Ela interpreta “aliado” como um membro ativo da party, incluindo Bastião; não altera números, duração nem o contrato atual de alvos da skill.
 
 Como candidato de nomenclatura, usar design ID `ECHO_C1_001` e runtime ID `echo_c1_001`. Não registrar esses IDs nem criar dados runtime até a aprovação da ficha e da convenção de IDs.
 
-## Decisões para revisão
+## Estado das decisões (2026-09-29)
 
-- **Árvore:** testar a distribuição proposta de 32 Fragmentos para disponibilizar o Reforço após uma derrota no primeiro Guardião, ou manter 24 e aceitar o desbloqueio do Ferreiro somente após a vitória.
-- **Echo:** aceitar a proteção condicional do Bastião como adaptação discreta, ou adiar o Echo até definir alcance espacial.
-- **ID:** aprovar ou rejeitar o candidato `ECHO_C1_001` / `echo_c1_001` antes de atualizar o registry.
+- **Árvore:** Rafael pediu a simulação de 32 Fragmentos. O resultado aritmético favorece a hipótese de 32 para abrir o Ferreiro antes do Guardião; a distribuição continua `HIPÓTESE`, aguardando validação mais completa e aprovação antes de entrar no runtime.
+- **Echo:** Rafael escolheu a adaptação condicional do Bastião como direção para o protótipo. Validar a ficha e a interação em jogo antes de implementar.
+- **ID:** o candidato `ECHO_C1_001` / `echo_c1_001` continua sem aprovação e sem registro.
 
 Nenhuma dessas escolhas deve alterar o balanceamento do Guardião antes do playtest acordado por Rafael.

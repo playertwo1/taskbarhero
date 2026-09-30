@@ -93,7 +93,7 @@ São **18 templates** de equipamento no recorte (fora o Echo), incluindo os novo
 
 - **Entrega (DECIDIDO):** recompensa determinística na **primeira vitória sobre a Geleia Anciã** (encontro 6), para poder ser equipada no Hub e usada contra a Rainha e o boss.
 - **Sem ID registrado.** O [registro](../../../CONTENT_REGISTRY.md) só reserva ID de Echo depois da ficha, que fica para o `ECHO-1`.
-- **Lacuna real:** Muralha Viva pertence à build Guardião; quem joga Retaliação recebe o Echo sem efeito útil. Aceito como parte de "opcional"; medir no `SLICE-1E`. **EM ABERTO:** decisão sobre isso.
+- **Direção escolhida para o protótipo (Rafael, 2026-09-29; HIPÓTESE até playtest):** para a formação padrão de três heróis, o Echo também pode proteger Bastião quando ele tiver a menor porcentagem de HP da party; empate segue a ordem da formação. Preserva os valores e a duração de Muralha Viva e não cria regra de alcance. A interpretação inclui o próprio portador como alvo elegível. Validar a interação em jogo; ver [recomendações SLICE-1D](../../../05_hub/SLICE_1D_RECOMMENDATIONS.md). O ID continua sem registro.
 
 ## 6. Árvore dos Ecos — ramo da Oficina, 6 nós
 

@@ -55,6 +55,20 @@ Aplicada às 30 linhas atuais do catálogo (5 Baixos, 12 Médios, 11 Altos, 1 Ke
 
 Distribuição inicial para testar nas cinco fases macro: **2 / 4 / 5 / 5 / 8 Fragmentos**, respectivamente, total 24. As dez subfases continuam beats de conteúdo; o prêmio é dado ao concluir cada macrofase, alinhado à regra de fases concluídas persistentes. Esses valores são uma proposta para `CONTENT-1`, não fonte runtime.
 
+### Comparação de acesso à rota do Ferreiro
+
+Em 2026-09-29, Rafael solicitou comparar a distribuição-base de 24 com a hipótese de 32 Fragmentos únicos. A conta acumula os prêmios de cada macrofase e compara o saldo aos custos cumulativos da rota `TREE_VIG_002` → `TREE_VIG_005` → `TREE_OFI_001` → `TREE_OFI_002` → `TREE_OFI_003` (2, 14, 18, 20 e 24 Fragmentos). “Nós acessíveis” conta quantos passos consecutivos dessa rota podem ser comprados, sem compras concorrentes.
+
+| Marco concluído | Base 24: prêmio / saldo / nós | Hipótese 32: prêmio / saldo / nós |
+| --- | ---: | ---: |
+| 1 | 2 / 2 / 1 | 4 / 4 / 1 |
+| 2 | 4 / 6 / 1 | 6 / 10 / 1 |
+| 3 | 5 / 11 / 1 | 7 / 17 / 2 |
+| 4 (antes do Guardião) | 5 / 16 / 2 | 7 / 24 / 5 |
+| 5 (Guardião) | 8 / 24 / 5 | 8 / 32 / 5 |
+
+**Resultado:** a hipótese de 32 torna a rota completa disponível depois da quarta macrofase, inclusive para preparar uma nova tentativa após perder para o Guardião. A distribuição-base de 24 só completa a rota após receber o marco do Guardião. Esta é uma comparação aritmética determinística; assume prêmio de primeira conclusão persistente, sem duplicação em retries e gasto exclusivo nessa rota. Não modela saves, respec, compras concorrentes, ganhos variáveis ou playtest. Portanto, 32 continua `HIPÓTESE`, não um valor aprovado nem balanceado; antes de virar runtime, validar a persistência e os demais gastos do sistema.
+
 ### Ferreiro
 
 **RECOMENDADO para o recorte do slice:** desmontagem usa a regra de materiais de v0.4, limitada inicialmente a Resíduo de Lúmen. Demonstrar um nível de Reforço `+1` por item, que concede `+2%` do poder de status base sem alterar Item Power nem rolar affixes. Cada aplicação usa o custo da fonte estruturada do [plano de encontros](../04_content/chapters/chapter_01/encounter_plan.json); custos de níveis superiores, faixa de raridade e elegibilidade permanecem **EM ABERTO**. A regra de retorno-base de material v0.4 é **25–40%** e varia conforme raridade, Item Power e nível de reforço. Itens equipados, favoritos ou protegidos não podem ser desmontados. Ver [balanceamento de equipamentos](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/EQUIPMENT_BALANCE.md) e [sistema de Item Power](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/ITEM_POWER_SYSTEM.md).
