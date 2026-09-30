@@ -11,6 +11,9 @@ import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 MANIFEST = os.path.join(ROOT, "data", "balance", "combat_profiles.json")
+EQUIPMENT_PROFILES_PATH = os.path.join(ROOT, "tools", "argos", "simulator", "combat", "equipment_profiles.json")
+EQUIPMENT_PROFILES = json.load(open(EQUIPMENT_PROFILES_PATH, encoding="utf-8")) if os.path.isfile(EQUIPMENT_PROFILES_PATH) else {}
+
 LIFECYCLE = {"CONCEPT", "DESIGN", "APPROVED", "IMPLEMENTING", "IMPLEMENTED", "QA", "PASS", "DEPRECATED"}
 
 
@@ -45,9 +48,32 @@ def validate_statuses(value, location, errors):
         for index, child in enumerate(value):
             validate_statuses(child, f"{location}[{index}]", errors)
 
+def validate_equipment_profiles(errors):
+    """Cada perfil usa itens que existem, permitem a raridade e são compatíveis com o herói."""
+    if not EQUIPMENT_PROFILES:
+        return
+    items = {row["id"]: row for row in load(os.path.join(ROOT, "data", "items", "items.json"))}
+    templates = EQUIPMENT_PROFILES.get("templates", {})
+    for name, profile in EQUIPMENT_PROFILES.get("profiles", {}).items():
+        if "slots" not in profile:
+            continue
+        require(1 <= profile.get("item_power", 0) <= 100 and 1 <= profile.get("item_level", 0) <= 100,
+                f"equipment_profiles.{name}: item_power e item_level precisam estar em 1..100", errors)
+        for hero_id, by_slot in templates.items():
+            for slot in profile["slots"]:
+                item_id = by_slot.get(slot)
+                row = items.get(item_id)
+                require(row is not None, f"equipment_profiles.{name}/{hero_id}: sem template para {slot}", errors)
+                if row is None:
+                    continue
+                require(row["slot"] == slot, f"equipment_profiles.{name}/{hero_id}: {item_id} não é {slot}", errors)
+                require(profile["rarity"] in row["allowed_rarities"], f"equipment_profiles.{name}/{hero_id}: {item_id} não permite {profile['rarity']}", errors)
+                require(hero_id in row.get("compatible_heroes", []), f"equipment_profiles.{name}: {item_id} não serve para {hero_id}", errors)
+
 
 def validate(scenario_path=None):
     errors = []
+    validate_equipment_profiles(errors)
     manifest = load(MANIFEST)
     for key in ("global_profile", "default_chapter", "chapter_profiles"):
         require(key in manifest, f"manifesto sem {key}", errors)
@@ -61,6 +87,19 @@ def validate(scenario_path=None):
         require(key in core, f"núcleo sem {key}", errors)
     require(core.get("stat_caps", {}).get("damage_taken_multiplier_min", 0) > 0,
             "damage_taken_multiplier_min precisa ser > 0", errors)
+    require(core.get("combat_scale", 1.0) > 0, "combat_scale precisa ser > 0", errors)
+    require(core.get("level_curve_p", 1.0) > 0, "level_curve_p precisa ser > 0", errors)
+    budget = core.get("item_budget")
+    if budget is not None:
+        ladder = budget.get("bp_by_level", [])
+        require(len(ladder) >= 1 and all(b > 0 for b in ladder) and ladder == sorted(ladder),
+                "item_budget.bp_by_level precisa ser crescente e positivo", errors)
+        require(all(1 <= v <= len(ladder) for v in budget.get("rarity_level", {}).values()),
+                "item_budget.rarity_level aponta para fora de bp_by_level", errors)
+        require(all(v > 0 for v in budget.get("value_per_bp", {}).values()) and len(budget.get("value_per_bp", {})) == 7,
+                "item_budget.value_per_bp precisa dos 7 status, todos > 0", errors)
+        require(all(0 <= v < 1 for v in budget.get("effect_reserve", {}).values()),
+                "item_budget.effect_reserve precisa estar em [0, 1)", errors)
 
     profiles = manifest.get("chapter_profiles", {})
     require(manifest.get("default_chapter") in profiles, "default_chapter não está em chapter_profiles", errors)
@@ -124,6 +163,10 @@ def validate(scenario_path=None):
                     base_id = build_id[:-5] if build_id.endswith("_tele") else build_id
                     require(base_id in by_id.get(hero_id, {}).get("builds", {}),
                             f"build desconhecida: {hero_id}/{build_id}", errors)
+        known_profiles = set(EQUIPMENT_PROFILES.get("profiles", {}))
+        wanted = [scenario.get("route_equipment", "nu")] + [v.get("route_equipment", "nu") for v in scenario.get("variants", [])]
+        for name in wanted:
+            require(name in known_profiles, f"cenário usa perfil de equipamento desconhecido: {name}", errors)
     return errors
 
 

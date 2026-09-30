@@ -1,0 +1,12 @@
+{
+ "commit": "82571ad",
+ "dirty": true,
+ "scenario_file": "tools/argos/simulator/combat/scenarios/kits_focus_flecha.json",
+ "balance_hash": "f9afe3f10ce59c199a62d3ad009b414cf68eb7062f473ff854736eb6b07eb398",
+ "balance_inputs": {
+  "data/balance/combat_profiles.json": "ada496afa42f8db9ef7aaca84c7edf668432451fe88c57e1c864dd89fca1deac",
+  "data/balance/combat_core.json": "0c65f7c5434be191f1070a1d1d4b890686f4cee50024875c5de14d2a723cb80c",
+  "data/balance/chapters/chapter_01.json": "127bdb44a129f8e324b3097ca47dc008eb31a194c05082d5e15f89ffbed60167",
+  "tools/argos/simulator/combat/scenarios/kits_focus_flecha.json": "726ca57f640558683ef5edc596d6e277289e4473dd3a8f8d5c38109275aec09c"
+ }
+}

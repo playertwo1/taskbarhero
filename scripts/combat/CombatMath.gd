@@ -2,7 +2,7 @@ extends RefCounted
 class_name CombatMath
 
 ## Fórmulas de combate v0.4 usadas pelo conteúdo do slice (SLICE-1A-1).
-## Fonte: docs/06_balance/SLICE_BALANCE_CONTRACT.md e COMBAT_FORMULAS.md do v0.4.
+## Fonte: docs/06_balance/v1/01_STATUS_E_COMBATE.md §3.
 ## Funções puras: sem estado, sem RNG e sem arredondamento. O runtime mantém precisão.
 ## Não é usado pelo combate do MVP legado, que continua com a matemática atual.
 
@@ -12,16 +12,20 @@ const MIN_ATTACK_INTERVAL := 0.20
 const MIN_SKILL_COOLDOWN := 0.25
 const CRIT_CHANCE_CAP := 1.0
 
-## Fração do dano bloqueada pela defesa: def_efetiva / (def_efetiva + K).
-static func mitigation(defense: float, armor_pen_pct: float = 0.0) -> float:
-	var effective := maxf(0.0, defense * (1.0 - armor_pen_pct))
-	return effective / (effective + DEFENSE_K)
+## `scale` é o `combat_scale` do perfil de balanceamento: HP, ATK e DEF de heróis e inimigos
+## são multiplicados por ele e, para o combate não mudar de proporção, `DEFENSE_K` e o dano
+## mínimo escalam junto. Com scale 1 o comportamento é o de sempre.
 
-## Dano depois de defesa/penetração e damage_taken, com mínimo de 1.
-static func hit_damage(raw: float, defense: float, armor_pen_pct: float = 0.0, damage_taken: float = 1.0) -> float:
-	var damage := raw * (1.0 - mitigation(defense, armor_pen_pct))
+## Fração do dano bloqueada pela defesa: def_efetiva / (def_efetiva + K × scale).
+static func mitigation(defense: float, armor_pen_pct: float = 0.0, scale: float = 1.0) -> float:
+	var effective := maxf(0.0, defense * (1.0 - armor_pen_pct))
+	return effective / (effective + DEFENSE_K * scale)
+
+## Dano depois de defesa/penetração e damage_taken, com mínimo de 1 × scale.
+static func hit_damage(raw: float, defense: float, armor_pen_pct: float = 0.0, damage_taken: float = 1.0, scale: float = 1.0) -> float:
+	var damage := raw * (1.0 - mitigation(defense, armor_pen_pct, scale))
 	damage *= damage_taken
-	return maxf(MIN_DAMAGE, damage)
+	return maxf(MIN_DAMAGE * scale, damage)
 
 ## Dano médio por golpe: hit × (1 + chance × (crit_damage − 1)), chance limitada a 100%.
 static func expected_hit(hit: float, crit_chance: float, crit_damage: float) -> float:
@@ -55,9 +59,13 @@ static func absorb(damage: float, shield: float) -> Dictionary:
 	var absorbed := minf(damage, maxf(0.0, shield))
 	return {"hp_damage": damage - absorbed, "shield_left": maxf(0.0, shield) - absorbed}
 
-## Interpolação linear entre o nível 1 e o nível 100.
-static func level_value(level_1: float, level_100: float, level: int) -> float:
-	return level_1 + (level_100 - level_1) * float(level - 1) / 99.0
+## Interpolação entre o nível 1 e o nível 100: v1 + (v100 − v1) × ((nível−1)/99)^p.
+## `p` é o `level_curve_p` do perfil: 1 = linear (herdado da base v0.5); p < 1 faz o ganho vir
+## mais cedo. Heróis, herói de referência dos inimigos e referências de item usam o mesmo p.
+static func level_value(level_1: float, level_100: float, level: int, p: float = 1.0) -> float:
+	if p == 1.0:
+		return level_1 + (level_100 - level_1) * float(level - 1) / 99.0
+	return level_1 + (level_100 - level_1) * pow(float(level - 1) / 99.0, p)
 
 ## Pipeline de status: (base + ΣFLAT) × (1 + ΣADD_PERCENT) × ΠMULTIPLY → OVERRIDE → clamp.
 ## Cada modificador é {op, value, source_type, source_id}; a origem não altera a matemática

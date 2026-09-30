@@ -6,7 +6,7 @@
     "max_level": 1,
     "material_id": "MAT_C1_LUMEN_RESIDUE",
     "material_quantity": 5,
-    "stat_bonus": 0.02,
+    "stat_bonus": 0.10,
     "slots": ["weapon", "secondary", "armor"]
   }
 }

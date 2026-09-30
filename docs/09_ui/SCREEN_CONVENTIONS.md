@@ -56,4 +56,4 @@ O candidato anterior e a revisão v002 não são referências para a nova direç
 
 ## Fontes
 
-[Propostas de UI](../art/mockups/UI_SCREEN_PROPOSALS.md) · [Direção visual do Refúgio](../05_hub/HUB_VISUAL_DIRECTION.md) · [SLICE_1_SCOPE](../04_content/chapters/chapter_01/SLICE_1_SCOPE.md) · [Guia de estilo](../art/SPRITE_STYLE_GUIDE.md) · [Paleta](../art/PALETTE.md)
+[Referências visuais atuais SLICE-1D](../art/mockups/slice_1d_references/README.md) · [referências atuais SLICE-1E](../art/mockups/slice_1e_references/README.md) · [Direção visual do Refúgio](../05_hub/HUB_VISUAL_DIRECTION.md) · [SLICE_1_SCOPE](../04_content/chapters/chapter_01/SLICE_1_SCOPE.md) · [Guia de estilo](../art/SPRITE_STYLE_GUIDE.md) · [Paleta](../art/PALETTE.md)

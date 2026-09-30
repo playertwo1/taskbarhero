@@ -5,7 +5,7 @@ certainty: HIPOTESE
 
 # HERO_002 — Flecha: Maestria 1–10
 
-**Fonte estrutural:** [HERO_STANDARD.md](../../HERO_STANDARD.md), seção 11 (marcos M1 / M3 / M5 / M7 / M10).  
+**Fonte estrutural:** [HERO_STANDARD.md](HERO_STANDARD.md), seção 11 (marcos M1 / M3 / M5 / M7 / M10).  
 **Referência de formato:** [Maestria do Bastião](hero_001_bastiao_mastery.md).  
 **Herói:** [ficha da Flecha](hero_002_flecha.md) · [skills](../04_content/skills/FLECHA_SKILLS.md) · [passivas](hero_002_flecha_passives.md) · [Traits](hero_002_flecha_traits.md)  
 **Pré-requisito:** Hero Level 100.

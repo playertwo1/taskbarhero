@@ -21,5 +21,5 @@ static func party_hp_scale(profiles: Dictionary, rank: String) -> float:
 static func enemy_stats(row: Dictionary, level: int, party_scaled: bool = false, profiles: Dictionary = {}) -> Dictionary:
 	return Profiles.enemy_stats(row, level, party_scaled, profiles)
 
-static func hero_stats(row: Dictionary, level: int) -> Dictionary:
-	return Profiles.hero_stats(row, level)
+static func hero_stats(row: Dictionary, level: int, profiles: Dictionary = {}) -> Dictionary:
+	return Profiles.hero_stats(row, level, profiles)

@@ -2,7 +2,7 @@
 
 **Estado:** conceitos visuais `CONCEPT`; ainda não são sprites finais, Golden, nem aprovação para runtime.
 
-Este conjunto cobre os 30 itens importados e aprovados como design no catálogo canônico v0.4. Os três templates adicionais da adaptação — `ITEM_W_006`, `ITEM_S_006` e `ITEM_S_007` — permanecem `DESIGN` e não fazem parte deste lote. IDs, nomes e identidades vêm do [catálogo canônico](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md).
+Este conjunto cobre os 30 itens importados e aprovados como design no catálogo canônico v0.4. Os três templates adicionais da adaptação — `ITEM_W_006`, `ITEM_S_006` e `ITEM_S_007` — permanecem `DESIGN` e não fazem parte deste lote. IDs, nomes e identidades vêm do [catálogo canônico](../../../04_content/items/CHAPTER_01_ITEM_TEMPLATES_ORIGEM.md).
 
 As imagens são referências isoladas geradas para orientar a revisão de cada ícone. A existência delas não autoriza substituir ícones legados ou alterar `/data`. Antes de integrar: conferir a identidade com o catálogo, seguir o contrato de ícone aplicável, fazer pixel cleanup em 32×32, validar transparência/paleta, executar QA técnico e revisão visual independente/mobile. Consulte também [contratos de ícones de itens](../../contracts/item_icons/) e a [paleta TY40](../../PALETTE.md).
 

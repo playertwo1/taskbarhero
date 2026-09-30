@@ -1,25 +1,25 @@
 # Pocket Hero — registro central de conteúdo
 
-Este registro é autoridade para IDs locais do jogo e aponta às fichas de detalhe. Para combate/loot, os IDs, nomes e registros da base canônica v0.4 têm como fonte única os arquivos listados no [índice canônico](../documents/canonical/INDEX.md); este registro não duplica esses catálogos. IDs já usados pelo runtime continuam sob autoridade dos arquivos em `data/` até migração.
+Este registro é autoridade para IDs locais do jogo e aponta às fichas de detalhe. Para combate/loot, as regras estão no [balanceamento v1.0](06_balance/v1/README.md) e os IDs e registros do Capítulo 1 nos catálogos de [`04_content`](04_content/INDEX.md); este registro não duplica esses catálogos. IDs já usados pelo runtime continuam sob autoridade dos arquivos em `data/` até migração.
 
 **Status permitidos:** `CONCEPT`, `DESIGN`, `APPROVED`, `IMPLEMENTING`, `IMPLEMENTED`, `QA`, `PASS`, `DEPRECATED`. `HIPÓTESE` e `EM ABERTO` descrevem certeza de conteúdo, não são status de ciclo.
 
-**Convenções locais:** `HERO_###`; `SKILL_<herói>_###`; `TREE_<ramo>_###`; `ECHO_C1_###`; `CHAPTER_##`; `STAGE_01_##`; `PASS_<herói>_###` e `TRAIT_<herói>_###` (passivas e Traits, registrados somente quando a ficha do nó existir; hoje só os da [Íris no slice](02_heroes/hero_003_iris_slice_kit.md)); `EVENT_C1_###` (eventos de expedição; hoje `EVENT_C1_001` Poço de Lúmen, ver o [recorte do slice](04_content/chapters/chapter_01/SLICE_1_SCOPE.md)). **Convenções canônicas v0.4:** `EN_C1_###`, `EL_C1_###`, `MB_C1_###`, `BOSS_C1_###`; `ITEM_W_###`, `ITEM_S_###`, `ITEM_A_###`, `ITEM_R_###`, `ITEM_E_###`; `MAT_C1_<NOME>`. IDs são persistentes: não reutilizar nem renumerar. Consulte [a ponte de compatibilidade runtime](04_content/LEGACY_RUNTIME_CATALOG.md) antes de qualquer migração.
+**Convenções locais:** `HERO_###`; `SKILL_<herói>_###`; `TREE_<ramo>_###`; `ECHO_C1_###`; `CHAPTER_##`; `STAGE_01_##`; `PASS_<herói>_###` e `TRAIT_<herói>_###` (passivas e Traits, registrados somente quando a ficha do nó existir; hoje só os da [Íris no slice](02_heroes/hero_003_iris_slice_kit.md)); `EVENT_C1_###` (eventos de expedição; hoje `EVENT_C1_001` Poço de Lúmen, ver o [recorte do slice](04_content/chapters/chapter_01/SLICE_1_SCOPE.md)). **Convenções canônicas v0.5:** `EN_C1_###`, `EL_C1_###`, `MB_C1_###`, `BOSS_C1_###`; `ITEM_W_###`, `ITEM_S_###`, `ITEM_A_###`, `ITEM_R_###`, `ITEM_E_###`; `MAT_C1_<NOME>`. IDs são persistentes: não reutilizar nem renumerar. Consulte [a ponte de compatibilidade runtime](04_content/LEGACY_RUNTIME_CATALOG.md) antes de qualquer migração.
 
 ## Contagem atual e fonte de detalhe
 
 | Tipo | Catálogo registrado | Estado resumido | Fonte de detalhe/runtime |
 | --- | --- | --- | --- |
-| Heróis | 8 cenas Godot estão presentes; conclusão de design varia por herói. Presença de cena não significa conformidade completa ao padrão. | Runtime: `IMPLEMENTED`; design: ver ficha | [Heróis](02_heroes/INDEX.md) e [Padrão Canônico](../HERO_STANDARD.md) |
+| Heróis | 8 cenas Godot estão presentes; conclusão de design varia por herói. Presença de cena não significa conformidade completa ao padrão. | Runtime: `IMPLEMENTED`; design: ver ficha | [Heróis](02_heroes/INDEX.md) e [Padrão Canônico](02_heroes/HERO_STANDARD.md) |
 | Skills | 17 skills vigentes conceituadas para Bastião, Flecha e Íris: Bastião com as 6 do Golden Reference (5 normais e a Signature), Flecha com 6 (5 normais e a Signature) e Íris com 5 normais; os 5 conceitos anteriores do Bastião e os 5 da Flecha estão `DEPRECATED`. O roster completo requer 48; as outras 31 ainda não estão catalogadas. | `DESIGN` | [Skills](04_content/skills/INDEX.md) |
-| Inimigos do Capítulo 1 | 17 canônicos: 10 normais, 3 elites, 3 minichefes e 1 boss; runtime contém 13 registros do slice (entidades legadas removidas no `1A-CUT`). | Design: `APPROVED`; runtime: subconjunto do slice, resto em `LOOT-EXPANSION-1` | [Catálogo canônico](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json) · [Aliases](04_content/LEGACY_RUNTIME_CATALOG.md) |
-| Equipamentos do Capítulo 1 | 30 canônicos; runtime contém 18 templates do slice (15 legados removidos no `1A-CUT`). | Design: `APPROVED`; runtime: subconjunto do slice, resto em `LOOT-EXPANSION-1` | [Catálogo canônico](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md) · [Aliases](04_content/LEGACY_RUNTIME_CATALOG.md) |
-| Materiais do Capítulo 1 | 7 no catálogo canônico. | Design: `APPROVED`; uso/runtime conforme fases de economia | [Catálogo canônico](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_MATERIAL_CATALOG.md) |
+| Inimigos do Capítulo 1 | 17 canônicos: 10 normais, 3 elites, 3 minichefes e 1 boss; runtime contém 13 registros do slice (entidades legadas removidas no `1A-CUT`). | Design: `APPROVED`; runtime: subconjunto do slice, resto em `LOOT-EXPANSION-1` | [Catálogo canônico](04_content/enemies/CHAPTER_01_ENEMIES_CANONICAL.json) · [Aliases](04_content/LEGACY_RUNTIME_CATALOG.md) |
+| Equipamentos do Capítulo 1 | 33 templates herdados mais candidatos de expansão ainda sem ID; runtime contém 18 templates do slice. | Catálogo do Capítulo 1: `DESIGN`/`HIPOTESE`; runtime: subconjunto atual, expansão aguarda escala e migração | [Catálogo do Capítulo 1](04_content/items/CHAPTER_01_ITEM_CATALOG.md) · [Aliases](04_content/LEGACY_RUNTIME_CATALOG.md) |
+| Materiais do Capítulo 1 | 7 no catálogo canônico. | Design: `APPROVED`; uso/runtime conforme fases de economia | [Catálogo canônico](04_content/chapters/chapter_01/CHAPTER_01_MATERIAL_CATALOG.md) |
 | Eventos de expedição do slice | 10 eventos narrativos + Reserva de Resíduo em [`data/expedition/events_c1.json`](../data/expedition/events_c1.json); IDs `event_c1_*` (só o Poço tem `design_id` `EVENT_C1_001`). | `IMPLEMENTING` (`HIPOTESE`) | [SLICE_1B_RUN_SPEC](03_systems/SLICE_1B_RUN_SPEC.md) |
 | Tabelas de drop do slice | Chances, raridades, Reward Choice, materiais e reciclagem em [`data/loot/drops_c1.json`](../data/loot/drops_c1.json), renormalizadas do v0.4 para o recorte. | `IMPLEMENTING` (`HIPOTESE`) | [SLICE_1B_RUN_SPEC](03_systems/SLICE_1B_RUN_SPEC.md) |
 | Textos dos eventos do slice | Introdução, resultado de cada escolha e lore revelada em [`data/expedition/event_texts_c1.json`](../data/expedition/event_texts_c1.json); vista em [EVENT_TEXTS.md](04_content/chapters/chapter_01/EVENT_TEXTS.md). | `DESIGN` (aguardando revisão) | [Bíblia de Lore](01_world/LORE_BIBLE.md) · [lore canônica](01_world/loreparte1.md) |
-| Sistema de combate e loot | Regras e contratos da versão canônica v0.4. | Design: `APPROVED`; implementação: conferir runtime e roadmap | [Índice canônico](../documents/canonical/taskbar_sistema_v0.4/README.md) |
-| Perfis de balanceamento | Núcleo compartilhado, manifesto e overlay do Capítulo 1; valores locais e globais separados. | Arquitetura: `PASS`; números: `HIPÓTESE` | [Sistema global](06_balance/GLOBAL_BALANCE_SYSTEM.md) · [Manifesto](../data/balance/combat_profiles.json) · [Capítulo 1](../data/balance/chapters/chapter_01.json) |
+| Sistema de combate e loot | Balanceamento global v1.0 (constituição + 11 domínios + perfil do Capítulo 1). | Design: `IMPLEMENTING`/`HIPOTESE`; implementação: conferir runtime e roadmap | [balanceamento v1.0](06_balance/v1/README.md) |
+| Perfis de balanceamento | Núcleo compartilhado, manifesto e overlay do Capítulo 1; valores locais e globais separados. | Arquitetura: `PASS`; números: `HIPÓTESE` | [v1 · telemetria e Argos](06_balance/v1/10_TELEMETRIA_ARGOS.md) · [Manifesto](../data/balance/combat_profiles.json) · [Capítulo 1](../data/balance/chapters/chapter_01.json) |
 | Subfases | Dez propostas; o jogo runtime tem cinco fases macro. | `DESIGN` | [Capítulos](04_content/chapters/INDEX.md) |
 | Ecos | `ECHO_C1_001` está implementado para o `SLICE-1`; catálogo adicional continua fora do slice. | `IMPLEMENTED` | [Ficha](04_content/echoes/echo_c1_001_a_sentinela_que_ficou.md) · [Sistema](03_systems/ECHO_SYSTEM.md) |
 | Hub | Direção visual escolhida; especificação global de sistema ainda não aprovada. Há uma cena isolada de protótipo de UI, não integrada ao fluxo principal. | `CONCEPT` | [Hub](05_hub/INDEX.md) |
@@ -28,7 +28,7 @@ Linhas do slice em `/data` usam `content_set: "slice"`, `id` em minúsculas igua
 
 ## Heróis
 
-[`HERO_STANDARD.md`](../HERO_STANDARD.md) é obrigatório para novos designs e expansões; são seis skills por herói, incluindo uma Signature. O [padrão compartilhado de balanceamento](06_balance/COMBAT_BALANCE_STANDARD.md) define a estrutura dos atributos. A tabela separa ciclo registrado na ficha da presença de cena; uma cena não comprova que o conteúdo do herói está completo em relação ao padrão.
+[`HERO_STANDARD.md`](02_heroes/HERO_STANDARD.md) é obrigatório para novos designs e expansões; são seis skills por herói, incluindo uma Signature. O [padrão compartilhado de balanceamento](06_balance/v1/01_STATUS_E_COMBATE.md) define a estrutura dos atributos. A tabela separa ciclo registrado na ficha da presença de cena; uma cena não comprova que o conteúdo do herói está completo em relação ao padrão.
 
 | ID | Nome | Ciclo registrado na ficha | Cena Godot | Fonte de design |
 | --- | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ Linhas do slice em `/data` usam `content_set: "slice"`, `id` em minúsculas igua
 
 ## Skills
 
-IDs e status são registrados aqui. O padrão de 48 skills (cinco normais e uma Signature por herói) vem de [HERO_STANDARD](../HERO_STANDARD.md). Não há skills runtime em `/data/skills/`; números, gatilhos e regras de runtime continuam em aberto.
+IDs e status são registrados aqui. O padrão de 48 skills (cinco normais e uma Signature por herói) vem de [HERO_STANDARD](02_heroes/HERO_STANDARD.md). Não há skills runtime em `/data/skills/`; números, gatilhos e regras de runtime continuam em aberto.
 
 | ID | Nome | Status | Fonte |
 | --- | --- | --- | --- |
@@ -56,8 +56,8 @@ IDs e status são registrados aqui. O padrão de 48 skills (cinco normais e uma 
 | `SKILL_BAS_007` | Contra-Golpe | `DESIGN` | idem |
 | `SKILL_BAS_008` | Desafio | `DESIGN` | idem |
 | `SKILL_BAS_009` | Fortaleza | `DESIGN` | idem |
-| `SKILL_BAS_010` | Impacto de Escudo | `DESIGN` | idem |
-| `SKILL_BAS_011` | Último Bastião (Signature) | `DESIGN` | idem |
+| `SKILL_BAS_010` | Impacto de Escudo | `IMPLEMENTING` | idem |
+| `SKILL_BAS_011` | Último Bastião (Signature) | `IMPLEMENTING` | idem |
 | `SKILL_FLE_001` | Marca da Caçada (conceito anterior) | `DEPRECATED` | [Histórico](../arquivados/FLECHA_SKILLS_LEGADO.md) |
 | `SKILL_FLE_002` | Tiro de Ruptura (conceito anterior) | `DEPRECATED` | idem |
 | `SKILL_FLE_003` | Rajada da Copa (conceito anterior) | `DEPRECATED` | idem |
@@ -67,21 +67,22 @@ IDs e status são registrados aqui. O padrão de 48 skills (cinco normais e uma 
 | `SKILL_FLE_007` | Flecha Perfurante | `DESIGN` | idem |
 | `SKILL_FLE_008` | Olho Aguçado | `DESIGN` | idem |
 | `SKILL_FLE_009` | Rajada | `DESIGN` | idem |
-| `SKILL_FLE_010` | Ricochete | `DESIGN` | idem |
-| `SKILL_FLE_011` | Chuva de Flechas (Signature) | `DESIGN` | idem |
+| `SKILL_FLE_010` | Ricochete | `IMPLEMENTING` | idem |
+| `SKILL_FLE_011` | Chuva de Flechas (Signature) | `IMPLEMENTING` | idem |
 | `SKILL_IRI_001` | Lança de Lúmen | `DESIGN` | idem |
 | `SKILL_IRI_002` | Véu de Micélio | `DESIGN` | idem |
 | `SKILL_IRI_003` | Fratura Arcana | `DESIGN` | idem |
-| `SKILL_IRI_004` | Pulso Restaurador | `DESIGN` | idem |
+| `SKILL_IRI_004` | Pulso Restaurador | `IMPLEMENTING` | idem |
 | `SKILL_IRI_005` | Prisma de Retorno | `DESIGN` | idem |
+| `SKILL_IRI_006` | Convergência de Lúmen (Signature, 3º slot) | `IMPLEMENTING` | [kit da Íris](02_heroes/hero_003_iris_slice_kit.md) |
 
 ## Inimigos e chefes
 
-Os IDs, nomes, ranks, arquétipos e registros de loot dos 17 inimigos do Capítulo 1 são definidos pelo [JSON canônico v0.4](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json). O catálogo Markdown correspondente é uma visão resumida desse JSON. Todos têm status de ciclo `APPROVED` para design; o runtime carrega só o subconjunto do slice (legado removido no `1A-CUT`). Consulte o [índice de inimigos](04_content/enemies/INDEX.md) e a [ponte de aliases](04_content/LEGACY_RUNTIME_CATALOG.md).
+Os IDs, nomes, ranks, arquétipos e registros de loot dos 17 inimigos do Capítulo 1 são definidos pelo [JSON canônico do Capítulo 1](04_content/enemies/CHAPTER_01_ENEMIES_CANONICAL.json). O catálogo Markdown correspondente é uma visão resumida desse JSON. O runtime carrega só o subconjunto do slice. Consulte o [índice de inimigos](04_content/enemies/INDEX.md) e a [ponte de aliases](04_content/LEGACY_RUNTIME_CATALOG.md).
 
 ## Itens e materiais
 
-O [catálogo canônico v0.4 adaptado](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md) é autoridade para os 30 itens importados e 3 templates adicionais de compatibilidade por herói no Capítulo 1; o [catálogo de materiais](../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_MATERIAL_CATALOG.md) é autoridade para os sete materiais. As regras de raridade e economia estão no [índice canônico](../documents/canonical/taskbar_sistema_v0.4/README.md). Os registros antigos presentes em runtime permanecem identificados na [ponte de compatibilidade](04_content/LEGACY_RUNTIME_CATALOG.md) até migração. Consulte também os índices de [itens](04_content/items/INDEX.md) e [balanceamento](06_balance/INDEX.md).
+O [catálogo do Capítulo 1](04_content/items/CHAPTER_01_ITEM_CATALOG.md) consolida a compatibilidade e as raridades atuais do slice; a expansão adicional está em proposta e não tem IDs até aprovação. O [catálogo herdado de materiais](04_content/chapters/chapter_01/CHAPTER_01_MATERIAL_CATALOG.md) é incorporado ao balanceamento v1.0. Os registros runtime permanecem identificados na [ponte de compatibilidade](04_content/LEGACY_RUNTIME_CATALOG.md) até migração. Consulte também os índices de [itens](04_content/items/INDEX.md) e [balanceamento](06_balance/INDEX.md).
 
 ## Capítulo 1 e subfases
 
@@ -139,4 +140,3 @@ Padrão aprovado por Rafael em 2026-09-30, com paleta TY High Fantasy 40, transp
 | UI Kit e Tema | 9-slice / AMOLED | 1 kit | `assets/sprites/ui/ui_kit/` · `assets/ui/pocket_hero_theme.tres` | `ui_kit_v003` |
 
 Relatório completo de inventário e especificações: [`docs/art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md`](art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md) e [Inventário de Sprites](art/MVP_SPRITE_INVENTORY.md).
-

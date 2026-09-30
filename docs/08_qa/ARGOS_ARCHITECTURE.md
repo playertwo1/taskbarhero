@@ -60,7 +60,7 @@
 5. **Simulador Headless (implementado para o slice):** cenários configuram capítulo, party, builds, níveis, sementes e modos. A matriz vigente roda 1.404 execuções; 10k–100k continua meta para cargas futuras.
 6. **Argos Analyst (implementado):** agrega `runs.jsonl`, aplica regras com cobertura explícita, compara relatórios e classifica `BUG`, `BALANCE`, `PACING` e `INFO`.
 
-Antes da simulação, [`validate_balance_data.py`](../../tools/balance/validate_balance_data.py) verifica a composição núcleo → capítulo → cenário. Cada relatório registra SHA-256 das entradas usadas; detalhes em [GLOBAL_BALANCE_SYSTEM](../06_balance/GLOBAL_BALANCE_SYSTEM.md).
+Antes da simulação, [`validate_balance_data.py`](../../tools/balance/validate_balance_data.py) verifica a composição núcleo → capítulo → cenário. Cada relatório registra SHA-256 das entradas usadas; detalhes em [v1 · telemetria e Argos](../06_balance/v1/10_TELEMETRIA_ARGOS.md).
 
 ---
 

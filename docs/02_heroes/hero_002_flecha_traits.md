@@ -5,7 +5,7 @@ certainty: HIPOTESE
 
 # HERO_002 — Flecha: Traits de especialização
 
-**Fonte estrutural:** [HERO_STANDARD.md](../../HERO_STANDARD.md), seção 6.  
+**Fonte estrutural:** [HERO_STANDARD.md](HERO_STANDARD.md), seção 6.  
 **Herói:** [ficha da Flecha](hero_002_flecha.md)  
 **Skills:** [catálogo canônico](../04_content/skills/FLECHA_SKILLS.md)  
 **Passivas:** [árvores de build](hero_002_flecha_passives.md)  
@@ -56,6 +56,6 @@ O Trait não adiciona saltos ao Ricochete, não aumenta velocidade de ataque e n
 
 ## Referências
 
-- [Padrão Canônico dos Heróis](../../HERO_STANDARD.md)
+- [Padrão Canônico dos Heróis](HERO_STANDARD.md)
 - [Sistema de skills](../03_systems/SKILL_SYSTEM.md)
-- [Padrão compartilhado de balanceamento](../06_balance/COMBAT_BALANCE_STANDARD.md)
+- [Padrão compartilhado de balanceamento](../06_balance/v1/01_STATUS_E_COMBATE.md)

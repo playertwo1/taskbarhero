@@ -1,8 +1,8 @@
 # Itens — conceitos visuais
 
-As fichas abaixo e seus sprites formam o conjunto visual legado do catálogo anterior (15 itens runtime + 15 candidatos). Eles não correspondem automaticamente aos 30 itens da base canônica v0.4. Use o [catálogo canônico de itens](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md) para IDs, nomes e identidade; novas fichas visuais devem ser criadas a partir dele.
+As fichas abaixo e seus sprites formam o conjunto visual legado do catálogo anterior (15 itens runtime + 15 candidatos). Eles não correspondem automaticamente aos 33 templates herdados do balanceamento v1.0. Use o [catálogo ativo de itens](../../../04_content/items/CHAPTER_01_ITEM_CATALOG.md) para IDs, nomes e identidade; novas fichas visuais devem ser criadas a partir dele.
 
-Rafael escolheu a grade de inventário e definiu o tamanho final 32×32 em 2026-09-28. Os 30 PNGs e seus manifestos legados estão em [`assets/sprites/items/`](../../../../assets/sprites/items/), com a [prévia do catálogo anterior](../../previews/item_icons_32x32_contact_sheet.png). Preserve-os; não os atribua a IDs novos sem revisão visual e mapeamento explícito.
+Rafael escolheu a grade de inventário e definiu o tamanho final 32×32 em 2026-09-28. Os 30 PNGs e seus manifestos legados estão em [`assets/sprites/items/`](../../../../assets/sprites/items/). Preserve-os; não os atribua a IDs novos sem revisão visual e mapeamento explícito.
 
 - [Adaga de Luz](./adaga_luz.md) — arma
 

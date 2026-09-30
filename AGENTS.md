@@ -1,112 +1,61 @@
 # Pocket Hero — instruções para agentes de código
 
-## Antes de trabalhar
+Vale para qualquer agente (Claude, ChatGPT, Antigravity/Gemini). Este arquivo é curto de propósito: ele dá as regras e aponta para as fontes. Não copie aqui lore, regras de jogo, conteúdo ou valores.
 
-1. Siga a [ordem de carregamento de contexto](#ordem-de-carregamento-de-contexto), começando por [`PROJECT_STATE.md`](PROJECT_STATE.md).
-2. Confira `git status` e preserve todas as alterações pré-existentes, inclusive arquivos não rastreados. Nunca sobrescreva nem inclua esses arquivos no commit por conveniência.
+## 1. Antes de trabalhar
 
-## AGENTS.md como índice
+1. Leia [`PROJECT_STATE.md`](PROJECT_STATE.md) e as seções 1 (estado) e 3 (agora) do [`ROADMAP.md`](ROADMAP.md).
+2. Confira `git status` e preserve alterações pré-existentes, inclusive arquivos não rastreados. Outra sessão pode estar trabalhando ao mesmo tempo: não sobrescreva nem inclua trabalho alheio no commit.
+3. Confira se a fatia do roadmap tem **executor definido** (ex.: `NOW-5 · OPUS-ROUND-1` é somente para o Claude Opus). Se você não é o executor indicado, não execute: apenas leia e avise Rafael.
+4. Abra só o índice da área da tarefa ([`docs/INDEX.md`](docs/INDEX.md)) e depois a ficha exata. Carregue o mínimo de contexto.
 
-Este arquivo é o índice operacional do repositório. Use [`docs/INDEX.md`](docs/INDEX.md) para escolher uma área e seu `INDEX.md`; use [`documents/INDEX.md`](documents/INDEX.md) para os guias completos e fontes DOCX. Não copie aqui lore, regras, conteúdo ou valores runtime: mantenha cada fato em uma única fonte.
+**Onde fica cada coisa e onde criar arquivos novos:** [ESTRUTURA_DO_REPOSITORIO](docs/00_project/ESTRUTURA_DO_REPOSITORIO.md).
 
-### Ordem de carregamento de contexto
+## 2. Ordem de autoridade
 
-1. [`PROJECT_STATE.md`](PROJECT_STATE.md) — resumo de estado observado e caminhos autoritativos.
-2. [`ROADMAP.md`](ROADMAP.md) — prioridade, trabalho atual e gates.
-3. [`docs/INDEX.md`](docs/INDEX.md), [`documents/INDEX.md`](documents/INDEX.md) e, quando a tarefa usar sistemas aprovados, [`documents/canonical/INDEX.md`](documents/canonical/INDEX.md).
-4. `INDEX.md` da área afetada, conforme a tabela abaixo.
-5. Ficha da entidade/conteúdo e documento do sistema envolvido.
-6. Dados runtime necessários em [`data/`](data/); eles são autoridade para valores carregados pelo jogo.
-7. Código e testes necessários em `scripts/`, `scenes/` e [`tests/`](tests/).
+1. A instrução mais recente de Rafael.
+2. [`ROADMAP.md`](ROADMAP.md): plano, prioridade e gates.
+3. Documento dono do assunto em `docs/` (intenção e design). Para **qualquer número do jogo**: [balanceamento global v1.0](docs/06_balance/v1/README.md), começando pela [constituição](docs/06_balance/v1/00_CONSTITUICAO.md).
+4. [`data/`](data/): valores que o jogo carrega. Código e testes mostram o que existe; testes provam só o que executam.
+5. Guias em [`documents/`](documents/INDEX.md) e [`arquivados/`](arquivados/INDEX.md) são contexto e histórico, não autoridade.
 
-Carregue somente o contexto necessário. Não abra áreas sem relação com a tarefa.
+**Um fato → uma fonte.** Índices, roadmap, registry e brief apontam, não copiam.
 
-Para tarefas de visão, arquitetura documental ou fundação do jogo, consulte [`docs/00_project/MANUAL_IA_FUNDACAO_DO_JOGO.md`](docs/00_project/MANUAL_IA_FUNDACAO_DO_JOGO.md) depois do índice da área de Projeto. Ele orienta o processo e não substitui a roadmap nem fontes de conteúdo.
+## 3. Decisões e certeza
 
-### Mapa do repositório
+- Marque tudo como **DECIDIDO**, **RECOMENDADO**, **HIPÓTESE** ou **EM ABERTO**. Não transforme proposta ou número de teste em requisito.
+- Se uma decisão aberta afeta a tarefa, pare e pergunte a Rafael. As do balanceamento estão em [11_DECISOES_ABERTAS](docs/06_balance/v1/11_DECISOES_ABERTAS.md).
+- Status de ciclo de vida: `CONCEPT`, `DESIGN`, `APPROVED`, `IMPLEMENTING`, `IMPLEMENTED`, `QA`, `PASS`, `DEPRECATED`.
+- IDs de design seguem o [registro de conteúdo](docs/CONTENT_REGISTRY.md). Não renomeie IDs runtime sem migração explícita; registre aliases.
 
-| Local | Autoridade / função | Índice |
-| --- | --- | --- |
-| `/docs/` | Por quê e como o jogo deve funcionar; intenção e design. | [`docs/INDEX.md`](docs/INDEX.md) |
-| `/documents/canonical/` | Fontes canônicas importadas aprovadas; respeite a precedência registrada no `README.md` de cada pacote. | [`documents/canonical/INDEX.md`](documents/canonical/INDEX.md) |
-| Estado/plano/histórico | [`PROJECT_STATE.md`](PROJECT_STATE.md), [`ROADMAP.md`](ROADMAP.md) e [`CHANGELOG.md`](CHANGELOG.md) | Estado observado, plano e mudanças têm papéis distintos. |
-| `/data/` | Quais IDs e valores o jogo carrega em runtime. | [`docs/CONTENT_REGISTRY.md`](docs/CONTENT_REGISTRY.md) aponta para os catálogos; os JSON são a fonte dos valores. |
-| `/scripts/` e `/scenes/` | Como o projeto Godot implementa comportamento. Não existe `/src/` neste repositório hoje. O fluxo jogável é `TitleScreen → SliceCampaign`; `scripts/run/` guarda a lógica de loot, inventário, eventos, save e campanha do slice (`1B`) e `scripts/ui/SliceCampaignScreen.gd` apresenta o fluxo; o loop legado do MVP (`GameManager`, `LootManager`, `ProgressionManager`, `SaveManager`, `Main`) foi removido no `1A-CUT` e só existe no git (commit `cd47758`). | [Índice de sistemas](docs/03_systems/INDEX.md) |
-| `/assets/` | Imagens, animações e outros assets usados pelo projeto. | [Índice de arte](docs/07_art/INDEX.md) |
-| `/tests/` | Verificações executáveis e evidência coberta por elas. | [Índice de QA](docs/08_qa/INDEX.md) |
-| `/arquivados/` | Registros históricos úteis, versões substituídas e trabalho concluído. | [`arquivados/INDEX.md`](arquivados/INDEX.md) |
+## 4. Produto e originalidade
 
-### Índices por área
+- O produto é **Pocket Hero**, app Android normal; `taskbarhero` é só o nome do repositório. TBH/Task Bar Hero é referência, nunca fonte de assets, nomes, textos ou tabelas.
+- O MVP antigo foi substituído pelo slice no `1A-CUT`: não recrie o loop legado nem conteúdo sem `content_set: "slice"`.
+- Fora do escopo: overlay, backend, contas, multiplayer, cloud save, monetização, vantagem paga.
 
-- Projeto: [`docs/00_project/INDEX.md`](docs/00_project/INDEX.md)
-- Mundo/lore: [`docs/01_world/INDEX.md`](docs/01_world/INDEX.md)
-- Heróis: [`docs/02_heroes/INDEX.md`](docs/02_heroes/INDEX.md) e padrão canônico em [`HERO_STANDARD.md`](HERO_STANDARD.md)
-- Sistemas: [`docs/03_systems/INDEX.md`](docs/03_systems/INDEX.md)
-- Conteúdo: [`docs/04_content/INDEX.md`](docs/04_content/INDEX.md), com índices próprios para [skills](docs/04_content/skills/INDEX.md), [itens](docs/04_content/items/INDEX.md), [inimigos](docs/04_content/enemies/INDEX.md), [Ecos](docs/04_content/echoes/INDEX.md) e [capítulos](docs/04_content/chapters/INDEX.md)
-- Hub: [`docs/05_hub/INDEX.md`](docs/05_hub/INDEX.md)
-- Balanceamento: [`docs/06_balance/INDEX.md`](docs/06_balance/INDEX.md)
-- UI: [`docs/09_ui/INDEX.md`](docs/09_ui/INDEX.md) — contratos de tela do slice (UX e arte) e [convenções](docs/09_ui/SCREEN_CONVENTIONS.md)
-- Arte: [`docs/07_art/INDEX.md`](docs/07_art/INDEX.md); para [conceitos e prompts de sprites](docs/art/conceitos/README.md), siga o índice por categoria.
-- QA: [`docs/08_qa/INDEX.md`](docs/08_qa/INDEX.md)
+## 5. Arte
 
-Não crie fichas vazias para completar essa árvore. Um índice pode apontar uma área ainda sem especificação e dizer isso explicitamente.
+- Siga o fluxo em [`docs/art/conceitos/README.md`](docs/art/conceitos/README.md) e a ficha exata do asset; Golden e contratos têm prioridade ([`docs/art/golden/README.md`](docs/art/golden/README.md), [índice de arte](docs/07_art/INDEX.md)).
+- Contrato → conceito → pixel cleanup → QA técnico → auditoria independente → integração → QA mobile. O primeiro asset passa o gate antes da produção em lote.
+- Arte final vem do ComfyUI e do Aseprite, não de scripts que desenham a arte. `assets/` guarda só o que o jogo carrega.
 
-## Fontes e decisões
+## 6. Verificar antes de afirmar
 
-- A instrução mais recente de Rafael prevalece.
-- Código e testes mostram o que existe; `ROADMAP.md` define o plano e os gates.
-- O guia de IA e os guias de design são contexto, não prova de implementação nem autorização para expandir escopo.
-- Separe **DECIDIDO**, **RECOMENDADO**, **HIPÓTESE** e **EM ABERTO**. Não transforme números ou propostas de teste em requisitos finais sem confirmação/evidência.
-- Se uma decisão aberta afetar a tarefa, pare e peça a escolha de Rafael em vez de inventá-la.
-- **ONE FACT → ONE AUTHORITY:** cada decisão, regra, número ou fato tem uma fonte autoritativa. Índices, roadmap, registry e brief apontam para ela sem copiar seus detalhes. `/docs` guarda intenção; `/data` guarda valores runtime; código implementa; testes provam somente o que executam.
-- **Base canônica de combate/loot:** para balanceamento, schema e conteúdo de inimigos, equipamentos, materiais, drops, raridades e economia, siga [TASKBAR Sistema Completo v0.4](documents/canonical/taskbar_sistema_v0.4/README.md), aprovado por Rafael como base canônica de design. O catálogo e os contratos detalhados permanecem nos arquivos de origem indicados pelo índice; não mantenha cópias divergentes.
-- **Composição runtime de balanceamento:** siga [GLOBAL_BALANCE_SYSTEM.md](docs/06_balance/GLOBAL_BALANCE_SYSTEM.md). `data/balance/combat_profiles.json` é manifesto; `combat_core.json` guarda regras compartilhadas; `data/balance/chapters/*.json` guarda valores e caminhos locais. Valide com `python tools/balance/validate_balance_data.py` antes do Argos.
-- IDs de design seguem os prefixos registrados em [`docs/CONTENT_REGISTRY.md`](docs/CONTENT_REGISTRY.md), incluindo os prefixos da base canônica v0.4. IDs runtime atuais em JSON não devem ser renomeados nem substituídos por IDs de design sem migração explícita; registre aliases até o gate de migração.
-- Use somente estes status de ciclo de vida para novos registros: `CONCEPT`, `DESIGN`, `APPROVED`, `IMPLEMENTING`, `IMPLEMENTED`, `QA`, `PASS`, `DEPRECATED`. Não confunda status com certeza: use **HIPÓTESE** ou **EM ABERTO** no texto quando necessário. Normalize registros antigos ao tocá-los, sem reclassificar etapa por inferência.
+| Pergunta | Comando |
+| --- | --- |
+| O código continua correto? | `python tools/run_godot_tests.py` |
+| Os dados de balanceamento são válidos? | `python tools/balance/validate_balance_data.py` |
+| Como está o balanceamento/loot? | `python tools/argos/run.py --scenario slice_quick` · `slice_balance` · `slice_run_layer` |
+| A documentação está íntegra? | `python tools/docs/check_links.py --orphans` |
 
-## Produto e originalidade
+Regras do Argos (achados, cenários, relatórios): [`tools/argos/README.md`](tools/argos/README.md#regras-de-uso-para-qualquer-agente). Simulação não é playtest.
 
-- O produto é Pocket Hero; `taskbarhero` é o nome do repositório. TBH/Task Bar Hero é apenas referência.
-- Preserve identidade, nomes, arte, lore, UI, mapas, textos e balanceamento originais. Não copie assets ou conteúdo distintivo do jogo de referência.
-- O MVP antigo foi substituído pelo slice no `1A-CUT`; não recrie o loop legado nem reintroduza conteúdo sem `content_set: "slice"`. O produto continua sendo um app Android normal.
-- O MVP é Android como app normal. Overlay, backend, contas, multiplayer, cloud save, monetização e expansão grande de conteúdo estão fora do MVP.
-- Não introduza vantagem paga ou sistema que dependa de compra.
+## 7. Implementação e aceite
 
-## Arte e criação de sprites
-
-Antes de criar um sprite ou ícone, leia [`docs/art/conceitos/README.md`](docs/art/conceitos/README.md) para seguir o fluxo geral e use o índice da pasta da categoria para localizar a ficha individual do asset:
-
-- **Monstros comuns:** [`docs/art/conceitos/monstros/README.md`](docs/art/conceitos/monstros/README.md) — uma ficha por monstro.
-- **Elites:** [`docs/art/conceitos/elites/README.md`](docs/art/conceitos/elites/README.md) — uma ficha por elite.
-- **Chefes e minichefes:** [`docs/art/conceitos/chefes/README.md`](docs/art/conceitos/chefes/README.md) — uma ficha por chefe.
-- **Itens e ícones de equipamento:** [`docs/art/conceitos/itens/README.md`](docs/art/conceitos/itens/README.md) — uma ficha por item.
-
-Abra o arquivo `.md` do asset exato; ele contém a ideia visual e um prompt específico para gerar o conceito. Antes de produzir, consulte também [`docs/art/ASSET_VISUAL_BLUEPRINT.md`](docs/art/ASSET_VISUAL_BLUEPRINT.md), [`docs/art/SPRITE_STYLE_GUIDE.md`](docs/art/SPRITE_STYLE_GUIDE.md) e [`docs/art/PALETTE.md`](docs/art/PALETTE.md). Para assets com contrato ou Golden, siga-os como fonte prioritária. Conceitos marcados como candidatos ou hipóteses não aprovam conteúdo de gameplay.
-
-Para sprites do MVP, use somente os Golden registrados em [`docs/art/golden/README.md`](docs/art/golden/README.md), os contratos atuais e as folhas/manifests `v002` listados em [`docs/art/MVP_SPRITE_INVENTORY.md`](docs/art/MVP_SPRITE_INVENTORY.md). Fontes editáveis e prévias anteriores à aprovação Golden foram removidas; caminhos antigos citados em auditorias/arquivos históricos são registros, não assets disponíveis nem referências visuais. Os pipelines legados (`build_styled_*`, `generate_*`, `build_comfy_anim.py` e similares) foram movidos para [`arquivados/pipelines_legados/`](arquivados/pipelines_legados/README.md); não os execute para produzir ou sobrescrever sprites do MVP.
-
-## Testes e Argos (playtester automático)
-
-Use estas ferramentas antes de afirmar que algo funciona ou está balanceado. Detalhes e estrutura: [`tools/argos/README.md`](tools/argos/README.md).
-
-| Pergunta | Comando | Saída |
-| --- | --- | --- |
-| O código continua correto? | `python tools/run_godot_tests.py` | PASS/FAIL por cena; falha também em `SCRIPT ERROR`. Depois do `1A-CUT` a suíte só cobre o slice (`tests/unit/`); não existem mais os testes R10–R16 |
-| Como estão os eventos e o loot da run? | `python tools/argos/run.py --scenario slice_run_layer` | `tools/argos/reports/<data>_<commit>/REPORT.md` |
-| Como está o balanceamento do slice? | `python tools/argos/run.py --scenario slice_quick` (~2 s) ou `--scenario slice_balance` (~75 s) | `tools/argos/reports/<data>_<commit>/REPORT.md` |
-| O Analyst do Argos funciona? | `python -m unittest tools/argos/analyzer/test_analyze.py` | OK/FAIL |
-
-- Rode o Argos depois de mudar `data/`, `scripts/combat/` ou regras de combate; compare o `REPORT.md` com o anterior (o relatório mostra a diferença).
-- Leia só o `REPORT.md`. Abra `runs.jsonl` apenas para investigar um achado específico: economiza contexto.
-- Achado `BUG` do Argos é defeito a corrigir. Achados `BALANCE`/`PACING` vão para [`docs/08_qa/BALANCE_FINDINGS.md`](docs/08_qa/BALANCE_FINDINGS.md) com hipótese e proposta; a decisão é de Rafael.
-- Para testar um cenário hipotético (ex.: outro dano inimigo), crie ou copie um cenário em `tools/argos/simulator/combat/scenarios/` com `overrides`; não altere `/data` só para medir.
-- Não afrouxe `tools/argos/analyzer/rules_slice.json` para fazer um relatório passar; mudança de meta exige decisão de Rafael.
-- Resultado do Argos é simulação determinística, não playtest: não conclua diversão, e registre o commit do relatório como evidência.
-
-## Implementação e aceite
-
-- Trabalhe uma fatia do roadmap por vez. Antes de editar, determine arquivos, comportamento esperado e regressão/aceite.
-- Para economia e pacing, registrar hipótese, fórmula, fontes/saídas de recursos e como simular ou medir; não chamar números de balanceados sem playtest/telemetria.
-- Para arte, usar contrato, QA técnico e auditoria visual independente antes da integração; não escalar produção antes de passar o gate do primeiro asset.
-- Execute as verificações pertinentes do roadmap, revise o diff e registre evidência. Teste parcial não fecha uma etapa inteira.
-- Não instale ferramentas, altere segurança, faça commit ou push sem pedido explícito de Rafael. Nunca exponha credenciais.
+- Uma fatia do roadmap por vez. Antes de editar: arquivos, comportamento esperado, regressão e aceite.
+- Mudou `/data` ou `scripts/combat/`? Rode o Argos e compare o `REPORT.md`; siga a [política de mudanças de números](docs/06_balance/v1/00_CONSTITUICAO.md#11-política-de-mudanças-de-números).
+- Moveu ou criou documento? Reaponte links, ligue-o a um `INDEX.md` e rode o verificador de links.
+- Concluído vai para `arquivados/`; obsoleto é excluído (com confirmação de Rafael). Não crie fichas vazias só para completar a árvore.
+- Tarefas de visão ou fundação do jogo: consulte também o [manual de IA da fundação](docs/00_project/MANUAL_IA_FUNDACAO_DO_JOGO.md).
+- Não instale ferramentas, não altere segurança, não faça commit nem push sem pedido explícito de Rafael. Nunca exponha credenciais.

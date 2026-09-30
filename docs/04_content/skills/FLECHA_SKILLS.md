@@ -6,7 +6,7 @@ certainty: HIPOTESE
 # Flecha — skills canônicas
 
 **Herói:** [HERO_002 — Flecha](../../02_heroes/hero_002_flecha.md)
-**Fonte dos nomes e do conjunto de seis:** [HERO_STANDARD.md](../../../HERO_STANDARD.md), seção 14.
+**Fonte dos nomes e do conjunto de seis:** [HERO_STANDARD.md](../../02_heroes/HERO_STANDARD.md), seção 14.
 **Escopo:** intenção de gameplay e evolução qualitativa dos ranks. Esta ficha não aprova números, cooldowns, gatilhos nem implementação.
 
 ## Identidade de combate

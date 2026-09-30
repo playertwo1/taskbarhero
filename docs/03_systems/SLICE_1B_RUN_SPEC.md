@@ -6,14 +6,14 @@ certainty: HIPOTESE
 
 # SLICE-1B — Run: eventos, recompensas, loot e save mínimo
 
-**Status:** `IMPLEMENTED` (núcleo, textos, tela e camada Argos entregues em 2026-09-29). As escolhas de escopo abaixo são **DECIDIDO**; chances, valores e tabelas são **HIPÓTESE** até o `SLICE-1E`. Os textos dos eventos seguem `DESIGN`, aguardando revisão de Rafael. Este arquivo é a fonte única do desenho do `1B`; recorte de conteúdo em [SLICE_1_SCOPE](../04_content/chapters/chapter_01/SLICE_1_SCOPE.md), regras de run/meta em [RUN_META_PROGRESSION](RUN_META_PROGRESSION.md) e contrato de números em [SLICE_BALANCE_CONTRACT](../06_balance/SLICE_BALANCE_CONTRACT.md). Não copia stats, loot ou fórmulas.
+**Status:** `IMPLEMENTED` (núcleo, textos, tela e camada Argos entregues em 2026-09-29). As escolhas de escopo abaixo são **DECIDIDO**; chances, valores e tabelas são **HIPÓTESE** até o `SLICE-1E`. Os textos dos eventos seguem `DESIGN`, aguardando revisão de Rafael. Este arquivo é a fonte única do desenho do `1B`; recorte de conteúdo em [SLICE_1_SCOPE](../04_content/chapters/chapter_01/SLICE_1_SCOPE.md), regras de run/meta em [RUN_META_PROGRESSION](RUN_META_PROGRESSION.md) e contrato de números em [v1 · perfil do Capítulo 1](../06_balance/v1/capitulos/CAPITULO_01.md). Não copia stats, loot ou fórmulas.
 
 ## 1. Decisões (Rafael, 2026-09-29)
 
 | Tema | Decisão |
 | --- | --- |
 | Escolhas na run | **DECIDIDO:** só eventos e Reward Choice. O loadout de skills e a build seguem travados durante a expedição e mudam só no Hub. |
-| Loot | **DECIDIDO:** sorteio simples por seed com as tabelas v0.4 do recorte; sem pity, Smart Loot, Duplicate Protection nem Slot Pity (`LOOT-EXPANSION-1`). |
+| Loot | **DECIDIDO:** sorteio simples por seed com as tabelas do recorte do slice; sem pity, Smart Loot, Duplicate Protection nem Slot Pity (`LOOT-EXPANSION-1`). As tabelas herdadas vêm da origem v0.4, incorporada à base ativa. |
 | Persistência | **DECIDIDO:** save mínimo versionado + tela simples de inventário/equipar/reciclar entre expedições. Hub visual, offline, Ferreiro, Árvore e Echo ficam no `1D`/`1E`. |
 | Eventos | **DECIDIDO:** framework orientado a dados + **10 eventos** no slice (o pool inicial de 5 foi ampliado em 2026-09-29 para evitar repetição); 2 janelas fixas mantidas + chance de evento aleatório nas transições entre encontros comuns. |
 
@@ -45,7 +45,7 @@ Fluxo: `run.step → eventos → EventDirector/LootRoller → SliceSave → Slic
 
 **Janelas:** o Poço de Lúmen (`EVENT_C1_001`) e a Reserva de Resíduo mantêm as posições do [SLICE_1_SCOPE](../04_content/chapters/chapter_01/SLICE_1_SCOPE.md). Cada transição entre dois encontros comuns tem uma chance **HIPÓTESE** de rolar um evento `random`; `personal` e `secret` entram no mesmo sorteio quando as condições valem.
 
-**Guardas de balanceamento (DECIDIDO como regra, valores HIPÓTESE):** nenhum evento é necessário para vencer o boss; segredos dão lore, flags e recompensas pequenas ou não numéricas; o Resíduo total continua dentro do orçamento do [ECON-1](../06_balance/ECONOMY_MODEL.md), verificado no Argos.
+**Guardas de balanceamento (DECIDIDO como regra, valores HIPÓTESE):** nenhum evento é necessário para vencer o boss; segredos dão lore, flags e recompensas pequenas ou não numéricas; o Resíduo total continua dentro do orçamento do [ECON-1](../06_balance/v1/07_ECONOMIA_LOOT.md), verificado no Argos.
 
 ### Eventos do slice
 
@@ -107,7 +107,7 @@ Nomes vindos dos candidatos de [DESIGN_SEEDS](../04_content/chapters/chapter_01/
 
 ## 4. Recompensas e loot
 
-- **Drop comum:** cada inimigo derrotado rola a tabela do recorte (Comum/Incomum/Raro) com a seed da run. Fonte das chances: [CHAPTER_01_ENEMIES_CANONICAL.json](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json); a renormalização para o recorte é `EM ABERTO` (BALANCE-FOUNDATION-1).
+- **Drop comum:** cada inimigo derrotado rola a tabela do recorte (Comum/Incomum/Raro) com a seed da run. Fonte das chances herdadas: [CHAPTER_01_ENEMIES_CANONICAL.json](../04_content/enemies/CHAPTER_01_ENEMIES_CANONICAL.json); a renormalização para o recorte é `EM ABERTO` (BALANCE-FOUNDATION-1).
 - **Reward Choice:** elite e mini-boss oferecem 1 item entre 3; o jogador escolhe pela tela, sem pausa de combate.
 - **Boss:** Casca do Guardião (Relíquia) e equipamento Épico garantido no primeiro clear, conforme o recorte.
 - **Sem Echo aleatório:** a chance de Echo continua desativada; a entrega da Sentinela é `1D`.

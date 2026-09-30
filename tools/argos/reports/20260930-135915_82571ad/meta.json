@@ -1,0 +1,12 @@
+{
+ "commit": "82571ad",
+ "dirty": true,
+ "scenario_file": "tools/argos/simulator/combat/scenarios/kits_focus_bastiao.json",
+ "balance_hash": "d4dcffd9a8ec125abc73dd99002b41beff9d10b729e0701611781cff15eb4001",
+ "balance_inputs": {
+  "data/balance/combat_profiles.json": "ada496afa42f8db9ef7aaca84c7edf668432451fe88c57e1c864dd89fca1deac",
+  "data/balance/combat_core.json": "0c65f7c5434be191f1070a1d1d4b890686f4cee50024875c5de14d2a723cb80c",
+  "data/balance/chapters/chapter_01.json": "127bdb44a129f8e324b3097ca47dc008eb31a194c05082d5e15f89ffbed60167",
+  "tools/argos/simulator/combat/scenarios/kits_focus_bastiao.json": "4ef18f62f07835f4bb4b9df1ce7afd43116806e724e76c4df517c494234c81a6"
+ }
+}

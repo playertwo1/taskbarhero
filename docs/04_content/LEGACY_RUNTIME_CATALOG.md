@@ -1,12 +1,12 @@
-# Catálogos runtime legados e migração v0.4
+# Catálogos runtime legados e migração para os IDs canônicos
 
-**Função:** tabela de aliases entre os IDs do MVP antigo e os IDs dos catálogos canônicos v0.4. **O conteúdo legado foi removido de `/data` no `1A-CUT` (2026-09-29)**; os IDs da coluna “runtime atual” existem só no histórico do git (commit `cd47758`) e no campo `legacy_alias` das linhas do slice, que serve para reaproveitar nome e sprite.
+**Função:** tabela de aliases entre os IDs do MVP antigo e os IDs do balanceamento v1.0, que incorpora fontes de origem v0.4. **O conteúdo legado foi removido de `/data` no `1A-CUT` (2026-09-29)**; os IDs da coluna “runtime atual” existem só no histórico do git (commit `cd47758`) e no campo `legacy_alias` das linhas do slice, que serve para reaproveitar nome e sprite.
 
 **Alias no slice (`SLICE-1A-2`):** as linhas do slice em `/data` têm `content_set: "slice"`, `id` igual ao ID de design em minúsculas (por exemplo `en_c1_001`), `design_id` e `legacy_alias` com o ID antigo desta tabela, ou `null` quando a entidade é nova. O alias serve para reaproveitar nome e sprite; os stats vêm da composição de `data/balance/combat_core.json` com o perfil do capítulo, e não dos valores legados. Depois do `1A-CUT` todas as linhas de `/data` pertencem ao slice.
 
 ## Inimigos
 
-| ID runtime atual | Entidade runtime | ID canônico v0.4 | Tratamento |
+| ID runtime legado | Entidade histórica | ID canônico | Tratamento |
 |---|---|---|---|
 | `geleia_de_lumen` | Geleia de Lúmen | `EN_C1_001` | Alias de entidade; dados de combate/loot ainda precisam de migração. |
 | `espirito_de_raiz` | Espírito de Raiz | `EN_C1_002` | Alias de entidade; dados de combate/loot ainda precisam de migração. |
@@ -22,9 +22,9 @@
 
 ## Equipamentos
 
-Os 15 IDs runtime atuais pertencem ao catálogo anterior e permanecem carregáveis até migração. Nenhum deve ser reinterpretado como um item novo apenas por pertencer à mesma categoria.
+Os 15 IDs abaixo são do catálogo runtime histórico e foram removidos de `/data` no `1A-CUT`. Nenhum deve ser reinterpretado como item novo apenas por pertencer à mesma categoria.
 
-| ID runtime atual | Item runtime | ID canônico v0.4 | Tratamento |
+| ID runtime legado | Item histórico | ID canônico | Tratamento |
 |---|---|---|---|
 | `adaga_de_luz` | Adaga de Luz | — | Legado; sem equivalência de identidade no catálogo v0.4. |
 | `espada_de_musgo` | Espada de Musgo | — | Legado; sem equivalência de identidade no catálogo v0.4. |
@@ -42,4 +42,4 @@ Os 15 IDs runtime atuais pertencem ao catálogo anterior e permanecem carregáve
 | `amuleto_do_cervo` | Amuleto do Cervo | — | Legado; sem equivalência de identidade no catálogo v0.4. |
 | `coracao_da_floresta` | Coração da Floresta | — | Legado; sem equivalência de identidade no catálogo v0.4. |
 
-O catálogo canônico completo de IDs/nome/conceito está na [fonte v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md). Os dados efetivos do MVP estão em [`data/enemies/enemies.json`](../../data/enemies/enemies.json) e [`data/items/items.json`](../../data/items/items.json). Atribuir equivalências aos itens ou aos inimigos legados sem correspondência exige decisão de migração; não inferir equivalência por categoria ou função aproximada.
+O catálogo ativo de IDs/nome/conceito está na [balanceamento v1.0](../06_balance/v1/README.md). Os dados efetivos carregados estão em [`data/enemies/enemies.json`](../../data/enemies/enemies.json) e [`data/items/items.json`](../../data/items/items.json). Atribuir equivalências aos itens ou aos inimigos legados sem correspondência exige decisão de migração; não inferir equivalência por categoria ou função aproximada.

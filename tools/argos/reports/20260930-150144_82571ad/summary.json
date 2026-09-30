@@ -1,0 +1,545 @@
+{
+ "meta": {
+  "balance_version": "0.5",
+  "chapter_id": "CHAPTER_01",
+  "enemy_damage_scale": 0.5,
+  "godot": "4.7.2-stable (official)",
+  "kind": "meta",
+  "levels": [
+   8.0,
+   10.0,
+   12.0
+  ],
+  "modes": [
+   "route",
+   "segments",
+   "campaign"
+  ],
+  "party": [
+   "hero_001",
+   "hero_002",
+   "hero_003"
+  ],
+  "resolved_sources": [
+   "res://data/balance/combat_core.json",
+   "res://data/balance/chapters/chapter_01.json"
+  ],
+  "scenario": "kits_focus_flecha",
+  "seeds": 26.0,
+  "variants": [],
+  "commit": "82571ad",
+  "dirty": true,
+  "scenario_file": "tools/argos/simulator/combat/scenarios/kits_focus_flecha.json",
+  "balance_hash": "f9afe3f10ce59c199a62d3ad009b414cf68eb7062f473ff854736eb6b07eb398",
+  "balance_inputs": {
+   "data/balance/combat_profiles.json": "ada496afa42f8db9ef7aaca84c7edf668432451fe88c57e1c864dd89fca1deac",
+   "data/balance/combat_core.json": "0c65f7c5434be191f1070a1d1d4b890686f4cee50024875c5de14d2a723cb80c",
+   "data/balance/chapters/chapter_01.json": "127bdb44a129f8e324b3097ca47dc008eb31a194c05082d5e15f89ffbed60167",
+   "tools/argos/simulator/combat/scenarios/kits_focus_flecha.json": "726ca57f640558683ef5edc596d6e277289e4473dd3a8f8d5c38109275aec09c"
+  }
+ },
+ "findings": [
+  {
+   "type": "BALANCE",
+   "severity": "MEDIUM",
+   "title": "TTK de guardiao fora de 120–210 s",
+   "metric": "1/3 combinações vencedoras fora; mediana 120 s; pior guardiao/marca/controle nível 10: 116 s",
+   "rule": "docs/04_content/chapters/chapter_01/ENCOUNTERS.md (120–210 s)"
+  },
+  {
+   "type": "INFO",
+   "severity": "INFO",
+   "title": "Caminhos viáveis",
+   "metric": "viáveis no nível 10 (rota ≥ 50%): 3; sem lumen: 3; guardiao/critico/controle, guardiao/marca/controle, guardiao/velocidade/controle",
+   "rule": "Pedido de Rafael (2026-09-29): mais de um caminho viável, sem depender da cura; vitória esperada por volta do nível 10–11"
+  },
+  {
+   "type": "INFO",
+   "severity": "INFO",
+   "title": "Referência de primeira tentativa no nível 10",
+   "metric": "melhor combinação 69% (meta humana 40%–60%)",
+   "rule": "ENCOUNTERS.md: 40–60% na primeira tentativa é meta de teste humano; aqui só referência"
+  },
+  {
+   "type": "INFO",
+   "severity": "INFO",
+   "title": "Itens por tentativa",
+   "metric": "mediana 4.0 item(ns) por tentativa entre combinações",
+   "rule": "SLICE_1_SCOPE.md seção 3: mínimo de 5 Resíduos antes do boss = um Reforço +1 (HIPÓTESE)"
+  }
+ ],
+ "variants": [],
+ "route": [
+  {
+   "build": "guardiao/critico/controle",
+   "level": 8,
+   "runs": 26,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "critico",
+    "hero_003": "controle"
+   },
+   "win_rate": 0.07692307692307693,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 68.31574473633535,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 10,
+   "runs": 26,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "critico",
+    "hero_003": "controle"
+   },
+   "win_rate": 0.5769230769230769,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 74.40532824929144,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 12,
+   "runs": 26,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "critico",
+    "hero_003": "controle"
+   },
+   "win_rate": 0.8461538461538461,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 70.14182053527844,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 8,
+   "runs": 26,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "win_rate": 0.038461538461538464,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 66.51615593496695,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 10,
+   "runs": 26,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "win_rate": 0.6538461538461539,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 68.69393346402964,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 12,
+   "runs": 26,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 71.07964973176735,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "level": 8,
+   "runs": 26,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "velocidade",
+    "hero_003": "controle"
+   },
+   "win_rate": 0.0,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 70.6950688448249,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "level": 10,
+   "runs": 26,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "velocidade",
+    "hero_003": "controle"
+   },
+   "win_rate": 0.6923076923076923,
+   "main_loss": "c1_5_2_a",
+   "hp_before_boss_pct": 72.27026447185,
+   "healing": 0.0
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "level": 12,
+   "runs": 26,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "velocidade",
+    "hero_003": "controle"
+   },
+   "win_rate": 1.0,
+   "main_loss": "",
+   "hp_before_boss_pct": 73.61086648094106,
+   "healing": 0.0
+  }
+ ],
+ "segments": [
+  {
+   "build": "guardiao/critico/controle",
+   "level": 8,
+   "segment": "elite",
+   "runs": 26,
+   "content_level": 3,
+   "win_rate": 1.0,
+   "ttk": 14.1666666666667,
+   "hp_left_pct": 81.3679554631421
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 26,
+   "content_level": 10,
+   "win_rate": 0.8076923076923077,
+   "ttk": 128.888888888889,
+   "hp_left_pct": 21.7499227887183
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 26,
+   "content_level": 5,
+   "win_rate": 1.0,
+   "ttk": 47.5,
+   "hp_left_pct": 76.59996390671321
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 10,
+   "segment": "elite",
+   "runs": 26,
+   "content_level": 3,
+   "win_rate": 1.0,
+   "ttk": 13.3333333333333,
+   "hp_left_pct": 84.9012357388075
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 10,
+   "segment": "guardiao",
+   "runs": 26,
+   "content_level": 10,
+   "win_rate": 1.0,
+   "ttk": 120.0,
+   "hp_left_pct": 30.99124166359935
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 10,
+   "segment": "rainha",
+   "runs": 26,
+   "content_level": 5,
+   "win_rate": 1.0,
+   "ttk": 44.1666666666667,
+   "hp_left_pct": 80.3114094557741
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 12,
+   "segment": "elite",
+   "runs": 26,
+   "content_level": 3,
+   "win_rate": 1.0,
+   "ttk": 12.5,
+   "hp_left_pct": 87.8104965468233
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 12,
+   "segment": "guardiao",
+   "runs": 26,
+   "content_level": 10,
+   "win_rate": 1.0,
+   "ttk": 115.555555555556,
+   "hp_left_pct": 33.1433611403016
+  },
+  {
+   "build": "guardiao/critico/controle",
+   "level": 12,
+   "segment": "rainha",
+   "runs": 26,
+   "content_level": 5,
+   "win_rate": 1.0,
+   "ttk": 41.6666666666667,
+   "hp_left_pct": 81.8134058267205
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 8,
+   "segment": "elite",
+   "runs": 26,
+   "content_level": 3,
+   "win_rate": 1.0,
+   "ttk": 14.0,
+   "hp_left_pct": 82.7514989050147
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 26,
+   "content_level": 10,
+   "win_rate": 1.0,
+   "ttk": 128.8194444444445,
+   "hp_left_pct": 25.33208691438675
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 26,
+   "content_level": 5,
+   "win_rate": 1.0,
+   "ttk": 43.3333333333334,
+   "hp_left_pct": 76.26257772674944
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 10,
+   "segment": "elite",
+   "runs": 26,
+   "content_level": 3,
+   "win_rate": 1.0,
+   "ttk": 12.5,
+   "hp_left_pct": 88.8928410795096
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 10,
+   "segment": "guardiao",
+   "runs": 26,
+   "content_level": 10,
+   "win_rate": 1.0,
+   "ttk": 115.6944444444445,
+   "hp_left_pct": 34.901236181572
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 10,
+   "segment": "rainha",
+   "runs": 26,
+   "content_level": 5,
+   "win_rate": 1.0,
+   "ttk": 41.1111111111111,
+   "hp_left_pct": 78.893155141056
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 12,
+   "segment": "elite",
+   "runs": 26,
+   "content_level": 3,
+   "win_rate": 1.0,
+   "ttk": 12.2222222222222,
+   "hp_left_pct": 89.8607989636004
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 12,
+   "segment": "guardiao",
+   "runs": 26,
+   "content_level": 10,
+   "win_rate": 1.0,
+   "ttk": 106.666666666667,
+   "hp_left_pct": 42.671008652275745
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "level": 12,
+   "segment": "rainha",
+   "runs": 26,
+   "content_level": 5,
+   "win_rate": 1.0,
+   "ttk": 38.8888888888889,
+   "hp_left_pct": 78.8791202275251
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "level": 8,
+   "segment": "elite",
+   "runs": 26,
+   "content_level": 3,
+   "win_rate": 1.0,
+   "ttk": 13.0699833695579,
+   "hp_left_pct": 83.695438613312
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "level": 8,
+   "segment": "guardiao",
+   "runs": 26,
+   "content_level": 10,
+   "win_rate": 1.0,
+   "ttk": 138.33333333333348,
+   "hp_left_pct": 18.6348777483369
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "level": 8,
+   "segment": "rainha",
+   "runs": 26,
+   "content_level": 5,
+   "win_rate": 1.0,
+   "ttk": 45.2575757575758,
+   "hp_left_pct": 79.5519719640629
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "level": 10,
+   "segment": "elite",
+   "runs": 26,
+   "content_level": 3,
+   "win_rate": 1.0,
+   "ttk": 12.2366500362246,
+   "hp_left_pct": 87.192123725874
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "level": 10,
+   "segment": "guardiao",
+   "runs": 26,
+   "content_level": 10,
+   "win_rate": 1.0,
+   "ttk": 120.0,
+   "hp_left_pct": 32.7983240637185
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "level": 10,
+   "segment": "rainha",
+   "runs": 26,
+   "content_level": 5,
+   "win_rate": 1.0,
+   "ttk": 43.3333333333334,
+   "hp_left_pct": 78.70419096405641
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "level": 12,
+   "segment": "elite",
+   "runs": 26,
+   "content_level": 3,
+   "win_rate": 1.0,
+   "ttk": 11.81276946255675,
+   "hp_left_pct": 88.36225699762119
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "level": 12,
+   "segment": "guardiao",
+   "runs": 26,
+   "content_level": 10,
+   "win_rate": 1.0,
+   "ttk": 113.88527808463951,
+   "hp_left_pct": 43.493908444505706
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "level": 12,
+   "segment": "rainha",
+   "runs": 26,
+   "content_level": 5,
+   "win_rate": 1.0,
+   "ttk": 41.5863612792026,
+   "hp_left_pct": 80.58951812425354
+  }
+ ],
+ "campaign": [
+  {
+   "build": "guardiao/critico/controle",
+   "campaigns": 26,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "critico",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "campaigns": 26,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "campaigns": 26,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "velocidade",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0
+  }
+ ],
+ "economy": [
+  {
+   "build": "guardiao/critico/controle",
+   "gold_per_attempt": 237.5,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.0,
+   "residue_total": 57.0
+  },
+  {
+   "build": "guardiao/marca/controle",
+   "gold_per_attempt": 235,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 11.0,
+   "residue_total": 54.0
+  },
+  {
+   "build": "guardiao/velocidade/controle",
+   "gold_per_attempt": 237,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 10.5,
+   "residue_total": 54.5
+  }
+ ],
+ "violations": {},
+ "violation_examples": {},
+ "run_layer": {
+  "events": [],
+  "loot_by_rarity": {}
+ }
+}

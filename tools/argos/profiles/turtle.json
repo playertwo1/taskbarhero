@@ -1,0 +1,12 @@
+{
+  "id": "turtle",
+  "tier": "balance_lab",
+  "status": "IMPLEMENTED",
+  "question": "Um time todo de sobrevivência vence, e com que lentidão?",
+  "description": "Maximiza defesa, cura e proteção: builds de guarda, marca e cura, e equipamento escolhido pelo peso de vida, defesa e tenacidade.",
+  "modes": ["campaign"],
+  "builds": {"hero_001": "guardiao", "hero_002": "marca", "hero_003": "lumen"},
+  "policy": {"reward": "best", "events": "first", "equip": "focus_defense", "spend": "full", "max_attempts": 16},
+  "looks_for": ["time imortal que vence cedo demais", "lutas longas demais", "cura dominante (ver BAL-010)"],
+  "not_modeled": ["TTK longo como medida de tédio (o Argos não mede diversão)"]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "edge_case",
+  "tier": "core",
+  "status": "IMPLEMENTED",
+  "question": "O sistema continua correto nos extremos?",
+  "description": "Faz ações válidas nos limites: no combate, party nível 1 e nível 100, sem equipamento e com equipamento máximo (Item Power 100, nível de item 100, Reforço 1), HP cheio e HP 1; no inventário, começa vazio, sem Resíduo e sem Fragmentos e cresce até centenas de itens.",
+  "modes": ["edge", "fuzz"],
+  "edge": {"levels": [1, 100], "equipment": ["none", "max"], "hp": ["full", "one"]},
+  "fuzz": {"steps": 400, "items_min": 0, "items_max": 2, "residue_max": 1, "fragments_max": 1, "open_tree_chance": 0.5, "weights": {"add_item": 6, "add_materials": 2, "add_fragments": 2}},
+  "looks_for": ["números não finitos (NaN ou infinito)", "HP fora de [0, máximo]", "execução que não termina", "invariantes de inventário com estoque zero ou enorme"],
+  "not_modeled": ["capacidade de inventário (o slice não tem)", "estatísticas acima do nível 100", "números gigantes de longo prazo"]
+}

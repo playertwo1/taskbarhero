@@ -1,0 +1,12 @@
+{
+  "id": "beginner",
+  "tier": "core",
+  "status": "IMPLEMENTED",
+  "question": "Um humano normal consegue jogar?",
+  "description": "Novato: escolhe sempre a primeira opção sem ler, só descobre que pode equipar depois da primeira derrota, nunca usa a Árvore nem o Ferreiro e desiste depois de seis derrotas seguidas sem vencer.",
+  "modes": ["campaign"],
+  "policy": {"reward": "first", "events": "first", "equip": "best", "equip_from_attempt": 2, "spend": "none", "quit_after_losses": 6, "max_attempts": 12},
+  "looks_for": ["taxa de abandono", "tentativa da primeira vitória", "nível na vitória", "itens guardados sem uso"],
+  "not_modeled": ["leitura de menus e rótulos", "falhas de toque", "tutorial (o slice não tem)"],
+  "hypothesis": "As escolhas do novato (primeira opção, equipar só na 2ª tentativa, desistir em 6 derrotas) são HIPÓTESE do Argos, não dado de jogadores reais."
+}

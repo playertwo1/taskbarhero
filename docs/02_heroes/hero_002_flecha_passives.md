@@ -5,7 +5,7 @@ certainty: HIPOTESE
 
 # HERO_002 — Flecha: passivas e árvores de build
 
-**Fonte de estrutura:** [HERO_STANDARD.md](../../HERO_STANDARD.md).
+**Fonte de estrutura:** [HERO_STANDARD.md](HERO_STANDARD.md).
 **Identidade e skills:** [ficha da Flecha](hero_002_flecha.md) · [skills canônicas](../04_content/skills/FLECHA_SKILLS.md).
 **Escopo:** 1 passiva de identidade + 3 árvores de 5 passivas, incluindo um Capstone por árvore. Conceitos e nomes são propostas de design; números e efeitos runtime não estão aprovados.
 
@@ -113,7 +113,7 @@ Ao terminar Rajada ou Ricochete contra uma presa marcada, Flecha encurta parte d
 
 ## Referências
 
-- [Padrão Canônico dos Heróis](../../HERO_STANDARD.md)
+- [Padrão Canônico dos Heróis](HERO_STANDARD.md)
 - [Sistema de skills](../03_systems/SKILL_SYSTEM.md)
-- [Sistema compartilhado de balanceamento](../06_balance/COMBAT_BALANCE_STANDARD.md)
-- [Base canônica v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md)
+- [Sistema compartilhado de balanceamento](../06_balance/v1/01_STATUS_E_COMBATE.md)
+- [balanceamento v1.0](../06_balance/v1/README.md)

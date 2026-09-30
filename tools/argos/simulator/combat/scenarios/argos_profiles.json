@@ -1,0 +1,28 @@
+{
+  "id": "argos_profiles",
+  "chapter_id": "CHAPTER_01",
+  "party": ["hero_001", "hero_002", "hero_003"],
+  "description": "Perfis de jogador artificial do Argos (tools/argos/profiles/README.md): campanha com o núcleo real, fuzz da API de inventário e casos de borda do combate. Cada variante é um perfil; perfis com `builds` fixas ignoram a matriz abaixo. Use --profiles ou --area para rodar só parte.",
+  "seeds": 4,
+  "levels": [5],
+  "builds": {
+    "hero_001": ["guardiao", "retaliacao"],
+    "hero_002": ["marca"],
+    "hero_003": ["arcano", "lumen"]
+  },
+  "modes": ["campaign"],
+  "campaign": {"start_level": 1, "max_attempts": 12, "run_layer": true},
+  "rank_milestones": [3, 5, 7, 9, 11, 13, 15, 17, 19],
+  "max_time": 3600,
+  "stuck_seconds": 30,
+  "variants": [
+    {"id": "beginner", "profile": "beginner"},
+    {"id": "optimizer", "profile": "optimizer"},
+    {"id": "chaos", "profile": "chaos"},
+    {"id": "exploit_hunter", "profile": "exploit_hunter"},
+    {"id": "grinder", "profile": "grinder"},
+    {"id": "edge_case", "profile": "edge_case"},
+    {"id": "aggressor", "profile": "aggressor"},
+    {"id": "turtle", "profile": "turtle"}
+  ]
+}

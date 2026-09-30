@@ -6,7 +6,7 @@ var items: Array
 var catalog: Dictionary
 
 const BUILD := {"hero_001": "guardiao", "hero_002": "critico", "hero_003": "controle"}
-const LEVEL := 12
+const LEVEL := 14
 
 func _expect(label: String, cond: bool) -> void:
 	if cond:

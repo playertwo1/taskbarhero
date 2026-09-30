@@ -5,9 +5,9 @@
   "content_set": "slice",
   "status": "IMPLEMENTING",
   "certainty": "HIPOTESE",
-  "source": "docs/06_balance/BALANCE_V0.5.md",
+  "source": "docs/06_balance/v1/capitulos/CAPITULO_01.md",
   "enemy_damage_scale": 0.5,
-  "party_hp_scale": {"ELITE": 3.0, "MINIBOSS": 3.0, "BOSS": 1.5},
+  "party_hp_scale": {"ELITE": 3.0, "MINIBOSS": 3.0, "BOSS": 2.0},
   "recovery_between_encounters": {
     "certainty": "HIPOTESE",
     "source": "DECIDIDO por Rafael em 2026-09-29: fôlego entre encontros; valor medido pelo Argos",
@@ -33,5 +33,5 @@
     "boss_entry_node": "c1_3_2_a"
   },
   "balance_version": "0.5",
-  "party_hp_scale_note": "Chefe ×1,5; elite e minichefe ×3. Valores locais do Capítulo 1, não regra global."
+  "party_hp_scale_note": "Chefe ×2 (era ×1,5 antes dos itens da escada de nove níveis; recalibrado em 2026-09-30 para manter a vitória do Guardião em 10–11); elite e minichefe ×3. Valores locais do Capítulo 1, não regra global."
 }

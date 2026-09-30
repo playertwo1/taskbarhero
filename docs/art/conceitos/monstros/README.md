@@ -1,6 +1,6 @@
 # Monstros — conceitos visuais
 
-As fichas marcadas **cânone** trazem resumo de função, status e drops do bestiário v0.4, além de uma proposta visual para orientar novos sprites. O [JSON do Capítulo 1](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json) continua sendo a autoridade dos dados.
+As fichas marcadas **cânone** trazem resumo de função, status e drops do bestiário v0.4, além de uma proposta visual para orientar novos sprites. O [JSON do Capítulo 1](../../../04_content/enemies/CHAPTER_01_ENEMIES_CANONICAL.json) continua sendo a autoridade dos dados.
 
 ## Inimigos canônicos
 

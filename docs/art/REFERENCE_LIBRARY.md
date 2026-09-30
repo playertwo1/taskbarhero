@@ -18,10 +18,9 @@ Os registros canônicos existentes são referências visuais documentadas, mas o
 
 | ID / arquivos | Uso permitido | Licença/proveniência | Estado |
 |---|---|---|---|
-| `docs/art/references/*` | estudo privado de composição/proporção; nunca copiar design, pixels, paleta distintiva ou personagem | Proveniência e licença individual não estão registradas para todos os arquivos | Não aprovadas para produção nem redistribuição; confirmar direitos antes de qualquer uso além de análise interna |
 | `campfire_heroes_reference.jpg` | referência contextual conforme decisão do projeto | Material de terceiro; licença/termos de uso não documentados neste repositório | Referência de estudo apenas; não incorporar, editar para derivar sprites ou redistribuir |
 | TY High Fantasy 40 — [Lospec](https://lospec.com/palette-list/ty-high-fantasy-40) | valores de cor usados como palette master, conforme [`PALETTE.md`](./PALETTE.md) | Criador indicado: Toby_Yasha; página não especifica licença | Rafael aprovou uso pessoal/privado no Pocket Hero em 2026-09-27; não autoriza redistribuição, publicação ou uso comercial |
-| Páginas de Task Bar Hero/TBH listadas em `README.md` e `docs/REFERENCIAS_TBH.md` | estudo de mecânicas e legibilidade abstratas | Direitos pertencem aos respectivos titulares; nenhum direito de reutilização é concedido por este registro | Sem uso visual derivativo; preserve identidade original do Pocket Hero |
+| Páginas de Task Bar Hero/TBH listadas em `README.md` e `docs/00_project/REFERENCIAS_TBH.md` | estudo de mecânicas e legibilidade abstratas | Direitos pertencem aos respectivos titulares; nenhum direito de reutilização é concedido por este registro | Sem uso visual derivativo; preserve identidade original do Pocket Hero |
 
 **Bloqueio de licença:** antes de promover uma referência externa, registre URL de origem, autor/titular, licença exata e versão/data, permissões comerciais e de modificação, atribuição exigida, prova/arquivo da licença e o elemento limitado que será estudado. Se um campo for desconhecido, mantenha o item como não aprovado.
 

@@ -5,18 +5,18 @@ status: DESIGN
 
 # Capítulo 1 — Bosque de Lúmen
 
-**Status:** `DESIGN` — a direção do Bosque permanece a região inicial. O bestiário, catálogo de equipamentos, materiais e loot canônicos são os da versão v0.4, aprovados por Rafael em 2026-09-28; conteúdo e valores runtime ainda aguardam migração e validação.
+**Status:** `DESIGN` — a direção do Bosque permanece a região inicial. O [balanceamento v1.0](../../../06_balance/v1/README.md) é a autoridade de combate, itens e loot. Conteúdo e valores runtime ainda aguardam migração e validação.
 **Escopo:** estrutura de campanha, encontros, inimigos, chefes, skills e equipamentos. Não é especificação de balanceamento, aprovação de arte nem autorização para produção em massa.
 
 ## Fontes e nível de certeza
 
-- **DECIDIDO:** o Bosque de Lúmen é a primeira região; a espinha do MVP tem cinco fases macro. A party é Bastião, Flecha e Íris. O bestiário canônico do capítulo é o pacote v0.4, com 17 entidades e IDs definidos no [JSON canônico](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json). As entidades distintas no jogo atual ficam listadas como legado em [`LEGACY_RUNTIME_CATALOG.md`](../../LEGACY_RUNTIME_CATALOG.md).
-- **DECIDIDO:** o catálogo v0.4 contém 30 equipamentos em cinco categorias, sete materiais e regras canônicas de loot. Consulte os [catálogos v0.4](../../../../documents/canonical/taskbar_sistema_v0.4/README.md). O runtime preserva temporariamente seus registros antigos. As skills deste documento continuam conceitos parciais; consulte o [padrão canônico](../../../../HERO_STANDARD.md) e o [registro central](../../../CONTENT_REGISTRY.md).
+- **DECIDIDO:** o Bosque de Lúmen é a primeira região; a espinha do MVP tem cinco fases macro. A party é Bastião, Flecha e Íris. O bestiário canônico do balanceamento v1.0 herda 17 entidades e IDs das fontes v0.4, preservadas na composição; consulte o [JSON canônico](../../enemies/CHAPTER_01_ENEMIES_CANONICAL.json). As entidades distintas no jogo atual ficam listadas como legado em [`LEGACY_RUNTIME_CATALOG.md`](../../LEGACY_RUNTIME_CATALOG.md).
+- **DECIDIDO:** o balanceamento v1.0 preserva o catálogo herdado de equipamentos e sete materiais, com compatibilidade e raridades do slice revistas no [catálogo do Capítulo 1](../../items/CHAPTER_01_ITEM_CATALOG.md). A fonte v0.4 continua apenas como origem histórica. Consulte também o [registro central](../../../CONTENT_REGISTRY.md) e o [padrão canônico](../../../02_heroes/HERO_STANDARD.md).
 - **RECOMENDADO:** preservar as cinco fases macro e a estrutura-base de dez subfases e dar a cada uma encontros com função própria e marcos de progressão. Isso amplia o conteúdo sem invalidar os gates históricos do MVP.
 - **HIPÓTESE:** história, composição dos encontros, comportamento detalhado, skills e equipamentos abaixo são propostas originais. A composição passou por simulação de budgets e loot, mas não por validação em runtime.
-- **EM ABERTO:** história final, dificuldade/pacing em playtest, composição da party por encontro, detalhes de skills/unlocks e comportamento runtime. A autoridade para IDs, nomes, raridades e regras de loot é v0.4.
+- **EM ABERTO:** história final, dificuldade/pacing em playtest, composição da party por encontro, detalhes de skills/unlocks e comportamento runtime (a escala de combate 10× está decidida; a migração, pendente). A autoridade ativa para IDs, nomes, raridades e regras de loot é o balanceamento v1.0.
 
-Fontes: [`ROADMAP.md`](../../../../ROADMAP.md), [`POCKET_HERO_PROJECT_BRIEF.md`](../../../POCKET_HERO_PROJECT_BRIEF.md), [`REFERENCIAS_TBH.md`](../../../REFERENCIAS_TBH.md), [guia de design incremental](../../../../documents/GUIA_DESIGN_INCREMENTAL_POCKET_HERO.md) e [guia de economia e pacing](../../../../documents/GUIA_AVANCADO_ECONOMIA_PACING_BALANCEAMENTO_POCKET_HERO.md). Referências externas deste projeto servem para princípios; nomes, arte, mapas, texto e balanceamento permanecem próprios.
+Fontes: [`ROADMAP.md`](../../../../ROADMAP.md), [`POCKET_HERO_PROJECT_BRIEF.md`](../../../00_project/POCKET_HERO_PROJECT_BRIEF.md), [`REFERENCIAS_TBH.md`](../../../00_project/REFERENCIAS_TBH.md), [guia de design incremental](../../../../documents/GUIA_DESIGN_INCREMENTAL_POCKET_HERO.md) e [guia de economia e pacing](../../../../documents/GUIA_AVANCADO_ECONOMIA_PACING_BALANCEAMENTO_POCKET_HERO.md). Referências externas deste projeto servem para princípios; nomes, arte, mapas, texto e balanceamento permanecem próprios.
 
 ## Promessa do capítulo
 
@@ -30,7 +30,7 @@ As cinco fases macro e dez subfases preservam a estrutura aprovada. A proposta a
 
 ### Recompensas de primeira conclusão — hipótese para ECON-1
 
-**HIPÓTESE:** cada uma das cinco fases macro concede uma parcela única de Fragmentos de Ressonância ao ser concluída pela primeira vez. O orçamento e a distribuição propostos estão na seção [Árvore dos Ecos do modelo ECON-1](../../../06_balance/ECONOMY_MODEL.md#árvore-dos-ecos); esta ficha define os eventos de conteúdo, sem duplicar valores.
+**HIPÓTESE:** cada uma das cinco fases macro concede uma parcela única de Fragmentos de Ressonância ao ser concluída pela primeira vez. O orçamento e a distribuição propostos estão na seção [Árvore dos Ecos do modelo ECON-1](../../../06_balance/v1/07_ECONOMIA_LOOT.md); esta ficha define os eventos de conteúdo, sem duplicar valores.
 
 | Fase macro concluída | Evento de primeira conclusão | Função de progressão pretendida |
 | --- | --- | --- |
@@ -46,7 +46,7 @@ Os Fragmentos são registrados uma única vez por fase macro concluída. Se a ex
 
 **DECIDIDO por delegação:** incluir em um evento opcional pré-boss uma recompensa de primeira conclusão, não repetível, de Resíduo de Lúmen (`MAT_C1_LUMEN_RESIDUE`), usando a garantia idempotente v0.4. A proposta de quantidade e o custo da melhoria foram simulados; consulte [ENCOUNTERS.md](ENCOUNTERS.md). O serviço continua opcional e não é requisito para vencer.
 
-**Proposta simulada em `ECON-1`:** evento e custo do primeiro Reforço estão detalhados no [modelo de economia](../../../06_balance/ECONOMY_MODEL.md) e na fonte estruturada do [plano de encontros](encounter_plan.json). São hipóteses de design, não valores runtime. A desmontagem continua voluntária e usa materiais do catálogo v0.4; não introduzir Sucata como recurso paralelo.
+**Proposta simulada em `ECON-1`:** evento e custo do primeiro Reforço estão detalhados no [modelo de economia](../../../06_balance/v1/07_ECONOMIA_LOOT.md) e na fonte estruturada do [plano de encontros](encounter_plan.json). São hipóteses de design, não valores runtime. A desmontagem continua voluntária e usa materiais do catálogo v0.4; não introduzir Sucata como recurso paralelo.
 
 ### Papel do encontro secundário
 
@@ -64,7 +64,7 @@ Não definir ainda quem causou a mudança, por que o Guardião combate a party o
 
 ## Inimigos e leitura de combate
 
-O bestiário canônico contém **10 inimigos normais, 3 elites, 3 minichefes e 1 boss**. IDs, papéis, arquétipos, stats e loot têm uma única fonte machine-readable no [JSON canônico do Capítulo 1](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json), com regras no [schema de inimigos](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/ENEMY_CANONICAL_SCHEMA.md). A [tabela resumida](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMY_CATALOG.md) é derivada desse JSON.
+O bestiário canônico contém **10 inimigos normais, 3 elites, 3 minichefes e 1 boss**. IDs, papéis, arquétipos, stats e loot têm uma única fonte machine-readable no [JSON canônico do Capítulo 1](../../enemies/CHAPTER_01_ENEMIES_CANONICAL.json), com regras no [schema de inimigos](../../../06_balance/v1/specs/ENEMY_CANONICAL_SCHEMA.md). A [tabela resumida](../../enemies/CHAPTER_01_ENEMY_CATALOG.md) é derivada desse JSON.
 
 O MVP ainda carrega 11 IDs de uma versão anterior. Quatro normais e o Guardião-Cervo têm aliases de identidade documentados; os demais são conteúdo runtime legado sem equivalente direto. Não atribuir habilidades, loot ou identidade de um inimigo canônico aos legados por semelhança de nome/arquétipo. Consulte a [ponte de compatibilidade](../../LEGACY_RUNTIME_CATALOG.md).
 
@@ -92,13 +92,13 @@ Este overview aponta para a fonte de skills de cada herói inicial; não mantém
 
 **Recomendação de implementação:** testar primeiro uma skill automática por herói. Expandir até a meta registrada no [CONTENT_REGISTRY](../../../CONTENT_REGISTRY.md) após reconciliar listas e fichas. Liberar skills adicionais nos tiers do padrão canônico, seguindo o desbloqueio por nível já decidido. Não criar árvore extensa, energia ou custo de skill sem demonstrar que acrescentam decisões úteis.
 
-## Equipamentos — catálogo total de 30 itens
+## Equipamentos — catálogo herdado e expansão proposta
 
-O catálogo canônico v0.4 tem **30 itens**: 5 Armas, 5 Secundários, 5 Armaduras, 10 Acessórios e 5 Ecos. IDs, nomes, slots, raridade permitida e identidade estão no [catálogo canônico](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md); não duplicar as fichas aqui. Os seis slots do herói continuam sendo Arma, Secundário, Armadura, Acessório I, Acessório II e Echo.
+O catálogo adaptado do Capítulo 1 preserva **33 templates herdados**: 6 Armas, 7 Secundários, 5 Armaduras, 10 Acessórios e 5 Ecos. IDs, nomes, slots e identidade estão no [catálogo ativo](../../items/CHAPTER_01_ITEM_CATALOG.md); status por raridade aguardam a decisão de escala. Os seis slots do herói continuam sendo Arma, Secundário, Armadura, Acessório I, Acessório II e Echo.
 
-O runtime mantém 15 registros antigos (`weapon`, `armor`, `amulet`) com quatro raridades. Eles continuam carregáveis até uma migração explícita; nenhum recebe ID ou identidade de item canônico por semelhança de categoria. Consulte a [ponte de compatibilidade](../../LEGACY_RUNTIME_CATALOG.md).
+O runtime atual contém 18 templates do slice; os 15 registros do catálogo anterior foram removidos no `1A-CUT`. Seus IDs permanecem apenas como aliases históricos, sem atribuir identidade canônica por semelhança de categoria. Consulte a [ponte de compatibilidade](../../LEGACY_RUNTIME_CATALOG.md).
 
-As sete matérias-primas e suas fontes estão no [catálogo canônico de materiais](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_MATERIAL_CATALOG.md). A ordem, condições e persistência das recompensas estão no [Drop Resolver](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/DROP_RESOLVER_SPEC.md). O recorte funcional do slice precisa ser selecionado sem alterar a autoridade global v0.4.
+As sete matérias-primas e suas fontes herdadas estão no [catálogo de materiais](CHAPTER_01_MATERIAL_CATALOG.md). A ordem, condições e persistência das recompensas estão no [Drop Resolver](../../../06_balance/v1/specs/DROP_RESOLVER_SPEC.md). Ambos integram o balanceamento v1.0; o recorte funcional do slice deve seguir suas decisões atuais.
 
 ## Desbloqueios e ritmo
 
@@ -127,8 +127,8 @@ Este documento não declara os itens ou bosses balanceados. Antes de implementar
 
 - cinco fases macro e subfases estiverem aprovadas, com função clara e progressão sem repetição vazia;
 - cada inimigo e chefe tiver leitura visual, resposta viável, recompensa e lugar na curva;
-- catálogo canônico v0.4 de 17 inimigos, 30 itens e sete materiais estar ligado às cinco fases macro/dez subfases, sem IDs duplicados ou aliases implícitos;
-- catálogo respeitar os seis slots do [padrão do herói](../../../../HERO_STANDARD.md) e as regras canônicas v0.4;
+- catálogo ativo do Capítulo 1 de 17 inimigos, 33 templates herdados e sete materiais estar ligado às cinco fases macro/dez subfases, sem IDs duplicados ou aliases implícitos;
+- catálogo respeitar os seis slots do [padrão do herói](../../../02_heroes/HERO_STANDARD.md) e as regras do balanceamento v1.0;
 - fórmulas, sources/sinks, hipóteses e métricas estiverem registradas;
 - artefatos preservarem identidade original e o conteúdo puder ser aprovado sem depender de arte ainda bloqueada pelo ART-0.
 

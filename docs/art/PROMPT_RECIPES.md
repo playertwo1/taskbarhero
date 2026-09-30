@@ -1,5 +1,7 @@
 # Pocket Hero — Receitas de Prompting e Instrução Artística (Daedalus)
 
+> Regra global antes de usar estas receitas: siga o [Contrato global de criação de imagens](./IMAGE_CREATION_CONTRACT.md), abra as referências visuais atuais do jogo e passe-as à ferramenta quando possível. Estas receitas não autorizam estilo genérico nem substituem âncoras aprovadas.
+
 **Status:** DECIDIDO (FASE R7)  
 **Versão:** 1.0.0  
 **Uso:** Daedalus / Agentes Geradores com MCP `pixel-mcp`  

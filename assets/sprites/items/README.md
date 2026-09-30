@@ -9,4 +9,3 @@
 - Cada PNG contém apenas o ícone. Moldura, raridade, seleção e quantidade são desenhadas pela interface.
 - O linter técnico passou para os 30 ícones. Revisão visual independente e validação mobile ainda estão pendentes.
 
-Prévia: [grade com os 30 ícones](../../../docs/art/previews/item_icons_32x32_contact_sheet.png).

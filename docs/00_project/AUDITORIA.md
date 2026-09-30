@@ -6,7 +6,7 @@ review_date: 2026-09-28
 
 # Auditoria — decisões de design delegadas
 
-> **Nota de atualização:** este documento registra decisões anteriores à aprovação de TASKBAR Sistema Completo v0.4. Para combate/loot, catálogo de inimigos, itens, raridades, materiais e economia, as partes desta auditoria que divergirem da [base canônica v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md) estão supersedidas. Os itens de run, árvore, slots de herói e artesãos continuam válidos onde não houver conflito; use suas fontes autoritativas.
+> **Nota de atualização:** este documento registra decisões anteriores à aprovação de TASKBAR Sistema Completo v0.4 e à consolidação da base Pocket Hero v0.5. Para combate/loot, catálogo de inimigos, itens, raridades, materiais e economia, as partes desta auditoria que divergirem da [balanceamento v1.0](../06_balance/v1/README.md) estão supersedidas. Os itens de run, árvore, slots de herói e artesãos continuam válidos onde não houver conflito; use suas fontes autoritativas.
 
 Este documento registra recomendações que Rafael autorizou explicitamente o agente a aprovar durante a fundação pós-MVP. O objetivo é facilitar a revisão de Rafael. Cada regra detalhada permanece na fonte autoritativa indicada; esta auditoria não substitui esses documentos nem afirma que as regras estão implementadas.
 
@@ -28,8 +28,8 @@ Este documento registra recomendações que Rafael autorizou explicitamente o ag
 ## Equipamento e artesãos
 
 - Drops e recompensas determinísticas alimentam o inventário persistente; equipamento não troca nem é destruído automaticamente. Alterações de loadout acontecem no Hub, e o loadout fica fixo durante a expedição. Fonte: [Equipamentos e artesãos](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
-- Snapshot anterior ao cânone v0.4: as raridades do runtime (quatro níveis) não definem mais a escala global; consulte a decisão atual na seção [Base canônica de combate e loot v0.4](#base-canônica-de-combate-e-loot-v04) e no [sistema de equipamentos](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
-- O Ferreiro é o primeiro serviço: desmontagem protegida por confirmação e um serviço de melhoria controlada. O recorte de material está definido na [fonte de equipamentos e artesãos](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md) conforme o catálogo v0.4; a antiga proposta de Sucata foi substituída. Ouro pode ser custo secundário. Não entram reforja aleatória, fixação de affix, ascensão ou outras famílias de material no slice.
+- Snapshot anterior à base canônica v0.4: as raridades do runtime (quatro níveis) não definiam a escala de design aprovada naquele momento; consulte o registro histórico da seção [Base histórica v0.4 e transição para v0.5](#base-histórica-v04-e-transição-para-v05) e as decisões atuais no [sistema de equipamentos](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
+- O Ferreiro é o primeiro serviço: desmontagem protegida por confirmação e um serviço de melhoria controlada. O recorte de material está definido na [fonte de equipamentos e artesãos](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md) conforme o catálogo incorporado à v0.5; a antiga proposta de Sucata foi substituída. Ouro pode ser custo secundário. Não entram reforja aleatória, fixação de affix, ascensão ou outras famílias de material no slice.
 - Artesãos são desbloqueados gradualmente e de forma persistente na conta/Hub; Ferreiro vem primeiro, outros serviços entram quando tiverem função e economia definidas. Fonte: [Equipamentos e artesãos](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
 
 ## Árvore dos Ecos e meta-progressão
@@ -61,14 +61,14 @@ Fonte autoritativa: [catálogo TREE-1](../03_systems/GLOBAL_RESONANCE_TREE.md). 
 
 Fonte autoritativa: [Equipamentos e artesãos — CRAFT-1](../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md). Receitas detalhadas, valores e economia ainda estão pendentes; não há mudança runtime.
 
-## Base canônica de combate e loot v0.4
+## Base histórica v0.4 e transição para v0.5
 
-- Rafael aprovou TASKBAR Sistema Completo v0.4 como base canônica de design para inimigos, equipamento, seis raridades, sete materiais, combate, loot e economia. A especificação e catálogos ficam no [índice canônico](../../documents/canonical/taskbar_sistema_v0.4/README.md).
-- Mantêm-se os seis slots definidos para heróis: Arma, Secundário, Armadura, Acessório I, Acessório II e Echo. O cânone contém 30 itens em cinco grupos (5 Armas, 5 Secundários, 5 Armaduras, 10 Acessórios, 5 Ecos) e 17 inimigos.
+- Em 2026-09-28, Rafael aprovou TASKBAR Sistema Completo v0.4 como base canônica de design para inimigos, equipamento, seis raridades, sete materiais, combate, loot e economia. Em 2026-09-30, a autoridade ativa foi substituída pela [balanceamento v1.0](../06_balance/v1/README.md), preservando v0.4 apenas como origem histórica.
+- Mantêm-se os seis slots definidos para heróis: Arma, Secundário, Armadura, Acessório I, Acessório II e Echo. O balanceamento v1.0 registra 33 templates herdados (6 Armas, 7 Secundários, 5 Armaduras, 10 Acessórios, 5 Ecos) e 17 inimigos. O slice usa quatro raridades; escala absoluta e status quantitativos por raridade permanecem em aberto.
 - Os 15 itens e 11 inimigos atuais em `/data` são conteúdo runtime legado, preservado até migração explícita. Consulte a [ponte de compatibilidade](../04_content/LEGACY_RUNTIME_CATALOG.md); não inferir equivalências.
-- A economia ECON-1 e as decisões anteriores de raridade/material valem como hipóteses/recorte do primeiro slice onde forem compatíveis com v0.4; não definem mais o catálogo global.
+- A economia ECON-1 e as decisões anteriores de raridade/material valem como hipóteses/recorte do primeiro slice onde forem compatíveis com o balanceamento v1.0; não definem mais o catálogo global.
 
-Fonte autoritativa: [base canônica v0.4](../../documents/canonical/taskbar_sistema_v0.4/README.md), [padrão de balanceamento](../06_balance/COMBAT_BALANCE_STANDARD.md) e [roadmap](../../ROADMAP.md#42-balance-foundation-1--contrato-de-balanceamento). Runtime permanece separado até migração.
+Fonte autoritativa atual: [balanceamento v1.0](../06_balance/v1/README.md), [v1 · status e combate](../06_balance/v1/01_STATUS_E_COMBATE.md) e [roadmap](../../ROADMAP.md) (`BALANCE-FOUNDATION-1`, concluído; histórico em [ROADMAP_CONCLUIDO](../../arquivados/ROADMAP_CONCLUIDO.md)). Runtime permanece separado até migração.
 
 ## Echo no primeiro slice
 

@@ -9,7 +9,7 @@ status: DESIGN
 
 ## Identidade já registrada
 
-- **DECIDIDO:** Pocket Hero é um RPG incremental/idle de combate automático, loot e builds, com fantasia sombria original e Android como plataforma inicial em um aplicativo normal. Veja o [resumo do projeto](../POCKET_HERO_PROJECT_BRIEF.md) e o [guia de IA](../../documents/AI_PROJECT_GUIDE.md).
+- **DECIDIDO:** Pocket Hero é um RPG incremental/idle de combate automático, loot e builds, com fantasia sombria original e Android como plataforma inicial em um aplicativo normal. Veja o [resumo do projeto](POCKET_HERO_PROJECT_BRIEF.md) e o [guia de IA](../../documents/AI_PROJECT_GUIDE.md).
 - **DECIDIDO:** referências de gênero podem orientar princípios, mas arte, nomes, mapas, interface, textos, lore e balanceamento devem ser originais.
 - **DECIDIDO:** não haverá vantagem de poder paga. Overlay, backend, contas, multiplayer, cloud save e monetização estão fora do MVP homologado.
 - **DECIDIDO por delegação explícita de Rafael em 2026-09-28:** o jogador melhora resultados por decisões e compreensão do sistema, sem depender de cliques repetitivos.

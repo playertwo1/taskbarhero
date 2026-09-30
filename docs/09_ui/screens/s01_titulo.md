@@ -58,7 +58,7 @@ Entrada do app. Leva o jogador ao Refúgio com um toque, em menos de 2 s, sem te
 
 ## Decisões
 
-- **RECOMENDADO:** Opção 3A 'Chama na Penumbra' das [propostas de UI](../../art/mockups/UI_SCREEN_PROPOSALS.md).
+- **RECOMENDADO:** usar a [referência atual da tela de título](../../art/mockups/title_screen_reference.png) como âncora visual; o contrato desta tela define as peças de produção.
 - **EM ABERTO:** Onde o aviso de save ilegível aparece hoje: a tela atual não o mostra; ele só aparece na preparação.
 
 ## Arte

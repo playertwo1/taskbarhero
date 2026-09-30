@@ -80,6 +80,8 @@
     "identity": "Status Power; melhora zonas/debuffs.",
     "modifiers": [],
     "compatible_heroes": [
+      "hero_001",
+      "hero_002",
       "hero_003"
     ],
     "stat_weights": {
@@ -123,6 +125,8 @@
     "identity": "Arcano + Skill Haste ao acertar múltiplos alvos.",
     "modifiers": [],
     "compatible_heroes": [
+      "hero_001",
+      "hero_002",
       "hero_003"
     ],
     "stat_weights": {
@@ -215,7 +219,9 @@
     "identity": "Quanto menor o HP, maior a resistência.",
     "modifiers": [],
     "compatible_heroes": [
-      "hero_001"
+      "hero_001",
+      "hero_002",
+      "hero_003"
     ],
     "stat_weights": {
       "max_hp": 0.5,
@@ -235,7 +241,9 @@
     "identity": "Receber shield gera pequena onda de dano.",
     "modifiers": [],
     "compatible_heroes": [
-      "hero_001"
+      "hero_001",
+      "hero_002",
+      "hero_003"
     ],
     "stat_weights": {
       "max_hp": 0.55,
@@ -279,7 +287,9 @@
     "identity": "Críticos aplicam Marca.",
     "modifiers": [],
     "compatible_heroes": [
-      "hero_002"
+      "hero_001",
+      "hero_002",
+      "hero_003"
     ],
     "stat_weights": {
       "attack": 0.4,
@@ -300,6 +310,8 @@
     "identity": "Atingir múltiplos inimigos com magia reduz cooldown.",
     "modifiers": [],
     "compatible_heroes": [
+      "hero_001",
+      "hero_002",
       "hero_003"
     ],
     "stat_weights": {
@@ -346,7 +358,9 @@
     "identity": "Defesa + geração moderada de shield.",
     "modifiers": [],
     "compatible_heroes": [
-      "hero_001"
+      "hero_001",
+      "hero_002",
+      "hero_003"
     ],
     "stat_weights": {
       "max_hp": 0.45,
@@ -369,7 +383,9 @@
     "identity": "Secundário da Flecha; ataques e Marca.",
     "modifiers": [],
     "compatible_heroes": [
-      "hero_002"
+      "hero_001",
+      "hero_002",
+      "hero_003"
     ],
     "stat_weights": {
       "attack": 0.65,
@@ -392,6 +408,8 @@
     "identity": "Secundário da Íris; Skill Haste e escudo.",
     "modifiers": [],
     "compatible_heroes": [
+      "hero_001",
+      "hero_002",
       "hero_003"
     ],
     "stat_weights": {

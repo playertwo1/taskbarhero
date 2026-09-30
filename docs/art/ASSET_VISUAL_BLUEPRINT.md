@@ -44,20 +44,20 @@ As cores específicas, proporções, margens e limites de cores continuam vindo 
 
 O conteúdo da tabela é uma proposta de linguagem. Não adiciona automaticamente telas, bestiário, equipamentos visíveis nos heróis ou novos sistemas ao jogo.
 
-As fichas visuais existentes documentam assets legados; a base canônica v0.4 rege as identidades atuais de inimigos e itens. Use o índice de arte e os catálogos canônicos antes de gerar novos conceitos. Contratos Golden de assets correspondentes continuam prevalecendo para identidade já aprovada.
+As fichas visuais existentes documentam assets legados; o balanceamento v1.0 rege as identidades atuais de inimigos e itens. Use o índice de arte e os catálogos canônicos antes de gerar novos conceitos. Contratos Golden de assets correspondentes continuam prevalecendo para identidade já aprovada.
 
 ## 4. Sistema para ícones
 
 ### Itens
 
-- Criar/atualizar **30 ícones de item** com base nas 5 Armas, 5 Secundários, 5 Armaduras, 10 Acessórios e 5 Ecos do [catálogo v0.4](../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md); os 30 ícones existentes pertencem ao catálogo visual legado até revisão e mapeamento.
+- Criar/atualizar ícones conforme os **33 templates herdados** do [catálogo do Capítulo 1](../04_content/items/CHAPTER_01_ITEM_CATALOG.md): 6 Armas, 7 Secundários, 5 Armaduras, 10 Acessórios e 5 Ecos. Os ícones já existentes pertencem ao catálogo visual legado até revisão e mapeamento.
 - Manter o desenho-base do item separado de moldura de raridade, estado equipado e seleção. A interface pode compor esses estados sem gerar quatro cópias coloridas do mesmo ícone.
 - Variar primeiro a forma e o material. Uma Lendária deve continuar reconhecível sem moldura colorida.
 - Nesta proposta, não desenhar nome, sigla ou texto dentro do canvas. Nome, raridade e comparação são texto/UI fora do sprite.
 
 ### Skills
 
-- O lote inicial contém **15 ícones para skills normais**, cinco para cada um dos três heróis com conceitos listados no overview do Capítulo 1; Signature Skills não estão incluídas nesse catálogo. A meta do catálogo completo está no [CONTENT_REGISTRY](../CONTENT_REGISTRY.md) e no [padrão canônico](../../HERO_STANDARD.md); criar assets adicionais somente conforme os conceitos das skills restantes forem aprovados.
+- O lote inicial contém **15 ícones para skills normais**, cinco para cada um dos três heróis com conceitos listados no overview do Capítulo 1; Signature Skills não estão incluídas nesse catálogo. A meta do catálogo completo está no [CONTENT_REGISTRY](../CONTENT_REGISTRY.md) e no [padrão canônico](../02_heroes/HERO_STANDARD.md); criar assets adicionais somente conforme os conceitos das skills restantes forem aprovados.
 - Agrupar por gramática visual de herói (motivo, ângulo e acento), mas dar a cada habilidade um verbo visual próprio: proteger, contra-atacar, provocar, reforçar, resistir; marcar, romper, disparar, executar, esquivar; concentrar, proteger, fraturar, restaurar, retornar.
 - Se o jogo ainda não exibir todas as skills ao mesmo tempo, manter os arquivos catalogados sem produzir o lote completo antes da aprovação de gameplay.
 
@@ -81,7 +81,7 @@ O rascunho de conteúdo prevê oito famílias de inimigo comum, Lobo Alfa de Lú
 
 ## 6. Lote-piloto e autorização de produção
 
-Rafael escolheu a grade visual do inventário e definiu 32×32 para os ícones em 2026-09-28. Os 30 ícones existentes foram produzidos para o catálogo anterior. Com a aprovação do cânone v0.4, auditoria visual e mapeamento com os novos IDs passam a ser necessários antes da integração. Linter técnico anterior não comprova correspondência visual com o catálogo atual.
+Rafael escolheu a grade visual do inventário e definiu 32×32 para os ícones em 2026-09-28. Os 30 ícones existentes foram produzidos para o catálogo anterior. Com a consolidação do balanceamento v1.0, auditoria visual e mapeamento com os IDs atuais passam a ser necessários antes da integração. Linter técnico anterior não comprova correspondência visual com o catálogo atual.
 
 O piloto para outras famílias de assets continua necessário antes de lotes de skills, fases e novas famílias animadas:
 

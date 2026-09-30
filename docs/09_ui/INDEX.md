@@ -15,6 +15,7 @@ Contratos de tela do slice. Cada tela tem um contrato de UX em Markdown (objetiv
 | `UI_S09` | Árvore dos Ecos | lista linear de 6 nós | [s09](screens/s09_arvore_dos_ecos.md) | [yaml](../art/contracts/screens/s09_arvore_dos_ecos.yaml) |
 | `UI_S10` | Ferreiro | lista de texto | [s10](screens/s10_ferreiro.md) | [yaml](../art/contracts/screens/s10_ferreiro.yaml) |
 | `UI_S11` | Gravadora de Ecos (seção do Inventário, sem tela própria) | dentro do Inventário | [s11](screens/s11_gravadora_de_ecos.md) | [yaml](../art/contracts/screens/s11_gravadora_de_ecos.yaml) |
+| `UI_S12` | Números de item (componente usado em S04, S06, S07, S08 e S10) | não existe; hoje só nome, raridade e IP | [s12](screens/s12_numeros_de_item.md) | [yaml](../art/contracts/screens/s12_numeros_de_item.yaml) · [referências de layout v002](../art/mockups/s12_numeros_de_item_concepts_v002/README.md) |
 
 ## Sem contrato ainda (fora do slice)
 
@@ -22,7 +23,7 @@ Retorno offline, Bestiário/Codex, Alquimista, Ourives, seleção entre os 8 her
 
 ## Referências visuais
 
-As referências conceituais atuais por tela estão no [índice visual do SLICE-1E](../art/mockups/slice_1e_references/README.md). Referências da Árvore, Ferreiro e camada pós-boss do Refúgio estão no [índice visual do SLICE-1D](../art/mockups/slice_1d_references/README.md). As imagens são estudos, não assets finais nem fonte de regras ou valores.
+As referências conceituais atuais por tela estão no [índice visual do SLICE-1E](../art/mockups/slice_1e_references/README.md); os três layouts de componente do UI_S12 estão no [índice visual do UI_S12 v002](../art/mockups/s12_numeros_de_item_concepts_v002/README.md). Referências da Árvore, Ferreiro e camada pós-boss do Refúgio estão no [índice visual do SLICE-1D](../art/mockups/slice_1d_references/README.md). As imagens são estudos, não assets finais nem fonte de regras ou valores.
 
 ## Fluxo
 

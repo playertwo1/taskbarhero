@@ -37,7 +37,7 @@
     },
     {
       "id": "item_icons",
-      "role": "14 ícones de item do recorte.",
+      "role": "Ícones de item do recorte (hoje 64x64 em assets/sprites/items/icons_64/; a arte dos números de item está em s12_numeros_de_item.yaml).",
       "size": [
         32,
         32

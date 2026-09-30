@@ -1,6 +1,6 @@
 # Elites — conceitos visuais
 
-As fichas canônicas também servem como brief inicial para produção de sprites. O JSON do [bestiário v0.4](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json) permanece autoridade para dados e drops.
+As fichas canônicas também servem como brief inicial para produção de sprites. O JSON do [bestiário v0.4](../../../04_content/enemies/CHAPTER_01_ENEMIES_CANONICAL.json) permanece autoridade para dados e drops.
 
 ## Elites canônicos
 

@@ -1,0 +1,168 @@
+{
+  "contract_version": "1.0.0",
+  "category": "ui_component",
+  "screen_id": "UI_S12",
+  "screen": "Números de item (componente)",
+  "status": "DESIGN",
+  "ux_contract": "docs/09_ui/screens/s12_numeros_de_item.md",
+  "used_by": ["UI_S04", "UI_S06", "UI_S07", "UI_S08", "UI_S10"],
+  "canvas": {
+    "viewport": [432, 960],
+    "orientation": "portrait",
+    "safe_area": "ver docs/09_ui/SCREEN_CONVENTIONS.md"
+  },
+  "style": "dark_fantasy_pixel_art",
+  "palette": {
+    "master": "TY_HIGH_FANTASY_40",
+    "subsets": ["neutral_stone", "forest", "lumen", "crimson", "gold", "wood"],
+    "max_colors": 16,
+    "note": "Até 16 cores por peça, sem cores fora da TY40. Molduras de raridade usam um subconjunto por nível (ver pieces.rarity_frames). As cores de texto de raridade do código (ItemIconResolver.rarity_color) não são TY40 e devem ser alinhadas a estas molduras na implementação."
+  },
+  "pieces": [
+    {
+      "id": "stat_icons_24",
+      "role": "Ícones de status na tabela de bônus e na ficha do herói: Vida, Ataque, Defesa, Velocidade de ataque, Crítico, Recarga, Tenacidade.",
+      "size": [24, 24],
+      "count": 7,
+      "status": "new",
+      "keys": ["max_hp", "attack", "defense", "attack_speed", "crit_chance", "skill_haste", "tenacity"],
+      "design": "Sete símbolos distintos só pela silhueta, legíveis em monocromia: coração (Vida), espada curta (Ataque), escudo (Defesa), raio/seta dupla (Velocidade), alvo com ponto (Crítico), ampulheta (Recarga), corrente ou punho (Tenacidade). Sem texto e sem número."
+    },
+    {
+      "id": "stat_icons_16",
+      "role": "Mesmos sete ícones em versão menor para os chips (redesenhados em 16x16, não reduzidos).",
+      "size": [16, 16],
+      "count": 7,
+      "status": "new",
+      "keys": ["max_hp", "attack", "defense", "attack_speed", "crit_chance", "skill_haste", "tenacity"]
+    },
+    {
+      "id": "rarity_frames",
+      "role": "Moldura que envolve o ícone de item de 64x64 (centro transparente).",
+      "size": [72, 72],
+      "count": 5,
+      "status": "new",
+      "levels": [
+        {"id": "comum", "ladder_level": 1, "subset": "neutral_stone", "ornaments": 0, "note": "borda simples cinza-pedra"},
+        {"id": "incomum", "ladder_level": 2, "subset": "forest", "ornaments": 1, "note": "um rebite ou folha no canto superior esquerdo"},
+        {"id": "raro", "ladder_level": 3, "subset": "lumen", "ornaments": 2, "note": "dois pequenos entalhes foscos nos cantos, com detalhe teal discreto; sem gemas ou emissão de luz"},
+        {"id": "epico", "ladder_level": 4, "subset": "crimson", "ornaments": 3, "note": "três marcas de canto em vinho dessaturado, com borda dupla fosca"},
+        {"id": "reliquia", "ladder_level": null, "subset": "gold", "ornaments": 4, "note": "categoria especial fora da escada: quatro marcas em bronze/ouro envelhecido, sem brilho ou emissão de luz"}
+      ],
+      "design": "A raridade se distingue por número/forma de marcas foscas nos cantos e um detalhe de cor contido, nunca só por cor. Materiais e contraste seguem o contrato global de criação de imagens; sem gemas, glow, arco-íris ou aparência de prêmio pago. A linguagem é uma rampa: cada nível acrescenta uma marca, para que níveis futuros possam ser acrescentados sem refazer os cinco primeiros (nomes e molduras dos níveis 5 a 9 estão em aberto)."
+    },
+    {
+      "id": "delta_arrows",
+      "role": "Setas de comparação: melhora, piora e igual.",
+      "size": [12, 12],
+      "count": 3,
+      "status": "new",
+      "keys": ["up", "down", "equal"],
+      "design": "Três formas claramente diferentes: triângulo para cima, triângulo para baixo e dois traços horizontais. Cores sugeridas: verde 'forest', vinho 'crimson' e cinza 'neutral_stone', mas a forma basta."
+    },
+    {
+      "id": "slot_glyphs",
+      "role": "Glifos de slot ao lado do tipo do item e nas abas: Arma, Secundário, Armadura, Acessório, Echo. Acessório I e II usam o mesmo glifo; o numeral vem do texto da tela.",
+      "size": [24, 24],
+      "count": 5,
+      "status": "new",
+      "keys": ["weapon", "secondary", "armor", "accessory", "echo"]
+    },
+    {
+      "id": "stat_chip_frame",
+      "role": "Fundo 9-slice da pílula de status.",
+      "size": [24, 24],
+      "count": 3,
+      "status": "new",
+      "slice_margin": 8,
+      "keys": ["neutral", "positive", "negative"],
+      "design": "Pílula baixa e escura; as variantes positiva e negativa diferem também por um pequeno marcador de canto (triângulo para cima/baixo), não só por cor."
+    },
+    {
+      "id": "reinforce_pips",
+      "role": "Indicador de nível de Reforço: pip cheio e pip vazio.",
+      "size": [12, 12],
+      "count": 2,
+      "status": "new",
+      "keys": ["filled", "empty"]
+    },
+    {
+      "id": "equipped_badge",
+      "role": "Marca de 'equipado' no canto do ícone; o nome do herói vem do texto.",
+      "size": [16, 16],
+      "count": 1,
+      "status": "new"
+    },
+    {
+      "id": "item_icons",
+      "role": "Ícones de item do slice.",
+      "size": [64, 64],
+      "status": "existing",
+      "path": "assets/sprites/items/icons_64/",
+      "note": "Existem; não são refeitos aqui. O contrato UI_S08 antigo citava 32x32: vale 64x64."
+    },
+    {
+      "id": "panel_frame",
+      "role": "Moldura de painel opaco da gaveta de detalhe.",
+      "size": [48, 48],
+      "shared": "ui_kit"
+    },
+    {
+      "id": "divider",
+      "role": "Divisor entre seções da gaveta.",
+      "size": [432, 8],
+      "shared": "ui_kit"
+    },
+    {
+      "id": "button_states",
+      "role": "Botões Equipar, Reforçar, Desmontar.",
+      "size": [48, 48],
+      "shared": "ui_kit"
+    }
+  ],
+  "references": {
+    "concept_layouts": {
+      "status": "v002 gerada com âncoras visuais do jogo; aguardando revisão de Rafael",
+      "index": "docs/art/mockups/s12_numeros_de_item_concepts_v002/README.md",
+      "items": [
+        {"id": "item_row", "path": "docs/art/mockups/s12_numeros_de_item_concepts_v002/s12_layout_item_row_v002.png"},
+        {"id": "detail_drawer", "path": "docs/art/mockups/s12_numeros_de_item_concepts_v002/s12_layout_detail_drawer_v002.png"},
+        {"id": "hero_stats", "path": "docs/art/mockups/s12_numeros_de_item_concepts_v002/s12_layout_hero_stats_v002.png"}
+      ],
+      "note": "Três estudos gerados a partir do brief em docs/art/conceitos/ui/README.md e das âncoras visuais atuais nomeadas no contrato global docs/art/IMAGE_CREATION_CONTRACT.md. Números e nomes rasterizados são ilustrativos; esta é a única referência atual e continua aguardando revisão de Rafael."
+    }
+  },
+  "export": {
+    "format": "png",
+    "color_depth": "rgba_32",
+    "transparent_background": true,
+    "binary_alpha": true,
+    "text_in_assets": false,
+    "naming": "s12_<piece>_<key>_<WxH>.png",
+    "note": "Nenhum texto nem numeral entra no asset; valores e rótulos são da UI real."
+  },
+  "acceptance_criteria": {
+    "technical": [
+      "tamanhos exatos por peça",
+      "só cores da TY40 declaradas, no máximo 16 por peça",
+      "alpha binário, sem semitransparência",
+      "validar com tools/sprite_lint.py",
+      "manifesto em docs/art/manifests/",
+      "stat_chip_frame 9-slice sem costuras visíveis em 432x960 e em 1080x2424"
+    ],
+    "visual": [
+      "os sete ícones de status são distinguíveis a 1x só pela silhueta, inclusive em escala de cinza",
+      "as cinco molduras se distinguem em escala de cinza pelo número de ornamentos",
+      "seta para cima, seta para baixo e 'igual' distinguíveis sem cor",
+      "luz no alto à esquerda, hard shading em 2 a 3 níveis, sem gradiente nem blur",
+      "legível a 1x em 432x960 e em 1080x2424",
+      "o contraste do número sobre o chip é adequado em qualquer variante"
+    ],
+    "process": [
+      "contrato → conceito aprovado → pixel cleanup → QA técnico → auditoria visual independente → integração → QA mobile",
+      "peças 'shared' (ui_kit) são produzidas uma vez e reutilizadas; peças 'existing' não são refeitas",
+      "as telas só recebem esta arte depois do PASS do ui_kit; antes disso os chips usam texto puro",
+      "as imagens geradas por IA são conceito/referência: nada é integrado sem pixel cleanup e lint"
+    ]
+  }
+}

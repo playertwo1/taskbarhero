@@ -8,6 +8,7 @@ const EPS := 0.005
 var success := true
 
 func _ready() -> void:
+	BalanceProfiles.pin_test_units()  # números conferidos à mão em unidades 1× e curva linear
 	print("\n=======================================================")
 	print("--- TESTE DADOS DO SLICE v0.4 (SLICE-1A-2) ---")
 	print("=======================================================")
@@ -133,7 +134,7 @@ func _test_legacy_unchanged() -> void:
 		_expect("%s: todas as linhas são do slice" % path, rows.size() == all_rows.size())
 	_expect("stages.json legado removido", not FileAccess.file_exists("res://data/stages/stages.json"))
 
-# Valores esperados calculados por tools/balance/slice_baseline.py (fórmulas do contrato).
+# Valores esperados calculados pelas fórmulas de docs/06_balance/v1/01_STATUS_E_COMBATE.md §3 (a ferramenta original slice_baseline.py está no git).
 func _test_enemy_derivation() -> void:
 	print("\n>>> 5. STATS DERIVADOS DOS INIMIGOS")
 	var rows: Array = SliceStats.load_rows(ENEMIES_PATH, "slice")
@@ -155,7 +156,7 @@ func _test_enemy_derivation() -> void:
 	_check("Guardião nível 5: attack_speed (Heavy)", boss["attack_speed"], 0.7)
 	_check("Guardião nível 5: tenacidade de boss", boss["tenacity"], 100.0)
 	var boss_party := SliceStats.enemy_stats(_row(rows, "boss_c1_001"), 5, true)
-	_check("Guardião nível 5: HP com escala de party ×1,5 (BOSS, v0.5)", boss_party["max_hp"], 3621.6162 * 1.5)
+	_check("Guardião nível 5: HP com escala de party ×2 (BOSS, recalibrado com os itens novos)", boss_party["max_hp"], 3621.6162 * 2.0)
 	var rainha_party := SliceStats.enemy_stats(_row(rows, "mb_c1_001"), 3, true)
 	_check("Rainha nível 3: HP com escala de party ×3", rainha_party["max_hp"], 726.9217 * 3.0)
 	var geleia_party := SliceStats.enemy_stats(_row(rows, "en_c1_001"), 1, true)

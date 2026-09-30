@@ -1,0 +1,11 @@
+{
+  "id": "optimizer",
+  "tier": "core",
+  "status": "IMPLEMENTED",
+  "question": "Qual estratégia domina o jogo?",
+  "description": "Min-maxer: melhor item em toda recompensa, melhor equipamento no Hub, gasta tudo na Árvore e no Ferreiro entre as tentativas e testa todas as combinações de build do cenário.",
+  "modes": ["campaign"],
+  "policy": {"reward": "best", "events": "first", "equip": "best", "spend": "full", "max_attempts": 16},
+  "looks_for": ["build dominante", "skills ou builds que nunca vencem", "nível e tentativas da vitória por build"],
+  "not_modeled": ["XP por hora e ouro por hora (o slice não tem Ouro nem progressão idle)"]
+}

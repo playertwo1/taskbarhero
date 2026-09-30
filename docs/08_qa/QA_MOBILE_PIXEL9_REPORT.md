@@ -54,3 +54,14 @@ O vertical slice (SLICE-1) foi submetido a uma sessão extensiva de teste tácti
 ## 4. Conclusão
 
 A validação mobile em hardware virtual de última geração (Pixel 9 / Android 17) atesta que o **SLICE-1E** cumpre todos os requisitos de jogabilidade, UX, responsividade tátil e identidade visual do Pocket Hero.
+
+## 5. Achados e correções (antigo QA_MOBILE_1E, unificado em 2026-09-30)
+
+| ID | Tela | Achado | Status / Resolução |
+| --- | --- | --- | --- |
+| QA-001 | Refúgio | Scroll horizontal e texto cortado no subtítulo. | **RESOLVIDO**: `autowrap` ativado e scroll horizontal desabilitado em `SliceCampaignScreen.gd`. |
+| QA-002 | Título | Texto "TOUCH TO START" da arte sobreposto a label. | **RESOLVIDO**: Limpeza visual e alinhamento no TitleScreen. |
+| QA-003 | Título | Versão duplicada. | **RESOLVIDO**: Unificado para versão única. |
+| QA-004 | Expedição | Arena com ator único em foco. | **DESIGN INTENCIONAL**: O ator ativo da vanguarda/party lidera o avanço na arena mobile. |
+| QA-005 | Refúgio | Arraste em dropdown vs rolagem. | **MONITORADO**: Alvos táteis ajustados com folga; scrollbar tátil à direita disponível. |
+| QA-006 | Refúgio | Card do Ferreiro ausente antes da Árvore. | **COMPORTAMENTO ESPERADO**: O Ferreiro é desbloqueado dinamicamente via `TREE_OFI_001` (validado ao vivo no Pixel 9). |

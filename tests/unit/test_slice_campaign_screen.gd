@@ -30,8 +30,11 @@ func _ready() -> void:
 	var saw_choice := false
 	var choices_made := 0
 	var guard := 0
+	var saw_encounter_line := false
 	while screen.mode == "run" and guard < 20000:
 		guard += 1
+		# O log da tela guarda só as últimas linhas; uma luta longa de chefe empurra as de "Encontro" para fora.
+		saw_encounter_line = saw_encounter_line or screen.log_lines().any(func(l): return String(l).begins_with("Encontro"))
 		var labels := screen.pending_labels()
 		if not labels.is_empty():
 			saw_choice = true
@@ -45,7 +48,7 @@ func _ready() -> void:
 	_expect("o resultado descreve vitória ou derrota", screen.result_text().contains("vitória") or screen.result_text().contains("Derrota") or screen.result_text().contains("Vitória") or screen.result_text().contains("derrota"))
 	_expect("o inventário destravou", not screen.campaign.inventory.locked)
 	_expect("o save foi gravado em disco", FileAccess.file_exists(PATH))
-	_expect("o log tem linhas de encontro", screen.log_lines().any(func(l): return String(l).begins_with("Encontro")))
+	_expect("o log teve linhas de encontro", saw_encounter_line)
 	var reloaded := SliceCampaign.open(PATH)
 	_expect("reabrir o save preserva os itens", reloaded.inventory.items.size() == screen.campaign.inventory.items.size())
 	screen.campaign.inventory.grant_echo(SliceInventory.ECHO_SENTINEL)

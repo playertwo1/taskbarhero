@@ -3,7 +3,23 @@
   "profile_id": "GLOBAL_COMBAT_CORE",
   "status": "DESIGN",
   "certainty": "HIPOTESE",
-  "source": "docs/06_balance/GLOBAL_BALANCE_SYSTEM.md",
+  "source": "docs/06_balance/v1/10_TELEMETRIA_ARGOS.md",
+  "combat_scale": 10.0,
+  "combat_scale_note": "Fator global: multiplica HP, ATK e DEF de herois e inimigos, as referencias de item, DEFENSE_K e o dano minimo. DECIDIDO 10x por Rafael em 2026-09-30; migrado de 1.0 para 10.0 depois da prova de invariancia (Argos scale_equivalence e test_combat_scale). Os valores base em heroes.json e combat_core.json continuam em unidades 1x: o fator e aplicado ao carregar.",
+  "level_curve_p": 0.8,
+  "level_curve_p_note": "Expoente da curva de nivel: valor = v1 + (v100 - v1) * ((nivel-1)/99)^p. 1.0 = linear (heranca da base v0.5). DECIDIDO p = 0.8 por Rafael em 2026-09-30 e migrado depois de provar que p = 1.0 reproduz o relatorio anterior do Argos; aplicado a herois, heroi de referencia dos inimigos e referencias de item.",
+  "item_budget": {
+    "status": "DESIGN",
+    "certainty": "HIPOTESE",
+    "source": "docs/06_balance/v1/04_ITENS_RARIDADE.md §2 (decisoes de Rafael, 2026-09-30)",
+    "note": "BP por nivel de raridade (9 niveis no jogo final; o slice usa os 4 primeiros). bp_by_level: 2 + 13/8*(n-1) ate o nivel 4 e BP(n) = BP(n-1) + 0,4 + 0,2*n depois (curva convexa). value_per_bp: fracao da referencia de heroi (attack, max_hp, defense) ou valor do status por BP; 1,8% calibrado para o set de Epico no nivel 4 (IP 27) chegar a ~+35% de poder efetivo e o nivel 9 a ~+80%. effect_reserve so vale para item com modificador.",
+    "rarity_level": {"Comum": 1, "Incomum": 2, "Raro": 3, "Épico": 4},
+    "bp_by_level": [2.0, 3.625, 5.25, 6.875, 8.275, 9.875, 11.675, 13.675, 15.875],
+    "special_bp": {"Relíquia": 6.0, "Memória": 6.0},
+    "slot_multiplier": {"weapon": 1.2, "secondary": 1.0, "armor": 1.2, "accessory": 0.9, "echo": 1.0},
+    "effect_reserve": {"Comum": 0.0, "Incomum": 0.10, "Raro": 0.20, "Épico": 0.35, "Relíquia": 0.50, "Memória": 0.60},
+    "value_per_bp": {"attack": 0.018, "max_hp": 0.018, "defense": 0.018, "attack_speed": 0.0108, "crit_chance": 0.0063, "skill_haste": 2.16, "tenacity": 2.7}
+  },
   "reference_hero": {
     "max_hp": [115.0, 470.0],
     "attack": [12.0, 50.0],
@@ -35,7 +51,7 @@
   },
   "stagger": {
     "certainty": "HIPOTESE",
-    "source": "STAGGER_SYSTEM.md e BOSS_RULES.md do v0.4; valores no meio das faixas canônicas",
+    "source": "docs/06_balance/v1/01_STATUS_E_COMBATE.md §7; valores no meio das faixas",
     "recovery_delay": 3.0,
     "recovery_per_second": 0.1,
     "ranks": {
@@ -47,7 +63,7 @@
   },
   "imbalance": {
     "certainty": "HIPOTESE",
-    "source": "SLICE_BALANCE_CONTRACT.md seção 3; conversão de resistência a stagger ainda é hipótese",
+    "source": "docs/06_balance/v1/capitulos/CAPITULO_01.md §4; conversão de resistência a stagger ainda é hipótese",
     "damage_bonus": -0.1,
     "stagger_taken_bonus": 0.2,
     "duration": 4.0
@@ -59,7 +75,7 @@
   },
   "xp": {
     "certainty": "HIPOTESE",
-    "source": "ECONOMY_MODEL.md; curva ainda requer playtest",
+    "source": "docs/06_balance/v1/02_HEROIS.md §5; curva ainda requer playtest (achado: nao alcanca o nivel 100)",
     "by_rank": {"NORMAL": 6, "ELITE": 25, "MINIBOSS": 45, "BOSS": 80},
     "curve": {"base": 25.0, "growth": 1.15, "per_level": 5.0},
     "max_level": 100

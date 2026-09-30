@@ -4,7 +4,7 @@
 
 | Tela | Referência atual | O que explorar |
 | --- | --- | --- |
-| UI_S01 — Título | [Título existente](../title_screen_reference.png) | Entrada atmosférica sem oferta ou recurso pago. |
+| UI_S01 — Título | [Referência atual do título](../title_screen_reference.png) | Entrada atmosférica; reconstruir qualquer texto na UI real. |
 | UI_S02 — Refúgio | [Hub retrato](s02_refugio_concept_v001.png) | Cena vertical e pontos tocáveis de serviço; referências antigas com loja/recursos são históricas. |
 | UI_S03 — Expedição | [Trilha do capítulo](s03_expedicao_concept_v001.png) | Uma rota vertical, nós de encontro e ação de iniciar; sem energia ou moeda. |
 | UI_S04 — Loadout | [Build da party](s04_loadout_concept_v001.png) | Três heróis, builds independentes, habilidades e equipamento; ícones e marcadores são placeholders. |
@@ -19,8 +19,6 @@
 
 ## Limites e fontes
 
-Os [contratos de UX](../../../09_ui/INDEX.md) e os [contratos de arte](../../contracts/screens/) continuam autoritativos. Texto, quantidades, nomes, estatísticas e ícones inventados pela geração são apenas marcadores visuais e devem ser substituídos pelos dados e rótulos reais. A direção segue o conceito aprovado do `ui_kit` e a regra de não introduzir loja, monetização, compra ou vantagem paga.
-
-As imagens antigas de UI_S02 a UI_S04 em [`UI_SCREEN_PROPOSALS.md`](../UI_SCREEN_PROPOSALS.md) mostram moedas, energia ou poder total e ficam como histórico; não foram usadas para gerar as referências atuais. Estas imagens podem orientar composição e atmosfera. A produção ainda passa por contrato, decisão visual, pixel cleanup, QA técnico, auditoria independente e QA mobile. Não integram assets do jogo.
+Os [contratos de UX](../../../09_ui/INDEX.md) e os [contratos de arte](../../contracts/screens/) continuam autoritativos. Texto, quantidades, nomes, estatísticas e ícones inventados pela geração são apenas marcadores visuais e devem ser substituídos pelos dados e rótulos reais. A direção segue o conceito aprovado do `ui_kit` e o [contrato global de criação de imagens](../../IMAGE_CREATION_CONTRACT.md), que exige dark fantasy e exclui estética de loja, monetização, compra ou vantagem paga. A produção ainda passa por contrato, decisão visual, pixel cleanup, QA técnico, auditoria independente e QA mobile. Não integram assets do jogo.
 
 Para transformar as referências em tarefas concretas, use a [fila de produção de sprites](../../SPRITE_PRODUCTION_BACKLOG.md), que liga cada imagem aos IDs de pacote e às peças dos contratos.

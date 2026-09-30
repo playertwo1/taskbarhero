@@ -1,0 +1,52 @@
+{
+  "id": "kits_focus_flecha",
+  "chapter_id": "CHAPTER_01",
+  "party": [
+    "hero_001",
+    "hero_002",
+    "hero_003"
+  ],
+  "levels": [
+    8,
+    10,
+    12
+  ],
+  "modes": [
+    "route",
+    "segments",
+    "campaign"
+  ],
+  "campaign": {
+    "start_level": 1,
+    "max_attempts": 16,
+    "loot": true
+  },
+  "rank_milestones": [
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17,
+    19
+  ],
+  "max_time": 3600,
+  "stuck_seconds": 30,
+  "description": "Foco na Flecha: 3 builds contra a party de referência (Bastião guardião, Íris controle). 26 sementes × 13 execuções por combinação = 1014. Kits completos, 2026-09-30.",
+  "seeds": 26,
+  "builds": {
+    "hero_001": [
+      "guardiao"
+    ],
+    "hero_002": [
+      "critico",
+      "marca",
+      "velocidade"
+    ],
+    "hero_003": [
+      "controle"
+    ]
+  }
+}

@@ -11,4 +11,4 @@ O fluxo principal do MVP não integra um sistema de Hub. Existe uma cena isolada
 - **Ecos/Codex:** um Echo funcional e opcional está incluído no escopo de design do slice; extração, infusão e Codex completo ficam para depois. Consulte o [Sistema de Ecos](../03_systems/ECHO_SYSTEM.md).
 - **Prioridade e gates:** [roadmap](../../ROADMAP.md) — SLICE-0/SLICE-1 e trilha HUB-1 pausada.
 - **Estrutura proposta do Refúgio:** [núcleo, estabelecimentos e regra de desbloqueio](HUB_STRUCTURE_SEEDS.md) — `CONCEPT`, sem aprovação de layout.
-- **Recomendações para SLICE-1D:** [Árvore, economia inicial do Ferreiro e Echo do Bastião](SLICE_1D_RECOMMENDATIONS.md) — adaptação do Echo escolhida como direção de protótipo; distribuição de 32 Fragmentos está no runtime como `HIPÓTESE`, aguardando playtest no 1E.
+- **Recomendações para SLICE-1D:** [Árvore, economia inicial do Ferreiro e Echo do Bastião](../../arquivados/planos_concluidos/SLICE_1D_RECOMMENDATIONS.md) — adaptação do Echo escolhida como direção de protótipo; distribuição de 32 Fragmentos está no runtime como `HIPÓTESE`, aguardando playtest no 1E.

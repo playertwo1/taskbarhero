@@ -46,10 +46,13 @@
         "note": "área maior: allies_behind já cobre todos os aliados atrás"
       },
       "5": {
-        "note": "não implementado no slice: Perfect Block prolonga a Muralha"
+        "set": {
+          "0.pb_extend": 1.0,
+          "0.pb_extend_max": 2.0
+        }
       }
     },
-    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+    "ranks_source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §3 (R2–R5, HIPÓTESE; proposta original de ranks no git)"
   },
   {
     "id": "skill_bas_007",
@@ -72,7 +75,7 @@
         "imbalance": true
       }
     ],
-    "source": "BASTIAO_GOLDEN_REFERENCE.md, skill 2 e 'Erguer Escudo' (70%); janela de 4 s: HIPÓTESE do SLICE-1A-4a; Desequilíbrio no revide conforme CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "source": "BASTIAO_GOLDEN_REFERENCE.md, skill 2 e 'Erguer Escudo' (70%); janela de 4 s: HIPÓTESE do SLICE-1A-4a; Desequilíbrio no revide conforme docs/06_balance/v1/capitulos/CAPITULO_01.md §4",
     "ranks": {
       "2": {
         "set": {
@@ -88,10 +91,12 @@
         }
       },
       "5": {
-        "note": "não implementado no slice: onda 0,60×ATK no Perfect Block"
+        "set": {
+          "0.pb_wave": 0.6
+        }
       }
     },
-    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+    "ranks_source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §3 (R2–R5, HIPÓTESE; proposta original de ranks no git)"
   },
   {
     "id": "skill_bas_008",
@@ -127,10 +132,12 @@
         }
       },
       "5": {
-        "note": "não implementado no slice: abate reduz a recarga"
+        "set": {
+          "0.cd_on_kill": 3.0
+        }
       }
     },
-    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+    "ranks_source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §3 (R2–R5, HIPÓTESE; proposta original de ranks no git)"
   },
   {
     "id": "skill_bas_009",
@@ -163,7 +170,9 @@
         }
       },
       "3": {
-        "note": "não implementado no slice: regeneração (HOT fora do slice)"
+        "set": {
+          "0.regen_fraction": 0.015
+        }
       },
       "4": {
         "add": [
@@ -179,10 +188,98 @@
         ]
       },
       "5": {
-        "note": "postura não interrompível: sem interrupção de heróis no slice"
+        "note": "sem efeito no slice: heróis não são interrompidos"
       }
     },
-    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+    "ranks_source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §3 (R2–R5, HIPÓTESE; proposta original de ranks no git)"
+  },
+  {
+    "id": "skill_bas_010",
+    "design_id": "SKILL_BAS_010",
+    "hero": "hero_001",
+    "name": "Impacto de Escudo",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 10.0,
+    "trigger": {
+      "type": "guard_at_least",
+      "amount": 20.0
+    },
+    "effects": [
+      {
+        "type": "shield_bash",
+        "coefficient": 1.8,
+        "stagger": 35.0,
+        "guard_cost": 20.0,
+        "collision_coefficient": 0.6,
+        "collision_stun": 0.6
+      }
+    ],
+    "source": "BASTIAO_GOLDEN_REFERENCE.md, Skill 5 (140% Weapon Damage, 20 Guarda, CD 10 s); slice sem posição: colisão = existe um segundo inimigo vivo; dano extra 0,4×ATK nos dois e stun de 0,6 s no primeiro (HIPÓTESE) | Iteração 4 do ajuste (KITS_TUNING_LOG.md): coeficiente 1,4 → 1,8 e colisão 0,4 → 0,6; ranks R2 1,98 e R3 0,8 acompanham.",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.coefficient": 1.98
+        }
+      },
+      "3": {
+        "set": {
+          "0.collision_coefficient": 0.8
+        }
+      },
+      "4": {
+        "set": {
+          "0.collision_imbalance": true
+        }
+      },
+      "5": {
+        "set": {
+          "0.explosion_coefficient": 0.5
+        }
+      }
+    },
+    "ranks_source": "Golden Reference (R2 maior distância → +10% de coeficiente no slice; R3 maior knockback → colisão 0,6; R4 colisões aplicam Desequilíbrio; R5 explosão de impacto 0,5×ATK nos demais se o alvo estava Desequilibrado). HIPÓTESE"
+  },
+  {
+    "id": "skill_bas_011",
+    "design_id": "SKILL_BAS_011",
+    "hero": "hero_001",
+    "name": "Último Bastião",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 120.0,
+    "trigger": {
+      "type": "guard_and_hp_below",
+      "amount": 100.0,
+      "threshold": 0.5
+    },
+    "effects": [
+      {
+        "type": "last_bastion",
+        "guard_cost": 100.0,
+        "duration": 8.0,
+        "ally_damage_reduction": 0.2,
+        "redirect_fraction": 0.3,
+        "counter_cooldown_scale": 0.5,
+        "wave_coefficient": 0.75,
+        "wave_cap": 3.0
+      }
+    ],
+    "source": "BASTIAO_GOLDEN_REFERENCE.md, Signature (100 Guarda, 8 s; sem cair de 1 HP, redução para aliados, redirecionamento, todo bloqueio é Perfect Block, Contra-Golpe acelerado, onda proporcional ao absorvido); gatilho de emergência (HP ≤ 50% de alguém) e todos os números além dos citados: HIPÓTESE | Recarga 45 → 60 s na iteração 2 do ajuste (KITS_TUNING_LOG.md): o Último Bastião antecipava a vitória da build Lúmen para o nível 8. | Recarga ajustada na iteração 3 do ajuste (KITS_TUNING_LOG.md): as Signaturas antecipavam a vitória sobre o Guardião em ~1,5 nível.",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.duration": 10.0
+        }
+      },
+      "3": {
+        "set": {
+          "0.heal_fraction": 0.25,
+          "0.heal_cap": 0.1
+        }
+      }
+    },
+    "ranks_source": "Golden Reference (R2 duração 8 → 10 s; R3 restaura vida dos aliados proporcional ao absorvido). HIPÓTESE"
   },
   {
     "id": "skill_fle_006",
@@ -201,7 +298,7 @@
         "duration": 6.0
       }
     ],
-    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §2–3 (proposta original de skills do Capítulo 1 no git)",
     "ranks": {
       "2": {
         "set": {
@@ -214,13 +311,17 @@
         }
       },
       "4": {
-        "note": "não implementado no slice: acerto aliado prolonga a Marca"
+        "set": {
+          "0.ally_hit_extend": 1.0
+        }
       },
       "5": {
-        "note": "não implementado no slice: transferência ao abater"
+        "set": {
+          "0.transfer_on_kill": true
+        }
       }
     },
-    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+    "ranks_source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §3 (R2–R5, HIPÓTESE; proposta original de ranks no git)"
   },
   {
     "id": "skill_fle_007",
@@ -241,7 +342,7 @@
         "stagger": 25.0
       }
     ],
-    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §2–3 (proposta original de skills do Capítulo 1 no git)",
     "ranks": {
       "2": {
         "set": {
@@ -254,7 +355,7 @@
         }
       },
       "4": {
-        "note": "não implementado no slice: ignora 15% de escudo"
+        "note": "sem efeito no slice: inimigos não têm escudo temporário"
       },
       "5": {
         "add": [
@@ -266,7 +367,7 @@
         ]
       }
     },
-    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+    "ranks_source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §3 (R2–R5, HIPÓTESE; proposta original de ranks no git)"
   },
   {
     "id": "skill_fle_008",
@@ -289,7 +390,7 @@
         "targets": "self"
       }
     ],
-    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §2–3 (proposta original de skills do Capítulo 1 no git)",
     "ranks": {
       "2": {
         "set": {
@@ -297,16 +398,22 @@
         }
       },
       "3": {
-        "note": "não implementado no slice: +4 p.p. contra marcado"
+        "set": {
+          "0.crit_vs_marked": 0.04
+        }
       },
       "4": {
-        "note": "não implementado no slice"
+        "set": {
+          "0.first_crit_extend": 1.0
+        }
       },
       "5": {
-        "note": "não implementado no slice"
+        "set": {
+          "0.crit_boost": 0.15
+        }
       }
     },
-    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+    "ranks_source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §3 (R2–R5, HIPÓTESE; proposta original de ranks no git)"
   },
   {
     "id": "skill_fle_009",
@@ -327,7 +434,7 @@
         "stagger": 8.0
       }
     ],
-    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §2–3 (proposta original de skills do Capítulo 1 no git)",
     "ranks": {
       "2": {
         "set": {
@@ -336,16 +443,103 @@
         }
       },
       "3": {
-        "note": "não implementado no slice: +5 p.p. no último disparo"
+        "set": {
+          "0.last_crit_vs_marked": 0.05
+        }
       },
       "4": {
-        "note": "não implementado no slice"
+        "set": {
+          "0.last_hit_bonus": 0.1
+        }
       },
       "5": {
-        "note": "não implementado no slice"
+        "set": {
+          "0.last_extend_mark": 1.0
+        }
       }
     },
-    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+    "ranks_source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §3 (R2–R5, HIPÓTESE; proposta original de ranks no git)"
+  },
+  {
+    "id": "skill_fle_010",
+    "design_id": "SKILL_FLE_010",
+    "hero": "hero_002",
+    "name": "Ricochete",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 11.0,
+    "trigger": {
+      "type": "enemies_alive"
+    },
+    "effects": [
+      {
+        "type": "ricochet",
+        "coefficient": 1.0,
+        "jumps": 2,
+        "falloff": 0.7,
+        "stagger": 10.0
+      }
+    ],
+    "source": "docs/04_content/skills/FLECHA_SKILLS.md, SKILL_FLE_010 (prioridade, limite de alvos e queda por salto EM ABERTO); números de simulação: 1,0×ATK, 2 saltos, ×0,7 por salto, CD 11 s (HIPÓTESE)",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.jumps": 3
+        }
+      },
+      "3": {
+        "set": {
+          "0.marked_jump_bonus": 0.15
+        }
+      },
+      "4": {
+        "set": {
+          "0.distinct_boost": 0.1
+        }
+      },
+      "5": {
+        "set": {
+          "0.finisher_coefficient": 0.8
+        }
+      }
+    },
+    "ranks_source": "FLECHA_SKILLS.md (evolução sugerida dos ranks 1–5); valores HIPÓTESE"
+  },
+  {
+    "id": "skill_fle_011",
+    "design_id": "SKILL_FLE_011",
+    "hero": "hero_002",
+    "name": "Chuva de Flechas",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 60.0,
+    "trigger": {
+      "type": "enemies_alive"
+    },
+    "effects": [
+      {
+        "type": "arrow_rain",
+        "coefficient": 0.5,
+        "arrows": 3,
+        "focus_coefficient": 1.2,
+        "stagger": 12.0
+      }
+    ],
+    "source": "docs/04_content/skills/FLECHA_SKILLS.md, Signature SKILL_FLE_011 (salva ampla + foco na presa marcada; números EM ABERTO); 3 flechas de 0,5×ATK por inimigo + foco 1,2×ATK, CD 30 s: HIPÓTESE | Recarga ajustada na iteração 3 do ajuste (KITS_TUNING_LOG.md): as Signaturas antecipavam a vitória sobre o Guardião em ~1,5 nível.",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.mark_extend": 2.0
+        }
+      },
+      "3": {
+        "set": {
+          "0.opening_vulnerability": 0.1,
+          "0.opening_duration": 3.0
+        }
+      }
+    },
+    "ranks_source": "FLECHA_SKILLS.md (R2 propriedade funcional escolhida: extensão da Marca; R3 abertura curta para a party). HIPÓTESE"
   },
   {
     "id": "skill_iri_001",
@@ -365,7 +559,7 @@
         "stagger": 30.0
       }
     ],
-    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §2–3 (proposta original de skills do Capítulo 1 no git)",
     "ranks": {
       "2": {
         "set": {
@@ -383,10 +577,12 @@
         }
       },
       "5": {
-        "note": "não implementado no slice: reduz a recarga do Prisma"
+        "set": {
+          "0.second_hit_cd_reduce": 1.0
+        }
       }
     },
-    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+    "ranks_source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §3 (R2–R5, HIPÓTESE; proposta original de ranks no git)"
   },
   {
     "id": "skill_iri_005",
@@ -406,7 +602,7 @@
         "stagger": 25.0
       }
     ],
-    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §2–3 (proposta original de skills do Capítulo 1 no git)",
     "ranks": {
       "2": {
         "set": {
@@ -414,16 +610,21 @@
         }
       },
       "3": {
-        "note": "não implementado no slice: +5% no próximo ataque aliado"
+        "set": {
+          "0.survive_ally_boost": 0.05
+        }
       },
       "4": {
         "note": "janela de preparação: o slice usa a duração da Marca/Desequilíbrio"
       },
       "5": {
-        "note": "não implementado no slice"
+        "set": {
+          "0.atk_debuff_value": 0.1,
+          "0.atk_debuff_duration": 3.0
+        }
       }
     },
-    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+    "ranks_source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §3 (R2–R5, HIPÓTESE; proposta original de ranks no git)"
   },
   {
     "id": "skill_iri_003",
@@ -449,7 +650,7 @@
         "duration": 5.0
       }
     ],
-    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §2–3 (proposta original de skills do Capítulo 1 no git)",
     "ranks": {
       "2": {
         "set": {
@@ -462,13 +663,13 @@
         }
       },
       "4": {
-        "note": "não implementado no slice: Rede de Micélio reduz AS"
+        "note": "coberto pela passiva Rede de Micélio (skill_slow)"
       },
       "5": {
-        "note": "não implementado no slice"
+        "note": "coberto pela passiva Fissura Persistente (debuff_extend_vs_prepared)"
       }
     },
-    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+    "ranks_source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §3 (R2–R5, HIPÓTESE; proposta original de ranks no git)"
   },
   {
     "id": "skill_iri_002",
@@ -489,7 +690,7 @@
         "duration": 6.0
       }
     ],
-    "source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md",
+    "source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §2–3 (proposta original de skills do Capítulo 1 no git)",
     "ranks": {
       "2": {
         "set": {
@@ -507,10 +708,13 @@
         }
       },
       "5": {
-        "note": "não implementado no slice: escudo restante vira cura"
+        "set": {
+          "0.expire_heal": 0.25,
+          "0.expire_heal_cap": 0.05
+        }
       }
     },
-    "ranks_source": "docs/06_balance/CHAPTER_01_HERO_COMBAT_PROPOSAL.md (R2–R5, HIPÓTESE)"
+    "ranks_source": "docs/06_balance/v1/03_SKILLS_PASSIVAS.md §3 (R2–R5, HIPÓTESE; proposta original de ranks no git)"
   },
   {
     "id": "skill_iri_004",
@@ -531,6 +735,65 @@
         "threshold": 0.85
       }
     ],
-    "source": "Revisão experimental solicitada por Rafael em 2026-09-29. Com fôlego ativo, a varredura tune_heal do Argos mostrou 1,2×/12 s vencendo no nível 1; 0,3×/16 s leva a build Lúmen a vencer por volta do nível 7–9,5. Fora do recorte segundo CHAPTER_01_HERO_COMBAT_PROPOSAL.md; HIPÓTESE"
+    "source": "Revisão experimental solicitada por Rafael em 2026-09-29. Com fôlego ativo, a varredura tune_heal do Argos mostrou 1,2×/12 s vencendo no nível 1; 0,3×/16 s leva a build Lúmen a vencer por volta do nível 7–9,5. Fora do recorte segundo a proposta original de skills do Capítulo 1 (no git); HIPÓTESE | Promovida ao recorte por Rafael em 2026-09-30 (Plano 03, I0).",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.coefficient": 0.33
+        }
+      },
+      "3": {
+        "set": {
+          "0.second_fraction": 0.5
+        }
+      },
+      "4": {
+        "set": {
+          "0.coefficient": 0.36
+        }
+      },
+      "5": {
+        "set": {
+          "0.overheal_shield": 0.5
+        }
+      }
+    },
+    "ranks_source": "Plano 03 (R2/R4 +10% de cura; R3 cura também o 2º aliado com 50%; R5 excedente vira escudo de 50%). HIPÓTESE"
+  },
+  {
+    "id": "skill_iri_006",
+    "design_id": "SKILL_IRI_006",
+    "hero": "hero_003",
+    "name": "Convergência de Lúmen",
+    "content_set": "slice",
+    "status": "HIPOTESE",
+    "cooldown": 60.0,
+    "trigger": {
+      "type": "enemies_alive"
+    },
+    "effects": [
+      {
+        "type": "convergence",
+        "primary_coefficient": 2.2,
+        "coefficient": 1.0,
+        "prepared_bonus": 0.5,
+        "stagger": 30.0
+      }
+    ],
+    "source": "Recomendação da Tarefa I0 do Plano 03, aprovada por Rafael em 2026-09-30; expressão máxima de 'alvo preparado' do trio; números HIPÓTESE | Recarga ajustada na iteração 3 do ajuste (KITS_TUNING_LOG.md): as Signaturas antecipavam a vitória sobre o Guardião em ~1,5 nível.",
+    "ranks": {
+      "2": {
+        "set": {
+          "0.stagger": 70.0
+        }
+      },
+      "3": {
+        "set": {
+          "0.ally_atk_bonus": 0.08,
+          "0.ally_duration": 4.0
+        }
+      }
+    },
+    "ranks_source": "Plano 03 (R2 +40 de Stagger no principal; R3 bônus de equipe). HIPÓTESE"
   }
 ]

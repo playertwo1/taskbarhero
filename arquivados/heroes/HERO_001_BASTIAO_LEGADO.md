@@ -8,7 +8,7 @@
 **Recurso exclusivo:** Guarda (0/100)  
 **Posição de combate:** Vanguarda (`front`)  
 **Orientação visual:** Direita ($\rightarrow$)  
-**Conformidade:** [`HERO_STANDARD.md`](../../HERO_STANDARD.md)
+**Conformidade:** [`HERO_STANDARD.md`](../../docs/02_heroes/HERO_STANDARD.md)
 
 > Documento histórico. O design atual está na [Golden Reference do Bastião](../../docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md); esta ficha preserva a versão anterior.
 

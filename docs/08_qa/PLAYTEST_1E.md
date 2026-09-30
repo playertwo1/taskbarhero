@@ -12,7 +12,7 @@ certainty: HIPOTESE
 
 | # | Pergunta | Origem | Meta de referência |
 | --- | --- | --- | --- |
-| P1 | O jogador vence o Guardião-Cervo por volta do nível 10–11, com derrotas e vitórias parciais no caminho? | [BALANCE_V0.5](../06_balance/BALANCE_V0.5.md), pacing | nível 9–12; 3–8 tentativas (tolerância `HIPÓTESE`) |
+| P1 | O jogador vence o Guardião-Cervo por volta do nível 10–11, com derrotas e vitórias parciais no caminho? | [v1 · perfil do Capítulo 1](../06_balance/v1/capitulos/CAPITULO_01.md), pacing | nível 9–12; 3–8 tentativas (tolerância `HIPÓTESE`) |
 | P2 | Que fração vence o Guardião na primeira tentativa? | [ENCOUNTERS](../04_content/chapters/chapter_01/ENCOUNTERS.md) | 40–60% (meta humana; o Argos só dá referência) |
 | P3 | Builds com Íris no Arcano e no Controle parecem mais fracas ou só mais arriscadas? | [BAL-009](BALANCE_FINDINGS.md) | sem meta numérica; comparar escolha e resultado |
 | P4 | Lúmen (cura) domina a escolha? | BAL-006 e BAL-009 | uma build sem Lúmen vence sem grind |
@@ -24,7 +24,7 @@ certainty: HIPOTESE
 ## 2. Preparação
 
 - **Build:** exporte o APK pelo preset `Android` (`--export-debug`). Atenção: em build de debug, `SliceCampaignScreen` usa **semente determinística** (`1 + XP`) e mostra os botões de desenvolvimento (Sondagem, Voltar ao título). Para medir sorte de loot e de eventos, use uma exportação de release ou registre no relatório que a semente era fixa. Isso é uma limitação conhecida, não corrigida.
-- **Aparelho:** de preferência celular real (o S25 Ultra segue pendente de conexão, [setup](../../ROADMAP.md)); senão o emulador Pixel 9 do Android Studio (`scripts/android/start_emulator.py`).
+- **Aparelho:** de preferência celular real (o S25 Ultra segue pendente de conexão, [setup](../../ROADMAP.md)); senão o emulador Pixel 9 do Android Studio (`tools/android/start_emulator.py`).
 - **Save limpo:** apague o save da sessão anterior para começar do nível 1. O arquivo é `user://slice_save.json`; no Android fica na pasta de dados do app (verificar o caminho no aparelho, ele só aparece depois da primeira gravação).
 - **Perfil do jogador:** anote se conhece RPGs idle/incrementais. Com 3 a 5 pessoas, misture perfis. O resultado de uma pessoa só não decide nada.
 - **Sem dica:** não explique builds, Ferreiro nem Árvore. Só diga o objetivo: "vencer o Guardião-Cervo".
@@ -64,7 +64,7 @@ Copie esta tabela para o relatório da sessão. Uma linha por expedição.
 
 A [SliceTelemetry](../../scripts/combat/SliceTelemetry.gd) só liga com `options["telemetry"] = true` e a campanha do aplicativo **não a liga**. Portanto, hoje, nenhum dado automático sai de uma sessão de celular; o que vale são as anotações e o arquivo de save (nível, XP, itens, Resíduo, Fragmentos, nós comprados, marcos).
 
-- **Sugestão (não feita):** ligar a telemetria em uma exportação de playtest e gravar o resumo localmente, sem rede, conforme a política local-first do [contrato de balanceamento](../06_balance/SLICE_BALANCE_CONTRACT.md). Decisão de Rafael.
+- **Sugestão (não feita):** ligar a telemetria em uma exportação de playtest e gravar o resumo localmente, sem rede, conforme a política local-first do [v1 · perfil do Capítulo 1](../06_balance/v1/capitulos/CAPITULO_01.md). Decisão de Rafael.
 - **Sem dado no run (pendente):** `cooldown_uptime`, `debuff_uptime`, `stagger_damage`, tempo com Guarda pronta e dano evitado.
 
 ## 7. Como o resultado volta para o balanceamento

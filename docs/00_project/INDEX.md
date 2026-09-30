@@ -2,12 +2,14 @@
 
 | Assunto | Fonte atual | Autoridade |
 | --- | --- | --- |
+| Onde cada coisa mora e onde criar arquivos novos | [Estrutura do repositório](ESTRUTURA_DO_REPOSITORIO.md) | Autoridade sobre organização de pastas (2026-09-30). |
+| Referências de Task Bar Hero e banco de ideias antigo | [REFERENCIAS_TBH](REFERENCIAS_TBH.md) | Contexto subordinado às fontes atuais e à política de originalidade. |
 | Como uma IA trabalha na fase de fundação | [Manual de IA — Fundação do jogo](MANUAL_IA_FUNDACAO_DO_JOGO.md) | Navegação e processo; AGENTS/roadmap e fontes de cada área têm precedência. |
 | Princípios de design | [Pilares de design](GAME_PILLARS.md) | Decisões de fundação registradas; balanceamento e validação seguem abertos. |
 | Ciclo de jogo | [Loop central](CORE_LOOP.md) | Loop de design pós-MVP; detalhes de conteúdo, economia e apresentação seguem suas fases. |
 | Termos compartilhados | [Glossário](GLOSSARY.md) | Definições e ponteiros; a área indicada mantém autoridade sobre detalhes. |
 | Registro para revisão das decisões delegadas | [AUDITORIA.md](AUDITORIA.md) | Resumo de recomendações aprovadas e links para as fontes autoritativas. |
-| Contexto consolidado e visão atual registrada | [Project brief](../POCKET_HERO_PROJECT_BRIEF.md) | Contexto resumido; não prova implementação. |
+| Contexto consolidado e visão atual registrada | [Project brief](POCKET_HERO_PROJECT_BRIEF.md) | Contexto resumido; não prova implementação. |
 | Princípios e design incremental | [Guia incremental](INCREMENTAL_DESIGN_GUIDE.md) e [guia completo](../../documents/GUIA_DESIGN_INCREMENTAL_POCKET_HERO.md) | Recomendação de design. |
 | Regras e decisões para agentes | [AGENTS.md](../../AGENTS.md) | Instrução vigente de trabalho. |
 | Próximas entregas e gates | [ROADMAP.md](../../ROADMAP.md) | Roadmap único: plano, ordem e gates. |

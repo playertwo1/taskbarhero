@@ -11,7 +11,7 @@ review_date: 2026-09-28
 Este documento é a fonte autoritativa das regras globais de mundo e dos conceitos compartilhados de lore. Ele define o vocabulário e os limites conhecidos do universo; não substitui a história de um capítulo nem a história pessoal de um herói.
 
 - O [overview do Capítulo 1](../04_content/chapters/chapter_01/OVERVIEW.md) é a fonte para a estrutura e a narrativa específica do Bosque de Lúmen. A história e o desfecho do capítulo continuam em aberto.
-- A [Golden Reference do Bastião](../02_heroes/BASTIAO_GOLDEN_REFERENCE.md#lore-pessoal-do-bastiao-decisoes-atuais) é a fonte para a lore pessoal, o Primeiro Juramento, a Guarda da Primeira Muralha, a Porta da Vigília e as missões pessoais do Bastião.
+- A [Golden Reference do Bastião](../02_heroes/BASTIAO_GOLDEN_REFERENCE.md#lore-pessoal-do-bastião--decisões-atuais) é a fonte para a lore pessoal, o Primeiro Juramento, a Guarda da Primeira Muralha, a Porta da Vigília e as missões pessoais do Bastião.
 - Os sistemas de gameplay são especificados em seus documentos próprios. Uma definição narrativa não confirma implementação em runtime.
 
 ## Grau de certeza
@@ -71,11 +71,11 @@ Não estabelecer respostas definitivas nesta fase para:
 
 - O Bosque de Lúmen é a primeira região. Sua estrutura macro está aprovada, mas a história, a causa da mudança e o desfecho permanecem em aberto no [Capítulo 1](../04_content/chapters/chapter_01/OVERVIEW.md).
 - O Guardião-Cervo de Pedra é o chefe existente do capítulo; sua motivação e seu estado final não foram definidos pela bíblia global.
-- A lore pessoal do Bastião está registrada em sua [Golden Reference](../02_heroes/BASTIAO_GOLDEN_REFERENCE.md#lore-pessoal-do-bastiao-decisoes-atuais). Seu nome verdadeiro não deve ser revelado nesta etapa.
+- A lore pessoal do Bastião está registrada em sua [Golden Reference](../02_heroes/BASTIAO_GOLDEN_REFERENCE.md#lore-pessoal-do-bastião--decisões-atuais). Seu nome verdadeiro não deve ser revelado nesta etapa.
 
 ## Fontes de design
 
 - [ROADMAP principal — LORE-1](../../ROADMAP.md)
-- [ROADMAP — fundação concluída (LORE-1)](../../ROADMAP.md#3-fundação-concluída) · [sementes futuras](FUTURE_SEEDS.md)
+- [ROADMAP — concluído (LORE-1)](../../ROADMAP.md#2-concluído-resumo) · [sementes futuras](FUTURE_SEEDS.md)
 - [Capítulo 1 — Bosque de Lúmen](../04_content/chapters/chapter_01/OVERVIEW.md)
 - [Golden Reference do Bastião](../02_heroes/BASTIAO_GOLDEN_REFERENCE.md)

@@ -7,7 +7,7 @@ certainty: HIPOTESE
 
 **Origem:** seções CONTENT-1 a SECRET-1 do antigo `ROADMAP_EXPANSAO_CONTEUDO_POCKET_HERO.md`, movidas para cá em 2026-09-29 quando os roadmaps foram unificados. Conteúdo preservado sem aprovação nova.
 
-> **Precedência:** bestiário, itens, materiais, drops e Ecos seguem a [base canônica v0.4](../../../../documents/canonical/taskbar_sistema_v0.4/README.md). Encontros e padrões de chefes propostos estão em [ENCOUNTERS.md](ENCOUNTERS.md). Este arquivo guarda ideias de direção que ainda não têm ficha própria; em conflito, as fontes citadas prevalecem.
+> **Precedência:** bestiário, itens, materiais, drops e Ecos seguem a [balanceamento v1.0](../../../06_balance/v1/README.md), que incorpora as fontes v0.4 como origem histórica. Encontros e padrões de chefes propostos estão em [ENCOUNTERS.md](ENCOUNTERS.md). Este arquivo guarda ideias de direção que ainda não têm ficha própria; em conflito, as fontes citadas prevalecem.
 
 ## Subfases e arco narrativo
 

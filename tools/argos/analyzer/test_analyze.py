@@ -98,5 +98,48 @@ class RunLayerTest(unittest.TestCase):
         self.assertEqual(rows[("poco_curar", "event_c1_001")]["per_100_attempts"], 100.0)
 
 
+def profile_campaign(profile, won, attempts, first_win=0, abandoned=False, level=11, items=8, save_bytes=2048, violations=()):
+    return {"kind": "campaign", "build": f"{profile} · a/b/c", "build_map": {}, "seed": 1, "won": won, "attempts": attempts,
+            "final_level": level, "history": [{"level": level, "events": None, "violations": [], "gold": 0, "residue": 0, "items_dropped": 0, "equipped_after": 0}] * attempts, "profile": profile,
+            "first_win_attempt": first_win, "abandoned": abandoned, "items_held": items, "save_bytes": save_bytes,
+            "violations": list(violations), "totals": {"residue": 0, "items": 0}, "loot": True}
+
+
+def fuzz_run(profile, accepted, refused, violations=()):
+    return {"kind": "fuzz", "build": "fuzz", "seed": 1, "profile": profile, "accepted": accepted, "refused": refused,
+            "violations": list(violations)}
+
+
+class ProfileTest(unittest.TestCase):
+    def test_inventory_dupe_is_a_critical_exploit(self):
+        findings = analyze.evaluate(analyze.summarize([fuzz_run("exploit_hunter", 10, 5, ["uid_duplicated"])]), RULES)
+        found = [f for f in findings if f["title"] == "Oráculo violado: uid_duplicated"]
+        self.assertEqual((found[0]["type"], found[0]["severity"]), ("EXPLOIT", "CRITICAL"))
+
+    def test_plain_oracle_stays_a_bug(self):
+        findings = analyze.evaluate(analyze.summarize([fuzz_run("edge_case", 1, 0, ["non_finite_number"])]), RULES)
+        found = [f for f in findings if f["title"] == "Oráculo violado: non_finite_number"]
+        self.assertEqual((found[0]["type"], found[0]["severity"]), ("BUG", "HIGH"))
+
+    def test_profile_rows_summarize_each_profile(self):
+        runs = [profile_campaign("beginner", True, 5, first_win=5), profile_campaign("beginner", False, 6, abandoned=True),
+                fuzz_run("exploit_hunter", 30, 70, ["favorite_recycled"])]
+        rows = {r["profile"]: r for r in analyze.summarize(runs)["profiles"]}
+        self.assertEqual(rows["beginner"]["campaigns"], 2)
+        self.assertAlmostEqual(rows["beginner"]["win_rate"], 0.5)
+        self.assertAlmostEqual(rows["beginner"]["abandon_rate"], 0.5)
+        self.assertEqual(rows["beginner"]["first_win_attempt"], 5)
+        self.assertEqual(rows["exploit_hunter"]["fuzz_actions"], 100)
+        self.assertEqual(rows["exploit_hunter"]["fuzz_refused"], 70)
+        self.assertEqual(rows["exploit_hunter"]["violations"], {"favorite_recycled": 1})
+
+    def test_profile_campaigns_do_not_get_pacing_findings(self):
+        titles_found = titles([profile_campaign("chaos", True, 12, first_win=12, level=30)])
+        self.assertFalse([t for t in titles_found if t.startswith("Vence ")])
+
+    def test_profiles_are_absent_without_profile_runs(self):
+        self.assertEqual(analyze.summarize([route("a/b/c", 5, True)])["profiles"], [])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -14,6 +14,7 @@ func _ready() -> void:
 	for e in SliceStats.load_rows("res://data/enemies/enemies.json", "slice"):
 		sim.enemy_rank[e["id"]] = e["rank"]
 	_test_real_run_is_clean()
+	_test_kit_fields()
 	_expect_violation("inimigo derrotado duas vezes", [_start(), _defeat(0.0, "en_c1_001#0"), _defeat(1.0, "en_c1_001#0")], "enemy_defeated_twice")
 	_expect_violation("XP diferente do esperado", [_start(), {"type": "enemy_defeated", "time": 1.0, "uid": "en_c1_001#0", "id": "en_c1_001", "xp": 99}], "xp_mismatch")
 	_expect_violation("herói derrotado age", [_start(), {"type": "hero_defeated", "time": 1.0, "id": "hero_002"},
@@ -43,6 +44,20 @@ func _expect_violation(label: String, events: Array, name: String) -> void:
 	else:
 		success = false
 		print("FALHA: %s não detectado (%s)" % [label, JSON.stringify(rec["violations"])])
+
+func _test_kit_fields() -> void:
+	var events := [
+		_start(),
+		{"type": "skill_damage", "time": 1.0, "source": "hero_001", "skill": "skill_bas_010", "target": "x", "damage": 5.0},
+		{"type": "skill_damage", "time": 2.0, "source": "hero_001", "skill": "skill_bas_010", "target": "x", "damage": 7.0},
+		{"type": "guard_spent", "time": 2.0, "hero": "hero_001", "amount": 20.0, "total": 0.0},
+	]
+	var rec: Dictionary = sim._summarize(_finished_run(), events, 1)
+	if absf(float(rec.get("skill_damage", {}).get("skill_bas_010", 0.0)) - 12.0) < 0.001 and int(rec.get("counters", {}).get("guard_spent", 0)) == 1:
+		print("[PASS] registro traz skill_damage e counters")
+	else:
+		success = false
+		print("FALHA: skill_damage/counters ausentes: %s" % JSON.stringify(rec))
 
 func _test_real_run_is_clean() -> void:
 	var route: Dictionary = JSON.parse_string(FileAccess.open("res://data/expedition/route_c1.json", FileAccess.READ).get_as_text())

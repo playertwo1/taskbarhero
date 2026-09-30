@@ -5,6 +5,8 @@
   "required": ["profile_id", "reference_hero", "archetypes", "ranks", "stat_caps", "threat_profiles", "xp"],
   "properties": {
     "profile_id": {"type": "string", "minLength": 1},
+    "combat_scale": {"type": "number", "exclusiveMinimum": 0},
+    "level_curve_p": {"type": "number", "exclusiveMinimum": 0},
     "reference_hero": {"type": "object"},
     "archetypes": {"type": "object", "minProperties": 1},
     "ranks": {"type": "object", "minProperties": 1},

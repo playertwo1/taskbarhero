@@ -9,7 +9,7 @@ status: DESIGN
 
 ## Base registrada
 
-- **DECIDIDO:** a proposta do MVP combina combate automático, heróis, fases, XP/nível, ouro, equipamento, itens, save local e progresso offline. O [resumo do projeto](../POCKET_HERO_PROJECT_BRIEF.md) registra esse escopo; consulte código/testes para afirmar comportamento exato.
+- **DECIDIDO:** a proposta do MVP combina combate automático, heróis, fases, XP/nível, ouro, equipamento, itens, save local e progresso offline. O [resumo do projeto](POCKET_HERO_PROJECT_BRIEF.md) registra esse escopo; consulte código/testes para afirmar comportamento exato.
 - **DECIDIDO:** a região inicial é o Bosque de Lúmen, com cinco fases macro. O [overview do Capítulo 1](../04_content/chapters/chapter_01/OVERVIEW.md) é a fonte de detalhe da expansão de conteúdo.
 - **DECIDIDO:** a direção atual de party é um trio de heróis ativos, conforme o [índice de heróis](../02_heroes/INDEX.md).
 - **DECIDIDO por Rafael:** as escolhas sobre preparação, acompanhamento de objetivos e progresso offline estão em [Pilares de design](GAME_PILLARS.md); este documento as aplica ao fluxo, sem duplicar suas regras.
@@ -21,7 +21,7 @@ status: DESIGN
 - **DECIDIDO por Rafael em 2026-09-28:** o jogador pode encerrar voluntariamente uma expedição e retornar ao Hub a qualquer momento. Fases concluídas permanecem concluídas; se sair antes de concluir a fase atual, ela recomeça do início na próxima expedição, mantendo as recompensas obtidas. Veja as regras de persistência em [Run e meta-progressão](../03_systems/RUN_META_PROGRESSION.md).
 - **DECIDIDO:** slots, seleção e regras de uso de skills durante a expedição estão no [Sistema de skills](../03_systems/SKILL_SYSTEM.md).
 - **DECIDIDO por delegação explícita de Rafael em 2026-09-28:** ao encerrar a expedição, todo o HP é restaurado e condições temporárias de combate são removidas da party; não há ferimentos persistentes neste escopo.
-- **EM ABERTO:** distribuição das skills por tier, conjuntos de escolha por marco e valores de gatilhos, ranks e cooldowns. Consulte o [Sistema de skills](../03_systems/SKILL_SYSTEM.md) e [HERO_STANDARD.md](../../HERO_STANDARD.md).
+- **EM ABERTO:** distribuição das skills por tier, conjuntos de escolha por marco e valores de gatilhos, ranks e cooldowns. Consulte o [Sistema de skills](../03_systems/SKILL_SYSTEM.md) e [HERO_STANDARD.md](../02_heroes/HERO_STANDARD.md).
 
 ## Loop macro candidato
 

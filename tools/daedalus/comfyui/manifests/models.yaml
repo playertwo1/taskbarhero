@@ -15,21 +15,48 @@ approved_models:
     license: "CreativeML OpenRAIL++-M"
     approved: true
 
+# Baixados em 2026-09-30 para ComfyUI-Shared/models; NENHUM aprovado por Rafael ainda.
 pending_approval_models:
   - id: "pixel_art_xl_lora"
     type: "lora"
+    source: "https://huggingface.co/nerijs/pixel-art-xl"
     filename: "pixel-art-xl.safetensors"
-    license: "Permissive AI Generative"
+    license: "CreativeML OpenRAIL-M (HF card)"
+    sha256: "4234637cb80c998f41e348e6a6cb6bc20d8d038b2b0f256b6129b3b5e353eef7"
     approved: false
 
   - id: "controlnet_openpose_xl"
     type: "controlnet"
+    source: "https://huggingface.co/thibaud/controlnet-openpose-sdxl-1.0"
     filename: "control-lora-openposeXL2-rank256.safetensors"
+    license: "other (HF card sem texto claro; o registro anterior 'Apache-2.0' estava incorreto) - EM ABERTO"
+    sha256: "8afa079285bf9384eaf8f6322884cb4f24bbe405da490f91f5540d3bff585e75"
+    approved: false
+
+  - id: "ip_adapter_plus_sdxl_vit_h"
+    type: "ipadapter"
+    source: "https://huggingface.co/h94/IP-Adapter"
+    filename: "ip-adapter-plus_sdxl_vit-h.safetensors"
     license: "Apache-2.0"
+    sha256: "3f5062b8400c94b7159665b21ba5c62acdcd7682262743d7f2aefedef00e6581"
+    approved: false
+
+  - id: "clip_vit_h_14_laion2b"
+    type: "clip_vision"
+    source: "https://huggingface.co/h94/IP-Adapter (models/image_encoder)"
+    filename: "CLIP-ViT-H-14-laion2B-s32B-b79K.safetensors"
+    license: "Apache-2.0 (repo h94/IP-Adapter); verificar licença do encoder LAION"
+    sha256: "6ca9667da1ca9e0b0f75e46bb030f7e011f44f86cbfb8d5a36590fcd7507b030"
     approved: false
 
   - id: "birefnet_general"
     type: "segmentation"
-    filename: "BiRefNet-general-epoch_244.pth"
+    source: "https://huggingface.co/ZhengPeng7/BiRefNet"
+    filename: "BiRefNet-general.safetensors (models/birefnet)"
     license: "MIT"
+    sha256: "9ab37426bf4de0567af6b5d21b16151357149139362e6e8992021b8ce356a154"
     approved: false
+
+custom_nodes_pending_approval:
+  - {id: "ComfyUI_IPAdapter_plus", source: "https://github.com/cubiq/ComfyUI_IPAdapter_plus", license: "GPL-3.0", approved: false}
+  - {id: "ComfyUI-RMBG", source: "https://github.com/1038lab/ComfyUI-RMBG", license: "GPL-3.0", approved: false, note: "requirements.txt completo NAO instalado (groundingdino, decord, onnxruntime-gpu); so opencv-python-headless, timm, einops"}

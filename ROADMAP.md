@@ -1,230 +1,245 @@
+---
+document_type: roadmap
+project: Pocket Hero
+repository: taskbarhero
+language: pt-BR
+last_reviewed: 2026-09-30
+engine: Godot 4.7.2 Standard
+platform: Android (app normal)
+current_focus: [SLICE-1E playtest humano, BALANCE-1 aplicar o balanceamento v1.0, OPUS-ROUND-1 (só Claude Opus)]
+---
+
 # ROADMAP — Pocket Hero
 
-**Status atualizado em 2026-09-30** · **Engine:** Godot 4.7.2 Standard · **Plataforma inicial:** Android
+Roadmap único do projeto: prioridade, ordem e gates. Ele **aponta** para as fontes; não copia regras, lore nem números (um fato → uma fonte).
 
-Roadmap único do projeto: define prioridade, ordem e gates. Detalhes de design ficam nas fontes linkadas em cada fase (um fato → uma fonte). O histórico do MVP está em [`arquivados/ROADMAP_CONCLUIDO.md`](arquivados/ROADMAP_CONCLUIDO.md).
+## Como ler este arquivo (qualquer agente: Claude, ChatGPT, Antigravity)
 
----
-
-## 1. Onde estamos
-
-- **MVP:** homologado no gate **R19** em 2026-09-27 e **substituído pelo slice no `1A-CUT`** (2026-09-29): o loop legado foi removido e só existe no git (commit `cd47758`) e em `arquivados/`. O fluxo jogável atual é `TitleScreen → SliceCampaign`.
-- **Fase atual:** expansão de conteúdo, identidade e meta-progressão.
-- **Marco de Alta Densidade (2026-09-30, aprovado por Rafael):** Produção e padronização completa dos sprites no **Padrão de Alta Densidade**: 8 heróis (96×96), bestiário de 17 entidades do Cap. 1 (64px a 224px), 30 ícones de itens v0.4 (64×64), painéis do Hub (256×256+), UI Kit 9-slice e tema AMOLED integrado na cena de campanha (`SliceCampaignScreen.gd`), com arena visual de combate (4 camadas de fundo e atores animados).
-- **Onde paramos (2026-09-30):** 1D avançado com painéis do Refúgio (Árvore e Ferreiro) e assets visuais produzidos (`hub_arvore_dos_ecos_256x256.png`, `hub_ferreiro_de_lumen_256x256.png`, `hub_refugio_pos_boss_256x256.png`, `refugio_mobile_retrato_216x480.png`). 1E com tema AMOLED, tela de campanha enriquecida visualmente e controles de velocidade/loadout.
-- **Evidência técnica atual:** baseline verificado em 2026-09-30: **29/30 cenas Godot PASS** (`python tools/run_godot_tests.py`), zero regressões. `TestExpeditionChoices` falha na expectativa de vitória da seed 101 aceita como exceção humana de Rafael no gate 1C. Jogo jogável ao vivo via Direct3D 12 no Godot 4.7.2 (`res://scenes/slice/SliceCampaign.tscn`).
-- **Relatório mestre de arte:** [`docs/art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md`](docs/art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md).
+1. Leia a seção **1 (Estado atual)** e a **3 (Agora)**. Só abra a **4 (Próximo)** e a **5 (Futuro)** se a tarefa pedir.
+2. Cada fase tem um **ID estável** (ex.: `BALANCE-1`). Use-o ao citar a fase em commits, relatórios e documentos.
+3. **Status de ciclo de vida:** `CONCEPT` → `DESIGN` → `APPROVED` → `IMPLEMENTING` → `IMPLEMENTED` → `QA` → `PASS` · `DEPRECATED`.
+4. **Certeza:** **DECIDIDO** (Rafael decidiu) · **HIPÓTESE** (valor a testar) · **EM ABERTO** (decisão de Rafael pendente). Não invente decisões em aberto: pergunte.
+5. Checklist `[x]` = feito com evidência; `[ ]` = pendente.
+6. O que foi concluído está em [`arquivados/ROADMAP_CONCLUIDO.md`](arquivados/ROADMAP_CONCLUIDO.md), com o texto original de cada gate. Material arquivado é histórico: não use como fonte de regra ou número.
+7. Regras de trabalho, ordem de carregamento e comandos: [`AGENTS.md`](AGENTS.md). Painel de caminhos: [`PROJECT_STATE.md`](PROJECT_STATE.md).
 
 ---
 
-## 2. Princípios e controle de escopo
+## 1. Estado atual (conferido em 2026-09-30)
 
-- Preservar os Golden References aprovados. O MVP homologado é substituído pelo conteúdo do slice no `1A-CUT` (decisão de Rafael, 2026-09-29); antes disso, mudanças canônicas novas não alteram código homologado sem tarefa explícita de migração.
-- Bosque de Lúmen continua sendo o Capítulo 1; não iniciar capítulos futuros antes de validar o loop.
-- Sem backend, contas, multiplayer, cloud save ou monetização.
-- Números de balanceamento são **HIPÓTESE** até simulação e playtest.
-- Evoluir por gates pequenos; cada fase fecha com evidência, não com documento.
+**Fluxo jogável:** `TitleScreen → SliceCampaign` (Refúgio → loadout → expedição de 10 encontros → Rainha das Geleias → Guardião-Cervo → retorno → Árvore dos Ecos / Ferreiro). O MVP antigo foi removido no `1A-CUT` e só existe no git (commit `cd47758`).
 
-Antes de adicionar um sistema, perguntar: melhora o core loop? cria decisão? reforça progressão? reforça lore? interage com sistemas existentes? Se todas forem "não", não priorizar. O objetivo é poucos sistemas conversando entre si:
-
-`herói ↔ skill ↔ passiva ↔ Trait ↔ item ↔ Echo ↔ party ↔ inimigo ↔ evento ↔ lore ↔ Árvore dos Ecos ↔ artesãos ↔ Hub`
-
-Fantasia, core loop e pilares: [`GAME_PILLARS.md`](docs/00_project/GAME_PILLARS.md) e [`CORE_LOOP.md`](docs/00_project/CORE_LOOP.md).
+| Área | Estado | Evidência |
+| --- | --- | --- |
+| Suíte Godot | **36/36 cenas PASS** | `python tools/run_godot_tests.py` em 2026-09-30, commit `82571ad` + alterações locais. |
+| Dados de balanceamento | Validador **OK** | `python tools/balance/validate_balance_data.py` em 2026-09-30. |
+| Argos (simulação) | 0 `BUG`; achados `BALANCE`/`PACING` abertos | Último `slice_balance`: `tools/argos/reports/20260930-180715_82571ad/REPORT.md`; perfis de jogador: `20260930-183035_82571ad`; achados em [BALANCE_FINDINGS](docs/08_qa/BALANCE_FINDINGS.md). |
+| SLICE-1 (vertical slice) | `IMPLEMENTED` / QA mobile `PASS` | Loop completo no emulador Pixel 9 (`1080x2424`): [relatório](docs/08_qa/QA_MOBILE_PIXEL9_REPORT.md). |
+| Playtest humano do slice | **pendente** | Roteiro pronto em [PLAYTEST_1E](docs/08_qa/PLAYTEST_1E.md), ainda não executado. |
+| Kits do trio | `IMPLEMENTED` / HIPÓTESE | Bastião, Flecha e Íris com 6 skills (Signature no 3º slot fixo), 16 passivas, 3 Traits e 3 builds. [Validação](docs/08_qa/KITS_VALIDATION_2026-09-30.md) · [log de ajuste](docs/08_qa/KITS_TUNING_LOG.md). |
+| Balanceamento | **v1.0** global escrito (`DESIGN`); escala **10×** migrada (DECIDIDO) | `combat_scale` = 10 e `level_curve_p` = 0,8 em [`combat_core.json`](data/balance/combat_core.json); regras do jogo inteiro em [balanceamento v1.0](docs/06_balance/v1/README.md). |
+| Arte | Padrão de Alta Densidade integrado | [Relatório](docs/art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md) · [índice de arte](docs/07_art/INDEX.md). |
 
 ---
 
-## 3. Fundação concluída
+## 2. Concluído (resumo)
 
-Gates `PASS` em design. Nenhum deles aprova runtime, números finais ou balanceamento.
+Detalhes, evidências e texto original de cada gate: [`arquivados/ROADMAP_CONCLUIDO.md`](arquivados/ROADMAP_CONCLUIDO.md).
 
-| Fase | Gate | Escopo aprovado | Fonte |
+| ID | Resultado | Data | Fonte vigente |
 | --- | --- | --- | --- |
-| **ART-0** | PASS 2026-09-27 / Atualizado 2026-09-30 | 4 Golden visuais + Padrão de Alta Densidade (8 heróis 96px, 17 mobs 64–224px, 30 itens 64px, Hub 256px+, UI Kit). | [Relatório Alta Densidade](docs/art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md) · [Golden](docs/art/golden/README.md) · [inventário](docs/art/MVP_SPRITE_INVENTORY.md) |
-| **SYNC-0** | PASS | Contratos de design importados e indexados. | [docs/INDEX.md](docs/INDEX.md) |
-| **DESIGN-1** | PASS 2026-09-28 | Party 3 de 8; separação run / herói / equipamento / conta; saídas da expedição; Echo opcional no slice. | [CORE_LOOP](docs/00_project/CORE_LOOP.md) · [skills](docs/03_systems/SKILL_SYSTEM.md) |
-| **HERO-STD** | APPROVED | Anatomia canônica do herói (1 básico + 6 skills, 16 passivas, 3 Traits, Mastery 1–10, 6 slots, 5 missões, 4 formas). | [HERO_STANDARD.md](HERO_STANDARD.md) |
-| **LORE-1** | PASS 2026-09-28 | Bíblia de Lore com mistérios centrais em aberto. | [LORE_BIBLE](docs/01_world/LORE_BIBLE.md) |
-| **HERO-001 Bastião** | DESIGN completo | Golden Reference de design: kit, passivas, Traits, Mastery, lore e 5 missões. Pendente: números, diálogos, encounters, sprites finais, implementação. | [Golden Reference](docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md) |
-| **TREE-1** | PASS 2026-09-28 | 30 nós em 7 ramos, pré-requisitos e custos relativos. Alvo posterior ~84 nós. | [Árvore dos Ecos](docs/03_systems/GLOBAL_RESONANCE_TREE.md) |
-| **CRAFT-1** | PASS 2026-09-28 | Quatro artesãos (Ferreiro, Alquimista, Gravadora de Ecos, Ourives), serviço mínimo, fonte/sink e ordem de abertura. | [Equipamento e crafting](docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md) |
-| **ITEM-1** | PASS 2026-09-28 | 6 slots, 6 raridades v0.4, catálogo de 30 itens; 15 itens runtime como legado. | [Equipamento](docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md) · [itens](docs/04_content/items/INDEX.md) · [ponte legada](docs/04_content/LEGACY_RUNTIME_CATALOG.md) |
-| **LOOT v0.4** | APPROVED como cânone | Base de combate, loot, inimigos, materiais e economia. Integração ao runtime em LOOT-EXPANSION-1. | [TASKBAR v0.4](documents/canonical/taskbar_sistema_v0.4/README.md) |
+| MVP (R0–R19) | Homologado no R19 e substituído pelo slice no `1A-CUT` | 2026-09-27 / 2026-09-29 | Só histórico |
+| ART-0 | 4 Golden + Padrão de Alta Densidade | 2026-09-27 / 2026-09-30 | [Golden](docs/art/golden/README.md) · [inventário](docs/art/MVP_SPRITE_INVENTORY.md) |
+| SYNC-0 | Contratos de design importados e indexados | — | [docs/INDEX.md](docs/INDEX.md) |
+| DESIGN-1 | Party 3 de 8; separação run / herói / equipamento / conta | 2026-09-28 | [CORE_LOOP](docs/00_project/CORE_LOOP.md) · [skills](docs/03_systems/SKILL_SYSTEM.md) |
+| HERO-STD | Anatomia canônica do herói (`APPROVED`) | 2026-09-28 | [HERO_STANDARD](docs/02_heroes/HERO_STANDARD.md) |
+| LORE-1 | Bíblia de Lore | 2026-09-28 | [LORE_BIBLE](docs/01_world/LORE_BIBLE.md) |
+| HERO-001 | Bastião: Golden Reference de design | 2026-09-28 | [Golden Reference](docs/02_heroes/BASTIAO_GOLDEN_REFERENCE.md) |
+| TREE-1 | Árvore dos Ecos: 30 nós em 7 ramos | 2026-09-28 | [GLOBAL_RESONANCE_TREE](docs/03_systems/GLOBAL_RESONANCE_TREE.md) |
+| CRAFT-1 | Quatro artesãos e serviço mínimo | 2026-09-28 | [EQUIPMENT_AND_CRAFTING_SYSTEM](docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md) |
+| ITEM-1 | 6 slots, quatro raridades no slice | 2026-09-28 | [itens](docs/04_content/items/INDEX.md) |
+| SLICE-0 | Recorte do slice | 2026-09-29 | [SLICE_1_SCOPE](docs/04_content/chapters/chapter_01/SLICE_1_SCOPE.md) |
+| BALANCE-FOUNDATION-1 | Contrato de balanceamento + arquitetura global | 2026-09-29 | [v1 · perfil do Capítulo 1](docs/06_balance/v1/capitulos/CAPITULO_01.md) · [v1 · telemetria e Argos](docs/06_balance/v1/10_TELEMETRIA_ARGOS.md) |
+| SLICE-1A | Combate, dados, rota, skills/passivas, telemetria, corte do legado | 2026-09-30 | [SliceTelemetry](scripts/combat/SliceTelemetry.gd) · [route_c1.json](data/expedition/route_c1.json) |
+| SLICE-1B | Eventos, Reward Choice, loot, inventário, save | 2026-09-29 | [SLICE_1B_RUN_SPEC](docs/03_systems/SLICE_1B_RUN_SPEC.md) |
+| SLICE-1C | Rainha das Geleias e Guardião-Cervo com mecânicas próprias (`APPROVED`) | 2026-09-29 | [ENCOUNTERS](docs/04_content/chapters/chapter_01/ENCOUNTERS.md) |
+| SLICE-1D | Echo, Fragmentos, Árvore de 6 nós, Ferreiro, Refúgio visual | 2026-09-30 | [ECHO_SYSTEM](docs/03_systems/ECHO_SYSTEM.md) · [blacksmith_slice.json](data/progression/blacksmith_slice.json) |
+| SLICE-1E (técnico) | Contratos de tela, pausa/velocidades, loadout livre, QA mobile Pixel 9 | 2026-09-30 | [UI](docs/09_ui/INDEX.md) · [QA mobile](docs/08_qa/QA_MOBILE_PIXEL9_REPORT.md) |
+| KITS-1 | Kits completos do trio em runtime (HIPÓTESE) | 2026-09-30 | [planos 00–04](arquivados/planos_concluidos/2026-09-30-kits-completos-00-fundacao.md) · [validação](docs/08_qa/KITS_VALIDATION_2026-09-30.md) |
+| SCALE-10X | `combat_scale` 10, curva `p = 0,8`, valores de itens, HP de chefe ×2, perfis de equipamento na rota do Argos | 2026-09-30 | [v1 · perfil do Capítulo 1](docs/06_balance/v1/capitulos/CAPITULO_01.md) · [BAL-013](docs/08_qa/BALANCE_FINDINGS.md) |
+| BALANCE-V1-DOC | Balanceamento global v1.0: constituição + 11 domínios + perfil do Capítulo 1; absorveu a base v0.5, a origem v0.4 e os contratos antigos (excluídos) | 2026-09-30 | [balanceamento v1.0](docs/06_balance/v1/README.md) |
+| REPO-ORG | Repositório reorganizado: referências visuais numa pasta só, ferramentas Python fora de `scripts/`, planos concluídos arquivados, AGENTS enxuto, verificador de links oficial, ~260 MB de lixo local removidos | 2026-09-30 | [estrutura do repositório](docs/00_project/ESTRUTURA_DO_REPOSITORIO.md) |
+| ARGOS-PROFILES | Oito perfis de jogador executáveis (Core e Balance Lab) com fuzz de inventário | 2026-09-30 | [profiles/README](tools/argos/profiles/README.md) |
 
 ---
 
-## 4. Sequência ativa
+## 3. Agora — trabalho em andamento
 
-A ordem é esta. Não pular etapas: cada uma entrega o que a seguinte consome.
+Ordem de prioridade. Trabalhe uma fatia por vez.
 
-**DECIDIDO (Rafael, 2026-09-29) — estratégia de runtime do slice:** o SLICE-1 migra para `/data` **somente o subconjunto v0.4 que usa**, com aliases dos IDs runtime atuais registrados no [registro de conteúdo](docs/CONTENT_REGISTRY.md). Não haverá arquivos de dados paralelos. **Revisado em 2026-09-29 (Rafael):** o conteúdo legado do MVP é **removido** de `/data`, do código e dos testes na etapa `1A-CUT`, quando a rota do slice já funciona; até lá ele coexiste e a suíte segue verde. Depois do corte, o MVP antigo deixa de ser jogável (histórico no git e em `arquivados/`). LOOT-EXPANSION-1 completa a migração depois do slice.
+### NOW-1 · SLICE-1E — Playtest humano · `QA` pendente
 
-### 4.0 ECON-1 — Economia mínima · `DESIGN` em andamento
+- **Objetivo:** medir com pessoas o que o Argos não mede: diversão, clareza, TTK sentido, vitória na primeira tentativa e pacing.
+- **Fonte:** [PLAYTEST_1E](docs/08_qa/PLAYTEST_1E.md) (perguntas, registro por tentativa e retorno ao balanceamento).
+- **Fecha também:** os dois últimos itens do gate `ECON-1` ([v1 · economia e loot](docs/06_balance/v1/07_ECONOMIA_LOOT.md)).
+- [ ] executar o playtest e registrar as respostas;
+- [ ] TTK, vitória na primeira tentativa e pacing medidos (gate `ECON-1`);
+- [ ] teto numérico e conversão de tempo offline medidos (gate `ECON-1`);
+- [ ] levar os resultados às decisões `BAL-009` a `BAL-015` (seção NOW-3).
 
-Feito: [modelo econômico](docs/06_balance/ECONOMY_MODEL.md), [15 encontros / 32 derrotas e proposta do Guardião](docs/04_content/chapters/chapter_01/ENCOUNTERS.md), [plano estruturado](docs/04_content/chapters/chapter_01/encounter_plan.json) e [simulação reproduzível](tools/economy/simulate_chapter1_balance.py) de cobertura, budgets, rendimento e TTK teórico.
+### NOW-2 · BALANCE-1 — Aplicar o balanceamento v1.0 · `IMPLEMENTING`
 
-O que falta depende de jogo real e **fecha no SLICE-1E**: combate, taxa de vitória na primeira tentativa, pacing, teto e conversão offline.
+- **Objetivo:** levar as regras do [balanceamento v1.0](docs/06_balance/v1/README.md) do documento para `/data` e para o Argos, com medição antes de cada número.
+- **Fontes:** [constituição](docs/06_balance/v1/00_CONSTITUICAO.md) · [decisões abertas](docs/06_balance/v1/11_DECISOES_ABERTAS.md) · [perfil do Capítulo 1](docs/06_balance/v1/capitulos/CAPITULO_01.md) · [proposta integrada de itens](docs/04_content/items/CHAPTER_01_INCREMENTAL_ITEM_PROPOSAL.md).
+- **Já feito:** ver `SCALE-10X`, `BALANCE-V1-DOC` e `ARGOS-PROFILES` na seção 2.
+- [ ] Rafael decide D-01 a D-09 (NOW-3); sem isso, não gravar números novos;
+- [ ] cenário "jogador de referência" no Argos, com inimigos sintéticos por capítulo ([10 §4](docs/06_balance/v1/10_TELEMETRIA_ARGOS.md));
+- [ ] ablação por fonte para medir as fatias de poder ([00 §4](docs/06_balance/v1/00_CONSTITUICAO.md));
+- [ ] regras novas do Analyst: teto de sinergia, fraqueza declarada, relevância, passiva mensurável, variância;
+- [ ] curva de XP que alcance o nível 100 ([02 §5](docs/06_balance/v1/02_HEROIS.md), D-04);
+- [ ] matriz de status por item/raridade (Comum, Incomum, Raro, Épico; Épico só em chefe) — **EM ABERTO**, não inferir valores;
+- [ ] fator ×1,08 por capítulo em `/data`;
+- [ ] implementar a tela [UI_S12 — números de item](docs/09_ui/screens/s12_numeros_de_item.md) (contrato `DESIGN`, [mockups](docs/art/mockups/s12_numeros_de_item_concepts_v002/README.md)).
+- **Restrição:** nada de `/data` muda sem decisão e sem relatório do Argos antes/depois ([00 §11](docs/06_balance/v1/00_CONSTITUICAO.md)).
+- **Gate PASS:** decisões D-01 a D-09 registradas; jogador de referência e fatias medidos; matriz de itens aprovada; Capítulo 1 dentro das metas no Argos; confronto com o playtest.
 
-Gate PASS:
-- [x] árvore, Ferreiro, Alquimista e loot têm sinks definidos; nenhum recurso sem função;
-- [x] custos principais simuláveis;
-- [x] primeira expedição offline termina no objetivo/derrota sem iniciar outra;
-- [x] melhoria do Ferreiro demonstrável com fonte não repetível de Resíduo de Lúmen, sem ser requisito para vencer;
-- [ ] TTK, vitória na primeira tentativa e pacing medidos no SLICE-1E;
-- [ ] teto numérico e conversão de tempo offline medidos no SLICE-1E.
+### NOW-3 · Decisões aguardando Rafael · `EM ABERTO`
 
-### 4.1 SLICE-0 — Recorte do slice · `PASS`
+| ID | Pergunta | Fonte |
+| --- | --- | --- |
+| BAL-009 | Arcano/Controle tardios e Guardião sem folga — decidir depois do playtest | [BALANCE_FINDINGS](docs/08_qa/BALANCE_FINDINGS.md) |
+| BAL-010 | `lumen` e `retaliacao_tele` vencem cedo: reduzir Pulso Restaurador, reduzir Contra-Golpe telegrafado ou aceitar | idem |
+| BAL-011 | Íris `arcano` fraca; 36 passivas novas sem efeito medido | idem |
+| BAL-012 | TTK do Guardião abaixo de 120–210 s (parcialmente tratado pelo HP ×2; confirmar) | idem |
+| BAL-013 | Aprovar o perfil de equipamento `tipico` no modo `route` do Argos | idem |
+| BAL-014 | Perfil Grinder: Resíduo de Lúmen e inventário crescem sem limite | idem |
+| BAL-015 | Perfil Beginner: 44% de abandono, concentrado nas builds com Íris Arcano | idem |
+| D-01 a D-09 | Decisões estruturais do balanceamento v1.0 (medição do orçamento, Signature, foco por herói, curva de XP, escalas globais, Reforço, teto de D3, fatias, sinergia) | [11_DECISOES_ABERTAS](docs/06_balance/v1/11_DECISOES_ABERTAS.md) |
+| UI | Revisar os contratos de tela `UI_S01`–`UI_S12` (`DESIGN`) | [docs/09_ui](docs/09_ui/INDEX.md) |
+| Textos | Revisar os textos de eventos do 1B (`DESIGN`) | [SLICE_1B_RUN_SPEC](docs/03_systems/SLICE_1B_RUN_SPEC.md) |
 
-**Estado:** `PASS` em 2026-09-29. Recorte registrado em [SLICE_1_SCOPE.md](docs/04_content/chapters/chapter_01/SLICE_1_SCOPE.md); decisões abertas ficam listadas lá, com dono.
+### NOW-4 · Arte do ui_kit v003 · `CONCEPT` aprovado
 
-Escolher subconjuntos de fontes já aprovadas, sem criar conteúdo novo. O resultado é a lista fechada que o BALANCE-FOUNDATION-1 e o SLICE-1 consomem.
+- **Objetivo:** levar o conceito aprovado a asset final.
+- **Fonte:** [README do ui_kit](assets/sprites/ui/ui_kit/README.md) · [contrato](docs/art/contracts/screens/ui_kit.yaml) · [conceito](docs/art/candidates/ui_kit_v003/README.md).
+- [ ] pixelização no Aseprite a partir do conceito (não gerar a arte final por script);
+- [ ] QA técnico (`tools/sprite_lint.py`) e auditoria visual independente;
+- [ ] QA mobile das telas que usam o kit.
 
-- [x] trio (Bastião, Flecha, Íris): skills, passivas e Traits do slice, garantindo pelo menos duas builds distintas;
-- [x] subset de equipamentos cobrindo os principais slots e subset de raridades v0.4;
-- [x] subset de inimigos, 1 elite, 1 mini-boss e as fases do Guardião-Cervo a implementar ([ENCOUNTERS](docs/04_content/chapters/chapter_01/ENCOUNTERS.md) · [sementes](docs/04_content/chapters/chapter_01/DESIGN_SEEDS.md));
-- [x] 1 evento de expedição com escolha real;
-- [x] 1 Echo funcional opcional com recompensa determinística ([Sistema de Ecos](docs/03_systems/ECHO_SYSTEM.md));
-- [x] ramo pequeno da Árvore dos Ecos e o serviço do Ferreiro (desmontagem + 1 melhoria);
-- [x] mudança visual do Refúgio após o boss e efeito do Fragmento do Coração Verde ([Hub](docs/05_hub/HUB_STRUCTURE_SEEDS.md) · [direção visual](docs/05_hub/HUB_VISUAL_DIRECTION.md));
-- [x] lista de IDs v0.4 que entram em `/data` e seus aliases com os IDs runtime atuais;
-- [x] **inventário de arte do recorte:** para cada entidade, efeito e tela do slice, indicar se já existe folha `v002`/Golden utilizável ou se precisa de contrato novo ([inventário MVP](docs/art/MVP_SPRITE_INVENTORY.md) · [conceitos](docs/art/conceitos/README.md)); assets novos seguem contrato → QA técnico → auditoria visual independente, e o primeiro asset novo passa o gate antes dos demais;
-- [x] atualizar o [overview do Capítulo 1](docs/04_content/chapters/chapter_01/OVERVIEW.md) ao padrão de 6 skills por herói.
+### NOW-5 · OPUS-ROUND-1 — Próxima rodada técnica · `DESIGN` · **executor: somente Claude Opus**
 
-Gate PASS: recorte registrado com fontes, IDs e aliases; nenhum item do slice sem fonte aprovada; lacunas de arte listadas com contrato ou decisão de reaproveitamento.
+**Regra de execução (Rafael, 2026-09-30):** esta fatia é feita **apenas com o Claude Opus**, junto com Rafael. Outros agentes (ChatGPT, Antigravity/Gemini, Sonnet, Haiku ou subagentes de outro modelo) **não executam** estes itens: podem só ler e citar. Se você não é o Claude Opus, pare e avise Rafael.
 
-### 4.2 BALANCE-FOUNDATION-1 — Contrato de balanceamento · `PASS`
+**Parte A — decisões e correções do balanceamento v1.0** (cada uma pede a escolha de Rafael antes de mudar `/data`):
 
-**Estado:** `PASS` em 2026-09-29. Contrato em [SLICE_BALANCE_CONTRACT.md](docs/06_balance/SLICE_BALANCE_CONTRACT.md); números seguem HIPÓTESE até o SLICE-1E.
+- [ ] **Curva de XP (D-04):** a curva atual não alcança o nível 100. Subir do 99 ao 100 exige ~22 milhões de XP, e o chefe dá 80. Proposta: o XP concedido cresce com o nível do conteúdo na mesma taxa do XP exigido, medida pelo Argos contra as horas-alvo ([02 §5](docs/06_balance/v1/02_HEROIS.md#5-xp-e-ritmo-de-nível)).
+- [ ] **Medição do orçamento 30/30/25/15 (D-01):** medido do nível 1 ao 100, como aprovado, nunca fecha (só o nível multiplica o poder ~16×; o melhor equipamento dá +80%). A v1 mede o ganho **dentro de cada capítulo**; confirmar ou escolher outra régua ([00 §4](docs/06_balance/v1/00_CONSTITUICAO.md#4-orçamento-de-poder)).
+- [ ] **Teto da dificuldade D3 (D-07):** o chefe do capítulo 10 em D3 teria ~1,1 milhão de HP, acima do teto de 1 milhão. Opções: HP de D3 ×1,9, teto próprio de 2 milhões ou reduzir o HP de party do chefe ([09 §3](docs/06_balance/v1/09_DIFICULDADE_ENDGAME.md#3-teto-por-camada)).
 
-**Fundação global — `PASS` em 2026-09-29:** núcleo compartilhado + overlay por capítulo + override de cenário, validação de referências, hashes de entradas e Argos sem IDs fixos do Capítulo 1. Contrato em [GLOBAL_BALANCE_SYSTEM.md](docs/06_balance/GLOBAL_BALANCE_SYSTEM.md). Este gate aprova a arquitetura e a reprodutibilidade; os números continuam HIPÓTESE.
+**Parte B — manutenção do repositório** (detalhe e cuidados em [ESTRUTURA_DO_REPOSITORIO §5](docs/00_project/ESTRUTURA_DO_REPOSITORIO.md#5-recomendações-ainda-não-executadas)):
 
-Integrar ao combate do Pocket Hero **apenas a parte da v0.4 que o recorte do SLICE-0 usa**, com Bastião como referência. Template base: [COMBAT_BALANCE_STANDARD](docs/06_balance/COMBAT_BALANCE_STANDARD.md). O restante do contrato fica para BALANCE-1.
+- [ ] R-1 unir `docs/art/` e `docs/07_art/` (~700 arquivos com `.import`);
+- [ ] R-2 `.gdignore` em `docs/` e parar de versionar `.import` de imagens de documentação (testar a leitura do Argos em `docs/`);
+- [ ] R-3 remover cenas de inimigos do MVP que o slice não usa (mudança de código; rodar testes);
+- [ ] R-4 renomear `documents/` (junto com R-1);
+- [ ] R-5 versionar só os relatórios do Argos citados como evidência.
 
-- [x] status canônicos usados pelo slice: ID, unidade, significado, cálculo, limites e mapeamento para os nomes/valores runtime atuais;
-- [x] como Guarda, Perfect Block, Desequilíbrio/Stagger e Marca entram no pipeline compartilhado;
-- [x] fórmulas de dano, crítico, defesa/penetração e cura/escudo, com caps, ordem e exemplos calculados contra o combate atual;
-- [x] baseline do trio (Bastião primeiro) e dos inimigos, elite, mini-boss e boss do recorte, dentro dos budgets v0.4 ou com justificativa;
-- [x] budgets dos slots e raridades do recorte;
-- [x] métricas mínimas de telemetria para o slice: dano, cura, TTK, mortes, uso de skills e recursos ganhos/gastos;
-- [x] cada número rastreado como `DECIDIDO`, `HIPÓTESE` ou `EM ABERTO`, com fonte e método.
+**Gate PASS:** D-01, D-04 e D-07 decididos e registrados na v1 (e em `/data` com Argos antes/depois, quando couber); R-1 a R-5 feitos ou descartados por Rafael; `python tools/docs/check_links.py --orphans`, testes Godot, validador e Argos sem falhas.
 
-Gate PASS: tudo que o slice usa tem definição única e fórmula calculável à mão; heróis e inimigos do recorte usam o mesmo modelo de status/modificadores; baselines prontos para teste. O PASS **não** declara o jogo balanceado.
+---
 
-### 4.3 SLICE-1 — Vertical slice do jogo real
+## 4. Próximo — depois do slice (em ordem)
 
-Fluxo: `Hub → party → build → expedição → combate → escolha → evento → elite → mini-boss → boss → retorno → Árvore/Ferreiro → evolução do Hub`
+Não iniciar antes de fechar `NOW-1` e `NOW-2`, salvo pedido de Rafael.
 
-Cada etapa fecha com teste automatizado novo em `tests/`, a suíte completa passando (`python tools/run_godot_tests.py`) e o jogo rodando com o conteúdo vigente (o legado só existe até o `1A-CUT`).
+### NEXT-1 · LOOT-EXPANSION-1 — Integração do loot canônico ao runtime (regras v1.0)
 
-- **1A — Combate e dados:** migrar o subconjunto v0.4 para `/data` com aliases; combate usa o modelo do BALANCE-FOUNDATION-1; trio com as skills do recorte. Sub-fatias: `1A-1` `CombatMath` (feito), `1A-2` dados e carregadores (feito: `content_set: "slice"`, manifesto + núcleo + overlay de capítulo, `BalanceProfiles`; `SliceStats` é compatibilidade), `1A-3` rota de 10 encontros e combate (feito: `route_c1.json`, `ExpeditionRun`), `1A-4` skills, passivas e Traits (parcial: efeitos implementados onde o design dá número; 6 nós com `kind: "none"` — Respiração Controlada, Rastro Aberto, Pressão Coordenada, Foco do Cristal, Fissura Persistente, Feixe Tecido — dependem de valores EM ABERTO, e Ponto de Mira/Caçada Coordenada só mudam escolha de alvo), `1A-5` telemetria (**feito em 2026-09-29**: [SliceTelemetry](scripts/combat/SliceTelemetry.gd) agrega os eventos do `ExpeditionRun`; faltam as métricas sem dado no run, listadas na seção 7 do [contrato](docs/06_balance/SLICE_BALANCE_CONTRACT.md), para `1B`/`1E`), `1A-CUT` remoção do legado (**feito em 2026-09-29**: `TitleScreen → SliceProbe`; histórico no git). Evidência vigente: 25/25 cenas PASS, validador `OK` e Argos sem `BUG`. Perdas assumidas até `1B`/`1D`: save, offline, tracker, XP/ouro contínuos, loot e inventário.
-- **1B — Run:** eventos (framework orientado a dados + 10 eventos, incluindo aleatórios, pessoais e secretos), Reward Choice em elite/mini-boss, loot por seed equipável ou reciclável e save mínimo. Desenho em [SLICE_1B_RUN_SPEC](docs/03_systems/SLICE_1B_RUN_SPEC.md), Plano A em [2026-09-29-slice-1b-nucleo.md](docs/superpowers/plans/2026-09-29-slice-1b-nucleo.md) e Plano B em [2026-09-29-slice-1b-tela-e-argos.md](docs/superpowers/plans/2026-09-29-slice-1b-tela-e-argos.md). **Estado `IMPLEMENTED` (2026-09-29):** núcleo lógico, textos (`DESIGN`, aguardando revisão), tela de campanha/inventário e camada Argos entregues. Cobertura: baseline 24/25 cenas Godot; a falha fixa da seed 101 está aceita como exceção humana do gate 1C, não como resultado PASS da suíte. Analyst 10 testes OK; `slice_quick` e `slice_run_layer` sem `BUG`. Validação visual manual em 432×960 não foi possível neste ambiente; QA mobile formal permanece em `1E`.
-- **1C — Chefes:** mini-boss e Guardião-Cervo com mecânicas distintas de inimigo comum. **Estado `APPROVED` por Rafael em 2026-09-29, com exceção do gate da seed 101:** a Rainha tem ondas de adds nos limiares e telegráfica; o Guardião tem fase final com três fragmentos sequenciais enquanto continua atacando. `TestExpeditionMechanics` cobre os dois. O `slice_balance` confirma vitórias de campanha após progressão nas 18 builds testadas (4–10 tentativas); a build `guardiao/critico/controle` tem 50% de vitórias de primeira tentativa no nível 12. O teste fixo segue falhando e a suíte permanece em 24/25; não foram alterados teste nem dados. A necessidade de balancear o boss será decidida depois do playtest em `1E`.
-- **1D — Retorno (`IMPLEMENTED` / `QA PASS`):** Echo opcional implementado: recompensa única na primeira conclusão da Geleia Anciã, inventário/equipamento persistente e adaptação testada de Muralha Viva. **Fragmentos e Árvore (2026-09-29):** Rafael aprovou 32 Fragmentos únicos (4/6/7/7/8) como hipótese de runtime. Estão gravados como `fragment_reward` nos marcos `c1_1_2_b`, `c1_2_2_b`, `c1_3_2_a`, `c1_4_1_a` e `c1_5_2_a` de [route_c1.json](data/expedition/route_c1.json); a [Árvore de 6 nós](data/progression/resonance_tree_slice.json) e o [ResonanceTree](scripts/run/ResonanceTree.gd) pagam cada marco uma vez, com saldo e compras no save (`TestResonanceTree`). **Ferreiro (2026-09-29 / testado no Pixel 9 em 2026-09-30):** desmontagem exige `TREE_OFI_002` e protege favoritos; Reforço +1 exige `TREE_OFI_003`, custa 5 Resíduos, vale uma vez por item (Arma, Secundário, Armadura) e soma +2% aos afixos-base, sem mudar Item Power ([blacksmith_slice.json](data/progression/blacksmith_slice.json), `TestBlacksmith`). Testado e homologado no emulador Pixel 9 com validação tátil de slots, Reforço +1 e bloqueio de desmontagem de favoritos. **Telas e Refúgio Visual UI_S02 (2026-09-30):** a preparação da campanha foi elevada a Refúgio visual completo (`SliceCampaignScreen.gd`): banner ilustrado dinâmico (`hub_refugio_mobile_completo.png` ou `hub_refugio_pos_boss.png`), trio de heróis descansando no santuário (Bastião, Flecha, Íris em 96×96), TopBar de recursos e cards táteis para serviços com miniaturas de alta resolução (Árvore dos Ecos `hub_arvore_dos_ecos.png`, Ferreiro de Lúmen `hub_ferreiro.png` e Inventário/Echo `echo_c1_001`). Os painéis [ResonanceTreePanel](scripts/ui/ResonanceTreePanel.gd) e [BlacksmithPanel](scripts/ui/BlacksmithPanel.gd) continuam cobertos por `TestHubPanels`; o Ferreiro abre condicionado a `TREE_OFI_001`.
-- **1E — Validação (`QA PASS` no Pixel 9 e Argos `0 BUG`):** [contratos de tela](docs/09_ui/INDEX.md) `DESIGN` escritos (Rafael decidiu em 2026-09-29: Expedição em tela própria, Gravadora como seção do Inventário, build livre por herói, pausa e ×1–×4); já implementados a pausa/velocidades ×1–×20 (`TestRunSpeedControls`) e o loadout por herói com 18 combinações e 4 atalhos (`TestLoadoutBuilds`), com painéis opacos. **QA Mobile no Emulador Pixel 9 Concluído (2026-09-30):** Loop completo testado por toques nativos no display 20:9 (`1080x2424`): Title Screen → Refúgio (`UI_S02`) → Árvore dos Ecos (6 nós comprados com 22 fragmentos) → Desbloqueio dinâmico do Ferreiro → Loadout/Presets (`UI_S04`) → Arena de Combate com Parallax e velocidades → Reward Choice → Tela de Resultado (`UI_S07`) → Inventário (`UI_S03`) → Painel do Ferreiro (Reforço +1, proteção de favorito e consumo de 5 resíduos). Evidências e relatório formal em [QA_MOBILE_PIXEL9_REPORT.md](C:/Users/notefael/.gemini/antigravity/brain/a571fc81-ae5c-4bdc-b363-25a26cf67720/QA_MOBILE_PIXEL9_REPORT.md). **Simulação do Argos `slice_balance` (2026-09-30):** 1404 execuções, **0 BUGs**, relatório consolidado em `tools/argos/reports/20260930-113407_17cd40c/REPORT.md`. **Suíte de Testes:** 29/30 cenas PASS no `python tools/run_godot_tests.py`, zero regressões. **Elevação Visual de Alta Densidade e UI Kit (2026-09-30):** Produzidos e padronizados: 8 heróis 96×96 (`assets/sprites/heroes/<heroi>/hero_<heroi>_96x96.png`), bestiário de 17 entidades 64px a 224px (`assets/sprites/enemies/highres/`), 30 ícones de itens 64×64 (`assets/sprites/items/icons_64/`), UI Kit 9-slice (`assets/sprites/ui/ui_kit/`) e tema AMOLED (`assets/ui/pocket_hero_theme.tres`). A tela de campanha (`SliceCampaignScreen.gd`) enriquecida com TopBar, arena visual com 4 camadas de parallax, atores animados, ícones de itens 64×64 com raridades coloridas via [ItemIconResolver](scripts/ui/ItemIconResolver.gd) e cards táteis. Relatório formal: [`docs/art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md`](docs/art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md).
+Completa a migração iniciada no SLICE-1A. Regras: [v1 · economia e loot](docs/06_balance/v1/07_ECONOMIA_LOOT.md), [schema de inimigo](docs/06_balance/v1/specs/ENEMY_CANONICAL_SCHEMA.md), [Drop Resolver](docs/06_balance/v1/specs/DROP_RESOLVER_SPEC.md). Dados do Capítulo 1: [JSON canônico dos inimigos](docs/04_content/enemies/CHAPTER_01_ENEMIES_CANONICAL.json).
 
-Fora do slice: árvore completa (~84 nós), os 8 heróis, artesãos em nível máximo, crafting profundo, affixes aleatórios/reforja, campanhas pessoais completas, Mastery em runtime.
-
-Gate PASS:
-- [x] loop completo jogável do início ao fim (validado no Pixel 9 `1080x2424`);
-- [x] decisões da run influenciam a build; pelo menos duas builds claramente diferentes;
-- [x] progressão do herói e progressão global compreensíveis e distintas;
-- [x] equipamento ganho pode ser usado ou reciclado com decisão real (validado no Ferreiro);
-- [x] boss com mecânica distinta de inimigo comum;
-- [x] retorno ao Hub produz progressão perceptível sem grind artificial;
-- [x] etapas 1A–1E concluídas com evidência registrada.
-
-### 4.3.1 Balanceamento v0.5 do slice · `IMPLEMENTING`
-
-Meta de Rafael: jogo incremental; Guardião vencido por volta do nível 10–11 com fôlego entre encontros. Estado medido e mudanças em [BALANCE_V0.5](docs/06_balance/BALANCE_V0.5.md); simulação, não playtest. Fecha com playtest no `SLICE-1E`.
-
-### 4.4 BALANCE-1 — Ajuste iterativo · pós-slice
-
-Completar o contrato de balanceamento fora do recorte: status restantes, tipos de dano e affixes v0.4, stacking/dispel/Tenacidade, DOT/HOT, escala de capítulo/dificuldade e matriz completa de builds e equipamento abaixo/esperado/acima.
-
-Medir TTK, duração da run, dano por herói, uso e escolha de skills/itens, dano recebido, mortes, recursos ganhos/gastos, builds dominantes e opções nunca escolhidas. ARGOS simula inflação, TTK, drops, builds quebradas e combinações impossíveis ou triviais.
-
-### 4.5 LOOT-EXPANSION-1 — Integração v0.4 ao runtime · pós-slice
-
-Completa a migração iniciada no SLICE-1A.
-
-- [ ] integrar `ENEMY_CANONICAL_SCHEMA` e os 17 inimigos canônicos, com aliases dos IDs runtime;
-- [ ] adotar os 30 itens, 7 materiais e 6 raridades, compatíveis com os 6 slots;
+- [ ] integrar `ENEMY_CANONICAL_SCHEMA` e os 17 inimigos canônicos, com aliases dos IDs runtime ([registro](docs/CONTENT_REGISTRY.md));
+- [ ] adotar o catálogo do Capítulo 1 reconciliado, 7 materiais e as quatro raridades do slice nos 6 slots; confirmar expansão e IDs antes da migração;
 - [ ] integrar o Drop Resolver e os mecanismos canônicos (Smart Loot, Duplicate Protection, Slot Pity, Quality Floor, Reward Choice, Boss Fragments, Bestiário), calibrados por simulação;
-- [ ] persistência e idempotência de first clear/pity, seed reproduzível, save migration, overflow e telemetria local;
+- [ ] persistência e idempotência de first clear/pity, seed reproduzível, migração de save, overflow e telemetria local;
 - [ ] tabelas humanas como vistas derivadas de uma única fonte de dados;
 - [ ] schemas, validação, cenários de QA e critérios de aceite antes do runtime.
 
-Gate PASS: fonte única sem colisão de IDs; fonte e sink para cada recompensa; resolver determinístico por estado e seed; pity dentro dos budgets; simulações de primeira conclusão e repetição; save/overflow/telemetria verificáveis; MVP não alterado retroativamente.
+**Gate PASS:** fonte única sem colisão de IDs; fonte e sink para cada recompensa; resolver determinístico por estado e seed; pity dentro dos budgets; simulações de primeira conclusão e repetição; save/overflow/telemetria verificáveis.
+
+### NEXT-2 · HERO-SYSTEMS-1 + HERO-1 — Arquitetura e roster dos oito heróis
+
+Proposta: [HERO_SYSTEMS_Roadmap_Canonica.docx](documents/HERO_SYSTEMS_Roadmap_Canonica.docx) (não substitui o [HERO_STANDARD](docs/02_heroes/HERO_STANDARD.md) nem aprova números).
+
+- [ ] reconciliar ações, skills, Ultimate/Signature, árvores, Mastery e Ascension com o `HERO_STANDARD`, as fichas e o runtime;
+- [ ] completar a matriz funcional e as identidades dos oito heróis; escolher um `HERO_REFERENCE` antes de produzir kits;
+- [ ] schemas compartilhados para herói, skills, passivas, árvore, Mastery, Ascension, campanha pessoal e sinergias;
+- [ ] Flecha (HERO-002): lore, 5 missões e equipamentos/Ecos de referência ([ficha](docs/02_heroes/hero_002_flecha.md));
+- [ ] roster restante (Brasa, Véu, Orvalho, Forja, Sino) no padrão canônico, em ondas.
+
+**Gate PASS:** arquitetura validada por um herói de referência; builds distintas alteram gameplay; schemas congelados; 8 heróis, 48 skills, 128 passivas, 24 Traits, Mastery e 5 missões por herói, com 2+ sinergias e sem redundância.
+
+### NEXT-3 · CHAPTER-1-FULL — Conteúdo completo do Capítulo 1
+
+- [ ] 10 subfases, 10–15 eventos, eventos pessoais, 3 elites com modificadores, 3 mini-bosses e segredos ([sementes](docs/04_content/chapters/chapter_01/DESIGN_SEEDS.md) · [overview](docs/04_content/chapters/chapter_01/OVERVIEW.md)).
+
+### NEXT-4 · HUB-1 — Refúgio completo e Árvore expandida
+
+- [ ] layout do Refúgio, ordem de abertura dos estabelecimentos e UI detalhada da Árvore ([estrutura](docs/05_hub/HUB_STRUCTURE_SEEDS.md) · [direção visual](docs/05_hub/HUB_VISUAL_DIRECTION.md));
+- [ ] expandir a Árvore dos Ecos além dos 30 nós (alvo ~84; [fonte](docs/03_systems/GLOBAL_RESONANCE_TREE.md)).
+
+### NEXT-5 · CRAFT-AFFIXES-1 — Crafting profundo e affixes
+
+Depende de SLICE-1, `LOOT-EXPANSION-1` e das fontes/sinks do `ECON-1`. Proposta: [TASKBAR_Artesaos_Crafting_Affixes_v2.docx](documents/TASKBAR_Artesaos_Crafting_Affixes_v2.docx) (não muda automaticamente [CRAFT-1](docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md), `ITEM-1` nem a v0.5).
+
+- [ ] reconciliar domínios e nomes dos artesãos com CRAFT-1/ITEM-1 e o Hub;
+- [ ] aprovar por etapas anatomia de item, famílias/tags, incompatibilidades, budgets e fontes antes de schemas;
+- [ ] decompor `CRAFT-01` a `CRAFT-19` em fatias pequenas, começando por schema, compatibilidade e um fluxo demonstrável;
+- [ ] validar reforja, refinamento, aspectos, runas, transmutação, relíquias, salvage e proteção contra azar;
+- [ ] integrar affixes às identidades dos heróis sem apagar fraquezas centrais.
+
+**Gate PASS:** artesãos sem sobreposição; cada operação com fonte/sink e limites aprovados; nenhum item perdido permanentemente; crafting profundo opcional; integração com builds validada.
 
 ---
 
-## 5. Trilhas pausadas até o slice
+## 5. Futuro — sem data
 
-Retomar depois do SLICE-1, usando os contratos validados.
+### ARGOS — playtester automático
 
-- **HERO-002 Flecha:** identidade, 6 skills, 3 builds, 16 passivas, 3 Traits e Mastery 1–10 em [ficha](docs/02_heroes/hero_002_flecha.md) · [skills](docs/04_content/skills/FLECHA_SKILLS.md) · [passivas](docs/02_heroes/hero_002_flecha_passives.md) · [Traits](docs/02_heroes/hero_002_flecha_traits.md) · [Mastery](docs/02_heroes/hero_002_flecha_mastery.md). Faltam lore + 5 missões e equipamentos/Ecos de referência.
-- **HERO-1 roster:** Íris, Brasa, Véu, Orvalho, Forja e Sino no padrão canônico. Os nomes de skills propostos estão no [HERO_STANDARD](HERO_STANDARD.md). Gate: 8 heróis documentados, 48 skills, 128 passivas, 24 Traits, Mastery e 5 missões por herói, 2+ sinergias por herói, nenhum herói substituindo outro.
-- **Conteúdo do Capítulo 1 completo:** 10 subfases, 10–15 eventos, eventos pessoais, 3 elites com modificadores, 3 mini-bosses e segredos ([sementes](docs/04_content/chapters/chapter_01/DESIGN_SEEDS.md)).
-- **HUB-1 completo:** layout do Refúgio, ordem de abertura de todos os estabelecimentos e UI detalhada da Árvore ([estrutura proposta](docs/05_hub/HUB_STRUCTURE_SEEDS.md)).
-- **Expansão da Árvore dos Ecos** além dos 30 nós.
+Estrutura e comandos: [tools/argos/README.md](tools/argos/README.md). Ordem decidida por Rafael (2026-09-29): simulador + Analyst antes do Maestro.
+
+| Versão | Escopo | Estado |
+| --- | --- | --- |
+| v0.1 — Foundation | GdUnit4, Maestro MCP, jornadas Android | PENDENTE |
+| v0.2 — Visual | Screenshots e regressão visual | PENDENTE |
+| v0.3 — Scale | Simulador headless + Analyst | `IMPLEMENTING` — combate/campanha, loot da run e oito perfis de jogador em uso; economia completa pendente |
+| v0.4 — Learning | Godot RL Agents | EXPERIMENTAL |
+| v1.0 — Autonomous QA | build → test → report → fix → retest em CI | PENDENTE |
+
+### Outras trilhas
+
 - **Relações entre heróis e regiões futuras:** apenas sementes ([FUTURE_SEEDS](docs/01_world/FUTURE_SEEDS.md)).
+- **Capítulos 2+:** não iniciar antes de validar o loop do Capítulo 1.
+- **Overlay Android:** fora do MVP até priorização explícita (Build Template + Gradle, plugin Kotlin, `TYPE_APPLICATION_OVERLAY`, touch passthrough, bateria).
 
 ---
 
 ## 6. Pendências de setup
 
-Anotadas no marco SETUP-01; não reabrem o MVP.
-
-- [ ] **ADB / S25 Ultra:** conexão física adiada em 2026-09-27; emulador Android Studio usado em R17–R19.
+- [ ] **ADB / S25 Ultra:** conexão física adiada em 2026-09-27; usa-se o emulador Pixel 9.
 - [ ] **Aseprite 1.3.10+:** 1.3.7 operacional; alvo ainda não atingido.
 
 ---
 
-## 7. Trabalho futuro
+## 7. Princípios de escopo
 
-### ARGOS — Autonomous Playtester
-
-Hooks da v0.0 concluídos. **Ordem revisada (Rafael, 2026-09-29):** simulador + Analyst antes do Maestro, porque o gargalo atual é balanceamento; RSN Game QA fica como referência de oráculos, não dependência.
-
-| Versão | Escopo | Entrega / gate | Estado |
-| --- | --- | --- | --- |
-| **v0.1 — Foundation** | GdUnit4, Maestro MCP, perfis Beginner/Chaos. | APK testado por jornadas Android; 10+ regressões críticas. | PENDENTE |
-| **v0.2 — Visual** | Fallback CLI Android, screenshots, regressão visual. | Detectar botões inacessíveis e HUD quebrado. | PENDENTE |
-| **v0.3 — Scale** | Simulador headless (10k–100k execuções) e Argos Analyst. | Relatórios de inflação, drops, TTK e economia. | `IMPLEMENTING` — ARGOS-SIM de combate/campanha do slice em uso ([README](tools/argos/README.md), [achados](docs/08_qa/BALANCE_FINDINGS.md)); economia e loot pendentes |
-| **v0.4 — Learning** | Godot RL Agents. | Experimento de estratégias emergentes/exploits. | EXPERIMENTAL |
-| **v1.0 — Autonomous QA** | build → test → report → fix → retest. | Ciclo validado em CI. | PENDENTE |
-
-### HERO-SYSTEMS-1 — Arquitetura e progressão dos oito heróis · pós-slice
-
-**Planejado para depois do SLICE-1.** A proposta de arquitetura está em [HERO_SYSTEMS_Roadmap_Canonica.docx](documents/HERO_SYSTEMS_Roadmap_Canonica.docx); ela amplia o trabalho de `HERO-1`, mas não substitui o [HERO_STANDARD](HERO_STANDARD.md) nem aprova números ou conteúdo ainda em aberto.
-
-- [ ] reconciliar o contrato de ações, skills, Ultimate/Signature, árvores, Mastery e Ascension com `HERO_STANDARD`, fichas existentes e o escopo de runtime;
-- [ ] completar a matriz funcional e as identidades dos oito heróis; escolher explicitamente um `HERO_REFERENCE` antes de produzir kits completos;
-- [ ] definir schemas compartilhados para herói, skills, passivas, árvore, Mastery, Ascension, campanha pessoal e sinergias;
-- [ ] validar um herói de referência com builds que mudem comportamento, balancear seus sistemas e congelar a arquitetura antes de expandir o roster em ondas;
-- [ ] expandir os outros heróis e validar sobreposição, campanhas pessoais, loadouts e integração com equipamento/crafting.
-
-Gate PASS: decisões e hipóteses separadas; arquitetura validada por um herói de referência; builds distintas alteram gameplay; schemas congelados; oito heróis integrados sem redundância sistêmica. Quantidades propostas no DOCX (por exemplo, nós, pontos, atos e itens por herói) não são requisitos até aprovação e validação.
-
-### CRAFT-AFFIXES-1 — Crafting profundo e affixes · pós-slice
-
-**Dependências:** SLICE-1, `LOOT-EXPANSION-1` e validação de fontes/sinks em `ECON-1`. Usar [TASKBAR_Artesaos_Crafting_Affixes_v2.docx](documents/TASKBAR_Artesaos_Crafting_Affixes_v2.docx) como proposta de arquitetura futura, não como mudança automática do [CRAFT-1](docs/03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md), `ITEM-1` ou da base [v0.4](documents/canonical/taskbar_sistema_v0.4/README.md).
-
-- [ ] reconciliar os domínios e nomes dos artesãos propostos com CRAFT-1/ITEM-1 e os serviços já decididos para o Hub;
-- [ ] aprovar por etapas a anatomia de item, famílias/tags e incompatibilidades de affix, budgets e fontes de loot antes de criar schemas ou dados runtime;
-- [ ] decompor os entregáveis `CRAFT-01` a `CRAFT-19` do documento em fatias pequenas; começar por schema, compatibilidade e um fluxo demonstrável antes de liberar camadas avançadas;
-- [ ] validar reforja, refinamento, aspectos, runas, transmutação, relíquias, salvage e proteção contra azar com catálogo, economia, UI e persistência coerentes;
-- [ ] integrar affixes e equipamento às identidades e builds dos heróis, preservando funções distintas e impedindo que equipamento apague fraquezas centrais.
-
-Gate PASS: papéis dos artesãos sem sobreposição; cada recurso e operação tem fonte/sink e limites aprovados; itens não podem ser perdidos ou inutilizados permanentemente por operações; crafting profundo é opcional; loot aleatório e rotas determinísticas foram medidos; integração com builds validada. Custos, tiers, contagens, pools e demais números do DOCX permanecem propostas até aprovação e balanceamento.
-
-### Overlay Android
-
-Pós-MVP e fora da arquitetura central até priorização explícita: Android Build Template + Gradle, plugin Kotlin e service, permissão `TYPE_APPLICATION_OVERLAY`, touch passthrough, bateria e restrições de background.
+- Sem backend, contas, multiplayer, cloud save, monetização ou vantagem paga.
+- Números de balanceamento são **HIPÓTESE** até simulação e playtest; simulação do Argos não é playtest.
+- Cada fase fecha com evidência (teste, relatório, QA), não com documento.
+- Antes de adicionar um sistema: ele melhora o core loop, cria decisão, reforça progressão ou lore, ou interage com sistemas existentes? Se não, não priorizar. Pilares: [GAME_PILLARS](docs/00_project/GAME_PILLARS.md) · [CORE_LOOP](docs/00_project/CORE_LOOP.md).
 
 ---
 
 ## 8. Referências
 
-- [Documentos do projeto](documents/INDEX.md) · [índice de docs](docs/INDEX.md) · [registro de conteúdo](docs/CONTENT_REGISTRY.md)
-- [Resumo consolidado](docs/POCKET_HERO_PROJECT_BRIEF.md) · [estado do projeto](PROJECT_STATE.md)
-- [Histórico das fases concluídas](arquivados/ROADMAP_CONCLUIDO.md) · [CHANGELOG](CHANGELOG.md)
+- [AGENTS.md](AGENTS.md) · [PROJECT_STATE.md](PROJECT_STATE.md) · [CHANGELOG.md](CHANGELOG.md) · [estrutura do repositório](docs/00_project/ESTRUTURA_DO_REPOSITORIO.md)
+- [Índice de docs](docs/INDEX.md) · [documentos base](documents/INDEX.md) · [balanceamento v1.0](docs/06_balance/v1/README.md) · [registro de conteúdo](docs/CONTENT_REGISTRY.md)
+- [Resumo do projeto](docs/00_project/POCKET_HERO_PROJECT_BRIEF.md) · [histórico concluído](arquivados/ROADMAP_CONCLUIDO.md) · [arquivados](arquivados/INDEX.md)

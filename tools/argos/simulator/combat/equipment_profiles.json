@@ -1,0 +1,31 @@
+{
+  "schema_version": "1.0",
+  "status": "HIPOTESE",
+  "source": "data/loot/drops_c1.json (raridade e Item Power por fonte) e achado BAL-013 em docs/08_qa/BALANCE_FINDINGS.md",
+  "note": "Perfis de equipamento dos modos route e segments do Argos. Antes destes perfis a rota rodava o trio sem equipamento, o que deixou de representar o jogador depois que os itens passaram a valer ~+30%. Um perfil fixa, para cada herói, os itens dos slots listados com a raridade, o Item Power e o nivel de item do perfil. A campanha nao usa perfis: ela equipa o que dropa.",
+  "evidence": "slice_balance 20260930-174431: a party comeca a tentativa da vitoria (~5a) com ~9 de 15 slots equipados (mediana apos a 4a tentativa), com mistura de raridades (normais: Comum 63%, Incomum 28%, Raro 9%; escolhas de elite e mini-boss: Incomum/Raro e Raro; IP 1-28 antes do chefe).",
+  "profiles": {
+    "nu": {
+      "description": "Sem equipamento: comportamento anterior da rota; piso de poder."
+    },
+    "tipico": {
+      "description": "3 slots por heroi (arma, armadura, acessorio), Incomum, IP 15, nivel de item 5: aproxima o que a party tem equipado quando costuma vencer.",
+      "rarity": "Incomum",
+      "item_power": 15,
+      "item_level": 5,
+      "slots": ["weapon", "armor", "accessory"]
+    },
+    "bom": {
+      "description": "5 slots por heroi, Raro, IP 22, nivel de item 5: teto realista antes do Guardiao (ainda sem Epico, que so vem do chefe).",
+      "rarity": "Raro",
+      "item_power": 22,
+      "item_level": 5,
+      "slots": ["weapon", "secondary", "armor", "accessory", "accessory"]
+    }
+  },
+  "templates": {
+    "hero_001": {"weapon": "item_w_001", "secondary": "item_s_001", "armor": "item_a_001", "accessory": "item_r_001"},
+    "hero_002": {"weapon": "item_w_002", "secondary": "item_s_006", "armor": "item_a_002", "accessory": "item_r_001"},
+    "hero_003": {"weapon": "item_w_006", "secondary": "item_s_007", "armor": "item_a_001", "accessory": "item_r_001"}
+  }
+}

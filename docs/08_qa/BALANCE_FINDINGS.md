@@ -100,3 +100,49 @@ Fonte dos números: `python tools/argos/run.py --scenario slice_balance` (6 seme
 
 * **Evidência complementar do BAL-009 — efeito do 1D (2026-09-29):** o cenário `slice_run_layer` ganhou a variante `com_arvore_e_ferreiro` (política do Argos: compra a rota `VIG_002` → `OFI_003` assim que há Fragmentos e reforça os itens equipados enquanto houver Resíduo; não desmonta itens). Relatório `20260929-233509_08923dd`, 240 execuções, 0 `BUG`. Contra a variante `base` (48 campanhas cada, mesmas builds e sementes): tentativas médias 6,48 contra 6,52 e nível final médio 13,38 contra 13,42; vitórias 47/48 contra 48/48. A variante fez 604 reforços e comprou os 5 nós em ao menos uma tentativa. **Leitura:** o Reforço +1 e a Árvore do slice não mudam o ritmo de forma mensurável (diferença dentro do ruído de 6 sementes), o que confirma a hipótese de que não movem os achados de Arcano/Controle. O Pulso Vital não tem efeito no runtime (`effect: "none"`), então só o Reforço foi medido. Isso é simulação, não playtest.
 
+### [BAL-010] Kits completos: `lumen` e `retaliacao_tele` vencem cedo demais
+* **Data:** 2026-09-30
+* **Build Commit:** `82571ad` (com alterações locais; kits completos dos 3 heróis)
+* **Métrica observada** (campanha, nível no início da tentativa vencedora; meta 9–12 e 3–8 tentativas): as seis combinações com Íris `lumen` vencem nos níveis **6–7** em 2,5–3 tentativas; `retaliacao_tele` vence no nível **8** (3,5 tentativas) e a rota nível 8 é vencida em 95% das vezes (dominância nos níveis 8 e 10). No baseline (antes dos kits) só `retaliacao_tele/marca/lumen` estava abaixo de 9 (8,5). Relatórios: `20260930-151302_82571ad` (`slice_balance`), `20260930-151134_82571ad` e `20260930-150753_82571ad` (focos).
+* **Hipótese:** a parte das Signaturas foi tratada (recarga 120/60/60 s devolveu a mediana das 18 combinações de 7,5 para 9,5). O que sobra nessas duplas vem do núcleo existente (Pulso Restaurador + Véu; Contra-Golpe guardado para o golpe telegrafado): com todas as Signaturas desligadas e as 36 passivas novas desligadas, as combinações `lumen` seguem em 7 (`tune_kits_party`). Uma ressalva: a variante "Pulso sem os ranks novos" foi idêntica à base, então não ficou provado que o override de ranks foi aplicado; os ranks que dei ao Pulso (Plano 03, I3) continuam suspeitos até outra medição.
+* **Proposta do Argos:** as alavancas que sobram são decisões de Rafael (não foram alteradas): (a) reduzir o Pulso Restaurador (hoje 0,3×ATK / 16 s) ou seus ranks novos, (b) reduzir o bônus do gatilho telegrafado do Contra-Golpe em `retaliacao_tele`, (c) aceitar `lumen` como a build de cura mais rápida, já que `rules_slice` pede só mais de um caminho viável sem cura (12 caminhos no nível 10, 6 sem `lumen`).
+* **Decisão humana:** **Pendente (Rafael).**
+
+### [BAL-011] Kits completos: Íris `arcano` fraca e 36 passivas novas sem efeito medido
+* **Data:** 2026-09-30
+* **Métrica observada:** Íris `arcano` vence a rota no nível 10 em 27% (baseline: 0%) e a campanha no nível 12 com 6 tentativas (limite alto). Além disso, desligar as 36 passivas novas (A3–C5 e Traits dos três heróis) **não altera** a mediana da campanha (`tune_kits_party`: 8,5 com e sem elas).
+* **Hipótese:** a fraqueza do `arcano` é anterior aos kits (Prisma de Retorno exige alvo preparado e dependia da Marca da Flecha). Subir os três nós novos (`pass_iri_006`/`007`/`008`) não ajudou (iteração 4b, revertida). Quanto às passivas em geral, ou os valores são pequenos para a rota e a campanha, ou o Argos não captura o que elas fazem (por exemplo, leitura de alvo); só playtest distingue.
+* **Proposta do Argos:** nenhuma mudança agora; decidir no playtest do `1E` se alguma passiva precisa de mais peso e se o Prisma de Retorno precisa de outro gatilho.
+* **Decisão humana:** **Pendente (Rafael).**
+
+### [BAL-012] Kits completos: TTK do Guardião abaixo da faixa
+* **Data:** 2026-09-30
+* **Métrica observada:** mediana de 113 s (faixa 120–210 s de `ENCOUNTERS.md`); 15 de 18 combinações vencedoras abaixo da faixa (baseline: mediana 123 s; 2 de 16 fora).
+* **Hipótese:** as Signaturas e o dano dos novos nós encurtam a luta. Recargas maiores ajudaram (antes do ajuste a mediana era menor), mas não trouxeram a mediana para a faixa.
+* **Proposta do Argos:** seguir o roteiro do contrato (`SLICE_BALANCE_CONTRACT.md`): ajustar telégrafos, recuperação e adds do Guardião antes do HP; decisão depois do playtest.
+* **Decisão humana:** **Pendente (Rafael).**
+
+### [BAL-013] Itens novos: o modo "rota" do Argos mede o trio sem equipamento
+* **Data:** 2026-09-30
+* **Build Commit:** `82571ad` (com alterações locais); relatórios `slice_balance` [`172838`](../../tools/argos/reports/20260930-172838_82571ad/REPORT.md) (antes) e [`174431`](../../tools/argos/reports/20260930-174431_82571ad/REPORT.md) (depois); varredura [`tune_items_boss`](../../tools/argos/reports/20260930-173719_82571ad/REPORT.md).
+* **Métrica observada:** com a escada de nove níveis, o valor de 1,8% por BP e o Reforço de +10%, a mediana do nível de vitória do Guardião na campanha caiu de 10,0 para 9,0 (as builds que vencem cedo demais passaram de 7 para 9; depois do chefe ×2 ficaram 2, mais 1 que vence tarde demais, `guardiao/critico/arcano`, nível 13). O HP do chefe foi recalibrado de ×1,5 para ×2 (decisão de Rafael: manter a meta 10–11): mediana **10,2** (10,8 sem as builds Lúmen), faixa 7–13, 5,2 tentativas; o TTK mediano do Guardião passou de 113 s para **147,5 s** (faixa de projeto 120–210 s). Em contrapartida, "caminhos viáveis no nível 10" (rota com HP cheio, vitória ≥ 50%) caiu de 15 para **7** (de 9 para **1** sem Lúmen).
+* **Hipótese:** o modo `route` do Argos roda o trio **sem equipamento**. Enquanto os itens valiam ~+3%, isso aproximava o jogador real; com itens de ~+30%, o modo mede um personagem que o jogo não produz. A campanha, que acumula drops e equipa, vence em 18 de 18 combinações. A regra "mais de um caminho viável sem cura" deixou de ser medida de forma fiel.
+* **Proposta do Argos:** dar ao modo `route` um perfil de equipamento típico por nível (por exemplo, Raro em IP 27 nos seis slots) antes de julgar caminhos viáveis; não afrouxar `rules_slice.json`. Ainda vale rever as builds Lúmen (BAL-010), que seguem vencendo cedo.
+* **Atualização (2026-09-30):** o modo `route` agora aceita perfis de equipamento (`tools/argos/simulator/combat/equipment_profiles.json`). Com `slice_route_gear` (`180307`), no nível 10: `nu` 37% de vitória média e 7 caminhos viáveis (1 sem Lúmen); **`tipico`** (3 slots, Incomum, IP 15; calibrado nos ~9 de 15 slots equipados quando a campanha vence) **50%**, 8 viáveis (2 sem Lúmen), no meio da meta humana de 40–60% na primeira tentativa; `bom` (5 slots, Raro, IP 22) 84%, 16 viáveis (10 sem Lúmen). `slice_balance` passou a usar `tipico` na rota e nos segmentos (relatório `180715`). A regra de caminhos viáveis agora mede um personagem equipado de forma típica.
+* **Decisão humana:** **Pendente (Rafael)** quanto ao perfil de equipamento da rota; o HP do chefe ×2 foi autorizado no debate de 2026-09-30 ("manter a meta 10–11 e recalibrar o inimigo depois").
+
+### [BAL-014] Grinder: Resíduo de Lúmen e inventário crescem sem limite
+* **Data:** 2026-09-30
+* **Build Commit:** `82571ad` (com alterações locais); relatório [`argos_profiles`](../../tools/argos/reports/20260930-183035_82571ad/REPORT.md), perfil `grinder` (build `guardiao/marca/controle`, 4 sementes, 65 tentativas por campanha: 5 até a primeira vitória e 60 extras).
+* **Métrica observada:** nível 10 na tentativa 5, 23 na 20, 28 na 40 e 33 na 65 (ganho de ~0,1 nível por tentativa depois da 40); **~340 itens guardados** e save de **~27 KB**; **~850 Resíduo de Lúmen** acumulado. O único consumo do Resíduo é o Reforço +1 (5 por item, nível máximo 1, só arma, secundário e armadura), que gasta no máximo ~45 com os itens equipados (9 × 5). O inventário não tem capacidade e o Argos nunca desmonta.
+* **Hipótese:** o Resíduo não tem sumidouro depois do primeiro Reforço de cada peça, e o inventário cresce ~5 itens por tentativa, linearmente. Com Reforço de nível único isso é esperado pelo recorte, mas é exatamente o que um jogador que repete a expedição sente. O Argos não mede diversão nem desempenho no aparelho.
+* **Proposta do Argos:** nenhuma mudança agora. Decidir, junto com níveis de Reforço acima de +1 e a capacidade de inventário (fora do slice), quais são os sumidouros do Resíduo e dos itens; o perfil `hoarder` volta quando houver capacidade.
+* **Decisão humana:** **Pendente (Rafael).**
+
+### [BAL-015] Beginner: 44% de abandono, concentrado nas builds com Íris Arcano
+* **Data:** 2026-09-30
+* **Build Commit:** `82571ad` (com alterações locais); relatório [`argos_profiles`](../../tools/argos/reports/20260930-183035_82571ad/REPORT.md), perfil `beginner` (primeira opção em toda escolha, equipa só a partir da 2ª tentativa, não usa Árvore nem Ferreiro, desiste após 6 derrotas seguidas).
+* **Métrica observada:** 16 campanhas; **56% vencem** (mediana da primeira vitória: tentativa 4) e **44% abandonam**. As duas builds `guardiao/marca/arcano` e `retaliacao/marca/arcano` abandonam (0% e 25% de vitória); as duas com `lumen` vencem 100% em 4 tentativas (nível 8–9).
+* **Hipótese:** consistente com BAL-011 (Íris `arcano` fraca): sem a escolha do melhor item, sem gastar e sem ler o kit, a build sem cura não sustenta o Guardião. As escolhas do perfil são HIPÓTESE do Argos, não dado de jogadores reais; o resultado mede sensibilidade, não a taxa de abandono humana.
+* **Proposta do Argos:** nenhuma mudança agora; no playtest do `1E`, observar quem escolhe Arcano e o que faz depois de três derrotas.
+* **Decisão humana:** **Pendente (Rafael).**

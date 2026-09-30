@@ -1,0 +1,125 @@
+{
+  "id": "tune_items_boss",
+  "chapter_id": "CHAPTER_01",
+  "party": [
+    "hero_001",
+    "hero_002",
+    "hero_003"
+  ],
+  "description": "Calibracao pos-itens (2026-09-30): campanha com HP do chefe e dano inimigo variados; meta: Guardiao vencido por volta do nivel 10-11.",
+  "seeds": 6,
+  "levels": [
+    10
+  ],
+  "builds": {
+    "hero_001": [
+      "guardiao",
+      "retaliacao",
+      "retaliacao_tele"
+    ],
+    "hero_002": [
+      "critico",
+      "marca"
+    ],
+    "hero_003": [
+      "arcano",
+      "controle",
+      "lumen"
+    ]
+  },
+  "modes": [
+    "campaign"
+  ],
+  "campaign": {
+    "start_level": 1,
+    "max_attempts": 16,
+    "loot": true
+  },
+  "rank_milestones": [
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17,
+    19
+  ],
+  "max_time": 3600,
+  "stuck_seconds": 30,
+  "variants": [
+    {
+      "id": "boss1.5",
+      "profile_overrides": {
+        "party_hp_scale": {
+          "ELITE": 3.0,
+          "MINIBOSS": 3.0,
+          "BOSS": 1.5
+        }
+      }
+    },
+    {
+      "id": "boss1.75",
+      "profile_overrides": {
+        "party_hp_scale": {
+          "ELITE": 3.0,
+          "MINIBOSS": 3.0,
+          "BOSS": 1.75
+        }
+      }
+    },
+    {
+      "id": "boss2.0",
+      "profile_overrides": {
+        "party_hp_scale": {
+          "ELITE": 3.0,
+          "MINIBOSS": 3.0,
+          "BOSS": 2.0
+        }
+      }
+    },
+    {
+      "id": "boss2.25",
+      "profile_overrides": {
+        "party_hp_scale": {
+          "ELITE": 3.0,
+          "MINIBOSS": 3.0,
+          "BOSS": 2.25
+        }
+      }
+    },
+    {
+      "id": "boss2.5",
+      "profile_overrides": {
+        "party_hp_scale": {
+          "ELITE": 3.0,
+          "MINIBOSS": 3.0,
+          "BOSS": 2.5
+        }
+      }
+    },
+    {
+      "id": "dano0.6",
+      "profile_overrides": {
+        "party_hp_scale": {
+          "ELITE": 3.0,
+          "MINIBOSS": 3.0,
+          "BOSS": 1.5
+        }
+      },
+      "enemy_damage_scale": 0.6
+    },
+    {
+      "id": "dano0.7",
+      "profile_overrides": {
+        "party_hp_scale": {
+          "ELITE": 3.0,
+          "MINIBOSS": 3.0,
+          "BOSS": 1.5
+        }
+      },
+      "enemy_damage_scale": 0.7
+    }
+  ]
+}

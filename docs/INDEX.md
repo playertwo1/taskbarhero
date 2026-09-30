@@ -18,18 +18,18 @@ Abra somente o índice da área necessária. Os índices encaminham para as font
 ## Leituras centrais
 
 - [Manual de IA — Fase de Fundação](00_project/MANUAL_IA_FUNDACAO_DO_JOGO.md) — contexto mínimo, fontes de verdade e onde criar cada artefato.
-- [Padrão Canônico dos Heróis (HERO_STANDARD.md)](../HERO_STANDARD.md) — fonte única da especificação mandatória de anatomia, progressão, skills, passivas e builds.
+- [Padrão Canônico dos Heróis (HERO_STANDARD.md)](02_heroes/HERO_STANDARD.md) — fonte única da especificação mandatória de anatomia, progressão, skills, passivas e builds.
 - [Estado resumido](../PROJECT_STATE.md) — orientação; fontes citadas mantêm autoridade sobre os detalhes.
-- [Roadmap](../ROADMAP.md) — prioridade, fase atual e gates.
+- [Roadmap](../ROADMAP.md) — estado atual, trabalho em andamento, próximas fases e gates; o concluído fica em [arquivados](../arquivados/ROADMAP_CONCLUIDO.md).
 - [Registro de conteúdo](CONTENT_REGISTRY.md) — IDs de design e ponteiros para fontes de conteúdo/runtime.
 - [Padrão de Arte em Alta Densidade](art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md) — hierarquia de resolução (heróis 96px, bestiário 64–224px, itens 64px, hub 256px+), paleta TY40 e inventário de assets.
 - [Homologação de QA Mobile (SLICE-1E)](08_qa/QA_MOBILE_PIXEL9_REPORT.md) — relatório executivo de validação tátil no Pixel 9 (1080×2424) cobrindo todo o loop jogável.
-- [Sistema global de balanceamento](06_balance/GLOBAL_BALANCE_SYSTEM.md) — precedência núcleo → capítulo → cenário, validação e gates.
+- [Balanceamento global v1.0](06_balance/v1/README.md) — autoridade única dos números do jogo inteiro; comece pela [constituição](06_balance/v1/00_CONSTITUICAO.md).
 - [Índice de documentos base](../documents/INDEX.md) — guias e originais DOCX.
-- [Índice de bases canônicas importadas](../documents/canonical/INDEX.md) — sistemas v0.4 aprovados como autoridade de design.
+- [Estrutura do repositório](00_project/ESTRUTURA_DO_REPOSITORIO.md) — onde cada coisa mora e onde criar arquivos novos.
 
 ## Regra de navegação
 
 **Um fato → uma fonte de verdade.** Índices e registry apontam para a fonte; não copiam lore, regras, números de gameplay ou implementação. Consulte [AGENTS.md](../AGENTS.md) para ordem de carregamento e limites entre documentação, runtime e código.
 
-Os templates canônicos de atributos de herói, inimigo, equipamento e efeitos estão no [padrão de balanceamento](06_balance/COMBAT_BALANCE_STANDARD.md); `docs/templates/` continua reservada para modelos documentais reutilizáveis adicionais.
+Os templates canônicos de atributos de herói, inimigo, equipamento e efeitos estão no [v1 · status e combate](06_balance/v1/01_STATUS_E_COMBATE.md); `docs/templates/` continua reservada para modelos documentais reutilizáveis adicionais.

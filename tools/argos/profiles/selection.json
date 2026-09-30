@@ -1,0 +1,14 @@
+{
+  "note": "Quais perfis rodar conforme a área que mudou. Uso: python tools/argos/run.py --scenario argos_profiles --area loot. Não é uma fila fixa: quem muda o jogo escolhe a área. Áreas sem perfil ainda (por exemplo, herói específico) usam o conjunto mais próximo até o Hero Master existir.",
+  "areas": {
+    "tutorial_ui": ["beginner"],
+    "loot": ["optimizer", "exploit_hunter", "chaos", "grinder"],
+    "inventory_equipment": ["exploit_hunter", "chaos", "edge_case"],
+    "blacksmith_crafting": ["exploit_hunter", "optimizer", "grinder"],
+    "combat_balance": ["optimizer", "aggressor", "turtle", "edge_case"],
+    "hero_or_skills": ["optimizer", "chaos", "aggressor", "turtle"],
+    "progression_economy": ["grinder", "optimizer", "beginner"],
+    "save_data": ["exploit_hunter", "chaos", "edge_case"],
+    "everything": ["beginner", "optimizer", "chaos", "exploit_hunter", "grinder", "edge_case", "aggressor", "turtle"]
+  }
+}

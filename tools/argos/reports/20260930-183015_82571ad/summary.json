@@ -1,0 +1,330 @@
+{
+ "meta": {
+  "balance_version": "0.5",
+  "chapter_id": "CHAPTER_01",
+  "enemy_damage_scale": 0.5,
+  "godot": "4.7.2-stable (official)",
+  "kind": "meta",
+  "levels": [
+   5.0
+  ],
+  "modes": [
+   "campaign"
+  ],
+  "party": [
+   "hero_001",
+   "hero_002",
+   "hero_003"
+  ],
+  "resolved_sources": [
+   "res://data/balance/combat_core.json",
+   "res://data/balance/chapters/chapter_01.json"
+  ],
+  "route_equipment": "nu",
+  "scenario": "argos_profiles__exploit_hunter+chaos",
+  "seeds": 4.0,
+  "variants": [
+   "chaos",
+   "exploit_hunter"
+  ],
+  "commit": "82571ad",
+  "dirty": true,
+  "scenario_file": "tools/argos/simulator/combat/scenarios/_sel_43396.json",
+  "balance_hash": "36dc08a58fd197926339c946d3a8e490d7d5d5d1048dd9d920ebf42002ef9e54",
+  "balance_inputs": {
+   "data/balance/combat_profiles.json": "ada496afa42f8db9ef7aaca84c7edf668432451fe88c57e1c864dd89fca1deac",
+   "data/balance/combat_core.json": "aa7ab23df280d16adcc90899025d0c7e12fbb74b62240595b78576755c02e6f9",
+   "data/balance/chapters/chapter_01.json": "95369b13ced2de10dd6526a696b9e6c179d5c8535a386fe0c3f9b69f74663bcc",
+   "tools/argos/simulator/combat/scenarios/_sel_43396.json": "0830d489432c31c27611dbbe178b44d07410f033ccff302a56bba71deb476ce7"
+  }
+ },
+ "findings": [
+  {
+   "type": "EXPLOIT",
+   "severity": "HIGH",
+   "title": "Oráculo violado: recycle_credit_mismatch",
+   "metric": "8 execução(ões); exemplo {'kind': 'fuzz', 'build': 'fuzz', 'level': None, 'seed': 1, 'segment': None}",
+   "rule": "invariante do simulador"
+  },
+  {
+   "type": "INFO",
+   "severity": "INFO",
+   "title": "Itens por tentativa",
+   "metric": "mediana 4.0 item(ns) por tentativa entre combinações",
+   "rule": "SLICE_1_SCOPE.md seção 3: mínimo de 5 Resíduos antes do boss = um Reforço +1 (HIPÓTESE)"
+  }
+ ],
+ "variants": [
+  {
+   "variant": "chaos",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 2,
+   "heal_attempts": 5.0,
+   "no_heal_attempts_best": 5.0,
+   "no_heal_paths_ok": 2,
+   "no_heal_paths_ok_list": [
+    "guardiao/marca/arcano",
+    "retaliacao/marca/arcano"
+   ]
+  }
+ ],
+ "route": [],
+ "segments": [],
+ "campaign": [
+  {
+   "build": "chaos · guardiao/marca/arcano",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0,
+   "profile": "chaos"
+  },
+  {
+   "build": "chaos · guardiao/marca/lumen",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "lumen"
+   },
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0,
+   "profile": "chaos"
+  },
+  {
+   "build": "chaos · retaliacao/marca/arcano",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0,
+   "profile": "chaos"
+  },
+  {
+   "build": "chaos · retaliacao/marca/lumen",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "lumen"
+   },
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0,
+   "profile": "chaos"
+  }
+ ],
+ "economy": [
+  {
+   "build": "chaos · guardiao/marca/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.0,
+   "residue_total": 56.5
+  },
+  {
+   "build": "chaos · guardiao/marca/lumen",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.0,
+   "residue_total": 56.5
+  },
+  {
+   "build": "chaos · retaliacao/marca/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.0,
+   "residue_total": 56.5
+  },
+  {
+   "build": "chaos · retaliacao/marca/lumen",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.0,
+   "residue_total": 56.5
+  }
+ ],
+ "violations": {
+  "recycle_credit_mismatch": 8
+ },
+ "violation_examples": {
+  "recycle_credit_mismatch": {
+   "kind": "fuzz",
+   "build": "fuzz",
+   "level": null,
+   "seed": 1,
+   "segment": null
+  }
+ },
+ "run_layer": {
+  "events": [
+   {
+    "variant": "chaos",
+    "event": "event_c1_001",
+    "offered": 80,
+    "choices": {
+     "sacrifice": 40,
+     "heal": 40
+    },
+    "per_100_attempts": 100.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_arvore_cantante",
+    "offered": 4,
+    "choices": {
+     "ignore": 4
+    },
+    "per_100_attempts": 5.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_criatura_ferida",
+    "offered": 12,
+    "choices": {
+     "ignore": 4,
+     "save": 8
+    },
+    "per_100_attempts": 15.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_cristal_partido",
+    "offered": 8,
+    "choices": {
+     "leave": 8
+    },
+    "per_100_attempts": 10.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_eco_percebido",
+    "offered": 16,
+    "choices": {
+     "react": 16
+    },
+    "per_100_attempts": 20.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_memorial",
+    "offered": 4,
+    "choices": {
+     "honor_hero_003": 4
+    },
+    "per_100_attempts": 5.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_observador",
+    "offered": 4,
+    "choices": {
+     "witness": 4
+    },
+    "per_100_attempts": 5.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_raiz_oca",
+    "offered": 4,
+    "choices": {
+     "open": 4
+    },
+    "per_100_attempts": 5.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_rastro_cacada",
+    "offered": 4,
+    "choices": {
+     "follow": 4
+    },
+    "per_100_attempts": 5.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_reserva_residuo",
+    "offered": 60,
+    "choices": {
+     "collect": 60
+    },
+    "per_100_attempts": 75.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_sobrevivente",
+    "offered": 16,
+    "choices": {
+     "pass": 8,
+     "protect": 8
+    },
+    "per_100_attempts": 20.0
+   }
+  ],
+  "loot_by_rarity": {
+   "Comum": 108,
+   "Incomum": 96,
+   "Raro": 128,
+   "Relíquia": 16,
+   "Épico": 16
+  }
+ },
+ "profiles": [
+  {
+   "profile": "chaos",
+   "campaigns": 16,
+   "win_rate": 1.0,
+   "abandon_rate": 0.0,
+   "first_win_attempt": 5.0,
+   "attempts": 5.0,
+   "final_level": 12.0,
+   "items_held": 23.5,
+   "save_kb": 2.5185546875,
+   "fuzz_runs": 4,
+   "fuzz_actions": 2000,
+   "fuzz_refused": 943,
+   "edge_cases": 0,
+   "violations": {
+    "recycle_credit_mismatch": 4
+   }
+  },
+  {
+   "profile": "exploit_hunter",
+   "campaigns": 0,
+   "win_rate": null,
+   "abandon_rate": null,
+   "first_win_attempt": null,
+   "attempts": null,
+   "final_level": null,
+   "items_held": null,
+   "save_kb": null,
+   "fuzz_runs": 4,
+   "fuzz_actions": 3200,
+   "fuzz_refused": 2060,
+   "edge_cases": 0,
+   "violations": {
+    "recycle_credit_mismatch": 4
+   }
+  }
+ ]
+}

@@ -10,7 +10,7 @@ source: "[3-Taskbar_Hero_Bastiao_Golden_Reference_v0.1.docx](../../documents/3-T
 
 ## Regras de precedência no Pocket Hero
 
-- [`HERO_STANDARD.md`](../../HERO_STANDARD.md) continua sendo a fonte única para a anatomia e os requisitos compartilhados dos oito heróis. Regras compartilhadas do herói devem ser consultadas no padrão canônico, sem duplicação nesta ficha.
+- [`HERO_STANDARD.md`](HERO_STANDARD.md) continua sendo a fonte única para a anatomia e os requisitos compartilhados dos oito heróis. Regras compartilhadas do herói devem ser consultadas no padrão canônico, sem duplicação nesta ficha.
 - A ficha de Bastião serve como exemplo de profundidade, não como autorização para copiar kit, passivas, Traits, Maestria, lore ou valores para os demais heróis.
 - As decisões atuais do [Sistema de skills](../03_systems/SKILL_SYSTEM.md) prevalecem. A fonte descreve observação/timing de Perfect Block; como o combate do Pocket Hero é automático, qualquer uso precisa ser adaptado a regras automáticas e não pode exigir comando durante a luta.
 - O DOCX original inclui propostas genéricas para outros heróis; elas não foram reproduzidas nesta ficha curada. O [catálogo do Capítulo 1](../04_content/chapters/chapter_01/OVERVIEW.md) e as fichas individuais mantêm autoridade para esses heróis.
@@ -21,14 +21,14 @@ source: "[3-Taskbar_Hero_Bastiao_Golden_Reference_v0.1.docx](../../documents/3-T
 
 Projeto: Pocket Hero
 Versão: 0.1
-Status do registro de design: `DESIGN`; o status atual e as pendências estão no [roadmap](../../ROADMAP.md#3-fundação-concluída).
+Status do registro de design: `DESIGN`; o status atual e as pendências estão no [roadmap](../../ROADMAP.md) (`HERO-001` na seção 2; pendências em `NEXT-2`).
 Documento-base: padrão canônico + kit de combate + passivas + traits + maestria
 
 Documento de design do Bastião e referência de profundidade para as demais fichas. A implementação é comprovada pelo código, dados e testes do repositório.
 
 ## Regras compartilhadas e lore pessoal
 
-As regras compartilhadas de anatomia, skills, equipamentos, progressão e critério de conclusão têm fonte única em [`HERO_STANDARD.md`](../../HERO_STANDARD.md). A fonte DOCX v0.1 continha uma cópia extensa dessas regras e de propostas genéricas de roster; essa cópia foi retirada desta versão curada para não divergir do padrão vigente. O DOCX original continua preservado em `documents/`.
+As regras compartilhadas de anatomia, skills, equipamentos, progressão e critério de conclusão têm fonte única em [`HERO_STANDARD.md`](HERO_STANDARD.md). A fonte DOCX v0.1 continha uma cópia extensa dessas regras e de propostas genéricas de roster; essa cópia foi retirada desta versão curada para não divergir do padrão vigente. O DOCX original continua preservado em `documents/`.
 
 <a id="lore-pessoal-do-bastiao-decisoes-atuais"></a>
 ## Lore pessoal do Bastião — decisões atuais
@@ -420,6 +420,7 @@ Esse equilíbrio define o personagem.
 | 16 passivas | concluído |
 | 3 Traits | concluído |
 | 3 builds | concluído |
+| runtime (slice) | 6 skills, 16 passivas, 3 Traits e 3 builds em runtime como HIPÓTESE (2026-09-30), com a Guarda ativa; Contenção e Barreira Humana do Não Passarão ficam fora do slice (exigem posição) |
 | sinergias | preliminar |
 | equipamentos exclusivos | 3 iniciais |
 | Mastery 1–10 | concluído |
@@ -428,7 +429,7 @@ Esse equilíbrio define o personagem.
 | números finais | pendente |
 | balanceamento | pendente |
 
-Status do ciclo de design: `DESIGN`. Para o estado atual e as pendências, consulte o [roadmap](../../ROADMAP.md#3-fundação-concluída).
+Status do ciclo de design: `DESIGN`. Para o estado atual e as pendências, consulte o [roadmap](../../ROADMAP.md) (`HERO-001` na seção 2; pendências em `NEXT-2`).
 
 ## Próximos itens recomendados
 

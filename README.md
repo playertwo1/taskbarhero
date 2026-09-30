@@ -1,32 +1,48 @@
 # Pocket Hero
 
-RPG mobile de combate automático, party, equipamentos e progressão, desenvolvido em Godot. O produto se chama **Pocket Hero**; `taskbarhero` é o nome do repositório. Android em um aplicativo normal é a plataforma inicial, com personagens, mundo, interface e arte originais.
+RPG mobile de combate automático, party, equipamentos e progressão incremental, feito em Godot 4.7.2 para Android (app normal). O produto se chama **Pocket Hero**; `taskbarhero` é só o nome do repositório. Personagens, mundo, interface e arte são originais.
 
-O MVP foi homologado no gate `R19` e substituído pelo vertical slice no `1A-CUT` (2026-09-29). O fluxo jogável atual é `TitleScreen → SliceCampaign`, com expedições, escolhas, loot, inventário e save mínimo; QA mobile formal segue no `1E`. A prioridade e os gates atuais estão em [`ROADMAP.md`](ROADMAP.md); o histórico concluído está em [`arquivados/ROADMAP_CONCLUIDO.md`](arquivados/ROADMAP_CONCLUIDO.md).
+**Onde estamos:** o vertical slice do Capítulo 1 (`TitleScreen → SliceCampaign`) está jogável e passou no QA mobile (Pixel 9). Falta o playtest humano. O balanceamento global v1.0 está escrito e aguarda decisões. Detalhes: [`ROADMAP.md`](ROADMAP.md).
 
-## Navegação
+## Por onde começar
 
-- [`AGENTS.md`](AGENTS.md) — índice operacional, regras e mapa do repositório.
-- [`PROJECT_STATE.md`](PROJECT_STATE.md) — fontes de estado e implementação observável.
-- [`ROADMAP.md`](ROADMAP.md) — prioridade atual e gates.
+| Você é… | Leia |
+| --- | --- |
+| Agente de IA (Claude, ChatGPT, Antigravity) | [`AGENTS.md`](AGENTS.md) → [`PROJECT_STATE.md`](PROJECT_STATE.md) → [`ROADMAP.md`](ROADMAP.md) seções 1 e 3 |
+| Pessoa conhecendo o projeto | [resumo do projeto](docs/00_project/POCKET_HERO_PROJECT_BRIEF.md) → [pilares](docs/00_project/GAME_PILLARS.md) → [loop](docs/00_project/CORE_LOOP.md) |
+| Quem vai mexer em números | [balanceamento global v1.0](docs/06_balance/v1/README.md) |
+| Quem procura onde algo mora | [estrutura do repositório](docs/00_project/ESTRUTURA_DO_REPOSITORIO.md) |
+
+## Estrutura
+
+```text
+data/        valores que o jogo carrega          docs/        design por área (00_project … 09_ui, art)
+scenes/      cenas Godot                         documents/   guias-base e fontes DOCX
+scripts/     GDScript do jogo                    arquivados/  histórico e trabalho concluído
+assets/      sprites e UI usados pelo jogo       tools/       ferramentas (Argos, balance, docs, arte, Android)
+tests/unit/  testes Godot
+```
+
+Regras de onde criar cada tipo de arquivo: [ESTRUTURA_DO_REPOSITORIO](docs/00_project/ESTRUTURA_DO_REPOSITORIO.md).
+
+## Índices
+
 - [`docs/INDEX.md`](docs/INDEX.md) — documentação de design por área.
-- [`docs/CONTENT_REGISTRY.md`](docs/CONTENT_REGISTRY.md) — IDs de design e roteamento dos catálogos.
-- [`docs/06_balance/GLOBAL_BALANCE_SYSTEM.md`](docs/06_balance/GLOBAL_BALANCE_SYSTEM.md) — composição global de balanceamento, validação, métricas e gates.
+- [`docs/CONTENT_REGISTRY.md`](docs/CONTENT_REGISTRY.md) — IDs e roteamento dos catálogos.
 - [`documents/INDEX.md`](documents/INDEX.md) — guias completos e fontes originais.
-- [`arquivados/INDEX.md`](arquivados/INDEX.md) — documentação histórica preservada.
-
-Código do jogo fica em `scenes/` e `scripts/`; dados de runtime em `data/`; arte final em `assets/`; evidências executáveis em `tests/`. Consulte os índices antes de abrir ou editar uma área.
+- [`arquivados/INDEX.md`](arquivados/INDEX.md) — histórico.
+- [`CHANGELOG.md`](CHANGELOG.md) — mudanças estruturais.
 
 ## Verificação
 
 ```text
-python tools/run_godot_tests.py                          # suíte de testes Godot (headless)
-python tools/balance/validate_balance_data.py            # perfis, IDs e referências de balanceamento
-python tools/argos/run.py --scenario slice_quick         # regressão rápida do capítulo configurado
-python tools/argos/run.py --scenario slice_run_layer     # eventos, escolhas e loot da campanha
-python tools/argos/run.py --scenario slice_balance       # Argos: simulação de balanceamento + relatório
+python tools/run_godot_tests.py                      # testes Godot (headless)
+python tools/balance/validate_balance_data.py        # dados de balanceamento
+python tools/argos/run.py --scenario slice_quick     # simulação rápida (Argos)
+python tools/argos/run.py --scenario slice_balance   # matriz de balanceamento do Capítulo 1
+python tools/docs/check_links.py --orphans           # links, âncoras e documentos órfãos
 ```
 
-O **Argos** é o playtester automático do projeto: resolve núcleo global + perfil do capítulo + overrides temporários, roda expedições no Godot sem interface, verifica invariantes e gera um `REPORT.md` com hash das entradas. Como usar e regras para agentes: [`tools/argos/README.md`](tools/argos/README.md) e a seção "Testes e Argos" de [`AGENTS.md`](AGENTS.md).
+O **Argos** é o playtester automático: roda expedições no Godot sem interface, verifica invariantes e gera um `REPORT.md`. Regras de uso: [`tools/argos/README.md`](tools/argos/README.md). Simulação não é playtest; os números continuam **HIPÓTESE** até playtest e telemetria.
 
-**Evidência de 2026-09-29:** validador `OK`, 25/25 cenas Godot e 10 testes do Analyst; `slice_quick` e `slice_run_layer` sem `BUG` (192 execuções no cenário de campanha). Os achados e números continuam **HIPÓTESE** até playtest e telemetria real.
+Evidência atual (testes, validador, último Argos): seção 1 do [`ROADMAP.md`](ROADMAP.md).

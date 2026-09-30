@@ -1,13 +1,13 @@
 extends RefCounted
 
 ## Modelo de loot e economia do ARGOS-SIM (ferramenta de simulação, não runtime).
-## Lê as fontes canônicas v0.4 sem copiar valores: chance de equipamento, ouro e materiais por
-## inimigo (CHAPTER_01_ENEMIES_CANONICAL.json) e tabelas de raridade/IP (loot_system_contract_v0.4.json).
+## Lê as fontes incorporadas à base canônica ativa v0.5 sem copiar valores: chance de equipamento,
+## ouro e materiais por inimigo e tabelas herdadas de raridade/IP (origem v0.4).
 ## Simplificações registradas: Smart Loot 70% itens da party / 30% qualquer item do recorte;
 ## sem Duplicate Protection, Slot Pity, Reward Choice, Echo ou drops garantidos de primeiro clear.
 ## O Drop Resolver real é escopo do LOOT-EXPANSION-1.
 
-const CANON := "res://documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/"
+const CANON := "res://docs/04_content/enemies/"
 const RARITY_NAME := {"COMMON": "Comum", "UNCOMMON": "Incomum", "RARE": "Raro", "EPIC": "Épico", "RELIC": "Relíquia"}
 const RESIDUE := "MAT_C1_LUMEN_RESIDUE"
 
@@ -27,7 +27,7 @@ func _init(item_rows: Array, seed_value: int) -> void:
 	if canon is Dictionary:
 		for e in canon["enemies"]:
 			loot_by_enemy[String(e["identity"]["id"]).to_lower()] = e["loot"]
-	var c = _json(CANON + "loot_system_contract_v0.4.json")
+	var c = _json("res://docs/06_balance/v1/specs/LOOT_CONTRACT.json")
 	contract = c if c is Dictionary else {}
 
 func is_ready() -> bool:

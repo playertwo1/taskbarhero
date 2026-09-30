@@ -1,0 +1,167 @@
+{
+  "id": "tune_kits_bisect",
+  "chapter_id": "CHAPTER_01",
+  "party": [
+    "hero_001",
+    "hero_002",
+    "hero_003"
+  ],
+  "description": "Bisect (2026-09-30): rota nível 10 de guardiao/marca/controle com Signaturas e passivas novas desligadas, para comparar com o baseline 20260930-122635.",
+  "seeds": 6,
+  "levels": [
+    10
+  ],
+  "builds": {
+    "hero_001": [
+      "guardiao"
+    ],
+    "hero_002": [
+      "marca"
+    ],
+    "hero_003": [
+      "controle"
+    ]
+  },
+  "modes": [
+    "route"
+  ],
+  "rank_milestones": [
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17,
+    19
+  ],
+  "max_time": 3600,
+  "stuck_seconds": 30,
+  "variants": [
+    {
+      "id": "off",
+      "skill_overrides": {
+        "skill_bas_011": {
+          "cooldown": 9999.0
+        },
+        "skill_fle_011": {
+          "cooldown": 9999.0
+        },
+        "skill_iri_006": {
+          "cooldown": 9999.0
+        }
+      },
+      "passive_overrides": {
+        "passive_bas_presenca_protetora": {
+          "unlock_level": 99
+        },
+        "passive_bas_ninguem_para_tras": {
+          "unlock_level": 99
+        },
+        "passive_bas_guarda_eterna": {
+          "unlock_level": 99
+        },
+        "passive_bas_pressao_acumulada": {
+          "unlock_level": 99
+        },
+        "passive_bas_quebre_se": {
+          "unlock_level": 99
+        },
+        "passive_bas_julgamento_de_ferro": {
+          "unlock_level": 99
+        },
+        "passive_bas_voz_de_comando": {
+          "unlock_level": 99
+        },
+        "passive_bas_sem_passagem": {
+          "unlock_level": 99
+        },
+        "passive_bas_choque_de_linha": {
+          "unlock_level": 99
+        },
+        "passive_bas_formacao_quebrada": {
+          "unlock_level": 99
+        },
+        "passive_bas_linha_inquebravel": {
+          "unlock_level": 99
+        },
+        "trait_bas_nao_passarao": {
+          "unlock_level": 99
+        },
+        "passive_fle_leitura_de_abertura": {
+          "unlock_level": 99
+        },
+        "passive_fle_ajuste_fino": {
+          "unlock_level": 99
+        },
+        "passive_fle_disparo_perfeito": {
+          "unlock_level": 99
+        },
+        "passive_fle_alvo_persistente": {
+          "unlock_level": 99
+        },
+        "passive_fle_cacada_compartilhada": {
+          "unlock_level": 99
+        },
+        "passive_fle_presa_da_party": {
+          "unlock_level": 99
+        },
+        "passive_fle_cordas_tensionadas": {
+          "unlock_level": 99
+        },
+        "passive_fle_saque_rapido": {
+          "unlock_level": 99
+        },
+        "passive_fle_passo_de_arqueira": {
+          "unlock_level": 99
+        },
+        "passive_fle_aljava_em_ordem": {
+          "unlock_level": 99
+        },
+        "passive_fle_ritmo_implacavel": {
+          "unlock_level": 99
+        },
+        "trait_fle_aljava_em_movimento": {
+          "unlock_level": 99
+        },
+        "pass_iri_006": {
+          "unlock_level": 99
+        },
+        "pass_iri_007": {
+          "unlock_level": 99
+        },
+        "pass_iri_008": {
+          "unlock_level": 99
+        },
+        "pass_iri_009": {
+          "unlock_level": 99
+        },
+        "pass_iri_010": {
+          "unlock_level": 99
+        },
+        "pass_iri_011": {
+          "unlock_level": 99
+        },
+        "pass_iri_012": {
+          "unlock_level": 99
+        },
+        "pass_iri_013": {
+          "unlock_level": 99
+        },
+        "pass_iri_014": {
+          "unlock_level": 99
+        },
+        "pass_iri_015": {
+          "unlock_level": 99
+        },
+        "pass_iri_016": {
+          "unlock_level": 99
+        },
+        "trait_iri_003": {
+          "unlock_level": 99
+        }
+      }
+    }
+  ]
+}

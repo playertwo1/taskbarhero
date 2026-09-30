@@ -1,0 +1,12 @@
+{
+ "commit": "82571ad",
+ "dirty": true,
+ "scenario_file": "tools/argos/simulator/combat/scenarios/kits_focus_iris.json",
+ "balance_hash": "995e46408fbad7f52b27f9f715f5e797439852dfcc08400a10b543860f4c2a7b",
+ "balance_inputs": {
+  "data/balance/combat_profiles.json": "ada496afa42f8db9ef7aaca84c7edf668432451fe88c57e1c864dd89fca1deac",
+  "data/balance/combat_core.json": "0c65f7c5434be191f1070a1d1d4b890686f4cee50024875c5de14d2a723cb80c",
+  "data/balance/chapters/chapter_01.json": "127bdb44a129f8e324b3097ca47dc008eb31a194c05082d5e15f89ffbed60167",
+  "tools/argos/simulator/combat/scenarios/kits_focus_iris.json": "b8f0c0bd6564dc893cbc873264f17602a5e79e08182dc2354452f8152f013e48"
+ }
+}

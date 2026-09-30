@@ -1,6 +1,6 @@
 # Chefes e minichefes — conceitos visuais
 
-As fichas dos minichefes canônicos incluem brief visual, perfil de status e resumo de drops. O JSON do [bestiário v0.4](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json) rege os dados. O boss final está listado abaixo com seu Golden já aprovado.
+As fichas dos minichefes canônicos incluem brief visual, perfil de status e resumo de drops. O JSON do [bestiário v0.4](../../../04_content/enemies/CHAPTER_01_ENEMIES_CANONICAL.json) rege os dados. O boss final está listado abaixo com seu Golden já aprovado.
 
 ## Minichefes canônicos
 

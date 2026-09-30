@@ -40,7 +40,10 @@ func _test_options_match_data() -> void:
 			ok = ok and by_id[hero_id]["builds"].has(base) and SliceSession.BUILD_LABELS.has(key)
 		_expect("builds de %s existem nos dados e têm rótulo" % hero_id, ok)
 		total *= SliceSession.BUILD_OPTIONS[hero_id].size()
-	_expect("18 combinações (3 × 2 × 3)", total == 18)
+	var expected_total := 1
+	for hero_id in SliceSession.BUILD_OPTIONS:
+		expected_total *= SliceSession.BUILD_OPTIONS[hero_id].size()
+	_expect("o total de combinações é o produto das opções por herói (%d)" % expected_total, total == expected_total and total >= 18)
 	var covered := true
 	for preset in SliceSession.BUILD_PRESETS:
 		for hero_id in preset["heroes"]:
@@ -56,7 +59,8 @@ func _test_every_combination_builds_a_run() -> void:
 				var run := SliceSession.create_run({"hero_001": b1, "hero_002": b2, "hero_003": b3}, 5, 7)
 				if run != null and run.state != "lost":
 					made += 1
-	_expect("as 18 combinações criam uma run válida", made == 18)
+	var expected_runs: int = SliceSession.BUILD_OPTIONS["hero_001"].size() * SliceSession.BUILD_OPTIONS["hero_002"].size() * SliceSession.BUILD_OPTIONS["hero_003"].size()
+	_expect("todas as %d combinações criam uma run válida" % expected_runs, made == expected_runs)
 
 func _test_screen() -> void:
 	print("\n>>> 3. TELA")

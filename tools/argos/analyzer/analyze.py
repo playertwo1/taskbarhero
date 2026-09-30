@@ -15,6 +15,12 @@ from collections import defaultdict
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPORTS = os.path.join(os.path.dirname(HERE), "reports")
 SEVERITY_ORDER = {"CRITICAL": 0, "HIGH": 1, "MEDIUM": 2, "LOW": 3, "INFO": 4}
+# Oráculos que, pelo ARGOS_SOUL, são perda/corrupção de save ou dupe grave.
+CRITICAL_VIOLATIONS = {"enemy_defeated_twice", "xp_mismatch", "uid_duplicated", "equipped_twice", "save_roundtrip_mismatch"}
+# Oráculos de regra de inventário/economia burlada: entram como EXPLOIT, não como BUG.
+EXPLOIT_VIOLATIONS = {"uid_duplicated", "equipped_twice", "equipped_recycled", "favorite_recycled", "locked_mutation",
+                      "recycle_credit_mismatch", "reinforce_overflow", "reinforce_cost_mismatch", "tree_cost_mismatch",
+                      "refused_changed_state", "negative_material"}
 
 
 def load_runs(path):
@@ -107,6 +113,7 @@ def summarize(runs):
             "first_try": sum(1 for c in won if c["attempts"] == 1) / len(cs),
             "median_attempts": median([c["attempts"] for c in won]),
             "median_win_level": median([c["history"][-1]["level"] for c in won]),
+            "profile": cs[0].get("profile"),
         })
     events = defaultdict(lambda: {"offered": 0, "choices": defaultdict(int)})
     loot_by_rarity = defaultdict(int)
@@ -136,7 +143,40 @@ def summarize(runs):
     return {
         "route": route_rows, "segments": seg_rows, "campaign": camp_rows, "economy": econ_rows,
         "violations": dict(violations), "violation_examples": violation_examples, "run_layer": run_layer,
+        "profiles": profile_rows(runs),
     }
+
+
+def profile_rows(runs):
+    """Um resumo por perfil de jogador artificial (campanha, fuzz e bordas). Sem limites inventados:
+    os números são medidas; quem decide se são problema é o projeto."""
+    groups = defaultdict(lambda: {"campaign": [], "fuzz": [], "edge": []})
+    for r in runs:
+        pid = r.get("profile")
+        if pid and r.get("kind") in ("campaign", "fuzz", "edge"):
+            groups[pid][r["kind"]].append(r)
+    rows = []
+    for pid, g in sorted(groups.items()):
+        cs, fz, ed = g["campaign"], g["fuzz"], g["edge"]
+        won = [c for c in cs if c.get("won")]
+        violations = defaultdict(int)
+        for r in cs + fz + ed:
+            for v in r.get("violations", []):
+                violations[v] += 1
+        rows.append({
+            "profile": pid, "campaigns": len(cs),
+            "win_rate": len(won) / len(cs) if cs else None,
+            "abandon_rate": sum(1 for c in cs if c.get("abandoned")) / len(cs) if cs else None,
+            "first_win_attempt": median([c["first_win_attempt"] for c in won if c.get("first_win_attempt")]),
+            "attempts": median([c["attempts"] for c in cs]),
+            "final_level": median([c["final_level"] for c in cs]),
+            "items_held": median([c["items_held"] for c in cs if c.get("items_held") is not None]),
+            "save_kb": median([c["save_bytes"] / 1024 for c in cs if c.get("save_bytes")]),
+            "fuzz_runs": len(fz), "fuzz_actions": sum(r.get("accepted", 0) + r.get("refused", 0) for r in fz),
+            "fuzz_refused": sum(r.get("refused", 0) for r in fz), "edge_cases": len(ed),
+            "violations": dict(violations),
+        })
+    return rows
 
 
 def split_label(label):
@@ -184,8 +224,9 @@ def finding(kind, severity, title, metric, rule):
 def evaluate(summary, rules):
     findings = []
     for v, n in sorted(summary["violations"].items()):
-        severity = "CRITICAL" if v in ("enemy_defeated_twice", "xp_mismatch") else "HIGH"
-        findings.append(finding("BUG", severity, f"Oráculo violado: {v}", f"{n} execução(ões); exemplo {summary['violation_examples'][v]}", "invariante do simulador"))
+        severity = "CRITICAL" if v in CRITICAL_VIOLATIONS else "HIGH"
+        kind = "EXPLOIT" if v in EXPLOIT_VIOLATIONS else "BUG"
+        findings.append(finding(kind, severity, f"Oráculo violado: {v}", f"{n} execução(ões); exemplo {summary['violation_examples'][v]}", "invariante do simulador"))
 
     for seg, rng in rules["ttk_ranges"].items():
         rows = [r for r in summary["segments"] if r["segment"] == seg and r["ttk"] is not None
@@ -246,8 +287,9 @@ def evaluate(summary, rules):
 
 def _campaign_and_economy(summary, rules, findings):
     cr = rules["campaign"]
+    # Perfis de jogador (novato, caos, farm...) não são o jogador de referência das metas de ritmo.
     for r in summary["campaign"]:
-        if r["win_rate"] == 0:
+        if r.get("profile") or r["win_rate"] == 0:
             continue
         if r["first_try"] > 0:
             findings.append(finding("PACING", "MEDIUM", f"Vitória na 1ª tentativa desde o nível inicial: {r['build']}",
@@ -259,7 +301,7 @@ def _campaign_and_economy(summary, rules, findings):
         elif r["median_attempts"] is not None and not (cr["median_attempts_min"] <= r["median_attempts"] <= cr["median_attempts_max"]):
             findings.append(finding("PACING", "LOW", f"Tentativas fora da faixa: {r['build']}",
                                     f"mediana {r['median_attempts']:.1f} tentativas, nível {r['median_win_level']:.1f}", cr["source"]))
-    never = [r["build"] for r in summary["campaign"] if r["win_rate"] == 0]
+    never = [r["build"] for r in summary["campaign"] if r["win_rate"] == 0 and not r.get("profile")]
     if never:
         findings.append(finding("PACING", "MEDIUM", "Combinações que nunca vencem na campanha",
                                 f"{len(never)}: {', '.join(never)}", cr["source"]))
@@ -336,6 +378,14 @@ def write_report(out_dir, meta, summary, findings, prev, rules):
                   "| Build | Vence | 1ª tentativa | Tentativas (mediana) | Nível na vitória |", "| --- | ---: | ---: | ---: | ---: |"]
         for r in summary["campaign"]:
             lines.append(f"| {r['build']} | {pct(r['win_rate'])} | {pct(r['first_try'])} | {num(r['median_attempts'], '{:.1f}')} | {num(r['median_win_level'], '{:.1f}')} |")
+    if summary.get("profiles"):
+        lines += ["", "## Perfis de jogador (simulação de comportamento; não é playtest)", "",
+                  "| Perfil | Campanhas | Vence | Abandona | 1ª vitória (tentativa) | Nível final | Itens guardados | Save (KB) | Fuzz: ações (recusadas) | Bordas | Violações |",
+                  "| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | --- |"]
+        for r in summary["profiles"]:
+            fuzz = f"{r['fuzz_actions']} ({r['fuzz_refused']})" if r["fuzz_runs"] else "—"
+            viol = ", ".join(f"{k} ×{v}" for k, v in sorted(r["violations"].items())) or "—"
+            lines.append(f"| {r['profile']} | {r['campaigns'] or '—'} | {pct(r['win_rate'])} | {pct(r['abandon_rate'])} | {num(r['first_win_attempt'], '{:.1f}')} | {num(r['final_level'], '{:.0f}')} | {num(r['items_held'])} | {num(r['save_kb'], '{:.1f}')} | {fuzz} | {r['edge_cases'] or '—'} | {viol} |")
     excluded_hero, excluded_build = next(iter(rules["viable_path"]["min_paths_without"].items()))
     variants = variant_rows(summary, excluded_hero, excluded_build)
     if variants:
@@ -391,8 +441,8 @@ def main():
     prev = previous_summary(args.report_dir, args.previous, meta.get("scenario"))
     json.dump(data, open(os.path.join(args.report_dir, "summary.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     write_report(args.report_dir, meta, summary, findings, prev, rules)
-    bugs = [f for f in findings if f["type"] == "BUG"]
-    print(f"Argos: {len(runs)} execuções, {len(findings)} achados ({len(bugs)} BUG). Relatório: {os.path.join(args.report_dir, 'REPORT.md')}")
+    bugs = [f for f in findings if f["type"] in ("BUG", "EXPLOIT")]
+    print(f"Argos: {len(runs)} execuções, {len(findings)} achados ({len(bugs)} BUG/EXPLOIT). Relatório: {os.path.join(args.report_dir, 'REPORT.md')}")
     sys.exit(1 if bugs else 0)
 
 

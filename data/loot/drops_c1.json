@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "status": "HIPOTESE",
-  "source": "docs/03_systems/SLICE_1B_RUN_SPEC.md seção 4; chances de CHAPTER_01_ENEMIES_CANONICAL.json; raridades de loot_system_contract_v0.4.json renormalizadas para o recorte",
+  "source": "docs/03_systems/SLICE_1B_RUN_SPEC.md seção 4; chances de docs/04_content/enemies/CHAPTER_01_ENEMIES_CANONICAL.json; raridades de docs/06_balance/v1/specs/LOOT_CONTRACT.json renormalizadas para o recorte",
   "item_power": {"NORMAL": [1, 18], "ELITE": [10, 24], "MINIBOSS": [16, 28], "BOSS": [22, 32], "EVENT_REWARD": [10, 24]},
   "equipment_chance": {"NORMAL": 0.10, "ELITE": 0.0, "MINIBOSS": 0.0, "BOSS": 0.0},
   "rarity": {

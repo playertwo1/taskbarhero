@@ -6,7 +6,7 @@
 **Difficulty:** 2/5  
 **Resource:** Guarda  
 **Primary fantasy:** transformar ataques inimigos em proteção e contra-ataques.  
-**Padrão Canônico:** em conformidade com [`HERO_STANDARD.md`](../../HERO_STANDARD.md)
+**Padrão Canônico:** em conformidade com [`HERO_STANDARD.md`](../../docs/02_heroes/HERO_STANDARD.md)
 
 ---
 

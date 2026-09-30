@@ -1,0 +1,1203 @@
+{
+ "meta": {
+  "balance_version": "0.5",
+  "chapter_id": "CHAPTER_01",
+  "enemy_damage_scale": 0.5,
+  "godot": "4.7.2-stable (official)",
+  "kind": "meta",
+  "levels": [
+   5.0
+  ],
+  "modes": [
+   "campaign"
+  ],
+  "party": [
+   "hero_001",
+   "hero_002",
+   "hero_003"
+  ],
+  "resolved_sources": [
+   "res://data/balance/combat_core.json",
+   "res://data/balance/chapters/chapter_01.json"
+  ],
+  "route_equipment": "nu",
+  "scenario": "argos_profiles",
+  "seeds": 4.0,
+  "variants": [
+   "beginner",
+   "optimizer",
+   "chaos",
+   "exploit_hunter",
+   "grinder",
+   "edge_case",
+   "aggressor",
+   "turtle"
+  ],
+  "commit": "82571ad",
+  "dirty": true,
+  "scenario_file": "tools/argos/simulator/combat/scenarios/argos_profiles.json",
+  "balance_hash": "48381612cda7d7842ac5f1aea228a5d958a29b0d9513b1f51e6abe9e98fe4896",
+  "balance_inputs": {
+   "data/balance/combat_profiles.json": "ada496afa42f8db9ef7aaca84c7edf668432451fe88c57e1c864dd89fca1deac",
+   "data/balance/combat_core.json": "aa7ab23df280d16adcc90899025d0c7e12fbb74b62240595b78576755c02e6f9",
+   "data/balance/chapters/chapter_01.json": "95369b13ced2de10dd6526a696b9e6c179d5c8535a386fe0c3f9b69f74663bcc",
+   "tools/argos/simulator/combat/scenarios/argos_profiles.json": "d3660e98f9f9c3a103f3c2bedc87551597d4b3f4755ce06abdadc91a49648160"
+  }
+ },
+ "findings": [
+  {
+   "type": "INFO",
+   "severity": "INFO",
+   "title": "Itens por tentativa",
+   "metric": "mediana 4.0 item(ns) por tentativa entre combinações",
+   "rule": "SLICE_1_SCOPE.md seção 3: mínimo de 5 Resíduos antes do boss = um Reforço +1 (HIPÓTESE)"
+  }
+ ],
+ "variants": [
+  {
+   "variant": "aggressor",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 1,
+   "heal_attempts": null,
+   "no_heal_attempts_best": 7.5,
+   "no_heal_paths_ok": 0,
+   "no_heal_paths_ok_list": []
+  },
+  {
+   "variant": "beginner",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 2,
+   "heal_attempts": 4.0,
+   "no_heal_attempts_best": 6,
+   "no_heal_paths_ok": 0,
+   "no_heal_paths_ok_list": []
+  },
+  {
+   "variant": "chaos",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 2,
+   "heal_attempts": 5.0,
+   "no_heal_attempts_best": 5.0,
+   "no_heal_paths_ok": 2,
+   "no_heal_paths_ok_list": [
+    "guardiao/marca/arcano",
+    "retaliacao/marca/arcano"
+   ]
+  },
+  {
+   "variant": "grinder",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 1,
+   "heal_attempts": null,
+   "no_heal_attempts_best": 65.0,
+   "no_heal_paths_ok": 0,
+   "no_heal_paths_ok_list": []
+  },
+  {
+   "variant": "optimizer",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 2,
+   "heal_attempts": 3.75,
+   "no_heal_attempts_best": 6.5,
+   "no_heal_paths_ok": 0,
+   "no_heal_paths_ok_list": []
+  },
+  {
+   "variant": "turtle",
+   "heal_route_win": null,
+   "no_heal_route_best": null,
+   "no_heal_route_viable": 0,
+   "no_heal_combos": 0,
+   "heal_attempts": 4.0,
+   "no_heal_attempts_best": null,
+   "no_heal_paths_ok": 0,
+   "no_heal_paths_ok_list": []
+  }
+ ],
+ "route": [],
+ "segments": [],
+ "campaign": [
+  {
+   "build": "aggressor · retaliacao/critico/arcano",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "critico",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 7.5,
+   "median_win_level": 12.5,
+   "profile": "aggressor"
+  },
+  {
+   "build": "beginner · guardiao/marca/arcano",
+   "campaigns": 4,
+   "win_rate": 0.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": null,
+   "median_win_level": null,
+   "profile": "beginner"
+  },
+  {
+   "build": "beginner · guardiao/marca/lumen",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "lumen"
+   },
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 8.0,
+   "profile": "beginner"
+  },
+  {
+   "build": "beginner · retaliacao/marca/arcano",
+   "campaigns": 4,
+   "win_rate": 0.25,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6,
+   "median_win_level": 11,
+   "profile": "beginner"
+  },
+  {
+   "build": "beginner · retaliacao/marca/lumen",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "lumen"
+   },
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 9.0,
+   "profile": "beginner"
+  },
+  {
+   "build": "chaos · guardiao/marca/arcano",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0,
+   "profile": "chaos"
+  },
+  {
+   "build": "chaos · guardiao/marca/lumen",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "lumen"
+   },
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0,
+   "profile": "chaos"
+  },
+  {
+   "build": "chaos · retaliacao/marca/arcano",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0,
+   "profile": "chaos"
+  },
+  {
+   "build": "chaos · retaliacao/marca/lumen",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "lumen"
+   },
+   "first_try": 0.0,
+   "median_attempts": 5.0,
+   "median_win_level": 10.0,
+   "profile": "chaos"
+  },
+  {
+   "build": "grinder · guardiao/marca/controle",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "controle"
+   },
+   "first_try": 0.0,
+   "median_attempts": 65.0,
+   "median_win_level": 32.0,
+   "profile": "grinder"
+  },
+  {
+   "build": "optimizer · guardiao/marca/arcano",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 6.5,
+   "median_win_level": 11.5,
+   "profile": "optimizer"
+  },
+  {
+   "build": "optimizer · guardiao/marca/lumen",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "lumen"
+   },
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 8.0,
+   "profile": "optimizer"
+  },
+  {
+   "build": "optimizer · retaliacao/marca/arcano",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "arcano"
+   },
+   "first_try": 0.0,
+   "median_attempts": 7.0,
+   "median_win_level": 12.0,
+   "profile": "optimizer"
+  },
+  {
+   "build": "optimizer · retaliacao/marca/lumen",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "retaliacao",
+    "hero_002": "marca",
+    "hero_003": "lumen"
+   },
+   "first_try": 0.0,
+   "median_attempts": 3.5,
+   "median_win_level": 8.0,
+   "profile": "optimizer"
+  },
+  {
+   "build": "turtle · guardiao/marca/lumen",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "build_map": {
+    "hero_001": "guardiao",
+    "hero_002": "marca",
+    "hero_003": "lumen"
+   },
+   "first_try": 0.0,
+   "median_attempts": 4.0,
+   "median_win_level": 8.0,
+   "profile": "turtle"
+  }
+ ],
+ "economy": [
+  {
+   "build": "aggressor · retaliacao/critico/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 13.0,
+   "residue_total": 87.0
+  },
+  {
+   "build": "beginner · guardiao/marca/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 3.5,
+   "equipped_at_end": 12.5,
+   "residue_total": 68.5
+  },
+  {
+   "build": "beginner · guardiao/marca/lumen",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 11.0,
+   "items_per_attempt": 3.0,
+   "equipped_at_end": 11.5,
+   "residue_total": 43.0
+  },
+  {
+   "build": "beginner · retaliacao/marca/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.5,
+   "residue_total": 69.0
+  },
+  {
+   "build": "beginner · retaliacao/marca/lumen",
+   "gold_per_attempt": 0,
+   "residue_per_attempt": 13,
+   "items_per_attempt": 4,
+   "equipped_at_end": 11.0,
+   "residue_total": 50.5
+  },
+  {
+   "build": "chaos · guardiao/marca/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.0,
+   "residue_total": 56.5
+  },
+  {
+   "build": "chaos · guardiao/marca/lumen",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.0,
+   "residue_total": 56.5
+  },
+  {
+   "build": "chaos · retaliacao/marca/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.0,
+   "residue_total": 56.5
+  },
+  {
+   "build": "chaos · retaliacao/marca/lumen",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 11.0,
+   "residue_total": 56.5
+  },
+  {
+   "build": "grinder · guardiao/marca/controle",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 5.0,
+   "equipped_at_end": 15.0,
+   "residue_total": 851.5
+  },
+  {
+   "build": "optimizer · guardiao/marca/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.0,
+   "residue_total": 76.0
+  },
+  {
+   "build": "optimizer · guardiao/marca/lumen",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 11.0,
+   "items_per_attempt": 3.0,
+   "equipped_at_end": 10.5,
+   "residue_total": 43.0
+  },
+  {
+   "build": "optimizer · retaliacao/marca/arcano",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 12.5,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 12.5,
+   "residue_total": 82.5
+  },
+  {
+   "build": "optimizer · retaliacao/marca/lumen",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 13.0,
+   "items_per_attempt": 4.0,
+   "equipped_at_end": 9.0,
+   "residue_total": 44.5
+  },
+  {
+   "build": "turtle · guardiao/marca/lumen",
+   "gold_per_attempt": 0.0,
+   "residue_per_attempt": 11.0,
+   "items_per_attempt": 3.0,
+   "equipped_at_end": 10.5,
+   "residue_total": 43.0
+  }
+ ],
+ "violations": {},
+ "violation_examples": {},
+ "run_layer": {
+  "events": [
+   {
+    "variant": "aggressor",
+    "event": "event_c1_001",
+    "offered": 29,
+    "choices": {
+     "heal": 29
+    },
+    "per_100_attempts": 96.66666666666667
+   },
+   {
+    "variant": "aggressor",
+    "event": "event_c1_arvore_cantante",
+    "offered": 1,
+    "choices": {
+     "touch": 1
+    },
+    "per_100_attempts": 3.3333333333333335
+   },
+   {
+    "variant": "aggressor",
+    "event": "event_c1_criatura_ferida",
+    "offered": 5,
+    "choices": {
+     "save": 5
+    },
+    "per_100_attempts": 16.666666666666668
+   },
+   {
+    "variant": "aggressor",
+    "event": "event_c1_cristal_partido",
+    "offered": 4,
+    "choices": {
+     "absorb": 4
+    },
+    "per_100_attempts": 13.333333333333334
+   },
+   {
+    "variant": "aggressor",
+    "event": "event_c1_eco_percebido",
+    "offered": 4,
+    "choices": {
+     "react": 4
+    },
+    "per_100_attempts": 13.333333333333334
+   },
+   {
+    "variant": "aggressor",
+    "event": "event_c1_memorial",
+    "offered": 1,
+    "choices": {
+     "honor_hero_001": 1
+    },
+    "per_100_attempts": 3.3333333333333335
+   },
+   {
+    "variant": "aggressor",
+    "event": "event_c1_observador",
+    "offered": 2,
+    "choices": {
+     "witness": 2
+    },
+    "per_100_attempts": 6.666666666666667
+   },
+   {
+    "variant": "aggressor",
+    "event": "event_c1_raiz_oca",
+    "offered": 3,
+    "choices": {
+     "open": 3
+    },
+    "per_100_attempts": 10.0
+   },
+   {
+    "variant": "aggressor",
+    "event": "event_c1_rastro_cacada",
+    "offered": 4,
+    "choices": {
+     "follow": 4
+    },
+    "per_100_attempts": 13.333333333333334
+   },
+   {
+    "variant": "aggressor",
+    "event": "event_c1_reserva_residuo",
+    "offered": 26,
+    "choices": {
+     "collect": 26
+    },
+    "per_100_attempts": 86.66666666666667
+   },
+   {
+    "variant": "aggressor",
+    "event": "event_c1_sobrevivente",
+    "offered": 4,
+    "choices": {
+     "protect": 4
+    },
+    "per_100_attempts": 13.333333333333334
+   },
+   {
+    "variant": "beginner",
+    "event": "event_c1_001",
+    "offered": 79,
+    "choices": {
+     "heal": 79
+    },
+    "per_100_attempts": 100.0
+   },
+   {
+    "variant": "beginner",
+    "event": "event_c1_arvore_cantante",
+    "offered": 4,
+    "choices": {
+     "touch": 4
+    },
+    "per_100_attempts": 5.063291139240507
+   },
+   {
+    "variant": "beginner",
+    "event": "event_c1_criatura_ferida",
+    "offered": 12,
+    "choices": {
+     "save": 12
+    },
+    "per_100_attempts": 15.189873417721518
+   },
+   {
+    "variant": "beginner",
+    "event": "event_c1_cristal_partido",
+    "offered": 8,
+    "choices": {
+     "absorb": 8
+    },
+    "per_100_attempts": 10.126582278481013
+   },
+   {
+    "variant": "beginner",
+    "event": "event_c1_eco_percebido",
+    "offered": 14,
+    "choices": {
+     "react": 14
+    },
+    "per_100_attempts": 17.72151898734177
+   },
+   {
+    "variant": "beginner",
+    "event": "event_c1_memorial",
+    "offered": 4,
+    "choices": {
+     "honor_hero_001": 4
+    },
+    "per_100_attempts": 5.063291139240507
+   },
+   {
+    "variant": "beginner",
+    "event": "event_c1_observador",
+    "offered": 4,
+    "choices": {
+     "witness": 4
+    },
+    "per_100_attempts": 5.063291139240507
+   },
+   {
+    "variant": "beginner",
+    "event": "event_c1_raiz_oca",
+    "offered": 5,
+    "choices": {
+     "open": 5
+    },
+    "per_100_attempts": 6.329113924050633
+   },
+   {
+    "variant": "beginner",
+    "event": "event_c1_rastro_cacada",
+    "offered": 6,
+    "choices": {
+     "follow": 6
+    },
+    "per_100_attempts": 7.594936708860759
+   },
+   {
+    "variant": "beginner",
+    "event": "event_c1_reserva_residuo",
+    "offered": 67,
+    "choices": {
+     "collect": 67
+    },
+    "per_100_attempts": 84.81012658227849
+   },
+   {
+    "variant": "beginner",
+    "event": "event_c1_sobrevivente",
+    "offered": 12,
+    "choices": {
+     "protect": 12
+    },
+    "per_100_attempts": 15.189873417721518
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_001",
+    "offered": 80,
+    "choices": {
+     "sacrifice": 40,
+     "heal": 40
+    },
+    "per_100_attempts": 100.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_arvore_cantante",
+    "offered": 4,
+    "choices": {
+     "ignore": 4
+    },
+    "per_100_attempts": 5.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_criatura_ferida",
+    "offered": 12,
+    "choices": {
+     "ignore": 4,
+     "save": 8
+    },
+    "per_100_attempts": 15.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_cristal_partido",
+    "offered": 8,
+    "choices": {
+     "leave": 8
+    },
+    "per_100_attempts": 10.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_eco_percebido",
+    "offered": 16,
+    "choices": {
+     "react": 16
+    },
+    "per_100_attempts": 20.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_memorial",
+    "offered": 4,
+    "choices": {
+     "honor_hero_003": 4
+    },
+    "per_100_attempts": 5.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_observador",
+    "offered": 4,
+    "choices": {
+     "witness": 4
+    },
+    "per_100_attempts": 5.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_raiz_oca",
+    "offered": 4,
+    "choices": {
+     "open": 4
+    },
+    "per_100_attempts": 5.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_rastro_cacada",
+    "offered": 4,
+    "choices": {
+     "follow": 4
+    },
+    "per_100_attempts": 5.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_reserva_residuo",
+    "offered": 60,
+    "choices": {
+     "collect": 60
+    },
+    "per_100_attempts": 75.0
+   },
+   {
+    "variant": "chaos",
+    "event": "event_c1_sobrevivente",
+    "offered": 16,
+    "choices": {
+     "pass": 8,
+     "protect": 8
+    },
+    "per_100_attempts": 20.0
+   },
+   {
+    "variant": "grinder",
+    "event": "event_c1_001",
+    "offered": 260,
+    "choices": {
+     "heal": 260
+    },
+    "per_100_attempts": 100.0
+   },
+   {
+    "variant": "grinder",
+    "event": "event_c1_arvore_cantante",
+    "offered": 33,
+    "choices": {
+     "touch": 33
+    },
+    "per_100_attempts": 12.692307692307692
+   },
+   {
+    "variant": "grinder",
+    "event": "event_c1_criatura_ferida",
+    "offered": 47,
+    "choices": {
+     "save": 47
+    },
+    "per_100_attempts": 18.076923076923077
+   },
+   {
+    "variant": "grinder",
+    "event": "event_c1_cristal_partido",
+    "offered": 27,
+    "choices": {
+     "absorb": 27
+    },
+    "per_100_attempts": 10.384615384615385
+   },
+   {
+    "variant": "grinder",
+    "event": "event_c1_eco_percebido",
+    "offered": 34,
+    "choices": {
+     "react": 34
+    },
+    "per_100_attempts": 13.076923076923077
+   },
+   {
+    "variant": "grinder",
+    "event": "event_c1_memorial",
+    "offered": 21,
+    "choices": {
+     "honor_hero_001": 21
+    },
+    "per_100_attempts": 8.076923076923077
+   },
+   {
+    "variant": "grinder",
+    "event": "event_c1_observador",
+    "offered": 4,
+    "choices": {
+     "witness": 4
+    },
+    "per_100_attempts": 1.5384615384615385
+   },
+   {
+    "variant": "grinder",
+    "event": "event_c1_raiz_oca",
+    "offered": 35,
+    "choices": {
+     "open": 35
+    },
+    "per_100_attempts": 13.461538461538462
+   },
+   {
+    "variant": "grinder",
+    "event": "event_c1_rastro_cacada",
+    "offered": 27,
+    "choices": {
+     "follow": 27
+    },
+    "per_100_attempts": 10.384615384615385
+   },
+   {
+    "variant": "grinder",
+    "event": "event_c1_reserva_residuo",
+    "offered": 259,
+    "choices": {
+     "collect": 259
+    },
+    "per_100_attempts": 99.61538461538461
+   },
+   {
+    "variant": "grinder",
+    "event": "event_c1_sobrevivente",
+    "offered": 21,
+    "choices": {
+     "protect": 21
+    },
+    "per_100_attempts": 8.076923076923077
+   },
+   {
+    "variant": "optimizer",
+    "event": "event_c1_001",
+    "offered": 84,
+    "choices": {
+     "heal": 84
+    },
+    "per_100_attempts": 100.0
+   },
+   {
+    "variant": "optimizer",
+    "event": "event_c1_arvore_cantante",
+    "offered": 5,
+    "choices": {
+     "touch": 5
+    },
+    "per_100_attempts": 5.9523809523809526
+   },
+   {
+    "variant": "optimizer",
+    "event": "event_c1_criatura_ferida",
+    "offered": 12,
+    "choices": {
+     "save": 12
+    },
+    "per_100_attempts": 14.285714285714286
+   },
+   {
+    "variant": "optimizer",
+    "event": "event_c1_cristal_partido",
+    "offered": 10,
+    "choices": {
+     "absorb": 10
+    },
+    "per_100_attempts": 11.904761904761905
+   },
+   {
+    "variant": "optimizer",
+    "event": "event_c1_eco_percebido",
+    "offered": 14,
+    "choices": {
+     "react": 14
+    },
+    "per_100_attempts": 16.666666666666668
+   },
+   {
+    "variant": "optimizer",
+    "event": "event_c1_memorial",
+    "offered": 3,
+    "choices": {
+     "honor_hero_001": 3
+    },
+    "per_100_attempts": 3.5714285714285716
+   },
+   {
+    "variant": "optimizer",
+    "event": "event_c1_observador",
+    "offered": 4,
+    "choices": {
+     "witness": 4
+    },
+    "per_100_attempts": 4.761904761904762
+   },
+   {
+    "variant": "optimizer",
+    "event": "event_c1_raiz_oca",
+    "offered": 7,
+    "choices": {
+     "open": 7
+    },
+    "per_100_attempts": 8.333333333333334
+   },
+   {
+    "variant": "optimizer",
+    "event": "event_c1_rastro_cacada",
+    "offered": 9,
+    "choices": {
+     "follow": 9
+    },
+    "per_100_attempts": 10.714285714285714
+   },
+   {
+    "variant": "optimizer",
+    "event": "event_c1_reserva_residuo",
+    "offered": 72,
+    "choices": {
+     "collect": 72
+    },
+    "per_100_attempts": 85.71428571428571
+   },
+   {
+    "variant": "optimizer",
+    "event": "event_c1_sobrevivente",
+    "offered": 12,
+    "choices": {
+     "protect": 12
+    },
+    "per_100_attempts": 14.285714285714286
+   },
+   {
+    "variant": "turtle",
+    "event": "event_c1_001",
+    "offered": 16,
+    "choices": {
+     "heal": 16
+    },
+    "per_100_attempts": 100.0
+   },
+   {
+    "variant": "turtle",
+    "event": "event_c1_arvore_cantante",
+    "offered": 1,
+    "choices": {
+     "touch": 1
+    },
+    "per_100_attempts": 6.25
+   },
+   {
+    "variant": "turtle",
+    "event": "event_c1_criatura_ferida",
+    "offered": 3,
+    "choices": {
+     "save": 3
+    },
+    "per_100_attempts": 18.75
+   },
+   {
+    "variant": "turtle",
+    "event": "event_c1_cristal_partido",
+    "offered": 1,
+    "choices": {
+     "absorb": 1
+    },
+    "per_100_attempts": 6.25
+   },
+   {
+    "variant": "turtle",
+    "event": "event_c1_eco_percebido",
+    "offered": 3,
+    "choices": {
+     "react": 3
+    },
+    "per_100_attempts": 18.75
+   },
+   {
+    "variant": "turtle",
+    "event": "event_c1_memorial",
+    "offered": 1,
+    "choices": {
+     "honor_hero_001": 1
+    },
+    "per_100_attempts": 6.25
+   },
+   {
+    "variant": "turtle",
+    "event": "event_c1_observador",
+    "offered": 1,
+    "choices": {
+     "witness": 1
+    },
+    "per_100_attempts": 6.25
+   },
+   {
+    "variant": "turtle",
+    "event": "event_c1_raiz_oca",
+    "offered": 1,
+    "choices": {
+     "open": 1
+    },
+    "per_100_attempts": 6.25
+   },
+   {
+    "variant": "turtle",
+    "event": "event_c1_rastro_cacada",
+    "offered": 1,
+    "choices": {
+     "follow": 1
+    },
+    "per_100_attempts": 6.25
+   },
+   {
+    "variant": "turtle",
+    "event": "event_c1_reserva_residuo",
+    "offered": 12,
+    "choices": {
+     "collect": 12
+    },
+    "per_100_attempts": 75.0
+   },
+   {
+    "variant": "turtle",
+    "event": "event_c1_sobrevivente",
+    "offered": 2,
+    "choices": {
+     "protect": 2
+    },
+    "per_100_attempts": 12.5
+   }
+  ],
+  "loot_by_rarity": {
+   "Comum": 765,
+   "Incomum": 436,
+   "Raro": 1049,
+   "Relíquia": 93,
+   "Épico": 253
+  }
+ },
+ "profiles": [
+  {
+   "profile": "aggressor",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "abandon_rate": 0.0,
+   "first_win_attempt": 7.5,
+   "attempts": 7.5,
+   "final_level": 14.0,
+   "items_held": 29.5,
+   "save_kb": 3.2548828125,
+   "fuzz_runs": 0,
+   "fuzz_actions": 0,
+   "fuzz_refused": 0,
+   "edge_cases": 0,
+   "violations": {}
+  },
+  {
+   "profile": "beginner",
+   "campaigns": 16,
+   "win_rate": 0.5625,
+   "abandon_rate": 0.4375,
+   "first_win_attempt": 4,
+   "attempts": 5.0,
+   "final_level": 11.5,
+   "items_held": 19.5,
+   "save_kb": 2.17333984375,
+   "fuzz_runs": 0,
+   "fuzz_actions": 0,
+   "fuzz_refused": 0,
+   "edge_cases": 0,
+   "violations": {}
+  },
+  {
+   "profile": "chaos",
+   "campaigns": 16,
+   "win_rate": 1.0,
+   "abandon_rate": 0.0,
+   "first_win_attempt": 5.0,
+   "attempts": 5.0,
+   "final_level": 12.0,
+   "items_held": 23.5,
+   "save_kb": 2.5185546875,
+   "fuzz_runs": 4,
+   "fuzz_actions": 2000,
+   "fuzz_refused": 962,
+   "edge_cases": 0,
+   "violations": {}
+  },
+  {
+   "profile": "edge_case",
+   "campaigns": 0,
+   "win_rate": null,
+   "abandon_rate": null,
+   "first_win_attempt": null,
+   "attempts": null,
+   "final_level": null,
+   "items_held": null,
+   "save_kb": null,
+   "fuzz_runs": 4,
+   "fuzz_actions": 1600,
+   "fuzz_refused": 575,
+   "edge_cases": 32,
+   "violations": {}
+  },
+  {
+   "profile": "exploit_hunter",
+   "campaigns": 0,
+   "win_rate": null,
+   "abandon_rate": null,
+   "first_win_attempt": null,
+   "attempts": null,
+   "final_level": null,
+   "items_held": null,
+   "save_kb": null,
+   "fuzz_runs": 4,
+   "fuzz_actions": 3200,
+   "fuzz_refused": 2064,
+   "edge_cases": 0,
+   "violations": {}
+  },
+  {
+   "profile": "grinder",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "abandon_rate": 0.0,
+   "first_win_attempt": 5.0,
+   "attempts": 65.0,
+   "final_level": 33.0,
+   "items_held": 338.5,
+   "save_kb": 27.1904296875,
+   "fuzz_runs": 0,
+   "fuzz_actions": 0,
+   "fuzz_refused": 0,
+   "edge_cases": 0,
+   "violations": {}
+  },
+  {
+   "profile": "optimizer",
+   "campaigns": 16,
+   "win_rate": 1.0,
+   "abandon_rate": 0.0,
+   "first_win_attempt": 5.0,
+   "attempts": 5.0,
+   "final_level": 12.0,
+   "items_held": 22.5,
+   "save_kb": 2.51416015625,
+   "fuzz_runs": 0,
+   "fuzz_actions": 0,
+   "fuzz_refused": 0,
+   "edge_cases": 0,
+   "violations": {}
+  },
+  {
+   "profile": "turtle",
+   "campaigns": 4,
+   "win_rate": 1.0,
+   "abandon_rate": 0.0,
+   "first_win_attempt": 4.0,
+   "attempts": 4.0,
+   "final_level": 10.0,
+   "items_held": 16.0,
+   "save_kb": 2.03125,
+   "fuzz_runs": 0,
+   "fuzz_actions": 0,
+   "fuzz_refused": 0,
+   "edge_cases": 0,
+   "violations": {}
+  }
+ ]
+}

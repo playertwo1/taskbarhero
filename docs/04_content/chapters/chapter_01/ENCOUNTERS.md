@@ -6,7 +6,7 @@ status: DESIGN
 # Capítulo 1 — encontros e ritmo
 
 **Status:** `DESIGN`; composição e quantidades são `HIPÓTESE` para simulação, não dados runtime.  
-**Fonte única das formações e quantidades:** [encounter_plan.json](encounter_plan.json). O arquivo é uma proposta documental e não é carregado pelo jogo. Nomes, arquétipos, ranks, encounter_cost e loot vêm do [catálogo canônico v0.4](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json).
+**Fonte única das formações e quantidades:** [encounter_plan.json](encounter_plan.json). O arquivo é uma proposta documental e não é carregado pelo jogo. Nomes, arquétipos, ranks, encounter_cost e loot vêm do [catálogo canônico v0.4](../../enemies/CHAPTER_01_ENEMIES_CANONICAL.json).
 
 ## Princípios de composição
 
@@ -37,7 +37,7 @@ Essa taxa é uma hipótese de QA para calibrar “desafiador, mas justo”; a si
 
 ## Ferreiro no recorte ECON-1
 
-**Proposta:** demonstrar o Reforço `+1` em itens elegíveis, que concede o `+2%` de status base definido pelo contrato v0.4 e não rola affix. O [modelo ECON-1](../../../06_balance/ECONOMY_MODEL.md) é a autoridade para custo por item; este recorte testa apenas `+1` e não define níveis superiores. A melhoria é opcional e não é requisito para enfrentar ou vencer o Guardião.
+**Proposta:** demonstrar o Reforço `+1` em itens elegíveis, que concede o `+10%` de status base (decidido por Rafael em 2026-09-30; o contrato v0.4 definia `+2%`) e não rola affix. O [modelo ECON-1](../../../06_balance/v1/07_ECONOMIA_LOOT.md) é a autoridade para custo por item; este recorte testa apenas `+1` e não define níveis superiores. A melhoria é opcional e não é requisito para enfrentar ou vencer o Guardião.
 
 O evento opcional pré-boss concede uma quantidade única de Resíduo de Lúmen registrada em [encounter_plan.json](encounter_plan.json). A Geleia Anciã e a Rainha das Geleias também têm drops garantidos no catálogo; o evento e esses encontros cobrem pelo menos um Reforço sem exigir desmontar a única peça útil. Sem o evento, drops aleatórios podem completar o custo; a simulação estima quantos itens podem receber `+1` ao fim do capítulo. Não assumir repetição para farm. Quantidade e custo são hipóteses deste slice, não alterações ao catálogo v0.4 nem valores runtime.
 

@@ -17,15 +17,15 @@ const BUILD_PRESETS := [
 	{"name": "Cura", "heroes": {"hero_001": "retaliacao", "hero_002": "critico", "hero_003": "lumen"}},
 ]
 
-## Builds que o jogador pode escolher por herói (UI_S04): 3 × 2 × 3 = 18 combinações.
+## Builds que o jogador pode escolher por herói (UI_S04): combinações de 3 heróis (o total é o produto das opções).
 const BUILD_OPTIONS := {
-	"hero_001": ["guardiao", "retaliacao", "retaliacao_tele"],
-	"hero_002": ["critico", "marca"],
+	"hero_001": ["guardiao", "retaliacao", "retaliacao_tele", "controle"],
+	"hero_002": ["critico", "marca", "velocidade"],
 	"hero_003": ["arcano", "controle", "lumen"],
 }
 const BUILD_LABELS := {
 	"guardiao": "Guardião", "retaliacao": "Retaliação", "retaliacao_tele": "Retaliação (golpe telegrafado)",
-	"critico": "Crítico", "marca": "Marca", "arcano": "Arcano", "controle": "Controle", "lumen": "Lúmen",
+	"critico": "Crítico", "marca": "Marca", "velocidade": "Velocidade", "arcano": "Arcano", "controle": "Controle", "lumen": "Lúmen",
 }
 
 static var _cache: Dictionary = {}
@@ -53,7 +53,7 @@ static func options(build: Dictionary, level: int, seed_value: int, extra: Dicti
 		if String(build[hid]).ends_with("_tele"):
 			overrides.merge(TELEGRAPH_OVERRIDE)
 	var opts := {"seed": seed_value, "crits": true, "party_level": level, "skills": d["skills"], "builds": builds,
-		"trigger_overrides": overrides, "passives": d["passives"], "items": d["items"]}
+		"trigger_overrides": overrides, "passives": d["passives"], "items": d["items"], "passive_tree": true}
 	opts.merge(extra, true)
 	return opts
 

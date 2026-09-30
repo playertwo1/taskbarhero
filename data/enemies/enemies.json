@@ -165,7 +165,7 @@
     "stagger_profile": "ELITE_STANDARD",
     "mechanics": {
       "status": "HIPOTESE",
-      "source": "BOSS_RULES.md seção 9 (dano alto precisa de telegraph); padrão do slice: golpe forte telegrafado na linha de frente; números são hipótese",
+      "source": "docs/06_balance/v1/06_INIMIGOS_CHEFES.md §3 e §5 (dano alto precisa de telegraph); padrão do slice: golpe forte telegrafado na linha de frente; números são hipótese",
       "basic_coefficient": 0.6,
       "telegraph": {
         "id": "esmagamento_gelatinoso",
@@ -194,7 +194,7 @@
     "stagger_profile": "MINIBOSS",
     "mechanics": {
       "status": "HIPOTESE",
-      "source": "ENCOUNTERS.md; BOSS_RULES.md seção 8 (adds como mecânica central reduzem o dano próprio); limiares e coeficiente são hipótese",
+      "source": "ENCOUNTERS.md; docs/06_balance/v1/06_INIMIGOS_CHEFES.md §4 (adds como mecânica central reduzem o dano próprio); limiares e coeficiente são hipótese",
       "basic_coefficient": 0.6,
       "telegraph": {
         "id": "onda_real",

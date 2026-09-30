@@ -2,6 +2,30 @@
 
 Registro breve de mudanças estruturais e releases. Detalhes de planejamento continuam no roadmap; histórico de gates concluídos permanece arquivado.
 
+## 2026-09-30 — Reorganização do repositório
+
+- Nova autoridade de organização: [ESTRUTURA_DO_REPOSITORIO](docs/00_project/ESTRUTURA_DO_REPOSITORIO.md) (mapa, onde criar cada arquivo, regras de manutenção e recomendações R-1 a R-5 ainda não executadas).
+- `AGENTS.md` enxugado de 16 KB para ~5 KB: regras e ponteiros; a tabela e as regras do Argos foram para [`tools/argos/README.md`](tools/argos/README.md). README reescrito com entrada por perfil de leitor.
+- Movidos: `HERO_STANDARD.md` → `docs/02_heroes/`; brief e `REFERENCIAS_TBH` → `docs/00_project/`; `PIPELINE_IA_SPRITES` → `docs/art/`; 7 planos executados e as recomendações do 1D → `arquivados/planos_concluidos/`; `referencia/inimigos_futuros` (raiz) → `docs/art/referencia/inimigos_futuros`; scripts Python de `scripts/art` e `scripts/android` → `tools/art` e `tools/android`.
+- Unificado: `QA_MOBILE_1E` dentro de [QA_MOBILE_PIXEL9_REPORT](docs/08_qa/QA_MOBILE_PIXEL9_REPORT.md).
+- Novo: [`tools/docs/check_links.py`](tools/docs/check_links.py) (links, âncoras e órfãos; `--orphans`).
+- Excluídos: `docs/art/references/` (imagens de terceiros), conceito/prévia duplicados em `assets/sprites/ui/ui_kit/`, imagem duplicada em inimigos futuros, `arquivados/pipelines_legados/`, `tests/test_r9_slime_visual.gd` (MVP, não era executado), `scripts/art/audit_docs_links.py`, `tools/balance/scale_compare.py`, `tools/art/build_ui_kit_v003.py`, pastas vazias. Fora do git: ~260 MB (APK de sonda, frames e capturas antigas em `build/`, 61 relatórios do Argos não citados, caches). `build/.gdignore` impede o Godot de importar saídas locais.
+
+## 2026-09-30 — Balanceamento global v1.0
+
+- Novo [`docs/06_balance/v1/`](docs/06_balance/v1/README.md): a constituição (curva-mestra, orçamento de poder 30/30/25/15, jogador de referência por capítulo, alvos, teto, linhas vermelhas, política de mudanças), 11 domínios (status e combate, heróis, skills/passivas, itens/raridade, affixes/craft, inimigos/chefes, economia/loot, meta, dificuldade/endgame, telemetria/Argos, decisões abertas), o perfil do Capítulo 1 e três anexos técnicos (schema de inimigo, Drop Resolver, `LOOT_CONTRACT.json`). Tudo `DESIGN`/HIPÓTESE; nenhum valor de `/data` mudou.
+- Decisões de Rafael: poder equilibrado, dificuldades D1–D3 como endgame, farm offline limitado e catch-up de XP para heróis no banco. Pendentes em [11_DECISOES_ABERTAS](docs/06_balance/v1/11_DECISOES_ABERTAS.md) (D-01 a D-09).
+- Achados registrados na v1: a curva de XP atual não alcança o nível 100; o HERO_STANDARD e o slice divergem sobre quando a Signature abre; a camada D3 herdada passaria do teto de 1 milhão de HP no capítulo 10; o orçamento 30/30/25/15 só fecha se medido dentro de cada capítulo.
+- Excluídos por decisão de Rafael (absorvidos na v1): `documents/canonical/` (base v0.5 e origem v0.4; a pasta v0.5 não estava no git), `documents/references/balance_pack_v0.1/`, `GLOBAL_BALANCE_SYSTEM`, `SLICE_BALANCE_CONTRACT`, `COMBAT_BALANCE_STANDARD`, `BALANCE_V0.5`, `ECONOMY_MODEL`, `CHAPTER_01_HERO_COMBAT_PROPOSAL`, `COMBAT_SCALE_AND_GROWTH_PROPOSAL`, `CHAPTER_01_ITEM_STATS_PROPOSAL` e o CSV de variantes, `docs/04_content/enemies/CHAPTER_01_COMBAT_PROPOSAL.md` e as ferramentas pré-Argos `simulate_chapter1_balance.py`, `slice_baseline.py`, `simulate_route_sustain.py` e `export_chapter1_item_variants.py`.
+- Movidos: JSON canônico e catálogo dos inimigos para `docs/04_content/enemies/`; tabelas de drop e materiais para `docs/04_content/chapters/chapter_01/`; catálogo de itens (com a distribuição de status por template) e templates de origem para `docs/04_content/items/`. O `argos_loot.gd` passou a ler os novos caminhos; referências em código, testes e campos `source` de `/data` foram reapontadas. Suíte 36/36 PASS, validador OK.
+
+## 2026-09-30 — Reorganização do roadmap e limpeza de fontes
+
+- `ROADMAP.md` reescrito para leitura por qualquer agente: cabeçalho com metadados, legenda de status, **Estado atual → Concluído → Agora (`NOW-*`) → Próximo (`NEXT-*`) → Futuro**, com IDs estáveis. O texto detalhado dos gates concluídos (fundação, SLICE-1, kits, escala 10×) foi movido para [`arquivados/ROADMAP_CONCLUIDO.md`](arquivados/ROADMAP_CONCLUIDO.md).
+- Evidência reconferida: 36/36 cenas Godot PASS e validador de balanceamento OK (os documentos ainda citavam 29/30).
+- Excluídos por decisão de Rafael, para ninguém consultar a fonte errada (recuperáveis pelo git): `documents/canonical/taskbar_sistema_v0.4/` (cópia idêntica de `taskbar_sistema_v0.5/source/`), candidatos `ui_kit` v001/v002 e `tools/art/build_ui_kit.py`, snapshots de 2026-09-28 (`SPRITE_ENVIRONMENT_PATHS`, `SPRITE_INSTALLATION_AUDIT`, `QA_VISUAL_PRELIMINAR`, `CONCEITOS_PILOTO`). O `export_chapter1_item_variants.py` passou a ler o catálogo da v0.5.
+- Links corrigidos: relatório de QA mobile apontava para uma pasta fora do repositório; contrato do `ui_kit` e âncora da proposta de escala estavam quebrados; documentos órfãos (validação dos kits, perfis do Argos arquivados, prompt da UI_S12) passaram a ser indexados.
+
 ## 2026-09-30 — SLICE-1 Homologado e QA Mobile no Pixel 9 (1080×2424)
 
 - Homologação oficial do **SLICE-1 (Vertical Slice do Jogo Real)** com gates 1A a 1E concluídos.
@@ -17,7 +41,7 @@ Registro breve de mudanças estruturais e releases. Detalhes de planejamento con
 - Arena visual de combate no Bosque de Lúmen com 4 camadas de parallax e atores animados reagindo a ataques, dano e vitórias. Loadout tátil (`UI_S04`) com miniaturas dos heróis e descrições dinâmicas de builds. Tela de resultado (`UI_S07`) com badges táteis de recursos e grade de itens conquistados.
 
 
-- `tools/art/build_ui_kit.py` gera o [candidato v001 do ui_kit](docs/art/candidates/ui_kit/README.md) (botões 9-slice em 3 estados, painel, divisor e 3 ícones) em pixel art TY40, fora de `assets/`. Sem aprovação nem auditoria; problemas conhecidos listados no README.
+- `tools/art/build_ui_kit.py` gera o candidato v001 do ui_kit (excluído em 2026-09-30) (botões 9-slice em 3 estados, painel, divisor e 3 ícones) em pixel art TY40, fora de `assets/`. Sem aprovação nem auditoria; problemas conhecidos listados no README.
 
 ## 2026-09-29 — BAL-009 decidido e Argos com economia do 1D
 

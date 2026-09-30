@@ -1,0 +1,22 @@
+{
+  "id": "scale_equivalence",
+  "chapter_id": "CHAPTER_01",
+  "party": ["hero_001", "hero_002", "hero_003"],
+  "description": "Prova de invariância do combat_scale: a mesma matriz roda em 1x e 10x (profile_overrides) e tools/balance/check_scale_equivalence.py exige resultado idêntico depois de dividir os valores absolutos. Não altera /data.",
+  "seeds": 3,
+  "levels": [5, 10],
+  "builds": {
+    "hero_001": ["guardiao", "retaliacao_tele"],
+    "hero_002": ["marca"],
+    "hero_003": ["arcano", "lumen"]
+  },
+  "modes": ["route", "segments", "campaign"],
+  "campaign": {"start_level": 1, "max_attempts": 6, "loot": true},
+  "rank_milestones": [3, 5, 7, 9, 11, 13, 15, 17, 19],
+  "max_time": 3600,
+  "stuck_seconds": 30,
+  "variants": [
+    {"id": "x1", "profile_overrides": {"combat_scale": 1.0}},
+    {"id": "x10", "profile_overrides": {"combat_scale": 10.0}}
+  ]
+}

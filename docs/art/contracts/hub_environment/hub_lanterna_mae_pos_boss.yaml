@@ -6,7 +6,7 @@
   "source_of_truth": {
     "scope": "docs/04_content/chapters/chapter_01/SLICE_1_SCOPE.md (seção 7)",
     "direction": "docs/05_hub/HUB_VISUAL_DIRECTION.md",
-    "reference_concept": "docs/art/mockups/slice_1d_references/03_refugio_pos_boss.png",
+    "reference_concept": "docs/art/mockups/slice_1d_references/03_refugio_pos_boss_v003.png",
     "note": "O conceito é referência de composição e cor; não é sprite, não define coordenadas e não é aprovação."
   },
   "purpose": "Camada visual exibida no Refúgio depois do primeiro clear do Guardião-Cervo (data.boss_cleared): Lúmen verde na Lanterna-Mãe e um toque de vegetação na praça. Sem efeito numérico.",

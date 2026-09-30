@@ -1,0 +1,12 @@
+{
+ "commit": "82571ad",
+ "dirty": true,
+ "scenario_file": "tools/argos/simulator/combat/scenarios/tune_items_boss.json",
+ "balance_hash": "ba0b82d18609c71aa43d902ce9486627b6a44e391380caf5f06d9ce308a6c37c",
+ "balance_inputs": {
+  "data/balance/combat_profiles.json": "ada496afa42f8db9ef7aaca84c7edf668432451fe88c57e1c864dd89fca1deac",
+  "data/balance/combat_core.json": "aa7ab23df280d16adcc90899025d0c7e12fbb74b62240595b78576755c02e6f9",
+  "data/balance/chapters/chapter_01.json": "127bdb44a129f8e324b3097ca47dc008eb31a194c05082d5e15f89ffbed60167",
+  "tools/argos/simulator/combat/scenarios/tune_items_boss.json": "e34f9a4210870f30af82ca7b3b3b8ad20c7feec7fe39aa1607477789c9c6b5ec"
+ }
+}

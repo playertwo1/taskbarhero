@@ -1,0 +1,12 @@
+{
+  "id": "grinder",
+  "tier": "core",
+  "status": "IMPLEMENTED",
+  "question": "O que acontece depois de repetir isso 500 vezes?",
+  "description": "Joga de forma ótima e continua repetindo a expedição depois de vencer o Guardião, por dezenas de tentativas. Mede o que cresce sem parar: nível, itens guardados, tamanho do save e Resíduo acumulado.",
+  "modes": ["campaign"],
+  "builds": {"hero_001": "guardiao", "hero_002": "marca", "hero_003": "controle"},
+  "policy": {"reward": "best", "events": "first", "equip": "best", "spend": "full", "max_attempts": 80, "continue_after_win": 60},
+  "looks_for": ["crescimento ilimitado do inventário e do save", "nível que não para de subir ou trava", "Resíduo e itens sem destino", "desaceleração de progressão"],
+  "not_modeled": ["500 repetições reais (a simulação usa até 80 tentativas por campanha)", "desempenho no aparelho", "degradação de memória"]
+}

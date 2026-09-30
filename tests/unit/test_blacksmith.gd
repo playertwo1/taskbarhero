@@ -84,7 +84,7 @@ func _test_reinforce_stats() -> void:
 	var gain_a := float(a["attack"]) - 10.0
 	var gain_b := float(b["attack"]) - 10.0
 	_expect("item base dá bônus de ataque", gain_a > 0.0)
-	_expect("reforço multiplica o bônus por 1,02", absf(gain_b - gain_a * 1.02) < 0.0001)
+	_expect("reforço multiplica o bônus por 1,10", absf(gain_b - gain_a * 1.10) < 0.0001)
 	_expect("Item Power não muda", int(reinforced["item_power"]) == 50)
 
 func _test_persistence() -> void:

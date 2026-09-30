@@ -1,0 +1,3 @@
+# Perfis iniciais do Argos (2026-09-27) — arquivados
+
+Seis declarações de intenção (`beginner`, `chaos`, `exploit_hunter`, `hoarder`, `idle`, `optimizer`) escritas para um jogo idle com ouro por hora, progressão offline, background/resume e troca de fase. Nenhuma era lida ou executada pelo simulador, e vários descrevem sistemas que o Pocket Hero não tem. Foram substituídas em 2026-09-30 pelos perfis executáveis em [`tools/argos/profiles/`](../../tools/argos/profiles/README.md). Ficam aqui como registro das ideias originais (por exemplo, `idle` e `hoarder` voltam se o jogo ganhar progressão offline ou capacidade de inventário).

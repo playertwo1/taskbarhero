@@ -1,0 +1,12 @@
+{
+  "id": "chaos",
+  "tier": "core",
+  "status": "IMPLEMENTED",
+  "question": "O que acontece quando ninguém segue o caminho esperado?",
+  "description": "Decide tudo ao acaso: recompensa, evento, equipamento, gasto e a build de cada herói a cada tentativa. No modo fuzz aperta qualquer ação do inventário, legal ou não, em qualquer ordem.",
+  "modes": ["campaign", "fuzz"],
+  "policy": {"reward": "random", "events": "random", "equip": "random", "spend": "random", "build": "random_per_attempt", "max_attempts": 12},
+  "fuzz": {"steps": 500, "open_tree_chance": 0.5},
+  "looks_for": ["estados impossíveis", "invariantes de inventário violadas", "campanhas que travam ou nunca terminam"],
+  "not_modeled": ["ciclo de vida do app (segundo plano, retomar)", "toques rápidos na interface"]
+}

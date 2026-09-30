@@ -11,6 +11,7 @@ var hero_rows: Array = []
 var enemy_rows: Array = []
 
 func _ready() -> void:
+	BalanceProfiles.pin_test_units()  # números conferidos à mão em unidades 1× e curva linear
 	print("\n=======================================================")
 	print("--- TESTE EXPEDITION RUN (SLICE-1A-3a) ---")
 	print("=======================================================")

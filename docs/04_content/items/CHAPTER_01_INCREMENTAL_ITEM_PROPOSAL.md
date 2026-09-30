@@ -6,13 +6,20 @@ certainty: HIPOTESE
 
 # Capítulo 1 — proposta integrada de progressão e equipamento
 
-**HIPÓTESE quantitativa para simulação, não conteúdo runtime.** A direção de Rafael é que o
+**HIPÓTESE de design para simulação, não conteúdo runtime.** A direção de Rafael é que o
 Guardião seja uma conquista incremental após tentativas com derrota e progresso
-persistente. Nível da fase não limita o nível do herói. Este arquivo propõe uma
-revisão local dos drops. A compatibilidade por classe e os três novos IDs foram
-registrados no catálogo de itens adaptado por instrução de Rafael; este arquivo
-guarda apenas números candidatos de progressão, affixes e chances. Os valores
-runtime ainda não foram migrados.
+persistente. Nível da fase não limita o nível do herói. Esta proposta de itens
+está em revisão: armas são exclusivas de personagem; secundários, armaduras,
+acessórios e Ecos devem poder ser usados pelos três heróis quando seus efeitos
+forem universais. O slice usa Comum, Incomum, Raro e Épico; Épicos são apenas
+recompensas de boss. A escala dos atributos foi decidida em **10×** (Rafael,
+2026-09-30); a migração e a matriz de valores seguem na próxima etapa
+BALANCE-1 do roadmap. As decisões de orçamento, incluindo a
+escada de nove níveis de raridade, estão em
+[v1 · itens e raridade](../../06_balance/v1/04_ITENS_RARIDADE.md).
+Portanto, os valores
+numéricos e as chances desta proposta antiga não são base para runtime até a
+revisão da escala e dos budgets.
 
 ## 1. Curva de tentativas
 
@@ -54,18 +61,17 @@ do contrato de economia. Não duplicar XP quando um add é invocado duas vezes.
 
 ## 2. Compatibilidade proposta
 
-**DECIDIDO por Rafael:** equipamento deve fazer sentido para o herói. A matriz
-autoritativa de compatibilidade fica no catálogo de itens adaptado. Armas e
-secundários de identidade são restritos; armaduras e acessórios podem ser
-compartilhados quando seu efeito funciona.
+**DECIDIDO por Rafael:** armas são exclusivas de cada personagem. Os demais
+slots são compartilháveis por Bastião, Flecha e Íris; seus efeitos não podem
+depender de uma skill ou recurso que só um deles tenha.
 
 | Categoria | Bastião | Flecha | Íris | Compartilhamento |
 | --- | --- | --- | --- | --- |
-| Arma | espada | arco | cajado | não |
-| Secundário | escudo | aljava | foco/livro | não |
-| Armadura | pesada ou leve | leve | leve | sim, se compatível |
-| Acessórios I/II | todos do capítulo | todos do capítulo | todos do capítulo | sim |
-| Echo | conforme efeito da skill | conforme efeito da skill | conforme efeito da skill | sim se tiver efeito |
+| Arma | espadas/martelos do Bastião | arcos da Flecha | cajados da Íris | exclusiva do personagem |
+| Secundário | todos os modelos universais | todos os modelos universais | todos os modelos universais | sim |
+| Armadura | todos os modelos universais | todos os modelos universais | todos os modelos universais | sim |
+| Acessórios I/II | todos os modelos universais | todos os modelos universais | todos os modelos universais | sim |
+| Echo | todos os modelos universais | todos os modelos universais | todos os modelos universais | sim |
 
 O catálogo adaptado usa `ITEM_W_001` como espada de madeira de Bastião,
 `ITEM_W_002` como arco de Flecha e `ITEM_S_001` como escudo de Bastião.
@@ -74,10 +80,13 @@ Adiciona `ITEM_W_006` Cajado Prismático, `ITEM_S_006` Aljava da Trilha e
 
 ## 3. Famílias de item e versões de raridade
 
-Cada linha é um **template** com versões Incomum, Rara e Épica, quando
-permitidas. A versão Épica muda uma interação, em vez de apenas empilhar
-atributos. Os valores são hipóteses de efeito; todos precisam respeitar BP,
-Item Power, uptime, caps e o limite de 2 skills equipadas.
+Cada linha é um **template** com versões Comum, Incomum, Rara e Épica. A versão
+Épica só pode vir de recompensa de boss; ela aumenta os atributos e pode trazer
+um modificador que muda a forma de usar o item. Os valores quantitativos e o
+budget estão suspensos até a matriz na escala 10× descrita em
+[v1 · itens e raridade](../../06_balance/v1/04_ITENS_RARIDADE.md). A lista
+abaixo conserva ideias já registradas; a matriz de compatibilidade anterior do
+catálogo canônico será reconciliada depois, sem alterar IDs/runtime nesta etapa.
 
 | Template proposto | Usuário | Incomum | Raro | Épico |
 | --- | --- | --- | --- | --- |
@@ -92,9 +101,40 @@ Item Power, uptime, caps e o limite de 2 skills equipadas.
 | Fragmento Prismático | Íris no trio | — | acerto em 2 alvos recupera parte da recarga, com teto por janela | o gatilho também beneficia uma skill aliada, com recarga interna |
 
 Os efeitos por raridade da tabela são hipóteses; “—” significa variante fora
-da faixa permitida do template, sem roll. A tabela não altera os IDs nem as
-faixas do catálogo. Itens compartilhados só entram no pool de um herói quando
-o efeito tiver alvo, skill ou recurso correspondente.
+da faixa anterior do template e ficará sujeita à revisão: nesta proposta de
+slice, todas as raridades Comum–Épico serão consideradas para cada template.
+Itens compartilhados precisam funcionar para os três heróis. Efeitos ligados
+a skill exclusiva serão substituídos por um gatilho universal ou restritos à
+arma daquele personagem. A compatibilidade e as faixas v0.4 são fonte de
+referência, não confirmação desta revisão local.
+
+### Expansão de variedade em avaliação
+
+As opções abaixo ampliam escolhas sem criar uma arma compartilhada. São nomes
+e identidades candidatas, sem IDs novos; cada item deverá receber atributos nas
+quatro raridades depois da decisão de escala.
+
+| Slot | Item candidato | Identidade / decisão de build |
+| --- | --- | --- |
+| Arma — Bastião | Martelo do Javali | Ataques mais lentos e fortes; favorece Stagger. |
+| Arma — Bastião | Lâmina do Guardião | Contra-ataques após bloquear. |
+| Arma — Flecha | Arco de Espinhos | Crítico e dano contra inimigos marcados. |
+| Arma — Flecha | Arco do Vento Oco | Velocidade de ataque e reposicionamento. |
+| Arma — Íris | Bastão de Micélio | Controle e duração de efeitos. |
+| Arma — Íris | Cetro Prismático | Acertos em vários alvos e recarga. |
+| Secundário | Bússola de Lúmen | Recarga após esquiva ou reposicionamento. |
+| Secundário | Lanterna de Esporos | Intensifica lentidão e efeitos de estado. |
+| Armadura | Manto de Folhas | HP e mobilidade. |
+| Armadura | Túnica de Esporos | Recarga e resistência a efeitos. |
+| Acessório | Talismã do Salto de Lúmen | Bônus após esquiva ou reposicionamento. |
+| Acessório | Pétala do Primeiro Jardim | Cura excedente pode virar escudo. |
+| Acessório | Raiz Faminta | Sustentação e proteção em combates longos. |
+| Echo | Eco da Mariposa | Prolonga bônus temporários do portador. |
+| Echo | Eco da Geleia | Recuperação limitada durante o combate. |
+
+Echoes que hoje dependem de uma skill específica, incluindo *A Sentinela que
+Ficou*, precisam de adaptação antes de serem tratados como compartilháveis.
+Esta tabela não aprova os itens nem altera o recorte/runtime vigente.
 
 ### Orçamento verificável do efeito de velocidade
 

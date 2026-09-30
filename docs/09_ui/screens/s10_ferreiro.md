@@ -46,7 +46,7 @@ Desmontar equipamento em Resíduo e aplicar o Reforço +1, com proteção contra
 
 ## Layout e toque
 
-- Item selecionado em destaque com prévia do resultado (Resíduo ganho ou bônus do reforço).
+- Item selecionado em destaque com prévia do resultado (Resíduo ganho ou bônus do reforço). A prévia do Reforço mostra os números antes e depois conforme [UI_S12](s12_numeros_de_item.md) (C5).
 - Confirmação com texto explícito, cancelável por toque fora.
 
 ## Fora do slice

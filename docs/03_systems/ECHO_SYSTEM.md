@@ -20,7 +20,7 @@ As propostas abaixo são referências de design e não fazem parte do Echo míni
 
 - O slot de Echo, extração/infusão e a Gravadora de Ecos na [proposta de equipamentos e artesãos](EQUIPMENT_AND_CRAFTING_SYSTEM.md).
 - O ramo da Memória, Fragmentos de Ressonância, desbloqueios e nós da [proposta da Árvore Global de Ressonância](GLOBAL_RESONANCE_TREE.md).
-- Ecos Corrompidos como endgame no [brief do projeto](../POCKET_HERO_PROJECT_BRIEF.md).
+- Ecos Corrompidos como endgame no [brief do projeto](../00_project/POCKET_HERO_PROJECT_BRIEF.md).
 
 As propostas maiores continuam subordinadas a esta decisão de escopo: extração/infusão, Codex e Coleção não fazem parte do slice. Podem ser avaliados em `ECHO-1` depois que o Echo mínimo passar pelo slice.
 

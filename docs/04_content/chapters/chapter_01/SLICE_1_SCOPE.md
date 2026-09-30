@@ -8,7 +8,7 @@ certainty: HIPOTESE
 
 **Status:** `DESIGN`; os recortes abaixo foram escolhidos por Rafael em 2026-09-29 e são **DECIDIDO** como escopo. Números, gatilhos e duração são **HIPÓTESE** ou **EM ABERTO** e não são dados runtime.
 
-Este arquivo é a única fonte do **recorte**: diz *o que* do que já está aprovado entra no `SLICE-1`. Ele não copia stats, loot, kits ou fórmulas; cada linha aponta para a fonte que mantém o fato. Consumidores: [BALANCE-FOUNDATION-1](../../../06_balance/COMBAT_BALANCE_STANDARD.md) e `SLICE-1` (1A–1E) do [ROADMAP](../../../../ROADMAP.md).
+Este arquivo é a única fonte do **recorte**: diz *o que* do que já está aprovado entra no `SLICE-1`. Ele não copia stats, loot, kits ou fórmulas; cada linha aponta para a fonte que mantém o fato. Consumidores: [BALANCE-FOUNDATION-1](../../../06_balance/v1/01_STATUS_E_COMBATE.md) e `SLICE-1` (1A–1E) do [ROADMAP](../../../../ROADMAP.md).
 
 Fluxo alvo: `Hub → party → build → expedição → combate → escolha → evento → elite → mini-boss → boss → retorno → Árvore/Ferreiro → evolução do Hub`.
 
@@ -16,7 +16,7 @@ Fluxo alvo: `Hub → party → build → expedição → combate → escolha →
 
 **DECIDIDO:** party Bastião, Flecha e Íris, com **4 skills por herói** em **2 builds**. Cada herói equipa 2 skills; sem Signature no slice (o [Sistema de skills](../../../03_systems/SKILL_SYSTEM.md) só a torna elegível no T6).
 
-**DECIDIDO (regra local do slice):** o slice entrega cada build como **loadout fixo, sem gate de nível**: passiva de identidade, dois nós iniciais da build e o Trait dela. A tabela de tiers do [HERO_STANDARD](../../../../HERO_STANDARD.md) (seção 7) e o desbloqueio por marcos do Sistema de skills continuam vigentes e só são aplicados no `BALANCE-1`. O segundo slot de skill (`TREE_FOR_001`) e o slot de Echo são liberados por essa mesma regra local.
+**DECIDIDO (regra local do slice):** o slice entrega cada build como **loadout fixo, sem gate de nível**: passiva de identidade, dois nós iniciais da build e o Trait dela. A tabela de tiers do [HERO_STANDARD](../../../02_heroes/HERO_STANDARD.md) (seção 7) e o desbloqueio por marcos do Sistema de skills continuam vigentes e só são aplicados no `BALANCE-1`. O segundo slot de skill (`TREE_FOR_001`) e o slot de Echo são liberados por essa mesma regra local.
 
 | Herói | Build | Skills equipadas | Passivas | Trait | Fonte |
 | --- | --- | --- | --- | --- | --- |
@@ -27,7 +27,7 @@ Fluxo alvo: `Hub → party → build → expedição → combate → escolha →
 | **Íris** | Arcano | Lança de Lúmen (`SKILL_IRI_001`) + Prisma de Retorno (`SKILL_IRI_005`) | Sensível ao Lúmen (identidade), A1 Foco do Cristal, A2 Dispersão de Choque | Feixe Tecido | [kit mínimo do slice](../../../02_heroes/hero_003_iris_slice_kit.md) |
 | **Íris** | Controle | Fratura Arcana (`SKILL_IRI_003`) + Véu de Micélio (`SKILL_IRI_002`) | Sensível ao Lúmen, B1 Rede de Micélio, B2 Fissura Persistente | Contenção Arcana | idem |
 
-Fora do slice: Impacto de Escudo e Último Bastião; Ricochete, Chuva de Flechas e a build Velocidade da Flecha; Pulso Restaurador e a build Lúmen da Íris; nós A3–A5, B3–B5 e todas as passivas C.
+Atualização 2026-09-30 (decisão de Rafael): o recorte ganhou os **kits completos** dos três heróis (6 skills com a Signature no 3º slot, 16 passivas, 3 Traits e 3 builds cada), como HIPÓTESE de simulação — incluindo Impacto de Escudo e Último Bastião, Ricochete, Chuva de Flechas e a build Velocidade, o Pulso Restaurador e a build Lúmen, e os nós A3–A5, B3–B5 e C. A lista original de "fora do slice" fica como histórico.
 
 **Regras compartilhadas de Bastião no slice**
 
@@ -37,7 +37,7 @@ Fora do slice: Impacto de Escudo e Último Bastião; Ricochete, Chuva de Flechas
 
 ## 2. Expedição — 10 encontros, 23 derrotas
 
-**DECIDIDO:** expedição média, com formações já existentes em [encounter_plan.json](encounter_plan.json). Custos são a soma de `encounter_cost` do [catálogo v0.4](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json) e ficam dentro dos limites locais de [ENCOUNTERS.md](ENCOUNTERS.md).
+**DECIDIDO:** expedição média, com formações já existentes em [encounter_plan.json](encounter_plan.json). Custos são a soma de `encounter_cost` do [catálogo v0.4](../../enemies/CHAPTER_01_ENEMIES_CANONICAL.json) e ficam dentro dos limites locais de [ENCOUNTERS.md](ENCOUNTERS.md).
 
 | # | ID do plano | Encontro | Tipo | Fase macro runtime | Custo |
 | --- | --- | --- | --- | --- | --- |
@@ -71,10 +71,10 @@ Fora do slice: Impacto de Escudo e Último Bastião; Ricochete, Chuva de Flechas
 | Acessório I / II | `ITEM_R_001` Gota de Lúmen (Comum), `ITEM_R_004` Olho de Vidro Verde (Raro), `ITEM_R_005` Fragmento Prismático (Raro) |
 | Echo | *A Sentinela que Ficou* (seção 5); sem ID v0.4 |
 
-São **18 templates** de equipamento no recorte (fora o Echo), incluindo os novos cajado, aljava e foco e o broquel agora necessário ao Bastião. Nomes, slot, identidade e compatibilidade vêm do [catálogo de itens v0.4 adaptado](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md). A integração desses quatro secundários/arma adicionais em `/data`, loot e testes permanece trabalho de `SLICE-1A`; esta alteração documental não declara implementação.
+São **18 templates** de equipamento no recorte (fora o Echo), incluindo os novos cajado, aljava e foco e o broquel agora necessário ao Bastião. Nomes, slot, identidade e compatibilidade vêm do [catálogo de itens v0.4 adaptado](../../items/CHAPTER_01_ITEM_TEMPLATES_ORIGEM.md). A integração desses quatro secundários/arma adicionais em `/data`, loot e testes permanece trabalho de `SLICE-1A`; esta alteração documental não declara implementação.
 
 - **Raridades:** Comum, Incomum, Raro nos drops normais; Épico como pool do equipamento garantido no primeiro clear do boss (`FIRST_CLEAR`, `minimum_rarity: EPIC`); Relíquia (Casca do Guardião) como drop do boss. **EM ABERTO:** as tabelas `RARITY_C1_*` v0.4 permitem Épico em outros drops, então a renormalização para o recorte fica para o BALANCE-FOUNDATION-1.
-- **Ferreiro:** desmontagem e Reforço +1 em Arma, Secundário e Armadura. Custo e definição do Reforço em [ENCOUNTERS.md](ENCOUNTERS.md) e no [modelo econômico](../../../06_balance/ECONOMY_MODEL.md).
+- **Ferreiro:** desmontagem e Reforço +1 em Arma, Secundário e Armadura. Custo e definição do Reforço em [ENCOUNTERS.md](ENCOUNTERS.md) e no [v1 · economia e loot](../../../06_balance/v1/07_ECONOMIA_LOOT.md).
 - **Resíduo de Lúmen — HIPÓTESE:** o mínimo garantido antes do boss é 5 (elite 1–2, Rainha 2–4, Reserva 2), igual a um Reforço +1 (5 Resíduos), sem contar as Geleias comuns (65%). Melhoria opcional; não é requisito para vencer.
 - **Fora do slice:** Épico em drops não garantidos, Memória (`ITEM_E_005`) e Echos do catálogo v0.4 (`ITEM_E_001`, `ITEM_E_002`, `ITEM_E_003`, `ITEM_E_004`). **EM ABERTO:** a Memória do Guardião é `FIRST_CLEAR` determinística no v0.4; fica desativada no slice enquanto o único Echo for *A Sentinela que Ficou*.
 - **Drops da Geleia Anciã e da Rainha:** a chance de Echo (`ITEM_E_001`) fica desativada no recorte. O [Sistema de Ecos](../../../03_systems/ECHO_SYSTEM.md) só admite recompensa determinística no slice.

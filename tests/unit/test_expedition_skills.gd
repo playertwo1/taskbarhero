@@ -17,6 +17,7 @@ var enemy_rows: Array = []
 var skill_rows: Array = []
 
 func _ready() -> void:
+	BalanceProfiles.pin_test_units()  # números conferidos à mão em unidades 1× e curva linear
 	print("\n=======================================================")
 	print("--- TESTE SKILLS, AMEAÇA E PROVOCAÇÃO (SLICE-1A-4a) ---")
 	print("=======================================================")
@@ -118,7 +119,7 @@ func _test_skill_data() -> void:
 	var by_id := {}
 	for s in skill_rows:
 		by_id[s["id"]] = s
-	_expect("13 skills do trio, incluindo cura experimental", skill_rows.size() == 13)
+	_expect("pelo menos as 13 skills originais do trio (kits completos acrescentam mais)", skill_rows.size() >= 13)
 	for s in skill_rows:
 		if s["status"] != "HIPOTESE" or s["content_set"] != "slice":
 			_fail("skill sem status HIPOTESE ou fora do slice: %s" % s["id"])
@@ -208,7 +209,7 @@ func _test_counter_stance() -> void:
 	_check("golpe recebido na postura: 3,8136 × 0,3", _elem(attacks, 0, "enemy_attack").get("damage", -1.0), GELEIA_ON_BASTIAO * 0.3)
 	_check("contra-ataque: 18 contra a defesa da Geleia", _elem(counters, 0, "counter_attack").get("damage", -1.0), 18.0 * (1.0 - 6.75 / 106.75))
 	_check("o contra-ataque acontece no mesmo instante do golpe", _elem(counters, 0, "counter_attack").get("time", -1.0), _elem(attacks, 0, "enemy_attack").get("time", -2.0))
-	# O revide aplica Desequilíbrio (CHAPTER_01_HERO_COMBAT_PROPOSAL.md): −10% no golpe seguinte.
+	# O revide aplica Desequilíbrio (docs/06_balance/v1/capitulos/CAPITULO_01.md §4): −10% no golpe seguinte.
 	_check("sem postura, o golpe seguinte só tem o Desequilíbrio (× 0,9)", _elem(attacks, 1, "enemy_attack").get("damage", -1.0), GELEIA_ON_BASTIAO * 0.9)
 	# A segunda postura abre em t = 8,0 e já absorve o golpe desse mesmo instante (a skill vem antes do ataque).
 	var at_eight := attacks.filter(func(e): return absf(e["time"] - 8.0) < 0.0001)

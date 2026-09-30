@@ -30,7 +30,7 @@ func _check(label: String, actual: float, expected: float, eps: float = EPS) -> 
 		print("FALHA: %s esperado %.4f, obtido %.4f" % [label, expected, actual])
 		success = false
 
-# Exemplos à mão de docs/06_balance/SLICE_BALANCE_CONTRACT.md, seção 4.
+# Exemplos à mão de docs/06_balance/v1/01_STATUS_E_COMBATE.md §3.
 func _test_contract_examples() -> void:
 	print("\n>>> 1. EXEMPLOS DO CONTRATO (Bastião nível 1 × Geleia de Lúmen)")
 	# Bastião: ATK 10, DEF 18, AS 0,80, crit 3%, crit dmg 1,5. Geleia: DEF 6,75, ATK 4,5, AS 1,0.
@@ -101,7 +101,12 @@ func _test_shield() -> void:
 
 func _test_level_value() -> void:
 	print("\n>>> 5. INTERPOLAÇÃO POR NÍVEL")
-	# HERO_STATS_BALANCE: Bastião HP 160 → 700.
+	# docs/06_balance/v1/02_HEROIS.md §1: Bastião HP 160 → 700.
 	_check("nível 1", CombatMath.level_value(160.0, 700.0, 1), 160.0, 0.0001)
 	_check("nível 100", CombatMath.level_value(160.0, 700.0, 100), 700.0, 0.0001)
 	_check("nível 5", CombatMath.level_value(160.0, 700.0, 5), 160.0 + 540.0 * 4.0 / 99.0, 0.0001)
+	_check("p = 1 é a curva linear", CombatMath.level_value(160.0, 700.0, 10, 1.0), CombatMath.level_value(160.0, 700.0, 10), 0.0)
+	_check("p = 0,8 mantém o nível 1", CombatMath.level_value(160.0, 700.0, 1, 0.8), 160.0, 0.0001)
+	_check("p = 0,8 mantém o nível 100", CombatMath.level_value(160.0, 700.0, 100, 0.8), 700.0, 0.0001)
+	_check("p = 0,8 nível 10", CombatMath.level_value(160.0, 700.0, 10, 0.8), 160.0 + 540.0 * pow(9.0 / 99.0, 0.8), 0.0001)
+	_check("p = 0,8: o nível 10 já tem ~14,7% do ganho total (linear: 9,1%)", (CombatMath.level_value(160.0, 700.0, 10, 0.8) - 160.0) / 540.0, 0.1469, 0.0005)

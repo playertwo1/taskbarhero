@@ -1,15 +1,14 @@
 # Itens — índice
 
-- **Catálogo canônico adaptado de 33 itens:** [CHAPTER_01_ITEM_CATALOG](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ITEM_CATALOG.md). Ele define IDs, nomes, categorias, identidade e compatibilidade inicial: 6 Armas, 7 Secundários, 5 Armaduras, 10 Acessórios e 5 Ecos.
-- **Hipóteses quantitativas para tentativas incrementais e versões de itens:** [proposta do Capítulo 1](CHAPTER_01_INCREMENTAL_ITEM_PROPOSAL.md); não é valor runtime nem substitui o catálogo de IDs.
-- **Status numéricos candidatos dos 33 templates:** [orçamento por template e fórmula por raridade/IP](CHAPTER_01_ITEM_STATS_PROPOSAL.md); os efeitos funcionais ainda precisam ser precificados contra a reserva de BP.
-- **70 variantes calculadas dos 33 templates:** [CSV de comparação em IP 20/nível 10](CHAPTER_01_ITEM_VARIANTS_IP20_L10.csv), gerado por [`export_chapter1_item_variants.py`](../../../tools/balance/export_chapter1_item_variants.py); não é tabela de loot runtime.
-- **Raridades, budgets, affixes e Item Power:** [base canônica v0.4](../../../documents/canonical/taskbar_sistema_v0.4/README.md).
-- **Materiais e fontes:** [catálogo de materiais do Capítulo 1](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_MATERIAL_CATALOG.md).
-- **Loot e algoritmo de recompensa:** [Drop Resolver](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/DROP_RESOLVER_SPEC.md) e [tabelas de drop](../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_DROP_TABLES.md).
+- **Catálogo ativo do Capítulo 1:** [CHAPTER_01_ITEM_CATALOG](CHAPTER_01_ITEM_CATALOG.md). Consolida os IDs herdados e as decisões atuais de compatibilidade; novos templates ainda estão em avaliação sem IDs.
+- **Hipóteses de itens e progressão:** [proposta do Capítulo 1](CHAPTER_01_INCREMENTAL_ITEM_PROPOSAL.md); está em revisão para armas exclusivas por herói, demais itens compartilháveis e quatro raridades no slice; não é valor runtime nem substitui o catálogo de IDs.
+- **Status, escala, BP, raridades e IP:** [v1 · itens e raridade](../../06_balance/v1/04_ITENS_RARIDADE.md) (escala 10× e escada de nove raridades decididas em 2026-09-30); a distribuição de status por template está no [catálogo](CHAPTER_01_ITEM_CATALOG.md); a matriz item × raridade segue pendente em BALANCE-1.
+- **Templates de origem:** [CHAPTER_01_ITEM_TEMPLATES_ORIGEM](CHAPTER_01_ITEM_TEMPLATES_ORIGEM.md) — pools, fontes especiais e compatibilidade original; o catálogo ativo prevalece.
+- **Materiais e fontes:** [catálogo de materiais herdado](../chapters/chapter_01/CHAPTER_01_MATERIAL_CATALOG.md).
+- **Loot e algoritmo de recompensa:** [Drop Resolver](../../06_balance/v1/specs/DROP_RESOLVER_SPEC.md) e [tabelas de drop](../chapters/chapter_01/CHAPTER_01_DROP_TABLES.md), sujeitos aos recortes do slice.
 - **Runtime atual:** [catálogo e valores carregados](../../../data/items/items.json). Contém só os 18 templates do slice; os 15 itens legados foram removidos no `1A-CUT`. O resto do catálogo segue para `LOOT-EXPANSION-1`.
 - **Compatibilidade:** [IDs runtime antigos e mapeamento](../LEGACY_RUNTIME_CATALOG.md).
-- **Slots e artesãos:** [HERO_STANDARD](../../../HERO_STANDARD.md) e [equipamentos/crafting](../../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
+- **Slots e artesãos:** [HERO_STANDARD](../../02_heroes/HERO_STANDARD.md) e [equipamentos/crafting](../../03_systems/EQUIPMENT_AND_CRAFTING_SYSTEM.md).
 - **Arte:** [fichas dos ícones](../../art/conceitos/itens/README.md) e [assets já integrados](../../../assets/sprites/items/README.md).
 
-Os 30 itens importados são a base `APPROVED` de design; os três templates adicionados na adaptação estão `DESIGN` até integração e QA. O runtime só carrega seus registros atuais.
+Os templates herdados permanecem como origem de design; compatibilidade, raridades e propostas quantitativas seguem a revisão do balanceamento v1.0 em `DESIGN`/`HIPOTESE` até decisão de escala, integração e QA. O runtime só carrega seus registros atuais.

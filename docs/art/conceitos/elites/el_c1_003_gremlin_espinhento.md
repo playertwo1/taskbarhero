@@ -19,7 +19,7 @@ Uma criatura pequena e angular, com espinhos curvos de madeira escura ao longo d
 
 ## Status de combate para balanceamento
 
-Multiplicadores do perfil sobre o `HERO_REFERENCE`, antes do nível de conteúdo e modificadores de capítulo: **HP ×1,265 · ATK ×1,4375 · DEF ×0,575 · AS ×1,25**; tenacidade **+25**. O nível de conteúdo é `C1_DYNAMIC`. Multiplicadores são referências de design, não valores de runtime nem status absolutos. Consulte [ENEMY_STATS_BALANCE](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/ENEMY_STATS_BALANCE.md) e [fórmulas de combate](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/COMBAT_FORMULAS.md).
+Multiplicadores do perfil sobre o `HERO_REFERENCE`, antes do nível de conteúdo e modificadores de capítulo: **HP ×1,265 · ATK ×1,4375 · DEF ×0,575 · AS ×1,25**; tenacidade **+25**. O nível de conteúdo é `C1_DYNAMIC`. Multiplicadores são referências de design, não valores de runtime nem status absolutos. Consulte [v1 · inimigos e chefes](../../../06_balance/v1/06_INIMIGOS_CHEFES.md) e [fórmulas de combate](../../../06_balance/v1/01_STATUS_E_COMBATE.md).
 
 ## Drops canônicos (resumo)
 
@@ -30,11 +30,10 @@ Multiplicadores do perfil sobre o `HERO_REFERENCE`, antes do nível de conteúdo
 - **Drops assinatura:** ITEM_W_002 · 12%; ITEM_A_001 · 10%.
 - **Eco:** Nenhum drop de Eco definido.
 
-O [JSON canônico do bestiário](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json) é a fonte de verdade para campos, pools, chances e quantidades. Este resumo é somente guia de leitura; não editar valores aqui para balancear. Skills e imunidades específicas ainda não estão definidas no registro canônico; não as invente ao implementar.
+O [JSON canônico do bestiário](../../../04_content/enemies/CHAPTER_01_ENEMIES_CANONICAL.json) é a fonte de verdade para campos, pools, chances e quantidades. Este resumo é somente guia de leitura; não editar valores aqui para balancear. Skills e imunidades específicas ainda não estão definidas no registro canônico; não as invente ao implementar.
 
 ## Referências
 
-- [Ficha canônica completa e loot](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json) — buscar por `EL_C1_003`.
-- [Bestiário do Capítulo 1](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMY_CATALOG.md).
+- [Ficha canônica completa e loot](../../../04_content/enemies/CHAPTER_01_ENEMIES_CANONICAL.json) — buscar por `EL_C1_003`.
+- [Bestiário do Capítulo 1](../../../04_content/enemies/CHAPTER_01_ENEMY_CATALOG.md).
 - [Conceito visual v002](../../referencia/capitulo_01/elites/EL_C1_003_gremlin_espinhento_conceito_v002.png) — referência atual, não sprite final.
-- [Conceito visual anterior v001](../../referencia/capitulo_01/elites/EL_C1_003_gremlin_espinhento_conceito_v001.png) — histórico.

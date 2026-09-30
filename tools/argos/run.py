@@ -6,6 +6,7 @@ Sem IA no laço: o Godot roda o simulador determinístico e o Analyst aplica reg
 Saída em tools/argos/reports/<AAAAMMDD-HHMMSS>_<commit>/ (runs.jsonl fica fora do Git).
 """
 import argparse
+import atexit
 import datetime
 import hashlib
 import json
@@ -48,6 +49,33 @@ def balance_inputs(scenario_file):
     return hashes, combined.hexdigest()
 
 
+def select_profiles(scenario_file, args):
+    """--profiles/--area: roda só os perfis pedidos, em um cenário temporário derivado do escolhido."""
+    wanted = []
+    if args.area:
+        areas = json.load(open(os.path.join(HERE, "profiles", "selection.json"), encoding="utf-8"))["areas"]
+        if args.area not in areas:
+            sys.exit(f"Área desconhecida: {args.area}; use uma de {', '.join(sorted(areas))}.")
+        wanted += areas[args.area]
+    if args.profiles:
+        wanted += [p.strip() for p in args.profiles.split(",") if p.strip()]
+    if not wanted:
+        return scenario_file
+    wanted = list(dict.fromkeys(wanted))
+    scenario = json.load(open(scenario_file, encoding="utf-8"))
+    variants = [v for v in scenario.get("variants", []) if v.get("profile") in wanted]
+    missing = [p for p in wanted if p not in {v.get("profile") for v in variants}]
+    if missing:
+        sys.exit(f"O cenário {args.scenario} não tem variante para o perfil: {', '.join(missing)}.")
+    scenario["variants"] = variants
+    scenario["id"] = f"{scenario.get('id', args.scenario)}__{'+'.join(wanted)}"
+    temp = os.path.join(SCENARIOS, f"_sel_{os.getpid()}.json")
+    json.dump(scenario, open(temp, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    atexit.register(lambda: os.path.exists(temp) and os.remove(temp))
+    print(f"Argos: perfis selecionados: {', '.join(wanted)}")
+    return temp
+
+
 def main():
     if hasattr(sys.stdout, "reconfigure"):
         sys.stdout.reconfigure(encoding="utf-8")
@@ -55,6 +83,8 @@ def main():
     parser.add_argument("--scenario", default="slice_quick")
     parser.add_argument("--godot", default=os.environ.get("GODOT", DEFAULT_GODOT))
     parser.add_argument("--timeout", type=int, default=3600)
+    parser.add_argument("--profiles", help="perfis de jogador separados por vírgula (filtra as variantes `profile` do cenário)")
+    parser.add_argument("--area", help="área alterada: escolhe os perfis de tools/argos/profiles/selection.json")
     args = parser.parse_args()
 
     scenario_file = os.path.join(SCENARIOS, args.scenario + ".json")
@@ -62,6 +92,7 @@ def main():
         sys.exit(f"Cenário não encontrado: {scenario_file}")
     if not os.path.isfile(args.godot):
         sys.exit(f"Godot não encontrado em {args.godot}; use --godot ou a variável GODOT.")
+    scenario_file = select_profiles(scenario_file, args)
 
     validation = subprocess.run([sys.executable, VALIDATOR, "--scenario", scenario_file], cwd=ROOT)
     if validation.returncode:

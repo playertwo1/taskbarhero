@@ -5,6 +5,9 @@ class_name ThreatMath
 ## 1 de dano efetivo gera 1 de ameaça; o ×1,5 do Bastião é aplicado por quem chama.
 
 const SWITCH_THRESHOLD := 1.15
+## Duas ameaças que diferem só por ruído de ponto flutuante (ex.: a mesma soma em escalas
+## diferentes) são um empate; sem isso, o vencedor mudaria com o `combat_scale`.
+const TIE_TOLERANCE := 1e-9
 ## Seção 3: 1 cura efetiva = 0,5 de ameaça; 1 de escudo consumido = 0,5 para quem criou o escudo.
 const HEAL_THREAT := 0.5
 const SHIELD_THREAT := 0.5
@@ -21,7 +24,7 @@ static func pick_target(threat: Dictionary, current: String, order: Array, alive
 	for id in order:
 		if bool(alive.get(id, false)):
 			var value := float(threat.get(id, 0.0))
-			if value > best_value:
+			if value > best_value * (1.0 + TIE_TOLERANCE):  # empate (até ruído de ponto flutuante): fica o mais à frente
 				best = id
 				best_value = value
 	if best == "":

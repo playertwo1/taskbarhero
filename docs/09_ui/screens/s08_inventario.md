@@ -52,7 +52,7 @@ Ver o que a party possui, equipar e comparar equipamento entre expedições.
 ## Layout e toque
 
 - Lista com filtro por slot; cada linha com ícone, nome, raridade e ação principal.
-- Detalhe do item em gaveta com bônus e comparação com o equipado.
+- Detalhe do item em gaveta com bônus e comparação com o equipado. Números, chips, comparação e regras de formatação: [UI_S12](s12_numeros_de_item.md).
 
 ## Fora do slice
 

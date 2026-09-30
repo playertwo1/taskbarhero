@@ -1,7 +1,7 @@
 {
   "schema_version": "2.0",
   "status": "IMPLEMENTED",
-  "source": "docs/06_balance/GLOBAL_BALANCE_SYSTEM.md",
+  "source": "docs/06_balance/v1/10_TELEMETRIA_ARGOS.md",
   "global_profile": "res://data/balance/combat_core.json",
   "default_chapter": "CHAPTER_01",
   "chapter_profiles": {

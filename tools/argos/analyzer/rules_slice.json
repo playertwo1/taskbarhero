@@ -6,12 +6,12 @@
     "elite": {
       "min": 15,
       "max": 30,
-      "source": "docs/06_balance/SLICE_BALANCE_CONTRACT.md, seção 5 (faixa v0.4)"
+      "source": "docs/06_balance/v1/06_INIMIGOS_CHEFES.md §3 (TTK por rank)"
     },
     "rainha": {
       "min": 40,
       "max": 75,
-      "source": "docs/06_balance/SLICE_BALANCE_CONTRACT.md, seção 5 (faixa v0.4)"
+      "source": "docs/06_balance/v1/06_INIMIGOS_CHEFES.md §3 (TTK por rank)"
     },
     "guardiao": {
       "min": 120,

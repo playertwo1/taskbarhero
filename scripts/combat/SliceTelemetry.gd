@@ -2,7 +2,7 @@ extends RefCounted
 class_name SliceTelemetry
 
 ## Telemetria mínima do slice (SLICE-1A-5): agrega o fluxo de eventos do ExpeditionRun.
-## Contrato: docs/06_balance/SLICE_BALANCE_CONTRACT.md, seção 7. Local-first, desligável (o run só
+## Contrato: docs/06_balance/v1/10_TELEMETRIA_ARGOS.md §2. Local-first, desligável (o run só
 ## cria um SliceTelemetry se receber options["telemetry"] = true) e nenhum cálculo do combate lê
 ## este objeto. Danos são os valores dos eventos (sem descontar overkill).
 ## Não cobertas (o run não emite o dado): cooldown_uptime, debuff_uptime, stagger_damage (postura),

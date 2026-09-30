@@ -1,0 +1,12 @@
+{
+  "id": "aggressor",
+  "tier": "balance_lab",
+  "status": "IMPLEMENTED",
+  "question": "Um time todo de ataque vence, e com que fragilidade?",
+  "description": "Prioriza dano acima de sobrevivência: builds ofensivas dos três heróis e equipamento escolhido pelo peso de ataque, crítico e velocidade.",
+  "modes": ["campaign"],
+  "builds": {"hero_001": "retaliacao", "hero_002": "critico", "hero_003": "arcano"},
+  "policy": {"reward": "best", "events": "first", "equip": "focus_attack", "spend": "full", "max_attempts": 16},
+  "looks_for": ["nível e tentativas da vitória de um time ofensivo", "comparação com o Turtle", "glass cannon que vence cedo demais ou nunca"],
+  "not_modeled": ["especialistas em uma só mecânica e generalistas (ver README: Balance Lab pendente)"]
+}

@@ -1,0 +1,104 @@
+{
+  "id": "tune_kits_party",
+  "chapter_id": "CHAPTER_01",
+  "party": [
+    "hero_001",
+    "hero_002",
+    "hero_003"
+  ],
+  "description": "Signature liberada só a partir do nível 10 (2026-09-30): recargas atuais, originais e sem Signature; 18 combinações, campanha.",
+  "seeds": 10,
+  "levels": [
+    10
+  ],
+  "builds": {
+    "hero_001": [
+      "guardiao",
+      "retaliacao",
+      "retaliacao_tele"
+    ],
+    "hero_002": [
+      "critico",
+      "marca"
+    ],
+    "hero_003": [
+      "arcano",
+      "controle",
+      "lumen"
+    ]
+  },
+  "modes": [
+    "campaign"
+  ],
+  "campaign": {
+    "start_level": 1,
+    "max_attempts": 16,
+    "loot": true
+  },
+  "rank_milestones": [
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17,
+    19
+  ],
+  "max_time": 3600,
+  "stuck_seconds": 30,
+  "variants": [
+    {
+      "id": "atual_120_60_60"
+    },
+    {
+      "id": "original_45_30_30",
+      "skill_overrides": {
+        "skill_bas_011": {
+          "cooldown": 45
+        },
+        "skill_fle_011": {
+          "cooldown": 30
+        },
+        "skill_iri_006": {
+          "cooldown": 30
+        }
+      }
+    },
+    {
+      "id": "meio_60_45_45",
+      "skill_overrides": {
+        "skill_bas_011": {
+          "cooldown": 60
+        },
+        "skill_fle_011": {
+          "cooldown": 45
+        },
+        "skill_iri_006": {
+          "cooldown": 45
+        }
+      }
+    },
+    {
+      "id": "sem_signatures",
+      "skill_overrides": {
+        "skill_bas_011": {
+          "trigger": {
+            "type": "nunca"
+          }
+        },
+        "skill_fle_011": {
+          "trigger": {
+            "type": "nunca"
+          }
+        },
+        "skill_iri_006": {
+          "trigger": {
+            "type": "nunca"
+          }
+        }
+      }
+    }
+  ]
+}
