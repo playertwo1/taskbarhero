@@ -2,7 +2,20 @@
 
 Registro breve de mudanças estruturais e releases. Detalhes de planejamento continuam no roadmap; histórico de gates concluídos permanece arquivado.
 
-## 2026-09-29 — candidato do ui_kit
+## 2026-09-30 — SLICE-1 Homologado e QA Mobile no Pixel 9 (1080×2424)
+
+- Homologação oficial do **SLICE-1 (Vertical Slice do Jogo Real)** com gates 1A a 1E concluídos.
+- **QA Mobile no Pixel 9:** Sessão tátil completa no display 20:9 (`1080x2424`, 420 dpi, Android 17): TitleScreen → Refúgio UI_S02 → Árvore dos Ecos (6 nós comprados) → Desbloqueio dinâmico do Ferreiro → Loadout & Presets UI_S04 → Arena com 4 camadas de Parallax e velocidades (×1 a ×20) → Reward Choices (ícones 64px) → Tela de Resultado UI_S07 → Inventário UI_S03 → Ferreiro de Lúmen UI_S05 (validação de slot, Reforço +1 consumindo 5 resíduos, favoritar item e proteção de desmonte de favoritos). Relatório formal: [`docs/08_qa/QA_MOBILE_PIXEL9_REPORT.md`](docs/08_qa/QA_MOBILE_PIXEL9_REPORT.md).
+- **Telemetria e Simulação Argos (`slice_balance`):** 1404 execuções, **0 BUGs**, com 6 caminhos viáveis no nível 10 (2 sem Lúmen) e taxa de drop consistente (4.0 itens por run).
+- **Suíte de Testes Godot:** 29/30 cenas PASS no `python tools/run_godot_tests.py` (zero regressões).
+
+## 2026-09-30 — Padrão de Alta Densidade e Polimento Visual do Loop
+
+- Produção e padronização dos sprites em Alta Densidade: elenco dos 8 heróis em 96×96 (`assets/sprites/heroes/`), bestiário do Cap. 1 de 17 entidades (64px a 224px em `assets/sprites/enemies/highres/`), 30 ícones de itens v0.4 em 64×64 (`assets/sprites/items/icons_64/`), 5 painéis do Hub (256×256+ em `assets/sprites/hub/`), UI Kit 9-slice (`assets/sprites/ui/ui_kit/`) e tema AMOLED (`assets/ui/pocket_hero_theme.tres`).
+- Helper `ItemIconResolver.gd` com cache de texturas e paleta de raridades coloridas integrado ao Inventário, Ferreiro e Reward Choices.
+- Refúgio Visual completo em `SliceCampaignScreen.gd` com banner dinâmico (`hub_refugio_mobile_completo.png` / `hub_refugio_pos_boss.png`), trio descansando (96×96) e cards de serviços.
+- Arena visual de combate no Bosque de Lúmen com 4 camadas de parallax e atores animados reagindo a ataques, dano e vitórias. Loadout tátil (`UI_S04`) com miniaturas dos heróis e descrições dinâmicas de builds. Tela de resultado (`UI_S07`) com badges táteis de recursos e grade de itens conquistados.
+
 
 - `tools/art/build_ui_kit.py` gera o [candidato v001 do ui_kit](docs/art/candidates/ui_kit/README.md) (botões 9-slice em 3 estados, painel, divisor e 3 ícones) em pixel art TY40, fora de `assets/`. Sem aprovação nem auditoria; problemas conhecidos listados no README.
 

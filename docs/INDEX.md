@@ -23,6 +23,7 @@ Abra somente o índice da área necessária. Os índices encaminham para as font
 - [Roadmap](../ROADMAP.md) — prioridade, fase atual e gates.
 - [Registro de conteúdo](CONTENT_REGISTRY.md) — IDs de design e ponteiros para fontes de conteúdo/runtime.
 - [Padrão de Arte em Alta Densidade](art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md) — hierarquia de resolução (heróis 96px, bestiário 64–224px, itens 64px, hub 256px+), paleta TY40 e inventário de assets.
+- [Homologação de QA Mobile (SLICE-1E)](08_qa/QA_MOBILE_PIXEL9_REPORT.md) — relatório executivo de validação tátil no Pixel 9 (1080×2424) cobrindo todo o loop jogável.
 - [Sistema global de balanceamento](06_balance/GLOBAL_BALANCE_SYSTEM.md) — precedência núcleo → capítulo → cenário, validação e gates.
 - [Índice de documentos base](../documents/INDEX.md) — guias e originais DOCX.
 - [Índice de bases canônicas importadas](../documents/canonical/INDEX.md) — sistemas v0.4 aprovados como autoridade de design.

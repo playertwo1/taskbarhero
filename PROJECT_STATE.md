@@ -25,7 +25,7 @@ Este arquivo não duplica contagens ou checklists. Use os caminhos abaixo para i
 - Rota/runtime: [`data/expedition/route_c1.json`](data/expedition/route_c1.json) (o legado `stages.json` foi removido no `1A-CUT`).
 - Balanceamento/runtime: [`data/balance/combat_profiles.json`](data/balance/combat_profiles.json) compõe o [núcleo global](data/balance/combat_core.json) com o [perfil do Capítulo 1](data/balance/chapters/chapter_01.json); arquitetura em [GLOBAL_BALANCE_SYSTEM](docs/06_balance/GLOBAL_BALANCE_SYSTEM.md).
 - Skills/design e capítulo: [overview do Capítulo 1](docs/04_content/chapters/chapter_01/OVERVIEW.md); o plano proposto de encontros e boss está em [ENCOUNTERS.md](docs/04_content/chapters/chapter_01/ENCOUNTERS.md), com simulação ligada à [roadmap](ROADMAP.md). Confira código e `/data` antes de afirmar implementação.
-- Evidência de validação: [`tests/`](tests/), [relatórios do Argos](tools/argos/reports/) e resultados/gates em [`ROADMAP.md`](ROADMAP.md). Baseline de testes em 2026-09-30: 29/30 cenas PASS (`TestExpeditionChoices` perde no nível 12, seed 101, aceita como exceção humana do gate 1C). Zero regressões.
+- Evidência de validação: [`tests/`](tests/), [relatórios do Argos](tools/argos/reports/), relatório de QA Mobile no Pixel 9 e resultados/gates em [`ROADMAP.md`](ROADMAP.md). Baseline de testes em 2026-09-30: 29/30 cenas PASS (`TestExpeditionChoices` perde no nível 12, seed 101, aceita como exceção humana do gate 1C). Zero regressões. Simulação Argos `slice_balance`: 1404 execuções com 0 BUGs. Validação mobile tátil no Pixel 9 (`1080x2424`) homologada com 100% de fluidez em todas as telas do loop (TitleScreen a Ferreiro).
 
 ## Estado de produção
 

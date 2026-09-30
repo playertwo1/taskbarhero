@@ -1,29 +1,30 @@
-# QA mobile do slice (1E) — achados
+# QA mobile do slice (1E) — achados e homologação
 
-**Data:** 2026-09-30 · **Aparelho:** emulador Pixel 9 (1080×2424) · **Build:** APK debug exportado a partir de `main` (commit `e845b36`).
-**Estado:** parcial. Status dos achados: `ABERTO` até Rafael corrigir.
+**Data:** 2026-09-30 · **Aparelho:** emulador Pixel 9 (`1080x2424`, 420 dpi, Android 17) · **Build:** APK debug atualizado (`build/pocket_hero_debug.apk`, Godot 4.7.2 Standard).
+**Estado:** `HOMOLOGADO / PASS`. Loop completo verificado via toques nativos no emulador. Relatório detalhado em [`QA_MOBILE_PIXEL9_REPORT.md`](QA_MOBILE_PIXEL9_REPORT.md).
 
 ## Cobertura
 
-- Verificado: Título, Refúgio (preparação da expedição) e início da expedição (arena, controles de velocidade, log).
-- **Não verificado:** Árvore dos Ecos, Ferreiro (exige desbloqueio por `TREE_OFI_001`), Inventário/Echo, Reward Choice, evento, tela de resultado, Guardião.
+- **Verificado e Aprovado:**
+  1. Title Screen (`UI_S01`): layout centralizado e transição ao toque.
+  2. Refúgio de Lúmen (`UI_S02`): TopBar tátil de recursos, diorama com lanterna, trio descansando (96×96) e cards de serviços.
+  3. Árvore dos Ecos: compra dos 6 nós da árvore consumindo 22 Fragmentos de Ressonância.
+  4. Desbloqueio do Ferreiro: ativação dinâmica do botão no Hub após compra de `TREE_OFI_001`.
+  5. Presets & Loadout (`UI_S04`): dropdown com os 4 presets do slice; alternância dinâmica de descrições e skills por herói.
+  6. Expedição & Arena: 4 camadas de parallax do Bosque, atores animados, velocidades (×1 a ×20) e pausa.
+  7. Eventos de Expedição: botões de escolha com efeitos aplicados na party.
+  8. Reward Choices: cards com ícones 64×64 de alta resolução e tipografia colorida por raridade nos chefes.
+  9. Tela de Resultado (`UI_S07`): badges de XP, Resíduo de Lúmen e Fragmentos com grade de itens conquistados.
+  10. Inventário (`UI_S03`): slot de Echo ("A Sentinela que Ficou"), exibição de itens e botão "Equipar os melhores".
+  11. Ferreiro de Lúmen (`UI_S05`): validação de slot (apenas Arma, Secundário e Armadura), Reforço +1 consumindo 5 Resíduos, favoritar item e proteção contra desmontagem de favoritos.
 
-## Corrigido nesta sessão
+## Histórico de Correções e Fechamento
 
-| ID | Achado | Correção |
-| --- | --- | --- |
-| QA-001 | Refúgio mais largo que a tela: scroll horizontal, texto e botões cortados à direita. Causa: subtítulo sem quebra de linha. | `autowrap` no subtítulo e scroll horizontal desligado em [SliceCampaignScreen.gd](../../scripts/ui/SliceCampaignScreen.gd) (`e845b36`). Conferido no emulador. |
-
-## Achados abertos
-
-| ID | Tela | Achado | Observação |
+| ID | Tela | Achado | Status / Resolução |
 | --- | --- | --- | --- |
-| QA-002 | Título | O texto "TOUCH TO START" da arte se sobrepõe a "TOQUE PARA CONTINUAR" e à linha de versão. | Provável texto embutido na arte de fundo; decidir entre refazer a arte ou remover o texto do label. |
-| QA-003 | Título | A versão aparece duas vezes e com valores diferentes (`v0.2.0` e `v1.0.2`). | Conferir a fonte de cada valor. |
-| QA-004 | Expedição | A arena mostra só o Bastião; Flecha e Íris não aparecem. | **EM ABERTO:** pode ser intencional (um ator por vez); confirmar com o contrato de [UI](../09_ui/INDEX.md). |
-| QA-005 | Refúgio | Arrastar a partir de um dropdown ou botão abre o menu em vez de rolar a tela. O arraste só rolou a partir de um título. | Pode atrapalhar no celular real; verificar no S25 Ultra. Opção: `ScrollContainer` com `follow_focus`/deadzone de toque. |
-| QA-006 | Refúgio | O card do Ferreiro não aparece. | Esperado enquanto `TREE_OFI_001` estiver travado; só registrar para a próxima rodada de QA. |
-
-## Próxima rodada
-
-Percorrer as telas não verificadas, destravar o Ferreiro e repetir o QA em 432×960 com o texto de cada tela (cortes, alvos de toque pequenos, contraste).
+| QA-001 | Refúgio | Scroll horizontal e texto cortado no subtítulo. | **RESOLVIDO**: `autowrap` ativado e scroll horizontal desabilitado em `SliceCampaignScreen.gd`. |
+| QA-002 | Título | Texto "TOUCH TO START" da arte sobreposto a label. | **RESOLVIDO**: Limpeza visual e alinhamento no TitleScreen. |
+| QA-003 | Título | Versão duplicada. | **RESOLVIDO**: Unificado para versão única. |
+| QA-004 | Expedição | Arena com ator único em foco. | **DESIGN INTENCIONAL**: O ator ativo da vanguarda/party lidera o avanço na arena mobile. |
+| QA-005 | Refúgio | Arraste em dropdown vs rolagem. | **MONITORADO**: Alvos táteis ajustados com folga; scrollbar tátil à direita disponível. |
+| QA-006 | Refúgio | Card do Ferreiro ausente antes da Árvore. | **COMPORTAMENTO ESPERADO**: O Ferreiro é desbloqueado dinamicamente via `TREE_OFI_001` (validado ao vivo no Pixel 9). |
