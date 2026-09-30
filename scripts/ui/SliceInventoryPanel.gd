@@ -7,6 +7,8 @@ class_name SliceInventoryPanel
 signal changed
 signal closed
 
+const ItemIconResolver = preload("res://scripts/ui/ItemIconResolver.gd")
+
 var campaign: SliceCampaign
 var hero_names: Dictionary = {}
 var _item_rows: Dictionary = {}
@@ -29,6 +31,8 @@ func _build() -> void:
 	for child in get_children():
 		child.queue_free()
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	if ResourceLoader.exists("res://assets/ui/pocket_hero_theme.tres"):
+		theme = load("res://assets/ui/pocket_hero_theme.tres")
 	var background := ColorRect.new()
 	background.color = Color(0.03, 0.04, 0.05, 1.0)
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -45,11 +49,23 @@ func _build() -> void:
 	column.add_theme_constant_override("separation", 10)
 	margin.add_child(column)
 	var title := Label.new()
-	title.text = "Inventário"
-	title.add_theme_font_size_override("font_size", 23)
+	title.text = "Inventário & Equipamento"
+	title.add_theme_font_size_override("font_size", 22)
 	column.add_child(title)
 	_summary = Label.new()
+	_summary.add_theme_color_override("font_color", Color(0.85, 0.75, 0.45))
 	column.add_child(_summary)
+
+	# Divisor UI Kit
+	var div := TextureRect.new()
+	div.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	div.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	div.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	div.custom_minimum_size = Vector2(0, 8)
+	if ResourceLoader.exists("res://assets/sprites/ui/ui_kit/ui_kit_divider.png"):
+		div.texture = load("res://assets/sprites/ui/ui_kit/ui_kit_divider.png")
+	column.add_child(div)
+
 	_echo_status = Label.new()
 	column.add_child(_echo_status)
 	_echo_button = Button.new()
@@ -104,11 +120,32 @@ func _toggle_echo() -> void:
 		changed.emit()
 
 func _row(inst: Dictionary, owner_id: String) -> Control:
+	var panel := PanelContainer.new()
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.06, 0.08, 0.1, 0.85)
+	style.border_color = Color(0.2, 0.23, 0.26, 0.5)
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(6)
+	style.content_margin_left = 12
+	style.content_margin_right = 12
+	style.content_margin_top = 10
+	style.content_margin_bottom = 10
+	panel.add_theme_stylebox_override("panel", style)
+
 	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 6)
+	var row_header := HBoxContainer.new()
+	row_header.add_theme_constant_override("separation", 10)
+	var icon := ItemIconResolver.create_icon_rect(String(inst.get("id", "")), Vector2(44, 44))
+	row_header.add_child(icon)
 	var label := Label.new()
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	label.text = SliceLogText.item_label(inst, _item_rows) + ("  · equipado: %s" % hero_names.get(owner_id, owner_id) if owner_id != "" else "")
-	box.add_child(label)
+	var rarity: String = String(inst.get("rarity", "Comum"))
+	label.add_theme_color_override("font_color", ItemIconResolver.rarity_color(rarity))
+	row_header.add_child(label)
+	box.add_child(row_header)
 	var actions := HBoxContainer.new()
 	var uid := int(inst["uid"])
 	if owner_id == "":
@@ -117,21 +154,22 @@ func _row(inst: Dictionary, owner_id: String) -> Control:
 		for hero_id in compatible:
 			picker.add_item(String(hero_names.get(hero_id, hero_id)))
 			picker.set_item_metadata(picker.item_count - 1, hero_id)
-		picker.custom_minimum_size.y = 50
+		picker.custom_minimum_size.y = 48
 		actions.add_child(picker)
 		var equip := Button.new()
 		equip.text = "Equipar"
-		equip.custom_minimum_size.y = 50
+		equip.custom_minimum_size.y = 48
 		equip.pressed.connect(func(): equip_item(uid, String(picker.get_item_metadata(picker.selected))))
 		actions.add_child(equip)
 	else:
 		var unequip := Button.new()
 		unequip.text = "Desequipar"
-		unequip.custom_minimum_size.y = 50
+		unequip.custom_minimum_size.y = 48
 		unequip.pressed.connect(func(): unequip_item(uid))
 		actions.add_child(unequip)
 	box.add_child(actions)
-	return box
+	panel.add_child(box)
+	return panel
 
 func _report(error: String) -> void:
 	var texts := {"locked": "Não é possível mudar o equipamento durante uma expedição.", "incompatible": "Esse item não serve para esse herói.",

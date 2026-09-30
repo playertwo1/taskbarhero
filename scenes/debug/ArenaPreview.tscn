@@ -1,0 +1,117 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://scenes/debug/ArenaPreview.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/sprites/environment/bosque_lumen/bg_distant.png" id="2_bg"]
+[ext_resource type="Texture2D" path="res://assets/sprites/environment/bosque_lumen/mid_trees.png" id="3_trees"]
+[ext_resource type="Texture2D" path="res://assets/sprites/environment/bosque_lumen/ground_strip.png" id="4_ground"]
+[ext_resource type="PackedScene" path="res://scenes/heroes/Bastiao.tscn" id="5_bastiao"]
+[ext_resource type="Texture2D" path="res://assets/sprites/heroes/bastiao/hero_bastiao_96x96.png" id="6_bastiao96"]
+[ext_resource type="PackedScene" path="res://scenes/enemies/JavaliDeMusgo.tscn" id="7_javali"]
+
+[node name="ArenaPreview" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_script")
+
+[node name="Stage" type="Node2D" parent="."]
+scale = Vector2(2, 2)
+
+[node name="BgDistant" type="Sprite2D" parent="Stage"]
+texture_filter = 1
+texture = ExtResource("2_bg")
+centered = false
+
+[node name="MidTrees" type="Sprite2D" parent="Stage"]
+texture_filter = 1
+texture = ExtResource("3_trees")
+centered = false
+
+[node name="GroundStrip" type="Sprite2D" parent="Stage"]
+texture_filter = 1
+position = Vector2(0, 68)
+texture = ExtResource("4_ground")
+centered = false
+
+[node name="Bastiao48" parent="Stage" instance=ExtResource("5_bastiao")]
+position = Vector2(30, 96)
+
+[node name="Label48" type="Label" parent="Stage"]
+offset_left = 12.0
+offset_top = 40.0
+offset_right = 62.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 8
+text = "48x48"
+horizontal_alignment = 1
+
+[node name="Bastiao96" type="Sprite2D" parent="Stage"]
+texture_filter = 1
+position = Vector2(90, 96)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_bastiao96")
+offset = Vector2(0, -48)
+
+[node name="Label96" type="Label" parent="Stage"]
+offset_left = 68.0
+offset_top = 40.0
+offset_right = 118.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 8
+text = "96x96 (Hi-Res)"
+horizontal_alignment = 1
+
+[node name="Javali" parent="Stage" instance=ExtResource("7_javali")]
+position = Vector2(165, 96)
+
+[node name="LabelEnemy" type="Label" parent="Stage"]
+offset_left = 140.0
+offset_top = 40.0
+offset_right = 190.0
+offset_bottom = 54.0
+theme_override_font_sizes/font_size = 8
+text = "Inimigo"
+horizontal_alignment = 1
+
+[node name="UI" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -220.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Info" type="Label" parent="UI"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+text = "Pocket Hero - Teste de Resolução na Cena Godot
+Comparação lado a lado no chão do Bosque de Lúmen"
+horizontal_alignment = 1
+
+[node name="BtnIdle" type="Button" parent="UI"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Tocar: IDLE"
+
+[node name="BtnAttack" type="Button" parent="UI"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Tocar: ATTACK"
+
+[node name="BtnHit" type="Button" parent="UI"]
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+text = "Tocar: HIT"
+
+[connection signal="pressed" from="UI/BtnIdle" to="." method="_on_idle_pressed"]
+[connection signal="pressed" from="UI/BtnAttack" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="UI/BtnHit" to="." method="_on_hit_pressed"]

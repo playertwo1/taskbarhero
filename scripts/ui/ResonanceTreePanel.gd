@@ -30,6 +30,8 @@ func _build() -> void:
 	for child in get_children():
 		child.queue_free()
 	set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	if ResourceLoader.exists("res://assets/ui/pocket_hero_theme.tres"):
+		theme = load("res://assets/ui/pocket_hero_theme.tres")
 	var background := ColorRect.new()
 	background.color = Color(0.03, 0.04, 0.05, 1.0)
 	background.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
@@ -45,12 +47,41 @@ func _build() -> void:
 	var column := VBoxContainer.new()
 	column.add_theme_constant_override("separation", 10)
 	margin.add_child(column)
+
+	# Cabeçalho com ícone
+	var header := HBoxContainer.new()
+	header.add_theme_constant_override("separation", 12)
+	var tree_ico := TextureRect.new()
+	tree_ico.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	tree_ico.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	tree_ico.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	tree_ico.custom_minimum_size = Vector2(40, 40)
+	if ResourceLoader.exists("res://assets/sprites/hub/hub_arvore_dos_ecos.png"):
+		tree_ico.texture = load("res://assets/sprites/hub/hub_arvore_dos_ecos.png")
+	header.add_child(tree_ico)
+
+	var title_box := VBoxContainer.new()
 	var title := Label.new()
 	title.text = "Árvore dos Ecos"
-	title.add_theme_font_size_override("font_size", 23)
-	column.add_child(title)
+	title.add_theme_font_size_override("font_size", 22)
+	title_box.add_child(title)
 	_summary = Label.new()
-	column.add_child(_summary)
+	_summary.add_theme_font_size_override("font_size", 14)
+	_summary.add_theme_color_override("font_color", Color(0.85, 0.75, 0.45))
+	title_box.add_child(_summary)
+	header.add_child(title_box)
+	column.add_child(header)
+
+	# Divisor UI Kit
+	var div := TextureRect.new()
+	div.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	div.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	div.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	div.custom_minimum_size = Vector2(0, 8)
+	if ResourceLoader.exists("res://assets/sprites/ui/ui_kit/ui_kit_divider.png"):
+		div.texture = load("res://assets/sprites/ui/ui_kit/ui_kit_divider.png")
+	column.add_child(div)
+
 	_message = Label.new()
 	_message.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	column.add_child(_message)
@@ -58,7 +89,7 @@ func _build() -> void:
 	_list.add_theme_constant_override("separation", 8)
 	column.add_child(_list)
 	var back := Button.new()
-	back.text = "Voltar"
+	back.text = "Voltar ao Refúgio"
 	back.custom_minimum_size.y = 50
 	back.pressed.connect(func(): closed.emit())
 	column.add_child(back)
@@ -90,20 +121,41 @@ func refresh() -> void:
 func _row(id: String) -> Control:
 	var node := campaign.tree.node(id)
 	var state := node_state(id)
+
+	var panel := PanelContainer.new()
+	var style := StyleBoxFlat.new()
+	style.bg_color = Color(0.05, 0.11, 0.08, 0.85) if state == "active" else Color(0.06, 0.08, 0.1, 0.85)
+	style.border_color = Color(0.28, 0.78, 0.45, 0.6) if state == "active" else Color(0.2, 0.23, 0.26, 0.5)
+	style.set_border_width_all(1)
+	style.set_corner_radius_all(6)
+	style.content_margin_left = 12
+	style.content_margin_right = 12
+	style.content_margin_top = 10
+	style.content_margin_bottom = 10
+	panel.add_theme_stylebox_override("panel", style)
+
 	var box := VBoxContainer.new()
+	box.add_theme_constant_override("separation", 6)
 	var label := Label.new()
 	label.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 	var status: String = {"active": "ativo", "available": "disponível", "expensive": "faltam Fragmentos", "locked": "bloqueado"}[state]
 	label.text = "%s · %d Fragmentos · %s\n%s" % [node["name"], campaign.tree.cost(id), status, DESCRIPTIONS.get(id, "")]
+	if state == "active":
+		label.add_theme_color_override("font_color", Color(0.35, 0.85, 0.55))
+	elif state == "available":
+		label.add_theme_color_override("font_color", Color(0.92, 0.88, 0.8))
+	else:
+		label.add_theme_color_override("font_color", Color(0.55, 0.58, 0.62))
 	box.add_child(label)
 	if state == "available" or state == "expensive":
 		var buy := Button.new()
 		buy.text = "Comprar"
-		buy.custom_minimum_size.y = 50
+		buy.custom_minimum_size.y = 48
 		buy.disabled = state == "expensive"
 		buy.pressed.connect(func(): buy_node(id))
 		box.add_child(buy)
-	return box
+	panel.add_child(box)
+	return panel
 
 func buy_node(id: String) -> String:
 	var err := campaign.buy_tree_node(id)
