@@ -7,7 +7,7 @@ Contratos de tela do slice. Cada tela tem um contrato de UX em Markdown (objetiv
 | `UI_S01` | Título | provisória | [s01](screens/s01_titulo.md) | [yaml](../art/contracts/screens/s01_titulo.yaml) |
 | `UI_S02` | Refúgio (Hub) | não existe; a preparação da campanha é substituta | [s02](screens/s02_refugio.md) | [yaml](../art/contracts/screens/s02_refugio.yaml) |
 | `UI_S03` | Expedição (seleção) | botão na preparação | [s03](screens/s03_expedicao.md) | [yaml](../art/contracts/screens/s03_expedicao.yaml) |
-| `UI_S04` | Loadout da party | seletor de 4 presets | [s04](screens/s04_loadout.md) | [yaml](../art/contracts/screens/s04_loadout.yaml) |
+| `UI_S04` | Loadout da party | seletor por herói (18 combinações) + 4 atalhos; sem detalhe de skills | [s04](screens/s04_loadout.md) | [yaml](../art/contracts/screens/s04_loadout.yaml) |
 | `UI_S05` | Expedição em curso | texto; pausa e ×1–×4 implementados; sem sprites de combate | [s05](screens/s05_expedicao_em_curso.md) | [yaml](../art/contracts/screens/s05_expedicao_em_curso.yaml) |
 | `UI_S06` | Escolha (Reward Choice e evento) | botões de texto | [s06](screens/s06_escolha.md) | [yaml](../art/contracts/screens/s06_escolha.yaml) |
 | `UI_S07` | Resultado | texto | [s07](screens/s07_resultado.md) | [yaml](../art/contracts/screens/s07_resultado.yaml) |

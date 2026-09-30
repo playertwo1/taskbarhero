@@ -23,7 +23,9 @@ var paused: bool = false
 var _ctx: Dictionary = {}
 var _log: Array = []
 var _result: String = ""
-var _preset: int = 0
+## Build escolhida por herói (UI_S04); começa no primeiro preset.
+var selected_build: Dictionary = {}
+var _build_pickers: Dictionary = {}
 var _prep_box: VBoxContainer
 var _run_box: VBoxContainer
 var _result_box: VBoxContainer
@@ -101,13 +103,35 @@ func _build_prep() -> void:
 	_prep_box.add_child(title)
 	_prep_info = _label()
 	_prep_box.add_child(_prep_info)
-	var picker := OptionButton.new()
+	selected_build = SliceSession.BUILD_PRESETS[0]["heroes"].duplicate()
+	var presets := OptionButton.new()
+	presets.add_item("Atalho: escolher um preset")
 	for preset in SliceSession.BUILD_PRESETS:
-		picker.add_item(String(preset["name"]))
-	picker.custom_minimum_size.y = 50
-	picker.item_selected.connect(func(index: int): _preset = index)
-	_prep_box.add_child(picker)
-	_prep_box.add_child(_button("Iniciar expedição", func(): start_expedition(_preset)))
+		presets.add_item("Preset: %s" % preset["name"])
+	presets.custom_minimum_size.y = 50
+	presets.item_selected.connect(func(index: int):
+		if index > 0:
+			apply_preset(index - 1)
+			presets.select(0))
+	_prep_box.add_child(presets)
+	for hero_id in SliceSession.BUILD_OPTIONS:
+		var row := HBoxContainer.new()
+		var name_label := Label.new()
+		name_label.text = String(HERO_NAMES[hero_id])
+		name_label.custom_minimum_size.x = 80
+		row.add_child(name_label)
+		var picker := OptionButton.new()
+		picker.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		picker.custom_minimum_size.y = 50
+		for key in SliceSession.BUILD_OPTIONS[hero_id]:
+			picker.add_item(String(SliceSession.BUILD_LABELS[key]))
+		var owner_id: String = hero_id
+		picker.item_selected.connect(func(index: int): set_build(owner_id, String(SliceSession.BUILD_OPTIONS[owner_id][index])))
+		row.add_child(picker)
+		_build_pickers[hero_id] = picker
+		_prep_box.add_child(row)
+	_sync_build_pickers()
+	_prep_box.add_child(_button("Iniciar expedição", start_selected))
 	_prep_box.add_child(_button("Inventário", _open_inventory))
 	_prep_box.add_child(_button("Árvore dos Ecos", _open_tree))
 	_blacksmith_button = _button("Ferreiro", _open_blacksmith)
@@ -211,8 +235,29 @@ func _open_overlay(panel: Control) -> void:
 		panel.queue_free()
 		_show(mode))
 
+## Escolhe a build de um herói. Recusa herói ou build fora da lista.
+func set_build(hero_id: String, key: String) -> bool:
+	if not SliceSession.BUILD_OPTIONS.has(hero_id) or not SliceSession.BUILD_OPTIONS[hero_id].has(key):
+		return false
+	selected_build[hero_id] = key
+	_sync_build_pickers()
+	return true
+
+func apply_preset(preset_index: int) -> void:
+	selected_build = SliceSession.BUILD_PRESETS[preset_index]["heroes"].duplicate()
+	_sync_build_pickers()
+
+func _sync_build_pickers() -> void:
+	for hero_id in _build_pickers:
+		_build_pickers[hero_id].select(SliceSession.BUILD_OPTIONS[hero_id].find(selected_build[hero_id]))
+
+## Atalho usado por testes: aplica o preset e inicia.
 func start_expedition(preset_index: int) -> void:
-	var build: Dictionary = SliceSession.BUILD_PRESETS[preset_index]["heroes"]
+	apply_preset(preset_index)
+	start_selected()
+
+func start_selected() -> void:
+	var build: Dictionary = selected_build.duplicate()
 	_log = []
 	_result = ""
 	run = campaign.start_expedition(build, int(Time.get_ticks_msec()) if not OS.is_debug_build() else 1 + int(campaign.data["party"]["xp"]))

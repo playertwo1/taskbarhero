@@ -17,6 +17,17 @@ const BUILD_PRESETS := [
 	{"name": "Cura", "heroes": {"hero_001": "retaliacao", "hero_002": "critico", "hero_003": "lumen"}},
 ]
 
+## Builds que o jogador pode escolher por herói (UI_S04): 3 × 2 × 3 = 18 combinações.
+const BUILD_OPTIONS := {
+	"hero_001": ["guardiao", "retaliacao", "retaliacao_tele"],
+	"hero_002": ["critico", "marca"],
+	"hero_003": ["arcano", "controle", "lumen"],
+}
+const BUILD_LABELS := {
+	"guardiao": "Guardião", "retaliacao": "Retaliação", "retaliacao_tele": "Retaliação (golpe telegrafado)",
+	"critico": "Crítico", "marca": "Marca", "arcano": "Arcano", "controle": "Controle", "lumen": "Lúmen",
+}
+
 static var _cache: Dictionary = {}
 
 static func data() -> Dictionary:

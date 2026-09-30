@@ -6,11 +6,11 @@ certainty: HIPOTESE
 
 # UI_S04 — Loadout da party
 
-**Estado do contrato:** `DESIGN`. **Implementação:** DESIGN (provisório: seletor de 4 presets; build livre por herói decidida)
+**Estado do contrato:** `DESIGN`. **Implementação:** IMPLEMENTED (seletor por herói + atalhos de preset, sem arte)
 
 ## Implementação atual
 
-`SliceCampaignScreen` oferece um `OptionButton` com 4 `BUILD_PRESETS` (Ofensivo, Controle, Guardião, Cura). Não há escolha por herói nem visualização de skills.
+`SliceCampaignScreen` (preparação): um seletor por herói (`SliceSession.BUILD_OPTIONS`, 3 × 2 × 3 = 18 combinações) e um seletor de atalho com os 4 `BUILD_PRESETS`. Coberto por `TestLoadoutBuilds`. Ainda não mostra skills, passivas, Trait nem equipamento por herói.
 
 ## Objetivo
 
@@ -67,8 +67,8 @@ Escolher livremente a build de cada herói do trio, ver skills, passivas e Trait
 
 - **DECIDIDO:** O slice entrega cada build como loadout fixo, sem gate de nível (regra local do SLICE-1).
 - **RECOMENDADO:** Colunas 4A das propostas.
-- **DECIDIDO:** Build livre por herói (Rafael, 2026-09-29): Bastião escolhe entre 3 builds, Flecha entre 2 e Íris entre 3, o que dá 18 combinações. O Argos já simula essas 18; os 4 presets viram atalhos opcionais.
-- **EM ABERTO:** Se os 4 presets continuam como atalhos na tela.
+- **DECIDIDO:** Build livre por herói (Rafael, 2026-09-29): Bastião escolhe entre 3 opções (Guardião, Retaliação e Retaliação com golpe telegrafado), Flecha entre 2 e Íris entre 3, o que dá 18 combinações. O Argos já simula essas 18; os 4 presets viram atalhos opcionais.
+- **DECIDIDO:** Os 4 presets continuam como atalhos (2026-09-29).
 
 ## Arte
 
