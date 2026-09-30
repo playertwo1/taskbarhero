@@ -102,6 +102,7 @@ func _build_ui() -> void:
 		theme = def_theme
 	var scroll := ScrollContainer.new()
 	scroll.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
 	add_child(scroll)
 	var margin := MarginContainer.new()
 	margin.add_theme_constant_override("margin_left", 18)
@@ -144,7 +145,7 @@ func _build_prep() -> void:
 	_refugio_title.text = "Refúgio de Lúmen"
 	_refugio_title.add_theme_font_size_override("font_size", 24)
 	_prep_box.add_child(_refugio_title)
-	_refugio_subtitle = Label.new()
+	_refugio_subtitle = _label()
 	_refugio_subtitle.text = "Santuário sob a névoa do Bosque · A Lanterna protege a party"
 	_refugio_subtitle.add_theme_color_override("font_color", Color(0.7, 0.75, 0.8))
 	_prep_box.add_child(_refugio_subtitle)
