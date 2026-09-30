@@ -4,6 +4,7 @@
 - [Relatos de bug](BUG_REPORT_SCHEMA.md)
 - [ARGOS](ARGOS_ARCHITECTURE.md) e [tooling](../../tools/argos/README.md)
 - [Achados de balanceamento](BALANCE_FINDINGS.md)
+- [QA mobile do slice (1E)](QA_MOBILE_1E.md) — achados da rodada no emulador Pixel 9; parcial, com achados abertos.
 - [Roteiro de playtest do slice (1E)](PLAYTEST_1E.md) — perguntas, registro por tentativa e como o resultado volta ao balanceamento; `DESIGN`, ainda não executado.
 - [Testes no repositório](../../tests/) — execute todos com `python tools/run_godot_tests.py` (headless; sai com 1 se alguma cena falhar).
 - [Validador de balanceamento](../../tools/balance/validate_balance_data.py) — composição, status, arquivos e referências cruzadas antes do Argos.
