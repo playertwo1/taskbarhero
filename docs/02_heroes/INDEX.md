@@ -39,7 +39,7 @@ A chegada de cada herói significa uma nova moradora/morador no mundo, alterando
 
 ## Recursos de desenvolvimento
 
-- [Direção aprovada para modelos conceituais](../art/CONCEPT_MODEL_STYLE.md) · [modelos dos cinco heróis restantes v001](../art/mockups/hero_model_concepts_v001/README.md) · [trio inicial v002](../art/mockups/hero_model_concepts_v002/README.md) · [Íris revisada v003](../art/mockups/hero_model_concepts_v003/README.md). Conceitos visuais não substituem fichas, contratos ou sprites atuais.
+- [Direção aprovada para modelos conceituais](../art/CONCEPT_MODEL_STYLE.md) · [referências atuais dos oito heróis](../art/referencia/README.md) · [modelos dos cinco heróis restantes v001](../art/mockups/hero_model_concepts_v001/README.md) · [trio inicial v002](../art/mockups/hero_model_concepts_v002/README.md) · [Íris revisada v003](../art/mockups/hero_model_concepts_v003/README.md). Conceitos visuais não substituem fichas, contratos ou sprites atuais.
 
 O [Modelo Golden de design do Bastião](BASTIAO_GOLDEN_REFERENCE.md) é a referência de profundidade para fichas futuras. Reutilize sua organização, respeitando a anatomia de [HERO_STANDARD.md](../../HERO_STANDARD.md); mecânicas e números pertencem a cada herói e não devem ser copiados. “Golden” neste documento não indica aprovação visual de sprite.
 

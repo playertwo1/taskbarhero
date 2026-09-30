@@ -31,6 +31,7 @@
 ## Fontes relacionadas
 
 - [Contrato](../../contracts/enemy_lumen_slime.yaml) · [Golden inimigo](../../golden/enemy_geleia_lumen_candidate_v001.png)
+- [Novo conceito v001](../../referencia/capitulo_01/inimigos_comuns/EN_C1_001_geleia_de_lumen_conceito_v001.png) — referência de estudo; o Golden continua sendo a autoridade aprovada.
 - [Base visual de assets](../../ASSET_VISUAL_BLUEPRINT.md)
 - [Direção de arte](../../ART_DIRECTION.md) · [guia de estilo](../../SPRITE_STYLE_GUIDE.md) · [paleta](../../PALETTE.md)
 - [Capítulo 1 — catálogo de conteúdo](../../../04_content/chapters/chapter_01/OVERVIEW.md)

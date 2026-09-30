@@ -2,7 +2,7 @@
 
 **ID de conceito:** `guardiao_cervo_pedra`
 
-**Estado:** boss existente e Golden aprovado; usar `boss_guardiao_cervo_candidate_v002.png` como referência congelada e `boss_guardiao_cervo.yaml`. Não redesenhar.
+**Estado:** boss existente e Golden aprovado; o candidato `boss_guardiao_cervo_candidate_v002.png` continua sendo a referência congelada conforme `boss_guardiao_cervo.yaml`. O candidato v003 é um novo estudo solicitado para revisão visual; não está aprovado e não substitui o Golden.
 
 **Classificação:** sprite de chefe
 
@@ -30,7 +30,7 @@
 
 ## Fontes relacionadas
 
-- [Contrato](../../contracts/boss_guardiao_cervo.yaml) · [Golden boss](../../golden/boss_guardiao_cervo_candidate_v002.png)
+- [Contrato](../../contracts/boss_guardiao_cervo.yaml) · [Golden boss aprovado v002](../../golden/boss_guardiao_cervo_candidate_v002.png) · [novo candidato v003](../../referencia/capitulo_01/chefe/BOSS_C1_001_guardiao_cervo_candidate_v003.png) — estudo para revisão, sem aprovação Golden.
 - [Base visual de assets](../../ASSET_VISUAL_BLUEPRINT.md)
 - [Direção de arte](../../ART_DIRECTION.md) · [guia de estilo](../../SPRITE_STYLE_GUIDE.md) · [paleta](../../PALETTE.md)
 - [Capítulo 1 — catálogo de conteúdo](../../../04_content/chapters/chapter_01/OVERVIEW.md)

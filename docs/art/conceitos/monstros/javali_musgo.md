@@ -31,6 +31,7 @@
 ## Fontes relacionadas
 
 - [Contrato](../../contracts/mob_javali_musgo.yaml)
+- [Novo conceito v001](../../referencia/capitulo_01/inimigos_comuns/EN_C1_004_javali_de_musgo_conceito_v001.png) — referência, não sprite final.
 - [Base visual de assets](../../ASSET_VISUAL_BLUEPRINT.md)
 - [Direção de arte](../../ART_DIRECTION.md) · [guia de estilo](../../SPRITE_STYLE_GUIDE.md) · [paleta](../../PALETTE.md)
 - [Capítulo 1 — catálogo de conteúdo](../../../04_content/chapters/chapter_01/OVERVIEW.md)

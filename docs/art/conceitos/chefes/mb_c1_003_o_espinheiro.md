@@ -37,3 +37,5 @@ O [JSON canônico do bestiário](../../../../documents/canonical/taskbar_sistema
 
 - [Ficha canônica completa e loot](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMIES_CANONICAL.json) — buscar por `MB_C1_003`.
 - [Bestiário do Capítulo 1](../../../../documents/canonical/taskbar_sistema_v0.4/source/TASKBAR_SISTEMA_COMPLETO_v0.4/CHAPTER_01_ENEMY_CATALOG.md).
+- [Conceito visual v002](../../referencia/capitulo_01/minichefes/MB_C1_003_o_espinheiro_conceito_v002.png) — referência atual, não sprite final.
+- [Conceito visual anterior v001](../../referencia/capitulo_01/minichefes/MB_C1_003_o_espinheiro_conceito_v001.png) — histórico.

@@ -21,6 +21,7 @@
 ## Pastas
 
 - [Modelos conceituais de heróis](../CONCEPT_MODEL_STYLE.md) — estilo aprovado, mapa das imagens atuais por personagem e caminho das fichas/contratos para futura criação de sprites.
+- [Referências visuais dos oito heróis e dos 17 inimigos do Capítulo 1](../referencia/README.md) — índice de imagens atuais, IDs canônicos e versões históricas. Os novos conceitos não substituem Golden, contrato ou sprite runtime.
 - [Monstros comuns](./monstros/README.md) — fichas canônicas com brief, status e drops; fichas antigas ficam identificadas como referências legadas.
 - [Elites](./elites/README.md) — brief inicial para as três elites canônicas e arquivo da referência legada.
 - [Chefes e minichefes](./chefes/README.md) — brief para os três minichefes canônicos e Golden do Guardião-Cervo.

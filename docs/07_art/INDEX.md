@@ -10,9 +10,12 @@ O conteúdo de arte existente permanece em [`docs/art/`](../art/), sua localiza�
 - Snapshots locais de instalação e caminhos foram arquivados em [`arquivados/INDEX.md`](../../arquivados/INDEX.md); não representam o ambiente atual sem nova conferência.
 - [Pipeline Daedalus](../art/DAEDALUS_SOUL.md) · [Receitas de prompting](../art/PROMPT_RECIPES.md)
 - [Conceitos-piloto de chefes e itens (2026-09-28)](../art/CONCEITOS_PILOTO_2026-09-28.md)
-- [Direção aprovada para modelos conceituais de heróis](../art/CONCEPT_MODEL_STYLE.md) · [cinco heróis restantes v001](../art/mockups/hero_model_concepts_v001/README.md) · [trio inicial v002](../art/mockups/hero_model_concepts_v002/README.md) · [Íris revisada v003](../art/mockups/hero_model_concepts_v003/README.md) — referências visuais, não sprites finais.
+- [Direção aprovada para modelos conceituais de heróis](../art/CONCEPT_MODEL_STYLE.md) · [índice das referências atuais dos oito heróis e 17 inimigos do Capítulo 1](../art/referencia/README.md) · [índice das referências de inimigos futuros](../../referencia/inimigos_futuros/README.md) · [cinco heróis restantes v001](../art/mockups/hero_model_concepts_v001/README.md) · [trio inicial v002](../art/mockups/hero_model_concepts_v002/README.md) · [Íris revisada v003](../art/mockups/hero_model_concepts_v003/README.md) — referências visuais, não sprites finais.
+- [Índice das 114 imagens de inimigos futuros](../../referencia/inimigos_futuros/INDICE_REFERENCIAS.md) — inventário existente de arquivos; consultar também as fichas para identidade e status.
+- [Ícones conceituais dos 30 itens canônicos v0.4](../art/referencia/itens_v04/README.md) — referências novas, fora do runtime e sujeitas a pixel cleanup e QA.
 - [Protótipos de telas e mockups mobile](../art/mockups/UI_SCREEN_PROPOSALS.md) · [Visualizador interativo](../art/mockups/core_screens_options.html) · [Inventário](../art/mockups/inventory_options.html)
 - **Base visual escolhida para o Hub:** [composição original com party e serviços](../art/mockups/hub_environment_concepts_v003/07_refugio_party_e_servicos.png) · [estudo retrato mobile](../art/mockups/hub_environment_concepts_v004/08_refugio_mobile_retrato.png) · [direção e requisitos modulares](../05_hub/HUB_VISUAL_DIRECTION.md)
+- [Referências visuais SLICE-1D: Árvore, Ferreiro e Refúgio pós-boss](../art/mockups/slice_1d_references/README.md) — conceitos exploratórios de UI e cenário, não assets finais.
 - [Triagem visual preliminar dos assets do Capítulo 1 — 2026-09-28](../art/QA_VISUAL_PRELIMINAR_2026-09-28.md) — achados iniciais; não fecha o gate de release.
 - **Sprites finais importados pelo jogo:** [`assets/sprites/`](../../assets/sprites/).
 
