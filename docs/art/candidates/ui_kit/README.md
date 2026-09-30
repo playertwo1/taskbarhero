@@ -22,11 +22,17 @@ Paleta: TY40, subconjuntos `neutral_stone` e `lumen`, no máximo 5 cores por pe�
 - Primário em verde-azulado de Lúmen; secundário em pedra neutra.
 - Wood ficou de fora deste candidato: nenhum estado o exige ainda.
 
+## Revisão v001b (2026-09-29)
+
+- Fragmento e Resíduo agora se separam por brilho e silhueta: o Fragmento é um losango claro; o Resíduo, uma gota escura e opaca com um único brilho.
+- O XP virou uma estrela de quatro pontas em tom de osso.
+- O bisel dos botões subiu de contraste (`#bdd2de` no primário, `#e6dac5` no secundário).
+
 ## Problemas conhecidos (para a auditoria)
 
-- Os ícones de Fragmento e de Resíduo se parecem: as duas são gemas verde-azuladas e só a silhueta as separa. Provável ajuste: dar ao Fragmento um tom mais claro/azulado, ou ao Resíduo um contorno de gota mais marcado.
-- O ícone de XP é uma estrela simples e um pouco rígida.
-- O bisel de 1 px é discreto em tela cheia; pode precisar de mais contraste a 1×.
+- O losango do Fragmento ficou levemente assimétrico e lê quase como um cubo inclinado; pode precisar de redesenho.
+- A estrela de XP ainda é rígida e simples.
 - Os ícones de 24×24 previstos para o resultado (`UI_S07`) não foram gerados.
-- Sem manifesto por asset em `docs/art/manifests/` e sem `sprite_lint.py` rodado (o script tem verificação própria de paleta, que não substitui o lint oficial).
+- Sem manifesto por asset em `docs/art/manifests/` e sem `sprite_lint.py` oficial rodado (o script tem verificação própria de paleta, que não substitui o lint oficial).
 - Sem teste de legibilidade a 1× em 432×960 nem no emulador.
+- O candidato ainda não passou por auditoria visual independente; o autor não aprova o próprio resultado.
