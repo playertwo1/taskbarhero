@@ -29,6 +29,8 @@ var variant_id := ""
 var run_options := {}
 var variant_policy := {}
 var variant_event_rules := {}
+## Variante com "spend": true gasta Fragmentos na Árvore e Resíduo em Reforço +1 entre as tentativas (1D).
+var variant_spend := false
 var base_skills: Array
 var base_passives: Array
 var base_damage_scale := 0.0
@@ -118,6 +120,7 @@ func _apply_variant(v: Dictionary) -> void:
 	run_options = v.get("run_options", {})
 	variant_policy = v.get("campaign_policy", {})
 	variant_event_rules = v.get("event_rules", {})
+	variant_spend = bool(v.get("spend", false))
 	if base_profiles.is_empty():
 		base_profiles = profiles.duplicate(true)
 		base_route = route.duplicate(true)
@@ -381,6 +384,7 @@ func _campaign_run_layer(build: Dictionary, seed_value: int) -> void:
 					residue += int(e["quantity"])
 		campaign.finish_expedition(run)
 		campaign.auto_equip(party_ids)
+		var spent := _spend_economy(campaign) if variant_spend else {}
 		var equipped := 0
 		for hid in campaign.inventory.equipped:
 			equipped += campaign.inventory.equipped[hid].size()
@@ -388,13 +392,29 @@ func _campaign_run_layer(build: Dictionary, seed_value: int) -> void:
 		totals["items"] += items_dropped
 		attempts.append({"level": level, "won": summary["won"], "furthest": summary["furthest_node"], "xp": summary["xp"],
 			"violations": summary["violations"], "gold": 0, "residue": residue, "items_dropped": items_dropped,
-			"equipped_after": equipped, "events": layer})
+			"equipped_after": equipped, "events": layer, "spent": spent})
 		if summary["won"]:
 			won = true
 			break
 	_write({"kind": "campaign", "build": _label(build), "build_map": build.duplicate(), "seed": seed_value, "won": won,
 		"attempts": attempts.size(), "final_level": int(campaign.data["party"]["level"]), "history": attempts,
 		"loot": true, "run_layer": true, "totals": totals})
+
+## Política de gasto do 1D: compra a rota do Ferreiro na ordem, assim que há Fragmentos, e reforça
+## os itens equipados enquanto houver Resíduo. Não desmonta itens (o Argos não simula reciclagem).
+func _spend_economy(campaign: SliceCampaign) -> Dictionary:
+	var bought: Array = []
+	for id in ["TREE_VIG_002", "TREE_VIG_005", "TREE_OFI_001", "TREE_OFI_002", "TREE_OFI_003"]:
+		if campaign.buy_tree_node(id) == "":
+			bought.append(id)
+		elif campaign.tree.can_buy(campaign.data, id) != "owned":
+			break
+	var reinforced := 0
+	for hid in campaign.inventory.equipped:
+		for uid in campaign.inventory.equipped[hid]:
+			if campaign.reinforce(int(uid)) == "":
+				reinforced += 1
+	return {"bought": bought, "reinforced": reinforced, "fragments": int(campaign.data["fragments"])}
 
 # --- Métricas e oráculos --------------------------------------------------------------------
 

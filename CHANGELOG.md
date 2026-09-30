@@ -2,6 +2,11 @@
 
 Registro breve de mudanças estruturais e releases. Detalhes de planejamento continuam no roadmap; histórico de gates concluídos permanece arquivado.
 
+## 2026-09-29 — BAL-009 decidido e Argos com economia do 1D
+
+- Rafael decidiu esperar o playtest para o BAL-009: nenhum valor de balanceamento mudou.
+- `slice_run_layer` ganhou a variante `com_arvore_e_ferreiro` (compra da Árvore e Reforço +1 entre tentativas). Resultado: sem diferença mensurável contra a base (6,48 contra 6,52 tentativas; 47/48 contra 48/48 vitórias). Achados e ressalvas em [BAL-009](docs/08_qa/BALANCE_FINDINGS.md).
+
 ## 2026-09-29 — contratos de tela do slice
 
 - Novo `docs/09_ui/`: [convenções](docs/09_ui/SCREEN_CONVENTIONS.md), [índice](docs/09_ui/INDEX.md) e 11 contratos de UX (`UI_S01` a `UI_S11`), cada um com contrato de arte em `docs/art/contracts/screens/` e um `ui_kit` compartilhado. Todos `DESIGN`, aguardando revisão de Rafael.
