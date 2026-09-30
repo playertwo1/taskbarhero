@@ -28,19 +28,22 @@ Acompanhar o combate automático e ler o que acontece, sem controle direto do jo
 ## Dados exibidos
 
 - Nome do encontro e posição na rota.
+- Botão de pausa e velocidade atual (×1 a ×4).
 - HP atual/máximo por herói e quais caíram.
 - Inimigos vivos com nome e vida.
 - Eventos de combate: telégrafos, fases do chefe, Perfect Block, Fragmentos ganhos.
-- Velocidade atual.
+- Velocidade atual e se está pausado.
 
 ## Ações
 
-- Alternar velocidade.
-- Não há pausa nem comando de skill no slice.
+- Pausar e retomar o combate.
+- Escolher a velocidade: ×1, ×2, ×3 ou ×4.
+- Não há comando de skill no slice.
 
 ## Estados
 
 - Combate.
+- Pausado: o tempo não avança e os botões de velocidade continuam ativos.
 - Transição entre encontros (0,6 s).
 - Aguardando escolha (tempo parado; abre S06).
 - Terminada.
@@ -54,7 +57,7 @@ Acompanhar o combate automático e ler o que acontece, sem controle direto do jo
 ## Fora do slice
 
 - Controle manual de skills.
-- Pausa e retomar do combate.
+- Velocidade ×20 (existe só em ferramentas de desenvolvimento).
 - Efeitos visuais de skills (não há arte de efeitos).
 
 ## Critérios de aceite
@@ -66,8 +69,9 @@ Acompanhar o combate automático e ler o que acontece, sem controle direto do jo
 ## Decisões
 
 - **DECIDIDO:** O loadout e a build travam durante a expedição.
-- **EM ABERTO:** Se a velocidade padrão é ×4 para o jogador ou só para dev.
-- **EM ABERTO:** Se existe pausa no slice.
+- **DECIDIDO:** Pausa e velocidades ×1, ×2, ×3 e ×4 (Rafael, 2026-09-29). A implementação atual tem ×1/×4/×20 e sem pausa; precisa ser ajustada.
+- **RECOMENDADO:** Pausa não altera a simulação, só deixa de chamar o passo; a escolha aberta (S06) já para o tempo sozinha.
+- **EM ABERTO:** Velocidade inicial de cada expedição.
 
 ## Arte
 

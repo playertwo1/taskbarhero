@@ -29,7 +29,7 @@ Espaço recorrente entre expedições: mostra o estado da campanha e dá acesso 
 - Inventário (S08).
 - Árvore dos Ecos (S09).
 - Ferreiro (S10), só depois de `TREE_OFI_001`.
-- Gravadora de Ecos (S11), só com um Echo recuperado.
+- Seção Echo do Inventário (S08/S11), que é a Gravadora de Ecos.
 
 ## Dados exibidos
 

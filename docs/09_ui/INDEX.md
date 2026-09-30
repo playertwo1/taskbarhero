@@ -1,6 +1,6 @@
 # UI — índice
 
-Contratos de tela do slice. Cada tela tem um contrato de UX em Markdown (objetivo, dados, ações, estados, aceite) e um contrato de arte estruturado em [`docs/art/contracts/screens/`](../art/contracts/screens/). Regras comuns: [SCREEN_CONVENTIONS](SCREEN_CONVENTIONS.md). Status de todos: `DESIGN`, aguardando revisão de Rafael.
+Contratos de tela do slice. Cada tela tem um contrato de UX em Markdown (objetivo, dados, ações, estados, aceite) e um contrato de arte estruturado em [`docs/art/contracts/screens/`](../art/contracts/screens/). Regras comuns: [SCREEN_CONVENTIONS](SCREEN_CONVENTIONS.md). Status de todos: `DESIGN`, aguardando revisão de Rafael. **Decididas em 2026-09-29:** Expedição é tela separada; a Gravadora é seção do Inventário; o Loadout tem build livre por herói; o combate tem pausa e velocidades ×1 a ×4.
 
 | ID | Tela | Implementação hoje | Contrato de UX | Contrato de arte |
 | --- | --- | --- | --- | --- |
@@ -14,7 +14,7 @@ Contratos de tela do slice. Cada tela tem um contrato de UX em Markdown (objetiv
 | `UI_S08` | Inventário | lista de texto | [s08](screens/s08_inventario.md) | [yaml](../art/contracts/screens/s08_inventario.yaml) |
 | `UI_S09` | Árvore dos Ecos | lista linear de 6 nós | [s09](screens/s09_arvore_dos_ecos.md) | [yaml](../art/contracts/screens/s09_arvore_dos_ecos.yaml) |
 | `UI_S10` | Ferreiro | lista de texto | [s10](screens/s10_ferreiro.md) | [yaml](../art/contracts/screens/s10_ferreiro.yaml) |
-| `UI_S11` | Gravadora de Ecos | dentro do Inventário | [s11](screens/s11_gravadora_de_ecos.md) | [yaml](../art/contracts/screens/s11_gravadora_de_ecos.yaml) |
+| `UI_S11` | Gravadora de Ecos (seção do Inventário, sem tela própria) | dentro do Inventário | [s11](screens/s11_gravadora_de_ecos.md) | [yaml](../art/contracts/screens/s11_gravadora_de_ecos.yaml) |
 
 ## Sem contrato ainda (fora do slice)
 
@@ -22,6 +22,6 @@ Retorno offline, Bestiário/Codex, Alquimista, Ourives, seleção entre os 8 her
 
 ## Fluxo
 
-`Título → Refúgio → Expedição → (Loadout) → Expedição em curso ⇄ Escolha → Resultado → Refúgio → Inventário / Árvore / Ferreiro / Gravadora`
+`Título → Refúgio → Expedição (tela própria) → Loadout (build livre por herói) → Expedição em curso (pausa, ×1 a ×4) ⇄ Escolha → Resultado → Refúgio → Inventário / Árvore / Ferreiro / Gravadora`
 
 Voltar ao [índice de docs](../INDEX.md).

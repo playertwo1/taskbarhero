@@ -30,6 +30,7 @@ Ver o que a party possui, equipar e comparar equipamento entre expedições.
 ## Dados exibidos
 
 - Itens com nome, slot, raridade, Item Power, Reforço e favorito.
+- Seção Echo (Gravadora de Ecos): Echo recuperado, origem, efeito em Muralha Viva e estado equipado.
 - Quem usa cada item.
 - Resíduo de Lúmen.
 - Echo recuperado e estado de equipar.
@@ -39,7 +40,7 @@ Ver o que a party possui, equipar e comparar equipamento entre expedições.
 - Equipar em herói compatível.
 - Desequipar.
 - Equipar os melhores.
-- Equipar/trocar o Echo (ou abrir a Gravadora).
+- Equipar ou trocar o Echo na seção Echo do painel (Gravadora).
 
 ## Estados
 
@@ -68,7 +69,7 @@ Ver o que a party possui, equipar e comparar equipamento entre expedições.
 
 - **DECIDIDO:** Desmontar fica no Ferreiro, com confirmação e proteção de favoritos.
 - **RECOMENDADO:** Filtro por slot com 6 abas (Arma, Secundário, Armadura, Acessório I/II, Echo).
-- **EM ABERTO:** Onde o Echo mora: neste painel ou só na Gravadora (S11).
+- **DECIDIDO:** A Gravadora fica dentro do painel de Inventário como a seção Echo (Rafael, 2026-09-29); não há tela própria. Ver UI_S11.
 
 ## Arte
 

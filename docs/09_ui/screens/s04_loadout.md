@@ -6,7 +6,7 @@ certainty: HIPOTESE
 
 # UI_S04 — Loadout da party
 
-**Estado do contrato:** `DESIGN`. **Implementação:** DESIGN (provisório: seletor de 4 presets)
+**Estado do contrato:** `DESIGN`. **Implementação:** DESIGN (provisório: seletor de 4 presets; build livre por herói decidida)
 
 ## Implementação atual
 
@@ -14,7 +14,7 @@ certainty: HIPOTESE
 
 ## Objetivo
 
-Escolher a build de cada herói do trio, ver skills, passivas e Trait fixos da build, o equipamento e o Echo antes de partir.
+Escolher livremente a build de cada herói do trio, ver skills, passivas e Trait fixos da build, o equipamento e o Echo antes de partir.
 
 ## Entra por
 
@@ -25,7 +25,7 @@ Escolher a build de cada herói do trio, ver skills, passivas e Trait fixos da b
 
 - Voltar ao Refúgio.
 - Inventário (S08) para trocar equipamento.
-- Gravadora (S11) para o Echo.
+- Seção Echo do Inventário (S08/S11) para o Echo.
 
 ## Dados exibidos
 
@@ -36,9 +36,10 @@ Escolher a build de cada herói do trio, ver skills, passivas e Trait fixos da b
 
 ## Ações
 
-- Alternar a build de um herói.
+- Escolher a build de cada herói de forma independente (2 ou 3 opções por herói).
+- Ver a combinação resultante e se ela é válida.
 - Tocar em skill/passiva para ver a descrição.
-- Abrir Inventário ou Gravadora a partir do slot.
+- Abrir o Inventário (na seção Echo, quando for o slot Echo) a partir do slot.
 
 ## Estados
 
@@ -53,12 +54,12 @@ Escolher a build de cada herói do trio, ver skills, passivas e Trait fixos da b
 
 ## Fora do slice
 
-- Escolha de skills por slot livre (o slice usa loadout fixo por build).
+- Escolha de skills por slot dentro de uma build (o slice usa loadout fixo por build).
 - Party de 3 entre 8 heróis, Mastery e Signature.
 
 ## Critérios de aceite
 
-- Cada combinação de build oferecida corresponde a um preset válido do simulador.
+- Toda combinação escolhida pelo jogador é uma das 18 combinações que o simulador cobre; a tela não permite build inexistente.
 - O texto de skills vem dos dados, sem cópia.
 - Nenhuma alteração é possível com `inventory.locked`.
 
@@ -66,7 +67,8 @@ Escolher a build de cada herói do trio, ver skills, passivas e Trait fixos da b
 
 - **DECIDIDO:** O slice entrega cada build como loadout fixo, sem gate de nível (regra local do SLICE-1).
 - **RECOMENDADO:** Colunas 4A das propostas.
-- **EM ABERTO:** Se combinações livres de build por herói entram já, ou só os 4 presets, até o playtest.
+- **DECIDIDO:** Build livre por herói (Rafael, 2026-09-29): Bastião escolhe entre 3 builds, Flecha entre 2 e Íris entre 3, o que dá 18 combinações. O Argos já simula essas 18; os 4 presets viram atalhos opcionais.
+- **EM ABERTO:** Se os 4 presets continuam como atalhos na tela.
 
 ## Arte
 

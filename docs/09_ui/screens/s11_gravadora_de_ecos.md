@@ -4,9 +4,9 @@ status: DESIGN
 certainty: HIPOTESE
 ---
 
-# UI_S11 — Gravadora de Ecos
+# UI_S11 — Gravadora de Ecos (seção do Inventário)
 
-**Estado do contrato:** `DESIGN`. **Implementação:** DESIGN (hoje o Echo é equipado no Inventário)
+**Estado do contrato:** `DESIGN`. **Implementação:** DECIDIDO como seção do Inventário (UI_S08); sem tela própria
 
 ## Implementação atual
 
@@ -14,16 +14,16 @@ Não há tela própria. `SliceInventoryPanel` mostra o Echo recuperado e o botã
 
 ## Objetivo
 
-Catalogar o Echo recuperado e equipá-lo ou trocá-lo no slot Echo. No slice existe um só Echo: *A Sentinela que Ficou*.
+Seção Echo dentro do painel de Inventário (UI_S08): catalogar o Echo recuperado e equipá-lo ou trocá-lo no slot Echo. No slice existe um só Echo: *A Sentinela que Ficou*. Este contrato descreve só o conteúdo dessa seção.
 
 ## Entra por
 
-- Refúgio (S02) com um Echo recuperado.
-- Loadout (S04).
+- Seção do Inventário (S08).
+- Slot Echo do Loadout (S04) abre o Inventário nessa seção.
 
 ## Sai para
 
-- Voltar.
+- Voltar ao Inventário.
 
 ## Dados exibidos
 
@@ -37,7 +37,7 @@ Catalogar o Echo recuperado e equipá-lo ou trocá-lo no slot Echo. No slice exi
 
 ## Estados
 
-- Nenhum Echo recuperado: serviço trancado.
+- Nenhum Echo recuperado: a seção mostra o estado vazio, sem botão.
 - Echo recuperado e não equipado.
 - Equipado.
 - Travado durante a expedição.
@@ -54,13 +54,13 @@ Catalogar o Echo recuperado e equipá-lo ou trocá-lo no slot Echo. No slice exi
 ## Critérios de aceite
 
 - Só usa a API de `SliceCampaign` (`equip_echo`).
-- Sem Echo, o serviço não abre uma tela vazia.
+- Sem Echo, a seção explica que nenhum foi recuperado.
 
 ## Decisões
 
 - **DECIDIDO:** Único Echo do slice, equipado no Hub e sem custo de Fragmentos.
-- **EM ABERTO:** Se a Gravadora é uma tela própria no slice ou o painel do Inventário basta.
-- **EM ABERTO:** Identidade da Gravadora (NPC) e sua arte.
+- **DECIDIDO:** Sem tela própria no slice: a Gravadora é uma seção do Inventário (Rafael, 2026-09-29).
+- **EM ABERTO:** Identidade da Gravadora (NPC) e sua arte; só necessária se ela virar cena no Refúgio.
 
 ## Arte
 

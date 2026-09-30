@@ -64,7 +64,7 @@ Mostrar a expedição do Bosque de Lúmen, o progresso do capítulo e confirmar 
 ## Decisões
 
 - **RECOMENDADO:** Trilha vertical 2A das propostas de UI.
-- **EM ABERTO:** Se esta tela existe como passo separado ou como card dentro do Refúgio enquanto houver uma única expedição.
+- **DECIDIDO:** Tela própria, separada do Refúgio (Rafael, 2026-09-29), mesmo com uma única expedição no slice. Ela mostra a rota e o resumo da party antes de partir.
 
 ## Arte
 

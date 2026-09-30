@@ -2,7 +2,7 @@
   "contract_version": "1.0.0",
   "category": "ui_screen",
   "screen_id": "UI_S11",
-  "screen": "Gravadora de Ecos",
+  "screen": "Gravadora de Ecos (seção do Inventário)",
   "status": "DESIGN",
   "ux_contract": "docs/09_ui/screens/s11_gravadora_de_ecos.md",
   "canvas": {
