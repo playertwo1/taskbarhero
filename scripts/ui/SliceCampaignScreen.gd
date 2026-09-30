@@ -13,7 +13,12 @@ var save_path: String = SAVE_PATH
 var campaign: SliceCampaign
 var run: ExpeditionRun
 var mode: String = "prep"
-var speed: float = 4.0
+## Velocidades oferecidas ao jogador (UI_S05); ×20 só em build de debug.
+const SPEEDS := [1.0, 2.0, 3.0, 4.0]
+const DEBUG_SPEED := 20.0
+
+var speed: float = 1.0
+var paused: bool = false
 
 var _ctx: Dictionary = {}
 var _log: Array = []
@@ -28,7 +33,8 @@ var _log_label: Label
 var _choice_box: VBoxContainer
 var _prep_info: Label
 var _result_label: Label
-var _speed_button: Button
+var _pause_button: Button
+var _speed_buttons: Dictionary = {}
 var _panel: Control
 var _blacksmith_button: Button
 
@@ -116,8 +122,22 @@ func _build_run() -> void:
 	_run_box.add_child(_status)
 	_hp = _label()
 	_run_box.add_child(_hp)
-	_speed_button = _button("Vel. ×4", _cycle_speed)
-	_run_box.add_child(_speed_button)
+	var controls := HBoxContainer.new()
+	controls.add_theme_constant_override("separation", 6)
+	_pause_button = _button("Pausar", toggle_pause)
+	_pause_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	controls.add_child(_pause_button)
+	var offered: Array = SPEEDS.duplicate()
+	if OS.is_debug_build():
+		offered.append(DEBUG_SPEED)
+	for value in offered:
+		var chosen: float = value
+		var b := _button("×%d" % int(chosen), func(): set_speed(chosen))
+		b.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		controls.add_child(b)
+		_speed_buttons[chosen] = b
+	_run_box.add_child(controls)
+	_refresh_controls()
 	_choice_box = VBoxContainer.new()
 	_choice_box.add_theme_constant_override("separation", 8)
 	_run_box.add_child(_choice_box)
@@ -146,9 +166,25 @@ func summary_line() -> String:
 	return "Itens: %d · Resíduo de Lúmen: %d · Fragmentos: %d%s" % [campaign.inventory.items.size(), int(campaign.inventory.materials.get(SliceInventory.RESIDUE, 0)), int(campaign.data["fragments"]),
 		"\nAviso: o save não pôde ser lido (%s); nada será gravado." % campaign.save_error if campaign.save_blocked else ""]
 
-func _cycle_speed() -> void:
-	speed = 1.0 if speed >= 20.0 else (20.0 if speed >= 4.0 else 4.0)
-	_speed_button.text = "Vel. ×%d" % int(speed)
+## Define a velocidade (×1 a ×4; ×20 só em debug). Valor fora da lista é ignorado.
+func set_speed(value: float) -> bool:
+	if not (SPEEDS.has(value) or (OS.is_debug_build() and value == DEBUG_SPEED)):
+		return false
+	speed = value
+	_refresh_controls()
+	return true
+
+## Pausa não altera a simulação: só deixa de avançar o tempo.
+func toggle_pause() -> void:
+	paused = not paused
+	_refresh_controls()
+
+func _refresh_controls() -> void:
+	if _pause_button == null:
+		return
+	_pause_button.text = "Retomar" if paused else "Pausar"
+	for value in _speed_buttons:
+		_speed_buttons[value].disabled = is_equal_approx(float(value), speed)
 
 func _open_inventory() -> void:
 	_panel = SliceInventoryPanel.new()
@@ -180,11 +216,13 @@ func start_expedition(preset_index: int) -> void:
 	_log = []
 	_result = ""
 	run = campaign.start_expedition(build, int(Time.get_ticks_msec()) if not OS.is_debug_build() else 1 + int(campaign.data["party"]["xp"]))
+	paused = false
+	_refresh_controls()
 	_show("run")
 	_refresh_run()
 
 func advance(seconds: float) -> void:
-	if mode != "run" or run == null or run.state == "choice":
+	if mode != "run" or run == null or run.state == "choice" or paused:
 		return
 	_consume(campaign.step(run, seconds))
 

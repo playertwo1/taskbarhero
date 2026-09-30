@@ -6,11 +6,11 @@ certainty: HIPOTESE
 
 # UI_S05 — Expedição em curso
 
-**Estado do contrato:** `DESIGN`. **Implementação:** IMPLEMENTED (texto, sem arte de combate)
+**Estado do contrato:** `DESIGN`. **Implementação:** IMPLEMENTED (texto, sem arte de combate; pausa e ×1–×4 implementados)
 
 ## Implementação atual
 
-`SliceCampaignScreen` modo `run`: encontro, HP por herói em texto, botão de velocidade (×1/×4/×20) e log das últimas linhas. Sem sprites de combate.
+`SliceCampaignScreen` modo `run`: encontro, HP por herói em texto, botão Pausar/Retomar, velocidades ×1 a ×4 (×20 só em build de debug) e log das últimas linhas. Velocidade inicial ×1. Coberto por `TestRunSpeedControls`. Sem sprites de combate.
 
 ## Objetivo
 
@@ -69,9 +69,9 @@ Acompanhar o combate automático e ler o que acontece, sem controle direto do jo
 ## Decisões
 
 - **DECIDIDO:** O loadout e a build travam durante a expedição.
-- **DECIDIDO:** Pausa e velocidades ×1, ×2, ×3 e ×4 (Rafael, 2026-09-29). A implementação atual tem ×1/×4/×20 e sem pausa; precisa ser ajustada.
+- **DECIDIDO:** Pausa e velocidades ×1, ×2, ×3 e ×4 (Rafael, 2026-09-29). Implementado em 2026-09-29.
 - **RECOMENDADO:** Pausa não altera a simulação, só deixa de chamar o passo; a escolha aberta (S06) já para o tempo sozinha.
-- **EM ABERTO:** Velocidade inicial de cada expedição.
+- **RECOMENDADO:** Velocidade inicial ×1 (implementada); revisar depois do playtest.
 
 ## Arte
 
