@@ -31,7 +31,7 @@ Roadmap único do projeto: prioridade, ordem e gates. Ele **aponta** para as fon
 
 | Área | Estado | Evidência |
 | --- | --- | --- |
-| Suíte Godot | **36/36 cenas PASS** | `python tools/run_godot_tests.py` em 2026-09-30, commit `82571ad` + alterações locais. |
+| Suíte Godot | **37/37 cenas PASS** | `python tools/run_godot_tests.py` em 2026-09-30 (inclui `TestItemStatView`). |
 | Dados de balanceamento | Validador **OK** | `python tools/balance/validate_balance_data.py` em 2026-09-30. |
 | Argos (simulação) | 0 `BUG`; achados `BALANCE`/`PACING` abertos | Último `slice_balance`: `tools/argos/reports/20260930-180715_82571ad/REPORT.md`; perfis de jogador: `20260930-183035_82571ad`; achados em [BALANCE_FINDINGS](docs/08_qa/BALANCE_FINDINGS.md). |
 | SLICE-1 (vertical slice) | `IMPLEMENTED` / QA mobile `PASS` | Loop completo no emulador Pixel 9 (`1080x2424`): [relatório](docs/08_qa/QA_MOBILE_PIXEL9_REPORT.md). |
@@ -99,7 +99,7 @@ Ordem de prioridade. Trabalhe uma fatia por vez.
 - [ ] curva de XP que alcance o nível 100 ([02 §5](docs/06_balance/v1/02_HEROIS.md), D-04);
 - [ ] matriz de status por item/raridade (Comum, Incomum, Raro, Épico; Épico só em chefe) — **EM ABERTO**, não inferir valores;
 - [ ] fator ×1,08 por capítulo em `/data`;
-- [ ] implementar a tela [UI_S12 — números de item](docs/09_ui/screens/s12_numeros_de_item.md) (contrato `DESIGN`, [mockups](docs/art/mockups/s12_numeros_de_item_concepts_v002/README.md)).
+- [x] implementar a tela [UI_S12 — números de item](docs/09_ui/screens/s12_numeros_de_item.md) (camada de apresentação `ItemStatView.gd` integrada no Inventário, Ferreiro, Loadout e Resultado; 37/37 cenas PASS);
 - **Restrição:** nada de `/data` muda sem decisão e sem relatório do Argos antes/depois ([00 §11](docs/06_balance/v1/00_CONSTITUICAO.md)).
 - **Gate PASS:** decisões D-01 a D-09 registradas; jogador de referência e fatias medidos; matriz de itens aprovada; Capítulo 1 dentro das metas no Argos; confronto com o playtest.
 

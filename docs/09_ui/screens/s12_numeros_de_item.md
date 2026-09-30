@@ -1,12 +1,12 @@
 ---
 id: UI_S12
-status: DESIGN
+status: IMPLEMENTED
 certainty: HIPOTESE
 ---
 
 # UI_S12 — Números de item (componente)
 
-**Estado do contrato:** `DESIGN`, aguardando revisão de Rafael. **Implementação:** não existe. Hoje o Inventário e o Ferreiro mostram só nome, raridade e Item Power; nenhum número de bônus aparece para o jogador.
+**Estado do contrato:** `IMPLEMENTED`. **Implementação:** camada de apresentação [`ItemStatView.gd`](../../../scripts/ui/ItemStatView.gd) integrada no Inventário ([`SliceInventoryPanel.gd`](../../../scripts/ui/SliceInventoryPanel.gd)), Ferreiro ([`BlacksmithPanel.gd`](../../../scripts/ui/BlacksmithPanel.gd)), Loadout e Resultado ([`SliceCampaignScreen.gd`](../../../scripts/ui/SliceCampaignScreen.gd)). Suíte de validação com 37/37 cenas PASS em [`tests/unit/test_item_stat_view.gd`](../../../tests/unit/test_item_stat_view.gd).
 
 Este contrato não é uma tela nova: define os **componentes de número** que entram em telas existentes — Inventário (S08), Ferreiro (S10), Loadout (S04), Escolha (S06) e Resultado (S07). Convenções comuns: [SCREEN_CONVENTIONS](../SCREEN_CONVENTIONS.md). Contrato de arte: [s12_numeros_de_item.yaml](../../art/contracts/screens/s12_numeros_de_item.yaml). Brief de geração de imagens: [conceitos de UI](../../art/conceitos/ui/README.md).
 

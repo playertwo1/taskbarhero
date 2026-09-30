@@ -15,7 +15,7 @@ Contratos de tela do slice. Cada tela tem um contrato de UX em Markdown (objetiv
 | `UI_S09` | Árvore dos Ecos | lista linear de 6 nós | [s09](screens/s09_arvore_dos_ecos.md) | [yaml](../art/contracts/screens/s09_arvore_dos_ecos.yaml) |
 | `UI_S10` | Ferreiro | lista de texto | [s10](screens/s10_ferreiro.md) | [yaml](../art/contracts/screens/s10_ferreiro.yaml) |
 | `UI_S11` | Gravadora de Ecos (seção do Inventário, sem tela própria) | dentro do Inventário | [s11](screens/s11_gravadora_de_ecos.md) | [yaml](../art/contracts/screens/s11_gravadora_de_ecos.yaml) |
-| `UI_S12` | Números de item (componente usado em S04, S06, S07, S08 e S10) | não existe; hoje só nome, raridade e IP | [s12](screens/s12_numeros_de_item.md) | [yaml](../art/contracts/screens/s12_numeros_de_item.yaml) · [referências de layout v002](../art/mockups/s12_numeros_de_item_concepts_v002/README.md) |
+| `UI_S12` | Números de item (componente usado em S04, S06, S07, S08 e S10) | `ItemStatView.gd` integrado no Inventário, Ferreiro, Loadout e Resultado | [s12](screens/s12_numeros_de_item.md) | [yaml](../art/contracts/screens/s12_numeros_de_item.yaml) · [referências de layout v002](../art/mockups/s12_numeros_de_item_concepts_v002/README.md) |
 
 ## Sem contrato ainda (fora do slice)
 

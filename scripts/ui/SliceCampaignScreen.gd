@@ -29,6 +29,7 @@ const BUILD_DESCRIPTIONS := {
 const SAVE_PATH := "user://slice_save.json"
 const LOG_LIMIT := 40
 const ItemIconResolver = preload("res://scripts/ui/ItemIconResolver.gd")
+const ItemStatView = preload("res://scripts/ui/ItemStatView.gd")
 
 var save_path: String = SAVE_PATH
 var campaign: SliceCampaign
@@ -79,6 +80,7 @@ var _result_items_box: HBoxContainer
 var _result_xp_val: Label
 var _result_res_val: Label
 var _result_frag_val: Label
+var _hero_stats_labels: Dictionary = {}
 
 func _ready() -> void:
 	campaign = SliceCampaign.open(save_path)
@@ -353,6 +355,12 @@ func _build_prep() -> void:
 		desc.add_theme_color_override("font_color", Color(0.72, 0.76, 0.8))
 		card_vbox.add_child(desc)
 		_build_desc_labels[hero_id] = desc
+
+		var stat_lbl := Label.new()
+		stat_lbl.add_theme_font_size_override("font_size", 12)
+		stat_lbl.add_theme_color_override("font_color", Color(0.85, 0.88, 0.92))
+		card_vbox.add_child(stat_lbl)
+		_hero_stats_labels[hero_id] = stat_lbl
 
 		hero_card.add_child(card_vbox)
 		_prep_box.add_child(hero_card)
@@ -636,6 +644,18 @@ func _sync_build_pickers() -> void:
 		_build_pickers[hero_id].select(opt_idx)
 		if _build_desc_labels.has(hero_id):
 			_build_desc_labels[hero_id].text = BUILD_DESCRIPTIONS.get(selected_build[hero_id], "")
+		if _hero_stats_labels.has(hero_id) and campaign != null:
+			var level := int(campaign.data.get("party", {}).get("level", 1))
+			var totals := ItemStatView.hero_totals(hero_id, level, campaign)
+			var curr: Dictionary = totals["current"]
+			var bonus: Dictionary = totals["bonus"]
+			var parts: Array = []
+			for st in ["max_hp", "attack", "defense"]:
+				var glyph: String = ItemStatView.STAT_GLYPHS[st]
+				var val_str: String = ItemStatView.format_number(curr[st], "int")
+				var b_str: String = " (+%s)" % ItemStatView.format_number(bonus[st], "int") if float(bonus[st]) > 0.0001 else ""
+				parts.append("%s %s%s" % [glyph, val_str, b_str])
+			_hero_stats_labels[hero_id].text = "  ·  ".join(parts)
 
 ## Atalho usado por testes: aplica o preset e inicia.
 func start_expedition(preset_index: int) -> void:
@@ -734,8 +754,8 @@ func _finish() -> void:
 		if count > 0 and all_items.size() >= count:
 			var recent := all_items.slice(all_items.size() - count)
 			for it in recent:
-				var ico := ItemIconResolver.create_icon_rect(String(it.get("id", "")), Vector2(44, 44))
-				_result_items_box.add_child(ico)
+				var card := ItemStatView.create_compact_card(it, _ctx["item_rows"])
+				_result_items_box.add_child(card)
 	_show("result")
 
 func _refresh_run() -> void:
