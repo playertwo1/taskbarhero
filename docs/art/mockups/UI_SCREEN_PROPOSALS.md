@@ -3,11 +3,13 @@
 **Status:** PROPOSTA / EXPLORAÇÃO DE DESIGN  
 **Data:** 2026-09-28  
 **Visualizador Interativo:** [`core_screens_options.html`](./core_screens_options.html)  
-**Conceitos Visuais de Alta Fidelidade (Pixel Art Dark Fantasy):**
+**Imagens da exploração inicial (históricas, não usar como referência atual de UI):**
 - [Hub / O Refúgio (Diorama)](./hub_screen_reference.png)
 - [Seleção de Fases (Bosque de Lúmen)](./stage_select_reference.png)
 - [Tela Inicial (Título & Atmosfera)](./title_screen_reference.png)
 - [Loadout da Party (Preparação de Batalha)](./party_loadout_reference.png)  
+
+As imagens históricas do Hub, seleção e Loadout contêm moedas, energia, loja ou totais de poder que não pertencem ao slice atual. Referências alinhadas aos contratos e à direção aprovada estão em [SLICE-1D](./slice_1d_references/README.md) e [SLICE-1E](./slice_1e_references/README.md). Os contratos de UX em `docs/09_ui/screens/` prevalecem sobre esta exploração.
 
 Este documento detalha **3 opções de interface mobile** para cada uma das 4 telas centrais do ecossistema do Pocket Hero:
 

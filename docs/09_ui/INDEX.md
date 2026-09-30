@@ -20,6 +20,10 @@ Contratos de tela do slice. Cada tela tem um contrato de UX em Markdown (objetiv
 
 Retorno offline, Bestiário/Codex, Alquimista, Ourives, seleção entre os 8 heróis, Mastery, missões de herói, configurações, créditos e capítulos futuros. Só ganham contrato depois que o sistema correspondente tiver regra aprovada.
 
+## Referências visuais
+
+As referências conceituais atuais por tela estão no [índice visual do SLICE-1E](../art/mockups/slice_1e_references/README.md). Referências da Árvore, Ferreiro e camada pós-boss do Refúgio estão no [índice visual do SLICE-1D](../art/mockups/slice_1d_references/README.md). As imagens são estudos, não assets finais nem fonte de regras ou valores.
+
 ## Fluxo
 
 `Título → Refúgio → Expedição (tela própria) → Loadout (build livre por herói) → Expedição em curso (pausa, ×1 a ×4) ⇄ Escolha → Resultado → Refúgio → Inventário / Árvore / Ferreiro / Gravadora`

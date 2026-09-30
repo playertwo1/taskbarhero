@@ -16,6 +16,8 @@ O conteúdo de arte existente permanece em [`docs/art/`](../art/), sua localiza�
 - [Protótipos de telas e mockups mobile](../art/mockups/UI_SCREEN_PROPOSALS.md) · [Visualizador interativo](../art/mockups/core_screens_options.html) · [Inventário](../art/mockups/inventory_options.html)
 - **Base visual escolhida para o Hub:** [composição original com party e serviços](../art/mockups/hub_environment_concepts_v003/07_refugio_party_e_servicos.png) · [estudo retrato mobile](../art/mockups/hub_environment_concepts_v004/08_refugio_mobile_retrato.png) · [direção e requisitos modulares](../05_hub/HUB_VISUAL_DIRECTION.md)
 - [Referências visuais SLICE-1D: Árvore, Ferreiro e Refúgio pós-boss](../art/mockups/slice_1d_references/README.md) — conceitos exploratórios de UI e cenário, não assets finais.
+- [Referências visuais SLICE-1E](../art/mockups/slice_1e_references/README.md) — mapa das referências atuais por tela e conceitos novos para Hub, Expedição, Loadout, combate, escolhas, resultado e Inventário/Echo.
+- [Fila de produção de sprites do SLICE-1](../art/SPRITE_PRODUCTION_BACKLOG.md) — liga cada imagem ao pacote, contrato e peças específicas a produzir, com dependências e ordem do roadmap.
 - [Triagem visual preliminar dos assets do Capítulo 1 — 2026-09-28](../art/QA_VISUAL_PRELIMINAR_2026-09-28.md) — achados iniciais; não fecha o gate de release.
 - **Sprites finais importados pelo jogo:** [`assets/sprites/`](../../assets/sprites/).
 

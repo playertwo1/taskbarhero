@@ -8,11 +8,13 @@ Uso: python tools/art/build_ui_kit.py
 """
 from __future__ import annotations
 
+import argparse
 from pathlib import Path
 from PIL import Image
 
 ROOT = Path(__file__).resolve().parents[2]
-OUT = ROOT / "docs" / "art" / "candidates" / "ui_kit"
+OUT_V001 = ROOT / "docs" / "art" / "candidates" / "ui_kit"
+OUT_V002 = ROOT / "docs" / "art" / "candidates" / "ui_kit_v002"
 
 BLACK = "#000000"
 SUBSETS = {
@@ -102,26 +104,26 @@ def divider() -> Image.Image:
 
 ICON_COLORS = {"o": "#182029", "a": "#bdd2de", "b": "#81b5a2", "c": "#425a58", "d": "#314646", "w": "#e6dac5", "g": "#a49983"}
 ICONS = {
-    # Fragmento: losango claro e brilhante (predomina a/b).
+    # Fragmento: lasca irregular, fosca e riscada de Lúmen, sem leitura de gema premium.
     "icon_fragment": [
         "................",
-        ".......oo.......",
-        "......oaao......",
-        ".....oaabbo.....",
-        "....oaabbbbo....",
-        "...oaabbbbbbo...",
-        "..oaabbbbbbbco..",
-        "..oabbbbbbbccdo.",
-        "..oabbbbbbccdo..",
-        "...obbbbbccdo...",
-        "....obbbccdo....",
-        ".....obccdo.....",
-        "......ocdo......",
-        ".......oo.......",
+        "......oooo......",
+        ".....occccco....",
+        "....occccccco...",
+        "...occcccbbcco..",
+        "...occcbbbbcco..",
+        "..occcbbbbbbcco.",
+        "..occcbbbbbbcco.",
+        "...occcbbbbcco..",
+        "....occcbbcco...",
+        ".....occcccco...",
+        "......occcco....",
+        ".......ooco.....",
+        "................",
         "................",
         "................",
     ],
-    # Resíduo: gota escura e opaca (predomina c/d), com um único brilho.
+    # Resíduo: fragmento mineral escuro, fosco e irregular; sem aparência de gema premium.
     "icon_residue": [
         "................",
         "................",
@@ -211,7 +213,11 @@ def lint(name: str, img: Image.Image) -> list[str]:
 
 
 def main() -> int:
-    OUT.mkdir(parents=True, exist_ok=True)
+    parser = argparse.ArgumentParser(description="Gera os candidatos do ui_kit sem IA.")
+    parser.add_argument("--version", choices=("v001", "v002"), default="v001")
+    args = parser.parse_args()
+    output_dir = OUT_V001 if args.version == "v001" else OUT_V002
+    output_dir.mkdir(parents=True, exist_ok=True)
     pieces: dict[str, Image.Image] = {}
     for kind, states in BUTTONS.items():
         for state, spec in states.items():
@@ -220,10 +226,13 @@ def main() -> int:
     pieces["divider"] = divider()
     for name in ICONS:
         pieces[name] = icon(name)
+        if args.version == "v002":
+            pieces[f"{name}_24"] = pieces[name].resize((24, 24), Image.Resampling.NEAREST)
 
     failed = False
     for name, img in pieces.items():
-        img.save(OUT / f"{name}.png")
+        filename = f"{name}.png" if args.version == "v001" else f"ui_kit_{name}.png"
+        img.save(output_dir / filename)
         errs = lint(name, img)
         colors = len({p for p in pixels(img) if p[3] == 255})
         print(f"{'FAIL' if errs else 'ok  '} {name}: {img.size[0]}x{img.size[1]}, {colors} cores {errs or ''}")
@@ -251,8 +260,9 @@ def main() -> int:
     full.alpha_composite(preview, (0, 0))
     full.alpha_composite(strip, (0, preview.size[1]))
     preview = full
-    preview.save(OUT / "preview_ui_kit.png")
-    print("prévia:", OUT / "preview_ui_kit.png")
+    preview_name = "preview_ui_kit.png" if args.version == "v001" else "preview_ui_kit_v002.png"
+    preview.save(output_dir / preview_name)
+    print("prévia:", output_dir / preview_name)
     return 1 if failed else 0
 
 
