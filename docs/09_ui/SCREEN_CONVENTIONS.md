@@ -46,7 +46,7 @@ Peças reutilizadas em todas as telas, produzidas uma vez e marcadas `shared: ui
 | Divisor e cabeçalho | listas | 432×8 | `new` |
 | Ícones de recurso (Fragmento, Resíduo, XP) | resultado, Árvore, Ferreiro | 16×16 e 24×24 | `new` |
 
-O ui_kit é o **primeiro asset de UI** a passar o gate de arte (contrato → conceito → pixel cleanup → QA técnico → auditoria independente); as telas só começam a receber arte depois do PASS dele.
+Um [candidato v001](../art/candidates/ui_kit/README.md) foi gerado por script em 2026-09-29 e aguarda auditoria. O ui_kit é o **primeiro asset de UI** a passar o gate de arte (contrato → conceito → pixel cleanup → QA técnico → auditoria independente); as telas só começam a receber arte depois do PASS dele.
 
 ## Estados de contrato e implementação
 

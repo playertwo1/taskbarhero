@@ -2,6 +2,10 @@
 
 Registro breve de mudanças estruturais e releases. Detalhes de planejamento continuam no roadmap; histórico de gates concluídos permanece arquivado.
 
+## 2026-09-29 — candidato do ui_kit
+
+- `tools/art/build_ui_kit.py` gera o [candidato v001 do ui_kit](docs/art/candidates/ui_kit/README.md) (botões 9-slice em 3 estados, painel, divisor e 3 ícones) em pixel art TY40, fora de `assets/`. Sem aprovação nem auditoria; problemas conhecidos listados no README.
+
 ## 2026-09-29 — BAL-009 decidido e Argos com economia do 1D
 
 - Novo [roteiro de playtest do 1E](docs/08_qa/PLAYTEST_1E.md): 8 perguntas, registro por tentativa e regras de retorno ao balanceamento. Limitações registradas: build de debug usa semente fixa e a telemetria não liga na campanha do aplicativo.
