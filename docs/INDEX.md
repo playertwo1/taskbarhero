@@ -19,7 +19,7 @@ Abra somente o índice da área necessária. Os índices encaminham para as font
 
 - [Manual de IA — Fase de Fundação](00_project/MANUAL_IA_FUNDACAO_DO_JOGO.md) — contexto mínimo, fontes de verdade e onde criar cada artefato.
 - [Padrão Canônico dos Heróis (HERO_STANDARD.md)](02_heroes/HERO_STANDARD.md) — fonte única da especificação mandatória de anatomia, progressão, skills, passivas e builds.
-- [Estado resumido](../PROJECT_STATE.md) — orientação; fontes citadas mantêm autoridade sobre os detalhes.
+- [Estado resumido](../STATE.md) — orientação; fontes citadas mantêm autoridade sobre os detalhes.
 - [Roadmap](../ROADMAP.md) — estado atual, trabalho em andamento, próximas fases e gates; o concluído fica em [arquivados](../arquivados/ROADMAP_CONCLUIDO.md).
 - [Registro de conteúdo](CONTENT_REGISTRY.md) — IDs de design e ponteiros para fontes de conteúdo/runtime.
 - [Padrão de Arte em Alta Densidade](art/RELATORIO_PRODUCAO_ALTA_DENSIDADE_2026-09-30.md) — hierarquia de resolução (heróis 96px, bestiário 64–224px, itens 64px, hub 256px+), paleta TY40 e inventário de assets.

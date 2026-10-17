@@ -44,3 +44,8 @@ tools/daedalus/comfyui/custom_nodes/
 
 # Repositório aninhado local
 /tools/daedalus/pixel-mcp/
+
+# Segredos e configuração local (nunca versionar)
+.env
+.env.*
+!.env.example

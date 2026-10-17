@@ -21,7 +21,25 @@ Roadmap único do projeto: prioridade, ordem e gates. Ele **aponta** para as fon
 4. **Certeza:** **DECIDIDO** (Rafael decidiu) · **HIPÓTESE** (valor a testar) · **EM ABERTO** (decisão de Rafael pendente). Não invente decisões em aberto: pergunte.
 5. Checklist `[x]` = feito com evidência; `[ ]` = pendente.
 6. O que foi concluído está em [`arquivados/ROADMAP_CONCLUIDO.md`](arquivados/ROADMAP_CONCLUIDO.md), com o texto original de cada gate. Material arquivado é histórico: não use como fonte de regra ou número.
-7. Regras de trabalho, ordem de carregamento e comandos: [`AGENTS.md`](AGENTS.md). Painel de caminhos: [`PROJECT_STATE.md`](PROJECT_STATE.md).
+7. Regras de trabalho, ordem de carregamento e comandos: [`AGENTS.md`](AGENTS.md). Painel de caminhos: [`STATE.md`](STATE.md).
+
+---
+
+## 0. Marcos e marco ativo (formato ideias_standard)
+
+Resumo para retomada; o detalhe e os gates completos ficam nas seções 2 a 5. Estado de retomada: [`STATE.md`](STATE.md).
+
+| Marco | Resultado verificável | Estado | Gate |
+| --- | --- | --- | --- |
+| MVP, ART-0, DESIGN-1 … ARGOS-PROFILES | Concluídos (seção 2) | `PASS` | evidências em `arquivados/ROADMAP_CONCLUIDO.md` |
+| NOW-1 · SLICE-1E | Playtest humano do slice | `QA` pendente | respostas registradas em `PLAYTEST_1E`; itens do gate `ECON-1` medidos |
+| NOW-2 · BALANCE-1 | Balanceamento v1.0 aplicado em `/data` e no Argos | `IMPLEMENTING` | Gate PASS da seção 3 (D-01 a D-09, jogador de referência, matriz de itens, Capítulo 1 nas metas) |
+| NOW-3 | Decisões aguardando Rafael | `EM ABERTO` | decisões registradas nas fontes |
+| NOW-4 · ui_kit v003 | Conceito aprovado vira asset final | `CONCEPT` aprovado | QA técnico, auditoria visual e QA mobile |
+| NOW-5 · OPUS-ROUND-1 | Rodada técnica (só Claude Opus) | `DESIGN` | Gate PASS da seção 3 |
+| NEXT-* | Depois do slice (seção 4) | planejado | ver cada fase |
+
+**Marco ativo:** `NOW-2 · BALANCE-1`. Evidência exigida: relatório do Argos antes/depois de cada número, decisões D-01 a D-09 registradas e `python tools/run_godot_tests.py` verde.
 
 ---
 
@@ -240,6 +258,6 @@ Estrutura e comandos: [tools/argos/README.md](tools/argos/README.md). Ordem deci
 
 ## 8. Referências
 
-- [AGENTS.md](AGENTS.md) · [PROJECT_STATE.md](PROJECT_STATE.md) · [CHANGELOG.md](CHANGELOG.md) · [estrutura do repositório](docs/00_project/ESTRUTURA_DO_REPOSITORIO.md)
+- [AGENTS.md](AGENTS.md) · [STATE.md](STATE.md) · [CHANGELOG.md](CHANGELOG.md) · [estrutura do repositório](docs/00_project/ESTRUTURA_DO_REPOSITORIO.md)
 - [Índice de docs](docs/INDEX.md) · [documentos base](documents/INDEX.md) · [balanceamento v1.0](docs/06_balance/v1/README.md) · [registro de conteúdo](docs/CONTENT_REGISTRY.md)
 - [Resumo do projeto](docs/00_project/POCKET_HERO_PROJECT_BRIEF.md) · [histórico concluído](arquivados/ROADMAP_CONCLUIDO.md) · [arquivados](arquivados/INDEX.md)

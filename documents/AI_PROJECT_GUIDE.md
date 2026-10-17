@@ -14,7 +14,7 @@ Este arquivo é somente uma porta de entrada. Ele não duplica o estado completo
 ## Comece por aqui
 
 1. [`../AGENTS.md`](../AGENTS.md) — instruções, precedência e mapa do repositório.
-2. [`../PROJECT_STATE.md`](../PROJECT_STATE.md) — local das fontes observáveis de runtime e estado resumido.
+2. [`../STATE.md`](../STATE.md) — local das fontes observáveis de runtime e estado resumido.
 3. [`../ROADMAP.md`](../ROADMAP.md) — roadmap único: prioridade, ordem e gates.
 4. [`../docs/INDEX.md`](../docs/INDEX.md) e [`../docs/CONTENT_REGISTRY.md`](../docs/CONTENT_REGISTRY.md) — navegação de design e catálogo de IDs.
 5. Para qualquer número do jogo, use o [balanceamento global v1.0](../docs/06_balance/v1/README.md) (constituição primeiro); runtime e medição em [v1 · telemetria e Argos](../docs/06_balance/v1/10_TELEMETRIA_ARGOS.md).
