@@ -16,9 +16,11 @@ language: pt-BR
 taskbarhero/
 ├── README.md            entrada humana: o que é o jogo, como rodar, onde ler
 ├── AGENTS.md            regras para agentes (curto; aponta para cá)
-├── PROJECT_STATE.md     painel: onde está cada fonte de verdade
+├── STATE.md             ponto de retomada + painel: onde está cada fonte de verdade
+├── PROJECT.md           contrato de visão (problema, MVP, fora de escopo)
+├── CLAUDE.md            só importa AGENTS.md
 ├── ROADMAP.md           estado, trabalho atual, próximo, futuro, gates
-├── CHANGELOG.md         mudanças estruturais datadas
+├── CHANGELOG.md         mudanças estruturais (## X.Y.Z — AAAA-MM-DD)
 ├── project.godot · export_presets.cfg · icon.png · jogar.bat   projeto Godot
 │
 ├── data/                valores que o jogo carrega (JSON) — autoridade de runtime

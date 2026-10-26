@@ -1,6 +1,6 @@
 # Pocket Hero — resumo do projeto
 
-> Documento de orientação. [`AGENTS.md`](../../AGENTS.md), [`PROJECT_STATE.md`](../../PROJECT_STATE.md), [`ROADMAP.md`](../../ROADMAP.md), dados e código mantêm autoridade sobre instruções, plano, estado e comportamento.
+> Documento de orientação. [`AGENTS.md`](../../AGENTS.md), [`STATE.md`](../../STATE.md), [`ROADMAP.md`](../../ROADMAP.md), dados e código mantêm autoridade sobre instruções, plano, estado e comportamento.
 
 ## Identidade
 

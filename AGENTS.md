@@ -4,7 +4,7 @@ Vale para qualquer agente (Claude, ChatGPT, Antigravity/Gemini). Este arquivo é
 
 ## 1. Antes de trabalhar
 
-1. Leia [`PROJECT_STATE.md`](PROJECT_STATE.md) e as seções 1 (estado) e 3 (agora) do [`ROADMAP.md`](ROADMAP.md).
+1. Leia [`STATE.md`](STATE.md) e as seções 1 (estado) e 3 (agora) do [`ROADMAP.md`](ROADMAP.md).
 2. Confira `git status` e preserve alterações pré-existentes, inclusive arquivos não rastreados. Outra sessão pode estar trabalhando ao mesmo tempo: não sobrescreva nem inclua trabalho alheio no commit.
 3. Confira se a fatia do roadmap tem **executor definido** (ex.: `NOW-5 · OPUS-ROUND-1` é somente para o Claude Opus). Se você não é o executor indicado, não execute: apenas leia e avise Rafael.
 4. Abra só o índice da área da tarefa ([`docs/INDEX.md`](docs/INDEX.md)) e depois a ficha exata. Carregue o mínimo de contexto.
@@ -59,3 +59,4 @@ Regras do Argos (achados, cenários, relatórios): [`tools/argos/README.md`](too
 - Concluído vai para `arquivados/`; obsoleto é excluído (com confirmação de Rafael). Não crie fichas vazias só para completar a árvore.
 - Tarefas de visão ou fundação do jogo: consulte também o [manual de IA da fundação](docs/00_project/MANUAL_IA_FUNDACAO_DO_JOGO.md).
 - Não instale ferramentas, não altere segurança, não faça commit nem push sem pedido explícito de Rafael. Nunca exponha credenciais.
+- Ao fechar uma sessão que mudou o estado, atualize `STATE.md`; `CHANGELOG.md` usa `## X.Y.Z — AAAA-MM-DD`. `CLAUDE.md` só importa este arquivo. Nunca force push nem reescreva histórico.

@@ -1,6 +1,6 @@
 # Arquivados — Pocket Hero
 
-Este índice reúne documentos históricos úteis, versões substituídas e etapas concluídas. O material arquivado preserva contexto, mas não define o design, o estado ou o processo atual. Use [`AGENTS.md`](../AGENTS.md), [`PROJECT_STATE.md`](../PROJECT_STATE.md), [`ROADMAP.md`](../ROADMAP.md) e os índices de [`docs/`](../docs/INDEX.md) como fontes vigentes.
+Este índice reúne documentos históricos úteis, versões substituídas e etapas concluídas. O material arquivado preserva contexto, mas não define o design, o estado ou o processo atual. Use [`AGENTS.md`](../AGENTS.md), [`STATE.md`](../STATE.md), [`ROADMAP.md`](../ROADMAP.md) e os índices de [`docs/`](../docs/INDEX.md) como fontes vigentes.
 
 ## Roadmap e design antigo
 

@@ -13,7 +13,7 @@ Este manual não aprova conteúdo de jogo, substitui a roadmap, nem declara fase
 ## Contexto mínimo para começar
 
 1. Leia [`AGENTS.md`](../../AGENTS.md) e siga a ordem de contexto e as regras de preservação do workspace.
-2. Leia [`PROJECT_STATE.md`](../../PROJECT_STATE.md) como mapa do estado observável; confirme detalhes nas fontes apontadas.
+2. Leia [`STATE.md`](../../STATE.md) como mapa do estado observável; confirme detalhes nas fontes apontadas.
 3. Leia [`ROADMAP.md`](../../ROADMAP.md) para localizar a tarefa, seu estado e o gate vigente.
 4. Leia [`docs/INDEX.md`](../INDEX.md), este manual e o `INDEX.md` da área afetada.
 5. Abra somente os documentos da entidade/sistema envolvidos; consulte `/data`, código e testes apenas quando a tarefa exigir.
@@ -25,7 +25,7 @@ Este manual não aprova conteúdo de jogo, substitui a roadmap, nem declara fase
 | Pergunta | Fonte a consultar |
 | --- | --- |
 | O que fazer agora e quais gates cumprir? | [`ROADMAP.md`](../../ROADMAP.md) |
-| Onde está o estado resumido e quais fontes verificar? | [`PROJECT_STATE.md`](../../PROJECT_STATE.md); é um mapa, não prova por si só. |
+| Onde está o estado resumido e quais fontes verificar? | [`STATE.md`](../../STATE.md); é um mapa, não prova por si só. |
 | Quais IDs, nomes de catálogo e status de conteúdo estão registrados? | [`docs/CONTENT_REGISTRY.md`](../CONTENT_REGISTRY.md) e o índice da categoria. |
 | Quais regras ou efeitos de design foram escritos? | Documento da área/entidade apontado por seu `INDEX.md`; não presuma que uma proposta já foi aprovada. |
 | Quais valores o jogo carrega? | JSON e demais dados em [`data/`](../../data/). |
@@ -66,7 +66,7 @@ Consulte primeiro o índice da área. Crie o documento de detalhe na pasta corre
 6. **Faça a menor fatia coerente.** Escreva apenas o que desbloqueia o próximo gate; não expanda todos os capítulos, heróis ou sistemas de uma vez.
 7. **Aponte a navegação.** Atualize o `INDEX.md` pertinente e o registro central quando criar ou mudar uma entidade catalogada.
 8. **Mantenha as camadas separadas.** Design em `/docs`; valores finais usados pelo jogo em `/data`; implementação em `/scripts`/`/scenes`; arte em `/assets`; prova em `/tests`.
-9. **Feche com evidência e pendências.** Atualize a roadmap somente se o estado/gate realmente mudou. Atualize `PROJECT_STATE.md` somente se mudar o estado observado, sem duplicar checklists.
+9. **Feche com evidência e pendências.** Atualize a roadmap somente se o estado/gate realmente mudou. Atualize `STATE.md` somente se mudar o estado observado, sem duplicar checklists.
 
 Antes de editar, identifique os arquivos afetados, o comportamento ou entendimento esperado, as regressões relevantes e o critério de aceite, conforme [`AGENTS.md`](../../AGENTS.md). Preserve todas as mudanças e arquivos não rastreados que já existiam no workspace.
 

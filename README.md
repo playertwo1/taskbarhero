@@ -8,7 +8,7 @@ RPG mobile de combate automático, party, equipamentos e progressão incremental
 
 | Você é… | Leia |
 | --- | --- |
-| Agente de IA (Claude, ChatGPT, Antigravity) | [`AGENTS.md`](AGENTS.md) → [`PROJECT_STATE.md`](PROJECT_STATE.md) → [`ROADMAP.md`](ROADMAP.md) seções 1 e 3 |
+| Agente de IA (Claude, ChatGPT, Antigravity) | [`AGENTS.md`](AGENTS.md) → [`STATE.md`](STATE.md) → [`ROADMAP.md`](ROADMAP.md) seções 1 e 3 |
 | Pessoa conhecendo o projeto | [resumo do projeto](docs/00_project/POCKET_HERO_PROJECT_BRIEF.md) → [pilares](docs/00_project/GAME_PILLARS.md) → [loop](docs/00_project/CORE_LOOP.md) |
 | Quem vai mexer em números | [balanceamento global v1.0](docs/06_balance/v1/README.md) |
 | Quem procura onde algo mora | [estrutura do repositório](docs/00_project/ESTRUTURA_DO_REPOSITORIO.md) |
@@ -31,6 +31,8 @@ Regras de onde criar cada tipo de arquivo: [ESTRUTURA_DO_REPOSITORIO](docs/00_pr
 - [`docs/CONTENT_REGISTRY.md`](docs/CONTENT_REGISTRY.md) — IDs e roteamento dos catálogos.
 - [`documents/INDEX.md`](documents/INDEX.md) — guias completos e fontes originais.
 - [`arquivados/INDEX.md`](arquivados/INDEX.md) — histórico.
+- [`PROJECT.md`](PROJECT.md) — contrato de visão (problema, MVP, fora de escopo).
+- [`STATE.md`](STATE.md) — ponto de retomada e painel de fontes.
 - [`CHANGELOG.md`](CHANGELOG.md) — mudanças estruturais.
 
 ## Verificação
